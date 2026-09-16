@@ -1,0 +1,5 @@
+interface:
+  display_name: "What Is Next"
+  short_description: "Find the right skill or workflow"
+policy:
+  allow_implicit_invocation: false

@@ -1,0 +1,3 @@
+interface:
+  display_name: "Setup Auto-Handoff"
+  short_description: "Gate compaction on a fresh handoff"
