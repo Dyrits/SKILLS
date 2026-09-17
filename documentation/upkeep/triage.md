@@ -8,7 +8,7 @@ The second thing that separates it from labelling by hand: it recommends and wai
 
 ## When to reach for it
 
-You invoke this by typing `/triage` and then describing what you want in plain language. The agent won't reach for it on its own. "Show me anything that needs my attention", "let's look at #42", "move #42 to ready-for-agent".
+You invoke this by typing `/triage` and then describing what you want in plain language. The agent won't reach for it on its own. "Show me anything that needs my attention", "let's look at #42", "move #42 to ready".
 
 | What you have | Where to go |
 | --- | --- |
@@ -20,64 +20,67 @@ You invoke this by typing `/triage` and then describing what you want in plain l
 
 ## Prerequisites
 
-`triage` reads and writes your issue tracker, so [setup-custom-skills](../getting-started/setup-custom-skills.md) has to have configured that tracker and its label vocabulary first. The role names below are **canonical**; the label strings in your tracker may differ, and the mapping is what setup provides. If your tracker already uses the canonical names exactly, there is nothing to map and nothing to set up.
+`triage` reads and writes your issue tracker, so [setup-custom-skills](../getting-started/setup-custom-skills.md) has to have configured that tracker and its role vocabulary first. The role names below are **canonical**; the strings your tracker uses may differ, and the mapping is what setup provides. If your tracker already uses the canonical names exactly, there is nothing to map and nothing to set up.
 
-The tracker config also decides whether external pull requests count as a request surface, and who counts as external. That flag defaults to off and is no longer a setup question, so flip it in `documentation/agents/issue-tracker.md` if you want PRs in scope.
+It acts on published tracker records only. Drafts under `.refinement/` carry `Status: draft` and no role until someone publishes them, so they never show up in a triage queue. On the local markdown tracker, a role is the `Category:` or `Status:` line of the issue file under `backlog/`, a comment is an entry under its `## Comments` heading, and closing is `Status: not-planned`.
+
+On a remote tracker, the config also decides whether external pull requests count as a request surface, and who counts as external. That flag defaults to off and is no longer a setup question, so flip it in `documentation/agents/issue-tracker.md` if you want PRs in scope.
 
 ## The state machine
 
-Every triaged item ends up carrying exactly one category role and one state role. Two categories: `bug` (something is broken) and `enhancement` (new feature or improvement). Five states:
+Every triaged item ends up carrying exactly one category role and one state role. Two categories: `bug` (something is broken) and `enhancement` (new feature or improvement). Four states:
 
 | State | Means |
 | --- | --- |
-| `needs-triage` | You need to evaluate it. Where an unlabelled issue normally lands first. |
-| `needs-info` | Waiting on the reporter. Returns to `needs-triage` when they reply. |
-| `ready-for-agent` | Fully specified, with an agent brief attached. An AFK agent can take it. |
-| `ready-for-human` | The same brief, plus why this can't be delegated: judgment, external access, manual testing. |
-| `wontfix` | Closed, with the reason recorded. |
+| `to-evaluate` | You need to evaluate it. Where an issue with no state role lands first. |
+| `on-hold` | Paused on something the triage notes name: a reporter's reply, an external dependency, another issue. Returns to `to-evaluate` when that arrives. |
+| `ready` | Fully specified, with a brief attached. Safe to pick up. Where a human has to do it, the brief says why it can't be delegated. |
+| `not-planned` | Closed, with the reason recorded. |
 
-That is the whole vocabulary, and the "exactly one state role" invariant is what keeps the queries simple. It is also the most-requested area of the skill: users have asked for a sixth state for work that is specified but blocked on another issue, for `deferred` work gated on a future trigger, and for a terminal `implemented` state. None of those has shipped. See the questions below.
+The four answer one question: **is this actionable?** Everything after that answer, in progress, in review, deployed, belongs to your tracker's own status field, a branch, or a pull request. The role set deliberately stops at the handoff, which is why it stays this small and why the "exactly one state role" invariant keeps queries simple.
 
-`wontfix` splits three ways, and the difference matters because only one of them writes to the knowledge base:
+`not-planned` splits three ways, and the difference matters because only one of them writes to the knowledge base:
 
 | Why you're closing it | What happens |
 | --- | --- |
-| Already implemented | A comment pointing at where it already lives. Nothing is written to `.out-of-scope/`, because it's a built feature, not a rejected one, and filing it there would poison the dedup checks. |
+| Already implemented | A comment pointing at where it already lives. Nothing is written to `documentation/out-of-scope/`, because it's a built feature, not a rejected one, and filing it there would poison the dedup checks. |
 | Rejected bug | Polite explanation, then close. |
-| Rejected enhancement | A file in `.out-of-scope/`, linked from the closing comment, then close. |
+| Rejected enhancement | A file in `documentation/out-of-scope/`, linked from the closing comment, then close. |
 
-`.out-of-scope/` is one markdown file per rejected **concept**, not per issue, written as a short design document rather than a database row: what was rejected, why, and every issue that has asked for it. `triage` reads the whole directory before it evaluates anything, and matches by concept rather than keyword, so "night theme" matches `dark-mode.md`. When it hits a match it surfaces the old decision and asks whether you still feel the same way, instead of re-litigating the request from scratch.
+`documentation/out-of-scope/` is one markdown file per rejected **concept**, not per issue, written as a short design document rather than a database row: what was rejected, why, and every issue that has asked for it. `triage` reads the whole directory before it evaluates anything, and matches by concept rather than keyword, so "night theme" matches `dark-mode.md`. When it hits a match it surfaces the old decision and asks whether you still feel the same way, instead of re-litigating the request from scratch.
 
 ## Verify before you brief
 
-Before any grilling, `triage` checks that the claim actually holds. For a bug, it reproduces it from the reporter's steps. For a PR, it checks the branch out and runs the relevant tests. Then it reports which of three things happened: confirmed, with the code path; failed to reproduce; or not enough detail to try, which is itself the strongest `needs-info` signal there is.
+Before any grilling, `triage` checks that the claim actually holds. For a bug, it reproduces it from the reporter's steps. For a PR, it checks the branch out and runs the relevant tests. Then it reports which of three things happened: confirmed, with the code path; failed to reproduce; or not enough detail to try, which is itself the strongest `on-hold` signal there is.
 
-It runs two more checks against the codebase in the same pass: **redundancy** (is this already implemented, searched by domain concept rather than by the reporter's wording?) and **prior rejection** (does `.out-of-scope/` already say no?). Both are cheap, and both produce a `wontfix` when they hit.
+It runs two more checks against the codebase in the same pass: **redundancy** (is this already implemented, searched by domain concept rather than by the reporter's wording?) and **prior rejection** (does `documentation/out-of-scope/` already say no?). Both are cheap, and both produce a `not-planned` when they hit.
 
-All of it exists to make one artifact good: the **agent brief**, the structured comment posted when an issue moves to `ready-for-agent`. Once it's posted, the brief is the contract and the original report is only context. Briefs are written to be **durable** rather than precise, because an issue can sit in `ready-for-agent` for weeks while the code moves underneath it. So they name types, signatures and behavioural contracts, and never file paths or line numbers. A confirmed reproduction makes a far stronger brief than a guess does.
+All of it exists to make one artifact good: the **agent brief**, the structured comment posted when an issue moves to `ready`. Once it's posted, the brief is the contract and the original report is only context. Briefs are written to be **durable** rather than precise, because an issue can sit in `ready` for weeks while the code moves underneath it. So they name types, signatures and behavioural contracts, and never file paths or line numbers. A confirmed reproduction makes a far stronger brief than a guess does.
 
 ## A PR is an issue with attached code
 
-Where the tracker treats external pull requests as a request surface, they run through the same machine, with the same categories, same states, same transitions. The states just read against the diff: `ready-for-agent` means a brief is attached and an agent should take the next step on the code, `ready-for-human` means it's ready for a person to merge. A brief on a PR describes what's left to do to the existing diff, not how to build the thing from nothing.
+Where the tracker treats external pull requests as a request surface, they run through the same machine, with the same categories, same states, same transitions. The states just read against the diff: `ready` means a brief is attached and the next step on the code is specified, whether an agent takes it or a person merges it. A brief on a PR describes what's left to do to the existing diff, not how to build the thing from nothing.
 
 Discovery surfaces only *external* PRs, because a collaborator's in-flight branch is not triage work. That filter is discovery-only, and naming a PR explicitly gets it triaged whoever wrote it. One rough edge: the GitHub template's external-PR listing command asks `gh pr list` for an `authorAssociation` field that `gh` does not expose, so the command as written fails outright ([#468](https://github.com/mattpocock/skills/issues/468)).
 
 ## Common questions
 
 **I ran `/to-specifications` and `/to-tickets`, and now those tickets are sitting there untriaged. Do I run `/triage` over them?**
-No. Published tickets are already agent-ready, because `to-tickets` applies the `ready-for-agent` label when it publishes, precisely so an AFK runner picks them up without another pass. Local refinement drafts stay `draft` until publication. The user who hit this had run the specification flow, seen `needs-triage` on the output, and found their AFK runner ignoring everything. `triage` is the on-ramp for work that arrives from outside; the specification flow is the lane for work you originate. They meet at `ready-for-agent`, not before.
+No. Published tickets are already agent-ready, because `to-tickets` applies the `ready` role when it publishes, precisely so an AFK runner picks them up without another pass. Refinement drafts stay `draft` until publication. The user who hit this had run the specification flow, seen `to-evaluate` on the output, and found their AFK runner ignoring everything. `triage` is the on-ramp for work that arrives from outside; the specification flow is the lane for work you originate. They meet at `ready`, not before.
 
 **Is `triage` still relevant now that there's a `to-specifications` → `to-tickets` → `implement` flow?**
 Only if you have inbound work. `triage` predates that spine and does a different job: it is the lane for reports other people filed. If everything in your tracker came out of your own planning, you will rarely open it. If you maintain anything public, or your team files bugs at you, it is the front door. The main use is open-source repositories taking issues from external contributors.
 
-**The agent tried to apply `ready-for-agent` and `gh` said the label doesn't exist.**
-Known open bug ([#616](https://github.com/mattpocock/skills/issues/616)). `setup-custom-skills` writes the label vocabulary into `documentation/agents/triage-labels.md`, but does not create the labels in your tracker. Create the five state labels and two category labels yourself, once, with `gh label create` or the tracker's UI, and it stops. There is a community fix branch linked from the issue that hasn't been merged.
+**The agent tried to apply `ready` and `gh` said the label doesn't exist.**
+Known open bug ([#616](https://github.com/mattpocock/skills/issues/616)). `setup-custom-skills` writes the role vocabulary into `documentation/agents/triage-roles.md`, but does not create the labels in your tracker. Create the four state labels and two category labels yourself, once, with `gh label create` or the tracker's UI, and it stops. On the local markdown tracker the question does not arise: roles are lines in the issue file, so there is nothing to create. There is a community fix branch linked from the issue that hasn't been merged.
 
-**Five states aren't enough: what about blocked, or deferred, or implemented?**
-This is the most-filed gap on the skill, in three shapes. An issue that is fully specified but waiting on another issue to close ([#139](https://github.com/mattpocock/skills/issues/139)), where the reporter's complaint was that `ready-for-agent` is "technically true" there but misleading, so an agent picks it up and hits a wall. Trigger-gated future work that is intended but not actionable yet ([#297](https://github.com/mattpocock/skills/issues/297)). And a terminal state for "implemented, awaiting verification", without which an AFK runner can re-queue finished tickets. Matt has agreed the blocked case is real and is undecided on the name (`blocked` versus `paused`). None of it has shipped. The workaround people use is a repository-local extra label alongside the category, which keeps the canonical state slot occupied by something honest at the cost of the skill not knowing about it. One community derivative goes further, adding `needs-slicing`, `tracking` and effort labels. That works, but it is theirs, not the skill's.
+**What about blocked, deferred, or implemented?**
+The first two are `on-hold`, which is why this fork widened the state from the upstream `needs-info`. An issue fully specified but waiting on another issue to close ([#139](https://github.com/mattpocock/skills/issues/139)) was the most-filed gap upstream: `ready-for-agent` was "technically true" there but misleading, so an agent picked it up and hit a wall. Trigger-gated future work ([#297](https://github.com/mattpocock/skills/issues/297)) is the same shape. Both now park in `on-hold` with the hold named in the triage notes, and both return to `to-evaluate` when it lifts.
+
+"Implemented, awaiting verification" is deliberately not a role. It is a phase, not a triage answer, and phases live where the work lives: a merged PR, a deployed build, your tracker's status column. An AFK runner that re-queues finished tickets is reading the wrong signal, not missing a label.
 
 **How is this different from `/debug`?**
-The verification step here is deliberately shallow (enough to answer "is this real, and roughly where does it live"), not to find a root cause. When a bug won't reproduce from the reporter's steps in a few minutes, the honest move is `needs-info`, or [debug](./debug.md) if you want to chase it now. Neither skill's text currently mentions the other; a user found that seam, and it is still open.
+The verification step here is deliberately shallow (enough to answer "is this real, and roughly where does it live"), not to find a root cause. When a bug won't reproduce from the reporter's steps in a few minutes, the honest move is `on-hold`, or [debug](./debug.md) if you want to chase it now. Neither skill's text currently mentions the other; a user found that seam, and it is still open.
 
 **Can I point it at my whole backlog and let it run?**
 You can ask, but watch what it reads. The "show what needs attention" pass is a cheap listing meant for *selection*, where you pick one, and then it gathers full context on the one you picked. Run it across twenty issues at once and an agent can quietly fall back to that cheap listing as its evidence base, which returns issue bodies but not comments. A user hit exactly this: three issues already carried a comment saying "already fixed, recommend closing", and all three got fresh agent briefs instead. If you want a bulk pass, say explicitly that comments must be read per issue.
@@ -89,11 +92,11 @@ Yes, the tracker is config, not a hard-coded assumption, and people run it again
 
 - Every item it touches ends with exactly one category role and one state role, never zero, never two states in conflict.
 - It gives you a recommendation with reasoning and stops, rather than relabelling and moving on.
-- The bug got reproduced, or the PR got checked out and run, before anything reached `ready-for-agent`.
+- The bug got reproduced, or the PR got checked out and run, before anything reached `ready`.
 - The briefs it writes name types and behaviours, and contain no file paths and no line numbers.
 - A request that was rejected six months ago comes back, and it says so and quotes the old reason instead of triaging it fresh.
 - Every comment it posts opens with `> *This was generated by AI during triage.*`
 
 ## Where it fits
 
-`triage` is an **on-ramp**, not a step in the main chain. The main flow runs from an idea you had (grill, specification, tickets, implement, review), and `triage` is the parallel lane for work that arrived instead. It merges at the same place: an issue labelled `ready-for-agent` with a brief on it, which [implement](../workflow/implement.md) picks up exactly as it would a ticket from [to-tickets](../workflow/to-tickets.md). When a request needs sharpening before it can be briefed, `triage` runs [grilling](../reference/grilling.md) and [domain-modeling](../reference/domain-modeling.md) together, a round of questions at a time, so decisions land in `CONTEXT.md` and the ADRs as they're made. When you're not sure which lane you are in, [what-is-next](../getting-started/what-is-next.md) routes you.
+`triage` is an **on-ramp**, not a step in the main chain. The main flow runs from an idea you had (grill, specification, tickets, implement, review), and `triage` is the parallel lane for work that arrived instead. It merges at the same place: an issue carrying `ready` with a brief on it, which [implement](../workflow/implement.md) picks up exactly as it would a ticket from [to-tickets](../workflow/to-tickets.md). When a request needs sharpening before it can be briefed, `triage` runs [grilling](../reference/grilling.md) and [domain-modeling](../reference/domain-modeling.md) together, a round of questions at a time, so decisions land in `CONTEXT.md` and the ADRs as they're made. When you're not sure which lane you are in, [what-is-next](../getting-started/what-is-next.md) routes you.

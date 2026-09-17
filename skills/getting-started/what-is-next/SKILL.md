@@ -20,7 +20,7 @@ The route most work travels. You have an idea and want it built.
    - **`/prototype`** to answer the question with throwaway code,
    - **`/hand-off`** back what you learned, and reference it from the original idea thread.
 3. **Branch: is this a multi-session build?**
-   - **Yes** → **`/to-specifications`** (turn the thread into a specification), then **`/to-tickets`** to split it into tracer-bullet tickets, each declaring its **blocking edges**. When local refinement drafts are configured, both stay under `.refinement/<issue-key>/` until the user explicitly publishes them to the system-of-record tracker. Local tickets are worked blockers-first by hand; published tickets use native blocking links where the tracker supports them, so any ticket whose blockers are done can be grabbed. Kick off **`/implement`** per ticket, **`/clear`ing context between each one**. Each ticket is self-contained, so the last one's context is disposable. Prefer every ticket driven to one PR concurrently, in background worktrees? **`/implement-all`** runs the whole task graph itself.
+   - **Yes** → **`/to-specifications`** (turn the thread into a specification), then **`/to-tickets`** to split it into tracer-bullet tickets, each declaring its **blocking edges**. Both stay under `.refinement/<issue-key>/` until the user explicitly publishes them to the system-of-record tracker. Tickets on a local markdown tracker are worked blockers-first by hand; published tickets use native blocking links where the tracker supports them, so any ticket whose blockers are done can be grabbed. Kick off **`/implement`** per ticket, **`/clear`ing context between each one**. Each ticket is self-contained, so the last one's context is disposable. Prefer every ticket driven to one PR concurrently, in background worktrees? **`/implement-all`** runs the whole task graph itself.
    - **No** → **`/implement`** right here, in the same context window.
 
    Either way, **`/implement`** builds each issue by driving **`/test-driven-development`** internally (one red-green slice at a time), then closes out by running **`/code-review`**, a two-axis review (Standards + Specification) of the diff, before committing. Reach for **`/test-driven-development`** on its own when you just want to build a concrete behaviour test-first without a full specification, and **`/code-review`** on its own whenever you want to review a branch or PR against a fixed point.
@@ -88,6 +88,6 @@ Off the main flow entirely.
 
 ## Precondition
 
-Drafts under `.refinement/` can feed either a remote tracker or the local `backlog/` tracker. Explicit publication selects which artifacts become tracker records; an issue's links to working notes do not promote those notes.
+Every repository drafts under `.refinement/` first, whether its tracker is a remote or the local `backlog/`. Explicit publication selects which artifacts become tracker records; an issue's links to working notes do not promote those notes.
 
-**`/setup-custom-skills`**: run before a tracker-dependent flow to configure the system-of-record issue tracker, optional local refinement drafts, ticket-writing convention, triage labels, and doc layout. Custom issue trackers and team ticket templates also work.
+**`/setup-custom-skills`**: run before a tracker-dependent flow to configure the system-of-record issue tracker (local markdown or remote), ticket-writing convention, triage roles, and documentation layout. Custom issue trackers and team ticket templates also work.

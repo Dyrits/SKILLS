@@ -1,22 +1,21 @@
 ---
 name: to-specifications
-description: "Turn the current conversation into a specification: keep it in the configured local refinement workspace as a draft, or publish it to the project issue tracker when explicitly requested. No interview, just synthesis of what you've already discussed."
+description: "Turn the current conversation into a specification: draft it in the local refinement workspace, and publish it to the project issue tracker when explicitly requested. No interview, just synthesis of what you've already discussed."
 disable-model-invocation: true
 ---
 
 This skill takes the current conversation context and codebase understanding and produces a specification. Do NOT interview the user; just synthesize what you already know.
 
-The issue tracker, publication boundary, and triage label vocabulary should have been provided to you. If not, ask the user whether to run `/setup-custom-skills` now; if they decline, stop and tell them this skill needs it before continuing.
+The issue tracker and triage role vocabulary should have been provided to you. If not, ask the user whether to run `/setup-custom-skills` now; if they decline, stop and tell them this skill needs it before continuing.
 
 ## Process
 
 1. Resolve the destination from `documentation/agents/issue-tracker.md`:
 
-   - When local refinement drafts are configured, write to `.refinement/<issue-key>/specification.md`, or `.refinement/<feature-slug>/specification.md` when no source issue exists. This is the default until the user explicitly requests publication.
-   - When direct publication is configured, publish to the system-of-record tracker.
-   - A request such as "publish", "update Jira", or "create the issue" explicitly selects the system-of-record tracker.
+   - **Draft** to `.refinement/<issue-key>/specification.md`, or `.refinement/<feature-slug>/specification.md` when no source issue exists. This is the default.
+   - **Publish** to the system-of-record tracker only on an explicit request such as "publish", "update Jira", or "create the issue".
 
-   When refining an existing issue, fetch its full body and comments through the configured access method before drafting. Put `Source: <issue-key> (<url or repository-relative ticket path>)` and `Status: draft` at the top of a local specification. Refinement applies to both remote and local trackers; publishing to a local tracker writes the configured specification under `backlog/` and links the draft to that authoritative artifact.
+   When refining an existing issue, fetch its full body and comments through the configured access method before drafting. Put `Source: <issue-key> (<url or repository-relative ticket path>)` and `Status: draft` at the top of the draft. Publishing to a local markdown tracker writes the specification under `backlog/` and links the draft to that authoritative record, exactly as publishing to a remote does.
 
 2. Explore the repository to understand the current state of the codebase, if you haven't already. Use the project's domain glossary vocabulary throughout the specification, and respect any ADRs in the area you're touching.
 
@@ -24,7 +23,7 @@ The issue tracker, publication boundary, and triage label vocabulary should have
 
 Check with the user that these seams match their expectations.
 
-4. Write the specification using the template below, then save or publish it at the resolved destination. Apply the `ready-for-agent` triage label only when publishing to the project issue tracker. For a local draft, report its path and leave the configured tracker unchanged, including a local `backlog/`.
+4. Write the specification using the template below, then save or publish it at the resolved destination. Apply the `ready` triage role only when publishing to the project issue tracker. For a draft, report its path and leave the tracker unchanged, including a local `backlog/`.
 
 <specification-template>
 

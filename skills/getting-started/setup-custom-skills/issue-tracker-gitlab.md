@@ -17,7 +17,7 @@ Infer the repository from `git remote -v`; `glab` does this automatically when r
 ## Ticket writing convention
 
 - **Source:** Built-in `to-tickets`
-- **Applies to:** Local drafts and published tickets
+- **Applies to:** Refinement drafts and published tickets
 - **Rules:** Use the built-in ticket template unless the user selects another configured convention for the run.
 
 ## Merge requests as a triage surface

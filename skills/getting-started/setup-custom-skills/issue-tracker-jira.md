@@ -19,7 +19,7 @@ Record the access method as automated only after a read-only access check succee
 ## Ticket writing convention
 
 - **Source:** `<Built-in to-tickets, repository document, or skill name and template reference>`
-- **Applies to:** `<local drafts, published tickets, or both>`
+- **Applies to:** `<refinement drafts, published tickets, or both>`
 - **Rules:** `<language or required Jira metadata needed to interpret the source>`
 
 An optional Jira ticket skill may supply the description template and quality rules. `to-tickets` still owns the tracer-bullet breakdown, blocking edges, and publication approval.
@@ -31,14 +31,6 @@ Read the issue body, comments, status, links, and labels through the verified ac
 ## When a skill says "publish to the issue tracker"
 
 Use the verified update operation only after the user explicitly asks to publish. Otherwise, leave the approved artifact locally and report its path.
-
-## Local refinement drafts
-
-- One workspace per Jira issue at `.refinement/<issue-key>/`; use `.refinement/<feature-slug>/` when no Jira issue exists yet.
-- The refined specification is `.refinement/<issue-key>/specification.md`.
-- Draft implementation tickets are one file each under `.refinement/<issue-key>/issues/<NN>-<slug>.md`.
-- Put `Source: <issue-key> (<url>)` and `Status: draft` at the top of a sourced specification.
-- Jira remains the system of record. Local files are working artifacts until the user explicitly requests publication.
 
 ## Wayfinding operations
 

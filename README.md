@@ -30,11 +30,12 @@ It writes the skills into your repository as ordinary files you own and can edit
 
 In your agent, run it once per repository. It will:
 
-- Ask which issue tracker is the system of record (GitHub, GitLab, Jira, local files, or another workflow)
-- Ask whether refinement drafts should stay under `.refinement/` until you explicitly publish them, including when the tracker is local `backlog/`
+- Ask where published issues live: local markdown under `backlog/`, or a remote tracker (GitHub, GitLab, Jira, or another workflow you describe)
 - Ask whether tickets should follow an existing repository template or ticket-writing skill
-- Ask you what labels you apply to tickets when you triage them (`/triage` uses labels)
-- Ask you where you want to save any docs we create
+- Ask what strings you use for the triage roles (`/triage` reads them)
+- Ask where you want to save any documentation we create
+
+Whichever tracker you pick, drafting happens in `.refinement/` and reaches the tracker only when you ask to publish.
 
 ### 3. Bam - you're ready to go.
 
@@ -146,7 +147,7 @@ These split on one axis: who can invoke them. **User-invoked** skills are reacha
 
 Set up once, then find your way around.
 
-- **[setup-custom-skills](./skills/getting-started/setup-custom-skills/SKILL.md)**: Configure this repository for the workflow skills (system-of-record tracker, local drafts, ticket-writing convention, triage labels, domain doc layout). Run once per repository.
+- **[setup-custom-skills](./skills/getting-started/setup-custom-skills/SKILL.md)**: Configure this repository for the workflow skills (issue tracker: local markdown or remote, ticket-writing convention, triage roles, domain documentation layout). Run once per repository.
 - **[what-is-next](./skills/getting-started/what-is-next/SKILL.md)**: The router: which skill or flow fits your situation, or which boundary option (continue, clear, hand-off, compact) fits the moment.
 
 ### Workflow

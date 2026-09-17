@@ -1,6 +1,6 @@
 ## What it does
 
-`to-specifications` turns the conversation you have just had into a **specification**. It keeps the result in the configured local refinement workspace as a draft, or publishes it to the system-of-record tracker when you explicitly request publication.
+`to-specifications` turns the conversation you have just had into a **specification**. It drafts the result in the local refinement workspace, and publishes it to the system-of-record tracker when you explicitly request publication.
 
 It does not interview you. By the time you reach for it the deciding is already done, so it synthesises what is known (from the thread, from the codebase, from your `CONTEXT.md` and ADRs) rather than opening a fresh round of questions. The specification is a record of decisions already made, not a place where new ones get made.
 
@@ -19,7 +19,7 @@ Reach for it when the build is too big for one agent session and has to survive 
 
 ## Prerequisites
 
-`to-specifications` needs [setup-custom-skills](../getting-started/setup-custom-skills.md) to configure the tracker, publication boundary, and triage-label vocabulary. With local refinement enabled, a sourced draft lives at `.refinement/<issue-key>/specification.md`; the source issue remains unchanged until you explicitly ask to publish, whether it lives remotely or in `backlog/`.
+`to-specifications` needs [setup-custom-skills](../getting-started/setup-custom-skills.md) to configure the tracker and the triage role vocabulary. A sourced draft lives at `.refinement/<issue-key>/specification.md`; the source issue remains unchanged until you explicitly ask to publish, whether it lives remotely or in `backlog/`.
 
 ## The specification is a decision record
 
@@ -38,8 +38,8 @@ Those agreed seams then travel. [test-driven-development](./test-driven-developm
 **Where did `/to-prd` and `/to-spec` go?**
 They are earlier names for this skill. `to-prd` became `to-spec`, then `to-spec` became `to-specifications` so the public name no longer abbreviates its output. The earlier slugs have no aliases; reinstall under the current name. The pair is now *specification* and *tickets*: the specification is the destination and the decisions that fix it, while the tickets are the execution steps that get there. If you pivot, delete the unfinished tickets and keep the specification.
 
-**Why does the specification get the `ready-for-agent` label? I don't want an agent implementing off it.**
-The label means "no further triage needed": the document is complete enough for an agent to work from. It is an input designation, not a work order. But if you run AFK agents that poll for `ready-for-agent`, that distinction isn't visible to them, and they will happily try to build the whole specification in one run instead of picking up the ticket slices. This is the most-reported rough edge on the skill. Until it changes, exclude the parent specification explicitly in your AFK agent's prompt, or strip the label once `/to-tickets` has run.
+**Why does the specification get the `ready` role? I don't want an agent implementing off it.**
+The role means "no further triage needed": the document is complete enough to work from. It is an input designation, not a work order. But if you run AFK agents that poll for `ready`, that distinction isn't visible to them, and they will happily try to build the whole specification in one run instead of picking up the ticket slices. This is the most-reported rough edge on the skill. Until it changes, exclude the parent specification explicitly in your AFK agent's prompt, or strip the role once `/to-tickets` has run.
 
 **Why not go straight from grilling to `/to-tickets` and skip the specification?**
 Often you should; the specification earns its step only on multi-session work. Where it pays is that the tickets are disposable and the specification isn't: each ticket is sized for one fresh context window and gets deleted or closed, while the specification stays as the one place the reasoning behind them lives. On a single-session change that buys you nothing, and you have paid an extra synthesis step where the model can drift. Go grilling → `/implement`.

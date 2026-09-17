@@ -1,6 +1,8 @@
 ## What it does
 
-`setup-custom-skills` configures five conventions for one repository: the system-of-record issue tracker, whether refinement drafts stay local until publication, the ticket-writing convention, the triage-label vocabulary, and the domain documentation layout. It records the answers as markdown files under `documentation/agents/`.
+`setup-custom-skills` configures four conventions for one repository: the system-of-record issue tracker, the ticket-writing convention, the triage role vocabulary, and the domain documentation layout. It records the answers as markdown files under `documentation/agents/`.
+
+The tracker question has exactly two shapes, local markdown in this repository or a remote tracker, and refinement is not part of it. Every repository drafts in `.refinement/` and publishes only when you ask, so choosing Jira or GitHub never means drafting in Jira or GitHub.
 
 Those files are the only thing that varies between repositories. The skills themselves are identical everywhere; they read `documentation/agents/issue-tracker.md` at run time and do what it says. That is why the set is not tied to GitHub, and why no skill file ever needs editing to point it somewhere else. Invoking it with "link the skills to a custom issue tracker" works with anything you can connect to programmatically, with zero changes to the skills.
 
@@ -10,7 +12,7 @@ It is a prompt-driven skill, not a deterministic script. It reads your `git remo
 
 You invoke this by typing `/setup-custom-skills`; the agent won't reach for it on its own. It is deliberately marked non-invokable, so no other skill can fire it for you.
 
-Reach for it once per repository, before the first use of any other engineering skill. If [triage](../upkeep/triage.md), [to-specifications](../workflow/to-specifications.md), [to-tickets](../workflow/to-tickets.md) or [wayfinder](../shaping/wayfinder.md) start guessing where your issues go, or apply labels your tracker doesn't have, they have not been set up here yet. A repository already halfway through a project is a fine place to run it; the skill reads what is already there and no earlier work is wasted.
+Reach for it once per repository, before the first use of any other engineering skill. If [triage](../upkeep/triage.md), [to-specifications](../workflow/to-specifications.md), [to-tickets](../workflow/to-tickets.md) or [wayfinder](../shaping/wayfinder.md) start guessing where your issues go, or apply role strings your tracker doesn't have, they have not been set up here yet. A repository already halfway through a project is a fine place to run it; the skill reads what is already there and no earlier work is wasted.
 
 ## Prerequisites
 
@@ -20,34 +22,34 @@ It writes into the repository you run it in:
 | --- | --- |
 | `issue-tracker.md` | `documentation/agents/` |
 | `domain.md` | `documentation/agents/` |
-| `triage-labels.md` | `documentation/agents/`, only when the `triage` skill is installed |
+| `triage-roles.md` | `documentation/agents/`, only when the `triage` skill is installed |
+| A `.refinement/` workspace | created by the drafting skills on first use, not by setup |
 | An `## Agent skills` block | whichever of `CLAUDE.md` / `AGENTS.md` already exists |
 
 All of it is committed markdown. There is no user-level or global mode: the config lives in the repository, so every repository gets its own copy.
 
-## The five decisions
+## The four decisions
 
 It leads each section with the recommended answer, and skips whatever exploration already settled. Most runs are two confirmations and done.
 
 | Decision | What it proposes | When it actually asks |
 | --- | --- | --- |
-| **Issue tracker** | the one matching your `git remote` | always: this is the one real choice |
-| **Local drafts** | keep refinement under `.refinement/<issue-key>/` until an explicit publish step | for every tracker, including local markdown |
+| **Issue tracker** | local markdown when there is no remote, otherwise the tracker matching your `git remote` | always: this is the one real choice |
 | **Ticket writing** | use an existing issue template or ticket skill when one is found, with the built-in format as fallback | always, after it inspects the repository and available skills |
-| **Triage labels** | keep the five canonical names (`needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-human`, `wontfix`) | only if the `triage` skill is installed |
+| **Triage roles** | keep the canonical strings (`bug`, `enhancement`, `to-evaluate`, `on-hold`, `ready`, `not-planned`) | only if the `triage` skill is installed |
 | **Domain documentation** | single-context: one `CONTEXT.md` plus `documentation/architecture-decision-record/` at the root | only if it spots monorepo signals, and then it offers a multi-context `CONTEXT-MAP.md` |
 
-The tracker options:
+The tracker is either local or remote:
 
-| Option | Where issues live | Needs |
+| Kind | Where published issues live | Needs |
 | --- | --- | --- |
-| **GitHub** | the repository's GitHub Issues | the `gh` CLI |
-| **GitLab** | the repository's GitLab Issues | the `glab` CLI |
-| **Jira** | the configured Jira project | a verified Jira MCP connector, CLI, REST workflow, or manual publication |
-| **Local markdown** | files under `backlog/<feature>/` in this repository | nothing: no remote at all |
-| **Other** | wherever you say | one paragraph from you describing the workflow |
+| **Local markdown** | files under `backlog/<feature-slug>/` in this repository | nothing: no remote at all |
+| **Remote: GitHub** | the repository's GitHub Issues | the `gh` CLI |
+| **Remote: GitLab** | the repository's GitLab Issues | the `glab` CLI |
+| **Remote: Jira** | the configured Jira project | a verified Jira MCP connector, CLI, REST workflow, or manual publication |
+| **Remote: other** | wherever you say (Linear, Azure DevOps, Beads, …) | one paragraph from you describing the workflow |
 
-GitHub, GitLab, Jira, and local markdown ship as templates. The local tracker keeps its published records in committed `backlog/` files. Any tracker can have a separate `.refinement/` workspace for working material; choosing local markdown does not publish every local document.
+Local markdown, GitHub, GitLab, and Jira ship as seed templates; "other" is not a stub, it is the reason Linear, Azure DevOps and Beads work, because the downstream skills follow the prose setup records. Whichever kind you pick, the generated `documentation/agents/issue-tracker.md` also carries the refinement conventions, so the two halves (where drafts live, where records live) are always described together.
 
 For Jira, setup records the project key and verifies the smallest available read operation before describing access as automated. A Jira MCP connector is one supported access method, but it is not implied or installed by choosing Jira. Without verified access, the configuration uses manual publication and the agent prepares exact Markdown for the user to paste.
 
@@ -59,11 +61,11 @@ For example, a Jira team can select `create-jira-ticket` and its template refere
 
 ## Draft before publish
 
-For every tracker, setup asks whether working material should stay in `.refinement/` until an explicit publish step. The recommended answer is yes. A sourced draft lives at `.refinement/<issue-key>/specification.md`, carries the issue key and URL or local ticket path, and may have draft implementation tickets under `.refinement/<issue-key>/issues/`.
+Refinement is a constant, not a question. A sourced draft lives at `.refinement/<issue-key>/specification.md`, carries the issue key and URL or local ticket path, and may have draft implementation tickets under `.refinement/<issue-key>/issues/`. Drafts carry `Status: draft` and no triage role.
 
-The tracker remains the system of record. Reading it does not cross the publication boundary; creating or updating its records does, including files under `backlog/`. `to-specifications` and `to-tickets` save drafts by default when refinement is configured. Explicit publication promotes selected artifacts and links to the authoritative record, while supporting notes stay in refinement.
+The tracker remains the system of record. Reading it does not cross the **publication boundary**; creating or updating its records does, including files under `backlog/`. `to-specifications` and `to-tickets` draft by default and publish only on an explicit request, then link each draft to the record it produced while supporting notes stay in refinement.
 
-"Other" is not a stub either. It is the reason Linear, Azure DevOps and Beads work: you describe the workflow, the skill records your prose in `documentation/agents/issue-tracker.md`, and the downstream skills follow the prose. Jira now has its own template, including MCP, CLI, REST, and manual access modes.
+A remote tracker with its own refinement, analysis, or grooming status does not replace the local workspace. You refine locally and publish into that status, which is why the choice of tracker and the existence of `.refinement/` are independent.
 
 ## Common questions
 
@@ -77,7 +79,7 @@ No. GitHub, GitLab and local markdown under `backlog/` all ship as ready-made te
 
 **Do I need to re-run it after updating the skills?**
 
-Asked directly after v1.1, Matt said yes. The skill's own closing message is softer: it tells you re-running is only needed to switch trackers or start over. Both are defensible and the reason for the gap is real: the seed templates change between versions, so a `documentation/agents/issue-tracker.md` written by an older release can go stale against the skills now reading it. If a downstream skill starts doing something the documentation describes differently, re-running is the cheap fix.
+Upstream guidance after v1.1 said yes. The skill's own closing message is softer: it tells you re-running is only needed to switch trackers or start over. Both are defensible and the reason for the gap is real: the seed templates change between versions, so a `documentation/agents/issue-tracker.md` written by an older release can go stale against the skills now reading it. If a downstream skill starts doing something the documentation describes differently, re-running is the cheap fix.
 
 **It wrote to `CLAUDE.md`, but I'm on Codex.**
 
@@ -85,7 +87,7 @@ Known gap, still open. The file-selection rule is "edit `CLAUDE.md` if it exists
 
 **It didn't create my triage labels.**
 
-It doesn't. `documentation/agents/triage-labels.md` is a *mapping*: it tells `/triage` which strings in your tracker correspond to the five canonical roles. It does not run `gh label create`. On a fresh GitHub repository the labels genuinely do not exist yet, and this has been filed as a bug more than once. Two follow-ons:
+It doesn't. `documentation/agents/triage-roles.md` is a *mapping*: it tells `/triage` which strings correspond to the canonical roles, and where they are written (labels on a remote tracker, `Category:` and `Status:` lines on the local markdown one). It does not run `gh label create`. On a local markdown tracker there is nothing to create at all, which is one reason that option is the cheapest way to start. On a fresh GitHub repository the labels genuinely do not exist yet, and this has been filed as a bug more than once. Two follow-ons:
 
 - If your tracker already uses the canonical names, the mapping is an identity table and there is nothing to configure. That is the intended common case, not a missing step.
 - [wayfinder](../shaping/wayfinder.md)'s `wayfinder:map` and `wayfinder:<type>` labels are not created here either, and `gh issue create --label <missing>` fails outright rather than creating the label. Create them by hand before the first wayfinder run on a GitHub repository.
@@ -104,13 +106,13 @@ One long-standing complaint says yes, in these words: *"having a skill to set up
 
 ## It's working if
 
-- `documentation/agents/issue-tracker.md` and `documentation/agents/domain.md` exist, plus `triage-labels.md` if `triage` is installed.
+- `documentation/agents/issue-tracker.md` and `documentation/agents/domain.md` exist, plus `triage-roles.md` if `triage` is installed.
 - An `## Agent skills` section appears in the instruction file your harness actually reads, with a one-line summary pointing at each of those files.
-- The tracker it proposed matches the remote you really use, and the label strings match labels that really exist in your tracker.
+- The tracker it proposed matches where you really track work, and the role strings match vocabulary that really exists there.
 - `documentation/agents/issue-tracker.md` names the ticket template or skill the team chose, with the built-in `to-tickets` format available as fallback.
-- Afterwards, `/to-specifications` and `/to-tickets` know whether to keep drafts local or publish them, and `/triage` applies labels rather than inventing them.
+- Afterwards, `/to-specifications` and `/to-tickets` draft into `.refinement/` and wait for you to ask before touching the tracker, and `/triage` applies existing role strings rather than inventing them.
 - Nothing in the skill files themselves changed. If setup edited a `SKILL.md`, something went wrong.
 
 ## Where it fits
 
-`setup-custom-skills` is the **run-once setup** for the engineering flow, the precondition everything else assumes rather than a step in the chain. Its neighbours are its readers: [triage](../upkeep/triage.md), which applies the label vocabulary written here; [to-specifications](../workflow/to-specifications.md) and [to-tickets](../workflow/to-tickets.md), which save drafts or publish according to the boundary written here; and [wayfinder](../shaping/wayfinder.md), which reads the "Wayfinding operations" section of the same tracker file to know how maps and child tickets are stored. The domain documentation layout it records is the one [domain-modeling](../reference/domain-modeling.md) fills in later: it creates `CONTEXT.md` and architecture decision records lazily, when a term or decision actually gets resolved, so an empty repository after setup is the expected state. For which skill to reach for next, [what-is-next](./what-is-next.md) routes the whole set.
+`setup-custom-skills` is the **run-once setup** for the engineering flow, the precondition everything else assumes rather than a step in the chain. Its neighbours are its readers: [triage](../upkeep/triage.md), which applies the role vocabulary written here; [to-specifications](../workflow/to-specifications.md) and [to-tickets](../workflow/to-tickets.md), which draft and publish across the boundary written here; and [wayfinder](../shaping/wayfinder.md), which reads the "Wayfinding operations" section of the same tracker file to know how maps and child tickets are stored. The domain documentation layout it records is the one [domain-modeling](../reference/domain-modeling.md) fills in later: it creates `CONTEXT.md` and architecture decision records lazily, when a term or decision actually gets resolved, so an empty repository after setup is the expected state. For which skill to reach for next, [what-is-next](./what-is-next.md) routes the whole set.

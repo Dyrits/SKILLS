@@ -1,6 +1,6 @@
 ## What it does
 
-`to-tickets` takes a plan, a specification, or the conversation you are in, and breaks it into **tickets**. It saves them in the configured local refinement workspace as drafts, or publishes them to the system-of-record tracker when you explicitly request publication. Each ticket declares its **blocking edges**: the other tickets that have to finish before it can start.
+`to-tickets` takes a plan, a specification, or the conversation you are in, and breaks it into **tickets**. It drafts them in the local refinement workspace, and publishes them to the system-of-record tracker when you explicitly request publication. Each ticket declares its **blocking edges**: the other tickets that have to finish before it can start.
 
 Every ticket is a **tracer bullet**: a narrow but complete path through every layer of the change (schema, API, UI, tests) that can be demoed on its own the moment it lands. That is the constraint that makes it behave differently from the obvious way to split work, which is to cut one layer at a time and integrate at the end. It also sizes each ticket to fit in a single fresh context window, because the thing that will pick the ticket up is a session that has never seen your specification.
 
@@ -20,7 +20,7 @@ Tickets that `to-tickets` produced are agent-ready by construction. Don't run [t
 
 ## Prerequisites
 
-`to-tickets` needs [setup-custom-skills](../getting-started/setup-custom-skills.md) to configure the tracker, publication boundary, ticket-writing convention, and triage-label vocabulary. With local refinement enabled, drafts stay under `.refinement/<issue-key>/issues/` until you explicitly ask to publish them.
+`to-tickets` needs [setup-custom-skills](../getting-started/setup-custom-skills.md) to configure the tracker, ticket-writing convention, and triage role vocabulary. Drafts stay under `.refinement/<issue-key>/issues/` until you explicitly ask to publish them, whether the tracker is remote or the local `backlog/`.
 
 ## Your ticket convention stays optional
 
@@ -42,7 +42,7 @@ The edges are the point of the artifact. Their representation depends on the des
 
 | Tracker | Where the edges live | How you work them |
 | --- | --- | --- |
-| Local drafts | Text in one file per ticket under `.refinement/<issue-key>/issues/<NN>-<slug>.md`, numbered blockers-first | Review before publication |
+| Refinement drafts | Text in one file per ticket under `.refinement/<issue-key>/issues/<NN>-<slug>.md`, numbered blockers-first | Review before publication |
 | Local tracker | Published ticket identifiers under `backlog/<feature-slug>/issues/` | Work tickets whose blockers are done |
 | Remote tracker (GitHub, Linear) | Native blocking links, or sub-issues where the tracker has them | Any ticket whose blockers are done is on the **frontier** and can be grabbed |
 
