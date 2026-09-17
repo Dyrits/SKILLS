@@ -1,4 +1,4 @@
-# Setup and documentation rework
+# Skills repository fork rework, session 2
 
 Supersedes: `.agents/handoffs/2026-09-17-0010-fork-rework-session-1.md`
 

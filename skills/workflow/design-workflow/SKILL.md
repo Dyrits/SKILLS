@@ -1,6 +1,6 @@
 ---
-name: loop-me
-description: Grill me about specifications for the workflows I want to build, within this workspace.
+name: design-workflow
+description: Grill you into implementable workflow specifications for the recurring loops in your work, using the current directory as a stateful workspace.
 disable-model-invocation: true
 argument-hint: "A workflow to design, or nothing to go find one"
 ---

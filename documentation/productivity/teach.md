@@ -17,7 +17,7 @@ Reach for it when the learning is the project: a language, a framework, a codeba
 | The agent's last message re-pitched because it didn't land | [wait-what](./wait-what.md) |
 | To sharpen thinking you already have, rather than acquire new material | [grill-me](./grill-me.md) |
 | A background agent to read primary sources and leave you a cited document | [research](../shaping/research.md) |
-| To learn something that came up mid-grilling, without derailing the grilling | [handoff](./handoff.md) out to a teaching workspace, then `teach` there |
+| To learn something that came up mid-grilling, without derailing the grilling | [handoff](./hand-off.md) out to a teaching workspace, then `teach` there |
 
 ## Prerequisites
 
@@ -94,4 +94,4 @@ There is no canonical answer, and the reported differences are large. Higher rea
 
 `teach` is a **reach-for-it-anytime standalone**. It is not a step in a build chain and shares no artifacts with the engineering flow; it owns its directory and lives there for as long as the topic lasts.
 
-Its one real neighbour is [handoff](./handoff.md), through the composition Matt named as the answer to "what do I do if I'm being grilled about something I don't understand?": don't stop the grilling to learn: `/handoff` to a teaching workspace, learn it there with `/teach`, then go back and pick up where you left off. The nearby alternative is [research](../shaping/research.md), for when what you want is a cited document rather than lessons and retention. When you are not sure which skill or flow fits, [what-is-next](../getting-started/what-is-next.md) routes you over the whole set.
+Its one real neighbour is [handoff](./hand-off.md), through the composition Matt named as the answer to "what do I do if I'm being grilled about something I don't understand?": don't stop the grilling to learn: `/hand-off` to a teaching workspace, learn it there with `/teach`, then go back and pick up where you left off. The nearby alternative is [research](../shaping/research.md), for when what you want is a cited document rather than lessons and retention. When you are not sure which skill or flow fits, [what-is-next](../getting-started/what-is-next.md) routes you over the whole set.

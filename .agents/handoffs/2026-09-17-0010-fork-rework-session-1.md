@@ -1,4 +1,4 @@
-# Skills repo fork rework, session 1
+# Skills repository fork rework, session 1
 
 Supersedes: none (the earlier test handoff was deleted by request).
 
@@ -30,6 +30,8 @@ Full rework of the fork at `git@github.com:Dyrits/SKILLS.git` (origin; `upstream
 | `claude-handoff` | **deleted** (rejected merge-into-handoff idea) | gone |
 
 Renames all include: folder, frontmatter, `plugin.json`, both READMEs, docs page move, `ask-matt`→`what-is-next` cross-references everywhere, and refreshed symlinks via `scripts/link-skills.sh`.
+
+**Model**: GLM-5.3 via opencode/nemotron-3.5-lightning-free
 
 ## Conventions to honour
 

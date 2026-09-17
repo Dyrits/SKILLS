@@ -8,7 +8,7 @@ Throwaway is a constraint on how the code is *written*, not a promise to destroy
 
 Type `/prototype`, or the agent reaches for it automatically when a task fits.
 
-Reach for it the moment you hit a question you can't settle by talking: a state machine whose edge cases you can't hold in your head, a screen you can't picture until you see three versions side by side. Grilling sessions balloon on exactly these questions: the agent rephrases, you guess, and the scope grows to fill the uncertainty. Stop grilling, build the throwaway version, look at it, then answer in one line. If instead something already built is misbehaving and you want to know why, use [diagnosing-bugs](../upkeep/diagnosing-bugs.md); prototyping explores what to build, not why the built thing is broken.
+Reach for it the moment you hit a question you can't settle by talking: a state machine whose edge cases you can't hold in your head, a screen you can't picture until you see three versions side by side. Grilling sessions balloon on exactly these questions: the agent rephrases, you guess, and the scope grows to fill the uncertainty. Stop grilling, build the throwaway version, look at it, then answer in one line. If instead something already built is misbehaving and you want to know why, use [debug](../upkeep/debug.md); prototyping explores what to build, not why the built thing is broken.
 
 You will also arrive here without choosing to. [wayfinder](./wayfinder.md) files `prototype` decision tickets on its map, and working one is this skill.
 
@@ -44,7 +44,7 @@ Known, and it is a naming problem. `prototype` is a generic, appealing word that
 That is a different artifact wearing this skill's name. A prototype here is scoped to one question, and "what is the whole app?" isn't one. A full-app prototype has no natural stopping point, so it becomes the production app by momentum: the cleanup pass never happens, and code written under prototype rules (no tests, no error handling) ends up in front of users. If you need a sales demo, build it deliberately as a demo and be explicit that none of it is production. If you need to settle a design question, cut it down to that question.
 
 **How do I run it in its own session?**
-A prototype lives in its own directory and generates a lot of context you don't want in the thread that asked the question, so run it somewhere else and bring back only the answer. [handoff](../productivity/handoff.md) is the bridge in both directions.
+A prototype lives in its own directory and generates a lot of context you don't want in the thread that asked the question, so run it somewhere else and bring back only the answer. [handoff](../productivity/hand-off.md) is the bridge in both directions.
 
 **Isn't this the fastest possible way to burn tokens?**
 It can be, if you prototype questions you could have answered by talking, or let one prototype sprawl across a whole feature. The comparison that matters isn't tokens against zero; it's tokens against building the wrong state model and finding out after it has production callers. Keep the question narrow and the run short, and the spend stays proportionate.

@@ -16,7 +16,7 @@ It is the heaviest, densest flow in the set, so the trigger is narrow: the effor
 | A greenfield project, or a build spanning many sessions, with the route still unclear | `/wayfinder` |
 | A thread where the deciding is already done | [to-specifications](../workflow/to-specifications.md): skip straight past the map |
 | A cleared wayfinder map | [to-specifications](../workflow/to-specifications.md), then [to-tickets](../workflow/to-tickets.md) and [implement](../workflow/implement.md) |
-| An existing session that has already grown too big | say "hand off to `/wayfinder`" ([handoff](../productivity/handoff.md) bridges into a map as well as out of one) |
+| An existing session that has already grown too big | say "hand off to `/wayfinder`" ([handoff](../productivity/hand-off.md) bridges into a map as well as out of one) |
 
 Greenfield is not a requirement. Wayfinder is used routinely on legacy and half-built codebases, and it is arguably sharper there, because a lot of the fog is "what is already true here" rather than "what should we do".
 
@@ -100,4 +100,4 @@ It is this skill, renamed to `wayfinder` in v1.1 and invoked as `/wayfinder`. "D
 
 `wayfinder` is a **situational on-ramp**, not the default front door. The grill-led idea → ship chain is still where most work starts; wayfinder is what you climb onto when the idea is too big to hold in one session, and it merges back onto that chain at [to-specifications](../workflow/to-specifications.md), because a cleared map hands off rather than builds.
 
-Underneath, it is mostly other skills wearing wayfinder's scheduling: [grilling](../reference/grilling.md) and [domain-modeling](../reference/domain-modeling.md) resolve the default ticket type, [prototype](./prototype.md) resolves the tickets that talking cannot, and [research](./research.md) runs as a subagent so its reading never lands in your session. [handoff](../productivity/handoff.md) is the bridge in and out: into a map from a conversation that outgrew itself, out of one when a side quest appears mid-session. For anything else, [what-is-next](../getting-started/what-is-next.md) routes over the whole set.
+Underneath, it is mostly other skills wearing wayfinder's scheduling: [grilling](../reference/grilling.md) and [domain-modeling](../reference/domain-modeling.md) resolve the default ticket type, [prototype](./prototype.md) resolves the tickets that talking cannot, and [research](./research.md) runs as a subagent so its reading never lands in your session. [handoff](../productivity/hand-off.md) is the bridge in and out: into a map from a conversation that outgrew itself, out of one when a side quest appears mid-session. For anything else, [what-is-next](../getting-started/what-is-next.md) routes over the whole set.

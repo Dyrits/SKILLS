@@ -1,11 +1,11 @@
 ---
-name: takeover
+name: take-over
 description: Resume work from the latest handoff document in .agents/handoffs/, following the supersedes chain deeper only when the newest document leaves questions open.
 argument-hint: "Optional: a note on what this session will focus on"
 disable-model-invocation: true
 ---
 
-Resume work from the last handoff document written by the `handoff` skill.
+Resume work from the last handoff document written by the `hand-off` skill.
 
 ## Steps
 
@@ -15,7 +15,7 @@ Resume work from the last handoff document written by the `handoff` skill.
 4. **Resolve referenced artifacts**: open the specifications, plans, ADRs, issues, commits and diffs the document points at, by path or URL. They are the primary sources; the handoff is a summary of them.
 5. **Call the suggested skills**: the document has a "suggested skills" section naming what to reach for. Use the Skill tool for those rather than improvising.
 6. **Confirm the brief back to the user in two or three sentences** before starting: what was in flight, what you'll do next. This catches stale or wrong handoffs before they cost an hour.
-7. **Start working.** Leave the handoff files untouched: if this session reaches a new phase boundary, the user runs `handoff` again, which writes a new versioned file.
+7. **Start working.** Leave the handoff files untouched: if this session reaches a new phase boundary, the user runs `hand-off` again, which writes a new versioned file.
 
 If the user passed arguments, treat them as this session's focus and weigh them over the handoff's "what's next" when the two differ, telling the user where they diverge.
 

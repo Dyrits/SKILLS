@@ -1,0 +1,5 @@
+interface:
+  display_name: "Improve Agent Environment"
+  short_description: "Suggest improvements to the agent environment after a session."
+policy:
+  allow_implicit_invocation: false

@@ -12,10 +12,10 @@ Type `/code-review`, or the agent reaches for it automatically when you ask to r
 | --- | --- |
 | A diff exists and you want to know if it is built right *and* is the right thing | `code-review` |
 | You want bugs hunted in the diff: null paths, races, off-by-one | Claude Code's own built-in review, not this one (see the name clash below) |
-| Nothing is written yet and you want it written test-first | [tdd](./tdd.md) |
+| Nothing is written yet and you want it written test-first | [test-driven-development](./test-driven-development.md) |
 | A whole specification needs building, review included | [implement](./implement.md), which calls this skill itself |
 | The whole codebase has drifted, not one diff | [improve-codebase-architecture](../upkeep/improve-codebase-architecture.md) |
-| Something is broken and you do not know why | [diagnosing-bugs](../upkeep/diagnosing-bugs.md) |
+| Something is broken and you do not know why | [debug](../upkeep/debug.md) |
 
 You must supply the fixed point. If you do not, the skill asks for one rather than guessing; it then checks the ref resolves and the diff is non-empty before spawning anything, so a typo'd branch name fails in front of you instead of inside two sub-agents.
 

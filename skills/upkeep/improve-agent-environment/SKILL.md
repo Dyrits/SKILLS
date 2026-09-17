@@ -1,6 +1,6 @@
 ---
-name: retro
-description: "Conduct a retrospective on a coding session."
+name: improve-agent-environment
+description: "Suggest improvements to the coding agent's environment (steering files, coding standards, automated checks, tooling) after a session."
 disable-model-invocation: true
 ---
 

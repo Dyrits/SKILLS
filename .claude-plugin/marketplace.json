@@ -1,12 +1,12 @@
 {
-  "name": "mattpocock",
+  "name": "dyrits",
   "owner": {
     "name": "Dylan J. Gerrits"
   },
   "description": "Agent skills for real engineering, maintained as an installable Claude Code plugin.",
   "plugins": [
     {
-      "name": "mattpocock-skills",
+      "name": "dyrits-skills",
       "source": "./",
       "description": "Agent skills for real engineering (grilling, specification and ticket flows, TDD, code review, domain modelling and more).",
       "category": "engineering",

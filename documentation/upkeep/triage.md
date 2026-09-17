@@ -16,7 +16,7 @@ You invoke this by typing `/triage` and then describing what you want in plain l
 | A rough idea of your own, nothing written down | [grill-with-docs](../workflow/grill-with-docs.md) |
 | A settled conversation to turn into a specification | [to-specifications](../workflow/to-specifications.md) |
 | A specification to split into agent-ready tickets | [to-tickets](../workflow/to-tickets.md) |
-| A confirmed bug that needs a root cause, not a label | [diagnosing-bugs](./diagnosing-bugs.md) |
+| A confirmed bug that needs a root cause, not a label | [debug](./debug.md) |
 
 ## Prerequisites
 
@@ -76,8 +76,8 @@ Known open bug ([#616](https://github.com/mattpocock/skills/issues/616)). `setup
 **Five states aren't enough: what about blocked, or deferred, or implemented?**
 This is the most-filed gap on the skill, in three shapes. An issue that is fully specified but waiting on another issue to close ([#139](https://github.com/mattpocock/skills/issues/139)), where the reporter's complaint was that `ready-for-agent` is "technically true" there but misleading, so an agent picks it up and hits a wall. Trigger-gated future work that is intended but not actionable yet ([#297](https://github.com/mattpocock/skills/issues/297)). And a terminal state for "implemented, awaiting verification", without which an AFK runner can re-queue finished tickets. Matt has agreed the blocked case is real and is undecided on the name (`blocked` versus `paused`). None of it has shipped. The workaround people use is a repository-local extra label alongside the category, which keeps the canonical state slot occupied by something honest at the cost of the skill not knowing about it. One community derivative goes further, adding `needs-slicing`, `tracking` and effort labels. That works, but it is theirs, not the skill's.
 
-**How is this different from `/diagnosing-bugs`?**
-The verification step here is deliberately shallow (enough to answer "is this real, and roughly where does it live"), not to find a root cause. When a bug won't reproduce from the reporter's steps in a few minutes, the honest move is `needs-info`, or [diagnosing-bugs](./diagnosing-bugs.md) if you want to chase it now. Neither skill's text currently mentions the other; a user found that seam, and it is still open.
+**How is this different from `/debug`?**
+The verification step here is deliberately shallow (enough to answer "is this real, and roughly where does it live"), not to find a root cause. When a bug won't reproduce from the reporter's steps in a few minutes, the honest move is `needs-info`, or [debug](./debug.md) if you want to chase it now. Neither skill's text currently mentions the other; a user found that seam, and it is still open.
 
 **Can I point it at my whole backlog and let it run?**
 You can ask, but watch what it reads. The "show what needs attention" pass is a cheap listing meant for *selection*, where you pick one, and then it gathers full context on the one you picked. Run it across twenty issues at once and an agent can quietly fall back to that cheap listing as its evidence base, which returns issue bodies but not comments. A user hit exactly this: three issues already carried a comment saying "already fixed, recommend closing", and all three got fresh agent briefs instead. If you want a bulk pass, say explicitly that comments must be read per issue.

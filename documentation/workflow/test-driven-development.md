@@ -1,28 +1,28 @@
 ## What it does
 
-`tdd` builds a feature or fixes a bug test-first: one failing test, then just enough code to pass it, then the next behaviour. It carries the standards that make that loop produce tests worth keeping: what a good test is, where tests go, what mocks are for, and the three anti-patterns that quietly ruin a suite.
+`test-driven-development` builds a feature or fixes a bug test-first: one failing test, then just enough code to pass it, then the next behaviour. It carries the standards that make that loop produce tests worth keeping: what a good test is, where tests go, what mocks are for, and the three anti-patterns that quietly ruin a suite.
 
-It writes no test at a seam you have not agreed to first. Before any test exists, it names the public boundaries it intends to test at and stops for your confirmation, because testing effort is finite and this is where you spend it on the critical paths instead of on every edge case. The other thing to know is that `tdd` is a **reference**, not a driver. It holds the rules of the loop, and something else (you, or [implement](./implement.md)) runs the session that applies them.
+It writes no test at a seam you have not agreed to first. Before any test exists, it names the public boundaries it intends to test at and stops for your confirmation, because testing effort is finite and this is where you spend it on the critical paths instead of on every edge case. The other thing to know is that `test-driven-development` is a **reference**, not a driver. It holds the rules of the loop, and something else (you, or [implement](./implement.md)) runs the session that applies them.
 
 ## When to reach for it
 
-Type `/tdd`, or the agent reaches for it automatically when a task fits: building a feature or fixing a bug test-first, or when you say "red-green-refactor".
+Type `/test-driven-development`, or the agent reaches for it automatically when a task fits: building a feature or fixing a bug test-first, or when you say "red-green-refactor".
 
 Reach for it when there is a concrete behaviour to build, with an input and an observable output, and you want tests that survive a refactor.
 
 | Your situation | Where to go |
 | --- | --- |
-| A behaviour with defined inputs and outputs (business logic, a request/response contract, a transformation, validation) | `tdd` |
+| A behaviour with defined inputs and outputs (business logic, a request/response contract, a transformation, validation) | `test-driven-development` |
 | The behaviour isn't pinned down yet | [to-specifications](./to-specifications.md), which also agrees the test seams before any code is written |
 | The question is really the shape of the interface, not the tests | [codebase-design](../reference/codebase-design.md) |
-| You have a specification or tickets and want the whole build run for you | [implement](./implement.md), which drives `tdd` per ticket |
+| You have a specification or tickets and want the whole build run for you | [implement](./implement.md), which drives `test-driven-development` per ticket |
 | Config, wiring, glue, type annotations, straight CRUD delegation | Nothing here fits well; see the open gap below |
 
 That last row is a real hole, not a stylistic preference. The skill decides *where* the seams go; nothing in it decides *whether* a change is worth the loop at all. Run it on a change with no independent source of truth to assert against and you get a test that restates the implementation: the tautological anti-pattern the skill itself warns about, arrived at from the other direction. It is [issue #746](https://github.com/mattpocock/skills/issues/746) and it is open. Until it closes, that judgement is yours or your `CLAUDE.md`'s.
 
 ## Prerequisites
 
-[codebase-design](../reference/codebase-design.md) needs to be installed. `tdd` used to carry its own deep-module and interface-design notes; in v1.0 those were deleted in favour of the shared skill, and `tdd` now leans on it for interface-design vocabulary. Nothing else; the skill is stateless and writes no files of its own.
+[codebase-design](../reference/codebase-design.md) needs to be installed. `test-driven-development` used to carry its own deep-module and interface-design notes; in v1.0 those were deleted in favour of the shared skill, and `test-driven-development` now leans on it for interface-design vocabulary. Nothing else; the skill is stateless and writes no files of its own.
 
 ## The loop, and the seam it runs at
 
@@ -32,7 +32,7 @@ Three words carry this skill.
 
 **Vertical slice.** One seam, one test, one minimal implementation, then repeat, the first cycle being a **tracer bullet** that proves a single path end to end. The opposite is horizontal slicing: all the tests first, then all the code. Bulk tests verify *imagined* behaviour, they check the shape of things rather than what a user does, and they commit you to a test structure before you understand the implementation.
 
-**Pre-agreed seam.** A seam is the public boundary you observe behaviour at without reaching inside. The rule is absolute: no test at an unconfirmed seam. In the full chain the seams are agreed earlier, during [to-specifications](./to-specifications.md): "`/tdd` is told to only work at pre-agreed test seams, `/code-review` checks that only agreed-upon test seams were used." Invoked on its own, `tdd` asks you directly.
+**Pre-agreed seam.** A seam is the public boundary you observe behaviour at without reaching inside. The rule is absolute: no test at an unconfirmed seam. In the full chain the seams are agreed earlier, during [to-specifications](./to-specifications.md): "`/test-driven-development` is told to only work at pre-agreed test seams, `/code-review` checks that only agreed-upon test seams were used." Invoked on its own, `test-driven-development` asks you directly.
 
 The three anti-patterns it is written to prevent:
 
@@ -62,9 +62,9 @@ It happens. One user pushed the model on it and got an unusually honest answer: 
 
 Usually not, and the skill will not stop it. A user reported the agent writing a Playwright test first, then burning a long loop re-running it and concluding the *test* was broken for a feature that did not exist yet. Configure this in your `CLAUDE.md`. Browser tests are slow enough that the red-green feedback loop stops paying for itself; declare in your repository's `CLAUDE.md` that they are written after the behaviour works.
 
-**Does `/tdd` replace `/implement`, or the course's `/do-work`?**
+**Does `/test-driven-development` replace `/implement`, or the course's `/do-work`?**
 
-No. `/tdd` documents the methodology; `/implement` is a very simple work→feedback→commit loop and is the direct stand-in for `/do-work`. The course's single `/do-work` step is now split across `/implement`, `/tdd` and `/code-review`. If you are asking which one to run against a ticket, the answer is almost always `/implement`.
+No. `/test-driven-development` documents the methodology; `/implement` is a very simple work→feedback→commit loop and is the direct stand-in for `/do-work`. The course's single `/do-work` step is now split across `/implement`, `/test-driven-development` and `/code-review`. If you are asking which one to run against a ticket, the answer is almost always `/implement`.
 
 **Where did the deep-modules and interface-design guidance go?**
 
@@ -72,7 +72,7 @@ Into [codebase-design](../reference/codebase-design.md) in v1.0, generalised so 
 
 **Does it know about my other tickets?**
 
-No. Run against one ticket, it will happily propose work that belongs to a sibling ticket, because it has no view of the rest of the issue graph ([issue #129](https://github.com/mattpocock/skills/issues/129)). Matt's position is that this is not `tdd`'s job. Passing the specification alongside the ticket helps; right-sizing the tickets in the first place helps more.
+No. Run against one ticket, it will happily propose work that belongs to a sibling ticket, because it has no view of the rest of the issue graph ([issue #129](https://github.com/mattpocock/skills/issues/129)). Matt's position is that this is not `test-driven-development`'s job. Passing the specification alongside the ticket helps; right-sizing the tickets in the first place helps more.
 
 ## It's working if
 
@@ -85,10 +85,10 @@ No. Run against one ticket, it will happily propose work that belongs to a sibli
 
 ## Where it fits
 
-`tdd` is the engine inside the build step of the main chain, rather than a step of its own:
+`test-driven-development` is the engine inside the build step of the main chain, rather than a step of its own:
 
 ```txt
 grill-with-docs → to-specifications → to-tickets → implement → code-review
 ```
 
-[to-specifications](./to-specifications.md) agrees the test seams up front, [implement](./implement.md) drives `tdd` per ticket, and [code-review](./code-review.md) checks afterwards that only the agreed seams were used, and owns the refactoring `tdd` no longer does. Its other neighbour is [codebase-design](../reference/codebase-design.md), the shared source of the seam and deep-module vocabulary `tdd` speaks. You can also reach for it on its own, whenever there is a concrete behaviour to build and no full specification in play. When you are unsure which skill fits your situation, [what-is-next](../getting-started/what-is-next.md) routes you.
+[to-specifications](./to-specifications.md) agrees the test seams up front, [implement](./implement.md) drives `test-driven-development` per ticket, and [code-review](./code-review.md) checks afterwards that only the agreed seams were used, and owns the refactoring `test-driven-development` no longer does. Its other neighbour is [codebase-design](../reference/codebase-design.md), the shared source of the seam and deep-module vocabulary `test-driven-development` speaks. You can also reach for it on its own, whenever there is a concrete behaviour to build and no full specification in play. When you are unsure which skill fits your situation, [what-is-next](../getting-started/what-is-next.md) routes you.

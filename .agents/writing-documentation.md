@@ -63,7 +63,7 @@ A few bullets naming what the reader sees when the skill is doing its job. The b
 
 Always present. Situate the skill in the system in a sentence or two:
 
-- **Role.** Name it: a **chain step** (`grill-with-docs → to-specifications → to-tickets → implement → code-review`), a **run-once setup** (`setup-custom-skills`), **periodic maintenance** (`improve-codebase-architecture`, "every few days"), or a **reach-for-it-anytime standalone** (`diagnosing-bugs`, `prototype`, `handoff`). A standalone's map is one honest sentence, which is far better than omitting the section.
+- **Role.** Name it: a **chain step** (`grill-with-docs → to-specifications → to-tickets → implement → code-review`), a **run-once setup** (`setup-custom-skills`), **periodic maintenance** (`improve-codebase-architecture`, "every few days"), or a **reach-for-it-anytime standalone** (`debug`, `prototype`, `hand-off`). A standalone's map is one honest sentence, which is far better than omitting the section.
 - **Neighbours.** The one or two siblings that matter, each with a because-clause and a repository-relative link.
 - **The map.** Point to [what-is-next](../documentation/getting-started/what-is-next.md), the router over the whole set, so this page stays a node and never has to redraw the graph.
 

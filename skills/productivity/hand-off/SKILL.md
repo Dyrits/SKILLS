@@ -1,5 +1,5 @@
 ---
-name: handoff
+name: hand-off
 description: Compact the current conversation into a versioned handoff document in .agents/handoffs/ for another agent to pick up.
 argument-hint: "What will the next session be used for?"
 disable-model-invocation: true

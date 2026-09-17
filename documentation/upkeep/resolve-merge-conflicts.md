@@ -1,19 +1,19 @@
 ## What it does
 
-`resolving-merge-conflicts` works through an in-progress git merge or rebase, hunk by hunk, then runs the project's own checks and finishes the operation with a commit.
+`resolve-merge-conflicts` works through an in-progress git merge or rebase, hunk by hunk, then runs the project's own checks and finishes the operation with a commit.
 
 It refuses to treat a conflict as a text problem. Before touching a hunk it traces each side back to its **primary source** (the commit message, the PR, the original issue), so it is choosing between two intents rather than between two blocks of text, and it preserves both wherever they are compatible. Where they genuinely are not, it picks the side matching the merge's stated goal and names the trade-off. It invents no new behaviour to paper over a clash, and `--abort` is not an option it has: the merge is always carried to a finished commit.
 
 ## When to reach for it
 
-Type `/resolving-merge-conflicts`, or the agent reaches for it automatically when a task fits.
+Type `/resolve-merge-conflicts`, or the agent reaches for it automatically when a task fits.
 
 Reach for it when git has already stopped on conflicts it could not resolve itself. It is scoped to the conflict in front of you, not to anything either side of it:
 
 | Your situation | Skill |
 | --- | --- |
 | Mid-merge or mid-rebase, conflict markers in the tree | This one |
-| Merge finished, something now misbehaves for reasons you can't see | [diagnosing-bugs](./diagnosing-bugs.md) |
+| Merge finished, something now misbehaves for reasons you can't see | [debug](./debug.md) |
 | Planning how to slice work so branches collide less | Neither: see the parallel-work question below |
 
 ## Primary sources over `ours` and `theirs`
@@ -48,4 +48,4 @@ Aborting throws away the resolution work and returns you to the same conflict, u
 
 ## Where it fits
 
-A reach-for-it-anytime standalone with no dependencies on any other skill: it starts when git stalls and ends when the tree is clean and committed. Its only real neighbour is [diagnosing-bugs](./diagnosing-bugs.md), which takes over at the point where a merge resolved cleanly but the merged code misbehaves: a diagnosis problem, not a conflict one. It sits off the main idea-to-ship flow entirely, so [what-is-next](../getting-started/what-is-next.md) is the map for what runs before and after it.
+A reach-for-it-anytime standalone with no dependencies on any other skill: it starts when git stalls and ends when the tree is clean and committed. Its only real neighbour is [debug](./debug.md), which takes over at the point where a merge resolved cleanly but the merged code misbehaves: a diagnosis problem, not a conflict one. It sits off the main idea-to-ship flow entirely, so [what-is-next](../getting-started/what-is-next.md) is the map for what runs before and after it.

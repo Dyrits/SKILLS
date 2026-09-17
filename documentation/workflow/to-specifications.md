@@ -31,7 +31,7 @@ So it does not validate anything, and it does not decide anything. It captures w
 
 Before it writes a word, `to-specifications` sketches the **seams** the feature will be tested at, and checks them with you. It prefers seams that already exist to new ones, and takes the highest seam it can: the ideal number across a change is one.
 
-Those agreed seams then travel. [tdd](./tdd.md) works only at pre-agreed seams, and [code-review](./code-review.md) reviews the diff against the specification, so a seam nobody agreed to shows up as a review finding. The binding is indirect: it runs through this document, which is exactly why the seam conversation is worth taking seriously here rather than deferring it to implementation.
+Those agreed seams then travel. [test-driven-development](./test-driven-development.md) works only at pre-agreed seams, and [code-review](./code-review.md) reviews the diff against the specification, so a seam nobody agreed to shows up as a review finding. The binding is indirect: it runs through this document, which is exactly why the seam conversation is worth taking seriously here rather than deferring it to implementation.
 
 ## Common questions
 

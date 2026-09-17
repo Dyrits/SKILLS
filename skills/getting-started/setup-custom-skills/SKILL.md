@@ -92,7 +92,7 @@ If it is installed, ask exactly one question:
 
 > Do you want to keep the default triage labels? (recommended: **yes**)
 
-The defaults are the five canonical roles, each label string equal to its name: `needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-human`, `wontfix`. On **yes**, write them as-is. Only if the user says no, usually because their tracker already uses other names (e.g. `bug:triage` for `needs-triage`), collect the overrides so `triage` applies existing labels instead of creating duplicates.
+The defaults are the two canonical category roles (`bug`, `enhancement`) and the five canonical state roles (`needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-human`, `wontfix`), each label string equal to its role name. On **yes**, write them as-is. Only if the user says no, usually because their tracker already uses other names (e.g. `bug:triage` for `needs-triage`), collect the overrides so `triage` applies existing labels instead of creating duplicates. Only the label strings are customisable; the role set itself stays canonical, because `to-tickets` and `to-specifications` apply `ready-for-agent`.
 
 **Section C: Domain documentation.** Default to **single-context** (one `CONTEXT.md` plus `documentation/architecture-decision-record/` at the repository root). This fits almost every repository; write it without asking.
 

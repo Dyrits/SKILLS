@@ -1,4 +1,4 @@
-# Workflow and documentation reorganization
+# Skills repository fork rework, session 3
 
 Supersedes: `.agents/handoffs/2026-09-17-0901-setup-and-documentation-rework.md`
 

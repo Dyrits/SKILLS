@@ -23,7 +23,7 @@ Where it is confusable with siblings:
 
 - For designing one module you have already chosen, use [codebase-design](../reference/codebase-design.md): that is the bench, this is the survey that finds what to put on it.
 - For a whole effort too big to hold in one session, use [wayfinder](../shaping/wayfinder.md).
-- For "this specific thing is broken," use [diagnosing-bugs](./diagnosing-bugs.md). It hands back here when the real finding is that there is no good seam to lock the bug down.
+- For "this specific thing is broken," use [debug](./debug.md). It hands back here when the real finding is that there is no good seam to lock the bug down.
 
 ## Prerequisites
 

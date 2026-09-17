@@ -104,4 +104,4 @@ The skill stops at the artifact, and there is no auto-dispatch mode. Dispatch is
 grill-with-docs → to-specifications → to-tickets → implement → code-review
 ```
 
-Upstream is [to-specifications](./to-specifications.md), which hands it a settled specification to slice against; keep both in one unbroken context window. Downstream is [implement](./implement.md), which builds one ticket per fresh session, driving [tdd](./tdd.md) for the tests and closing with [code-review](./code-review.md). When you're unsure which skill or flow fits, [what-is-next](../getting-started/what-is-next.md) routes you.
+Upstream is [to-specifications](./to-specifications.md), which hands it a settled specification to slice against; keep both in one unbroken context window. Downstream is [implement](./implement.md), which builds one ticket per fresh session, driving [test-driven-development](./test-driven-development.md) for the tests and closing with [code-review](./code-review.md). When you're unsure which skill or flow fits, [what-is-next](../getting-started/what-is-next.md) routes you.

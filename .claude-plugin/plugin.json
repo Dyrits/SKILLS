@@ -1,5 +1,5 @@
 {
-  "name": "mattpocock-skills",
+  "name": "dyrits-skills",
   "version": "1.2.3",
   "description": "Agent skills for real engineering: grilling, specification and ticket flows, TDD, code review, domain modelling and more.",
   "author": {
@@ -18,18 +18,19 @@
   ],
   "skills": [
     "./skills/workflow/code-review",
+    "./skills/workflow/design-workflow",
     "./skills/workflow/grill-with-docs",
     "./skills/workflow/implement",
     "./skills/workflow/implement-all",
-    "./skills/workflow/tdd",
+    "./skills/workflow/test-driven-development",
     "./skills/workflow/to-specifications",
     "./skills/workflow/to-tickets",
     "./skills/getting-started/setup-custom-skills",
     "./skills/getting-started/what-is-next",
     "./skills/productivity/ask-someone-else",
     "./skills/productivity/grill-me",
-    "./skills/productivity/handoff",
-    "./skills/productivity/takeover",
+    "./skills/productivity/hand-off",
+    "./skills/productivity/take-over",
     "./skills/productivity/teach",
     "./skills/productivity/wait-what",
     "./skills/reference/codebase-design",
@@ -40,9 +41,9 @@
     "./skills/shaping/prototype",
     "./skills/shaping/research",
     "./skills/shaping/wayfinder",
-    "./skills/upkeep/diagnosing-bugs",
+    "./skills/upkeep/debug",
     "./skills/upkeep/improve-codebase-architecture",
-    "./skills/upkeep/resolving-merge-conflicts",
+    "./skills/upkeep/resolve-merge-conflicts",
     "./skills/upkeep/triage"
   ]
 }

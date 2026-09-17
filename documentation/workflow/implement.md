@@ -1,6 +1,6 @@
 ## What it does
 
-`implement` builds work that has already been decided. You point it at a ticket, a specification, or the plan you just agreed in the conversation, and it writes the code, drives [tdd](./tdd.md) at the seams, typechecks as it goes, runs [code-review](./code-review.md) at the end, and commits to the current branch.
+`implement` builds work that has already been decided. You point it at a ticket, a specification, or the plan you just agreed in the conversation, and it writes the code, drives [test-driven-development](./test-driven-development.md) at the seams, typechecks as it goes, runs [code-review](./code-review.md) at the end, and commits to the current branch.
 
 It never reopens the plan. There is no interview, no clarifying round, no proposal of a different approach. Whatever was settled upstream is the input, and the skill's whole job is to turn that into a commit. That is what separates it from typing "build this" at a fresh agent, which will happily redesign the work while it builds it.
 
@@ -17,7 +17,7 @@ Where the work currently lives decides whether this is the right skill:
 | A specification, and the build is small | `/implement` directly against the specification |
 | Only in the conversation you just had, and it's still small | `/implement` right there, in the same window |
 | Not written down anywhere yet | [grill-with-docs](./grill-with-docs.md), or [grill-me](../productivity/grill-me.md) if there's no codebase |
-| One concrete behaviour you want test-first, with no specification | [tdd](./tdd.md) directly |
+| One concrete behaviour you want test-first, with no specification | [test-driven-development](./test-driven-development.md) directly |
 | Already built, and you want it checked | [code-review](./code-review.md) directly |
 
 The same-session case is worth naming because the skill's own first line doesn't cover it. `SKILL.md` says "the specification or tickets", which nudges the model to go hunting for a file that doesn't exist. If the plan lives only in the thread, say so when you invoke it.
@@ -33,7 +33,7 @@ If the tickets came from [to-tickets](./to-tickets.md), the tracker they live on
 A run is five beats, in order:
 
 1. Read the ticket or specification and work out the seams.
-2. Drive [tdd](./tdd.md) at the pre-agreed seams, one red-green slice at a time.
+2. Drive [test-driven-development](./test-driven-development.md) at the pre-agreed seams, one red-green slice at a time.
 3. Typecheck often, run single test files as it goes.
 4. Run the full test suite once, at the end.
 5. Run [code-review](./code-review.md), then commit to the current branch.
@@ -44,7 +44,7 @@ One run covers one ticket. The tickets [to-tickets](./to-tickets.md) produces ar
 
 The idea the skill runs on is the **seam**: the public boundary you observe behaviour at, without reaching inside. Tests live at seams. Working at a seam agreed before any code is written is what keeps the tests durable, because the implementation underneath can be rewritten without the tests moving.
 
-The word "pre-agreed" is doing real work, and it is also the skill's weakest joint. Nothing inside `implement` agrees the seams. `tdd` is the skill that asks, and it refuses to write a test at an unconfirmed seam. So in practice the agreement happens either upstream in the specification, or in the first exchange of the run. If it happens nowhere, the precondition never fires and the run quietly becomes "just write the code". Naming the seams in the specification is what stops that.
+The word "pre-agreed" is doing real work, and it is also the skill's weakest joint. Nothing inside `implement` agrees the seams. `test-driven-development` is the skill that asks, and it refuses to write a test at an unconfirmed seam. So in practice the agreement happens either upstream in the specification, or in the first exchange of the run. If it happens nowhere, the precondition never fires and the run quietly becomes "just write the code". Naming the seams in the specification is what stops that.
 
 ## Common questions
 
@@ -77,7 +77,7 @@ Probably the ticket is too big rather than the skill being misused. A run does c
 ## It's working if
 
 - The session opens by reading the ticket or specification and restating what it will build, rather than asking you what to build.
-- You can see an actual `/tdd` invocation in the trace, not just tests appearing in the diff.
+- You can see an actual `/test-driven-development` invocation in the trace, not just tests appearing in the diff.
 - Typechecks and single test files run repeatedly during the run, and the full suite runs once near the end.
 - The run reaches a commit on your current branch without you prompting it to carry on.
 - The diff is one ticket's worth of change: a vertical slice through every layer, not several tickets swept together.
@@ -90,7 +90,7 @@ Probably the ticket is too big rather than the skill being misused. A run does c
 grill-with-docs → to-specifications → to-tickets → implement → code-review
 ```
 
-Its neighbours are [to-tickets](./to-tickets.md), which produces the tickets it consumes and declares the blocking edges that decide their order; [tdd](./tdd.md), which it drives internally at each seam; and [code-review](./code-review.md), which it runs before committing. It sits downstream of the planning skills and trusts them. It does not re-validate the shape of what it was handed, so a badly-structured map or a horizontally-layered ticket gets built as written.
+Its neighbours are [to-tickets](./to-tickets.md), which produces the tickets it consumes and declares the blocking edges that decide their order; [test-driven-development](./test-driven-development.md), which it drives internally at each seam; and [code-review](./code-review.md), which it runs before committing. It sits downstream of the planning skills and trusts them. It does not re-validate the shape of what it was handed, so a badly-structured map or a horizontally-layered ticket gets built as written.
 
 That trust is why [wayfinder](../shaping/wayfinder.md) merges onto the chain at [to-specifications](./to-specifications.md) rather than looping its map straight into `implement`. Go straight to `implement` from a map only when the effort turned out genuinely small.
 

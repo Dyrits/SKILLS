@@ -1,0 +1,5 @@
+interface:
+  display_name: "Design Workflow"
+  short_description: "Specify the recurring workflows you want to build"
+policy:
+  allow_implicit_invocation: false

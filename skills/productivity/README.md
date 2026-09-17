@@ -20,7 +20,7 @@ Work moving across session boundaries.
 
 ### User-invoked
 
-- **[handoff](./handoff/SKILL.md)**: Compact the current conversation into a versioned handoff document in `.agents/handoffs/`.
+- **[handoff](./hand-off/SKILL.md)**: Compact the current conversation into a versioned handoff document in `.agents/handoffs/`.
 - **[takeover](./takeover/SKILL.md)**: Resume work from the latest handoff in `.agents/handoffs/`, following the supersedes chain deeper only when needed.
 
 ## Ungrouped
