@@ -13,7 +13,7 @@ Typing `/grilling` directly gets you the plain interview and nothing else. Where
 | What you have | Reach for |
 | --- | --- |
 | You aren't working in a working directory | [grill-me](../productivity/grill-me.md): the same session, under a name the agent will never fire by itself |
-| You are in a working directory | [grill-with-docs](../workflow/grill-with-docs.md): the same session, and it writes `CONTEXT.md` and ADRs as it goes |
+| You are in a working directory | [grill-with-documentation](../workflow/grill-with-documentation.md): the same session, and it writes `CONTEXT.md` and ADRs as it goes |
 | An effort too big to hold in one session | [wayfinder](../shaping/wayfinder.md): it charts a map and runs grilling inside the decision tickets |
 | A question that talking cannot settle: how something should look or feel | [prototype](../shaping/prototype.md): build the throwaway version, then come back |
 | A skill of your own that needs an interview | Invoke `/grilling` from it, rather than writing another interview |
@@ -38,7 +38,7 @@ This page covers the mechanism. The things people most often want are documented
 | --- | --- |
 | The tree, the frontier, rounds, the question format, facts vs decisions | Here |
 | How long a session should run, what to do with a question you can't answer by talking, how to avoid nodding along | [grill-me](../productivity/grill-me.md) |
-| What gets written to `CONTEXT.md`, what becomes an ADR | [grill-with-docs](../workflow/grill-with-docs.md) |
+| What gets written to `CONTEXT.md`, what becomes an ADR | [grill-with-documentation](../workflow/grill-with-documentation.md) |
 
 ## Common questions
 
@@ -52,7 +52,7 @@ When grilling, ask one question at a time.
 The round-based default is genuinely contested. Practitioners who read slowly, who work in a second language, or who use the sequential format as focus scaffolding all report the one-at-a-time rhythm is better for them, and the opt-out is supported rather than tolerated.
 
 **Where did `/batch-grill-me` go?**
-Into this skill. Round-based questioning shipped briefly as a separate skill, then moved into `grilling` itself, so everything built on the primitive (`grill-me`, `grill-with-docs`, `triage`, `wayfinder`) got it at once. There is no `batch-grill-me` to install, and no separate sequential skill either; the `CLAUDE.md` line above is the way back to one-at-a-time.
+Into this skill. Round-based questioning shipped briefly as a separate skill, then moved into `grilling` itself, so everything built on the primitive (`grill-me`, `grill-with-documentation`, `triage`, `wayfinder`) got it at once. There is no `batch-grill-me` to install, and no separate sequential skill either; the `CLAUDE.md` line above is the way back to one-at-a-time.
 
 **Asking a whole round at once must lose the questions my earlier answers would have raised. Doesn't it?**
 This is the most common objection to the round design, and the frontier is the answer to it: a round only ever contains questions that do not depend on each other, so no answer in a round can invalidate another question in that round. Answers still reshape everything downstream: the next round is recomputed, not pre-written. What you lose is smaller than "all questions at once" implies, and larger than nothing: see the frontier's limit above.
@@ -67,10 +67,10 @@ That is a bug in the run, not the intended behaviour, and it was the reason fact
 No, and a cap is deliberately out of scope. Some plans need three questions and some need fifty; a fixed ceiling either truncates the hard case or feels arbitrary on the easy one. Steering in plain language is the intended control: tell it to wrap up, or stop and accept the plan where it stands. If a session is running very long, the cause is usually that the scope was too big; break the work up and grill the pieces.
 
 **I installed `grill-me` on its own and nothing happens.**
-`grill-me` is a one-line skill whose whole body is "run a `/grilling` session", so it needs this skill installed too. The same is true of `grill-with-docs`, which additionally needs [domain-modeling](./domain-modeling.md). Installing the whole set avoids the problem; installing selectively means installing the primitives as well.
+`grill-me` is a one-line skill whose whole body is "run a `/grilling` session", so it needs this skill installed too. The same is true of `grill-with-documentation`, which additionally needs [domain-modeling](./domain-modeling.md). Installing the whole set avoids the problem; installing selectively means installing the primitives as well.
 
-**`grill-with-docs` ran, but it never loaded `grilling`.**
-A real and unfixed rough edge, reported across harnesses and models: a skill that names another skill does not reliably cause that skill to load, and `grill-with-docs` names two. The tell is a session that asks everything at once with no recommendations attached: that is the model improvising an interview rather than running this one. Asking the agent directly whether it loaded `grilling` and `domain-modeling` usually recovers it.
+**`grill-with-documentation` ran, but it never loaded `grilling`.**
+A real and unfixed rough edge, reported across harnesses and models: a skill that names another skill does not reliably cause that skill to load, and `grill-with-documentation` names two. The tell is a session that asks everything at once with no recommendations attached: that is the model improvising an interview rather than running this one. Asking the agent directly whether it loaded `grilling` and `domain-modeling` usually recovers it.
 
 ## It's working if
 
@@ -84,4 +84,4 @@ A real and unfixed rough edge, reported across harnesses and models: a skill tha
 
 ## Where it fits
 
-`grilling` is a **primitive**, not a step you schedule: the single source of truth for the interview technique, kept in one place so every skill that needs an interview reaches for it instead of inventing one. [grill-me](../productivity/grill-me.md) and [grill-with-docs](../workflow/grill-with-docs.md) are its two user-invoked front doors, and `grill-with-docs` is where the main build chain begins, ahead of [to-specifications](../workflow/to-specifications.md). [wayfinder](../shaping/wayfinder.md) runs it to resolve decision tickets, [triage](../upkeep/triage.md) to grill a vague report into a workable one, and [improve-codebase-architecture](../upkeep/improve-codebase-architecture.md) to walk the tree once you have picked a candidate to deepen. When you are unsure which entry point fits, [what-is-next](../getting-started/what-is-next.md) routes you.
+`grilling` is a **primitive**, not a step you schedule: the single source of truth for the interview technique, kept in one place so every skill that needs an interview reaches for it instead of inventing one. [grill-me](../productivity/grill-me.md) and [grill-with-documentation](../workflow/grill-with-documentation.md) are its two user-invoked front doors, and `grill-with-documentation` is where the main build chain begins, ahead of [to-specifications](../workflow/to-specifications.md). [wayfinder](../shaping/wayfinder.md) runs it to resolve decision tickets, [triage](../upkeep/triage.md) to grill a vague report into a workable one, and [improve-codebase-architecture](../upkeep/improve-codebase-architecture.md) to walk the tree once you have picked a candidate to deepen. When you are unsure which entry point fits, [what-is-next](../getting-started/what-is-next.md) routes you.

@@ -14,11 +14,11 @@ Reach for it when the next step is *finding something out* from outside the work
 | --- | --- |
 | An external fact a decision is waiting on | `research` |
 | A decision made *with* you, by interview | [grilling](../reference/grilling.md) |
-| A durable architecture decision, written into `CONTEXT.md` and ADRs | [grill-with-docs](../workflow/grill-with-docs.md) |
+| A durable architecture decision, written into `CONTEXT.md` and ADRs | [grill-with-documentation](../workflow/grill-with-documentation.md) |
 | To find out whether an approach works in your codebase | [prototype](./prototype.md) |
 | A plan too big to hold in one session | [wayfinder](./wayfinder.md) |
 
-The line between `research` and `grill-with-docs` is the **shelf life of what comes back**. Research produces short-lived assets: what this library's auth mechanism does as of this week. An ADR records a decision you keep. If what you are producing is a decision rather than a fact, you are grilling, not researching.
+The line between `research` and `grill-with-documentation` is the **shelf life of what comes back**. Research produces short-lived assets: what this library's auth mechanism does as of this week. An ADR records a decision you keep. If what you are producing is a decision rather than a fact, you are grilling, not researching.
 
 ## Delegated legwork
 
@@ -70,4 +70,4 @@ No, it now fires them for you. In the unreleased changes since v1.1, a charting 
 
 ## Where it fits
 
-A reach-for-it-anytime standalone that feeds the thinking skills rather than sitting in the build chain. Its file is something to take *into* the flow: [grilling](../reference/grilling.md) and [grill-with-docs](../workflow/grill-with-docs.md) ask sharper questions when the facts are already on the table, and [to-specifications](../workflow/to-specifications.md) can synthesise against it. [wayfinder](./wayfinder.md) is the one skill that invokes it directly, resolving each research ticket on its map with a `/research` subagent. For the whole map, see [what-is-next](../getting-started/what-is-next.md).
+A reach-for-it-anytime standalone that feeds the thinking skills rather than sitting in the build chain. Its file is something to take *into* the flow: [grilling](../reference/grilling.md) and [grill-with-documentation](../workflow/grill-with-documentation.md) ask sharper questions when the facts are already on the table, and [to-specifications](../workflow/to-specifications.md) can synthesise against it. [wayfinder](./wayfinder.md) is the one skill that invokes it directly, resolving each research ticket on its map with a `/research` subagent. For the whole map, see [what-is-next](../getting-started/what-is-next.md).

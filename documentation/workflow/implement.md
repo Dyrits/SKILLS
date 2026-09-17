@@ -16,7 +16,7 @@ Where the work currently lives decides whether this is the right skill:
 | A specification, not yet split up, and the build spans sessions | [to-tickets](./to-tickets.md) first, then `/implement` per ticket |
 | A specification, and the build is small | `/implement` directly against the specification |
 | Only in the conversation you just had, and it's still small | `/implement` right there, in the same window |
-| Not written down anywhere yet | [grill-with-docs](./grill-with-docs.md), or [grill-me](../productivity/grill-me.md) if there's no codebase |
+| Not written down anywhere yet | [grill-with-documentation](./grill-with-documentation.md), or [grill-me](../productivity/grill-me.md) if there's no codebase |
 | One concrete behaviour you want test-first, with no specification | [test-driven-development](./test-driven-development.md) directly |
 | Already built, and you want it checked | [code-review](./code-review.md) directly |
 
@@ -87,7 +87,7 @@ Probably the ticket is too big rather than the skill being misused. A run does c
 `implement` is the build step of the main chain, second from the end:
 
 ```txt
-grill-with-docs → to-specifications → to-tickets → implement → code-review
+grill-with-documentation → to-specifications → to-tickets → implement → code-review
 ```
 
 Its neighbours are [to-tickets](./to-tickets.md), which produces the tickets it consumes and declares the blocking edges that decide their order; [test-driven-development](./test-driven-development.md), which it drives internally at each seam; and [code-review](./code-review.md), which it runs before committing. It sits downstream of the planning skills and trusts them. It does not re-validate the shape of what it was handed, so a badly-structured map or a horizontally-layered ticket gets built as written.

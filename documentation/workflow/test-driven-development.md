@@ -88,7 +88,7 @@ No. Run against one ticket, it will happily propose work that belongs to a sibli
 `test-driven-development` is the engine inside the build step of the main chain, rather than a step of its own:
 
 ```txt
-grill-with-docs → to-specifications → to-tickets → implement → code-review
+grill-with-documentation → to-specifications → to-tickets → implement → code-review
 ```
 
 [to-specifications](./to-specifications.md) agrees the test seams up front, [implement](./implement.md) drives `test-driven-development` per ticket, and [code-review](./code-review.md) checks afterwards that only the agreed seams were used, and owns the refactoring `test-driven-development` no longer does. Its other neighbour is [codebase-design](../reference/codebase-design.md), the shared source of the seam and deep-module vocabulary `test-driven-development` speaks. You can also reach for it on its own, whenever there is a concrete behaviour to build and no full specification in play. When you are unsure which skill fits your situation, [what-is-next](../getting-started/what-is-next.md) routes you.

@@ -5,7 +5,7 @@
 ## When to reach for it
 
 - **Invocation mode.** You invoke this by typing `/design-workflow`, and the agent won't reach for it on its own.
-- **Trigger boundary.** Reach for it when a *recurring* activity in your work wants delegating and needs designing: what fires it, where the human checkpoints sit, what the brief shows you. For a one-off piece of engineering, use `grill-with-docs` instead; `design-workflow` is only for loops you will run again.
+- **Trigger boundary.** Reach for it when a *recurring* activity in your work wants delegating and needs designing: what fires it, where the human checkpoints sit, what the brief shows you. For a one-off piece of engineering, use `grill-with-documentation` instead; `design-workflow` is only for loops you will run again.
 
 ## The loop lens
 
@@ -27,4 +27,4 @@ No. A workflow is a specification of a loop; whether an agent, a script, or a hu
 
 ## Where it fits
 
-A **reach-for-it-anytime standalone** on the specification side: it is `grill-with-docs`'s shape (stateful grilling, a workspace, a paper trail) pointed at recurring operational loops instead of a codebase feature. Its nearest sibling is [grill-with-docs](./grill-with-docs.md) (one-off ideas, domain model); its output is consumed by whatever implementer you point at the finished specification. For the map over the whole set, see [what-is-next](../getting-started/what-is-next.md).
+A **reach-for-it-anytime standalone** on the specification side: it is `grill-with-documentation`'s shape (stateful grilling, a workspace, a paper trail) pointed at recurring operational loops instead of a codebase feature. Its nearest sibling is [grill-with-documentation](./grill-with-documentation.md) (one-off ideas, domain model); its output is consumed by whatever implementer you point at the finished specification. For the map over the whole set, see [what-is-next](../getting-started/what-is-next.md).

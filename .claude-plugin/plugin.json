@@ -1,6 +1,6 @@
 {
   "name": "dyrits-skills",
-  "version": "1.2.3",
+  "version": "0.1.0",
   "description": "Agent skills for real engineering: grilling, specification and ticket flows, TDD, code review, domain modelling and more.",
   "author": {
     "name": "Dylan J. Gerrits"
@@ -19,7 +19,7 @@
   "skills": [
     "./skills/workflow/code-review",
     "./skills/workflow/design-workflow",
-    "./skills/workflow/grill-with-docs",
+    "./skills/workflow/grill-with-documentation",
     "./skills/workflow/implement",
     "./skills/workflow/implement-all",
     "./skills/workflow/test-driven-development",

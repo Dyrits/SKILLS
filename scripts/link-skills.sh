@@ -19,9 +19,7 @@ DESTS=("$HOME/.claude/skills" "$HOME/.agents/skills")
 # is retired, and `setup/` is kept around but rarely used and not promoted (see
 # each bucket's own README): neither belongs in a daily-driver skill
 # directory, so both are skipped here, same as everywhere else non-promoted
-# skills are kept out. `work-in-progress/` IS still linked: it's public on purpose,
-# feedback wanted, and this local install is exactly where that feedback loop
-# runs.
+# skills are kept out.
 names=()
 srcs=()
 while IFS= read -r -d '' skill_md; do

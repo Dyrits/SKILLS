@@ -13,7 +13,7 @@ Reach for it when a decision is blocked on knowledge that lives in one other per
 | The answers are in… | Reach for |
 | --- | --- |
 | Your own head, unsharpened | [grill-me](./grill-me.md) |
-| The codebase | [grill-with-docs](../workflow/grill-with-docs.md) |
+| The codebase | [grill-with-documentation](../workflow/grill-with-documentation.md) |
 | Someone else's head | `ask-someone-else` |
 | Nobody's head yet, the question needs something to react to | [prototype](../shaping/prototype.md) |
 
@@ -75,4 +75,4 @@ Yes, and plenty of people did before it existed: `OPEN_QUESTIONS.md` files, spre
 
 `ask-someone-else` is a reach-for-it-anytime standalone. It sits at the boundary of your own knowledge, where the next move is another person rather than another skill, most often mid-flow, when planning has stalled on something that isn't yours to decide.
 
-Its neighbour is [grill-me](./grill-me.md), and the two split on where the answers live: grilling mines you, a questionnaire mines someone else. What comes back is raw material: feed it into another grilling round, or into [grill-with-docs](../workflow/grill-with-docs.md) or [to-specifications](../workflow/to-specifications.md) if the work is heading for a build. When you're unsure which skill fits the moment, [what-is-next](../getting-started/what-is-next.md) routes you.
+Its neighbour is [grill-me](./grill-me.md), and the two split on where the answers live: grilling mines you, a questionnaire mines someone else. What comes back is raw material: feed it into another grilling round, or into [grill-with-documentation](../workflow/grill-with-documentation.md) or [to-specifications](../workflow/to-specifications.md) if the work is heading for a build. When you're unsure which skill fits the moment, [what-is-next](../getting-started/what-is-next.md) routes you.

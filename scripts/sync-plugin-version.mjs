@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 // Copies package.json's version into .claude-plugin/plugin.json.
-// Runs as part of `npm run version`, immediately after `changeset version`.
-// With --check it changes nothing and exits 1 if the two versions differ.
+// `npm run check-plugin-version` runs it with --check, which changes nothing
+// and exits 1 if the two versions differ; run it plain to apply the copy
+// after bumping package.json's version by hand.
 
 import { readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";

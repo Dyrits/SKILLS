@@ -1,0 +1,5 @@
+interface:
+  display_name: "Grill with Documentation"
+  short_description: "Grill a design and write its documentation"
+policy:
+  allow_implicit_invocation: false

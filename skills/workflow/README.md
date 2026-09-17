@@ -6,7 +6,7 @@ The idea→ship spine, in order.
 
 Reachable only when you type them (Claude Code: `disable-model-invocation: true`; Codex: `policy.allow_implicit_invocation: false` in `agents/openai.yaml`).
 
-- **[grill-with-docs](./grill-with-docs/SKILL.md)**: Stateful grilling that sharpens an idea while building the domain model (`CONTEXT.md`, architecture decision records) as it goes.
+- **[grill-with-documentation](./grill-with-documentation/SKILL.md)**: Stateful grilling that sharpens an idea while building the domain model (`CONTEXT.md`, architecture decision records) as it goes.
 - **[design-workflow](./design-workflow/SKILL.md)**: Stateful grilling that turns the recurring loops in your work into implementable workflow specifications.
 - **[to-specifications](./to-specifications/SKILL.md)**: Turn the current conversation into a local draft specification, or publish it to the issue tracker when requested.
 - **[to-tickets](./to-tickets/SKILL.md)**: Break a plan, specification, or conversation into tracer-bullet tickets, each declaring its blocking edges.

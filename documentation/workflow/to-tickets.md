@@ -13,7 +13,7 @@ You invoke this by typing `/to-tickets`. The agent won't reach for it on its own
 | You have a specification issue and the build spans several sessions | `/to-tickets`, or `/to-tickets #<spec_issue>` |
 | The plan is only in the conversation, never written up | `/to-tickets` reads the thread directly, no specification needed |
 | The whole change fits in one context window | [implement](./implement.md), skip the tickets |
-| Nothing is decided yet | [grill-with-docs](./grill-with-docs.md), then [to-specifications](./to-specifications.md) |
+| Nothing is decided yet | [grill-with-documentation](./grill-with-documentation.md), then [to-specifications](./to-specifications.md) |
 | A [wayfinder](../shaping/wayfinder.md) map has cleared | [to-specifications](./to-specifications.md) first, to collapse the map, then `/to-tickets` |
 
 Tickets that `to-tickets` produced are agent-ready by construction. Don't run [triage](../upkeep/triage.md) over them. Triage is for work that arrived from someone else.
@@ -101,7 +101,7 @@ The skill stops at the artifact, and there is no auto-dispatch mode. Dispatch is
 `to-tickets` is a step in the main build chain:
 
 ```txt
-grill-with-docs → to-specifications → to-tickets → implement → code-review
+grill-with-documentation → to-specifications → to-tickets → implement → code-review
 ```
 
 Upstream is [to-specifications](./to-specifications.md), which hands it a settled specification to slice against; keep both in one unbroken context window. Downstream is [implement](./implement.md), which builds one ticket per fresh session, driving [test-driven-development](./test-driven-development.md) for the tests and closing with [code-review](./code-review.md). When you're unsure which skill or flow fits, [what-is-next](../getting-started/what-is-next.md) routes you.

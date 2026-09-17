@@ -1,6 +1,6 @@
 # Writing documentation pages
 
-Every **promoted** skill (one with an entry in `.claude-plugin/plugin.json`'s `skills` array) has a human-facing **documentation page** at `documentation/<bucket>/<skill-name>.md`. The documentation tree mirrors the bucket folders under `skills/` one level deep; skills sit flat inside their bucket, never in subfolders, so the path is always bucket plus skill name. The page is maintained in this repository and is not assumed to be published elsewhere. It is not the skill and not a copy of `SKILL.md`. Non-promoted skills (the `setup-*` trio in `getting-started/`, everything in `work-in-progress/` and `deprecated/`) ship no documentation page.
+Every **promoted** skill (one with an entry in `.claude-plugin/plugin.json`'s `skills` array) has a human-facing **documentation page** at `documentation/<bucket>/<skill-name>.md`. The documentation tree mirrors the bucket folders under `skills/` one level deep; skills sit flat inside their bucket, never in subfolders, so the path is always bucket plus skill name. The page is maintained in this repository and is not assumed to be published elsewhere. It is not the skill and not a copy of `SKILL.md`. Non-promoted skills (the `setup-*` trio in `getting-started/` and everything in `deprecated/`) ship no documentation page.
 
 Most of these skills are **user-invoked**: the agent will never fire them for you, so *you* are the index that has to remember they exist and when to reach for them. That memory is **cognitive load**. The job of a documentation page is to relieve it: to orient one reader around one skill so they can hold it in their head, know when to reach for it, and see where it sits in the system. The pages are collectively a distributed router; each is a node.
 
@@ -33,7 +33,7 @@ How and when you reach for the skill, in two beats that are both effectively alw
 
 ## Prerequisites
 
-Optional: include only when the skill needs something in place to be functional; omit the heading entirely otherwise. Covers: a **workspace it writes into** (a stateful skill like `grill-with-docs` writes `CONTEXT.md` and ADRs; `teach` builds a whole directory, so say what it writes and where), **prior setup** (`triage`/`to-specifications`/`to-tickets` need `setup-custom-skills` to have configured an issue tracker), or **repository-specific tooling**. A stateless skill that runs anywhere has no prerequisites, so drop the section.
+Optional: include only when the skill needs something in place to be functional; omit the heading entirely otherwise. Covers: a **workspace it writes into** (a stateful skill like `grill-with-documentation` writes `CONTEXT.md` and ADRs; `teach` builds a whole directory, so say what it writes and where), **prior setup** (`triage`/`to-specifications`/`to-tickets` need `setup-custom-skills` to have configured an issue tracker), or **repository-specific tooling**. A stateless skill that runs anywhere has no prerequisites, so drop the section.
 
 ## <free-form middle>
 
@@ -63,7 +63,7 @@ A few bullets naming what the reader sees when the skill is doing its job. The b
 
 Always present. Situate the skill in the system in a sentence or two:
 
-- **Role.** Name it: a **chain step** (`grill-with-docs → to-specifications → to-tickets → implement → code-review`), a **run-once setup** (`setup-custom-skills`), **periodic maintenance** (`improve-codebase-architecture`, "every few days"), or a **reach-for-it-anytime standalone** (`debug`, `prototype`, `hand-off`). A standalone's map is one honest sentence, which is far better than omitting the section.
+- **Role.** Name it: a **chain step** (`grill-with-documentation → to-specifications → to-tickets → implement → code-review`), a **run-once setup** (`setup-custom-skills`), **periodic maintenance** (`improve-codebase-architecture`, "every few days"), or a **reach-for-it-anytime standalone** (`debug`, `prototype`, `hand-off`). A standalone's map is one honest sentence, which is far better than omitting the section.
 - **Neighbours.** The one or two siblings that matter, each with a because-clause and a repository-relative link.
 - **The map.** Point to [what-is-next](../documentation/getting-started/what-is-next.md), the router over the whole set, so this page stays a node and never has to redraw the graph.
 

@@ -12,7 +12,7 @@ Reach for it when the build is too big for one agent session and has to survive 
 
 | Where you are | What to run |
 | --- | --- |
-| You haven't decided anything yet | [grill-with-docs](./grill-with-docs.md) first |
+| You haven't decided anything yet | [grill-with-documentation](./grill-with-documentation.md) first |
 | Decided, and the work fits one context window | [implement](./implement.md): skip the specification |
 | Decided, and the work spans several sessions | `/to-specifications`, then [to-tickets](./to-tickets.md) |
 | A [wayfinder](../shaping/wayfinder.md) map has cleared | `/to-specifications #<map_issue>` |
@@ -54,7 +54,7 @@ Mostly for the agent, and it reads that way: complete, dense, reference-heavy. T
 Nothing keeps it in sync, so in practice it is a snapshot of what you knew at that moment, and it goes stale the first time implementation teaches you something. Treat it as throwaway once the work ships. The artifacts meant to outlive it are your `CONTEXT.md` and your ADRs; if something learned during implementation deserves to last, it belongs there, not in an edited specification.
 
 **My work is a refactor or a module boundary, not a feature. Does the template fit?**
-Less well, and this is a known limitation. The template leans hard on user stories, which is the wrong shape for architectural work: you end up writing stories nobody asked for around decisions that are really about interfaces and invariants. Lean on the implementation-decisions and testing-decisions sections instead, and let the durable architectural calls land as ADRs via [grill-with-docs](./grill-with-docs.md) rather than trying to make the specification carry them.
+Less well, and this is a known limitation. The template leans hard on user stories, which is the wrong shape for architectural work: you end up writing stories nobody asked for around decisions that are really about interfaces and invariants. Lean on the implementation-decisions and testing-decisions sections instead, and let the durable architectural calls land as ADRs via [grill-with-documentation](./grill-with-documentation.md) rather than trying to make the specification carry them.
 
 **Will it check the tracker for related work, or cite the ADRs it's respecting?**
 No to both. It reads and respects the ADRs covering the area it touches, but it doesn't link them, and it doesn't search the tracker for overlapping issues before drafting, so a specification can quietly duplicate work someone already filed. Search the tracker yourself first if the area is busy.
@@ -76,7 +76,7 @@ Very large specifications can outgrow what a tracker issue will serve back clean
 `to-specifications` is a step in the main build chain, and only on the multi-session branch of it:
 
 ```txt
-grill-with-docs → to-specifications → to-tickets → implement → code-review
+grill-with-documentation → to-specifications → to-tickets → implement → code-review
 ```
 
-Its neighbours upstream are [grill-with-docs](./grill-with-docs.md), which does the deciding this skill only records, and [wayfinder](../shaping/wayfinder.md), whose finished map merges onto the chain right here. Downstream, [to-tickets](./to-tickets.md) cuts the specification into tracer-bullet tickets for [implement](./implement.md) to build. When you're unsure which skill or flow fits, [what-is-next](../getting-started/what-is-next.md) routes you.
+Its neighbours upstream are [grill-with-documentation](./grill-with-documentation.md), which does the deciding this skill only records, and [wayfinder](../shaping/wayfinder.md), whose finished map merges onto the chain right here. Downstream, [to-tickets](./to-tickets.md) cuts the specification into tracer-bullet tickets for [implement](./implement.md) to build. When you're unsure which skill or flow fits, [what-is-next](../getting-started/what-is-next.md) routes you.

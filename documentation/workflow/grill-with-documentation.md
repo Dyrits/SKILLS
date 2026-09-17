@@ -1,30 +1,30 @@
 ## What it does
 
-`grill-with-docs` interviews you about a plan or design until you and the agent share one understanding of it, and writes the vocabulary and the hard decisions into your repository while it does. It is the same interview [grill-me](../productivity/grill-me.md) runs (a round of questions, then wait, then the next round), pointed at a codebase.
+`grill-with-documentation` interviews you about a plan or design until you and the agent share one understanding of it, and writes the vocabulary and the hard decisions into your repository while it does. It is the same interview [grill-me](../productivity/grill-me.md) runs (a round of questions, then wait, then the next round), pointed at a codebase.
 
 It is **stateful**. Every other grilling skill leaves the session in your head; this one leaves files on disk. A term gets resolved and it lands in `CONTEXT.md` the moment it resolves, not batched at the end. A decision passes three gates and it lands as an ADR. That is the whole difference, and it is also the source of most of the trouble people have with the skill: the artifacts are real files in a real repository, so they can be absent when you expected them, and they can drift when more than one person is writing them.
 
 ## When to reach for it
 
-You invoke this by typing `/grill-with-docs`; the agent will not reach for it on its own.
+You invoke this by typing `/grill-with-documentation`; the agent will not reach for it on its own.
 
 Reach for it at the start of a change, in a repository, when the plan is still fuzzy and the words for the thing are not settled yet. It is the single-session tool. Which grilling skill you want depends on what is in front of you:
 
 | What you have | Reach for |
 | --- | --- |
 | You aren't working in a working directory at all | [grill-me](../productivity/grill-me.md) |
-| A repository, and a change you can settle in one session | `grill-with-docs` |
+| A repository, and a change you can settle in one session | `grill-with-documentation` |
 | An effort too big to hold in one session (a greenfield build, a large feature) | [wayfinder](../shaping/wayfinder.md) |
-| A repository with no domain docs at all, and no particular feature in mind | `grill-with-docs`, aimed at the repository rather than a change |
+| A repository with no domain docs at all, and no particular feature in mind | `grill-with-documentation`, aimed at the repository rather than a change |
 | A decision blocked on knowledge in someone else's head | [ask-someone-else](../productivity/ask-someone-else.md) |
 
-The wayfinder split comes down to session count: `/grill-with-docs` for single-session planning, `/wayfinder` for multi-session planning.
+The wayfinder split comes down to session count: `/grill-with-documentation` for single-session planning, `/wayfinder` for multi-session planning.
 
 ## Prerequisites
 
 The skill writes into your repository, so you need to be somewhere it is safe to write. Resolved terms go to a `CONTEXT.md` glossary at the root, or to the relevant context's `CONTEXT.md`, if a `CONTEXT-MAP.md` at the root marks the repository as multi-context. Decisions go to `documentation/architecture-decision-record/`. Both are created lazily; nothing exists until the first term or decision crystallises, so there is nothing to scaffold up front.
 
-It also needs two other skills present, because its own `SKILL.md` is one line that delegates to them: [grilling](../reference/grilling.md) supplies the interview, [domain-modeling](../reference/domain-modeling.md) supplies the writing. Installing `grill-with-docs` alone gets you a skill that does not work.
+It also needs two other skills present, because its own `SKILL.md` is one line that delegates to them: [grilling](../reference/grilling.md) supplies the interview, [domain-modeling](../reference/domain-modeling.md) supplies the writing. Installing `grill-with-documentation` alone gets you a skill that does not work.
 
 ## The paper trail
 
@@ -61,7 +61,7 @@ Yes. This is the right skill for a codebase with no ADRs, no domain language and
 The skill's closing message tends to be open-ended, which is a known rough edge. In the main flow the answer is [to-specifications](./to-specifications.md), in the same conversation. If the change is small enough to build immediately, go straight to [implement](./implement.md) instead.
 
 **Why is it called that?**
-Nobody is happy with the name. There is an open suggestion to rename it `grill-domain-model`, which describes the behaviour more honestly. Nothing has moved on it. If a rename ever lands, the docs page moves with it and the URL changes.
+It was called `grill-with-docs`. Nobody was happy with that name, and there was an open suggestion to rename it `grill-domain-model` to describe the behaviour more honestly; instead it was renamed to `grill-with-documentation`, following this repository's convention of full words over abbreviations. The documentation page moved with it.
 
 ## It's working if
 
@@ -73,10 +73,10 @@ Nobody is happy with the name. There is an open suggestion to rename it `grill-d
 
 ## Where it fits
 
-`grill-with-docs` is the head of the main build chain:
+`grill-with-documentation` is the head of the main build chain:
 
 ```txt
-grill-with-docs → to-specifications → to-tickets → implement → code-review
+grill-with-documentation → to-specifications → to-tickets → implement → code-review
 ```
 
 It comes before anything is written down as a specification: it produces the shared understanding and settled vocabulary that [to-specifications](./to-specifications.md) then synthesises without interviewing you again. Its close neighbours are [grill-me](../productivity/grill-me.md), the same interview with no repository and no files, and [domain-modeling](../reference/domain-modeling.md), the glossary-and-ADR discipline it drives; both sit on the [grilling](../reference/grilling.md) primitive. Upstream of it, [wayfinder](../shaping/wayfinder.md) charts efforts too large for one session and can hand parts of the map back down to it. When you're unsure which skill or flow fits, [what-is-next](../getting-started/what-is-next.md) routes you.

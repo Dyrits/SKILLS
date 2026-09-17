@@ -13,7 +13,7 @@ Reach for it as soon as you have an idea worth taking seriously (a feature, a pr
 Which of the three grilling skills you want depends on what is in front of you:
 
 - **Anything, anywhere**: `grill-me`. It needs no repository and writes no files, and the subject doesn't have to be code.
-- **A codebase to align against**: [grill-with-docs](../workflow/grill-with-docs.md). The same interview, but stateful: it reads your code and keeps what it learns in `CONTEXT.md` and ADRs.
+- **A codebase to align against**: [grill-with-documentation](../workflow/grill-with-documentation.md). The same interview, but stateful: it reads your code and keeps what it learns in `CONTEXT.md` and ADRs.
 - **Too big for one session**: [wayfinder](../shaping/wayfinder.md). It charts the effort as a map and runs grilling sessions inside it.
 
 Leave plan mode off. Plan mode primes the agent to rush toward producing a plan, which is the opposite of staying in inquiry.
@@ -71,6 +71,6 @@ More than for most skills. Grilling leans on the model's own sense of how system
 
 `grill-me` is a **standalone you can run anywhere, on anything**. Being stateless is what makes it portable: no repository, no workspace, no setup, and no assumption that the idea is even about software. People point it at business decisions, at writing, at what to do next: anything that won't sit still in their head.
 
-That portability is the whole difference from [grill-with-docs](../workflow/grill-with-docs.md), which runs the same interview but reads a codebase to align against and records what it learns as `CONTEXT.md` and ADRs. Both sit on the [grilling](../reference/grilling.md) primitive; `grill-me` is the user-invoked front door that carries nothing with it.
+That portability is the whole difference from [grill-with-documentation](../workflow/grill-with-documentation.md), which runs the same interview but reads a codebase to align against and records what it learns as `CONTEXT.md` and ADRs. Both sit on the [grilling](../reference/grilling.md) primitive; `grill-me` is the user-invoked front door that carries nothing with it.
 
 If what you grilled does turn out to be software, you can hand the same conversation to [to-specifications](../workflow/to-specifications.md) and carry on into the build flow (an option, not the point of the skill). When you're unsure which flow fits, [what-is-next](../getting-started/what-is-next.md) routes you.

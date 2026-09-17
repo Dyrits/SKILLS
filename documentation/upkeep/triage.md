@@ -13,7 +13,7 @@ You invoke this by typing `/triage` and then describing what you want in plain l
 | What you have | Where to go |
 | --- | --- |
 | A tracker full of raw reports from other people | `/triage` |
-| A rough idea of your own, nothing written down | [grill-with-docs](../workflow/grill-with-docs.md) |
+| A rough idea of your own, nothing written down | [grill-with-documentation](../workflow/grill-with-documentation.md) |
 | A settled conversation to turn into a specification | [to-specifications](../workflow/to-specifications.md) |
 | A specification to split into agent-ready tickets | [to-tickets](../workflow/to-tickets.md) |
 | A confirmed bug that needs a root cause, not a label | [debug](./debug.md) |

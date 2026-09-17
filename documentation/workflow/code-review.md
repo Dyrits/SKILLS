@@ -49,7 +49,7 @@ The **smell baseline** is the floor underneath it, twelve Fowler code smells fro
 
 **It collides with Claude Code's own `/code-review`. What do I do?**
 
-This is the most reported problem with the skill, and it is not fixed. Claude Code ships its own `/code-review`, which does something different: it hunts bugs in the diff, where this one checks specification compliance and repository standards. Installing this library means one of them wins, and which one wins depends on how you installed. Via the plugin marketplace, everything is aliased under a `mattpocock-skills:` prefix and the built-in becomes hard to reach at the unqualified name; via a plain skills install, the local file wins and this skill shadows the built-in. One clean answer is to remove Claude Code's built-in skills entirely: a large context saving, and the collision stops mattering. The shadowing itself is arguably a Claude Code harness bug (a skill author should be free to name a skill anything), so the other answer is to rename the local copy. Editing the frontmatter or renaming the directory gets undone by `npx skills update`; the durable workaround reported by users is to fork the skill to a new name and drop `code-review` from the managed set, keeping a note of the commit you forked from so you can re-sync by hand.
+This is the most reported problem with the skill, and it is not fixed. Claude Code ships its own `/code-review`, which does something different: it hunts bugs in the diff, where this one checks specification compliance and repository standards. Installing this library means one of them wins, and which one wins depends on how you installed. Via the plugin marketplace, everything is aliased under a `dyrits-skills:` prefix and the built-in becomes hard to reach at the unqualified name; via a plain skills install, the local file wins and this skill shadows the built-in. One clean answer is to remove Claude Code's built-in skills entirely: a large context saving, and the collision stops mattering. The shadowing itself is arguably a Claude Code harness bug (a skill author should be free to name a skill anything), so the other answer is to rename the local copy. Editing the frontmatter or renaming the directory gets undone by `npx skills update`; the durable workaround reported by users is to fork the skill to a new name and drop `code-review` from the managed set, keeping a note of the commit you forked from so you can re-sync by hand.
 
 **Its sub-agents keep invoking `/code-review` again and spawn more agents.**
 
@@ -85,7 +85,7 @@ No. It diffs `<fixed-point>...HEAD`, three-dot, which is measured from the merge
 
 ## Where it fits
 
-`code-review` is the review step at the tail of the build chain: `grill-with-docs → to-specifications → to-tickets → implement → code-review`. It also stands alone on any branch or PR you point it at.
+`code-review` is the review step at the tail of the build chain: `grill-with-documentation → to-specifications → to-tickets → implement → code-review`. It also stands alone on any branch or PR you point it at.
 
 - [implement](./implement.md) is the closest neighbour: it drives the build and calls this skill as its own closing review before committing.
 - [to-specifications](./to-specifications.md) and [to-tickets](./to-tickets.md) produce the document the Specification axis checks against; a vague specification makes that axis vague.

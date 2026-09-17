@@ -8,11 +8,11 @@ It plans, it does not do. Every ticket holds a question whose resolution is a de
 
 You invoke this by typing `/wayfinder`; the agent won't reach for it on its own.
 
-It is the heaviest, densest flow in the set, so the trigger is narrow: the effort has to be genuinely larger than one agent session can hold, and the route to the destination has to be foggy. The split is a clean one: `/grill-with-docs` for single-session planning, `/wayfinder` for multi-session planning.
+It is the heaviest, densest flow in the set, so the trigger is narrow: the effort has to be genuinely larger than one agent session can hold, and the route to the destination has to be foggy. The split is a clean one: `/grill-with-documentation` for single-session planning, `/wayfinder` for multi-session planning.
 
 | What you have in front of you | What to run |
 | --- | --- |
-| A well-scoped feature you can settle in one sitting | [grill-me](../productivity/grill-me.md), or [grill-with-docs](../workflow/grill-with-docs.md) when there is a codebase |
+| A well-scoped feature you can settle in one sitting | [grill-me](../productivity/grill-me.md), or [grill-with-documentation](../workflow/grill-with-documentation.md) when there is a codebase |
 | A greenfield project, or a build spanning many sessions, with the route still unclear | `/wayfinder` |
 | A thread where the deciding is already done | [to-specifications](../workflow/to-specifications.md): skip straight past the map |
 | A cleared wayfinder map | [to-specifications](../workflow/to-specifications.md), then [to-tickets](../workflow/to-tickets.md) and [implement](../workflow/implement.md) |
@@ -56,8 +56,8 @@ Research is the only exception to *one ticket per session*.
 
 ## Common questions
 
-**How is this different from `/grill-with-docs`? Which should I start with?**
-Session count, not project size. `/grill-with-docs` is single-session planning; wayfinder is multi-session planning. If you can hold the whole thing in one conversation, grilling is the cheaper and better tool, and wayfinder is genuinely slower and denser for that case. The community shorthand that has settled on it: wayfinder only makes sense if the work doesn't fit into a single session. This is by a distance the most-asked wayfinder question, and it keeps being asked because the descriptions do not tell you where your own task sits on that line. You have to judge the session count yourself.
+**How is this different from `/grill-with-documentation`? Which should I start with?**
+Session count, not project size. `/grill-with-documentation` is single-session planning; wayfinder is multi-session planning. If you can hold the whole thing in one conversation, grilling is the cheaper and better tool, and wayfinder is genuinely slower and denser for that case. The community shorthand that has settled on it: wayfinder only makes sense if the work doesn't fit into a single session. This is by a distance the most-asked wayfinder question, and it keeps being asked because the descriptions do not tell you where your own task sits on that line. You have to judge the session count yourself.
 
 **When it asks for the "destination", does it mean the end of this session or the end of everything?**
 The whole map. That means the destination of the entire map, not just the initial session. The question reads ambiguously because wayfinder is by definition a multi-session tool, so a session-scoped answer never makes sense. Typical destinations are a specification to hand off, a decision to lock before planning starts, a proof of concept, or a change made in place like a data migration.
