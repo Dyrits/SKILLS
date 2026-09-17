@@ -1,0 +1,5 @@
+interface:
+  display_name: "Publish Review"
+  short_description: "Publish a code-review report as tracker comments and inline suggestions"
+policy:
+  allow_implicit_invocation: false

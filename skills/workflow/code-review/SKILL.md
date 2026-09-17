@@ -77,6 +77,12 @@ Present the two reports under `## Standards` and `## Spec` headings, verbatim or
 
 End with a one-line summary: total findings per axis, and the worst issue _within each axis_ (if any). Don't pick a single winner across axes: that's the reranking the separation exists to prevent.
 
+### 6. Offer to publish
+
+Ask whether to publish this report, and where (a GitHub/GitLab pull/merge request, or a Jira issue). If the answer is no, stop here.
+
+If yes, call the Skill tool with `publish-review`. That skill is experimental and not installed by default: if it isn't available, say so and name the install command (`npx skills@latest add Dyrits/SKILLS --skill=publish-review`) rather than attempting to replicate its posting logic here.
+
 ## Why two axes
 
 A change can pass one axis and fail the other:

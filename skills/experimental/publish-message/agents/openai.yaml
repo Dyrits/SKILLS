@@ -1,0 +1,5 @@
+interface:
+  display_name: "Publish Message"
+  short_description: "Post a short [AI]-prefixed comment to a PR, MR, or Jira issue"
+policy:
+  allow_implicit_invocation: false

@@ -1,6 +1,6 @@
 {
   "name": "dyrits-skills",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Agent skills for real engineering: grilling, specification and ticket flows, TDD, code review, domain modelling and more.",
   "author": {
     "name": "Dylan J. Gerrits"
