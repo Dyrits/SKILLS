@@ -15,8 +15,8 @@ Full rework of the fork at `git@github.com:Dyrits/SKILLS.git` (origin; `upstream
 | `setup-git-hooks` (was `setup-pre-commit`) | renamed; Husky dropped for `core.hooksPath`; Biome-first + Prettier fallback; typecheck+build gate; user's formatter prefs (width 160, double quotes, semis, no trailing commas, sorted keys/attrs/props) | `getting-started/`, not in plugin |
 | `setup-git-guardrails` (was `git-guardrails-claude-code`) | renamed; now multi-agent (Claude hook, OpenCode deny rules, Codex documented + git-level fallback) | `getting-started/`, not in plugin |
 | `setup-auto-handoff` | **new**; PreCompact hook gating compaction on a fresh handoff; tested | `getting-started/`, not in plugin |
-| `grill-with-docs`, `to-spec`, `to-tickets`, `implement`, `implement-all`, `tdd`, `code-review` | moved bucket (content unchanged unless listed below) | `flow/` |
-| `implement-all` (was `implement-spec`) | renamed; promoted out of `in-progress/`; plugin + docs page + router route added | `flow/` |
+| `grill-with-docs`, `to-spec`, `to-tickets`, `implement`, `implement-all`, `tdd`, `code-review` | moved bucket (content unchanged unless listed below) | `workflow/` |
+| `implement-all` (was `implement-spec`) | renamed; promoted out of `work-in-progress/`; plugin + docs page + router route added | `workflow/` |
 | `wayfinder`, `research`, `prototype` | moved bucket; `wayfinder` also gained ask-then-fallback-on-missing-tracker | `shaping/` |
 | `triage`, `diagnosing-bugs`, `improve-codebase-architecture`, `resolving-merge-conflicts` | moved bucket; `triage` gained ask-before-setup | `upkeep/` |
 | `grilling`, `domain-modeling`, `codebase-design`, `writing-for-agents`, `wizard` | moved bucket (content unchanged) | `reference/` |
@@ -34,15 +34,15 @@ Renames all include: folder, frontmatter, `plugin.json`, both READMEs, docs page
 ## Conventions to honour
 
 - Skills sit flat inside buckets, no subfolders; grouping is README headings only
-- Docs pages at `documentation/<bucket>/<skill>.md`, URL `aihero.dev/skills-<name>`
+- Documentation pages live at `documentation/<bucket>/<skill>.md`.
 - **Before editing any `SKILL.md` / `AGENTS.md` / `CLAUDE.md`: call the Skill tool with `writing-for-agents`** (missed twice early in this session; the user checks)
 - No em-dashes in repo prose
 - Run `scripts/link-skills.sh` and `claude plugin validate . --strict` after structural changes
 
 ## What's next (candidates, user's call)
 
-- Graduate `in-progress/` one by one: `loop-me`, `retro`, `setup-ts-deep-modules`, `writing-beats`, `writing-fragments`, `writing-shape`
-- Known unfixed review findings: `flow/implement/SKILL.md` too thin (5 lines); `flow/tdd/SKILL.md:38` says refactoring belongs to review, contradicting red-green-refactor
+- Graduate `work-in-progress/` one by one: `loop-me`, `retro`, `setup-ts-deep-modules`, `writing-beats`, `writing-fragments`, `writing-shape`
+- Known unfixed review findings: `workflow/implement/SKILL.md` too thin (5 lines); `workflow/tdd/SKILL.md:38` says refactoring belongs to review, contradicting red-green-refactor
 - Sync with upstream occasionally: `git fetch upstream`, merge or rebase
 - Other machines need one `git pull` + `./scripts/link-skills.sh` (many symlinks renamed today)
 

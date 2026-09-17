@@ -9,7 +9,7 @@ The architectural review is rendered as a single self-contained HTML file in the
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Architecture review for {{repo name}}</title>
+    <title>Architecture review for {{repository name}}</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script type="module">
       import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
@@ -35,7 +35,7 @@ The architectural review is rendered as a single self-contained HTML file in the
 
 ## Header
 
-Repo name, date, and a compact legend: solid box = module, dashed line = seam, red arrow = leakage, thick dark box = deep module. No introduction paragraph. Straight into the candidates.
+Repository name, date, and a compact legend: solid box = module, dashed line = seam, red arrow = leakage, thick dark box = deep module. No introduction paragraph. Straight into the candidates.
 
 ## Candidate card
 

@@ -7,10 +7,10 @@ import { readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
-const repo = join(dirname(fileURLToPath(import.meta.url)), "..");
-const pluginPath = join(repo, ".claude-plugin", "plugin.json");
+const repository = join(dirname(fileURLToPath(import.meta.url)), "..");
+const pluginPath = join(repository, ".claude-plugin", "plugin.json");
 
-const { version } = JSON.parse(readFileSync(join(repo, "package.json"), "utf8"));
+const { version } = JSON.parse(readFileSync(join(repository, "package.json"), "utf8"));
 const source = readFileSync(pluginPath, "utf8");
 const plugin = JSON.parse(source);
 

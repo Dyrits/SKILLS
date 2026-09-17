@@ -138,7 +138,7 @@ write_env() {
   printf '  %s✓ wrote%s %s → %s\n' "$GREEN" "$RESET" "$key" "$ENV_FILE"
 }
 
-# set_secret NAME VALUE sets a GitHub Actions repo secret via gh. Falls back
+# set_secret NAME VALUE sets a GitHub Actions repository secret via gh. Falls back
 # to a warning (and records it) if gh is unavailable or unauthenticated.
 set_secret() {
   local name="$1" value="$2"
@@ -153,7 +153,7 @@ set_secret() {
   warn "skipped GitHub secret $name: gh not ready; set it later"
 }
 
-# set_var NAME VALUE sets a GitHub Actions repo variable (non-secret).
+# set_var NAME VALUE sets a GitHub Actions repository variable (non-secret).
 set_var() {
   local name="$1" value="$2"
   if command -v gh >/dev/null 2>&1 && gh auth status >/dev/null 2>&1; then

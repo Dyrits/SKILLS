@@ -1,6 +1,6 @@
 # Issue tracker: GitLab
 
-Issues and specs for this repo live as GitLab issues. Use the [`glab`](https://gitlab.com/gitlab-org/cli) CLI for all operations.
+Issues and specifications for this repository live as GitLab issues. Use the [`glab`](https://gitlab.com/gitlab-org/cli) CLI for all operations.
 
 ## Conventions
 
@@ -12,11 +12,17 @@ Issues and specs for this repo live as GitLab issues. Use the [`glab`](https://g
 - **Close**: `glab issue close <number>`. `glab issue close` does not accept a closing comment, so post the explanation first with `glab issue note <number> --message "..."`, then close.
 - **Merge requests**: GitLab calls PRs "merge requests". Use `glab mr create`, `glab mr view`, `glab mr note`, etc., the same shape as `gh pr ...` with `mr` in place of `pr` and `note`/`--message` in place of `comment`/`--body`.
 
-Infer the repo from `git remote -v`; `glab` does this automatically when run inside a clone.
+Infer the repository from `git remote -v`; `glab` does this automatically when run inside a clone.
+
+## Ticket writing convention
+
+- **Source:** Built-in `to-tickets`
+- **Applies to:** Local drafts and published tickets
+- **Rules:** Use the built-in ticket template unless the user selects another configured convention for the run.
 
 ## Merge requests as a triage surface
 
-**MRs as a request surface: no.** _(Set to `yes` if this repo treats external merge requests as feature requests; `/triage` reads this flag.)_
+**MRs as a request surface: no.** _(Set to `yes` if this repository treats external merge requests as feature requests; `/triage` reads this flag.)_
 
 When set to `yes`, MRs run through the same labels and states as issues, using the `glab mr` equivalents:
 

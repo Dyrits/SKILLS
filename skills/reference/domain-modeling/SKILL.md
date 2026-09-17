@@ -1,6 +1,6 @@
 ---
 name: domain-modeling
-description: Build and sharpen a project's domain model. Use when discussing codebase terminology, writing or editing a CONTEXT.md, or recording or editing an ADR.
+description: Build and sharpen a project's domain model. Use when discussing codebase terminology, writing or editing a CONTEXT.md, or recording or editing an architecture decision record.
 ---
 
 # Domain Modeling
@@ -9,35 +9,35 @@ Actively build and sharpen the project's domain model as you design. This is the
 
 ## File structure
 
-Most repos have a single context:
+Most repositories have a single context:
 
 ```
 /
 ├── CONTEXT.md
-├── docs/
-│   └── adr/
+├── documentation/
+│   └── architecture-decision-record/
 │       ├── 0001-event-sourced-orders.md
 │       └── 0002-postgres-for-write-model.md
 └── src/
 ```
 
-If a `CONTEXT-MAP.md` exists at the root, the repo has multiple contexts. The map points to where each one lives:
+If a `CONTEXT-MAP.md` exists at the root, the repository has multiple contexts. The map points to where each one lives:
 
 ```
 /
 ├── CONTEXT-MAP.md
-├── docs/
-│   └── adr/                          ← system-wide decisions
+├── documentation/
+│   └── architecture-decision-record/ ← system-wide decisions
 ├── src/
 │   ├── ordering/
 │   │   ├── CONTEXT.md
-│   │   └── docs/adr/                 ← context-specific decisions
+│   │   └── documentation/architecture-decision-record/ ← context-specific decisions
 │   └── billing/
 │       ├── CONTEXT.md
-│       └── docs/adr/
+│       └── documentation/architecture-decision-record/
 ```
 
-Create files lazily: only when you have something to write. If no `CONTEXT.md` exists, create one when the first term is resolved. If no `docs/adr/` exists, create it when the first ADR is needed.
+Create files lazily: only when you have something to write. If no `CONTEXT.md` exists, create one when the first term is resolved. If no `documentation/architecture-decision-record/` exists, create it when the first architecture decision record is needed.
 
 ## During the session
 
@@ -61,9 +61,9 @@ When the user states how something works, check whether the code agrees. If you 
 
 When a term is resolved, update `CONTEXT.md` right there. Don't batch these up: capture them as they happen. Use the format in [CONTEXT-FORMAT.md](./CONTEXT-FORMAT.md).
 
-`CONTEXT.md` should be totally devoid of implementation details. Do not treat `CONTEXT.md` as a spec, a scratch pad, or a repository for implementation decisions. It is a glossary and nothing else.
+`CONTEXT.md` should be totally devoid of implementation details. Do not treat `CONTEXT.md` as a specification, a scratch pad, or a repository for implementation decisions. It is a glossary and nothing else.
 
-### Offer ADRs sparingly
+### Offer architecture decision records sparingly
 
 Only offer to create an ADR when all three are true:
 
@@ -71,4 +71,4 @@ Only offer to create an ADR when all three are true:
 2. **Surprising without context**: a future reader will wonder "why did they do it this way?"
 3. **The result of a real trade-off**: there were genuine alternatives and you picked one for specific reasons
 
-If any of the three is missing, skip the ADR. Use the format in [ADR-FORMAT.md](./ADR-FORMAT.md).
+If any of the three is missing, skip the architecture decision record. Use the format in [ARCHITECTURE-DECISION-RECORD-FORMAT.md](./ARCHITECTURE-DECISION-RECORD-FORMAT.md).

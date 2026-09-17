@@ -1,8 +1,8 @@
 # The canonical install block
 
-One install story, one wording. `README.md`, `.changeset/*`, and every page under `docs/` must say **this** and nothing else. Change it here first, then propagate.
+One install story, one wording. `README.md`, `.changeset/*`, and every page under `documentation/` must say **this** and nothing else. Change it here first, then propagate.
 
-`mattpocock-skills` is listed in **Claude Code's official marketplace** (configured name `claude-plugins-official`, source repo `anthropics/claude-plugins-official`), which every Claude Code install has out of the box. There is no marketplace to add first. Official Anthropic marketplaces have auto-update enabled by default ([discover-plugins](https://code.claude.com/docs/en/discover-plugins)), so "updates arrive automatically" is a true claim, not a hope.
+`mattpocock-skills` is listed in **Claude Code's official marketplace** (configured name `claude-plugins-official`, source repository `anthropics/claude-plugins-official`), which every Claude Code install has out of the box. There is no marketplace to add first. Official Anthropic marketplaces have auto-update enabled by default ([discover-plugins](https://code.claude.com/docs/en/discover-plugins)), so "updates arrive automatically" is a true claim, not a hope.
 
 ## Claude Code: the plugin
 
@@ -36,7 +36,7 @@ Pick the skills you want, and which coding agents to install them on. **The inst
 
 </canonical-block>
 
-…and the single-skill form wherever one skill is named on its own. Note that **`docs/` pages are not a consumer of this block**: ai-hero renders the install widget above the body, so a page that writes the commands out duplicates it. See [writing-docs.md](./writing-docs.md).
+…and the single-skill form wherever one skill is named on its own. Documentation pages do not repeat this block; installation stays in the top-level `README.md`. See [writing-docs.md](./writing-docs.md).
 
 <canonical-block name="skills-sh-one-skill">
 
@@ -50,7 +50,7 @@ npx skills@latest update <name>
 
 </canonical-block>
 
-`skills@latest` is the pinned spelling in all three. The pages under `docs/` used to carry their own copy of these commands; those blocks are now deleted rather than corrected, because the site renders the install commands itself.
+`skills@latest` is the pinned spelling in all three. Documentation pages do not carry their own copies of these commands because the top-level `README.md` is the single source of truth.
 
 ## The two routes are exclusive
 
@@ -58,4 +58,4 @@ The plugin is a managed, read-only bundle you subscribe to. skills.sh writes fil
 
 ## Not the install story
 
-`.claude-plugin/marketplace.json` makes the repo its own single-plugin marketplace (`/plugin marketplace add mattpocock/skills`, then `/plugin install mattpocock-skills@mattpocock`). The official listing supersedes it. It is kept as a fallback for installing the repo directly (an unreleased commit, or a fork), and is **not** documented to users.
+`.claude-plugin/marketplace.json` makes the repository its own single-plugin marketplace (`/plugin marketplace add mattpocock/skills`, then `/plugin install mattpocock-skills@mattpocock`). The official listing supersedes it. It is kept as a fallback for installing the repository directly (an unreleased commit, or a fork), and is **not** documented to users.

@@ -1,26 +1,24 @@
 <p>
-  <a href="https://www.aihero.dev/s/skills-newsletter">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://res.cloudinary.com/total-typescript/image/upload/v1777382277/skills-repo-dark_2x.png">
-      <source media="(prefers-color-scheme: light)" srcset="https://res.cloudinary.com/total-typescript/image/upload/v1777382277/skill-repo-light_2x.png">
-      <img alt="Skills" src="https://res.cloudinary.com/total-typescript/image/upload/v1777382277/skill-repo-light_2x.png" width="369">
-    </picture>
-  </a>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://res.cloudinary.com/total-typescript/image/upload/v1777382277/skills-repo-dark_2x.png">
+    <source media="(prefers-color-scheme: light)" srcset="https://res.cloudinary.com/total-typescript/image/upload/v1777382277/skill-repo-light_2x.png">
+    <img alt="Skills" src="https://res.cloudinary.com/total-typescript/image/upload/v1777382277/skill-repo-light_2x.png" width="369">
+  </picture>
 </p>
 
 # Skills For Real Engineers
 
 [![skills.sh](https://skills.sh/b/mattpocock/skills)](https://skills.sh/mattpocock/skills)
 
-My agent skills that I use every day to do real engineering - not vibe coding.
+Agent skills for real engineering, maintained as an independent fork.
 
-Developing real applications is hard. Approaches like GSD, BMAD, and Spec-Kit try to help by owning the process. But while doing so, they take away your control and make bugs in the process hard to resolve.
+Developing real applications is hard. Approaches like GSD, BMAD, and Specification-Kit try to help by owning the process. But while doing so, they take away your control and make bugs in the process hard to resolve.
 
-These skills are designed to be small, easy to adapt, and composable. They work with any model. They're based on decades of engineering experience. Hack around with them. Make them your own. Enjoy.
+These skills are designed to be small, easy to adapt, and composable. They work with any model.
 
-If you want to keep up with changes to these skills, and any new ones I create, you can join ~60,000 other devs on my newsletter:
+## Origin
 
-[Sign Up To The Newsletter](https://www.aihero.dev/s/skills-newsletter)
+This repository started from [Matt Pocock's AI Hero skills](https://aihero.dev/skills). It is now independently maintained and intentionally diverges from that source, so the source website does not document the behavior of this repository.
 
 ## Installation (30-second setup)
 
@@ -54,7 +52,7 @@ npx skills@latest add mattpocock/skills
 
 Pick the skills you want, and which coding agents to install them on. **The installer lets you choose which skills to take, so make sure `setup-custom-skills` is one of them.**
 
-A native Codex plugin is on the roadmap (see [`.agents/adr/0002-ship-as-a-claude-code-plugin.md`](./.agents/adr/0002-ship-as-a-claude-code-plugin.md)).
+A native Codex plugin is on the roadmap (see [architecture decision record 0002](./documentation/architecture-decision-record/0002-ship-as-a-claude-code-plugin.md)).
 
 </details>
 
@@ -67,15 +65,17 @@ Use the same installer, on any agent, including Claude Code:
 npx skills@latest add mattpocock/skills
 ```
 
-It writes the skills into your repo as ordinary files you own and can edit. Nothing updates behind your back; pull my latest changes when you want them with `npx skills update`.
+It writes the skills into your repository as ordinary files you own and can edit. Nothing updates behind your back; pull my latest changes when you want them with `npx skills update`.
 
 </details>
 
 ### 2. Run `/setup-custom-skills`
 
-In your agent, run it once per repo. It will:
+In your agent, run it once per repository. It will:
 
-- Ask you which issue tracker you want to use (GitHub, Linear, or local files)
+- Ask which issue tracker is the system of record (GitHub, GitLab, Jira, local files, or another workflow)
+- Ask whether refinement drafts should stay under `.scratch/` until you explicitly publish them
+- Ask whether tickets should follow an existing repository template or ticket-writing skill
 - Ask you what labels you apply to tickets when you triage them (`/triage` uses labels)
 - Ask you where you want to save any docs we create
 
@@ -98,7 +98,7 @@ This is just the same in the AI age. There is a communication gap between you an
 **The Fix** is to use:
 
 - [`/grill-me`](./skills/productivity/grill-me/SKILL.md) - for non-code uses
-- [`/grill-with-docs`](./skills/flow/grill-with-docs/SKILL.md) - same as [`/grill-me`](./skills/productivity/grill-me/SKILL.md), but adds more goodies (see below)
+- [`/grill-with-docs`](./skills/workflow/grill-with-docs/SKILL.md) - same as [`/grill-me`](./skills/productivity/grill-me/SKILL.md), but adds more goodies (see below)
 
 These are my most popular skills. They help you align with the agent before you get started, and think deeply about the change you're making. Use them _every_ time you want to make a change.
 
@@ -119,7 +119,7 @@ I felt the same tension with my agents. Agents are usually dropped into a projec
 Example
 </summary>
 
-Here's an example [`CONTEXT.md`](https://github.com/mattpocock/course-video-manager/blob/076a5a7a182db0fe1e62971dd7a68bcadf010f1c/CONTEXT.md), from my `course-video-manager` repo. Which one is easier to read?
+Here's an example [`CONTEXT.md`](https://github.com/mattpocock/course-video-manager/blob/076a5a7a182db0fe1e62971dd7a68bcadf010f1c/CONTEXT.md), from my `course-video-manager` repository. Which one is easier to read?
 
 - **BEFORE**: "There's a problem when a lesson inside a section of a course is made 'real' (i.e. given a spot in the file system)"
 - **AFTER**: "There's a problem with the materialization cascade"
@@ -128,9 +128,9 @@ This concision pays off session after session.
 
 </details>
 
-This is built into [`/grill-with-docs`](./skills/flow/grill-with-docs/SKILL.md). It's a grilling session, but that helps you build a shared language with the AI, and document hard-to-explain decisions in ADR's.
+This is built into [`/grill-with-docs`](./skills/workflow/grill-with-docs/SKILL.md). It's a grilling session, but that helps you build a shared language with the AI, and document hard-to-explain decisions in architecture decision records.
 
-It's hard to explain how powerful this is. It might be the single coolest technique in this repo. Try it, and see.
+It's hard to explain how powerful this is. It might be the single coolest technique in this repository. Try it, and see.
 
 > [!TIP]
 > A shared language has many other benefits than reducing verbosity:
@@ -153,7 +153,7 @@ It's time to look at your feedback loops. Without feedback on how the code it pr
 
 For automated tests, a red-green-refactor loop is critical. This is where the agent writes a failing test first, then fixes the test. This helps give the agent a consistent level of feedback that results in far better code.
 
-I've built a **[`/tdd`](./skills/flow/tdd/SKILL.md) skill** you can slot into any project. It encourages red-green-refactor and gives the agent plenty of guidance on what makes good and bad tests.
+I've built a **[`/tdd`](./skills/workflow/tdd/SKILL.md) skill** you can slot into any project. It encourages red-green-refactor and gives the agent plenty of guidance on what makes good and bad tests.
 
 For debugging, I've also built a **[`/diagnosing-bugs`](./skills/upkeep/diagnosing-bugs/SKILL.md)** skill that wraps best debugging practices into a disciplined loop, gated phase by phase.
 
@@ -173,7 +173,7 @@ For debugging, I've also built a **[`/diagnosing-bugs`](./skills/upkeep/diagnosi
 
 This is built in to every layer of these skills:
 
-- [`/to-spec`](./skills/flow/to-spec/SKILL.md) quizzes you about which modules you're touching before creating a spec
+- [`/to-specifications`](./skills/workflow/to-specifications/SKILL.md) quizzes you about which modules you're touching before creating a specification
 
 And crucially, [`/improve-codebase-architecture`](./skills/upkeep/improve-codebase-architecture/SKILL.md) surveys a codebase for deepening opportunities and hands you the candidates. I recommend running it on your codebase once every few days. It is a survey, not a rescue: on a genuinely old codebase it will find real candidates, but it won't untangle the mud for you.
 
@@ -189,27 +189,27 @@ These split on one axis: who can invoke them. **User-invoked** skills are reacha
 
 Set up once, then find your way around.
 
-- **[setup-custom-skills](./skills/getting-started/setup-custom-skills/SKILL.md)**: Configure this repo for the workflow skills (issue tracker, triage labels, domain doc layout). Run once per repo.
+- **[setup-custom-skills](./skills/getting-started/setup-custom-skills/SKILL.md)**: Configure this repository for the workflow skills (system-of-record tracker, local drafts, ticket-writing convention, triage labels, domain doc layout). Run once per repository.
 - **[what-is-next](./skills/getting-started/what-is-next/SKILL.md)**: The router: which skill or flow fits your situation, or which boundary option (continue, clear, handoff, compact) fits the moment.
 
-### Flow
+### Workflow
 
 The idea→ship spine, in order.
 
-- **[grill-with-docs](./skills/flow/grill-with-docs/SKILL.md)**: Grilling session that also builds your project's domain model, sharpening terminology and updating `CONTEXT.md` and ADRs inline.
-- **[to-spec](./skills/flow/to-spec/SKILL.md)**: Turn the current conversation into a spec and publish it to the issue tracker. No interview, just synthesizes what you've already discussed.
-- **[to-tickets](./skills/flow/to-tickets/SKILL.md)**: Break any plan, spec, or conversation into a set of tracer-bullet tickets, each declaring its blocking edges, written as text in a local file, or as native blocking links on a real tracker.
-- **[implement](./skills/flow/implement/SKILL.md)**: Build the work described by a spec or set of tickets, driving `/tdd` at pre-agreed seams and closing out with `/code-review` before committing.
-- **[implement-all](./skills/flow/implement-all/SKILL.md)**: Implement a whole spec on one branch: works the tickets as a task graph, running implementer subagents across the ready frontier for concurrency, landing a single PR.
-- **[tdd](./skills/flow/tdd/SKILL.md)**: Test-driven development with a red-green-refactor loop. Builds features or fixes bugs one vertical slice at a time.
-- **[code-review](./skills/flow/code-review/SKILL.md)**: Two-axis review of the diff since a fixed point: **Standards** (does it follow the repo's coding standards, plus a Fowler smell baseline?) and **Spec** (does it faithfully implement the originating issue/spec?), run as parallel sub-agents so neither pollutes the other.
+- **[grill-with-docs](./skills/workflow/grill-with-docs/SKILL.md)**: Grilling session that also builds your project's domain model, sharpening terminology and updating `CONTEXT.md` and architecture decision records inline.
+- **[to-specifications](./skills/workflow/to-specifications/SKILL.md)**: Turn the current conversation into a local draft specification, or publish it to the issue tracker when requested. No interview, just synthesizes what you've already discussed.
+- **[to-tickets](./skills/workflow/to-tickets/SKILL.md)**: Break any plan, specification, or conversation into a set of tracer-bullet tickets, each declaring its blocking edges, written as text in a local file, or as native blocking links on a real tracker.
+- **[implement](./skills/workflow/implement/SKILL.md)**: Build the work described by a specification or set of tickets, driving `/tdd` at pre-agreed seams and closing out with `/code-review` before committing.
+- **[implement-all](./skills/workflow/implement-all/SKILL.md)**: Implement a whole specification on one branch: works the tickets as a task graph, running implementer subagents across the ready frontier for concurrency, landing a single PR.
+- **[tdd](./skills/workflow/tdd/SKILL.md)**: Test-driven development with a red-green-refactor loop. Builds features or fixes bugs one vertical slice at a time.
+- **[code-review](./skills/workflow/code-review/SKILL.md)**: Two-axis review of the diff since a fixed point: **Standards** (does it follow the repository's coding standards, plus a Fowler smell baseline?) and **Specification** (does it faithfully implement the originating issue/specification?), run as parallel sub-agents so neither pollutes the other.
 
 ### Shaping
 
 Explore an open question and produce a decision or answer that feeds the flow.
 
 - **[wayfinder](./skills/shaping/wayfinder/SKILL.md)**: Plan a huge chunk of work, more than one agent session can hold, as a shared map of decision tickets on the issue tracker, and resolve them one at a time until the way to the destination is clear.
-- **[research](./skills/shaping/research/SKILL.md)**: Investigate a question against high-trust primary sources and capture the findings as a cited Markdown file in the repo, run as a background agent.
+- **[research](./skills/shaping/research/SKILL.md)**: Investigate a question against high-trust primary sources and capture the findings as a cited Markdown file in the repository, run as a background agent.
 - **[prototype](./skills/shaping/prototype/SKILL.md)**: Build a throwaway prototype to answer a design question, either a single shareable HTML file for state/logic questions, or several radically different UI variations toggleable from one route.
 
 ### Upkeep

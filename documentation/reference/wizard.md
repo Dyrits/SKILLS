@@ -2,7 +2,7 @@
 
 `wizard` generates an interactive bash script that walks a human, step by step, through a manual procedure: wiring up third-party services, running a one-off migration, moving a project from state A to state B. It opens each URL, says what to click and copy, captures what comes back, and writes it into `.env` files and GitHub Actions secrets.
 
-The [agent](https://www.aihero.dev/ai-coding-dictionary/agent) writes the script; it never runs it. You do, on your own machine. So a wizard is not a list of instructions you follow; it is a program that drives the procedure and holds the state, and your part is to click, paste, and press Enter.
+The agent writes the script; it never runs it. You do, on your own machine. So a wizard is not a list of instructions you follow; it is a program that drives the procedure and holds the state, and your part is to click, paste, and press Enter.
 
 ## When to reach for it
 
@@ -17,7 +17,7 @@ Reach for it when the next thing blocking you is a trip through a dashboard:
 | A project has to move from state A to state B once | Walks the transition and reports what it could not do |
 | You are about to write those steps into a README | Writes an executable version instead, which can't rot as quietly |
 
-Don't reach for it to *decide* what to build; for that, [grill-with-docs](https://aihero.dev/skills-grill-with-docs) and [to-spec](https://aihero.dev/skills-to-spec) are the tools.
+Don't reach for it to *decide* what to build; for that, [grill-with-docs](../workflow/grill-with-docs.md) and [to-specifications](../workflow/to-specifications.md) are the tools.
 
 ## Prerequisites
 
@@ -27,7 +27,7 @@ None to generate one. The wizard it writes runs on bash, and uses `gh` when a st
 
 A **stage** is one focused task on one screen. The script clears the terminal between stages, so a stage that overflows the screen loses the part that scrolled away. You author stages in dependency order and set `TOTAL_STAGES`, which drives the progress display.
 
-Scoping happens before a line is written. The [skill](https://www.aihero.dev/ai-coding-dictionary/skill) reads the repo instead of asking cold: `.env*`, `docker-compose*`, framework config, and every `secrets.*` / `vars.*` reference in `.github/workflows/`: each of those is a value the wizard has to produce. It then shows you the ordered stage list to confirm, and only after that maps each stage to the exact path a human follows ("Dashboard → Developers → API keys → Reveal test key → copy"). Where it doesn't know the current UI, it asks you or checks the docs rather than inventing clicks.
+Scoping happens before a line is written. The skill reads the repository instead of asking cold: `.env*`, `docker-compose*`, framework config, and every `secrets.*` / `vars.*` reference in `.github/workflows/`: each of those is a value the wizard has to produce. It then shows you the ordered stage list to confirm, and only after that maps each stage to the exact path a human follows ("Dashboard → Developers → API keys → Reveal test key → copy"). Where it doesn't know the current UI, it asks you or checks the docs rather than inventing clicks.
 
 For each captured value, scoping settles where it lands:
 
@@ -50,13 +50,13 @@ The agent that writes a wizard never runs it end to end, because it opens browse
 | What you have | What to do with the script |
 | --- | --- |
 | A one-off migration, a personal setup, a transition you'll never repeat | Save it to a scratch or `scripts/` path, run it, delete it |
-| A setup path the next person on the repo will also need | Commit it and link it from the README, so they run the script instead of re-asking an agent |
+| A setup path the next person on the repository will also need | Commit it and link it from the README, so they run the script instead of re-asking an agent |
 
 ## Common questions
 
 **Do my API keys end up in the model's context?**
 
-No. The agent writes a script; it doesn't run it. You run the script yourself, and it captures the key with hidden terminal entry and writes it straight to `.env` or `gh secret`. The wizard is a CLI, and the model is not connected to it. One caveat: that holds for values the wizard captures at runtime. If you paste a key into the chat while scoping the procedure, it's in the [context](https://www.aihero.dev/ai-coding-dictionary/context) like any other pasted text.
+No. The agent writes a script; it doesn't run it. You run the script yourself, and it captures the key with hidden terminal entry and writes it straight to `.env` or `gh secret`. The wizard is a CLI, and the model is not connected to it. One caveat: that holds for values the wizard captures at runtime. If you paste a key into the chat while scoping the procedure, it's in the context like any other pasted text.
 
 **Can I go back and fix a value I mistyped?**
 
@@ -66,21 +66,21 @@ There's a related open bug. Arrow keys in an `ask` prompt insert `^[[D` / `^[[C`
 
 **Does it know what I've already set up?**
 
-Partly, and less than the launch reactions assumed. It reads the repo before it asks (your `.env` files, `docker-compose`, framework config, the `secrets.*` references in CI), so it scopes to values that are genuinely missing rather than starting from zero the way a README does. What it doesn't do is check the third-party service. If a key exists in your `.env` the wizard offers it back and Enter keeps it; if you already created the Stripe account but never saved the key, the wizard still sends you to the dashboard for it.
+Partly, and less than the launch reactions assumed. It reads the repository before it asks (your `.env` files, `docker-compose`, framework config, the `secrets.*` references in CI), so it scopes to values that are genuinely missing rather than starting from zero the way a README does. What it doesn't do is check the third-party service. If a key exists in your `.env` the wizard offers it back and Enter keeps it; if you already created the Stripe account but never saved the key, the wizard still sends you to the dashboard for it.
 
-**Where does it sit in the workflow, after grilling and the spec?**
+**Where does it sit in the workflow, after grilling and the specification?**
 
-Nowhere in particular. It's a standalone, not a chain step. The common guess is `/grill-with-docs → /to-spec → /wizard`, and that sequence is fine, but the trigger is a manual procedure showing up, which can happen at any point: before you start, mid-build, or long after ship. It also works as a discovery tool: scoping surfaces the hidden prerequisites of a task, like the three API keys you hadn't thought about, before you commit to the work.
+Nowhere in particular. It's a standalone, not a chain step. The common guess is `/grill-with-docs → /to-specifications → /wizard`, and that sequence is fine, but the trigger is a manual procedure showing up, which can happen at any point: before you start, mid-build, or long after ship. It also works as a discovery tool: scoping surfaces the hidden prerequisites of a task, like the three API keys you hadn't thought about, before you commit to the work.
 
 **Does it work outside Claude Code?**
 
-The artifact does, unconditionally: it's a plain bash script and it doesn't care what [harness](https://www.aihero.dev/ai-coding-dictionary/harness) generated it. The skill itself is model-invoked, so it's listed everywhere: type `/wizard` in Claude Code or `$wizard` in Codex, or just describe the setup you're stuck on. Being model-invoked also keeps it clear of [#693](https://github.com/mattpocock/skills/issues/693), where Claude's desktop and web surfaces drop *user-invoked* skills from the [model](https://www.aihero.dev/ai-coding-dictionary/model)'s listing and report them as not installed.
+The artifact does, unconditionally: it's a plain bash script and it doesn't care what harness generated it. The skill itself is model-invoked, so it's listed everywhere: type `/wizard` in Claude Code or `$wizard` in Codex, or just describe the setup you're stuck on. Being model-invoked also keeps it clear of [#693](https://github.com/mattpocock/skills/issues/693), where Claude's desktop and web surfaces drop *user-invoked* skills from the model's listing and report them as not installed.
 
 **Didn't this used to be user-invoked?**
 
 It did. It's now model-invoked, so the agent reaches for it unprompted when it hits a step you have to take. Nothing you could do before stopped working: model-invocation *adds* the agent's reach, it never removes yours, so `/wizard` behaves exactly as it did. What changed is the failure mode it retires: the agent hitting a credentials wall mid-build and dumping six numbered steps into the chat for you to follow by hand.
 
-**It used to be in `in-progress/`: where is it now?**
+**It used to be in `work-in-progress/`: where is it now?**
 
 `engineering/`, as of v1.2. It graduated out of the beta bucket and now ships in the plugin, so it arrives with the rest of the promoted set rather than needing an individual install. Its behaviour didn't change on graduation.
 
@@ -95,4 +95,4 @@ It did. It's now model-invoked, so the agent reaches for it unprompted when it h
 
 ## Where it fits
 
-`wizard` is a reach-for-it-anytime standalone, sitting at the line where automation stops and a human has to click. Its nearest neighbour is [setup-custom-skills](https://aihero.dev/skills-setup-custom-skills), because both exist to get a repo into a working state: that one configures this skill set, while `wizard` generates a setup path for everything else. It also pairs with [implement](https://aihero.dev/skills-implement): when a build lands a feature that needs credentials or a manual cutover, a wizard is how the human half gets done. When you're unsure which skill fits the moment, [ask-matt](https://aihero.dev/skills-ask-matt) routes you.
+`wizard` is a reach-for-it-anytime standalone, sitting at the line where automation stops and a human has to click. Its nearest neighbour is [setup-custom-skills](../getting-started/setup-custom-skills.md), because both exist to get a repository into a working state: that one configures this skill set, while `wizard` generates a setup path for everything else. It also pairs with [implement](../workflow/implement.md): when a build lands a feature that needs credentials or a manual cutover, a wizard is how the human half gets done. When you're unsure which skill fits the moment, ask-matt routes you.

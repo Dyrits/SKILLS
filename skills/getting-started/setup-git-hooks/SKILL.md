@@ -29,7 +29,7 @@ Install as devDependencies:
 lint-staged @biomejs/biome prettier
 ```
 
-If the repo already has `biome` or `prettier`, skip reinstalling that one.
+If the repository already has `biome` or `prettier`, skip reinstalling that one.
 
 ### 3. Create `.githooks/pre-commit`
 
@@ -42,7 +42,7 @@ npm run typecheck --if-present
 npm run build --if-present
 ```
 
-**Adapt**: Replace `npm` with detected package manager (`pnpm --if-present` is not supported, so check package.json for the script first and omit the line if missing). Omit `typecheck` or `build` if the repo has no such script in package.json, and tell the user.
+**Adapt**: Replace `npm` with detected package manager (`pnpm --if-present` is not supported, so check package.json for the script first and omit the line if missing). Omit `typecheck` or `build` if the repository has no such script in package.json, and tell the user.
 
 ### 4. Point git at the hooks dir
 
@@ -60,7 +60,7 @@ This is local config; new clones need it too. Add a `prepare` script to package.
 }
 ```
 
-Merge into existing scripts; if `prepare` already exists, append the `git config` call (e.g. `&&`). Note: if the repo already uses Husky (`.husky/` dir or `prepare: husky`), ask the user whether to migrate off it or keep Husky and stop here.
+Merge into existing scripts; if `prepare` already exists, append the `git config` call (e.g. `&&`). Note: if the repository already uses Husky (`.husky/` dir or `prepare: husky`), ask the user whether to migrate off it or keep Husky and stop here.
 
 ### 5. Create `.lintstagedrc`
 
@@ -73,7 +73,7 @@ Biome handles format and lint (`check`) for languages it supports. Prettier cove
 }
 ```
 
-Do not point both tools at the same glob. If the repo uses only Biome-supported languages, omit the Prettier entry (but keep Prettier installed as fallback). If the repo does not want Prettier at all, omit the second entry and tell the user.
+Do not point both tools at the same glob. If the repository uses only Biome-supported languages, omit the Prettier entry (but keep Prettier installed as fallback). If the repository does not want Prettier at all, omit the second entry and tell the user.
 
 ### 6. Create `biome.json` and `.prettierrc` (if missing)
 
@@ -156,7 +156,7 @@ This will run through the new pre-commit hook: a good smoke test that everything
 ## Notes
 
 - `core.hooksPath` overrides `.git/hooks/` entirely; hooks in `.git/hooks/` stop running
-- The `prepare` script needs a git repo present; `npm install` in a non-git context fails unless guarded (e.g. `prepare": "git rev-parse && git config core.hooksPath .githooks || true"` in published packages)
+- The `prepare` script needs a git repository present; `npm install` in a non-git context fails unless guarded (e.g. `prepare": "git rev-parse && git config core.hooksPath .githooks || true"` in published packages)
 - Biome `check` runs both format and lint in one pass; `--no-errors-on-unmatched` keeps lint-staged quiet when no supported files are staged
 - Prettier handles only what Biome does not, so the two never fight over the same file
 - The pre-commit runs lint-staged first (fast, staged-only), then full typecheck and build

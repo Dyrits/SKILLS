@@ -1,6 +1,6 @@
 # Issue tracker: GitHub
 
-Issues and specs for this repo live as GitHub issues. Use the `gh` CLI for all operations.
+Issues and specifications for this repository live as GitHub issues. Use the `gh` CLI for all operations.
 
 ## Conventions
 
@@ -11,11 +11,17 @@ Issues and specs for this repo live as GitHub issues. Use the `gh` CLI for all o
 - **Apply / remove labels**: `gh issue edit <number> --add-label "..."` / `--remove-label "..."`
 - **Close**: `gh issue close <number> --comment "..."`
 
-Infer the repo from `git remote -v`; `gh` does this automatically when run inside a clone.
+Infer the repository from `git remote -v`; `gh` does this automatically when run inside a clone.
+
+## Ticket writing convention
+
+- **Source:** Built-in `to-tickets`
+- **Applies to:** Local drafts and published tickets
+- **Rules:** Use the built-in ticket template unless the user selects another configured convention for the run.
 
 ## Pull requests as a triage surface
 
-**PRs as a request surface: no.** _(Set to `yes` if this repo treats external PRs as feature requests; `/triage` reads this flag.)_
+**PRs as a request surface: no.** _(Set to `yes` if this repository treats external PRs as feature requests; `/triage` reads this flag.)_
 
 When set to `yes`, PRs run through the same labels and states as issues, using the `gh pr` equivalents:
 

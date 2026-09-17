@@ -9,13 +9,13 @@ A **wizard** is a bash script that walks a human, step by step, through a manual
 
 The delightful UX is already solved by [template.sh](template.sh): stage-by-stage progress, confirmation gates, cross-platform URL opening (including WSL), hidden secret entry, idempotent `.env` upserts, `gh secret`/`gh variable` writes, and a closing summary. **Your job is only to scope the procedure and author its stages.** The library above the `STAGES` marker is identical in every wizard; that consistency is the point: never hand-edit it.
 
-A wizard is ephemeral by default: built for one run, saved to a scratch or `scripts/` path, deleted when the job's done. Commit it only when the user wants a repeatable setup path that should live in the repo.
+A wizard is ephemeral by default: built for one run, saved to a scratch or `scripts/` path, deleted when the job's done. Commit it only when the user wants a repeatable setup path that should live in the repository.
 
 ## Process
 
 ### 1. Scope the procedure
 
-Work out every manual step the human must take and every value that gets captured along the way. Read the repo first, don't ask cold:
+Work out every manual step the human must take and every value that gets captured along the way. Read the repository first, don't ask cold:
 
 - For setup: `.env`, `.env.example`, `.env.*`, `README`, `docker-compose*`, framework config, and `.github/workflows/*` (every `secrets.*` / `vars.*` reference is a value the wizard must produce).
 - For a migration or transition: the current state, the target state, and the irreversible actions between them.

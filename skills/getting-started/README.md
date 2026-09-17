@@ -2,7 +2,7 @@
 
 Set up once, then find your way around.
 
-- **[setup-custom-skills](./setup-custom-skills/SKILL.md)**: Configure this repo for the workflow skills (issue tracker, triage labels, domain doc layout). Run once per repo. (User-invoked, ships in the plugin.)
+- **[setup-custom-skills](./setup-custom-skills/SKILL.md)**: Configure this repository for the workflow skills (system-of-record tracker, local drafts, ticket-writing convention, triage labels, domain doc layout). Run once per repository. (User-invoked, ships in the plugin.)
 - **[what-is-next](./what-is-next/SKILL.md)**: The router: which skill or flow fits your situation, or which boundary option (continue, clear, handoff, compact) fits the moment. (User-invoked, ships in the plugin.)
 - **[setup-git-hooks](./setup-git-hooks/SKILL.md)**: Set up versioned git hooks via core.hooksPath (no Husky) with lint-staged, Biome/Prettier, typecheck, and build. (User-invoked, not in the plugin.)
 - **[setup-git-guardrails](./setup-git-guardrails/SKILL.md)**: Block dangerous git commands across Claude Code, OpenCode, and Codex before they execute, even in auto-approve mode. (User-invoked, not in the plugin.)
