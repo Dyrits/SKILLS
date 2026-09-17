@@ -27,7 +27,7 @@ The Specification axis needs a specification to exist and be findable. It looks 
 
 1. Issue references in the commit messages (`#123`, `Closes #45`, a GitLab `!67`), fetched through `documentation/agents/issue-tracker.md`.
 2. A path you pass in as an argument.
-3. A specification file under `documentation/`, `specifications/`, or `.scratch/` matching the branch or feature name.
+3. A specification file under `documentation/`, `specifications/`, `backlog/`, or `.refinement/` matching the branch or feature name.
 4. Asking you to configure tracker lookup, provide the specification, or continue with Standards alone.
 
 Step 1 uses `documentation/agents/issue-tracker.md` when [setup-custom-skills](../getting-started/setup-custom-skills.md) has written it. That setup is optional for `code-review`: without the file, the skill skips automatic issue retrieval and continues through the remaining discovery routes. If those routes find nothing, you choose whether to run setup, provide a specification, or continue with Standards alone. Standards-only review skips the Specification sub-agent and reports "no specification available" rather than inventing requirements.

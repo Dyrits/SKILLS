@@ -26,7 +26,7 @@ Look for the originating specification, in this order:
 
 1. When `documentation/agents/issue-tracker.md` exists, issue references in the commit messages (`#123`, `Closes #45`, GitLab `!67`, etc.), fetched via the workflow it documents. When the file is missing, skip this lookup without asking the user to run setup.
 2. A path the user passed as an argument.
-3. A specification file under `documentation/`, `specifications/`, or `.scratch/` matching the branch name or feature.
+3. A specification file under `documentation/`, `specifications/`, `backlog/`, or `.refinement/` matching the branch name or feature.
 4. If nothing is found, ask the user to choose one of three paths: run `/setup-custom-skills` to configure tracker lookup, provide the specification or its path, or continue with the **Standards** axis alone. If they choose setup, tell them to run `/setup-custom-skills`, then resume specification discovery after it completes. If they choose Standards alone, skip the **Specification** sub-agent and report "no specification available".
 
 ### 3. Identify the standards sources

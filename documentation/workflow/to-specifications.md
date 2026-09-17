@@ -19,7 +19,7 @@ Reach for it when the build is too big for one agent session and has to survive 
 
 ## Prerequisites
 
-`to-specifications` needs [setup-custom-skills](../getting-started/setup-custom-skills.md) to configure the tracker, publication boundary, and triage-label vocabulary. With local refinement enabled, a sourced draft lives at `.scratch/<issue-key>/specification.md`; the remote issue remains unchanged until you explicitly ask to publish.
+`to-specifications` needs [setup-custom-skills](../getting-started/setup-custom-skills.md) to configure the tracker, publication boundary, and triage-label vocabulary. With local refinement enabled, a sourced draft lives at `.refinement/<issue-key>/specification.md`; the remote issue remains unchanged until you explicitly ask to publish.
 
 ## The specification is a decision record
 

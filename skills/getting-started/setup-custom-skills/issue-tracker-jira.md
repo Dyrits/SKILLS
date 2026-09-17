@@ -34,9 +34,9 @@ Use the verified update operation only after the user explicitly asks to publish
 
 ## Local refinement drafts
 
-- One workspace per Jira issue at `.scratch/<issue-key>/`; use `.scratch/<feature-slug>/` when no Jira issue exists yet.
-- The refined specification is `.scratch/<issue-key>/specification.md`.
-- Draft implementation tickets are one file each under `.scratch/<issue-key>/issues/<NN>-<slug>.md`.
+- One workspace per Jira issue at `.refinement/<issue-key>/`; use `.refinement/<feature-slug>/` when no Jira issue exists yet.
+- The refined specification is `.refinement/<issue-key>/specification.md`.
+- Draft implementation tickets are one file each under `.refinement/<issue-key>/issues/<NN>-<slug>.md`.
 - Put `Source: <issue-key> (<url>)` and `Status: draft` at the top of a sourced specification.
 - Jira remains the system of record. Local files are working artifacts until the user explicitly requests publication.
 

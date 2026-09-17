@@ -32,7 +32,7 @@ It leads each section with the recommended answer, and skips whatever exploratio
 | Decision | What it proposes | When it actually asks |
 | --- | --- | --- |
 | **Issue tracker** | the one matching your `git remote` | always: this is the one real choice |
-| **Local drafts** | keep refinement under `.scratch/<issue-key>/` until an explicit publish step | when the system of record is remote |
+| **Local drafts** | keep refinement under `.refinement/<issue-key>/` until an explicit publish step | when the system of record is remote |
 | **Ticket writing** | use an existing issue template or ticket skill when one is found, with the built-in format as fallback | always, after it inspects the repository and available skills |
 | **Triage labels** | keep the five canonical names (`needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-human`, `wontfix`) | only if the `triage` skill is installed |
 | **Domain documentation** | single-context: one `CONTEXT.md` plus `documentation/architecture-decision-record/` at the root | only if it spots monorepo signals, and then it offers a multi-context `CONTEXT-MAP.md` |
@@ -44,10 +44,10 @@ The tracker options:
 | **GitHub** | the repository's GitHub Issues | the `gh` CLI |
 | **GitLab** | the repository's GitLab Issues | the `glab` CLI |
 | **Jira** | the configured Jira project | a verified Jira MCP connector, CLI, REST workflow, or manual publication |
-| **Local markdown** | files under `.scratch/<feature>/` in this repository | nothing: no remote at all |
+| **Local markdown** | files under `backlog/<feature>/` in this repository | nothing: no remote at all |
 | **Other** | wherever you say | one paragraph from you describing the workflow |
 
-GitHub, GitLab, Jira, and local markdown ship as templates. Local markdown can be the system of record for a solo project, or a draft layer beneath a remote tracker. In the second form, `.scratch/<issue-key>/` holds working artifacts while GitHub, GitLab, Jira, or another configured tracker remains authoritative.
+GitHub, GitLab, Jira, and local markdown ship as templates. Local markdown can be the system of record for a solo project, or a draft layer beneath a remote tracker. In the second form, `.refinement/<issue-key>/` holds working artifacts while GitHub, GitLab, Jira, or another configured tracker remains authoritative; in the first, `backlog/` is the committed record itself.
 
 For Jira, setup records the project key and verifies the smallest available read operation before describing access as automated. A Jira MCP connector is one supported access method, but it is not implied or installed by choosing Jira. Without verified access, the configuration uses manual publication and the agent prepares exact Markdown for the user to paste.
 
@@ -59,7 +59,7 @@ For example, a Jira team can select `create-jira-ticket` and its template refere
 
 ## Draft before publish
 
-For a remote tracker, setup asks whether refinement drafts should stay local until an explicit publish step. The recommended answer is yes. A sourced draft lives at `.scratch/<issue-key>/specification.md`, carries the issue key and URL, and may have draft implementation tickets under `.scratch/<issue-key>/issues/`.
+For a remote tracker, setup asks whether refinement drafts should stay local until an explicit publish step. The recommended answer is yes. A sourced draft lives at `.refinement/<issue-key>/specification.md`, carries the issue key and URL, and may have draft implementation tickets under `.refinement/<issue-key>/issues/`.
 
 The tracker remains the system of record. Reading through its verified access method does not cross the publication boundary; creating, commenting on, or updating remote issues does. `to-specifications` and `to-tickets` keep artifacts local by default when this convention is configured, then publish only when the user explicitly asks.
 
@@ -69,7 +69,7 @@ The tracker remains the system of record. Reading through its verified access me
 
 **Do I have to use GitHub?**
 
-No. GitHub, GitLab and local markdown under `.scratch/` all ship as ready-made templates, and anything else works through the "other" path. This is the most-repeated question in the record, in roughly these words: *"hard locked to github"*, *"can I use GitLab / Jira"*, *"what about Azure DevOps"*. The answer every time is that the tracker is a setup answer, not a skill property.
+No. GitHub, GitLab and local markdown under `backlog/` all ship as ready-made templates, and anything else works through the "other" path. This is the most-repeated question in the record, in roughly these words: *"hard locked to github"*, *"can I use GitLab / Jira"*, *"what about Azure DevOps"*. The answer every time is that the tracker is a setup answer, not a skill property.
 
 **Do I need to re-run it after updating the skills?**
 

@@ -12,7 +12,7 @@ The issue tracker, publication boundary, and triage label vocabulary should have
 
 1. Resolve the destination from `documentation/agents/issue-tracker.md`:
 
-   - When local refinement drafts are configured, write to `.scratch/<issue-key>/specification.md`, or `.scratch/<feature-slug>/specification.md` when no source issue exists. This is the default until the user explicitly requests publication.
+   - When local refinement drafts are configured, write to `.refinement/<issue-key>/specification.md`, or `.refinement/<feature-slug>/specification.md` when no source issue exists. This is the default until the user explicitly requests publication.
    - When direct publication is configured, publish to the system-of-record tracker.
    - A request such as "publish", "update Jira", or "create the issue" explicitly selects the system-of-record tracker.
 

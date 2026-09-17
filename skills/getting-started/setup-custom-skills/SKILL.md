@@ -9,7 +9,7 @@ disable-model-invocation: true
 Scaffold the per-repository configuration that the workflow skills assume:
 
 - **Issue tracker**: where issues live (GitHub by default; local markdown is also supported out of the box)
-- **Local drafts**: whether refinement stays under `.scratch/<issue-key>/` until an explicit publish step
+- **Local drafts**: whether refinement stays under `.refinement/<issue-key>/` until an explicit publish step
 - **Ticket writing convention**: whether tickets use the built-in format or an existing project template or ticket-writing skill
 - **Triage labels**: the strings used for the five canonical triage roles
 - **Domain documentation**: where `CONTEXT.md` and architecture decision records live, and the consumer rules for reading them
@@ -27,7 +27,7 @@ Look at the current repository to understand its starting state. Read whatever e
 - `CONTEXT.md` and `CONTEXT-MAP.md` at the repository root
 - `documentation/architecture-decision-record/` and any `src/*/documentation/architecture-decision-record/` directories
 - `documentation/agents/`: does this skill's prior output already exist?
-- `.scratch/`: a sign that a local-markdown issue tracker convention is already in use
+- `backlog/` or a legacy `.scratch/`: a sign that a local-markdown issue tracker convention is already in use
 - Issue templates, contribution documentation, and available ticket-writing skills: is there an established ticket structure, language, or required metadata?
 - Is the `triage` skill installed? (a `triage` skill folder alongside this one, or `triage` in your available skills.) This decides whether Section B runs at all.
 - Monorepo signals: a `pnpm-workspace.yaml`, a `workspaces` field in `package.json`, or a populated `packages/*` with its own `src/`. These are present only in a genuinely large multi-package repository; their absence means single-context, which is almost every repository.
@@ -40,14 +40,14 @@ Lead each section with the recommended answer so the user can accept it in a wor
 
 **Section A: Issue tracker.**
 
-> Explainer: The "issue tracker" is the system of record for this repository. Skills like `to-tickets`, `triage`, and `to-specifications` read from and publish to it. Local refinement drafts can still live under `.scratch/`; choosing Jira or GitHub does not rule that out.
+> Explainer: The "issue tracker" is the system of record for this repository. Skills like `to-tickets`, `triage`, and `to-specifications` read from and publish to it. Local refinement drafts can still live under `.refinement/`; choosing Jira or GitHub does not rule that out.
 
 Default posture: these skills were designed for GitHub. If a `git remote` points at GitHub, propose that. If a `git remote` points at GitLab (`gitlab.com` or a self-hosted host), propose GitLab. Otherwise (or if the user prefers), offer:
 
 - **GitHub**: issues live in the repository's GitHub Issues (uses the `gh` CLI)
 - **GitLab**: issues live in the repository's GitLab Issues (uses the [`glab`](https://gitlab.com/gitlab-org/cli) CLI)
 - **Jira**: issues live in a Jira project (uses an available Jira MCP connector, CLI, or REST workflow)
-- **Local markdown**: issues live as files under `.scratch/<feature>/` in this repository (good for solo projects or repositories without a remote)
+- **Local markdown**: issues live as files under `backlog/<feature>/` in this repository (good for solo projects or repositories without a remote)
 - **Other** (Linear, Azure DevOps, etc.): ask the user to describe the workflow in one paragraph; the skill will record it as freeform prose
 
 For Jira, inspect the tools available in the current harness before asking how access works. If a Jira connector, CLI, or documented API workflow is available, identify it and verify access with the smallest read-only operation the available tool supports after the user provides the project key. Record the verified method and project key. If no Jira access is available, record publishing as **manual**: the skills may prepare the exact Markdown locally, but must not claim they can read or update Jira.
@@ -62,7 +62,7 @@ Ask exactly one question:
 
 On **yes**, add a "Local refinement drafts" section to `documentation/agents/issue-tracker.md` with these conventions:
 
-- One workspace per source issue at `.scratch/<issue-key>/`, or `.scratch/<feature-slug>/` when no issue exists yet.
+- One workspace per source issue at `.refinement/<issue-key>/`, or `.refinement/<feature-slug>/` when no issue exists yet.
 - The refined specification lives at `specification.md`; draft implementation tickets live under `issues/` as one file per ticket.
 - A draft sourced from the tracker records its issue key and URL at the top of `specification.md`.
 - Local files are working artifacts, while the configured tracker remains the system of record.

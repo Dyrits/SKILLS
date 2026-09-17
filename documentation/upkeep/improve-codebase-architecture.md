@@ -2,7 +2,7 @@
 
 `improve-codebase-architecture` surveys a codebase for **deepening opportunities**: places where a shallow module (an interface nearly as complex as the thing it hides) could become a deep one. It writes them up as a self-contained HTML report, and then grills you through whichever one you pick.
 
-It never changes the code. The whole run produces one HTML file in your OS temp directory and a conversation; the refactor itself happens later, in a separate session, through the normal build flow. That is what makes it a survey rather than a refactoring tool, and it is why the skill is worth running on a codebase you are not ready to touch yet.
+It never changes the code. The whole run produces one HTML report in `documentation/architecture-audit/` in the repository and a conversation; the refactor itself happens later, in a separate session, through the normal build flow. That is what makes it a survey rather than a refactoring tool, and it is why the skill is worth running on a codebase you are not ready to touch yet.
 
 Two filters keep the report from becoming generic cleanup advice. Every candidate has to pass the **deletion test**: would removing this module concentrate complexity behind a smaller interface, or just spread it across callers? Only the "concentrates" cases earn a card. And unless you point it at a specific area, it reads recent commit history first and biases the scan toward paths that are actively changing, on the grounds that a deepening in code nobody touches is a refactor you will never cash in.
 
@@ -29,7 +29,7 @@ Where it is confusable with siblings:
 
 None to run it. It reads `CONTEXT.md` and any ADRs in `documentation/architecture-decision-record/` if they exist, and speaks in your domain's own nouns when they do: a candidate reads as "deepen the Order intake module," not "refactor the FooBarHandler."
 
-It writes in two places. The report goes to `<tmpdir>/architecture-review-<timestamp>.html`, outside the repository. During the grilling loop it will add or sharpen terms in `CONTEXT.md`, creating that file if it does not exist, and offer to record a rejected candidate as an ADR so a future run does not re-suggest it.
+It writes in two places. The report goes to `documentation/architecture-audit/architecture-audit-<timestamp>.html` in the repository, one file per run so history accumulates. During the grilling loop it will add or sharpen terms in `CONTEXT.md`, creating that file if it does not exist, and offer to record a rejected candidate as an ADR so a future run does not re-suggest it.
 
 ## Depth, and the report that hunts for it
 
@@ -61,7 +61,7 @@ The report loads Tailwind and Mermaid from CDNs, so it needs network access when
 
 **It gave me twelve candidates. Do I work through them in the same session or start a new one?**
 
-One candidate per session. Working through several in one conversation fills the context window with the report, the grilling, the domain-model edits and the code changes all at once. The report only lives in a temp file, so carry the candidate itself rather than the file: pick one, grill it, take the decision into `/to-specifications`, and turn the rest into tickets you can pick up independently later. Put the chosen improvement into a specification rather than going straight to implementation. This is a recurring question with no documented workflow in the skill itself.
+One candidate per session. Working through several in one conversation fills the context window with the report, the grilling, the domain-model edits and the code changes all at once. The reports accumulate in `documentation/architecture-audit/`, but they are records of past surveys, not live documents: carry the candidate itself rather than the file. Pick one, grill it, take the decision into `/to-specifications`, and turn the rest into tickets you can pick up independently later. Put the chosen improvement into a specification rather than going straight to implementation. This is a recurring question with no documented workflow in the skill itself.
 
 **How should I prompt it?**
 
@@ -91,7 +91,7 @@ There is no good answer shipped with the skill. The recurring request is for a `
 
 - The candidates name your domain's concepts, not invented class names: "the Order intake module," not "the FooBarHandler."
 - The candidates cluster in files you have edited recently, not in dormant corners of the repository.
-- No code changed during the run. The only new file is the HTML report in your temp directory.
+- No code changed during the run. The only new file is the HTML report in `documentation/architecture-audit/`.
 - It stops after the report and asks which candidate you want, rather than continuing on its own.
 - Each card explains the payoff as locality or leverage, and says which tests get simpler, not just "this is cleaner."
 - Rejecting a candidate for a durable reason gets you an offer to record an ADR, so the next run does not re-suggest it.
