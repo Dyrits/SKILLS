@@ -27,7 +27,7 @@ Look at the current repository to understand its starting state. Read whatever e
 - `CONTEXT.md` and `CONTEXT-MAP.md` at the repository root
 - `documentation/architecture-decision-record/` and any `src/*/documentation/architecture-decision-record/` directories
 - `documentation/agents/`: does this skill's prior output already exist?
-- `backlog/` or a legacy `.scratch/`: a sign that a local-markdown issue tracker convention is already in use
+- `backlog/` and `.refinement/`: existing tracker records and refinement workspaces
 - Issue templates, contribution documentation, and available ticket-writing skills: is there an established ticket structure, language, or required metadata?
 - Is the `triage` skill installed? (a `triage` skill folder alongside this one, or `triage` in your available skills.) This decides whether Section B runs at all.
 - Monorepo signals: a `pnpm-workspace.yaml`, a `workspaces` field in `package.json`, or a populated `packages/*` with its own `src/`. These are present only in a genuinely large multi-package repository; their absence means single-context, which is almost every repository.
@@ -54,19 +54,20 @@ For Jira, inspect the tools available in the current harness before asking how a
 
 Record the choice in `documentation/agents/issue-tracker.md`. The GitHub and GitLab templates carry a "PRs as a request surface" flag, defaulted **off**. Leave it off and don't raise it: a user who wants external PRs in the triage queue can flip the flag in the file later.
 
-**Section A2: Local refinement drafts.** Skip this section when local markdown is the system of record, because the tracker itself is already local.
+**Section A2: Local refinement drafts.** Offer this for every tracker, including local markdown. Tracker location and draft publication are independent choices.
 
 Ask exactly one question:
 
-> Keep refinement drafts local until an explicit publish step? (recommended: **yes**)
+> Keep working material in `.refinement/` until an explicit publish step? (recommended: **yes**)
 
 On **yes**, add a "Local refinement drafts" section to `documentation/agents/issue-tracker.md` with these conventions:
 
 - One workspace per source issue at `.refinement/<issue-key>/`, or `.refinement/<feature-slug>/` when no issue exists yet.
 - The refined specification lives at `specification.md`; draft implementation tickets live under `issues/` as one file per ticket.
-- A draft sourced from the tracker records its issue key and URL at the top of `specification.md`.
-- Local files are working artifacts, while the configured tracker remains the system of record.
+- A draft sourced from the tracker records its issue key and URL, or repository-relative local ticket path, at the top of `specification.md`.
+- Interviews, exploratory catalogues, working playtest notes, and draft specifications or tickets belong in this workspace. Published issues, specifications, and tracker maps remain in the configured tracker, including `backlog/` for local markdown. A reference from an issue does not promote a working document into the tracker.
 - Reading from the tracker is allowed through the verified access method. Updating it requires an explicit publish request from the user.
+- For local markdown, publication writes selected specifications or tickets to `backlog/<feature-slug>/`. Supporting notes remain in refinement; drafts link to their published records. Commit supporting material needed to understand a published issue.
 
 On **no**, record that specifications and tickets publish directly to the configured tracker.
 
@@ -148,7 +149,7 @@ Then write the documentation files using the seed templates in this skill folder
 - [triage-labels.md](./triage-labels.md): label mapping (only if `triage` is installed)
 - [domain.md](./domain.md): domain documentation consumer rules and layout
 
-For "other" issue trackers, write `documentation/agents/issue-tracker.md` from scratch using the user's description. Append the local-refinement section selected in Section A2 to any remote-tracker template instead of replacing its system-of-record operations.
+For "other" issue trackers, write `documentation/agents/issue-tracker.md` from scratch using the user's description. Append the local-refinement section selected in Section A2 to the chosen tracker template, including local markdown, while preserving its system-of-record operations.
 
 ### 5. Done
 

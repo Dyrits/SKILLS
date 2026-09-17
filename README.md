@@ -31,7 +31,7 @@ It writes the skills into your repository as ordinary files you own and can edit
 In your agent, run it once per repository. It will:
 
 - Ask which issue tracker is the system of record (GitHub, GitLab, Jira, local files, or another workflow)
-- Ask whether refinement drafts should stay under `.refinement/` until you explicitly publish them
+- Ask whether refinement drafts should stay under `.refinement/` until you explicitly publish them, including when the tracker is local `backlog/`
 - Ask whether tickets should follow an existing repository template or ticket-writing skill
 - Ask you what labels you apply to tickets when you triage them (`/triage` uses labels)
 - Ask you where you want to save any docs we create

@@ -38,12 +38,13 @@ Two things happen before anything is published. `to-tickets` looks for prefactor
 
 ## Blocking edges
 
-The edges are the point of the artifact. They read two ways depending on the tracker:
+The edges are the point of the artifact. Their representation depends on the destination:
 
 | Tracker | Where the edges live | How you work them |
 | --- | --- | --- |
-| Local drafts | Text in one file per ticket under `.refinement/<issue-key>/issues/<NN>-<slug>.md`, numbered blockers-first | Top to bottom, by hand |
-| A real tracker (GitHub, Linear) | Native blocking links, or sub-issues where the tracker has them | Any ticket whose blockers are done is on the **frontier** and can be grabbed |
+| Local drafts | Text in one file per ticket under `.refinement/<issue-key>/issues/<NN>-<slug>.md`, numbered blockers-first | Review before publication |
+| Local tracker | Published ticket identifiers under `backlog/<feature-slug>/issues/` | Work tickets whose blockers are done |
+| Remote tracker (GitHub, Linear) | Native blocking links, or sub-issues where the tracker has them | Any ticket whose blockers are done is on the **frontier** and can be grabbed |
 
 The edges live in the ticket either way. The medium only decides whether anything can act on them in parallel. `to-tickets` produces the artifact; running it (one session at a time, or a fleet) is your job, not the skill's.
 
@@ -94,7 +95,7 @@ The skill stops at the artifact, and there is no auto-dispatch mode. Dispatch is
 - Nothing in a ticket body is a file path or a line number, except a snippet a prototype produced.
 - Each ticket reads like something a fresh session could finish without you in the room.
 - Prefactoring, where it found any, is at the front of the order rather than mixed into feature tickets.
-- Draft tickets report their local paths and leave the remote tracker unchanged until an explicit publish request.
+- Draft tickets report their local paths and leave the configured tracker unchanged, including local `backlog/`, until an explicit publish request.
 
 ## Where it fits
 

@@ -1,6 +1,6 @@
 # Issue tracker: Local Markdown
 
-Issues and specifications for this repository live as markdown files in `backlog/`. This directory is the system of record: commit it. (An older convention used `.scratch/`; if that directory exists, offer to move its contents to `backlog/`.)
+Published issues and specifications live in `backlog/`, the committed system of record.
 
 ## Conventions
 

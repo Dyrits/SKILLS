@@ -61,12 +61,13 @@ Iterate until the user approves the breakdown.
 
 ### 5. Save or publish the tickets
 
-Resolve the destination from `documentation/agents/issue-tracker.md`. When local refinement drafts are configured, save there by default. Publish to the system-of-record tracker only when the user explicitly asks to publish, create, or update its issues. The tickets are the same either way; only their destination and the shape of the blocking edges change:
+Resolve the destination from `documentation/agents/issue-tracker.md`. When refinement is configured, save drafts there unless the user explicitly requests publication. When direct publication is configured, publish the approved breakdown to the tracker. The destination determines how blocking edges are recorded:
 
 - **Local drafts** → write one file per ticket under `.refinement/<issue-key>/issues/<NN>-<slug>.md`, or `.refinement/<feature-slug>/issues/<NN>-<slug>.md` when no source issue exists. Number from `01` in dependency order (blockers first). Each file's "Blocked by" lists the numbers/titles it depends on. Use the per-ticket file template below: one ticket per file, never a single combined file.
-- **A real issue tracker (GitHub, Linear, …)** → publish one issue per ticket in dependency order (blockers first) so each ticket's blocking edges can reference real identifiers. Use the platform's native blocking / sub-issue relationship where it has one; otherwise set each ticket's "Blocked by" to the blocking issues. Apply the `ready-for-agent` triage label unless instructed otherwise; the tickets are agent-grabbable by construction.
+- **Local tracker** → publish one file per ticket under the configured `backlog/<feature-slug>/issues/` directory. Resolve existing identifiers before assigning new ones, translate draft blocking references to published identifiers, and apply `ready-for-agent` unless instructed otherwise. Link drafts to their published tickets; supporting refinement notes stay in the workspace.
+- **Remote tracker (GitHub, Linear, …)** → publish one issue per ticket in dependency order (blockers first) so each ticket's blocking edges can reference real identifiers. Use the platform's native blocking / sub-issue relationship where it has one; otherwise set each ticket's "Blocked by" to the blocking issues. Apply the `ready-for-agent` triage label unless instructed otherwise; the tickets are agent-grabbable by construction.
 
-When saving local drafts sourced from a tracker issue, include `Source: <issue-key> (<url>)` and `Status: draft` near the top of every ticket. Report the local paths and leave the remote tracker unchanged. Render every ticket with the approved writing convention, while retaining an explicit "Blocked by" field and acceptance criteria even when the selected template uses different headings.
+When saving local drafts, use `Status: draft`; for drafts sourced from a tracker issue, also include `Source: <issue-key> (<url or repository-relative ticket path>)`. Report the local paths and leave the configured tracker unchanged, including a local `backlog/`. Render every ticket with the approved writing convention, while retaining an explicit "Blocked by" field and acceptance criteria even when the selected template uses different headings.
 
 Work the **frontier**: any ticket whose blockers are all done. For a purely linear chain that means top to bottom.
 
@@ -80,7 +81,7 @@ Do NOT close or modify any parent issue.
 
 **Blocked by:** the numbers/titles of the tickets that gate this one, or "None (can start immediately)".
 
-**Status:** ready-for-agent
+**Status:** <draft or ready-for-agent, according to destination>
 
 - [ ] Acceptance criterion 1
 - [ ] Acceptance criterion 2

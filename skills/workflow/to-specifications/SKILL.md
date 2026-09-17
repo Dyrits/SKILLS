@@ -16,7 +16,7 @@ The issue tracker, publication boundary, and triage label vocabulary should have
    - When direct publication is configured, publish to the system-of-record tracker.
    - A request such as "publish", "update Jira", or "create the issue" explicitly selects the system-of-record tracker.
 
-   When refining an existing issue, fetch its full body and comments through the configured access method before drafting. Put `Source: <issue-key> (<url>)` and `Status: draft` at the top of a local specification.
+   When refining an existing issue, fetch its full body and comments through the configured access method before drafting. Put `Source: <issue-key> (<url or repository-relative ticket path>)` and `Status: draft` at the top of a local specification. Refinement applies to both remote and local trackers; publishing to a local tracker writes the configured specification under `backlog/` and links the draft to that authoritative artifact.
 
 2. Explore the repository to understand the current state of the codebase, if you haven't already. Use the project's domain glossary vocabulary throughout the specification, and respect any ADRs in the area you're touching.
 
@@ -24,7 +24,7 @@ The issue tracker, publication boundary, and triage label vocabulary should have
 
 Check with the user that these seams match their expectations.
 
-4. Write the specification using the template below, then save or publish it at the resolved destination. Apply the `ready-for-agent` triage label only when publishing to the project issue tracker. For a local draft, report its path and leave the configured remote tracker unchanged.
+4. Write the specification using the template below, then save or publish it at the resolved destination. Apply the `ready-for-agent` triage label only when publishing to the project issue tracker. For a local draft, report its path and leave the configured tracker unchanged, including a local `backlog/`.
 
 <specification-template>
 

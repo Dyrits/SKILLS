@@ -88,4 +88,6 @@ Off the main flow entirely.
 
 ## Precondition
 
+Drafts under `.refinement/` can feed either a remote tracker or the local `backlog/` tracker. Explicit publication selects which artifacts become tracker records; an issue's links to working notes do not promote those notes.
+
 **`/setup-custom-skills`**: run before a tracker-dependent flow to configure the system-of-record issue tracker, optional local refinement drafts, ticket-writing convention, triage labels, and doc layout. Custom issue trackers and team ticket templates also work.

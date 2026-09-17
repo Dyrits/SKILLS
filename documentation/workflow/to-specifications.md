@@ -19,7 +19,7 @@ Reach for it when the build is too big for one agent session and has to survive 
 
 ## Prerequisites
 
-`to-specifications` needs [setup-custom-skills](../getting-started/setup-custom-skills.md) to configure the tracker, publication boundary, and triage-label vocabulary. With local refinement enabled, a sourced draft lives at `.refinement/<issue-key>/specification.md`; the remote issue remains unchanged until you explicitly ask to publish.
+`to-specifications` needs [setup-custom-skills](../getting-started/setup-custom-skills.md) to configure the tracker, publication boundary, and triage-label vocabulary. With local refinement enabled, a sourced draft lives at `.refinement/<issue-key>/specification.md`; the source issue remains unchanged until you explicitly ask to publish, whether it lives remotely or in `backlog/`.
 
 ## The specification is a decision record
 
@@ -69,7 +69,7 @@ Very large specifications can outgrow what a tracker issue will serve back clean
 - It comes back in your project's nouns, not generic product-management boilerplate.
 - Every decision in it is one you can remember making. Nothing was invented to fill a section.
 - The out-of-scope section has real things in it: the things you refused are usually the most useful lines on the page.
-- A local draft reports its path and leaves the remote tracker unchanged; a published specification appears only after an explicit publish request.
+- A local draft reports its path and leaves the configured tracker unchanged, including local `backlog/`; a published specification appears only after an explicit publish request.
 
 ## Where it fits
 
