@@ -199,3 +199,11 @@ The reusable layer other skills invoke or cite.
 - **[codebase-design](./skills/reference/codebase-design/SKILL.md)**: Shared discipline and vocabulary for designing deep modules: a lot of behaviour behind a small interface, placed at a clean seam, testable through that interface.
 - **[writing-for-agents](./skills/reference/writing-for-agents/SKILL.md)**: Writing documents for agents: skills, AGENTS.md/CLAUDE.md, and any doc an agent reaches by a pointer.
 - **[wizard](./skills/reference/wizard/SKILL.md)**: Generate an interactive bash wizard that walks a human through steps only they can perform: provisioning infrastructure, setting up credentials or CI secrets, walking an unfamiliar third-party dashboard, or running a one-off migration or cutover.
+
+### Experimental
+
+These skills take externally visible actions on pull requests, merge requests, issues, or tickets. They are available for direct installation, but are not included in the plugin while their workflows are being proven.
+
+- **[address-feedback](./skills/experimental/address-feedback/SKILL.md)**: Assess every substantive comment on a pull request, merge request, issue, or ticket; implement the approved change plan; then draft and post a reply to each comment.
+- **[publish-message](./skills/experimental/publish-message/SKILL.md)**: Post a short comment to a GitHub or GitLab pull request or merge request, or a Jira issue, leading with the reason rather than restating the diff or ticket.
+- **[publish-review](./skills/experimental/publish-review/SKILL.md)**: Publish a finished code review to the tracker as a summary comment and, on GitHub or GitLab, concretely fixable inline suggestions.
