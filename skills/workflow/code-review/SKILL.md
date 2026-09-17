@@ -10,8 +10,6 @@ Two-axis review of the diff between `HEAD` and a fixed point the user supplies:
 
 Both axes run as **parallel sub-agents** so they don't pollute each other's context, then this skill aggregates their findings.
 
-The issue tracker should have been provided to you. If `documentation/agents/issue-tracker.md` is missing, ask the user whether to run `/setup-custom-skills` now; if they decline, stop and tell them this skill needs it before continuing.
-
 ## Process
 
 ### 1. Pin the fixed point
@@ -26,10 +24,10 @@ Before going further, confirm the fixed point resolves (`git rev-parse <fixed-po
 
 Look for the originating specification, in this order:
 
-1. Issue references in the commit messages (`#123`, `Closes #45`, GitLab `!67`, etc.), fetched via the workflow in `documentation/agents/issue-tracker.md`.
+1. When `documentation/agents/issue-tracker.md` exists, issue references in the commit messages (`#123`, `Closes #45`, GitLab `!67`, etc.), fetched via the workflow it documents. When the file is missing, skip this lookup without asking the user to run setup.
 2. A path the user passed as an argument.
 3. A specification file under `documentation/`, `specifications/`, or `.scratch/` matching the branch name or feature.
-4. If nothing is found, ask the user where the specification is. If they say there isn't one, the **Specification** sub-agent will skip and report "no specification available".
+4. If nothing is found, ask the user to choose one of three paths: run `/setup-custom-skills` to configure tracker lookup, provide the specification or its path, or continue with the **Standards** axis alone. If they choose setup, tell them to run `/setup-custom-skills`, then resume specification discovery after it completes. If they choose Standards alone, skip the **Specification** sub-agent and report "no specification available".
 
 ### 3. Identify the standards sources
 

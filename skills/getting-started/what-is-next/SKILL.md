@@ -87,4 +87,4 @@ Off the main flow entirely.
 
 ## Precondition
 
-**`/setup-custom-skills`**: run before your first flow to configure the system-of-record issue tracker, optional local refinement drafts, ticket-writing convention, triage labels, and doc layout the other skills assume. Custom issue trackers and team ticket templates also work.
+**`/setup-custom-skills`**: run before a tracker-dependent flow to configure the system-of-record issue tracker, optional local refinement drafts, ticket-writing convention, triage labels, and doc layout. Custom issue trackers and team ticket templates also work.

@@ -19,7 +19,7 @@ Type `/code-review`, or the agent reaches for it automatically when you ask to r
 
 You must supply the fixed point. If you do not, the skill asks for one rather than guessing; it then checks the ref resolves and the diff is non-empty before spawning anything, so a typo'd branch name fails in front of you instead of inside two sub-agents.
 
-## Prerequisites
+## Finding the specification
 
 The Standards axis needs nothing. It reads whatever the repository documents (`CODING_STANDARDS.md`, `CONTRIBUTING.md`, and the like) and falls back on a built-in baseline when the repository documents nothing.
 
@@ -28,9 +28,9 @@ The Specification axis needs a specification to exist and be findable. It looks 
 1. Issue references in the commit messages (`#123`, `Closes #45`, a GitLab `!67`), fetched through `documentation/agents/issue-tracker.md`.
 2. A path you pass in as an argument.
 3. A specification file under `documentation/`, `specifications/`, or `.scratch/` matching the branch or feature name.
-4. Asking you.
+4. Asking you to configure tracker lookup, provide the specification, or continue with Standards alone.
 
-Step 1 depends on `documentation/agents/issue-tracker.md`, which [setup-custom-skills](../getting-started/setup-custom-skills.md) writes. Without it the axis still works if you hand it a path. With no specification at all, the Specification sub-agent is skipped and the report says "no specification available" rather than inventing requirements.
+Step 1 uses `documentation/agents/issue-tracker.md` when [setup-custom-skills](../getting-started/setup-custom-skills.md) has written it. That setup is optional for `code-review`: without the file, the skill skips automatic issue retrieval and continues through the remaining discovery routes. If those routes find nothing, you choose whether to run setup, provide a specification, or continue with Standards alone. Standards-only review skips the Specification sub-agent and reports "no specification available" rather than inventing requirements.
 
 ## The two axes
 
@@ -74,6 +74,10 @@ Because fixes create new surface, and because the judgement-call half of the Sta
 **Does it review my uncommitted work?**
 
 No. It diffs `<fixed-point>...HEAD`, three-dot, which is measured from the merge-base and excludes staged and working-tree changes. If `implement` has not made an interim commit, the work about to be committed is invisible to the review. Commit first, then review, then amend or add a fixup.
+
+**Do I have to run `/setup-custom-skills` first?**
+
+No. Setup lets `code-review` fetch an issue referenced by a commit through the repository's configured tracker, but the review itself does not depend on that configuration. Without it, pass a specification path, let the skill discover a local specification, or run the Standards axis alone.
 
 ## It's working if
 
