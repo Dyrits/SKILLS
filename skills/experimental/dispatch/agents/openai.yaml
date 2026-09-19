@@ -1,0 +1,3 @@
+interface:
+  display_name: "Dispatch"
+  short_description: "Bind a route recommendation to a subagent and dispatch"

@@ -1,0 +1,5 @@
+interface:
+  display_name: "Setup Auto-Route"
+  short_description: "Install a hook that classifies every prompt and recommends a route"
+policy:
+  allow_implicit_invocation: false
