@@ -59,7 +59,9 @@ Discover what this harness offers rather than assuming names:
 2. **The agent names it advertises.** The tool's own parameter lists the built-ins; project and user agent definitions add more. Read each name with its one-line description.
 3. **The match.** Bind on what an agent is described as doing, not on its name resembling the role. Read [SUBAGENTS.md](SUBAGENTS.md) for the known bindings per harness, where definitions live, and the agents to add when a role has no home.
 
-Where a role has no agent, walk down: **implementer-fast** and **implementer-heavy** fall back to **implementer**, **implementer** and the read-only roles fall back to the harness's general agent, and a harness with no general agent falls back to inline.
+Where an implementer tier has no agent, the machine has not been set up: run `scripts/setup-agents.sh` from this skill's directory once, which writes the missing tiers with a model pinned to each and is idempotent when they already exist. New definitions are picked up without a restart, though not instantly, so bind this turn by walking down and let the next turn get the tier.
+
+Where a role still has no agent, walk down: **implementer-fast** and **implementer-heavy** fall back to **implementer**, **implementer** and the read-only roles fall back to the harness's general agent, and a harness with no general agent falls back to inline.
 
 **Inline fallback.** Adopt the role yourself in this session, holding its constraint: a planner, an explorer or a reviewer reports and leaves the files alone.
 
@@ -67,10 +69,12 @@ Where a role has no agent, walk down: **implementer-fast** and **implementer-hea
 
 Hand the user's request **verbatim** to the bound agent, prefixed with the role's one-line brief from step 2. Paraphrasing is where the request loses the detail the agent needs.
 
+The agent starts on that prompt and the project's own instruction files, and on nothing else: none of this conversation reaches it. That is the whole reason routing happens at the **top** only. Add the working directory and any constraint the request leans on without stating (a path, a target file, a convention agreed earlier in the conversation), since verbatim text plus a brief is all the context there is.
+
 Report one line before the work starts, then the agent's result:
 
 ```
-route: code change 0.99 · large or drastic change 1.00 → build-heavy
+route: code change 0.99 · large or drastic change 1.00 → Heavy
 ```
 
-Name the fallback in that line whenever one fired (`→ inline (no delegation tool)`, `→ build (classifier unavailable, routed by judgement)`), so the route is always visible as either the classifier's or yours.
+Name the fallback in that line whenever one fired (`→ inline (no delegation tool)`, `→ General (classifier unavailable, routed by judgement)`), so the route is always visible as either the classifier's or yours.
