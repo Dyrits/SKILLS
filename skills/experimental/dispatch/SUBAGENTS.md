@@ -2,7 +2,7 @@
 
 Reached from step 2 of [`SKILL.md`](SKILL.md): what Claude Code calls its delegation tool, where its agent definitions live, and which agents to add when a role has no home. Verify against the tool's own parameter list before dispatching, since a project can rename or replace any of these.
 
-Claude Code is the only harness bound here: the `setup-auto-route` hook that feeds `dispatch` its recommendation is a Claude Code `UserPromptSubmit` hook, so no other harness has a recommendation to act on.
+Claude Code is the only harness bound here: the `setup-routing-for-claude` hook that feeds `dispatch` its recommendation is a Claude Code `UserPromptSubmit` hook, so no other harness has a recommendation to act on.
 
 ## Known bindings
 

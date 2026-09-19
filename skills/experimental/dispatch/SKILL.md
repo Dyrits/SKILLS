@@ -1,11 +1,11 @@
 ---
 name: dispatch
-description: Bind a route recommendation to the subagent that fits it, brief it, and dispatch. Use when a fresh unit of engineering work arrives (a change, a plan, an exploration, a review) before starting any of it, when a `route:` recommendation from the auto-route hook appears in context, or when the user types `/dispatch`.
+description: Bind a route recommendation to the subagent that fits it, brief it, and dispatch. Use when a fresh unit of engineering work arrives (a change, a plan, an exploration, a review) before starting any of it, when a `Route:` line from the setup-routing-for-claude hook appears in context, or when the user types `/dispatch`.
 ---
 
 # Dispatch
 
-The `setup-auto-route` hook classifies every prompt with classifier.dev before you start reasoning about it, and writes its verdict into context as a `Route:` line, but only when the verdict *changes* from the previous prompt in the session. Reading that line **before** reasoning about how to do the work is the point: reason first and the verdict bends toward whatever you already started planning, which is exactly what a hook running ahead of you is meant to prevent.
+The `setup-routing-for-claude` hook classifies every prompt with classifier.dev before you start reasoning about it, and writes its verdict into context as a `Route:` line, but only when the verdict *changes* from the previous prompt in the session. Reading that line **before** reasoning about how to do the work is the point: reason first and the verdict bends toward whatever you already started planning, which is exactly what a hook running ahead of you is meant to prevent.
 
 ## Route at the top only
 
@@ -42,7 +42,7 @@ Derive the role from the labels:
 | Codebase exploration | explorer |
 | Code review | reviewer |
 
-No line in context? The hook is either not installed (tell the user to run `setup-auto-route`) or it stayed silent: the verdict held, or it failed open. Either way, bind to **implementer** (the safe middle) or the matching read-only role by your own judgement, and say so in the report line.
+No line in context? The hook is either not installed (tell the user to run `setup-routing-for-claude`) or it stayed silent: the verdict held, or it failed open. Either way, bind to **implementer** (the safe middle) or the matching read-only role by your own judgement, and say so in the report line.
 
 ## Step 2: Bind the role to an agent
 

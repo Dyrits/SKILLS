@@ -1,10 +1,10 @@
 ---
-name: setup-auto-route
+name: setup-routing-for-claude
 description: Install a Claude Code UserPromptSubmit hook that classifies every prompt with classifier.dev and speaks only when the verdict changes, writing a route recommendation for the model to act on. Run once per repository.
 disable-model-invocation: true
 ---
 
-# Setup Auto-Route
+# Setup Routing for Claude
 
 Classification only happens if the model remembers to trigger it first, and reasoning about a task before classifying it bends the verdict toward whatever was already being planned. A `UserPromptSubmit` hook closes that gap: it runs outside the model's control, on every prompt, before any reasoning starts. It stays silent unless the verdict *changes* from the previous prompt in the session, so the `route:` line it writes into context means a boundary: work starting, ending, or shifting shape.
 

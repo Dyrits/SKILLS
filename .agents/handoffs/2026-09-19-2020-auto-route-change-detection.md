@@ -25,6 +25,10 @@ Verified live against classifier.dev: first-prompt fires, unchanged verdict sile
 
 Facts settled in session: `systemMessage` is the only `UserPromptSubmit` output field that reaches the model's context (other keys are ignored); hook output never names an agent so tier/model changes touch only `dispatch/SUBAGENTS.md`.
 
+## Late-session addition: the skill was renamed
+
+After the first commit, `setup-auto-route` was renamed to **`setup-routing-for-claude`** (directory, frontmatter `name`, `openai.yaml` display name, bucket README, both `what-is-next` mentions, and all three `dispatch` references), committed as a separate rename commit and then amended to carry this paragraph. The hook script itself is unchanged, including its filename `classify-and-route.sh`. The installed entry `~/.claude/skills/setup-auto-route` is a symlink to the old path and is now stale: re-run `scripts/link-skills.sh` to relink under the new name.
+
 ## Open items for a next session
 
 - The unexercised paths from the previous handoff remain: `planner`, `explorer`, `reviewer`, and the heavy tier have never been dispatched end to end; the hook's change-only firing has been tested by piping, not from inside a live Claude Code session.
