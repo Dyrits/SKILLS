@@ -203,8 +203,10 @@ The reusable layer other skills invoke or cite.
 
 ### Experimental
 
-These skills take externally visible actions on pull requests, merge requests, issues, or tickets. They are available for direct installation, but are not included in the plugin while their workflows are being proven.
+These skills take externally visible actions on pull requests, merge requests, issues, or tickets, or send your text to a third-party API. They are available for direct installation, but are not included in the plugin while their workflows are being proven.
 
 - **[address-feedback](./skills/experimental/address-feedback/SKILL.md)**: Assess every substantive comment on a pull request, merge request, issue, or ticket; implement the approved change plan; then draft and post a reply to each comment.
 - **[publish-message](./skills/experimental/publish-message/SKILL.md)**: Post a short comment to a GitHub or GitLab pull request or merge request, or a Jira issue, leading with the reason rather than restating the diff or ticket.
 - **[publish-review](./skills/experimental/publish-review/SKILL.md)**: Publish a finished code review to the tracker as a summary comment and, on GitHub or GitLab, concretely fixable inline suggestions.
+- **[classify](./skills/experimental/classify/SKILL.md)**: Classify text against your own labels with classifier.dev, a keyless HTTP API that returns a calibrated confidence per verdict: triage, filter or bucket many items without reading each one, or decide between named options.
+- **[route](./skills/experimental/route/SKILL.md)**: Classify an incoming request by task type and complexity, then delegate it to the subagent that fits, so a classifier picks the agent and its pinned model rather than the agent's own judgement.
