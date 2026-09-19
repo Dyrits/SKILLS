@@ -1,0 +1,5 @@
+interface:
+  display_name: "Setup Delegation Policy"
+  short_description: "Install the delegation and model routing rule into your global steering files"
+policy:
+  allow_implicit_invocation: false
