@@ -23,6 +23,7 @@
     "./skills/workflow/implement",
     "./skills/workflow/implement-all",
     "./skills/workflow/test-driven-development",
+    "./skills/workflow/to-pull-request",
     "./skills/workflow/to-specifications",
     "./skills/workflow/to-tickets",
     "./skills/getting-started/setup-custom-skills",

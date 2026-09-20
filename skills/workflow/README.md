@@ -19,3 +19,4 @@ Model- or user-reachable (rich trigger phrasing so the model can reach for them)
 
 - **[test-driven-development](./test-driven-development/SKILL.md)**: Test-driven development with a red-green-refactor loop, one vertical slice at a time.
 - **[code-review](./code-review/SKILL.md)**: Two-axis review of the diff since a fixed point: Standards and Specification, as parallel sub-agents.
+- **[to-pull-request](./to-pull-request/SKILL.md)**: Write the body of a pull or merge request: a summary visual, before/after evidence, and the merge danger.

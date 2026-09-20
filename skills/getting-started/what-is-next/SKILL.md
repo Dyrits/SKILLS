@@ -25,6 +25,8 @@ The route most work travels. You have an idea and want it built.
 
    Either way, **`/implement`** builds each issue by driving **`/test-driven-development`** internally (one red-green slice at a time), then closes out by running **`/code-review`**, a two-axis review (Standards + Specification) of the diff, before committing. Reach for **`/test-driven-development`** on its own when you just want to build a concrete behaviour test-first without a full specification, and **`/code-review`** on its own whenever you want to review a branch or PR against a fixed point.
 
+4. **The work leaves your machine.** **`/to-pull-request`** writes the body of the pull or merge request: one summary visual sized to the single point the change makes, before/after **evidence**, and the **merge danger** (a one-way or two-way door, and the blast radius). It writes the body and stops, so pushing the branch and opening the request stay yours, except under **`/implement-all`**, which opens one itself. Why the change exists comes from its **primary source**, the ticket or specification, never from reading the diff back at a reviewer who already has it open. When reviewers reply, **`/address-feedback`** (under Standalone) works the thread back.
+
 ### Context hygiene
 
 Keep steps 1–3 in **one unbroken context window** (don't compact or clear until after `/to-tickets`) so the grilling, specification, and tickets all build on the same thinking. Each `/implement` then starts fresh, working from the ticket.

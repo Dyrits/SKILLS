@@ -1,0 +1,3 @@
+interface:
+  display_name: "To Pull Request"
+  short_description: "Write a pull request body that is fast to review"

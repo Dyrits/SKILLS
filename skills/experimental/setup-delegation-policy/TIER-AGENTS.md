@@ -29,8 +29,8 @@ Confirm each id against the harness before writing it: generations move and ids 
 | Tier | `model` | `thoughtLevel` |
 | --- | --- | --- |
 | light | `glm-5.3-flash` | default |
-| balanced | `glm-5.3` | default |
-| heavy | `glm-5.3` | `high` |
+| balanced | `glm-5.3` | `high` |
+| heavy | `glm-5.3` | `max` |
 
 **Gemini CLI**, one Flash model at three thinking levels, so the levels are the ladder and the model stays fixed:
 

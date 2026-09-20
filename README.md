@@ -162,6 +162,7 @@ The idea→ship spine, in order.
 - **[implement-all](./skills/workflow/implement-all/SKILL.md)**: Implement a whole specification on one branch: works the tickets as a task graph, running implementer subagents across the ready frontier for concurrency, landing a single PR.
 - **[test-driven-development](./skills/workflow/test-driven-development/SKILL.md)**: Test-driven development with a red-green-refactor loop. Builds features or fixes bugs one vertical slice at a time.
 - **[code-review](./skills/workflow/code-review/SKILL.md)**: Two-axis review of the diff since a fixed point: **Standards** (does it follow the repository's coding standards, plus a Fowler smell baseline?) and **Specification** (does it faithfully implement the originating issue/specification?), run as parallel sub-agents so neither pollutes the other.
+- **[to-pull-request](./skills/workflow/to-pull-request/SKILL.md)**: Write the body of a pull request or merge request so a reviewer can read the change without reading the diff: one summary visual sized to the point, before/after evidence, and the merge danger (one-way or two-way door, and the blast radius).
 
 ### Shaping
 
