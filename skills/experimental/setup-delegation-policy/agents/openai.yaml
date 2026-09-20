@@ -1,5 +1,5 @@
 interface:
   display_name: "Setup Delegation Policy"
-  short_description: "Install the delegation and model routing rule into your global steering files"
+  short_description: "Install the delegation and model routing rule into your global steering files, and give each binding harness a subagent per tier"
 policy:
   allow_implicit_invocation: false
