@@ -1,6 +1,6 @@
 ---
 name: what-is-next
-description: Figure out the next move: which skill or flow fits your situation, or which boundary option (continue, clear, hand-off, compact) fits the moment. A router over the skills and flows in this repository.
+description: "Figure out the next move: which skill or flow fits your situation, or which boundary option (continue, clear, hand-off, compact) fits the moment. A router over the skills and flows in this repository."
 disable-model-invocation: true
 ---
 

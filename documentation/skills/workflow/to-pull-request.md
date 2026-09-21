@@ -13,8 +13,8 @@ Type `/to-pull-request`, or the agent reaches for it automatically when a task f
 | A branch is finished and needs a description a human can read fast | `/to-pull-request` |
 | The change is not reviewed yet | [code-review](./code-review.md) first, then this |
 | The ticket is not built yet | [implement](./implement.md), which closes out with the review |
-| The request is already open and reviewers have commented | [address-feedback](../../skills/experimental/address-feedback/SKILL.md), which is experimental |
-| The conclusion is already written and just needs posting | [publish-message](../../skills/experimental/publish-message/SKILL.md), which is experimental |
+| The request is already open and reviewers have commented | [address-feedback](../../../skills/experimental/address-feedback/SKILL.md), which is experimental |
+| The conclusion is already written and just needs posting | [publish-message](../../../skills/experimental/publish-message/SKILL.md), which is experimental |
 
 ## The summary is a shape, not a paragraph
 
@@ -60,4 +60,4 @@ No. The original proposal upstream paired a `/to-commit` with this one, so the c
 
 ## Where it fits
 
-A **chain step**, the last one before the work leaves your machine: `implement` → `code-review` → `to-pull-request`. Its neighbours are [code-review](./code-review.md), because the findings it produces are what the evidence and merge danger sections have to be honest about, and [address-feedback](../../skills/experimental/address-feedback/SKILL.md), which picks the thread back up once reviewers reply. For the whole map, see [what-is-next](../getting-started/what-is-next.md).
+A **chain step**, the last one before the work leaves your machine: `implement` → `code-review` → `to-pull-request`. Its neighbours are [code-review](./code-review.md), because the findings it produces are what the evidence and merge danger sections have to be honest about, and [address-feedback](../../../skills/experimental/address-feedback/SKILL.md), which picks the thread back up once reviewers reply. For the whole map, see [what-is-next](../getting-started/what-is-next.md).
