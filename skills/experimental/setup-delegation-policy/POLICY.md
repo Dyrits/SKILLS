@@ -24,4 +24,6 @@ Read your delegation tool's own parameter list this turn rather than assuming ag
 
 Brief what you dispatch: the request verbatim, the working directory, whatever the request leans on without stating it (a path, a target file, a convention agreed earlier), and prior artifacts by path rather than pasted in full. A subagent left to guess any of these wastes the tier you just paid for.
 
+State which agent and model handled dispatched work, before or alongside its result: name the tier, the resolved model or agent, and what it was asked to do. The user cannot see this otherwise, and cannot correct a wrong tier choice they never learned about.
+
 Delegation earns its place when the subtask is bounded and its result is verifiable: weigh the briefing you have to write, the coordination and the verification you owe against what handing it over saves. Intent, task boundaries, tier choice, integration and final verification stay yours.

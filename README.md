@@ -8,10 +8,6 @@ Developing real applications is hard. Approaches like GSD, BMAD, and Specificati
 
 These skills are designed to be small, easy to adapt, and composable. They work with any model.
 
-## Origin
-
-This repository started from [Matt Pocock's AI Hero skills](https://aihero.dev/skills). It is now independently maintained and intentionally diverges from that source, so the source website does not document the behavior of this repository.
-
 ## Installation (30-second setup)
 
 One way in: [skills.sh](https://skills.sh/Dyrits/SKILLS) copies editable skill files into your project, so you can hack on them and make them your own.
@@ -39,105 +35,17 @@ Whichever tracker you pick, drafting happens in `.refinement/` and reaches the t
 
 ### 3. Bam - you're ready to go.
 
-## Why These Skills Exist
+## Why This Fork Exists
 
-I built these skills as a way to fix common failure modes I see with Claude Code, Codex, and other coding agents.
+This repository forked from [Matt Pocock's skills](https://aihero.dev/skills) at a known commit, and diverges deliberately rather than tracking upstream, so that site does not document this repository's behavior. Upstream's naming, layout, and publication flow reflect its author's own needs; this fork reshapes them for sustained use inside a working engineering team. The full reasoning lives in [architecture decision record 0001](./documentation/architecture-decision-record/0001-maintain-as-an-independent-fork.md); the concrete differences:
 
-### #1: The Agent Didn't Do What I Want
+- **Tracker flexibility**: drafting happens in a local `.refinement/` workspace and reaches GitHub, GitLab, Jira, or plain markdown under `backlog/`, whichever you choose at setup, instead of assuming GitHub issues.
+- **Semantic bucket layout**: skills sit in `workflow/`, `shaping/`, `upkeep/`, `productivity/`, and `reference/`, so the idea-to-ship spine is readable from the directory tree.
+- **An experimental layer**: skills that post to pull requests, issues, or Jira (`address-feedback`, `publish-message`, `publish-review`) and the delegation and model routing policy install deliberately, not by default.
+- **No site coupling**: documentation lives in this repository, published through `skills.sh`; nothing depends on the upstream website.
+- **Deliberate porting**: upstream history stays reachable, but adopting an upstream change is a separate, deliberate port into this fork's structure. Deciding something is not worth porting is a normal outcome.
 
-> "No-one knows exactly what they want"
->
-> David Thomas & Andrew Hunt, [The Pragmatic Programmer](https://www.amazon.co.uk/Pragmatic-Programmer-Anniversary-Journey-Mastery/dp/B0833F1T3V)
-
-**The Problem**. The most common failure mode in software development is misalignment. You think the dev knows what you want. Then you see what they've built - and you realize it didn't understand you at all.
-
-This is just the same in the AI age. There is a communication gap between you and the agent. The fix for this is a **grilling session** - getting the agent to ask you detailed questions about what you're building.
-
-**The Fix** is to use:
-
-- [`/grill-me`](./skills/productivity/grill-me/SKILL.md) - for non-code uses
-- [`/grill-with-documentation`](./skills/workflow/grill-with-documentation/SKILL.md) - same as [`/grill-me`](./skills/productivity/grill-me/SKILL.md), but adds more goodies (see below)
-
-These are my most popular skills. They help you align with the agent before you get started, and think deeply about the change you're making. Use them _every_ time you want to make a change.
-
-### #2: The Agent Is Way Too Verbose
-
-> With a ubiquitous language, conversations among developers and expressions of the code are all derived from the same domain model.
->
-> Eric Evans, [Domain-Driven-Design](https://www.amazon.co.uk/Domain-Driven-Design-Tackling-Complexity-Software/dp/0321125215)
-
-**The Problem**: At the start of a project, devs and the people they're building the software for (the domain experts) are usually speaking different languages.
-
-I felt the same tension with my agents. Agents are usually dropped into a project and asked to figure out the jargon as they go. So they use 20 words where 1 will do.
-
-**The Fix** for this is a shared language. It's a document that helps agents decode the jargon used in the project.
-
-<details>
-<summary>
-Example
-</summary>
-
-Here's an example [`CONTEXT.md`](https://github.com/mattpocock/course-video-manager/blob/076a5a7a182db0fe1e62971dd7a68bcadf010f1c/CONTEXT.md), from my `course-video-manager` repository. Which one is easier to read?
-
-- **BEFORE**: "There's a problem when a lesson inside a section of a course is made 'real' (i.e. given a spot in the file system)"
-- **AFTER**: "There's a problem with the materialization cascade"
-
-This concision pays off session after session.
-
-</details>
-
-This is built into [`/grill-with-documentation`](./skills/workflow/grill-with-documentation/SKILL.md). It's a grilling session, but that helps you build a shared language with the AI, and document hard-to-explain decisions in architecture decision records.
-
-It's hard to explain how powerful this is. It might be the single coolest technique in this repository. Try it, and see.
-
-> [!TIP]
-> A shared language has many other benefits than reducing verbosity:
->
-> - **Variables, functions and files are named consistently**, using the shared language
-> - As a result, the **codebase is easier to navigate** for the agent
-> - The agent also **spends fewer tokens on thinking**, because it has access to a more concise language
-
-### #3: The Code Doesn't Work
-
-> "Always take small, deliberate steps. The rate of feedback is your speed limit. Never take on a task that’s too big."
->
-> David Thomas & Andrew Hunt, [The Pragmatic Programmer](https://www.amazon.co.uk/Pragmatic-Programmer-Anniversary-Journey-Mastery/dp/B0833F1T3V)
-
-**The Problem**: Let's say that you and the agent are aligned on what to build. What happens when the agent _still_ produces crap?
-
-It's time to look at your feedback loops. Without feedback on how the code it produces actually runs, the agent will be flying blind.
-
-**The Fix**: You need the usual tranche of feedback loops: static types, browser access, and automated tests.
-
-For automated tests, a red-green-refactor loop is critical. This is where the agent writes a failing test first, then fixes the test. This helps give the agent a consistent level of feedback that results in far better code.
-
-I've built a **[`/test-driven-development`](./skills/workflow/test-driven-development/SKILL.md) skill** you can slot into any project. It encourages red-green-refactor and gives the agent plenty of guidance on what makes good and bad tests.
-
-For debugging, I've also built a **[`/debug`](./skills/upkeep/debug/SKILL.md)** skill that wraps best debugging practices into a disciplined loop, gated phase by phase.
-
-### #4: We Built A Ball Of Mud
-
-> "Invest in the design of the system _every day_."
->
-> Kent Beck, [Extreme Programming Explained](https://www.amazon.co.uk/Extreme-Programming-Explained-Embrace-Change/dp/0321278658)
-
-> "The best modules are deep. They allow a lot of functionality to be accessed through a simple interface."
->
-> John Ousterhout, [A Philosophy Of Software Design](https://www.amazon.co.uk/Philosophy-Software-Design-2nd/dp/173210221X)
-
-**The Problem**: Most apps built with agents are complex and hard to change. Because agents can radically speed up coding, they also accelerate software entropy. Codebases get more complex at an unprecedented rate.
-
-**The Fix** for this is a radical new approach to AI-powered development: caring about the design of the code.
-
-This is built in to every layer of these skills:
-
-- [`/to-specifications`](./skills/workflow/to-specifications/SKILL.md) quizzes you about which modules you're touching before creating a specification
-
-And crucially, [`/improve-codebase-architecture`](./skills/upkeep/improve-codebase-architecture/SKILL.md) surveys a codebase for deepening opportunities and hands you the candidates. I recommend running it on your codebase once every few days. It is a survey, not a rescue: on a genuinely old codebase it will find real candidates, but it won't untangle the mud for you.
-
-### Summary
-
-Software engineering fundamentals matter more than ever. These skills are my best effort at condensing these fundamentals into repeatable practices, to help you ship the best apps of your career. Enjoy.
+The core skills keep upstream's intent: grilling sessions to close the alignment gap, a shared language to cut verbosity, red-green-refactor feedback loops, and daily investment in module design. What changed is the packaging around them.
 
 ## Reference
 
