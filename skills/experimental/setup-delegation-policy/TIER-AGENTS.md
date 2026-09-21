@@ -32,13 +32,13 @@ Confirm each id against the harness before writing it: generations move and ids 
 | balanced | `glm-5.3` | `high` |
 | heavy | `glm-5.3` | `max` |
 
-**Gemini CLI**, one Flash model at three thinking levels, so the levels are the ladder and the model stays fixed:
+**Gemini CLI**, Gemini 3.8 Flash (`gemini-3.8-flash`) at three thinking levels, so the levels are the ladder and the model stays fixed:
 
-| Tier | `model` (alias) | `thinkingLevel` |
+| Tier | `model` | `thinkingLevel` |
 | --- | --- | --- |
-| light | `tier-light` | `LOW` |
-| balanced | `tier-balanced` | `MEDIUM` |
-| heavy | `tier-heavy` | `HIGH` |
+| light | `gemini-3.8-flash` | `LOW` |
+| balanced | `gemini-3.8-flash` | `MEDIUM` |
+| heavy | `gemini-3.8-flash` | `HIGH` |
 
 Those aliases go in `~/.gemini/settings.json` under `modelConfigs.customAliases`, which merge over the built-ins:
 
@@ -46,10 +46,10 @@ Those aliases go in `~/.gemini/settings.json` under `modelConfigs.customAliases`
 {
   "modelConfigs": {
     "customAliases": {
-      "tier-light": {
+      "light": {
         "extends": "chat-base-3",
         "modelConfig": {
-          "model": "<current Flash id>",
+          "model": "gemini-3.8-flash",
           "generateContentConfig": { "thinkingConfig": { "thinkingLevel": "LOW" } }
         }
       }
