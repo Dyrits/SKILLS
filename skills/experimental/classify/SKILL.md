@@ -1,6 +1,7 @@
 ---
 name: classify
-description: Classify text against your own labels with classifier.dev, a keyless HTTP API that returns a calibrated confidence per verdict. Use to triage, filter, bucket or route many items instead of reading each one, to decide between named options, or when the user types `/classify <text> [option, option, option]`.
+description: Classify text against your own labels with a calibrated confidence per verdict. Use to triage, filter, bucket, or route many items instead of reading each one.
+argument-hint: "<text> [option, option, option]"
 ---
 
 # Classify

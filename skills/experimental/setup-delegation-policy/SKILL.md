@@ -1,6 +1,6 @@
 ---
 name: setup-delegation-policy
-description: Install the delegation and model routing rule into the global steering files on this machine, and give OpenCode one subagent per tier, so every session decides where a task runs and on which model tier. Run once per machine, and again to re-sync after the rule changes.
+description: Install the delegation and model routing rule into the global steering files on this machine.
 disable-model-invocation: true
 ---
 

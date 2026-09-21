@@ -1,6 +1,6 @@
 ---
 name: publish-message
-description: Post a short comment to a GitHub or GitLab pull/merge request, or a Jira issue, leading with the why rather than restating the diff or ticket; asks whether to mark it "[AI]".
+description: Post a short comment to a GitHub or GitLab pull/merge request, or a Jira issue.
 disable-model-invocation: true
 argument-hint: "Optional: where to post, and what to say"
 ---

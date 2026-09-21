@@ -1,6 +1,6 @@
 ---
 name: address-feedback
-description: Assess comments on a pull request, merge request, issue, or ticket; propose a disposition and change plan; implement the approved changes; then draft and post a reply to every substantive comment.
+description: Assess comments on a pull request, merge request, issue, or ticket; propose a disposition and change plan; then implement and reply.
 disable-model-invocation: true
 argument-hint: "PR, MR, issue, or ticket reference"
 ---

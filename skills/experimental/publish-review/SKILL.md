@@ -1,6 +1,6 @@
 ---
 name: publish-review
-description: Publish a finished /code-review report to the tracker, cross-cutting and judgement-call findings as one "[AI]"-prefixed summary comment, concretely fixable findings as inline suggested changes on GitHub or GitLab.
+description: Publish a finished code review report to the tracker, with cross-cutting findings as a summary and fixable findings as inline suggestions.
 disable-model-invocation: true
 argument-hint: "Optional: where to post"
 ---
