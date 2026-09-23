@@ -28,3 +28,7 @@ Work moving across session boundaries.
 ### User-invoked
 
 - **[teach](./teach/SKILL.md)**: Teach the user a new skill or concept over multiple sessions, using the current directory as a stateful teaching workspace.
+
+### Model-invoked
+
+- **[optimize-process](./optimize-process/SKILL.md)**: Map and improve a recurring process, including agent work and human review in practical impact estimates.

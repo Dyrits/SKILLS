@@ -1,0 +1,3 @@
+interface:
+  display_name: "Optimize Process"
+  short_description: "Improve a recurring process with agent-aware impact estimates"

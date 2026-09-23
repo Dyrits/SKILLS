@@ -93,12 +93,18 @@ Keep the codebase and issue list healthy; generates work for the flow.
 
 Human-facing workflows you run, not about code.
 
+#### User-invoked
+
 - **[grill-me](./skills/productivity/grill-me/SKILL.md)**: Get relentlessly interviewed about a plan or design until every branch of the design tree is resolved.
 - **[ask-someone-else](./skills/productivity/ask-someone-else/SKILL.md)**: Turn a decision you can't answer alone into a Markdown questionnaire for the one person who can, filled in async, or together over a meeting. It grills you about the send (who it's for, what you need back), not the subject.
 - **[wait-what](./skills/productivity/wait-what/SKILL.md)**: Fire this the moment a message doesn't land. The agent re-pitches it with the context you were missing, in plain English, using your `CONTEXT.md` vocabulary.
 - **[hand-off](./skills/productivity/hand-off/SKILL.md)**: Compact the current conversation into a versioned handoff document in `.agents/handoffs/`.
 - **[take-over](./skills/productivity/take-over/SKILL.md)**: Resume work from the latest handoff in `.agents/handoffs/`, following the supersedes chain deeper only when needed.
 - **[teach](./skills/productivity/teach/SKILL.md)**: Teach the user a new skill or concept over multiple sessions, using the current directory as a stateful teaching workspace.
+
+#### Model-invoked
+
+- **[optimize-process](./skills/productivity/optimize-process/SKILL.md)**: Map and improve a recurring process, with practical impact estimates that account for agent work and human review.
 
 ### Reference
 
