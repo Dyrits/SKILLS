@@ -89,6 +89,8 @@ Off the main flow entirely.
 - **`/wait-what`** is the corrective for a message that didn't land. Use it mid-conversation, inside any other skill, and the agent re-pitches what it just said with the context you were missing, in plain English, using the `CONTEXT.md` vocabulary. It works after the fact; `/grill-with-documentation` is the upfront cure, because a shared language agreed early is what stops the jargon arriving at all.
 - **`/teach`**: learn a concept over multiple sessions, using the current directory as a stateful workspace.
 - **`/writing-for-agents`** is the reference for writing documents agents consume: skills, AGENTS.md, pointed-at docs.
+- **`/documentation`** writes and maintains technical documentation such as README files, API references, runbooks, architecture documents, and onboarding guides. Use `/writing-for-agents` alongside it when the document instructs agents.
+- **`/unslop`** applies to all writing. It preserves meaning and tone while removing recurring language and structure patterns.
 
 ## Precondition
 
