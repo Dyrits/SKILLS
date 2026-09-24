@@ -8,4 +8,4 @@ The reusable layer other skills invoke or cite: shared vocabulary and primitives
 - **[documentation](./documentation/SKILL.md)**: Write and maintain technical documentation for README files, API references, runbooks, architecture documents, and onboarding guides.
 - **[writing-for-agents](./writing-for-agents/SKILL.md)**: How to write any document an agent consumes: skills, AGENTS.md/CLAUDE.md, docs reached by a pointer.
 - **[wizard](./wizard/SKILL.md)**: Generate an interactive bash wizard that walks a human through steps only they can perform.
-- **[unslop](./unslop/SKILL.md)**: Edit writing to remove AI patterns while preserving its meaning and tone.
+- **[unslop](./unslop/SKILL.md)**: Edit writing in any language to remove AI patterns while preserving its meaning and tone.

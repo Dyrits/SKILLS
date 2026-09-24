@@ -20,7 +20,7 @@ Match the work to a tier:
 | Heavy | Opus | Sol |
 | Frontier | Fable | Astra |
 
-Read your delegation tool's own parameter list this turn rather than assuming agent names: generations move and harnesses differ, so trust the names it offers over the table. If it takes a per-call model override, pass the tier to it; otherwise pick the agent whose description matches. Where the tier is a session-level setting rather than a per-call one (Codex sets model and reasoning effort for the whole session), name the tier the work wants and leave the switch to the user.
+Read your delegation tool's parameter list this turn rather than assuming agent names or model controls: generations move and harnesses differ, so trust the choices it offers over the table. If a spawn tool offers a per-call model override, select the available model for the tier and pass its exact identifier. Otherwise pick the tier agent whose description matches. When no delegation tool is available, carry out the work here and name the tier the work would need if delegation becomes available.
 
 Brief what you dispatch: the request verbatim, the working directory, whatever the request leans on without stating it (a path, a target file, a convention agreed earlier), and prior artifacts by path rather than pasted in full. A subagent left to guess any of these wastes the tier you just paid for.
 

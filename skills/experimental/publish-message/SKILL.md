@@ -5,7 +5,7 @@ disable-model-invocation: true
 argument-hint: "Optional: where to post, and what to say"
 ---
 
-Publish something already decided in this conversation (a review finding, a decision, an answer) as a comment on a GitHub/GitLab pull or merge request, or a Jira issue. Posting is the whole job: it never re-runs the review or re-derives the point, it only externalises what's already been concluded. For a full `/code-review` report specifically, prefer [publish-review](../publish-review/SKILL.md), which calls this skill for the summary and adds inline suggested changes on top.
+Publish something already decided in this conversation (a review finding, a decision, an answer) as a comment on a GitHub/GitLab pull or merge request, or a Jira issue. Posting is the whole job: it never re-runs the review or re-derives the point, it only externalises what's already been concluded. For a full `/code-review` report specifically, prefer [publish-review](../publish-review/SKILL.md), which approves and publishes the summary and inline suggestions together.
 
 `documentation/agents/issue-tracker.md`, when present, records the verified posting mechanism per tracker and saves re-deriving it. It is not required: resolve the target and posting mechanism directly (steps 1-2) when it's missing or silent on the resolved target.
 
@@ -34,6 +34,6 @@ Otherwise resolve it directly instead of stopping: prefer an available MCP tool 
 
 ### 4. Ask about the prefix, confirm, then publish
 
-Ask whether to post with the `[AI] ` prefix or without it, unless the caller already decided: a skill invoking this one for a specific need (`publish-review`'s summary always carries it) hands you that answer directly, and this question is skipped.
+Ask whether to post with the `[AI] ` prefix or without it, unless the caller already decided.
 
 Show the drafted message, prefixed or not per that answer, and get a go-ahead before posting, even though the user invoked this skill themselves: publishing is visible to other people and hard to undo. Skip both questions only when the user already gave you the literal text to post verbatim. Revise on request, then publish through the mechanism from step 2 and report back the comment's URL or reference. Done when the comment is live in the form the user chose, and the user saw it, or dictated it verbatim, before it posted.

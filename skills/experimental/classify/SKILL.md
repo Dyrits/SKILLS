@@ -8,7 +8,7 @@ argument-hint: "<text> [option, option, option]"
 
 Hand the text and the labels to the classifier and take its **verdict**. The classifier decides, not your own reading: that is what makes the answer reproducible across runs and its **confidence** worth anything.
 
-The text leaves the machine for a third-party API, so classify what you would paste into a public form.
+The text leaves the machine for a third-party API, so send only text you would paste into a public form. If the input contains secrets or private information, classify locally against the same labels and mark the verdict as your judgement, or ask for redacted input when an API verdict is essential.
 
 ## Step 1: Fix the labels
 
@@ -30,13 +30,13 @@ One `POST https://classifier.dev`, `content-type: application/json`, no authenti
 
 Optional on any of them: `instructions` (criteria), `tier` (`fast` by default; `smart` costs a much lower rate limit and is for genuinely nuanced calls), `multi` with `max_labels` (return every applicable label rather than one).
 
-Send it through one bash command with the text single-quoted, escaping each `'` in the text as `'\''`. Batch in one request rather than looping one call per item.
+Serialize the body with a JSON encoder and pass it to `curl` on standard input using `--data-binary @-`. Keep the input text out of the shell command string so quotes and command substitutions remain data. Batch in one request rather than looping one call per item.
 
-Read `results[i].label` and `results[i].confidence`. Under `dimensions` the verdicts nest one level deeper, as `results[i].dimensions.<name>.label`.
+Read `results[i].label` and `results[i].confidence`. Under `dimensions` read each `results[i].dimensions.<name>.label` and its corresponding `confidence`.
 
 Limits worth knowing before the call: 32,000 characters per text, 1,000 texts, 20 dimensions, and 1,000 total decisions (texts multiplied by dimensions) per request. Free tier allows 3,000 calls a minute and 20,000 a day.
 
-On an error response (`{"error":…,"code":…}`) or a network failure, say the classifier was unavailable and classify by your own judgement against the same labels, flagged as your judgement. A `429` carries `Retry-After`: one retry after that delay when the wait is seconds, otherwise fall through to judgement.
+On an error response (`{"error":…,"code":…}`) or a network failure, say the classifier was unavailable and classify by your own judgement against the same labels, flagged as your judgement and without a fabricated confidence. A `429` carries `Retry-After`: one retry after that delay when the wait is seconds, otherwise fall through to judgement.
 
 ## Step 3: Report the verdict
 

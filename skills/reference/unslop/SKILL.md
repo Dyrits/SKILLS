@@ -1,6 +1,6 @@
 ---
 name: unslop
-description: Cut AI tells from any writing. Must always apply.
+description: Cut AI tells from writing in any language. Must always apply.
 ---
 
 # Unslop
@@ -10,7 +10,7 @@ Edit text to remove AI patterns.
 ## Process
 
 1. Scan for the patterns below.
-2. Rewrite. Preserve meaning, match intended tone.
+2. Rewrite in the text's language. Preserve meaning, intended tone, and that language's usual punctuation. Apply the patterns by meaning rather than translating the English examples literally.
 3. Self-audit: "What makes this obviously AI generated?" Fix remaining tells.
 
 ## Patterns to detect and fix
@@ -37,9 +37,9 @@ Rule numbers are stable ids that other skills cite. A removed rule leaves a gap.
 14. **Colon overuse.** Colons are fine before a list or example. Not as mid-sentence connectors. "If you're coming from traditional automation: instead of registering event handlers, you describe conditions" adds nothing with the colon. Rewrite to let the point stand on its own without comparison framing. "Describing when the scheduler should fire works best as plain English." Same meaning, no crutch punctuation.
 15. **Boldface overuse.** Don't bold every proper noun or acronym.
 16. **Inline-header lists.** The tell is a bold label and colon that restates the line: "**Performance:** Performance improved...". Convert those to prose. A bold lead-in that ends in a period, names the item, and is followed by genuinely new detail ("**Schema in TypeScript.** Tables live in one file.") is fine, not a tell.
-17. **Title case headings.** Use sentence case.
+17. **Title case headings.** Where the language uses title case, use sentence case.
 18. **Decorative emojis.** Remove from headings and bullets.
-19. **Curly quotes.** Replace with straight quotes.
+19. **Curly quotes.** In English, replace them with straight quotes. In other languages, follow the usual quotation marks of the text's language.
 
 ### Communication artifacts
 

@@ -1,6 +1,6 @@
 ## What it does
 
-`/unslop` edits writing to remove patterns that make it sound AI-generated. It preserves the meaning and intended tone, then checks the revision for patterns that remain.
+`/unslop` edits writing in any language to remove patterns that make it sound AI-generated. It preserves the meaning and intended tone, then checks the revision for patterns that remain.
 
 ## When to reach for it
 
@@ -14,6 +14,9 @@ The skill checks content, wording, style, filler, and vague claims. It replaces 
 
 **Does it change the point I am making?**
 It should preserve the point and the intended tone. Review any revision that changes a technical claim or removes a useful distinction.
+
+**Does it work outside English?**
+Yes. The examples in the skill are English, but the editing pass follows the source language and applies each pattern by meaning rather than translating the examples.
 
 ## It's working if
 

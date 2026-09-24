@@ -2,7 +2,7 @@
 
 One agent per tier, each file named for the tier it serves: `light`, `balanced`, `heavy`, `frontier`. The name is the whole routing mechanism, so it has to be the policy's word and nothing near it.
 
-Run this once per harness present, skipping any whose agent directory does not exist. For a harness not in the table, read its own documentation first: where subagents live, and whether its delegation tool takes a model parameter.
+Run this once per model-per-agent harness present, skipping any whose agent directory does not exist. For a harness not in the table, inspect its delegation tool first. A per-call model override needs no tier agent files.
 
 ## Where each harness keeps them
 

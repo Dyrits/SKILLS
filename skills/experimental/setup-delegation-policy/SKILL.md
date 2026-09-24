@@ -39,7 +39,9 @@ Report one line per file: written, re-synced, or absent.
 
 ### 3. Give each binding harness an agent per tier
 
-Some harnesses bind a model per named agent instead of taking a model on the delegation call, and there the tier **is** the agent: a tier with no agent named after it is a tier the policy cannot reach, so installing the rule alone installs something unfollowable. OpenCode, ZCode and Gemini CLI all work this way. Claude Code needs none of it, because its per-call `model` override outranks any agent definition, and Codex has no delegation tool to point at.
+Inspect the delegation tool available in each harness. A tool such as Codex's `spawn_agent` can take a per-call model override, so use its current model list and no tier agent files. A harness with no delegation tool can still follow the policy's decision about where work belongs, but it cannot spawn a subagent in that session.
+
+Some harnesses bind a model per named agent instead of taking a model on the delegation call, and there the tier **is** the agent: a tier with no agent named after it is a tier the policy cannot reach. OpenCode, ZCode and Gemini CLI use tier agent files. Claude Code uses its per-call model override.
 
 For each such harness present, follow [TIER-AGENTS.md](TIER-AGENTS.md) and write one agent file per tier. Only OpenCode's ladder is chosen live, by reading the catalogue and asking: it carries several providers and rotates. ZCode's and Gemini's are pre-defined there, so writing them is the whole job.
 
@@ -47,7 +49,7 @@ For each such harness present, follow [TIER-AGENTS.md](TIER-AGENTS.md) and write
 
 The policy tells the agent to find its own lever at runtime, so do not restate it. Report instead what the policy cannot know, the configuration as it stands today:
 
-- Which delegation tool each harness exposes, and whether it takes a per-call model override.
+- Which delegation tool each harness exposes in this session, and whether it takes a per-call model override. For Codex, report the available spawn tool and model choices, or state that this session exposes no spawn tool.
 - Which model each tier resolved to, and what that tier costs per million tokens.
 - Any tier a harness cannot carry, named, with what its ceiling is instead.
 - What `agent.*.model` in `~/.config/opencode/opencode.json` binds the built-in agents to: which of them share one model, whether a read-only agent such as `explore` sits above Light, and whether the default primary agent `build` is bound at all or left on the top-level `model`.

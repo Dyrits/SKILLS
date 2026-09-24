@@ -5,9 +5,9 @@ disable-model-invocation: true
 argument-hint: "Optional: where to post"
 ---
 
-Publish a `/code-review` report that already ran in this conversation. It never re-reviews the diff: the finished two-axis report is the input, and the whole job is deciding, per finding, whether it becomes an inline suggested change or a line in the summary, then posting both.
+Publish a `/code-review` report that already ran in this conversation. The finished two-axis report is the input. Assign each finding to an inline suggestion or the summary, approve the complete publication, then post it.
 
-It needs [publish-message](../publish-message/SKILL.md) installed alongside it: this skill calls it for the summary comment and depends on it for tracker resolution and its drafting rules (step 3 of that skill). Installing `publish-review` alone gets you a skill that cannot post its summary. Those same drafting rules, including the target's language, apply here too, to the one-sentence why on every inline suggestion.
+Use the target resolution and drafting rules in [publish-message](../publish-message/SKILL.md) when it is installed. This skill handles publication itself so that the summary and inline suggestions receive one approval before either becomes visible.
 
 ## Process
 
@@ -20,16 +20,24 @@ For every finding across both axes:
 
 When in doubt, summary. A wrong suggested change is worse than a described one: the reader can act on a wrong description by disagreeing with it, but a wrong suggestion invites a wrong one-click accept. Done when every finding from the report sits in exactly one of the two buckets.
 
-### 2. Post the summary
+### 2. Draft the complete publication
 
-Call the Skill tool with `publish-message`, handing it the target, everything sorted into "Summary" in step 1, and an explicit instruction to post with the `[AI]` prefix: one short paragraph per finding leading with the why, not a restatement of the finding text, plus a closing line naming how many inline suggestions ride alongside it (`+ N inline suggestions on the diff`), so the two land reading as one review. A review's provenance is never optional, so this skips `publish-message`'s own prefix question; its confirmation before posting still applies. Let `publish-message` own drafting, confirmation, and posting for this part entirely; don't re-implement any of it here.
+Resolve the target and posting mechanism, preferring an available tracker MCP tool over a CLI. Read the target's title and description to match its language. Draft an `[AI]`-prefixed summary with one short paragraph per summary finding, each leading with the reason rather than restating the finding. When there are inline suggestions, end with `+ N inline suggestions on the diff`, where N is the number drafted and ready to post.
 
-### 3. Draft the inline suggestions
+For each inline finding, draft one comment at its file and line: `[AI] ` plus one sentence of why, then a fenced `suggestion` block holding the corrected line(s) on GitHub or the platform's suggestion syntax on GitLab. Check that each replacement applies to the current diff. Jira and reviews with no inline findings need only the summary.
 
-Skip this step and step 4 entirely on Jira, or when nothing sorted into "Inline suggestion".
+Done when the summary and every inline suggestion are exact, destination-specific drafts and their count agrees.
 
-For each inline finding, one comment at its file and line: `[AI] ` plus one sentence of why, then a fenced ` ```suggestion ` block holding the corrected line(s) (GitHub's syntax) or the platform's suggestion syntax (GitLab). Post through the tracker's pull/merge request **review** flow, not a plain issue comment: an available MCP tool's pending-review workflow (create the review, add each line comment, submit) is preferred; fall back to the CLI (`gh pr review`, `glab mr` note-with-position) or the platform UI where no MCP tool covers it. Done when every inline finding has a drafted comment carrying the `[AI] ` prefix, a one-sentence why, and a correct fenced suggestion block.
+### 3. Approve the complete publication
 
-### 4. Confirm, then publish the suggestions
+Show the exact summary and every inline suggestion with its file, line, reason, and replacement. Ask for one go-ahead covering the complete set before posting anything. Revise the drafts and show the changed set again when requested.
 
-Show every drafted inline suggestion (file, line, the one-sentence why, the replacement) before posting any of them. This is a second, separate confirmation from `publish-message`'s own in step 2: a suggestion proposes a code change, which needs its own look even after the summary is already approved. Publish everything confirmed as one review submission where the tracker supports batching, rather than one notification per comment. Done when every confirmed suggestion is live and nothing posted before the user saw it.
+Done when the user has approved the exact summary and every suggestion to publish.
+
+### 4. Publish and verify
+
+Where the tracker supports a review body and inline suggestions in one submission, publish the approved summary as the review body and the suggestions as its inline comments. Prefer an available MCP tool's pending-review workflow; otherwise use a verified CLI or platform UI. Submit only after the full review matches the approved drafts.
+
+Where one submission cannot hold both, post the approved inline suggestions first, batching them when the tracker allows it. Verify their destinations and count before posting the summary as a separate comment. If any suggestion fails, report the partial result and stop. Revise the summary and seek approval again if its promised count or wording must change. On Jira or when there are no inline suggestions, post only the approved summary.
+
+Report the published comment and review URLs or references. Done when every approved item is live at the intended destination and any count in the published summary matches the inline suggestions actually posted.
