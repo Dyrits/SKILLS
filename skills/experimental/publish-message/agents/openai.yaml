@@ -1,5 +1,5 @@
 interface:
   display_name: "Publish Message"
-  short_description: "Post a short [AI]-prefixed comment to a PR, MR, or Jira issue"
+  short_description: "Publish a short comment after the user approves its final text"
 policy:
   allow_implicit_invocation: false

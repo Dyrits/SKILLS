@@ -22,15 +22,21 @@ When in doubt, summary. A wrong suggested change is worse than a described one: 
 
 ### 2. Draft the complete publication
 
-Resolve the target and posting mechanism, preferring an available tracker MCP tool over a CLI. Read the target's title and description to match its language. Draft an `[AI]`-prefixed summary with one short paragraph per summary finding, each leading with the reason rather than restating the finding. When there are inline suggestions, end with `+ N inline suggestions on the diff`, where N is the number drafted and ready to post.
+Resolve the target and posting mechanism, preferring an available tracker MCP tool over a CLI. Read the target's title and description to match its language. Draft a summary with one short paragraph per summary finding, each leading with the reason rather than restating the finding. When there are inline suggestions, end with `+ N inline suggestions on the diff`, where N is the number drafted and ready to post.
 
-For each inline finding, draft one comment at its file and line: `[AI] ` plus one sentence of why, then a fenced `suggestion` block holding the corrected line(s) on GitHub or the platform's suggestion syntax on GitLab. Check that each replacement applies to the current diff. Jira and reviews with no inline findings need only the summary.
+For each inline finding, draft one comment at its file and line: one sentence of why, then a fenced `suggestion` block holding the corrected line(s) on GitHub or the platform's suggestion syntax on GitLab. Check that each replacement applies to the current diff. Jira and reviews with no inline findings need only the summary.
+
+Write in the user's voice.
+Call the Skill tool with `unslop` to clean the complete summary and inline comments when that skill is available; otherwise remove AI language patterns without changing their meaning or tone.
 
 Done when the summary and every inline suggestion are exact, destination-specific drafts and their count agrees.
 
 ### 3. Approve the complete publication
 
-Show the exact summary and every inline suggestion with its file, line, reason, and replacement. Ask for one go-ahead covering the complete set before posting anything. Revise the drafts and show the changed set again when requested.
+Show the destination, exact summary, and every inline suggestion with its file, line, reason, and replacement.
+Ask the user to confirm publication of the complete set under their responsibility, and wait for explicit approval before posting anything.
+If the user already approved this exact final set and destination, use that approval.
+After any revision, show the changed set and obtain approval again.
 
 Done when the user has approved the exact summary and every suggestion to publish.
 

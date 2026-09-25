@@ -32,8 +32,14 @@ Otherwise resolve it directly instead of stopping: prefer an available MCP tool 
 - As short as the why allows. No greeting, no restating the finding, no closing filler.
 - One paragraph for one point. If there are genuinely separate points, one short paragraph per point, not a bulleted restatement of the diff.
 
-### 4. Ask about the prefix, confirm, then publish
+Write the comment in the user's voice.
+Call the Skill tool with `unslop` to clean the complete draft when that skill is available; otherwise remove AI language patterns without changing its meaning or tone.
 
-Ask whether to post with the `[AI] ` prefix or without it, unless the caller already decided.
+### 4. Confirm, then publish
 
-Show the drafted message, prefixed or not per that answer, and get a go-ahead before posting, even though the user invoked this skill themselves: publishing is visible to other people and hard to undo. Skip both questions only when the user already gave you the literal text to post verbatim. Revise on request, then publish through the mechanism from step 2 and report back the comment's URL or reference. Done when the comment is live in the form the user chose, and the user saw it, or dictated it verbatim, before it posted.
+Show the exact final message and its destination, and ask the user to confirm publication under their responsibility.
+Wait for explicit approval of that text and destination before posting, including when the user supplied the text verbatim.
+If the user already approved this exact final text and destination, use that approval.
+After any revision, show the updated message and obtain approval again.
+Publish the approved text through the mechanism from step 2 and report the comment's URL or reference.
+Done when the approved comment is live at the approved destination.
