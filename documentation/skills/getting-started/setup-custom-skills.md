@@ -6,7 +6,7 @@ The tracker question has exactly two shapes, local markdown in this repository o
 
 Those files are the only thing that varies between repositories. The skills themselves are identical everywhere; they read `documentation/agents/issue-tracker.md` at run time and do what it says. That is why the set is not tied to GitHub, and why no skill file ever needs editing to point it somewhere else. Invoking it with "link the skills to a custom issue tracker" works with anything you can connect to programmatically, with zero changes to the skills.
 
-It is a prompt-driven skill, not a deterministic script. It reads your `git remote`, your existing `CLAUDE.md`, your existing `CONTEXT.md`, proposes what it found, and waits for you to confirm before writing anything.
+It is a prompt-driven skill, not a deterministic script. It reads your `git remote`, your existing `CLAUDE.md`, your existing `GLOSSARY.md`, proposes what it found, and waits for you to confirm before writing anything.
 
 ## When to reach for it
 
@@ -37,7 +37,7 @@ It leads each section with the recommended answer, and skips whatever exploratio
 | **Issue tracker** | local markdown when there is no remote, otherwise the tracker matching your `git remote` | always: this is the one real choice |
 | **Ticket writing** | use an existing issue template or ticket skill when one is found, with the built-in format as fallback | always, after it inspects the repository and available skills |
 | **Triage roles** | keep the canonical strings (`bug`, `enhancement`, `to-evaluate`, `on-hold`, `ready`, `not-planned`) | only if the `triage` skill is installed |
-| **Domain documentation** | single-context: one `CONTEXT.md` plus `documentation/architecture-decision-record/` at the root | only if it spots monorepo signals, and then it offers a multi-context `CONTEXT-MAP.md` |
+| **Domain documentation** | single-context: one `GLOSSARY.md` plus `documentation/architecture-decision-record/` at the root | only if it spots monorepo signals, and then it offers a multi-context `GLOSSARY-MAP.md` |
 
 The tracker is either local or remote:
 
@@ -115,4 +115,4 @@ One long-standing complaint says yes, in these words: *"having a skill to set up
 
 ## Where it fits
 
-`setup-custom-skills` is the **run-once setup** for the engineering flow, the precondition everything else assumes rather than a step in the chain. Its neighbours are its readers: [triage](../upkeep/triage.md), which applies the role vocabulary written here; [to-specifications](../workflow/to-specifications.md) and [to-tickets](../workflow/to-tickets.md), which draft and publish across the boundary written here; and [wayfinder](../shaping/wayfinder.md), which reads the "Wayfinding operations" section of the same tracker file to know how maps and child tickets are stored. The domain documentation layout it records is the one [domain-modeling](../reference/domain-modeling.md) fills in later: it creates `CONTEXT.md` and architecture decision records lazily, when a term or decision actually gets resolved, so an empty repository after setup is the expected state. For which skill to reach for next, [what-is-next](./what-is-next.md) routes the whole set.
+`setup-custom-skills` is the **run-once setup** for the engineering flow, the precondition everything else assumes rather than a step in the chain. Its neighbours are its readers: [triage](../upkeep/triage.md), which applies the role vocabulary written here; [to-specifications](../workflow/to-specifications.md) and [to-tickets](../workflow/to-tickets.md), which draft and publish across the boundary written here; and [wayfinder](../shaping/wayfinder.md), which reads the "Wayfinding operations" section of the same tracker file to know how maps and child tickets are stored. The domain documentation layout it records is the one [domain-modeling](../reference/domain-modeling.md) fills in later: it creates `GLOSSARY.md` and architecture decision records lazily, when a term or decision actually gets resolved, so an empty repository after setup is the expected state. For which skill to reach for next, [what-is-next](./what-is-next.md) routes the whole set.

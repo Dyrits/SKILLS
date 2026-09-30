@@ -14,6 +14,7 @@ Upstream's naming, bucket layout, and AI Hero coupling reflect Matt Pocock's own
 - Upstream history is kept **reachable rather than tracked**: `upstream/main` is periodically merged with git's `ours` strategy, which records it as an ancestor and changes no file, so `origin/main` never reads as behind. That merge adopts nothing; it only closes the gap the branch comparison reports.
 - Adopting an upstream change is a separate, deliberate commit that reads the diff and ports it into this fork's buckets, names, invocation split, and language conventions. Rebasing onto upstream, and merging for content rather than for ancestry, both stay out. Deciding an upstream change is not worth porting is a normal outcome of a synchronisation, not a failure of one.
 - Upstream material that lands after the fork point and is not ported, a changeset for a skill this fork renamed for instance, joins the byte-for-byte archives under `.upstream/` on the same terms as the fork-point archives above, rather than being dropped.
+- Subsequent ports record their base, tip, path mapping, and retained fork decisions under `.upstream/sync/`, with changed upstream distribution material captured under `.upstream/snapshots/<upstream-tip>/`. Earlier archives remain frozen; snapshots retain upstream branding and prose byte for byte. See [the upstream archive index](../../.upstream/README.md).
 
 ## What changed, `f85ffd7`..`b9e7f0a`
 

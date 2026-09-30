@@ -54,11 +54,11 @@ Correct, and expected. `implement` has no completion step. It ends at the commit
 
 **Can I point it at all my tickets at once, or run several in parallel?**
 
-No. One invocation, one ticket. Batch dispatch across a ticket queue and subagent fan-out are both requested repeatedly, and neither exists. Running several `/implement` sessions side by side in one checkout is worse than unsupported: one field report describes a `git commit --amend` in one session landing on another session's commit, a stash vanishing from `refs/stash`, and commits landing on the wrong branch, all in a single afternoon across three issues. The sessions share one working directory, one index, and one HEAD. Git worktrees are the community workaround, and note that `refs/stash` is shared across worktrees too, so worktrees alone do not fix the stash case. If you want parallelism today, you are assembling it yourself.
+`implement` covers one ticket per invocation. For a whole specification in one run, [implement-all](./implement-all.md) dispatches implementers in separate worktrees and merges completed tickets onto one integration branch. Running several `/implement` sessions side by side in one checkout is worse than unsupported: one field report describes a `git commit --amend` in one session landing on another session's commit, a stash vanishing from `refs/stash`, and commits landing on the wrong branch, all in a single afternoon across three issues. The sessions share one working directory, one index, and one HEAD. Git worktrees are the community workaround, and note that `refs/stash` is shared across worktrees too, so worktrees alone do not fix the stash case. Use `implement-all` for orchestrated parallel work instead of sharing one checkout between sessions.
 
 **Can it open a pull request instead of committing?**
 
-Not built in. It commits straight to the current branch, which several people find too eager: the code lands before they have had a chance to verify it works. There is no configuration flag and no PR mode. People override it in the invocation ("commit to a branch and open a PR") or by editing their local copy of the skill.
+Not built in. It commits straight to the current branch, which several people find too eager: the code lands before they have had a chance to verify it works. There is no configuration flag and no PR mode. People override it in the invocation ("commit to a branch and open a PR") or by editing their local copy of the skill. [to-pull-request](./to-pull-request.md) supplies the body when the agent writes one.
 
 **`code-review` says it cannot see my changes.**
 
@@ -84,10 +84,10 @@ Probably the ticket is too big rather than the skill being misused. A run does c
 
 ## Where it fits
 
-`implement` is the build step of the main chain, second from the end:
+`implement` is the build step of the main chain:
 
 ```txt
-grill-with-documentation → to-specifications → to-tickets → implement → code-review
+grill-with-documentation → to-specifications → to-tickets → implement → code-review → improve-agent-environment
 ```
 
 Its neighbours are [to-tickets](./to-tickets.md), which produces the tickets it consumes and declares the blocking edges that decide their order; [test-driven-development](./test-driven-development.md), which it drives internally at each seam; and [code-review](./code-review.md), which it runs before committing. It sits downstream of the planning skills and trusts them. It does not re-validate the shape of what it was handed, so a badly-structured map or a horizontally-layered ticket gets built as written.

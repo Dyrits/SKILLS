@@ -28,7 +28,7 @@ That last row is a real hole, not a stylistic preference. The skill decides *whe
 
 Three words carry this skill.
 
-**Red-green.** Write the failing test, then only enough code to pass it. No anticipating the test after next. There is no refactor phase: it was dropped in June 2026 because agents essentially never performed it, and because review and implementation work better as separate sessions. Refactoring belongs to [code-review](./code-review.md).
+**Red-green.** Write the failing test, then only enough code to pass it. No anticipating the test after next. There is no refactor phase: it was dropped in June 2026 because agents essentially never performed it, and because review and implementation work better as separate sessions. [code-review](./code-review.md) can recommend refactoring through its smell baseline; applying those recommendations requires an implementation step.
 
 **Vertical slice.** One seam, one test, one minimal implementation, then repeat, the first cycle being a **tracer bullet** that proves a single path end to end. The opposite is horizontal slicing: all the tests first, then all the code. Bulk tests verify *imagined* behaviour, they check the shape of things rather than what a user does, and they commit you to a test structure before you understand the implementation.
 
@@ -48,7 +48,7 @@ Mocks are for system boundaries only: external APIs, time, randomness, sometimes
 
 **Why doesn't it refactor? The description says "red-green-refactor".**
 
-Because the refactor step was removed and the description was not. The removal was deliberate: agents essentially never did it, and keeping implementation and review in separate sessions works better. Whether the result still counts as TDD by the book matters less than whether the loop produces better code. The mismatch between the trigger phrase and the body is filed as [issue #589](https://github.com/mattpocock/skills/issues/589) and is still open, so "red-green-refactor" continues to work as a phrase that fires the skill. What you get is red → green, and refactoring in [code-review](./code-review.md).
+Because the refactor step was removed and the description was not. The removal was deliberate: agents essentially never did it, and keeping implementation and review in separate sessions works better. Whether the result still counts as TDD by the book matters less than whether the loop produces better code. The mismatch between the trigger phrase and the body is filed as [issue #589](https://github.com/mattpocock/skills/issues/589) and is still open, so "red-green-refactor" continues to work as a phrase that fires the skill. What you get is red → green. [code-review](./code-review.md) reports refactoring opportunities, and an implementer applies the chosen changes.
 
 **It asked me to choose a test seam and I had no idea which to pick.**
 
@@ -68,7 +68,7 @@ No. `/test-driven-development` documents the methodology; `/implement` is a very
 
 **Where did the deep-modules and interface-design guidance go?**
 
-Into [codebase-design](../reference/codebase-design.md) in v1.0, generalised so several skills share one vocabulary. `refactoring.md` left at the same time; refactoring is now [code-review](./code-review.md)'s job, and that skill carries the Fowler smell baseline.
+Into [codebase-design](../reference/codebase-design.md) in v1.0, generalised so several skills share one vocabulary. `refactoring.md` left at the same time; [code-review](./code-review.md) carries the Fowler smell baseline for reporting refactoring opportunities.
 
 **Does it know about my other tickets?**
 
@@ -88,7 +88,7 @@ No. Run against one ticket, it will happily propose work that belongs to a sibli
 `test-driven-development` is the engine inside the build step of the main chain, rather than a step of its own:
 
 ```txt
-grill-with-documentation → to-specifications → to-tickets → implement → code-review
+grill-with-documentation → to-specifications → to-tickets → implement → code-review → improve-agent-environment
 ```
 
-[to-specifications](./to-specifications.md) agrees the test seams up front, [implement](./implement.md) drives `test-driven-development` per ticket, and [code-review](./code-review.md) checks afterwards that only the agreed seams were used, and owns the refactoring `test-driven-development` no longer does. Its other neighbour is [codebase-design](../reference/codebase-design.md), the shared source of the seam and deep-module vocabulary `test-driven-development` speaks. You can also reach for it on its own, whenever there is a concrete behaviour to build and no full specification in play. When you are unsure which skill fits your situation, [what-is-next](../getting-started/what-is-next.md) routes you.
+[to-specifications](./to-specifications.md) agrees the test seams up front, [implement](./implement.md) drives `test-driven-development` per ticket, and [code-review](./code-review.md) checks afterwards that only the agreed seams were used, and reports potential refactoring opportunities. Its other neighbour is [codebase-design](../reference/codebase-design.md), the shared source of the seam and deep-module vocabulary `test-driven-development` speaks. You can also reach for it on its own, whenever there is a concrete behaviour to build and no full specification in play. When you are unsure which skill fits your situation, [what-is-next](../getting-started/what-is-next.md) routes you.

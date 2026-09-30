@@ -36,10 +36,10 @@ Both are the author's call, stated up front, rather than something the reviewer 
 ## Common questions
 
 **Does it open the pull request?**
-No. It writes the body and stops. Pushing the branch, opening the request, and setting its reviewers stay yours, or stay with [implement-all](./implement-all.md), which lands a single request for a whole specification on its own.
+No. It writes the body and stops. Pushing the branch, opening the request, and setting its reviewers stay yours, or stay with [implement-all](./implement-all.md), which opens a request for a whole specification when the tracker workflow or user calls for one.
 
 **Why is it model-invoked when the rest of the `to-*` family is user-invoked?**
-Because other skills need to reach it. [implement-all](./implement-all.md) opens a request as part of its run, and a body format that only a human can trigger would be unreachable at exactly the moment it is needed. Typing `/to-pull-request` still works: model-invocation adds the agent's reach, it never removes yours.
+Because other skills need to reach it. [implement-all](./implement-all.md) can open a request as part of its run, and a body format that only a human can trigger would be unreachable at exactly the moment it is needed. Typing `/to-pull-request` still works: model-invocation adds the agent's reach, it never removes yours.
 
 **It described the diff instead of explaining the change.**
 That is the failure the skill is written against, and it usually means the primary source was not in the window. Give it the ticket or the specification, not just the branch, and the summary has something to be about.
@@ -49,6 +49,32 @@ It was named `pr` in the repository this fork started from, where it sat in an `
 
 **Is there a matching skill for commit messages?**
 No. The original proposal upstream paired a `/to-commit` with this one, so the commit template would feed the request body. Only the request half exists, and [implement](./implement.md) still commits with a single line of its own guidance.
+
+**Can I trust the agent's door call?**
+
+Treat it as a claim to review.
+Reverting a commit cannot undo an email already sent or data already written in a new format.
+Give the agent the ticket or specification and your repository's rules for irreversible changes.
+
+**Does the repository's request template take precedence?**
+
+The skill carries its own format and has no discovery step for an existing template.
+State how Summary, Evidence, and Merge danger should fit into your required template in the repository's agent guidance.
+
+**Does it update the body as the request changes?**
+
+It writes the body at one point in time.
+Ask for a rewrite after substantial changes during review.
+
+**What goes in Evidence when there is no user interface?**
+
+Use the failing and passing test, or changed console output.
+The screenshot recommendation applies when the change is visual; a statement that tests pass is not a before/after pair.
+
+**Why does Mermaid appear as source text?**
+
+The body is Markdown, and rendering depends on where you view it.
+Use a call tree, file tree, or shaped diff when your review surface does not render diagrams.
 
 ## It's working if
 
@@ -60,4 +86,4 @@ No. The original proposal upstream paired a `/to-commit` with this one, so the c
 
 ## Where it fits
 
-A **chain step**, the last one before the work leaves your machine: `implement` → `code-review` → `to-pull-request`. Its neighbours are [code-review](./code-review.md), because the findings it produces are what the evidence and merge danger sections have to be honest about, and [address-feedback](../../../skills/experimental/address-feedback/SKILL.md), which picks the thread back up once reviewers reply. For the whole map, see [what-is-next](../getting-started/what-is-next.md).
+A **chain step**, the last one before the work leaves your machine: `implement` → `code-review` → `to-pull-request`. Its neighbours are [code-review](./code-review.md), because the findings it produces are what the evidence and merge danger sections have to be honest about, and [address-feedback](../../../skills/experimental/address-feedback/SKILL.md), which picks the thread back up once reviewers reply. After a session worth learning from, [improve-agent-environment](../upkeep/improve-agent-environment.md) proposes changes to the checks and standards future reviews use. For the whole map, see [what-is-next](../getting-started/what-is-next.md).

@@ -89,10 +89,14 @@ No. Setup lets `code-review` fetch an issue referenced by a commit through the r
 
 ## Where it fits
 
-`code-review` is the review step at the tail of the build chain: `grill-with-documentation → to-specifications → to-tickets → implement → code-review`. It also stands alone on any branch or PR you point it at.
+`code-review` is the review step near the end of the build chain: `grill-with-documentation → to-specifications → to-tickets → implement → code-review → improve-agent-environment`. It also stands alone on any branch or PR you point it at.
 
 - [implement](./implement.md) is the closest neighbour: it drives the build and calls this skill as its own closing review before committing.
 - [to-specifications](./to-specifications.md) and [to-tickets](./to-tickets.md) produce the document the Specification axis checks against; a vague specification makes that axis vague.
 - [improve-codebase-architecture](../upkeep/improve-codebase-architecture.md) is the whole-codebase counterpart: this skill only ever looks at one diff.
+
+[implement-all](./implement-all.md) runs this review once over the completed integration branch.
+[improve-agent-environment](../upkeep/improve-agent-environment.md) follows a session worth learning from and proposes checks or standards for mistakes the review missed.
+[to-pull-request](./to-pull-request.md) supplies the body when the reviewed work goes up as a request.
 
 [what-is-next](../getting-started/what-is-next.md) routes across the whole set when you are unsure which skill the situation wants.

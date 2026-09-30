@@ -48,6 +48,22 @@ No. It presents candidates ordered by severity, leaving you to decide which auto
 
 `retro` was the upstream working name. This fork renamed it to `/improve-agent-environment` to use explicit naming and place it under the `upkeep/` bucket.
 
+**Will it keep adding checks forever?**
+
+It can identify no-ops in steering prose, but it does not audit every lint rule, hook, or CI job proposed in previous sessions.
+Review checks that start rejecting valid changes; one session cannot establish whether an old rule still earns its cost.
+
+**What if the suggestions are generic?**
+
+Require each candidate to point to a specific difficulty in the session record.
+Discard advice that cannot be traced to the session, and review the severity order yourself.
+
+**Where does `CODING_STANDARDS.md` come from?**
+
+No skill ships the file for your project.
+The retrospective can propose creating it for a judgement-call rule, and [code-review](../workflow/code-review.md) reads it once it exists.
+An existing standards document such as `CONTRIBUTING.md` works too.
+
 ## It's working if
 
 - Candidates classify mechanical violations into concrete automated checks rather than vague steering lines.
@@ -57,4 +73,4 @@ No. It presents candidates ordered by severity, leaving you to decide which auto
 
 ## Where it fits
 
-`improve-agent-environment` is **periodic maintenance**: run it after challenging sessions to compound improvements to your development harness. Its nearest neighbours are [improve-codebase-architecture](./improve-codebase-architecture.md), which audits codebase structure rather than the agent's working environment, and [writing-for-agents](../reference/writing-for-agents.md), which provides the underlying style guide for steering files and documentation. For the full map of skills, see [what-is-next](../getting-started/what-is-next.md).
+`improve-agent-environment` closes the main flow after a session worth learning from. Run it before clearing the session, or point it at the session log from a fresh window. It is also periodic maintenance whenever accumulated session friction needs review. Its nearest neighbours are [improve-codebase-architecture](./improve-codebase-architecture.md), which audits codebase structure rather than the agent's working environment, and [writing-for-agents](../reference/writing-for-agents.md), which provides the underlying style guide for steering files and documentation. For the full map of skills, see [what-is-next](../getting-started/what-is-next.md).

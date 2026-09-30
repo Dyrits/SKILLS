@@ -1,26 +1,87 @@
 ## What it does
 
-`implement-all` implements an entire specification on a single branch, as one draft PR that closes the specification and its tickets. The defining constraint is that it treats the tickets as a **task graph** rather than a list: with blocking edges resolved, there is always a **frontier** of tickets that are ready, and background implementer subagents grab them concurrently, each in its own git worktree.
+`implement-all` implements an entire specification on one **integration branch**, with each ticket built by an implementer subagent in its own git worktree.
+It treats the tickets as a **task graph**: blocking edges determine the **frontier** of work that can run concurrently, and a merger subagent integrates each completed ticket.
 
-It is [implement](./implement.md) at specification scale. `/implement` builds one ticket in one session with you in the loop; `implement-all` builds every ticket, and you watch an orchestrated pipeline.
+It is [implement](./implement.md) at specification scale.
+You review the combined branch after the tickets land, instead of driving one session per ticket yourself.
 
 ## When to reach for it
 
-You invoke this by typing `/implement-all`; the agent won't reach for it on its own. Reach for it when a specification plus its tickets already exist (from [to-specifications](./to-specifications.md) and [to-tickets](./to-tickets.md)) and you want the whole set driven to one PR without driving each ticket yourself. For a single ticket, or when you want to stay hands-on per ticket, use [implement](./implement.md) instead.
+You invoke this by typing `/implement-all`; the agent won't reach for it on its own.
+Use it when a specification and tickets with blocking edges already exist, and you want the whole graph built in one orchestrated run.
+For a single ticket or a build you want to guide directly, use [implement](./implement.md).
+If the specification has no tickets yet, use [to-tickets](./to-tickets.md) first.
 
-## The pipeline
+## Prerequisites
 
-Read the specification and tickets as a graph. (Optional) an exploration subagent digests the codebase and docs into shared notes outside the repository, so implementers implement rather than explore. Create the branch and draft PR. Then the loop: for each ticket on the frontier, an **implementer subagent** works in its own worktree; when it finishes, a **merger subagent** folds the work into the PR branch; the merge recomputes the frontier and unblocked tickets get new implementers. When the graph is empty, [code-review](./code-review.md) runs over the PR, its findings are fixed in one final implementer pass, the PR goes ready, and the worktrees are cleaned up.
+- A tracker workflow configured through [setup-custom-skills](../getting-started/setup-custom-skills.md), describing where tickets live and how completed work is resolved.
+- A specification and its tickets, with blocking edges.
+- A harness that can run subagents and give each implementer its own worktree.
 
-Communication between agents is deliberately sparse: **context pointers** to the specification, tickets, research notes and previous commits, never duplicated prose. The graph and the files carry the state.
+## The integration branch
+
+The optional exploration subagent writes shared notes outside the repository.
+Each implementer starts from the integration branch, calls [test-driven-development](./test-driven-development.md) to build its ticket, and merges the integration branch tip into its ticket branch before reporting completion.
+A merger subagent then lands that work on the integration branch, and newly unblocked tickets start.
+Agents communicate through **context pointers** to specifications, tickets, shared notes, and commits.
+
+A draft pull or merge request opens after the first ticket merge when your tracker closes work through requests, or when you ask for one.
+[to-pull-request](./to-pull-request.md) supplies its body.
+Otherwise, the run can finish on the integration branch using a local markdown tracker, with no online request.
+
+Once every ticket has landed, [code-review](./code-review.md) reviews the integration branch and one implementer fixes its findings.
+The draft request then becomes ready for review, or the tickets are resolved through the configured tracker workflow.
+The implementer worktrees are cleaned up at the end.
+
+## Common questions
+
+**Does it require GitHub or a pull request?**
+
+No.
+The goal is the integration branch, and a request is conditional on the tracker workflow or your instruction.
+This works with GitLab merge requests and with a local markdown tracker.
+
+**Does each implementer use test-driven development?**
+
+Yes, each implementer explicitly calls `test-driven-development`.
+Name agreed seams in the specification or tickets so each agent tests at the same interfaces.
+
+**Why did its review report tickets that had not been built yet?**
+
+The whole-specification review belongs after every ticket has landed.
+Running it earlier treats unbuilt requirements as missing implementation.
+The skill specifies one final review and one fix pass; it does not define a repeated review loop or a stopping rule after that fix.
+If a broad review starts again, direct the agent to verify the specific findings and finish.
+
+**Can parallel tickets still collide?**
+
+Yes.
+Worktrees isolate edits, but shared files and domain names can still conflict at integration time.
+Add a blocking edge when two tickets need to change the same shared surface in sequence, or pin the shared names in the exploration notes.
+Merging the integration branch before completion reduces drift but cannot guarantee that concurrent work lands without conflicts.
+
+**A blocker landed, but its dependants still did not start.**
+
+Some trackers keep the blocker open until the final request merges.
+The graph starts from the tracker, but progress during the run must be computed from tickets already merged into the integration branch.
+A stale blocked-by count can otherwise stall the remaining tickets.
+
+**A worktree reported green while its key test was skipped.**
+
+Worktrees contain tracked files; ignored fixtures, credentials, and local databases may be missing.
+Check that required tests actually ran, and supply the required local resources or use the main checkout for verification that depends on them.
 
 ## It's working if
 
-- Implementer subagents are running concurrently, not one-at-a-time.
-- No subagent re-explains what a pointer already reaches: the specification, tickets, and notes are referenced, not restated.
-- The PR branch accumulates merged ticket work, and the draft PR closes the specification issue.
-- Worktrees are gone when it finishes.
+- Independent tickets run concurrently whenever their blockers allow it.
+- Each implementer shows a failing test before its implementation.
+- A ticket starts when its final blocker lands on the integration branch.
+- The run ends on one integration branch, with a request only when the workflow calls for one.
+- Tickets are resolved through the configured workflow, and implementer worktrees are cleaned up.
 
 ## Where it fits
 
-`implement-all` is the parallel end of the main flow: [what-is-next](../getting-started/what-is-next.md) routes the multi-session build through `/to-specifications` → `/to-tickets` → per-ticket `/implement`, and `implement-all` is the alternative when you want that whole stretch driven concurrently to a single PR instead of worked ticket by ticket.
+`implement-all` is the parallel alternative to per-ticket [implement](./implement.md) in the main flow: `to-specifications` → `to-tickets` → `implement-all` → `code-review`.
+[improve-agent-environment](../upkeep/improve-agent-environment.md) follows a session worth learning from.
+[what-is-next](../getting-started/what-is-next.md) routes between the two ways to build.

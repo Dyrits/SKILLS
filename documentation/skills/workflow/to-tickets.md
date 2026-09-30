@@ -84,7 +84,7 @@ A very large specification can outgrow what a tracker issue serves back cleanly,
 The template asks for criteria and says nothing about whether they can fail, so this happens. Three shapes recur: a criterion already true at the base commit, a criterion that can only be satisfied by work another ticket owns, and one that restates the request rather than deriving from the artifact. Vertical slicing prevents most of it (a slice that delivers behaviour which didn't exist before is red at the base commit by construction), but the check is worth doing by hand. For each criterion, name the observation that would show it false, and confirm it fails at the commit the implementer starts from.
 
 **The tickets are published. How do I actually run them?**
-The skill stops at the artifact, and there is no auto-dispatch mode. Dispatch is manual: look at the board, count the tickets with no open blockers, and open that many agent sessions. One ticket per fresh context, cleared between them. Be aware that [implement](./implement.md) does not reliably close or check off the ticket when it finishes, on GitHub or in local markdown, so the ticket's state is yours to update.
+The skill stops at the artifact, and there is no auto-dispatch mode. For manual dispatch, look at the board, count the tickets with no open blockers, and open that many agent sessions. For an orchestrated run, [implement-all](./implement-all.md) consumes the same blocking edges and builds the graph on one integration branch. One ticket per fresh context, cleared between them. Be aware that [implement](./implement.md) does not reliably close or check off the ticket when it finishes, on GitHub or in local markdown, so the ticket's state is yours to update.
 
 ## It's working if
 
@@ -102,7 +102,7 @@ The skill stops at the artifact, and there is no auto-dispatch mode. Dispatch is
 `to-tickets` is a step in the main build chain:
 
 ```txt
-grill-with-documentation → to-specifications → to-tickets → implement → code-review
+grill-with-documentation → to-specifications → to-tickets → implement → code-review → improve-agent-environment
 ```
 
-Upstream is [to-specifications](./to-specifications.md), which hands it a settled specification to slice against; keep both in one unbroken context window. Downstream is [implement](./implement.md), which builds one ticket per fresh session, driving [test-driven-development](./test-driven-development.md) for the tests and closing with [code-review](./code-review.md). When you're unsure which skill or flow fits, [what-is-next](../getting-started/what-is-next.md) routes you.
+Upstream is [to-specifications](./to-specifications.md), which hands it a settled specification to slice against; keep both in one unbroken context window. Downstream is [implement](./implement.md), which builds one ticket per fresh session, driving [test-driven-development](./test-driven-development.md) for the tests and closing with [code-review](./code-review.md). [implement-all](./implement-all.md) is the alternative downstream step when you want the whole graph built concurrently. When you're unsure which skill or flow fits, [what-is-next](../getting-started/what-is-next.md) routes you.

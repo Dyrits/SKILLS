@@ -1,0 +1,485 @@
+{
+  "upstream_repository": "https://github.com/mattpocock/skills",
+  "upstream_base": "c55ee46073ed923f86ce59a5eb3b6d895095d1b7",
+  "upstream_tip": "d81f3a183412e71a5b1e84ca21bc1a35eea03a60",
+  "fork_before_sync": "eccd6065a6e042022ec1f9f5b5badc9fb79c6e16",
+  "ancestry_merge": "2ea153ffe3fb1fa1cc6462f7ce79c75ebc286ca1",
+  "files": [
+    {
+      "status": "M",
+      "source": ".agents/invocation.md",
+      "action": "adapted-policy",
+      "target": ".agents/invocation.md",
+      "archive": ".upstream/snapshots/d81f3a1/files/.agents/invocation.md"
+    },
+    {
+      "status": "M",
+      "source": ".agents/writing-docs.md",
+      "action": "adapted-policy",
+      "target": ".agents/writing-documentation.md",
+      "archive": ".upstream/snapshots/d81f3a1/files/.agents/writing-docs.md"
+    },
+    {
+      "status": "D",
+      "source": ".changeset/add-implement-spec-skill.md",
+      "action": "archived",
+      "target": null,
+      "archive": ".upstream/snapshots/d81f3a1/removed/.changeset/add-implement-spec-skill.md"
+    },
+    {
+      "status": "D",
+      "source": ".changeset/add-pr-skill.md",
+      "action": "archived",
+      "target": null,
+      "archive": ".upstream/snapshots/d81f3a1/removed/.changeset/add-pr-skill.md"
+    },
+    {
+      "status": "M",
+      "source": ".changeset/domain-modeling-trigger-context-adr.md",
+      "action": "archived",
+      "target": null,
+      "archive": ".upstream/snapshots/d81f3a1/files/.changeset/domain-modeling-trigger-context-adr.md"
+    },
+    {
+      "status": "A",
+      "source": ".changeset/graduate-implement-spec.md",
+      "action": "archived",
+      "target": null,
+      "archive": ".upstream/snapshots/d81f3a1/files/.changeset/graduate-implement-spec.md"
+    },
+    {
+      "status": "A",
+      "source": ".changeset/graduate-pr.md",
+      "action": "archived",
+      "target": null,
+      "archive": ".upstream/snapshots/d81f3a1/files/.changeset/graduate-pr.md"
+    },
+    {
+      "status": "A",
+      "source": ".changeset/graduate-retro.md",
+      "action": "archived",
+      "target": null,
+      "archive": ".upstream/snapshots/d81f3a1/files/.changeset/graduate-retro.md"
+    },
+    {
+      "status": "A",
+      "source": ".changeset/remove-resolving-merge-conflicts.md",
+      "action": "archived",
+      "target": null,
+      "archive": ".upstream/snapshots/d81f3a1/files/.changeset/remove-resolving-merge-conflicts.md"
+    },
+    {
+      "status": "A",
+      "source": ".changeset/rename-context-to-glossary.md",
+      "action": "archived",
+      "target": null,
+      "archive": ".upstream/snapshots/d81f3a1/files/.changeset/rename-context-to-glossary.md"
+    },
+    {
+      "status": "D",
+      "source": ".changeset/retro-deterministic-checks.md",
+      "action": "archived",
+      "target": null,
+      "archive": ".upstream/snapshots/d81f3a1/removed/.changeset/retro-deterministic-checks.md"
+    },
+    {
+      "status": "M",
+      "source": ".changeset/wait-what-context-map.md",
+      "action": "archived",
+      "target": null,
+      "archive": ".upstream/snapshots/d81f3a1/files/.changeset/wait-what-context-map.md"
+    },
+    {
+      "status": "M",
+      "source": ".claude-plugin/plugin.json",
+      "action": "adapted-promotion",
+      "target": ".claude-plugin/plugin.json",
+      "archive": ".upstream/snapshots/d81f3a1/files/.claude-plugin/plugin.json"
+    },
+    {
+      "status": "M",
+      "source": "CLAUDE.md",
+      "action": "archived",
+      "target": null,
+      "archive": ".upstream/snapshots/d81f3a1/files/CLAUDE.md"
+    },
+    {
+      "status": "D",
+      "source": "CONTEXT.md",
+      "action": "archived",
+      "target": null,
+      "archive": ".upstream/snapshots/d81f3a1/removed/CONTEXT.md"
+    },
+    {
+      "status": "A",
+      "source": "GLOSSARY.md",
+      "action": "archived",
+      "target": null,
+      "archive": ".upstream/snapshots/d81f3a1/files/GLOSSARY.md"
+    },
+    {
+      "status": "M",
+      "source": "README.md",
+      "action": "adapted-listing",
+      "target": "README.md",
+      "archive": ".upstream/snapshots/d81f3a1/files/README.md"
+    },
+    {
+      "status": "M",
+      "source": "docs/engineering/ask-matt.md",
+      "action": "adapted-documentation",
+      "target": "documentation/skills/getting-started/what-is-next.md",
+      "archive": ".upstream/snapshots/d81f3a1/files/docs/engineering/ask-matt.md"
+    },
+    {
+      "status": "M",
+      "source": "docs/engineering/code-review.md",
+      "action": "adapted-documentation",
+      "target": "documentation/skills/workflow/code-review.md",
+      "archive": ".upstream/snapshots/d81f3a1/files/docs/engineering/code-review.md"
+    },
+    {
+      "status": "M",
+      "source": "docs/engineering/domain-modeling.md",
+      "action": "adapted-documentation",
+      "target": "documentation/skills/reference/domain-modeling.md",
+      "archive": ".upstream/snapshots/d81f3a1/files/docs/engineering/domain-modeling.md"
+    },
+    {
+      "status": "M",
+      "source": "docs/engineering/grill-with-docs.md",
+      "action": "adapted-documentation",
+      "target": "documentation/skills/workflow/grill-with-documentation.md",
+      "archive": ".upstream/snapshots/d81f3a1/files/docs/engineering/grill-with-docs.md"
+    },
+    {
+      "status": "A",
+      "source": "docs/engineering/implement-spec.md",
+      "action": "adapted-documentation",
+      "target": "documentation/skills/workflow/implement-all.md",
+      "archive": ".upstream/snapshots/d81f3a1/files/docs/engineering/implement-spec.md"
+    },
+    {
+      "status": "M",
+      "source": "docs/engineering/implement.md",
+      "action": "adapted-documentation",
+      "target": "documentation/skills/workflow/implement.md",
+      "archive": ".upstream/snapshots/d81f3a1/files/docs/engineering/implement.md"
+    },
+    {
+      "status": "M",
+      "source": "docs/engineering/improve-codebase-architecture.md",
+      "action": "adapted-documentation",
+      "target": "documentation/skills/upkeep/improve-codebase-architecture.md",
+      "archive": ".upstream/snapshots/d81f3a1/files/docs/engineering/improve-codebase-architecture.md"
+    },
+    {
+      "status": "A",
+      "source": "docs/engineering/pr.md",
+      "action": "adapted-documentation",
+      "target": "documentation/skills/workflow/to-pull-request.md",
+      "archive": ".upstream/snapshots/d81f3a1/files/docs/engineering/pr.md"
+    },
+    {
+      "status": "M",
+      "source": "docs/engineering/research.md",
+      "action": "adapted-documentation",
+      "target": "documentation/skills/shaping/research.md",
+      "archive": ".upstream/snapshots/d81f3a1/files/docs/engineering/research.md"
+    },
+    {
+      "status": "M",
+      "source": "docs/engineering/resolving-merge-conflicts.md",
+      "action": "retained-active-fork-documentation",
+      "target": "documentation/skills/upkeep/resolve-merge-conflicts.md",
+      "archive": ".upstream/snapshots/d81f3a1/files/docs/engineering/resolving-merge-conflicts.md"
+    },
+    {
+      "status": "A",
+      "source": "docs/engineering/retro.md",
+      "action": "adapted-documentation",
+      "target": "documentation/skills/upkeep/improve-agent-environment.md",
+      "archive": ".upstream/snapshots/d81f3a1/files/docs/engineering/retro.md"
+    },
+    {
+      "status": "M",
+      "source": "docs/engineering/setup-matt-pocock-skills.md",
+      "action": "adapted-documentation",
+      "target": "documentation/skills/getting-started/setup-custom-skills.md",
+      "archive": ".upstream/snapshots/d81f3a1/files/docs/engineering/setup-matt-pocock-skills.md"
+    },
+    {
+      "status": "M",
+      "source": "docs/engineering/tdd.md",
+      "action": "adapted-documentation",
+      "target": "documentation/skills/workflow/test-driven-development.md",
+      "archive": ".upstream/snapshots/d81f3a1/files/docs/engineering/tdd.md"
+    },
+    {
+      "status": "M",
+      "source": "docs/engineering/to-spec.md",
+      "action": "adapted-documentation",
+      "target": "documentation/skills/workflow/to-specifications.md",
+      "archive": ".upstream/snapshots/d81f3a1/files/docs/engineering/to-spec.md"
+    },
+    {
+      "status": "M",
+      "source": "docs/engineering/to-tickets.md",
+      "action": "adapted-documentation",
+      "target": "documentation/skills/workflow/to-tickets.md",
+      "archive": ".upstream/snapshots/d81f3a1/files/docs/engineering/to-tickets.md"
+    },
+    {
+      "status": "M",
+      "source": "docs/engineering/triage.md",
+      "action": "adapted-documentation",
+      "target": "documentation/skills/upkeep/triage.md",
+      "archive": ".upstream/snapshots/d81f3a1/files/docs/engineering/triage.md"
+    },
+    {
+      "status": "M",
+      "source": "docs/productivity/grill-me.md",
+      "action": "adapted-documentation",
+      "target": "documentation/skills/productivity/grill-me.md",
+      "archive": ".upstream/snapshots/d81f3a1/files/docs/productivity/grill-me.md"
+    },
+    {
+      "status": "M",
+      "source": "docs/productivity/grilling.md",
+      "action": "adapted-documentation",
+      "target": "documentation/skills/reference/grilling.md",
+      "archive": ".upstream/snapshots/d81f3a1/files/docs/productivity/grilling.md"
+    },
+    {
+      "status": "M",
+      "source": "docs/productivity/wait-what.md",
+      "action": "adapted-documentation",
+      "target": "documentation/skills/productivity/wait-what.md",
+      "archive": ".upstream/snapshots/d81f3a1/files/docs/productivity/wait-what.md"
+    },
+    {
+      "status": "M",
+      "source": "docs/productivity/writing-for-agents.md",
+      "action": "adapted-documentation",
+      "target": "documentation/skills/reference/writing-for-agents.md",
+      "archive": ".upstream/snapshots/d81f3a1/files/docs/productivity/writing-for-agents.md"
+    },
+    {
+      "status": "M",
+      "source": "skills/engineering/README.md",
+      "action": "archived",
+      "target": null,
+      "archive": ".upstream/snapshots/d81f3a1/files/skills/engineering/README.md"
+    },
+    {
+      "status": "M",
+      "source": "skills/engineering/ask-matt/SKILL.md",
+      "action": "ported",
+      "target": "skills/getting-started/what-is-next/SKILL.md",
+      "archive": null
+    },
+    {
+      "status": "M",
+      "source": "skills/engineering/codebase-design/DESIGN-IT-TWICE.md",
+      "action": "ported",
+      "target": "skills/reference/codebase-design/DESIGN-IT-TWICE.md",
+      "archive": null
+    },
+    {
+      "status": "M",
+      "source": "skills/engineering/diagnosing-bugs/SKILL.md",
+      "action": "ported",
+      "target": "skills/upkeep/debug/SKILL.md",
+      "archive": null
+    },
+    {
+      "status": "D",
+      "source": "skills/engineering/domain-modeling/CONTEXT-FORMAT.md",
+      "action": "renamed-reference",
+      "target": "skills/reference/domain-modeling/GLOSSARY-FORMAT.md",
+      "archive": null
+    },
+    {
+      "status": "A",
+      "source": "skills/engineering/domain-modeling/GLOSSARY-FORMAT.md",
+      "action": "ported",
+      "target": "skills/reference/domain-modeling/GLOSSARY-FORMAT.md",
+      "archive": null
+    },
+    {
+      "status": "M",
+      "source": "skills/engineering/domain-modeling/SKILL.md",
+      "action": "ported",
+      "target": "skills/reference/domain-modeling/SKILL.md",
+      "archive": null
+    },
+    {
+      "status": "A",
+      "source": "skills/engineering/implement-spec/SKILL.md",
+      "action": "ported",
+      "target": "skills/workflow/implement-all/SKILL.md",
+      "archive": null
+    },
+    {
+      "status": "A",
+      "source": "skills/engineering/implement-spec/agents/openai.yaml",
+      "action": "ported",
+      "target": "skills/workflow/implement-all/agents/openai.yaml",
+      "archive": null
+    },
+    {
+      "status": "M",
+      "source": "skills/engineering/improve-codebase-architecture/SKILL.md",
+      "action": "ported",
+      "target": "skills/upkeep/improve-codebase-architecture/SKILL.md",
+      "archive": null
+    },
+    {
+      "status": "A",
+      "source": "skills/engineering/pr/CREDITS.md",
+      "action": "ported",
+      "target": "skills/workflow/to-pull-request/CREDITS.md",
+      "archive": null
+    },
+    {
+      "status": "A",
+      "source": "skills/engineering/pr/SKILL.md",
+      "action": "ported",
+      "target": "skills/workflow/to-pull-request/SKILL.md",
+      "archive": null
+    },
+    {
+      "status": "A",
+      "source": "skills/engineering/pr/agents/openai.yaml",
+      "action": "ported",
+      "target": "skills/workflow/to-pull-request/agents/openai.yaml",
+      "archive": null
+    },
+    {
+      "status": "D",
+      "source": "skills/engineering/resolving-merge-conflicts/SKILL.md",
+      "action": "retained-fork-skill",
+      "target": "skills/upkeep/resolve-merge-conflicts/SKILL.md",
+      "archive": ".upstream/snapshots/d81f3a1/removed/skills/engineering/resolving-merge-conflicts/SKILL.md.source"
+    },
+    {
+      "status": "D",
+      "source": "skills/engineering/resolving-merge-conflicts/agents/openai.yaml",
+      "action": "retained-fork-skill",
+      "target": "skills/upkeep/resolve-merge-conflicts/agents/openai.yaml",
+      "archive": ".upstream/snapshots/d81f3a1/removed/skills/engineering/resolving-merge-conflicts/agents/openai.yaml"
+    },
+    {
+      "status": "A",
+      "source": "skills/engineering/retro/SKILL.md",
+      "action": "ported",
+      "target": "skills/upkeep/improve-agent-environment/SKILL.md",
+      "archive": null
+    },
+    {
+      "status": "A",
+      "source": "skills/engineering/retro/agents/openai.yaml",
+      "action": "ported",
+      "target": "skills/upkeep/improve-agent-environment/agents/openai.yaml",
+      "archive": null
+    },
+    {
+      "status": "M",
+      "source": "skills/engineering/setup-matt-pocock-skills/SKILL.md",
+      "action": "ported",
+      "target": "skills/getting-started/setup-custom-skills/SKILL.md",
+      "archive": null
+    },
+    {
+      "status": "M",
+      "source": "skills/engineering/setup-matt-pocock-skills/domain.md",
+      "action": "ported",
+      "target": "skills/getting-started/setup-custom-skills/domain.md",
+      "archive": null
+    },
+    {
+      "status": "M",
+      "source": "skills/engineering/tdd/SKILL.md",
+      "action": "ported",
+      "target": "skills/workflow/test-driven-development/SKILL.md",
+      "archive": null
+    },
+    {
+      "status": "M",
+      "source": "skills/engineering/triage/SKILL.md",
+      "action": "ported",
+      "target": "skills/upkeep/triage/SKILL.md",
+      "archive": null
+    },
+    {
+      "status": "M",
+      "source": "skills/in-progress/README.md",
+      "action": "archived",
+      "target": null,
+      "archive": ".upstream/snapshots/d81f3a1/files/skills/in-progress/README.md"
+    },
+    {
+      "status": "D",
+      "source": "skills/in-progress/implement-spec/SKILL.md",
+      "action": "upstream-relocation",
+      "target": "skills/workflow/implement-all/SKILL.md",
+      "archive": null
+    },
+    {
+      "status": "D",
+      "source": "skills/in-progress/implement-spec/agents/openai.yaml",
+      "action": "upstream-relocation",
+      "target": "skills/workflow/implement-all/agents/openai.yaml",
+      "archive": null
+    },
+    {
+      "status": "D",
+      "source": "skills/in-progress/pr/CREDITS.md",
+      "action": "upstream-relocation",
+      "target": "skills/workflow/to-pull-request/CREDITS.md",
+      "archive": null
+    },
+    {
+      "status": "D",
+      "source": "skills/in-progress/pr/SKILL.md",
+      "action": "upstream-relocation",
+      "target": "skills/workflow/to-pull-request/SKILL.md",
+      "archive": null
+    },
+    {
+      "status": "D",
+      "source": "skills/in-progress/pr/agents/openai.yaml",
+      "action": "upstream-relocation",
+      "target": "skills/workflow/to-pull-request/agents/openai.yaml",
+      "archive": null
+    },
+    {
+      "status": "D",
+      "source": "skills/in-progress/retro/SKILL.md",
+      "action": "upstream-relocation",
+      "target": "skills/upkeep/improve-agent-environment/SKILL.md",
+      "archive": null
+    },
+    {
+      "status": "D",
+      "source": "skills/in-progress/retro/agents/openai.yaml",
+      "action": "upstream-relocation",
+      "target": "skills/upkeep/improve-agent-environment/agents/openai.yaml",
+      "archive": null
+    },
+    {
+      "status": "M",
+      "source": "skills/productivity/README.md",
+      "action": "archived",
+      "target": null,
+      "archive": ".upstream/snapshots/d81f3a1/files/skills/productivity/README.md"
+    },
+    {
+      "status": "M",
+      "source": "skills/productivity/wait-what/SKILL.md",
+      "action": "ported",
+      "target": "skills/productivity/wait-what/SKILL.md",
+      "archive": null
+    }
+  ]
+}

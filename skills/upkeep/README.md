@@ -4,7 +4,7 @@ Keep the codebase and issue list healthy; generates work for the flow.
 
 ## User-invoked
 
-- **[improve-agent-environment](./improve-agent-environment/SKILL.md)**: Suggest improvements to the coding agent's environment (steering files, coding standards, automated checks, tooling) after a session. STUB: design notes only, not functional yet. (Not in the plugin.)
+- **[improve-agent-environment](./improve-agent-environment/SKILL.md)**: Suggest improvements to the coding agent's environment after a session, with candidates ordered by severity.
 
 ## Model-invoked
 

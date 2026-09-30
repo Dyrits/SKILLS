@@ -14,7 +14,7 @@ Reach for it when the next step is *finding something out* from outside the work
 | --- | --- |
 | An external fact a decision is waiting on | `research` |
 | A decision made *with* you, by interview | [grilling](../reference/grilling.md) |
-| A durable architecture decision, written into `CONTEXT.md` and ADRs | [grill-with-documentation](../workflow/grill-with-documentation.md) |
+| A durable architecture decision, written into `GLOSSARY.md` and ADRs | [grill-with-documentation](../workflow/grill-with-documentation.md) |
 | To find out whether an approach works in your codebase | [prototype](./prototype.md) |
 | A plan too big to hold in one session | [wayfinder](./wayfinder.md) |
 

@@ -11,7 +11,7 @@ Scaffold the per-repository configuration that the workflow skills assume. Four 
 - **Issue tracker**: the system of record for published issues, either local markdown under `backlog/` or a remote tracker (GitHub, GitLab, Jira, or one you describe)
 - **Ticket writing convention**: the built-in `to-tickets` format, or an existing project template or ticket-writing skill
 - **Triage roles**: the strings this repository uses for the two category and four state roles
-- **Domain documentation**: where `CONTEXT.md` and architecture decision records live, and the consumer rules for reading them
+- **Domain documentation**: where `GLOSSARY.md` and architecture decision records live, and the consumer rules for reading them
 
 **Refinement is not a decision.** Whatever tracker a repository picks, it drafts in `.refinement/` and publishes only when the user asks. A remote tracker with its own refinement or analysis status changes nothing here: local drafting comes first, publication pushes the result. [refinement.md](./refinement.md) holds those conventions and every generated tracker file carries them.
 
@@ -25,7 +25,7 @@ Look at the current repository to understand its starting state. Read whatever e
 
 - `git remote -v` and `.git/config`: is there a remote, and which host?
 - `AGENTS.md` and `CLAUDE.md` at the repository root: does either exist? Is there already an `## Agent skills` section in either?
-- `CONTEXT.md` and `CONTEXT-MAP.md` at the repository root
+- `GLOSSARY.md` and `GLOSSARY-MAP.md` at the repository root
 - `documentation/architecture-decision-record/` and any `src/*/documentation/architecture-decision-record/` directories
 - `documentation/agents/`: does this skill's prior output already exist?
 - `backlog/` and `.refinement/`: existing tracker records and refinement workspaces
@@ -80,9 +80,9 @@ If it is installed, ask exactly one question:
 
 The defaults are the two canonical category roles (`bug`, `enhancement`) and the four canonical state roles (`to-evaluate`, `on-hold`, `ready`, `not-planned`), each string equal to its role name. On **yes**, write them as-is. Only if the user says no, usually because their tracker already uses other names (e.g. `bug:triage` for `to-evaluate`), collect the overrides so `triage` reuses existing vocabulary instead of creating duplicates. Only the strings are customisable; the role set itself stays canonical, because `to-tickets` and `to-specifications` apply `ready`.
 
-**Section D: Domain documentation.** Default to **single-context** (one `CONTEXT.md` plus `documentation/architecture-decision-record/` at the repository root). This fits almost every repository; write it without asking.
+**Section D: Domain documentation.** Default to **single-context** (one `GLOSSARY.md` plus `documentation/architecture-decision-record/` at the repository root). This fits almost every repository; write it without asking.
 
-Offer **multi-context** (a root `CONTEXT-MAP.md` pointing to per-context `CONTEXT.md` files) only when exploration found monorepo signals. Then confirm which layout they want.
+Offer **multi-context** (a root `GLOSSARY-MAP.md` pointing to per-context `GLOSSARY.md` files) only when exploration found monorepo signals. Then confirm which layout they want.
 
 ### 3. Confirm and edit
 
