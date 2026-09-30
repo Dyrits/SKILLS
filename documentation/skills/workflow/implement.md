@@ -1,6 +1,6 @@
 ## What it does
 
-`implement` builds work that has already been decided. You point it at a ticket, a specification, or the plan you just agreed in the conversation, and it writes the code, drives [test-driven-development](./test-driven-development.md) at the seams, typechecks as it goes, runs [code-review](./code-review.md) at the end, and commits to the current branch.
+`implement` builds work that has already been decided. You point it at a ticket, specifications, or the plan you just agreed in the conversation, and it writes the code, drives [test-driven-development](./test-driven-development.md) at the seams, typechecks as it goes, runs [code-review-and-refactor](./code-review-and-refactor.md) at the end, and commits to the current branch.
 
 It never reopens the plan. There is no interview, no clarifying round, no proposal of a different approach. Whatever was settled upstream is the input, and the skill's whole job is to turn that into a commit. That is what separates it from typing "build this" at a fresh agent, which will happily redesign the work while it builds it.
 
@@ -18,7 +18,7 @@ Where the work currently lives decides whether this is the right skill:
 | Only in the conversation you just had, and it's still small | `/implement` right there, in the same window |
 | Not written down anywhere yet | [grill-with-documentation](./grill-with-documentation.md), or [grill-me](../productivity/grill-me.md) if there's no codebase |
 | One concrete behaviour you want test-first, with no specification | [test-driven-development](./test-driven-development.md) directly |
-| Already built, and you want it checked | [code-review](./code-review.md) directly |
+| Already built, and you want it checked | [code-review-and-refactor](./code-review-and-refactor.md) directly |
 
 The same-session case is worth naming because the skill's own first line doesn't cover it. `SKILL.md` says "the specification or tickets", which nudges the model to go hunting for a file that doesn't exist. If the plan lives only in the thread, say so when you invoke it.
 
@@ -26,7 +26,7 @@ The same-session case is worth naming because the skill's own first line doesn't
 
 `implement` commits to the branch you are on. It does not create one, and it does not ask. Check you are on the branch you want the work on before you start.
 
-If the tickets came from [to-tickets](./to-tickets.md), the tracker they live on was configured by [setup-custom-skills](../getting-started/setup-custom-skills.md). `code-review` reads the same configuration to find the originating specification at close-out.
+If the tickets came from [to-tickets](./to-tickets.md), the tracker they live on was configured by [setup-custom-skills](../getting-started/setup-custom-skills.md). `code-review-and-refactor` reads the same configuration to find the originating specifications at close-out.
 
 ## What one run does
 
@@ -36,7 +36,7 @@ A run is five beats, in order:
 2. Drive [test-driven-development](./test-driven-development.md) at the pre-agreed seams, one red-green slice at a time.
 3. Typecheck often, run single test files as it goes.
 4. Run the full test suite once, at the end.
-5. Run [code-review](./code-review.md), then commit to the current branch.
+5. Run [code-review-and-refactor](./code-review-and-refactor.md), then commit to the current branch.
 
 One run covers one ticket. The tickets [to-tickets](./to-tickets.md) produces are tracer-bullet vertical slices sized to fit a single fresh context window, so the intended rhythm is: clear context, implement one ticket, commit, clear again. Each ticket is self-contained, which is what makes the previous ticket's context disposable.
 
@@ -50,7 +50,7 @@ The word "pre-agreed" is doing real work, and it is also the skill's weakest joi
 
 **It finished, but my ticket is still open and the acceptance criteria are still unchecked.**
 
-Correct, and expected. `implement` has no completion step. It ends at the commit and never touches the work item, confirmed on GitHub Issues and on the local markdown tracker, so it is not a tracker integration problem. It also does not act on the findings `code-review` produced, and does not tick the `- [ ]` boxes on the originating issue. Close the ticket and reconcile the criteria yourself. This bites hardest on a dependency chain, because `to-tickets` defines the frontier as tickets whose blockers are all closed. If nothing gets closed, nothing ever becomes visibly unblocked.
+Correct, and expected. `implement` has no completion step. It ends at the commit and never touches the work item, confirmed on GitHub Issues and on the local markdown tracker, so it is not a tracker integration problem. The closing refactor phase applies supported standards changes, but the workflow does not tick the `- [ ]` boxes on the originating issue. Close the ticket and reconcile the criteria yourself. This bites hardest on a dependency chain, because `to-tickets` defines the frontier as tickets whose blockers are all closed. If nothing gets closed, nothing ever becomes visibly unblocked.
 
 **Can I point it at all my tickets at once, or run several in parallel?**
 
@@ -60,11 +60,18 @@ Correct, and expected. `implement` has no completion step. It ends at the commit
 
 Not built in. It commits straight to the current branch, which several people find too eager: the code lands before they have had a chance to verify it works. There is no configuration flag and no PR mode. People override it in the invocation ("commit to a branch and open a PR") or by editing their local copy of the skill. [to-pull-request](./to-pull-request.md) supplies the body when the agent writes one.
 
-**`code-review` says it cannot see my changes.**
+**Which phase is responsible for standards?**
 
-`code-review` reviews `git diff <fixed-point>...HEAD`, which excludes staged and working-tree changes. `implement` runs it before committing, so unless an interim commit already exists there is nothing in that diff to review. Multiple people have reported this and it is unfixed on both sides. Commit first, then review against the point you branched from.
+`implement` focuses on red/green, establishing the required behavior with passing tests.
+The closing [code-review-and-refactor](./code-review-and-refactor.md) phase checks standards, applies supported refactors, and verifies that behavior remains intact.
+Specifications findings that need behavior changes identify further implementation work.
 
-Separately, some people deliberately do not want the review inside the run at all, because an agent reviewing the code it just wrote is biased toward its own solution. Running [code-review](./code-review.md) in a fresh session against a fixed point is a legitimate alternative, and is the same reason that skill runs its two axes in separate sub-agents.
+**Does the closing refactor phase see uncommitted changes?**
+
+Yes.
+Supply a fixed point, such as the commit before implementation, so it can capture the current work, including tracked uncommitted changes and new files in scope.
+It leaves its refactors uncommitted so `implement` can commit the verified result together.
+Independent reviewers receive the starting diff and source documents in fresh contexts, then retain their context for verification after the coordinator edits.
 
 **One ticket burned 150k tokens. Am I using it wrong?**
 
@@ -87,10 +94,10 @@ Probably the ticket is too big rather than the skill being misused. A run does c
 `implement` is the build step of the main chain:
 
 ```txt
-grill-with-documentation → to-specifications → to-tickets → implement → code-review → improve-agent-environment
+grill-with-documentation → to-specifications → to-tickets → implement → code-review-and-refactor → improve-agent-environment
 ```
 
-Its neighbours are [to-tickets](./to-tickets.md), which produces the tickets it consumes and declares the blocking edges that decide their order; [test-driven-development](./test-driven-development.md), which it drives internally at each seam; and [code-review](./code-review.md), which it runs before committing. It sits downstream of the planning skills and trusts them. It does not re-validate the shape of what it was handed, so a badly-structured map or a horizontally-layered ticket gets built as written.
+Its neighbours are [to-tickets](./to-tickets.md), which produces the tickets it consumes and declares the blocking edges that decide their order; [test-driven-development](./test-driven-development.md), which it drives internally at each seam; and [code-review-and-refactor](./code-review-and-refactor.md), which it runs before committing. It sits downstream of the planning skills and trusts them. It does not re-validate the shape of what it was handed, so a badly-structured map or a horizontally-layered ticket gets built as written.
 
 That trust is why [wayfinder](../shaping/wayfinder.md) merges onto the chain at [to-specifications](./to-specifications.md) rather than looping its map straight into `implement`. Go straight to `implement` from a map only when the effort turned out genuinely small.
 

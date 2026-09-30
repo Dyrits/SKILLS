@@ -76,7 +76,7 @@ It was called `grill-with-docs`. Nobody was happy with that name, and there was 
 `grill-with-documentation` is the head of the main build chain:
 
 ```txt
-grill-with-documentation → to-specifications → to-tickets → implement → code-review → improve-agent-environment
+grill-with-documentation → to-specifications → to-tickets → implement → code-review-and-refactor → improve-agent-environment
 ```
 
 It comes before anything is written down as a specification: it produces the shared understanding and settled vocabulary that [to-specifications](./to-specifications.md) then synthesises without interviewing you again. Its close neighbours are [grill-me](../productivity/grill-me.md), the same interview with no repository and no files, and [domain-modeling](../reference/domain-modeling.md), the glossary-and-ADR discipline it drives; both sit on the [grilling](../reference/grilling.md) primitive. Upstream of it, [wayfinder](../shaping/wayfinder.md) charts efforts too large for one session and can hand parts of the map back down to it. When you're unsure which skill or flow fits, [what-is-next](../getting-started/what-is-next.md) routes you.

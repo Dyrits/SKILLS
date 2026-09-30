@@ -11,13 +11,13 @@
     "engineering",
     "skills",
     "tdd",
-    "code-review",
+    "code-review-and-refactor",
     "grilling",
     "domain-modeling",
     "productivity"
   ],
   "skills": [
-    "./skills/workflow/code-review",
+    "./skills/workflow/code-review-and-refactor",
     "./skills/workflow/design-workflow",
     "./skills/workflow/grill-with-documentation",
     "./skills/workflow/implement",

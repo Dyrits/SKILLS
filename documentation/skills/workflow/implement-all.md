@@ -30,7 +30,9 @@ A draft pull or merge request opens after the first ticket merge when your track
 [to-pull-request](./to-pull-request.md) supplies its body.
 Otherwise, the run can finish on the integration branch using a local markdown tracker, with no online request.
 
-Once every ticket has landed, [code-review](./code-review.md) reviews the integration branch and one implementer fixes its findings.
+Once every ticket has landed and its behavior passes the checks, [code-review-and-refactor](./code-review-and-refactor.md) runs the refactor phase over the integration branch.
+Its coordinator applies supported refactors and reuses the reviewers for verification.
+One implementer addresses remaining implementation issues after the refactor phase.
 The draft request then becomes ready for review, or the tickets are resolved through the configured tracker workflow.
 The implementer worktrees are cleaned up at the end.
 
@@ -82,6 +84,6 @@ Check that required tests actually ran, and supply the required local resources 
 
 ## Where it fits
 
-`implement-all` is the parallel alternative to per-ticket [implement](./implement.md) in the main flow: `to-specifications` → `to-tickets` → `implement-all` → `code-review`.
+`implement-all` is the parallel alternative to per-ticket [implement](./implement.md) in the main flow: `to-specifications` → `to-tickets` → `implement-all` → `code-review-and-refactor`.
 [improve-agent-environment](../upkeep/improve-agent-environment.md) follows a session worth learning from.
 [what-is-next](../getting-started/what-is-next.md) routes between the two ways to build.

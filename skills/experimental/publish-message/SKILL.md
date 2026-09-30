@@ -5,7 +5,7 @@ disable-model-invocation: true
 argument-hint: "Optional: where to post, and what to say"
 ---
 
-Publish something already decided in this conversation (a review finding, a decision, an answer) as a comment on a GitHub/GitLab pull or merge request, or a Jira issue. Posting is the whole job: it never re-runs the review or re-derives the point, it only externalises what's already been concluded. For a full `/code-review` report specifically, prefer [publish-review](../publish-review/SKILL.md), which approves and publishes the summary and inline suggestions together.
+Publish something already decided in this conversation (a review finding, a decision, an answer) as a comment on a GitHub/GitLab pull or merge request, or a Jira issue. Posting is the whole job: it never re-runs the review or re-derives the point, it only externalises what's already been concluded. For a full `/code-review-and-refactor` report specifically, prefer [publish-review](../publish-review/SKILL.md), which approves and publishes the summary and inline suggestions together.
 
 `documentation/agents/issue-tracker.md`, when present, records the verified posting mechanism per tracker and saves re-deriving it. It is not required: resolve the target and posting mechanism directly (steps 1-2) when it's missing or silent on the resolved target.
 

@@ -5,7 +5,7 @@ disable-model-invocation: true
 argument-hint: "Optional: where to post"
 ---
 
-Publish a `/code-review` report that already ran in this conversation. The finished two-axis report is the input. Assign each finding to an inline suggestion or the summary, approve the complete publication, then post it.
+Publish a `/code-review-and-refactor` report that already ran in this conversation. The finished two-axis report is the input. Assign each finding to an inline suggestion or the summary, approve the complete publication, then post it.
 
 Use the target resolution and drafting rules in [publish-message](../publish-message/SKILL.md) when it is installed. This skill handles publication itself so that the summary and inline suggestions receive one approval before either becomes visible.
 
@@ -13,6 +13,8 @@ Use the target resolution and drafting rules in [publish-message](../publish-mes
 
 ### 1. Split the findings
 
+Keep verified refactors in the summary as completed work.
+Consider inline suggestions only for open findings whose proposed changes are still absent from the destination diff.
 For every finding across both axes:
 
 - **Inline suggestion**, GitHub/GitLab only: the fix *is* the finding, small, unambiguous, and scoped to one hunk (a rename, a dropped null check, a swapped condition). Something a reviewer would one-click-accept.

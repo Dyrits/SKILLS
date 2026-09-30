@@ -61,7 +61,7 @@ Discard advice that cannot be traced to the session, and review the severity ord
 **Where does `CODING_STANDARDS.md` come from?**
 
 No skill ships the file for your project.
-The retrospective can propose creating it for a judgement-call rule, and [code-review](../workflow/code-review.md) reads it once it exists.
+The retrospective can propose creating it for a judgement-call rule, and [code-review-and-refactor](../workflow/code-review-and-refactor.md) reads it once it exists.
 An existing standards document such as `CONTRIBUTING.md` works too.
 
 ## It's working if

@@ -102,7 +102,7 @@ The skill stops at the artifact, and there is no auto-dispatch mode. For manual 
 `to-tickets` is a step in the main build chain:
 
 ```txt
-grill-with-documentation → to-specifications → to-tickets → implement → code-review → improve-agent-environment
+grill-with-documentation → to-specifications → to-tickets → implement → code-review-and-refactor → improve-agent-environment
 ```
 
-Upstream is [to-specifications](./to-specifications.md), which hands it a settled specification to slice against; keep both in one unbroken context window. Downstream is [implement](./implement.md), which builds one ticket per fresh session, driving [test-driven-development](./test-driven-development.md) for the tests and closing with [code-review](./code-review.md). [implement-all](./implement-all.md) is the alternative downstream step when you want the whole graph built concurrently. When you're unsure which skill or flow fits, [what-is-next](../getting-started/what-is-next.md) routes you.
+Upstream is [to-specifications](./to-specifications.md), which hands it settled specifications to slice against; keep both in one unbroken context window. Downstream is [implement](./implement.md), which builds one ticket per fresh session, driving [test-driven-development](./test-driven-development.md) for the tests and closing with [code-review-and-refactor](./code-review-and-refactor.md). [implement-all](./implement-all.md) is the alternative downstream step when you want the whole graph built concurrently. When you're unsure which skill or flow fits, [what-is-next](../getting-started/what-is-next.md) routes you.
