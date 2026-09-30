@@ -51,6 +51,12 @@ Targeted verification addresses concrete regressions; another subjective smell s
 
 ## Common questions
 
+**How do I publish the review?**
+
+Invoke the experimental [publish-message](../../../skills/experimental/publish-message/SKILL.md) with the report and destination, requesting inline suggestions if wanted.
+It accepts findings from any review source and asks you to approve the complete publication before posting.
+Verified local refactors are described as completed in the destination branch only after checking that the destination contains them.
+
 **Where did `/code-review` go?**
 
 It is now `/code-review-and-refactor`.

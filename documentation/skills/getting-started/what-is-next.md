@@ -14,6 +14,7 @@ You invoke this by typing `/what-is-next`; the agent won't reach for it on its o
 | Bugs and requests arriving from other people | The [triage](../upkeep/triage.md) on-ramp, and why tickets you generated yourself don't belong on it |
 | Two skills that look interchangeable | The line between them, and it is usually one concrete test rather than a matter of taste. [grill-me](../productivity/grill-me.md) or [grill-with-documentation](../workflow/grill-with-documentation.md) turns on whether you are in a working directory; [grill-with-documentation](../workflow/grill-with-documentation.md) or [wayfinder](../shaping/wayfinder.md) turns on whether the effort fits one session |
 | A long session and a decision about the context | The ordered tree over the five options at a phase boundary |
+| An explanation you need to see | [show-me](../productivity/show-me.md) for a visual, or [wait-what](../productivity/wait-what.md) for a clearer rephrasing |
 | A skill you have already picked | Nothing useful. Invoke that skill directly. |
 
 ## Prerequisites
@@ -31,6 +32,9 @@ The word the skill gives you to think with is **flow**: a path *through* the ski
 - **Codebase health**, upkeep that produces work: [improve-codebase-architecture](../upkeep/improve-codebase-architecture.md) surveys for deepening opportunities, which re-enter the main flow as ideas.
 - **Standalones**, off every flow, reached for on their own terms: the prototype, the questionnaire, the merge conflict you are already sitting in.
 - **A vocabulary layer underneath**, the two references the other skills pull in when the words rather than the process are the problem.
+
+For publishing conclusions already reached, the router names the experimental [publish-message](../../../skills/experimental/publish-message/SKILL.md).
+It publishes ordinary comments or review summaries, with inline suggestions when requested, after approval of the complete set and destination.
 
 ## The phase boundary
 

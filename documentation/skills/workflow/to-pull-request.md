@@ -18,7 +18,9 @@ Type `/to-pull-request`, or the agent reaches for it automatically when a task f
 
 ## The summary is a shape, not a paragraph
 
-The summary's job is one visual sized to the single point the change makes, and the skill carries the menu of shapes to pick from: pseudocode for logic, a call tree for runtime control flow, a component tree for user interface structure, a shallow file tree for responsibility or a broad refactor, a Mermaid diagram for interaction, a sketched `diff` where the surrounding shape already exists, and the whole block where most of it is new.
+The summary's job is one visual sized to the single point the change makes.
+The skill calls [show-me](../productivity/show-me.md) to choose the shape and render it inline in the request body.
+If `show-me` is not installed, it uses the formats named in the template to produce the summary itself.
 
 The instruction that does the work is **pick the smallest view that makes the key point clear**. A component tree pruned to the two components that moved beats the same tree drawn in full, because everything else on it is a line the reviewer has to rule out. Using one shape is usual, several happens, and all of them never does.
 

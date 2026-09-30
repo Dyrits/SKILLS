@@ -41,7 +41,7 @@ This repository forked from [Matt Pocock's skills](https://aihero.dev/skills) at
 
 - **Tracker flexibility**: drafting happens in a local `.refinement/` workspace and reaches GitHub, GitLab, Jira, or plain markdown under `backlog/`, whichever you choose at setup, instead of assuming GitHub issues.
 - **Semantic bucket layout**: skills sit in `workflow/`, `shaping/`, `upkeep/`, `productivity/`, and `reference/`, so the idea-to-ship spine is readable from the directory tree.
-- **An experimental layer**: skills that post to pull requests, issues, or Jira (`address-feedback`, `publish-message`, `publish-review`) and the delegation and model routing policy install deliberately, not by default.
+- **An experimental layer**: skills that post to pull requests, issues, or Jira (`address-feedback`, `publish-message`) and the delegation and model routing policy install deliberately, not by default.
 - **No site coupling**: documentation lives in this repository, published through `skills.sh`; nothing depends on the upstream website.
 - **Deliberate porting**: upstream history stays reachable, but adopting an upstream change is a separate, deliberate port into this fork's structure. Deciding something is not worth porting is a normal outcome.
 
@@ -112,6 +112,7 @@ Human-facing workflows you run, not about code.
 
 #### Model-invoked
 
+- **[show-me](./skills/productivity/show-me/SKILL.md)**: Explain the current topic with the smallest useful diagram, code sketch, or focused HTML artifact.
 - **[optimize-process](./skills/productivity/optimize-process/SKILL.md)**: Map and improve a recurring process, with practical impact estimates that account for agent work and human review.
 
 ### Reference
@@ -131,7 +132,12 @@ The reusable layer other skills invoke or cite.
 These skills take externally visible actions on pull requests, merge requests, issues, or tickets, or send your text to a third-party API. They are available for direct installation, but are not included in the plugin while their workflows are being proven.
 
 - **[address-feedback](./skills/experimental/address-feedback/SKILL.md)**: Assess every substantive comment on a pull request, merge request, issue, or ticket; implement the approved change plan; then draft and post a reply to each comment.
-- **[publish-message](./skills/experimental/publish-message/SKILL.md)**: Post a short comment to a GitHub or GitLab pull request or merge request, or a Jira issue, leading with the reason rather than restating the diff or ticket.
-- **[publish-review](./skills/experimental/publish-review/SKILL.md)**: Publish a finished code review to the tracker as a summary comment and, on GitHub or GitLab, concretely fixable inline suggestions.
+- **[publish-message](./skills/experimental/publish-message/SKILL.md)**: Publish a conclusion or review summary to GitHub, GitLab, or Jira, with optional inline suggestions on a pull or merge request, after approval of the complete set and destination.
 - **[setup-delegation-policy](./skills/experimental/setup-delegation-policy/SKILL.md)**: Install the delegation and model routing rule (Light, Balanced, Heavy, Frontier tiers, with a per-harness model table) into the global steering files on this machine, and give every harness that binds models per agent one subagent per tier, so every session decides where a task runs and on which model tier.
 - **[classify](./skills/experimental/classify/SKILL.md)**: Sort or tag text with classifier.dev, filter batches before reading them, and keep uncertain results for review; reports confidence or tag scores when available.
+
+## Credits
+
+- [show-me](./skills/productivity/show-me/SKILL.md) adapts [Dex Horthy](https://github.com/dexhorthy)'s `show-me` skill from [HumanLayer](https://github.com/humanlayer/humanlayer).
+- [to-pull-request](./skills/workflow/to-pull-request/SKILL.md) came from [`mattpocock/skills`](https://github.com/mattpocock/skills), where it was named `pr`; its summary visual guidance comes from `show-me`.
+- [unslop](./skills/reference/unslop/SKILL.md) adapts the [`unslop` skill in Cursor's `pstack` plugin](https://github.com/cursor/plugins/blob/main/pstack/skills/unslop/SKILL.md).

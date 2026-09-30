@@ -14,6 +14,10 @@ Reachable only when you type them (Claude Code: `disable-model-invocation: true`
 - **[ask-someone-else](./ask-someone-else/SKILL.md)**: Turn a decision you can't answer alone into a Markdown questionnaire for the one person who can (filled in async, or together over a meeting).
 - **[wait-what](./wait-what/SKILL.md)**: Fire this the moment a message doesn't land. The agent re-pitches it with the context you were missing, in your language, using your `GLOSSARY.md` vocabulary.
 
+### Model-invoked
+
+- **[show-me](./show-me/SKILL.md)**: Explain the current topic with the smallest useful diagram, code sketch, or focused HTML artifact.
+
 ## Transport
 
 Work moving across session boundaries.
