@@ -2,7 +2,7 @@
 
 Set up once, then find your way around.
 
-- **[setup-ai-workspace](./setup-ai-workspace/SKILL.md)**: Configure this repository for AI-assisted work: issue tracking, ticket conventions, triage roles, and domain documentation. Run once per repository. (User-invoked, ships in the plugin.)
+- **[setup-ai-workspace](./setup-ai-workspace/SKILL.md)**: Configure workspace conventions and optionally provision free AI tooling through a separately installed experimental skill. Run once per repository. (User-invoked, ships in the plugin.)
 - **[what-is-next](./what-is-next/SKILL.md)**: The router: which skill or flow fits your situation, or which boundary option (continue, clear, hand-off, compact) fits the moment. (User-invoked, ships in the plugin.)
 - **[setup-git-hooks](./setup-git-hooks/SKILL.md)**: Set up versioned git hooks via core.hooksPath (no Husky) with lint-staged, Biome/Prettier, typecheck, and build. (User-invoked, not in the plugin.)
 - **[setup-git-guardrails](./setup-git-guardrails/SKILL.md)**: Block dangerous git commands across Claude Code, OpenCode, and Codex before they execute, even in auto-approve mode. (User-invoked, not in the plugin.)

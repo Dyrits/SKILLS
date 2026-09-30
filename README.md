@@ -57,7 +57,7 @@ These split on one axis: who can invoke them. **User-invoked** skills are reacha
 
 Set up once, then find your way around.
 
-- **[setup-ai-workspace](./skills/getting-started/setup-ai-workspace/SKILL.md)**: Configure this repository for AI-assisted work: issue tracking, ticket conventions, triage roles, and domain documentation. Run once per repository.
+- **[setup-ai-workspace](./skills/getting-started/setup-ai-workspace/SKILL.md)**: Configure workspace conventions and optionally provision free AI tooling. Run once per repository.
 - **[what-is-next](./skills/getting-started/what-is-next/SKILL.md)**: The router: which skill or flow fits your situation, or which boundary option (continue, clear, hand-off, compact) fits the moment.
 
 ### Workflow

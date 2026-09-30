@@ -1,0 +1,31 @@
+{
+  "skill_name": "monitor-ai-tooling",
+  "evals": [
+    {
+      "id": 2,
+      "prompt": "Use only this fixture to produce an AI tooling report for project shop during the last week. RTK reports 10,000 estimated raw-output tokens and 2,000 filtered-output tokens from a bytes/4 estimator, globally across three projects; recalls increased from 2 to 9. Token Monitor reports 45,000 actual provider tokens for shop, with no comparable previous task baseline. CodeGraph is installed and a known-symbol check passes; its published external benchmark claims 62% fewer tokens. Context7 is connected with no call history. An RTK review probe lost patch context. Create the report and recommendations without installing anything, changing configuration, running extra agent tasks, or accessing this machine's logs.",
+      "expected_output": "Calculate 80% output reduction and 8,000 estimated output tokens, retain global attribution, keep provider usage separate, reject applying 62% to personal quota, mark Context7 usage unknown, and flag the missing review context without inferring the cause of recall growth.",
+      "files": [],
+      "assertions": [
+        "Reports 80% global command-output reduction and 8,000 estimated output tokens removed.",
+        "Keeps the 45,000 provider tokens separate and makes no project or subscription savings claim.",
+        "Labels the CodeGraph percentage as external and personal savings as unknown.",
+        "Marks Context7 usage unknown and flags the lost patch context as a quality problem.",
+        "Recommends follow-up measurements without installing tools or running extra agent tasks."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Use only this fixture to report tooling savings for project docs. There is no ai-tooling setup record. An RTK baseline is 12,000 cumulative estimated saved tokens from version A before a database reset; the current version B counter is 300. A second client export duplicates the same current RTK observations. No provider export or CodeGraph usage history is available. The only original-output comparison has raw=0 and filtered=0. The user asks how many tokens CodeGraph and RTK saved this week. Write a useful report and next actions without installing tools or reading this machine's sessions.",
+      "expected_output": "Produce a gaps report, reject an incompatible negative counter delta, avoid double counting, mark a zero-denominator percentage unavailable, and explain that weekly personal savings cannot be established from this fixture.",
+      "files": [],
+      "assertions": [
+        "Rejects the baseline delta because the counter lifetime and version changed.",
+        "Deduplicates or explicitly separates the overlapping export.",
+        "Marks the zero-denominator ratio unavailable.",
+        "Reports personal weekly savings as unknown and produces useful next measurements.",
+        "Makes no installations or automatic setup invocation."
+      ]
+    }
+  ]
+}

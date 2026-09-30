@@ -1,0 +1,30 @@
+{
+  "skill_name": "setup-ai-tooling",
+  "evals": [
+    {
+      "id": 0,
+      "prompt": "Use the supplied fixture rather than this machine. Set up free AI tooling for a TypeScript project and all three installed clients: Claude Code, Codex, OpenCode. Tooling setup includes missing global dependencies. Existing state: Context7 MCP works in Claude Code; CodeGraph CLI and its Makefile target exist, but only Claude Code is connected and the project graph is stale. Existing RTK configuration rewrites every command and excludes only docker exec. A git -C project diff probe loses context under the Codex adapter, and a failing pnpm test probe loses stderr and returns 0. Native TypeScript language support is working. No structural-search use case or browser task is identified. Produce a concrete setup plan, configuration policy, verification plan, and baseline/recovery record outline. This is an evaluation: write the proposed artifacts only, without installing tools or changing real configuration.",
+      "expected_output": "Reuse working Context7, refresh rather than recreate CodeGraph, verify missing clients, preserve docker exec exclusion, disable unsafe rewrites, preserve original diagnostics and exit status, leave redundant/unsupported optional tools out, and record honest baseline and recovery coverage.",
+      "files": [],
+      "assertions": [
+        "Reuses the working Context7 connection and working TypeScript support.",
+        "Refreshes the existing CodeGraph graph and verifies coverage for all three clients.",
+        "Preserves the existing exclusion and disables unsafe rewrites after the failing probes.",
+        "Requires complete patch context, distinctive stderr, and the original nonzero exit status.",
+        "Records measurement attribution and recovery without requiring a model call after quota exhaustion."
+      ]
+    },
+    {
+      "id": 1,
+      "prompt": "Use the supplied fixture rather than this machine. Configure AI tooling for a source project with CodeGraph already working in every installed client and Context7 already connected. The recurring task is finding calls whose second argument is an object containing a specific property, excluding comments and strings. The user permits free project setup but declines global writes and additional accounts. ast-grep is absent; Serena is absent; the available package manager supports project-local tools. Produce the scoped setup plan, one structural search verification example with positive and negative cases, and what to record for later savings reporting. This is an evaluation: write proposed artifacts only, without executing installation.",
+      "expected_output": "Recommend a local ast-grep installation or project runner, verify a concrete syntax query, avoid new global writes/accounts and redundant navigation layers, and mark personal savings unknown pending measurements.",
+      "files": [],
+      "assertions": [
+        "Proposes a project-local ast-grep setup within the authorized scope.",
+        "Checks a known matching call and nonmatching comment or string.",
+        "Reuses CodeGraph and Context7 and leaves Serena optional.",
+        "Leaves personal token savings unknown pending comparable measurements."
+      ]
+    }
+  ]
+}

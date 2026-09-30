@@ -2,6 +2,9 @@
 
 `setup-ai-workspace` configures a repository for AI-assisted work through four conventions: the system-of-record issue tracker, the ticket-writing convention, the triage role vocabulary, and the domain documentation layout. It records the answers as markdown files under `documentation/agents/`.
 
+An optional tooling stage invokes the separately installed experimental [setup-ai-tooling](../../../skills/experimental/setup-ai-tooling/SKILL.md) for free project tools and missing global dependencies.
+Tooling has its own procedure and can also run independently; accepting workspace configuration alone leaves that stage optional.
+
 The tracker question has exactly two shapes, local markdown in this repository or a remote tracker, and refinement is not part of it. Every repository drafts in `.refinement/` and publishes only when you ask, so choosing Jira or GitHub never means drafting in Jira or GitHub.
 
 Those files are the only thing that varies between repositories. The skills themselves are identical everywhere; they read `documentation/agents/issue-tracker.md` at run time and do what it says. That is why the set is not tied to GitHub, and why no skill file ever needs editing to point it somewhere else. Invoking it with "link the skills to a custom issue tracker" works with anything you can connect to programmatically, with zero changes to the skills.
@@ -27,6 +30,8 @@ It writes into the repository you run it in:
 | An `## Agent skills` block | whichever of `CLAUDE.md` / `AGENTS.md` already exists |
 
 All of it is committed markdown. There is no user-level or global mode: the config lives in the repository, so every repository gets its own copy.
+
+The optional tooling stage additionally records `documentation/agents/ai-tooling.md` and may change client settings or missing global dependencies within the selected scope.
 
 ## The four decisions
 
@@ -68,6 +73,13 @@ The tracker remains the system of record. Reading it does not cross the **public
 A remote tracker with its own refinement, analysis, or grooming status does not replace the local workspace. You refine locally and publish into that status, which is why the choice of tracker and the existence of `.refinement/` are independent.
 
 ## Common questions
+
+**Can I set up the workspace without installing AI tools?**
+
+Yes.
+The tooling stage is optional, and you can run the experimental [setup-ai-tooling](../../../skills/experimental/setup-ai-tooling/SKILL.md) later.
+After tools have collected measurements, invoke the experimental [monitor-ai-tooling](../../../skills/experimental/monitor-ai-tooling/SKILL.md) for a report.
+Both skills are installed separately from the plugin.
 
 **Does an issue link make a playtest note part of the backlog?**
 

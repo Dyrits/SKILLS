@@ -6,7 +6,7 @@ Skills are organized into bucket folders under `skills/`:
 - `upkeep/`: keep the codebase and issue list healthy; generates work for the flow
 - `productivity/`: human-facing workflows you run, not about code
 - `reference/`: the reusable layer other skills invoke or cite
-- `experimental/`: takes real, externally visible actions (posting to a pull/merge request or issue tracker); install and use deliberately, not shipped in the plugin
+- `experimental/`: workflows still being evaluated, including external publication, machine configuration, and AI tooling; install and use deliberately, not shipped in the plugin
 - `deprecated/`: no longer used
 
 **Promotion is per-path, not per-bucket.** A skill is promoted exactly when it has an entry in `.claude-plugin/plugin.json`'s `skills` array (the Claude Code plugin ships exactly that set). Every promoted skill must also have a reference in the top-level `README.md` and its bucket's `README.md`. The `setup-git-*` and `setup-auto-handoff` skills in `getting-started/`, and everything in `experimental/` and `deprecated/`, carry no plugin entry and must not appear in either README's promoted listing (the `getting-started/` bucket README marks them "not in the plugin"). `setup-ai-workspace` is in the plugin and is promoted.

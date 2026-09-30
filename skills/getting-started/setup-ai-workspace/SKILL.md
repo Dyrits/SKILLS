@@ -1,6 +1,6 @@
 ---
 name: setup-ai-workspace
-description: "Configure this repository for AI-assisted work: issue tracking, ticket conventions, triage roles, and domain documentation. Run once before first use of the tracker-consuming skills."
+description: "Configure a repository for AI-assisted work: issue tracking, ticket conventions, triage roles, domain documentation, and optional tooling setup."
 disable-model-invocation: true
 ---
 
@@ -12,6 +12,8 @@ Scaffold the per-repository configuration that the workflow skills assume. Four 
 - **Ticket writing convention**: the built-in `to-tickets` format, or an existing project template or ticket-writing skill
 - **Triage roles**: the strings this repository uses for the two category and four state roles
 - **Domain documentation**: where `GLOSSARY.md` and architecture decision records live, and the consumer rules for reading them
+
+An optional **tooling** stage provisions free development tools through `setup-ai-tooling`; that skill owns installation, client integration, verification, and measurement setup.
 
 **Refinement is not a decision.** Whatever tracker a repository picks, it drafts in `.refinement/` and publishes only when the user asks. A remote tracker with its own refinement or analysis status changes nothing here: local drafting comes first, publication pushes the result. [refinement.md](./refinement.md) holds those conventions and every generated tracker file carries them.
 
@@ -28,6 +30,7 @@ Look at the current repository to understand its starting state. Read whatever e
 - `GLOSSARY.md` and `GLOSSARY-MAP.md` at the repository root
 - `documentation/architecture-decision-record/` and any `src/*/documentation/architecture-decision-record/` directories
 - `documentation/agents/`: does this skill's prior output already exist?
+- `documentation/agents/ai-tooling.md`: has tooling setup already recorded verified integrations and a baseline?
 - `backlog/` and `.refinement/`: existing tracker records and refinement workspaces
 - Issue templates, contribution documentation, and available ticket-writing skills: is there an established ticket structure, language, or required metadata?
 - Is the `triage` skill installed? (a `triage` skill folder alongside this one, or `triage` in your available skills.) This decides whether Section C runs at all.
@@ -138,6 +141,20 @@ Then write the remaining files:
 - [triage-roles.md](./triage-roles.md): role vocabulary (only if `triage` is installed)
 - [domain.md](./domain.md): domain documentation consumer rules and layout
 
-### 5. Done
+### 5. Optional tooling
+
+If the user included tooling in the workspace setup request, continue within that scope.
+Otherwise offer the tooling stage once, recommending it when relevant integrations are missing; accepting it covers project configuration and any missing global dependencies identified in the setup plan.
+Skip this stage when declined, and reuse an existing verified setup when no changes are requested.
+
+The experimental `setup-ai-tooling` skill is installed separately and is not shipped in the plugin.
+Call the Skill tool with "setup-ai-tooling" when this stage is selected and the skill is available.
+Pass the project, verified tracker access, known client integrations, and the authorized project/global scope so it can reuse the work above.
+Keep tool selection and installation steps in that skill rather than copying them here.
+If it is unavailable, finish workspace configuration and tell the user how to install or invoke `setup-ai-tooling` later.
+Done when the selected tooling stage has returned a verified record or an explicit gap, or the user skipped it.
+
+### 6. Done
 
 Tell the user the setup is complete and which workflow skills will now read from these files. Mention they can edit `documentation/agents/*.md` directly later; re-running this skill is only necessary if they want to switch issue trackers or restart from scratch.
+When tooling ran, include its record path and tell the user to run the separately installed experimental `/monitor-ai-tooling` later for a report from collected measurements.
