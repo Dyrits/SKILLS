@@ -15,7 +15,7 @@ The source of truth is the full diff from `f85ffd7` plus the artifacts named bel
 - Repository architecture decisions now live under `documentation/architecture-decision-record/`; the old `.agents/adr/` files were moved there and the domain-modeling convention no longer creates `docs/adr/`.
 - `skills/reference/domain-modeling/ADR-FORMAT.md` is now `ARCHITECTURE-DECISION-RECORD-FORMAT.md` and its callers use the expanded name.
 - `CLAUDE.md` now carries the repository-wide language convention: prefer full words such as repository, document or documentation, specification, and architecture decision record, with exceptions for literal external names, commands, APIs, URLs, established technical terms, and defined repeated abbreviations. `AGENTS.md` is a symlink to `CLAUDE.md`, so both harnesses receive the rule.
-- `setup-custom-skills` supports GitHub, GitLab, Jira, local markdown, optional local refinement drafts, and an optional ticket-writing convention. It can point at a repository template or ticket-writing skill such as `create-jira-ticket` without making that skill mandatory or handing it control of decomposition and publication.
+- `setup-ai-workspace` supports GitHub, GitLab, Jira, local markdown, optional local refinement drafts, and an optional ticket-writing convention. It can point at a repository template or ticket-writing skill such as `create-jira-ticket` without making that skill mandatory or handing it control of decomposition and publication.
 - `to-tickets` confirms the configured ticket-writing convention, keeps its built-in format as a fallback, and retains ownership of tracer-bullet decomposition, blocking edges, approval, and the local-versus-published boundary.
 - `to-spec` was renamed to `to-specifications`, and generated specification artifacts use `specification.md`.
 - Active repository prose and paths use `documentation` rather than a local `docs` directory. No `docs/` directory exists.
@@ -25,8 +25,8 @@ The source of truth is the full diff from `f85ffd7` plus the artifacts named bel
 
 - Repository agreements: `CLAUDE.md`
 - Plugin manifest: `.claude-plugin/plugin.json`
-- Setup workflow: `skills/getting-started/setup-custom-skills/SKILL.md`
-- Jira setup seed: `skills/getting-started/setup-custom-skills/issue-tracker-jira.md`
+- Setup workflow: `skills/getting-started/setup-ai-workspace/SKILL.md`
+- Jira setup seed: `skills/getting-started/setup-ai-workspace/issue-tracker-jira.md`
 - Ticket workflow: `skills/workflow/to-tickets/SKILL.md`
 - Specification workflow: `skills/workflow/to-specifications/SKILL.md`
 - Domain-modeling workflow: `skills/reference/domain-modeling/SKILL.md`

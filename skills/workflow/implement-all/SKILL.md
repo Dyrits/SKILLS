@@ -6,7 +6,7 @@ disable-model-invocation: true
 
 You have been provided a specification. This specification should have tickets associated with it, describing how to implement the specification.
 
-Read `documentation/agents/issue-tracker.md` for the configured tracker workflow. If it is missing, tell the user to run `/setup-custom-skills`.
+Read `documentation/agents/issue-tracker.md` for the configured tracker workflow. If it is missing, tell the user to run `/setup-ai-workspace`.
 
 The goal is the entire specification implemented on a single **integration branch**, with every ticket resolved the way the issue tracker closes work.
 

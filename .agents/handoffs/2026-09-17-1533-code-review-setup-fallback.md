@@ -10,7 +10,7 @@ The experimental publishing work from the previous handoff was committed and pus
 
 - Removed the hard dependency on `documentation/agents/issue-tracker.md` from `skills/workflow/code-review/SKILL.md`.
 - Specification discovery now uses configured tracker lookup only when the tracker document exists. Without it, discovery continues through a supplied path and local specification files.
-- When discovery finds no specification, the skill asks the user to choose among running `/setup-custom-skills`, providing a specification or path, and continuing with the Standards axis alone.
+- When discovery finds no specification, the skill asks the user to choose among running `/setup-ai-workspace`, providing a specification or path, and continuing with the Standards axis alone.
 - A Standards-only run skips the Specification subagent and reports `no specification available`.
 - Re-synchronised `documentation/workflow/code-review.md` with the changed behaviour.
 - Updated `skills/getting-started/what-is-next/SKILL.md` so setup is described as a precondition for tracker-dependent flows rather than every flow. A redundant sentence explaining the `code-review` exception was removed after review with `writing-for-agents`.

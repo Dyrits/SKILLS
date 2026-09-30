@@ -94,7 +94,7 @@ Yes.
 It captures the current tracked files against the pinned merge-base and includes new files belonging to the work.
 It does not stage those files, and standalone refactors remain uncommitted for you or the calling workflow to commit.
 
-**Do I have to run `/setup-custom-skills` first?**
+**Do I have to run `/setup-ai-workspace` first?**
 
 No.
 When tracker configuration exists, the skill uses it to fetch specifications referenced by commits.

@@ -205,7 +205,7 @@
       "status": "M",
       "source": "docs/engineering/setup-matt-pocock-skills.md",
       "action": "adapted-documentation",
-      "target": "documentation/skills/getting-started/setup-custom-skills.md",
+      "target": "documentation/skills/getting-started/setup-ai-workspace.md",
       "archive": ".upstream/snapshots/d81f3a1/files/docs/engineering/setup-matt-pocock-skills.md"
     },
     {
@@ -387,14 +387,14 @@
       "status": "M",
       "source": "skills/engineering/setup-matt-pocock-skills/SKILL.md",
       "action": "ported",
-      "target": "skills/getting-started/setup-custom-skills/SKILL.md",
+      "target": "skills/getting-started/setup-ai-workspace/SKILL.md",
       "archive": null
     },
     {
       "status": "M",
       "source": "skills/engineering/setup-matt-pocock-skills/domain.md",
       "action": "ported",
-      "target": "skills/getting-started/setup-custom-skills/domain.md",
+      "target": "skills/getting-started/setup-ai-workspace/domain.md",
       "archive": null
     },
     {

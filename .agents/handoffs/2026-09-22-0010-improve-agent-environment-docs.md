@@ -6,7 +6,7 @@ Supersedes: `.agents/handoffs/2026-09-21-2319-waza-tooling-baseline.md`.
 
 - Researched upstream history for `skills/upkeep/improve-agent-environment/`: verified it was originally created upstream as `retro` in `skills/in-progress/retro/` (commits `89e8a5e` through `6942bff`), which had no documentation page.
 - Authored human-facing documentation page for `improve-agent-environment` at `documentation/skills/upkeep/improve-agent-environment.md` according to `.agents/writing-documentation.md` and `/writing-for-agents` guidelines (no em-dashes, full prose, mechanical vs judgement classification, context pressure review boundary).
-- Clarified `CLAUDE.md` to state that `setup-custom-skills` is in the plugin and promoted, while `setup-git-*` and `setup-auto-handoff` are non-promoted.
+- Clarified `CLAUDE.md` to state that `setup-ai-workspace` is in the plugin and promoted, while `setup-git-*` and `setup-auto-handoff` are non-promoted.
 - Fixed stale `ask-matt` router reference in `documentation/skills/reference/wizard.md` to point to `what-is-next`.
 - Confirmed template placeholder `[<closed ticket title>](link)` in `skills/shaping/wayfinder/SKILL.md` is valid as an example.
 - Verified repository-wide internal markdown links with zero broken links in `documentation/`.
@@ -15,7 +15,7 @@ Supersedes: `.agents/handoffs/2026-09-21-2319-waza-tooling-baseline.md`.
 ## Primary artifacts (paths relative to repository root)
 
 - `documentation/skills/upkeep/improve-agent-environment.md`: new documentation page.
-- `CLAUDE.md`: clarified promoted status for `setup-custom-skills`.
+- `CLAUDE.md`: clarified promoted status for `setup-ai-workspace`.
 - `documentation/skills/reference/wizard.md`: updated router link.
 
 ## What is next

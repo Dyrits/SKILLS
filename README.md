@@ -18,11 +18,11 @@ One way in: [skills.sh](https://skills.sh/Dyrits/SKILLS) copies editable skill f
 npx skills@latest add Dyrits/SKILLS
 ```
 
-Pick the skills you want, and which coding agents to install them on. **The installer lets you choose which skills to take, so make sure `setup-custom-skills` is one of them.**
+Pick the skills you want, and which coding agents to install them on. **The installer lets you choose which skills to take: make sure `setup-ai-workspace` is one of them.**
 
 It writes the skills into your repository as ordinary files you own and can edit. Nothing updates behind your back; pull the latest changes when you want them with `npx skills update`.
 
-### 2. Run `/setup-custom-skills`
+### 2. Run `/setup-ai-workspace`
 
 In your agent, run it once per repository. It will:
 
@@ -57,7 +57,7 @@ These split on one axis: who can invoke them. **User-invoked** skills are reacha
 
 Set up once, then find your way around.
 
-- **[setup-custom-skills](./skills/getting-started/setup-custom-skills/SKILL.md)**: Configure this repository for the workflow skills (issue tracker: local markdown or remote, ticket-writing convention, triage roles, domain documentation layout). Run once per repository.
+- **[setup-ai-workspace](./skills/getting-started/setup-ai-workspace/SKILL.md)**: Configure this repository for AI-assisted work: issue tracking, ticket conventions, triage roles, and domain documentation. Run once per repository.
 - **[what-is-next](./skills/getting-started/what-is-next/SKILL.md)**: The router: which skill or flow fits your situation, or which boundary option (continue, clear, hand-off, compact) fits the moment.
 
 ### Workflow

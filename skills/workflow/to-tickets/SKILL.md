@@ -8,7 +8,7 @@ disable-model-invocation: true
 
 Break a plan, specification, or conversation into a set of **tickets**: tracer-bullet vertical slices, each declaring the tickets that **block** it.
 
-The issue tracker, ticket-writing convention, and triage role vocabulary should have been provided to you. If not, ask the user whether to run `/setup-custom-skills` now; if they decline, stop and tell them this skill needs it before continuing.
+The issue tracker, ticket-writing convention, and triage role vocabulary should have been provided to you. If not, ask the user whether to run `/setup-ai-workspace` now; if they decline, stop and tell them this skill needs it before continuing.
 
 ## Process
 

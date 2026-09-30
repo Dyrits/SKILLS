@@ -45,7 +45,7 @@ For a PR, the same states read against the attached code: `ready` means a brief 
 
 Every triaged issue should carry exactly one category role and one state role. If state roles conflict, flag it and ask the maintainer before doing anything else.
 
-These are canonical role names. `documentation/agents/triage-roles.md` maps each one to the string this repository actually uses, for both the category and the state roles. That mapping should have been provided to you. If not, ask the user whether to run `/setup-custom-skills` now; if they decline, stop and tell them this skill needs it before continuing.
+These are canonical role names. `documentation/agents/triage-roles.md` maps each one to the string this repository actually uses, for both the category and the state roles. That mapping should have been provided to you. If not, ask the user whether to run `/setup-ai-workspace` now; if they decline, stop and tell them this skill needs it before continuing.
 
 State transitions: an issue carrying no state role normally goes to `to-evaluate` first; from there it moves to `on-hold`, `ready`, or `not-planned`. `on-hold` returns to `to-evaluate` once the thing it named has arrived. The maintainer can override at any time; flag transitions that look unusual and ask before proceeding.
 

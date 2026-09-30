@@ -2,7 +2,7 @@
 
 Supersedes: `.agents/handoffs/2026-09-18-0028-artifact-locations-rename.md`
 
-Created 2026-09-18 01:08. Session goal: make `setup-custom-skills` simple and clear, and re-sync everything that reads it.
+Created 2026-09-18 01:08. Session goal: make `setup-ai-workspace` simple and clear, and re-sync everything that reads it.
 
 ## Decisions made this session
 
@@ -19,11 +19,11 @@ Rejected on the way, with reasons recorded in this session: renaming `bug` to `f
 
 See the commit diff rather than a file list here. The shape of it:
 
-- New seed `skills/getting-started/setup-custom-skills/refinement.md`, appended to whichever tracker template setup writes. It is the single source of truth for the refinement workspace and the publication boundary; the duplicate section inside the Jira template is gone.
+- New seed `skills/getting-started/setup-ai-workspace/refinement.md`, appended to whichever tracker template setup writes. It is the single source of truth for the refinement workspace and the publication boundary; the duplicate section inside the Jira template is gone.
 - `triage-labels.md` renamed to `triage-roles.md`, in the skill folder and as the generated `documentation/agents/triage-roles.md`. The old name contradicted its content: on a local tracker the roles are `Category:` and `Status:` lines, not labels.
 - `issue-tracker-local.md` gained a `Category:` line, and wayfinder's claim state moved from `Status:` to `Progress:` because both vocabularies were colliding on one line.
 - Consumer skills (`to-tickets`, `to-specifications`, `what-is-next`) lost their "when refinement is configured" conditionals.
-- Documentation pages re-synced for `setup-custom-skills`, `triage`, `to-specifications`, `to-tickets`, `what-is-next`, plus both README listings.
+- Documentation pages re-synced for `setup-ai-workspace`, `triage`, `to-specifications`, `to-tickets`, `what-is-next`, plus both README listings.
 
 Two pre-existing defects fixed while passing through: the triage documentation page said `.out-of-scope/` where the skill says `documentation/out-of-scope/`, and it named the upstream author, which `.agents/writing-documentation.md` forbids.
 
@@ -33,7 +33,7 @@ Two pre-existing defects fixed while passing through: the triage documentation p
 
 ## Open items for a next session
 
-- No repository in the wild has been migrated. A repository set up before this session still has `documentation/agents/triage-labels.md` and the five old role strings; re-running `/setup-custom-skills` is the migration path, and nothing warns the user about that.
+- No repository in the wild has been migrated. A repository set up before this session still has `documentation/agents/triage-labels.md` and the five old role strings; re-running `/setup-ai-workspace` is the migration path, and nothing warns the user about that.
 - `skills/upkeep/triage/AGENT-BRIEF.md` still opens its examples in GitHub terms in places. It works, but it is the least tracker-neutral file left in the triage skill.
 - `ADR` as an abbreviation survives in several skills outside this session's scope, against the rule in `CLAUDE.md`.
 
@@ -41,7 +41,7 @@ Two pre-existing defects fixed while passing through: the triage documentation p
 
 - `/writing-for-agents` before editing any `SKILL.md` or documentation page here.
 - `/code-review` against this session's commit if a second opinion on the diff is wanted.
-- `/setup-custom-skills` to exercise the new flow end to end in a scratch repository, which is the one thing this session did not do.
+- `/setup-ai-workspace` to exercise the new flow end to end in a scratch repository, which is the one thing this session did not do.
 
 ## Git boundary
 

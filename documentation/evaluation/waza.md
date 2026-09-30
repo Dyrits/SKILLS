@@ -18,7 +18,7 @@ Generated on 2026-09-21 with `waza` 0.38.7, one `waza check <skill>` run per ski
 
 Every skill that parsed returns "needs some work before submission". The recurring causes, in order of impact:
 
-1. **Token budget.** 27 of 37 parsed skills exceed waza's hard limit of 500 tokens. The largest: `shaping/wayfinder` (2715), `reference/writing-for-agents` (2349), `getting-started/setup-custom-skills` (2323), `productivity/teach` (1946), `upkeep/debug` (2001).
+1. **Token budget.** 27 of 37 parsed skills exceed waza's hard limit of 500 tokens. The largest: `shaping/wayfinder` (2715), `reference/writing-for-agents` (2349), `getting-started/setup-ai-workspace` (2323), `productivity/teach` (1946), `upkeep/debug` (2001).
 2. **Unknown frontmatter fields** against the agentskills.io spec: `disable-model-invocation` in 21 skills (a deliberate convention here, see `.agents/invocation.md`) and `argument-hint` in 8 skills. One security advisory on top: `experimental/classify`, whose `argument-hint` value contains XML angle brackets.
 3. **Compliance score Low.** waza wants explicit `USE FOR:` / `DO NOT USE FOR:` trigger sections and routing labels; these skills describe triggers in prose instead.
 4. **No eval suites.** No skill in the repository has an `eval.yaml`, so none can be benchmarked with `waza run`.
@@ -45,7 +45,7 @@ Tokens are measured against waza's default hard limit of 500. "Spec issues" list
 | experimental/publish-review | Low | 8/9 | 838 | unknown fields: `argument-hint`, `disable-model-invocation` | missing |
 | experimental/setup-delegation-policy | Low | 8/9 | 1273 | unknown field `disable-model-invocation` | missing |
 | getting-started/setup-auto-handoff | Low | 9/9 | 785 | none | missing |
-| getting-started/setup-custom-skills | Low | 8/9 | 2323 | unknown field `disable-model-invocation` | missing |
+| getting-started/setup-ai-workspace | Low | 8/9 | 2323 | unknown field `disable-model-invocation` | missing |
 | getting-started/setup-git-guardrails | Low | 9/9 | 1186 | none | missing |
 | getting-started/setup-git-hooks | Low | 9/9 | 1624 | none | missing |
 | getting-started/what-is-next | Low | 8/9 | 3489 | unknown field `disable-model-invocation` | missing |

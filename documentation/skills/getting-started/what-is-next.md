@@ -21,7 +21,7 @@ You invoke this by typing `/what-is-next`; the agent won't reach for it on its o
 
 The router names skills; it does not install them. Everything it points at has to be installed for the recommendation to be actionable, and it only knows the promoted skills in this repository.
 
-The tracker-dependent routes (triage, `to-specifications`, `to-tickets`, `implement`) assume [setup-custom-skills](./setup-custom-skills.md) has already configured the system-of-record tracker, local markdown or remote. Refinement drafts stay under `.refinement/` until publication in every case, so that part needs no configuring. The router will happily recommend them before that has happened.
+The tracker-dependent routes (triage, `to-specifications`, `to-tickets`, `implement`) assume [setup-ai-workspace](./setup-ai-workspace.md) has already configured the system-of-record tracker, local markdown or remote. Refinement drafts stay under `.refinement/` until publication in every case, so that part needs no configuring. The router will happily recommend them before that has happened.
 
 ## Flows, not skills
 

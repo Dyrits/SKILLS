@@ -15,7 +15,7 @@ If the specification has no tickets yet, use [to-tickets](./to-tickets.md) first
 
 ## Prerequisites
 
-- A tracker workflow configured through [setup-custom-skills](../getting-started/setup-custom-skills.md), describing where tickets live and how completed work is resolved.
+- A tracker workflow configured through [setup-ai-workspace](../getting-started/setup-ai-workspace.md), describing where tickets live and how completed work is resolved.
 - A specification and its tickets, with blocking edges.
 - A harness that can run subagents and give each implementer its own worktree.
 

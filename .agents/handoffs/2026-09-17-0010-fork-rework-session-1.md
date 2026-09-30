@@ -11,7 +11,7 @@ Full rework of the fork at `git@github.com:Dyrits/SKILLS.git` (origin; `upstream
 | Skill | What happened | Now at |
 | --- | --- | --- |
 | `what-is-next` (was `ask-matt`) | renamed; description covers boundary options too | `getting-started/` |
-| `setup-custom-skills` (was `setup-matt-pocock-skills`) | renamed (rename re-applied after an earlier revert; only the tracker-template changes stayed reverted); "engineering skills" wording → "workflow skills" | `getting-started/` |
+| `setup-ai-workspace` (was `setup-matt-pocock-skills`) | renamed (rename re-applied after an earlier revert; only the tracker-template changes stayed reverted); "engineering skills" wording → "workflow skills" | `getting-started/` |
 | `setup-git-hooks` (was `setup-pre-commit`) | renamed; Husky dropped for `core.hooksPath`; Biome-first + Prettier fallback; typecheck+build gate; user's formatter prefs (width 160, double quotes, semis, no trailing commas, sorted keys/attrs/props) | `getting-started/`, not in plugin |
 | `setup-git-guardrails` (was `git-guardrails-claude-code`) | renamed; now multi-agent (Claude hook, OpenCode deny rules, Codex documented + git-level fallback) | `getting-started/`, not in plugin |
 | `setup-auto-handoff` | **new**; PreCompact hook gating compaction on a fresh handoff; tested | `getting-started/`, not in plugin |

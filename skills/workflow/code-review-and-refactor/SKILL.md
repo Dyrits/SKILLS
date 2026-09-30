@@ -44,7 +44,7 @@ Look for the originating specifications, in this order:
 When that file is missing, skip tracker lookup.
 2. Use the paths or contents of specifications supplied by the user or calling implementation workflow.
 3. Find specifications under `documentation/`, `specifications/`, `backlog/`, or `.refinement/` matching the branch or feature.
-4. If nothing is found, ask the user to configure tracker lookup with `/setup-custom-skills`, provide the specifications, or continue with Standards alone.
+4. If nothing is found, ask the user to configure tracker lookup with `/setup-ai-workspace`, provide the specifications, or continue with Standards alone.
 If they choose setup, tell them to run it and resume discovery afterward.
 If they choose Standards alone, skip the Specifications reviewer and report "no specifications available".
 

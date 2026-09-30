@@ -6,7 +6,7 @@ disable-model-invocation: true
 
 This skill takes the current conversation context and codebase understanding and produces a specification. Do NOT interview the user; just synthesize what you already know.
 
-The issue tracker and triage role vocabulary should have been provided to you. If not, ask the user whether to run `/setup-custom-skills` now; if they decline, stop and tell them this skill needs it before continuing.
+The issue tracker and triage role vocabulary should have been provided to you. If not, ask the user whether to run `/setup-ai-workspace` now; if they decline, stop and tell them this skill needs it before continuing.
 
 ## Process
 

@@ -22,8 +22,8 @@ The diff is large because the user asked to remove abbreviated `spec` and `repo`
 
 ## Primary artifacts
 
-- Setup workflow: `skills/getting-started/setup-custom-skills/SKILL.md`
-- New Jira template: `skills/getting-started/setup-custom-skills/issue-tracker-jira.md`
+- Setup workflow: `skills/getting-started/setup-ai-workspace/SKILL.md`
+- New Jira template: `skills/getting-started/setup-ai-workspace/issue-tracker-jira.md`
 - Renamed specification skill: `skills/workflow/to-specifications/SKILL.md`
 - Draft-aware ticket workflow: `skills/workflow/to-tickets/SKILL.md`
 - Router: `skills/getting-started/what-is-next/SKILL.md`

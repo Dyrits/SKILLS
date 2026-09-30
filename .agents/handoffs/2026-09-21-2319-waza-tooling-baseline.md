@@ -20,7 +20,7 @@ Installed and exercised `waza` (Microsoft's agent-skills evaluation CLI) against
 ## Open follow-ups
 
 1. `upkeep/improve-agent-environment` is a promoted skill with no documentation page (never existed, not lost in the move; `git log --all` on the path is empty). Per `CLAUDE.md`, a promoted skill needs a page written per `.agents/writing-documentation.md`.
-2. `documentation/skills/getting-started/setup-custom-skills.md` exists although `setup-*` skills are non-promoted and per `CLAUDE.md` should carry no page. Pre-existing, and other pages link to it; decide keep-plus-exception or remove-plus-relink.
+2. `documentation/skills/getting-started/setup-ai-workspace.md` exists although `setup-*` skills are non-promoted and per `CLAUDE.md` should carry no page. Pre-existing, and other pages link to it; decide keep-plus-exception or remove-plus-relink.
 3. Decide whether to adopt waza eval suites (`waza suggest <skill> --apply` to draft, review, then `waza run`). Zero coverage today means skill changes have no regression gate.
 4. The waza report at `documentation/evaluation/waza.md` is a snapshot of 2026-09-21; re-run after skill changes if it is to stay meaningful.
 

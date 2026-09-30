@@ -1,6 +1,6 @@
 ## What it does
 
-`setup-custom-skills` configures four conventions for one repository: the system-of-record issue tracker, the ticket-writing convention, the triage role vocabulary, and the domain documentation layout. It records the answers as markdown files under `documentation/agents/`.
+`setup-ai-workspace` configures a repository for AI-assisted work through four conventions: the system-of-record issue tracker, the ticket-writing convention, the triage role vocabulary, and the domain documentation layout. It records the answers as markdown files under `documentation/agents/`.
 
 The tracker question has exactly two shapes, local markdown in this repository or a remote tracker, and refinement is not part of it. Every repository drafts in `.refinement/` and publishes only when you ask, so choosing Jira or GitHub never means drafting in Jira or GitHub.
 
@@ -10,7 +10,7 @@ It is a prompt-driven skill, not a deterministic script. It reads your `git remo
 
 ## When to reach for it
 
-You invoke this by typing `/setup-custom-skills`; the agent won't reach for it on its own. It is deliberately marked non-invokable, so no other skill can fire it for you.
+You invoke this by typing `/setup-ai-workspace`; the agent won't reach for it on its own. It is deliberately marked non-invokable, so no other skill can fire it for you.
 
 Reach for it once per repository, before the first use of any other engineering skill. If [triage](../upkeep/triage.md), [to-specifications](../workflow/to-specifications.md), [to-tickets](../workflow/to-tickets.md) or [wayfinder](../shaping/wayfinder.md) start guessing where your issues go, or apply role strings your tracker doesn't have, they have not been set up here yet. A repository already halfway through a project is a fine place to run it; the skill reads what is already there and no earlier work is wasted.
 
@@ -115,4 +115,4 @@ One long-standing complaint says yes, in these words: *"having a skill to set up
 
 ## Where it fits
 
-`setup-custom-skills` is the **run-once setup** for the engineering flow, the precondition everything else assumes rather than a step in the chain. Its neighbours are its readers: [triage](../upkeep/triage.md), which applies the role vocabulary written here; [to-specifications](../workflow/to-specifications.md) and [to-tickets](../workflow/to-tickets.md), which draft and publish across the boundary written here; and [wayfinder](../shaping/wayfinder.md), which reads the "Wayfinding operations" section of the same tracker file to know how maps and child tickets are stored. The domain documentation layout it records is the one [domain-modeling](../reference/domain-modeling.md) fills in later: it creates `GLOSSARY.md` and architecture decision records lazily, when a term or decision actually gets resolved, so an empty repository after setup is the expected state. For which skill to reach for next, [what-is-next](./what-is-next.md) routes the whole set.
+`setup-ai-workspace` is the **run-once setup** for the engineering flow, the precondition everything else assumes rather than a step in the chain. Its neighbours are its readers: [triage](../upkeep/triage.md), which applies the role vocabulary written here; [to-specifications](../workflow/to-specifications.md) and [to-tickets](../workflow/to-tickets.md), which draft and publish across the boundary written here; and [wayfinder](../shaping/wayfinder.md), which reads the "Wayfinding operations" section of the same tracker file to know how maps and child tickets are stored. The domain documentation layout it records is the one [domain-modeling](../reference/domain-modeling.md) fills in later: it creates `GLOSSARY.md` and architecture decision records lazily, when a term or decision actually gets resolved, so an empty repository after setup is the expected state. For which skill to reach for next, [what-is-next](./what-is-next.md) routes the whole set.

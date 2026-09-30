@@ -26,7 +26,7 @@ The same-session case is worth naming because the skill's own first line doesn't
 
 `implement` commits to the branch you are on. It does not create one, and it does not ask. Check you are on the branch you want the work on before you start.
 
-If the tickets came from [to-tickets](./to-tickets.md), the tracker they live on was configured by [setup-custom-skills](../getting-started/setup-custom-skills.md). `code-review-and-refactor` reads the same configuration to find the originating specifications at close-out.
+If the tickets came from [to-tickets](./to-tickets.md), the tracker they live on was configured by [setup-ai-workspace](../getting-started/setup-ai-workspace.md). `code-review-and-refactor` reads the same configuration to find the originating specifications at close-out.
 
 ## What one run does
 

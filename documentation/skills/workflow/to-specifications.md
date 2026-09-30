@@ -19,7 +19,7 @@ Reach for it when the build is too big for one agent session and has to survive 
 
 ## Prerequisites
 
-`to-specifications` needs [setup-custom-skills](../getting-started/setup-custom-skills.md) to configure the tracker and the triage role vocabulary. A sourced draft lives at `.refinement/<issue-key>/specification.md`; the source issue remains unchanged until you explicitly ask to publish, whether it lives remotely or in `backlog/`.
+`to-specifications` needs [setup-ai-workspace](../getting-started/setup-ai-workspace.md) to configure the tracker and the triage role vocabulary. A sourced draft lives at `.refinement/<issue-key>/specification.md`; the source issue remains unchanged until you explicitly ask to publish, whether it lives remotely or in `backlog/`.
 
 ## The specification is a decision record
 

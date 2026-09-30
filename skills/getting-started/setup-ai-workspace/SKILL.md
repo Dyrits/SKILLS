@@ -1,10 +1,10 @@
 ---
-name: setup-custom-skills
-description: "Configure this repository for the workflow skills: its issue tracker (local markdown or remote), ticket-writing convention, triage role vocabulary, and domain documentation layout. Run once before first use of the tracker-consuming skills."
+name: setup-ai-workspace
+description: "Configure this repository for AI-assisted work: issue tracking, ticket conventions, triage roles, and domain documentation. Run once before first use of the tracker-consuming skills."
 disable-model-invocation: true
 ---
 
-# Setup Custom Skills
+# Setup AI Workspace
 
 Scaffold the per-repository configuration that the workflow skills assume. Four decisions:
 

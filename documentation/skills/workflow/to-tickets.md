@@ -20,7 +20,7 @@ Tickets that `to-tickets` produced are agent-ready by construction. Don't run [t
 
 ## Prerequisites
 
-`to-tickets` needs [setup-custom-skills](../getting-started/setup-custom-skills.md) to configure the tracker, ticket-writing convention, and triage role vocabulary. Drafts stay under `.refinement/<issue-key>/issues/` until you explicitly ask to publish them, whether the tracker is remote or the local `backlog/`.
+`to-tickets` needs [setup-ai-workspace](../getting-started/setup-ai-workspace.md) to configure the tracker, ticket-writing convention, and triage role vocabulary. Drafts stay under `.refinement/<issue-key>/issues/` until you explicitly ask to publish them, whether the tracker is remote or the local `backlog/`.
 
 ## Your ticket convention stays optional
 

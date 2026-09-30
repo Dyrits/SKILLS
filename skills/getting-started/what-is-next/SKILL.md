@@ -104,4 +104,4 @@ Off the main flow entirely.
 
 Every repository drafts under `.refinement/` first, whether its tracker is a remote or the local `backlog/`. Explicit publication selects which artifacts become tracker records; an issue's links to working notes do not promote those notes.
 
-**`/setup-custom-skills`**: run before a tracker-dependent flow to configure the system-of-record issue tracker (local markdown or remote), ticket-writing convention, triage roles, and documentation layout. Custom issue trackers and team ticket templates also work.
+**`/setup-ai-workspace`**: run before a tracker-dependent flow to configure the system-of-record issue tracker (local markdown or remote), ticket-writing convention, triage roles, and documentation layout. Custom issue trackers and team ticket templates also work.
