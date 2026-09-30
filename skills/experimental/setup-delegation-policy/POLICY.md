@@ -22,6 +22,8 @@ Match the work to a tier:
 
 Read your delegation tool's parameter list this turn rather than assuming agent names or model controls: generations move and harnesses differ, so trust the choices it offers over the table. If a spawn tool offers a per-call model override, select the available model for the tier and pass its exact identifier. Otherwise pick the tier agent whose description matches. When no delegation tool is available, carry out the work here and name the tier the work would need if delegation becomes available.
 
+**Check model versions before every dispatch.** Within the model family chosen for the tier, use the latest version available in the current tool's model list or the harness's live catalogue. For example, when both `gpt-6-sol` and `gpt-6.1-sol` are available, select `gpt-6.1-sol` for Sol work. Determine recency from explicit version numbers or current provider documentation when names are ambiguous. A user-specified version takes precedence; if it is unavailable, report that before dispatching rather than silently substituting an older version. For named agents, verify their model binding against the live catalogue and report a stale binding before dispatching.
+
 Brief what you dispatch: the request verbatim, the working directory, whatever the request leans on without stating it (a path, a target file, a convention agreed earlier), and prior artifacts by path rather than pasted in full. A subagent left to guess any of these wastes the tier you just paid for.
 
 State which agent and model handled dispatched work, before or alongside its result: name the tier, the resolved model or agent, and what it was asked to do. The user cannot see this otherwise, and cannot correct a wrong tier choice they never learned about.

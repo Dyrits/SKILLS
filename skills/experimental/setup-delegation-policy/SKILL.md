@@ -51,6 +51,7 @@ The policy tells the agent to find its own lever at runtime, so do not restate i
 
 - Which delegation tool each harness exposes in this session, and whether it takes a per-call model override. For Codex, report the available spawn tool and model choices, or state that this session exposes no spawn tool.
 - Which model each tier resolved to, and what that tier costs per million tokens.
+- Which available versions were checked for each chosen model family, applying `POLICY.md`'s model-version rule.
 - Any tier a harness cannot carry, named, with what its ceiling is instead.
 - What `agent.*.model` in `~/.config/opencode/opencode.json` binds the built-in agents to: which of them share one model, whether a read-only agent such as `explore` sits above Light, and whether the default primary agent `build` is bound at all or left on the top-level `model`.
 - Where there is no delegation tool at all, that the routing half of the policy is inert and the split-the-work half still applies.

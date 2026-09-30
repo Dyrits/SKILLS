@@ -22,7 +22,7 @@ Traps, each of which fails silently rather than loudly:
 
 ## Pre-defined ladders
 
-Confirm each id against the harness before writing it: generations move and ids move with them. Prefer the ids an install actually uses over the ones it merely lists, which counting occurrences across its own caches separates.
+Confirm each id against the harness's live catalogue before writing it, applying `POLICY.md`'s model-version rule to every tier binding. Installed bindings and caches can identify the family in use, but the live catalogue determines which versions are available.
 
 **ZCode**, the GLM family under the user's coding plan, at zero marginal cost. Escalates by model, then by reasoning level:
 
@@ -114,6 +114,7 @@ Where a tier file exists, rewrite its model line and leave the body. Where one s
 
 - Each directory holds the tiers that harness can carry, and no legacy duplicate.
 - Every model value resolves: a raw id appears verbatim in the harness's model list, an alias in the settings defining it. A typo binds the agent to nothing and surfaces only when a spawn fails mid-task.
+- Every binding satisfies `POLICY.md`'s model-version rule against the live catalogue.
 - The tiers ascend in capability, and in price wherever the models are metered.
 - Any tier left on a free-listed model is named as such in the report, since re-running this skill is what re-checks it.
 
