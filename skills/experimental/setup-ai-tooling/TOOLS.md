@@ -64,9 +64,20 @@ Choose it for an identified gap, rather than installing a second navigation laye
 
 ## Task-specific clients
 
-[Microsoft Playwright CLI](https://github.com/microsoft/playwright-cli) supports focused browser snapshots, locator discovery, screenshots, and traces.
-Offer it for browser tasks when the project's existing browser integration does not already provide an efficient workflow.
+Browser tooling follows the task; offer a browser client only when a real task needs one.
+Static pages, documentation, and plain HTTP need no browser: the client's built-in fetch and search or `curl` cover them.
+Reuse a working browser integration, including one already connected, before adding another.
+
+[Microsoft Playwright CLI](https://github.com/microsoft/playwright-cli) is the default for *driving* pages: navigation, forms, logins, client-rendered content, focused snapshots, locator discovery, screenshots, and traces.
+It runs headless across Chromium, Firefox, and WebKit, and as a CLI it adds no tool schema to the agent's context.
 Preserve the project's test framework and inspect real page state before choosing locators.
+
+[Chrome DevTools MCP](https://github.com/ChromeDevTools/chrome-devtools-mcp) is the choice for *diagnosing* a page: console messages, network requests, performance traces, and Core Web Vitals.
+It is Chrome only, and its MCP tool definitions add context load.
+Attaching it to a running browser exposes that session's profile, so confirm the scope with the user first.
+
+Install one when the work is one kind and both only when the project has both kinds; verify with a read-only page load that returns a snapshot or trace.
+
 [GitHub CLI formatting](https://cli.github.com/manual/gh_help_formatting) and [GitLab API commands](https://docs.gitlab.com/cli/api/) support precise tracker retrieval.
 For ticket refinement and review, fetch complete relevant bodies, discussions, and pages while selecting away unrelated response metadata.
 Verify tracker access with a read-only operation; tooling setup publishes no tracker messages.

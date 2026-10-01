@@ -24,7 +24,7 @@ Done when every candidate has a suitability decision, an existing-state assessme
 
 Recommend CodeGraph for supported source projects, existing language servers, and Context7 for dependency documentation.
 Reuse working integrations, including Context7 MCP, and existing project automation.
-Offer ast-grep when a representative structural search adds value; offer Playwright CLI for browser work and tracker CLIs for the project's tracker.
+Offer ast-grep when a representative structural search adds value; for browser work, choose between Playwright CLI and Chrome DevTools MCP by the task in [TOOLS.md](TOOLS.md); offer tracker CLIs for the project's tracker.
 Keep Serena optional when CodeGraph and native language support already cover navigation.
 Use free tools and free service tiers; treat account requirements and quotas as setup constraints.
 
