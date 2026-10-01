@@ -12,6 +12,8 @@ You invoke this by typing `/what-is-next`; the agent won't reach for it on its o
 | --- | --- |
 | A project whose AI tooling needs setup | Experimental [setup-ai-tooling](../../../skills/experimental/setup-ai-tooling/SKILL.md), also offered as an optional stage of [setup-ai-workspace](./setup-ai-workspace.md) when separately installed |
 | Tools are configured and you want evidence of their benefit | Experimental [monitor-ai-tooling](../../../skills/experimental/monitor-ai-tooling/SKILL.md), separately installed, for a report from existing measurements |
+| A task should run outside the original checkout | Experimental [work-in-tree](../../../skills/experimental/work-in-tree/SKILL.md), separately installed, to establish isolation before editing |
+| Committed work in a worktree needs to reach its original local branch | Experimental [sync-tree](../../../skills/experimental/sync-tree/SKILL.md), separately installed, for a local transfer rather than upstream publication |
 | An idea, and no idea where to start | The head of the main flow, and whether the build is small enough to skip the specification |
 | Bugs and requests arriving from other people | The [triage](../upkeep/triage.md) on-ramp, and why tickets you generated yourself don't belong on it |
 | Two skills that look interchangeable | The line between them, and it is usually one concrete test rather than a matter of taste. [grill-me](../productivity/grill-me.md) or [grill-with-documentation](../workflow/grill-with-documentation.md) turns on whether you are in a working directory; [grill-with-documentation](../workflow/grill-with-documentation.md) or [wayfinder](../shaping/wayfinder.md) turns on whether the effort fits one session |

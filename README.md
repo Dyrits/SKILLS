@@ -129,12 +129,14 @@ The reusable layer other skills invoke or cite.
 
 ### Experimental
 
-These skills take externally visible actions on pull requests, merge requests, issues, or tickets, or send your text to a third-party API. They are available for direct installation, but are not included in the plugin while their workflows are being proven.
+These skills are still being evaluated, including workflows for external publication, machine configuration, AI tooling, and local branch transfers. They are available for direct installation, but are not included in the plugin while their workflows are being proven.
 
 - **[address-feedback](./skills/experimental/address-feedback/SKILL.md)**: Assess every substantive comment on a pull request, merge request, issue, or ticket; implement the approved change plan; then draft and post a reply to each comment.
 - **[publish-message](./skills/experimental/publish-message/SKILL.md)**: Publish a conclusion or review summary to GitHub, GitLab, or Jira, with optional inline suggestions on a pull or merge request, after approval of the complete set and destination.
 - **[setup-delegation-policy](./skills/experimental/setup-delegation-policy/SKILL.md)**: Install the delegation and model routing rule (Light, Balanced, Heavy, Frontier tiers, with a per-harness model table) into the global steering files on this machine, and give every harness that binds models per agent one subagent per tier, so every session decides where a task runs and on which model tier.
 - **[classify](./skills/experimental/classify/SKILL.md)**: Sort or tag text with classifier.dev, filter batches before reading them, and keep uncertain results for review; reports confidence or tag scores when available.
+- **[work-in-tree](./skills/experimental/work-in-tree/SKILL.md)**: Create or reuse an isolated Git worktree, carry out the task there, and leave a verified destination for syncing later.
+- **[sync-tree](./skills/experimental/sync-tree/SKILL.md)**: Sync committed work from a Git worktree or isolated clone to its corresponding local branch, with approval and an exact lease for history replacements.
 
 ## Credits
 

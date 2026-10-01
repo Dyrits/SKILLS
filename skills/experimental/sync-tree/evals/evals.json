@@ -1,0 +1,35 @@
+{
+  "skill_name": "sync-tree",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I committed my changes in a linked Git worktree on feature/search-work. Sync them to feature/search in the original repository. The target is checked out there, clean, and an ancestor of my source commit. Describe the commands and checks without modifying a real repository.",
+      "expected_output": "Verify the explicitly named target and shared Git metadata, inspect its checkout, fast-forward with merge --ff-only from the target worktree, and verify the target ref and checkout. Do not publish upstream or create a merge commit.",
+      "files": [],
+      "assertions": [
+        "Checks the shared repository, target branch, clean checkout, and source ancestry before updating.",
+        "Uses merge --ff-only in the target worktree and verifies the result without publishing upstream."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "I rebased feature/search in an isolated clone. Sync it through the local backlink to feature/search in my original repository. The original branch has the old, divergent history and is not checked out. I have not approved a history replacement. Describe the next action without modifying a real repository.",
+      "expected_output": "Verify the local destination, capture the target commit directly, show destination-only commits, and ask for explicit approval. Explain that a later approved replacement uses an exact force-with-lease; perform no push yet.",
+      "files": [],
+      "assertions": [
+        "Stops and asks for explicit approval after showing the divergent source and destination histories.",
+        "Describes a later approved local replacement with a lease tied to the directly observed target commit, not a cached tracking ref."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Sync the completed work from this isolated child session. Its checkout branch is child/temporary, no originating branch or commit was supplied, and the only remote is origin on GitHub. Describe the next action without modifying a real repository.",
+      "expected_output": "Stop and ask for the originating source identity and original local target. Do not infer correspondence from the temporary branch, create a commit, or publish to origin.",
+      "files": [],
+      "assertions": [
+        "Asks for the originating source branch or commit and original local target rather than guessing from child/temporary.",
+        "Performs no Git update and does not use the network origin as a local sync destination."
+      ]
+    }
+  ]
+}

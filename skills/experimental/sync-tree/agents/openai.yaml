@@ -1,0 +1,5 @@
+interface:
+  display_name: "Sync Tree"
+  short_description: "Sync committed work to the original local branch"
+policy:
+  allow_implicit_invocation: false

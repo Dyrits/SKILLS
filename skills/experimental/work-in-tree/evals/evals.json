@@ -1,0 +1,35 @@
+{
+  "skill_name": "work-in-tree",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Use a worktree to implement the search filter. I'm in the original checkout on feature/search, clean, at commit abc123. There are no repository-specific worktree conventions. Describe the setup and handoff without modifying a real repository.",
+      "expected_output": "Capture the original checkout, feature/search, and base commit; propose a unique task branch and sibling worktree path; check permissions and collisions; create the linked worktree at the captured commit; direct all subsequent task work there; retain a handoff for sync-tree without changing the original branch.",
+      "files": [],
+      "assertions": [
+        "Creates a distinct task branch at the captured base instead of committing on the original target branch.",
+        "Checks permission and path or branch collisions, and gives a return handoff naming the original repository and target branch."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Work in a tree to fix the search bug. This checkout is already an isolated local clone on feature/search, with a verified local backlink to my original repository. The source is clean and the original branch is the intended target. Describe your next action without modifying a real repository.",
+      "expected_output": "Verify and reuse the existing isolated clone, record the original repository and target branch, work only in that clone, and avoid creating a redundant linked worktree or publishing upstream.",
+      "files": [],
+      "assertions": [
+        "Reuses the verified isolated clone rather than creating another worktree.",
+        "Keeps task edits in the clone and records the original repository and branch for a later local sync."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Use a worktree for this task, including my uncommitted edits in the original checkout. They are needed for the fix. I have not approved committing, stashing, copying, or moving them. Describe your next action without modifying a real repository.",
+      "expected_output": "Explain that a new worktree starts from committed history, preserve the original edits, and ask for a committed starting point or another explicit choice before continuing.",
+      "files": [],
+      "assertions": [
+        "Explains that uncommitted original edits are not included in a new worktree.",
+        "Stops for an explicit user choice without committing, stashing, copying, or moving the edits."
+      ]
+    }
+  ]
+}
