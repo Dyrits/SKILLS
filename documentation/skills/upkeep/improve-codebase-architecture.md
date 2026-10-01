@@ -27,7 +27,7 @@ Where it is confusable with siblings:
 
 ## Prerequisites
 
-None to run it. It reads `GLOSSARY.md` and any ADRs in `documentation/architecture-decision-record/` if they exist, and speaks in your domain's own nouns when they do: a candidate reads as "deepen the Order intake module," not "refactor the FooBarHandler."
+None to run it. When `GUIDELINES.md` is missing it asks whether to create one. If you accept, [domain-modeling](../reference/domain-modeling.md) interviews you about your architecture conventions and rules first; declining is recorded in `documentation/agents/domain.md` and skips it. It reads `GLOSSARY.md` and any ADRs in `documentation/architecture-decision-record/` if they exist, and speaks in your domain's own nouns when they do: a candidate reads as "deepen the Order intake module," not "refactor the FooBarHandler."
 
 It writes in two places. The report goes to `documentation/architecture-audit/architecture-audit-<timestamp>.html` in the repository, one file per run so history accumulates. During the grilling loop it will add or sharpen terms in `GLOSSARY.md`, creating that file if it does not exist, and offer to record a rejected candidate as an ADR so a future run does not re-suggest it.
 

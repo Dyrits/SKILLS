@@ -25,8 +25,11 @@ None up front. The skill writes into two places and creates both lazily:
 
 - **`GLOSSARY.md`** at the repository root, created by the first resolved term. In a repository with a `GLOSSARY-MAP.md` at the root, terms go into the per-context `GLOSSARY.md` the map points at instead.
 - **`documentation/architecture-decision-record/`**, created by the first ADR that clears the bar.
+- **`GUIDELINES.md`** at the repository root, created when [code-review-and-refactor](../workflow/code-review-and-refactor.md), [improve-codebase-architecture](../upkeep/improve-codebase-architecture.md), or [setup-ai-workspace](../getting-started/setup-ai-workspace.md) offers to and you accept. The skill interviews you about your conventions and writes only judgement-call rules, each with its reason; declining is recorded in `documentation/agents/domain.md`.
 
 Nothing needs to exist before you start, and nothing is created speculatively.
+
+`GUIDELINES.md` is the odd one out: it is a different artifact from the glossary, holding rules rather than terms, and it shares the skill only because the interview belongs in one place.
 
 ## Two artifacts, two bars
 

@@ -43,6 +43,7 @@ It leads each section with the recommended answer, and skips whatever exploratio
 | **Ticket writing** | use an existing issue template or ticket skill when one is found, with the built-in format as fallback | always, after it inspects the repository and available skills |
 | **Triage roles** | keep the canonical strings (`bug`, `enhancement`, `to-evaluate`, `on-hold`, `ready`, `not-planned`) | only if the `triage` skill is installed |
 | **Domain documentation** | single-context: one `GLOSSARY.md` plus `documentation/architecture-decision-record/` at the root | only if it spots monorepo signals, and then it offers a multi-context `GLOSSARY-MAP.md` |
+| **Guidelines** | create `GUIDELINES.md` through an interview when no standards document exists | when `GUIDELINES.md` is missing; your answer is recorded in `domain.md` |
 
 The tracker is either local or remote:
 

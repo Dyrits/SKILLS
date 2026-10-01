@@ -20,12 +20,12 @@ Reach for it after completing a non-trivial coding session, especially when an a
 
 ## The deterministic check over the written rule
 
-The skill's defining lever is **mechanical classification**. When an agent repeatedly misses a convention, the default instinct is to write another line in `CODING_STANDARDS.md` or `AGENTS.md`. That forces every future agent to re-derive the rule on every turn, paying recurring context load and attention cost for what should be automatic.
+The skill's defining lever is **mechanical classification**. When an agent repeatedly misses a convention, the default instinct is to write another line in `GUIDELINES.md` or `AGENTS.md`. That forces every future agent to re-derive the rule on every turn, paying recurring context load and attention cost for what should be automatic.
 
 `improve-agent-environment` enforces a strict hierarchy:
 
 - **Mechanical rules** (fixed syntax, banned imports, naming conventions, file placement): build an automated check. Add a rule to the project's linter, wire a pre-commit hook, or add a CI step.
-- **Judgement calls** (idiomatic style, balance of abstraction, readability): reserve `CODING_STANDARDS.md` strictly for rules no linter could ever verify.
+- **Judgement calls** (idiomatic style, balance of abstraction, readability): reserve `GUIDELINES.md` strictly for rules no linter could ever verify.
 - **Missing guardrails**: if a repository lacks pre-commit or CI checks altogether, the skill flags the missing guardrail as a primary finding rather than asking instructions to compensate.
 
 ## Context pressure and the review boundary
@@ -58,10 +58,11 @@ Review checks that start rejecting valid changes; one session cannot establish w
 Require each candidate to point to a specific difficulty in the session record.
 Discard advice that cannot be traced to the session, and review the severity order yourself.
 
-**Where does `CODING_STANDARDS.md` come from?**
+**Where does `GUIDELINES.md` come from?**
 
 No skill ships the file for your project.
-The retrospective can propose creating it for a judgement-call rule, and [code-review-and-refactor](../workflow/code-review-and-refactor.md) reads it once it exists.
+The retrospective can propose creating it for a judgement-call rule.
+[setup-ai-workspace](../getting-started/setup-ai-workspace.md), [improve-codebase-architecture](./improve-codebase-architecture.md), and [code-review-and-refactor](../workflow/code-review-and-refactor.md) also offer to create it through the [domain-modeling](../reference/domain-modeling.md) interview, and the last two read it once it exists.
 An existing standards document such as `CONTRIBUTING.md` works too.
 
 ## It's working if

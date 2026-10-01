@@ -29,6 +29,9 @@ When invoking it after implementation, use the commit before that work began.
 The review can include committed changes, tracked work in progress, and new files belonging to the requested work.
 Unrelated local changes stay outside the refactor scope.
 
+It reads `GUIDELINES.md`, `CONTRIBUTING.md`, or similar standards documents.
+When none exists, it asks whether to create `GUIDELINES.md`. If you accept, [domain-modeling](../reference/domain-modeling.md) interviews you about your conventions and specific rules; if you decline, the decision is recorded in `documentation/agents/domain.md` and the review continues with the smell baseline alone.
+
 Existing passing tests establish the behavior the refactor must preserve.
 If relevant checks already fail, the skill reports that limitation before changing the affected code.
 
