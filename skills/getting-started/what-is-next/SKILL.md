@@ -30,7 +30,7 @@ The route most work travels. You have an idea and want it built.
 
 4. **The work leaves your machine.** **`/to-pull-request`** writes the body of the pull or merge request: one summary visual sized to the single point the change makes, before/after **evidence**, and the **merge danger** (a one-way or two-way door, and the blast radius). It writes the body and stops, so pushing the branch and opening the request stay yours, except under **`/implement-all`**, which opens one when the tracker workflow or your instruction calls for it. Why the change exists comes from its **primary source**, the ticket or specification, never from reading the diff back at a reviewer who already has it open. When reviewers reply, **`/address-feedback`** (under Standalone) works the thread back.
 
-5. **`/improve-agent-environment`** closes a session worth learning from. It reads the session's record and suggests improvements to navigation, checks, standards, steering files, and tooling, ordered by severity. Mechanical mistakes call for deterministic checks; judgement calls belong in the coding standards read by `/code-review-and-refactor`. You choose which candidates to implement.
+5. **`/improve-agent-environment`** closes a session worth learning from. It reads the session's record and suggests improvements to navigation, checks, standards, steering files, and tooling, ordered by severity. Mechanical mistakes call for deterministic checks; judgement calls belong in `GUIDELINES.md`, read by `/code-review-and-refactor`. You choose which candidates to implement.
 
 ### Context hygiene
 
@@ -62,7 +62,7 @@ Not feature work, just upkeep.
 
 Two model-invoked references that run *beneath* the other skills, each the single source of truth for its vocabulary. Reach for them directly when the **words**, not the process, are the problem; or let the skills above pull them in.
 
-- **`/domain-modeling`**: sharpen the project's *domain* language: challenge a fuzzy term, resolve an overloaded word ("account" doing three jobs), record a hard-to-reverse decision as an ADR. It's the active discipline `/grill-with-documentation` drives to keep `GLOSSARY.md` a clean glossary.
+- **`/domain-modeling`**: sharpen the project's *domain* language: challenge a fuzzy term, resolve an overloaded word ("account" doing three jobs), record a hard-to-reverse decision as an ADR. It's the active discipline `/grill-with-documentation` drives to keep `GLOSSARY.md` a clean glossary. It also interviews you to create `GUIDELINES.md` when the review or architecture skills find it missing.
 - **`/codebase-design`** is the deep-module vocabulary (module, interface, depth, seam, adapter, leverage, locality) for designing a module's *shape*: a lot of behaviour behind a small interface at a clean seam. `/test-driven-development` and `/improve-codebase-architecture` both speak it.
 
 ## Phase boundaries

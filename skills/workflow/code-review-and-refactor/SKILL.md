@@ -50,7 +50,9 @@ If they choose Standards alone, skip the Specifications reviewer and report "no 
 
 ### 3. Identify the standards sources
 
-Find repository instructions about how code should be written, such as `CODING_STANDARDS.md`, `CONTRIBUTING.md`, and applicable steering files.
+Find repository instructions about how code should be written, such as `GUIDELINES.md`, `CONTRIBUTING.md`, and applicable steering files.
+Read `GUIDELINES.md` first when it exists.
+When it is missing and no other standards document turns up, call the Skill tool with "domain-modeling" for its Guidelines step, with the **code** focus, then continue with whatever it produced (the smell baseline alone when declined).
 Read relevant architecture decisions and `GLOSSARY.md` when they constrain the changed code.
 
 On top of whatever the repository documents, the Standards axis always carries the **smell baseline** below: a fixed set of Fowler code smells (_Refactoring_, ch.3) that applies even when a repository documents nothing. Two rules bind it:

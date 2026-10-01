@@ -11,7 +11,7 @@ Scaffold the per-repository configuration that the workflow skills assume. Four 
 - **Issue tracker**: the system of record for published issues, either local markdown under `backlog/` or a remote tracker (GitHub, GitLab, Jira, or one you describe)
 - **Ticket writing convention**: the built-in `to-tickets` format, or an existing project template or ticket-writing skill
 - **Triage roles**: the strings this repository uses for the two category and four state roles
-- **Domain documentation**: where `GLOSSARY.md` and architecture decision records live, and the consumer rules for reading them
+- **Domain documentation**: where `GLOSSARY.md` and architecture decision records live, whether `GUIDELINES.md` exists, and the consumer rules for reading them
 
 An optional **tooling** stage provisions free development tools through `setup-ai-tooling`; that skill owns installation, client integration, verification, and measurement setup.
 
@@ -27,7 +27,7 @@ Look at the current repository to understand its starting state. Read whatever e
 
 - `git remote -v` and `.git/config`: is there a remote, and which host?
 - `AGENTS.md` and `CLAUDE.md` at the repository root: does either exist? Is there already an `## Agent skills` section in either?
-- `GLOSSARY.md` and `GLOSSARY-MAP.md` at the repository root
+- `GLOSSARY.md`, `GLOSSARY-MAP.md`, and `GUIDELINES.md` at the repository root
 - `documentation/architecture-decision-record/` and any `src/*/documentation/architecture-decision-record/` directories
 - `documentation/agents/`: does this skill's prior output already exist?
 - `documentation/agents/ai-tooling.md`: has tooling setup already recorded verified integrations and a baseline?
@@ -86,6 +86,12 @@ The defaults are the two canonical category roles (`bug`, `enhancement`) and the
 **Section D: Domain documentation.** Default to **single-context** (one `GLOSSARY.md` plus `documentation/architecture-decision-record/` at the repository root). This fits almost every repository; write it without asking.
 
 Offer **multi-context** (a root `GLOSSARY-MAP.md` pointing to per-context `GLOSSARY.md` files) only when exploration found monorepo signals. Then confirm which layout they want.
+
+Then, when `GUIDELINES.md` is missing, ask exactly one question:
+
+> Create `GUIDELINES.md` now, with an interview about your conventions and rules? (recommended: **yes** when no standards document exists)
+
+On yes, call the Skill tool with "domain-modeling" for the interview (code and architecture focus). On no, set `Guidelines: declined` in `domain.md`. When the file already exists, set `Guidelines: present` and skip the question.
 
 ### 3. Confirm and edit
 

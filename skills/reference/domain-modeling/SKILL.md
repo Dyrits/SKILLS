@@ -1,6 +1,6 @@
 ---
 name: domain-modeling
-description: Build and sharpen a project's domain model. Use when discussing codebase terminology, writing or editing a GLOSSARY.md, or recording or editing an architecture decision record.
+description: Build and sharpen a project's domain model. Use when discussing codebase terminology, writing or editing a GLOSSARY.md, recording or editing an architecture decision record, or creating a GUIDELINES.md.
 ---
 
 # Domain Modeling
@@ -72,3 +72,7 @@ Only offer to create an ADR when all three are true:
 3. **The result of a real trade-off**: there were genuine alternatives and you picked one for specific reasons
 
 If any of the three is missing, skip the architecture decision record. Use the format in [ARCHITECTURE-DECISION-RECORD-FORMAT.md](./ARCHITECTURE-DECISION-RECORD-FORMAT.md).
+
+## Guidelines
+
+`GUIDELINES.md` at the repository root holds the project's judgement-call rules for review and architecture work. Creating it is part of this skill when a calling skill asks, or when the user wants to write down their conventions. Read [GUIDELINES-FORMAT.md](./GUIDELINES-FORMAT.md) for the interview, the format, and what to do when the user declines.

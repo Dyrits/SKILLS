@@ -10,6 +10,14 @@ How the workflow skills should consume this repository's domain documentation wh
 
 If any of these files don't exist, **proceed silently**. Don't flag their absence; don't suggest creating them upfront. The `/domain-modeling` skill (reached via `/grill-with-documentation` and `/improve-codebase-architecture`) creates them lazily when terms or decisions actually get resolved.
 
+## Guidelines
+
+**`GUIDELINES.md`** at the repository root holds the project's judgement-call rules. Read it before reviewing code or auditing architecture.
+
+If it doesn't exist, the review and architecture skills offer to create it through `/domain-modeling` unless the line below says otherwise.
+
+Guidelines: {present | declined}
+
 ## File structure
 
 Single-context repository (most repositories):
