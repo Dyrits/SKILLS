@@ -18,3 +18,4 @@ npx skills@latest add Dyrits/SKILLS --skill=<name>
 - **[monitor-ai-tooling](./monitor-ai-tooling/SKILL.md)**: Report tooling usage, output reduction, quality findings, and measurement gaps from existing local data.
 - **[work-in-tree](./work-in-tree/SKILL.md)**: Create or reuse an isolated Git worktree, carry out the task there, and leave a verified destination for syncing later.
 - **[sync-tree](./sync-tree/SKILL.md)**: Sync committed work from a Git worktree or isolated clone to its corresponding local branch, with approval and an exact lease for history replacements.
+- **[scriptbook](./scriptbook/SKILL.md)**: Look up saved helper scripts before writing a new one, run or extend a match, and save new parameterized scripts with an index entry in a project or global scriptbook.
