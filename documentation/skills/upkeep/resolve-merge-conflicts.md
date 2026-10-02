@@ -48,4 +48,4 @@ Aborting throws away the resolution work and returns you to the same conflict, u
 
 ## Where it fits
 
-A reach-for-it-anytime standalone with no dependencies on any other skill: it starts when git stalls and ends when the tree is clean and committed. Its only real neighbour is [debug](./debug.md), which takes over at the point where a merge resolved cleanly but the merged code misbehaves: a diagnosis problem, not a conflict one. It sits off the main idea-to-ship flow entirely, so [what-is-next](../getting-started/what-is-next.md) is the map for what runs before and after it.
+A reach-for-it-anytime standalone with no dependencies on any other skill. It starts when Git stalls and ends when the tree is clean and committed. Experimental [rebase](../../../skills/experimental/rebase/SKILL.md), installed separately, invokes it whenever one of its branch rebases stops on conflicts. [debug](./debug.md) takes over when a merge resolved cleanly but the merged code misbehaves, because that needs diagnosis rather than conflict resolution. [what-is-next](../getting-started/what-is-next.md) maps the wider flow.

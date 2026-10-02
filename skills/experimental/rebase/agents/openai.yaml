@@ -1,0 +1,5 @@
+interface:
+  display_name: "Rebase"
+  short_description: "Rebase local branches in place, check, then push on approval"
+policy:
+  allow_implicit_invocation: false

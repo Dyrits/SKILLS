@@ -14,6 +14,8 @@ You invoke this by typing `/what-is-next`; the agent won't reach for it on its o
 | Tools are configured and you want evidence of their benefit | Experimental [monitor-ai-tooling](../../../skills/experimental/monitor-ai-tooling/SKILL.md), separately installed, for a report from existing measurements |
 | A task should run outside the original checkout | Experimental [work-in-tree](../../../skills/experimental/work-in-tree/SKILL.md), separately installed, to establish isolation before editing |
 | Committed work in a worktree needs to reach its original local branch | Experimental [sync-tree](../../../skills/experimental/sync-tree/SKILL.md), separately installed, for a local transfer rather than upstream publication |
+| Local branches need rebasing onto a target, then pushing | Experimental [rebase](../../../skills/experimental/rebase/SKILL.md), separately installed and user-invoked: rebases in place, runs the checks, and asks before a force-with-lease push |
+| Git has already stopped on conflicts | [resolve-merge-conflicts](../upkeep/resolve-merge-conflicts.md), which resolves the current operation rather than starting a batch of rebases |
 | Agents keep rebuilding the same helper script | Experimental [scriptbook](../../../skills/experimental/scriptbook/SKILL.md), separately installed and model-invoked, so scripts are looked up and saved with an index |
 | An idea, and no idea where to start | The head of the main flow, and whether the build is small enough to skip the specification |
 | Bugs and requests arriving from other people | The [triage](../upkeep/triage.md) on-ramp, and why tickets you generated yourself don't belong on it |

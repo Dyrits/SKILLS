@@ -137,6 +137,7 @@ These skills are still being evaluated, including workflows for external publica
 - **[classify](./skills/experimental/classify/SKILL.md)**: Sort or tag text with classifier.dev, filter batches before reading them, and keep uncertain results for review; reports confidence or tag scores when available.
 - **[work-in-tree](./skills/experimental/work-in-tree/SKILL.md)**: Create or reuse an isolated Git worktree, carry out the task there, and leave a verified destination for syncing later.
 - **[sync-tree](./skills/experimental/sync-tree/SKILL.md)**: Sync committed work from a Git worktree or isolated clone to its corresponding local branch, with approval and an exact lease for history replacements.
+- **[rebase](./skills/experimental/rebase/SKILL.md)**: Rebase local branches in place onto one target, resolve conflicts by intent, run the checks, then report and push approved branches with an exact force-with-lease. User-invoked and installed separately.
 - **[scriptbook](./skills/experimental/scriptbook/SKILL.md)**: Look up saved helper scripts before writing a new one, run or extend a match, and save new parameterized scripts with an index entry in a project or global scriptbook.
 
 ## Credits
