@@ -4,7 +4,7 @@ Upstream skill: `setup-pre-commit`, adapted here as `setup-git-hooks`. Commit `f
 
 Sets up versioned git hooks through `core.hooksPath` pointing at a committed `.githooks/` directory, with no Husky. The pre-commit hook runs lint-staged on staged files, then the project's typecheck and build scripts.
 
-lint-staged assigns Biome to the languages it supports and Prettier to the rest, never both on the same glob. Husky only copies runners into `.git/hooks/`, which `core.hooksPath` does with no dependency; a `prepare` script sets the config on every install so teammates are covered on clone.
+lint-staged assigns Biome to the languages it supports, including those it covers only once enabled, and keeps any formatter the project already uses. Prettier is offered only for the languages left over, and you can decline it. Each glob gets exactly one tool. Husky only copies runners into `.git/hooks/`, which `core.hooksPath` does with no dependency; a `prepare` script sets the config on every install so teammates are covered on clone.
 
 ## When to reach for it
 
@@ -21,9 +21,10 @@ A Node project with a package manager the skill can detect from its lock file (n
 
 ## What it changes
 
-- Installs lint-staged, Biome, and Prettier as development dependencies, skipping any already present.
+- Maps every language in the repository to a formatter, then installs lint-staged and Biome, plus Prettier only if you accepted it, skipping any already present.
 - Writes `.githooks/pre-commit` and the `prepare` script.
-- Writes `.lintstagedrc`, and `biome.json` and `.prettierrc` only when no configuration exists, after asking for formatter preferences.
+- Writes `.lintstagedrc`, and `biome.json` (and `.prettierrc` when accepted) only when no configuration exists, after asking for formatter preferences.
+- Commits only the files it created or changed, and asks first when the default branch holds other uncommitted work.
 - Omits typecheck or build lines when the repository has no such script, and tells you.
 
 ## Common questions

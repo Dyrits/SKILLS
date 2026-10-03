@@ -22,7 +22,7 @@ Run `/setup-ai-workspace` yourself once per repository, or when the tracker or c
 - `documentation/agents/issue-tracker.md` records local or remote operations, the writing convention, and wayfinding operations.
 - `documentation/agents/triage-roles.md` maps category and intake-state roles, when triage is installed.
 - `documentation/agents/domain.md` records glossary and architecture-decision conventions.
-- An `## Agent skills` block points consumers at those files and the shared documentation rules.
+- An `## Agent skills` block points consumers at those files, the shared documentation rules, and the scriptbook, so saved scripts and `memorize` are found during long sessions.
 
 ## Optional setups
 

@@ -23,7 +23,7 @@ For a new project, establish who will use it, where it runs, whether it keeps im
 
 When competing capabilities, unclear scope, or cross-cutting dependencies make choosing a useful batch premature, call the Skill tool with "prioritize" with the known direction, constraints, and document pointers, and tell the user why. Implement once the user approves its recommended focus and material deferrals. A clear small change goes straight on. Return to this branch when priorities or dependencies block the next batch; each new outcome needs its own approval.
 
-Completion: intended use, immediate constraints, and the next decisions are explicit. Unrelated future behavior may remain open.
+Completion: "document" was called, the backlog, working state, and `CHANGELOG.md` were read or noted as absent, and intended use, immediate constraints, and the next decisions are explicit. Unrelated future behavior may remain open.
 
 ## 2. Agree the technical approach
 
@@ -49,15 +49,15 @@ In a versioned project, record the goal's starting revision when its first batch
 
 Call the Skill tool with "model-domain" when sharpening domain terms, recording a consequential decision, or establishing judgment-call guidelines, and with "design-modules" when a module's interface or testability needs design.
 
-Completion: the batch can be implemented and checked without guessing at an open decision. Record the agreed batch and pending questions using [ARTIFACTS.md](ARTIFACTS.md).
+Completion: the batch can be implemented and checked without guessing at an open decision, and each consequential choice it settled (costly to reverse, or changing scope) has an Agreement in `CHANGELOG.md`. Record the agreed batch and pending questions using [ARTIFACTS.md](ARTIFACTS.md).
 
 ## 4. Implement and verify
 
 Implement the settled batch, preserving accepted behavior. Prefer targeted edits over regenerating unchanged code or documents. Put mechanical conventions in formatter, compiler, and lint configuration; keep `GUIDELINES.md` for judgment those tools cannot enforce. Comments capture reasons and constraints the code cannot show.
 
-When a batch is built test-first or adds integration tests, call the Skill tool with "test-first" before writing them, using the test interfaces agreed in step 3. Keep the evidence: a meaningful red check, then green.
+When a batch adds or changes tests, call the Skill tool with "test-first" before writing them, using the test interfaces agreed in step 3. Keep the evidence: a meaningful red check, then green.
 
-Call the Skill tool with "debug" for a resistant failure instead of stacking speculative fixes, and with "webapp-testing" when browser interaction is needed.
+When the user reports a bug, call the Skill tool with "debug" before editing code, so the fix follows a reproduced cause. Call it too for a resistant failure instead of stacking speculative fixes, and call the Skill tool with "webapp-testing" when browser interaction is needed.
 
 Delegate a bounded task when it benefits from a fresh context; a small edit is usually cheaper locally. Give a worker the agreed behavior, document pointers, edit scope, and verification criteria. Keep overlapping edits sequential. Continue independent questions while work runs; hold dependent ones until the result arrives. When feedback changes a running assignment, update or stop it, then check the returned work against the revised agreement.
 
@@ -73,7 +73,7 @@ At an agreed milestone, before delivery, or after substantial structural or data
 
 A review gap in already approved behavior becomes the next batch. Other findings become deferred in-scope work or out-of-scope ideas; a new product choice or change of approach needs approval first. Once validation and any required review are complete, mark the increment complete, prune finished working notes, and return to the next ready decisions. End when the user's current goal is met or they pause, reporting the remaining work.
 
-Completion: acceptance is recorded where needed, working state supports resumption, and the next step or stopping point is clear.
+Completion: acceptance is recorded where needed, each completed increment has a Delivery in `CHANGELOG.md` (created with the first one), working state supports resumption, and the next step or stopping point is clear.
 
 ## Approval and cost boundaries
 

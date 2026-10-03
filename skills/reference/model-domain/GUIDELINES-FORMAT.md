@@ -14,7 +14,7 @@ The calling skill passes a focus: **code** (review) or **architecture** (audit).
 - **Code**: naming, structure and file layout, error handling, testing style, patterns the team bans or prefers, what reviewers repeatedly flag.
 - **Architecture**: layering and dependency direction, module layout, where seams belong, testing approach, what the team never wants coupled.
 
-For each rule, ask why it exists. A rule without a reason is the first to be misapplied.
+You may draft candidate rules from the codebase to speed this up. Present them one at a time, and keep each only once the user confirms it and gives its reason in their own words. For each rule, ask why it exists. A rule without a reason is the first to be misapplied.
 
 ## Structure
 

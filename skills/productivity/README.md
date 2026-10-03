@@ -23,8 +23,11 @@ Work moving across session boundaries.
 
 ### User-invoked
 
-- **[hand-off](./hand-off/SKILL.md)**: Compact the current conversation into a versioned handoff document in `.agents/handoffs/`.
 - **[take-over](./take-over/SKILL.md)**: Resume work from the latest handoff in `.agents/handoffs/`, following the supersedes chain deeper only when needed.
+
+### Model-invoked
+
+- **[hand-off](./hand-off/SKILL.md)**: Compact the current conversation into a versioned handoff document in `.agents/handoffs/`. The agent also reaches it on its own when a compaction gate asks for a fresh handoff.
 
 ## Procedures
 

@@ -4,7 +4,7 @@ Fork-created skill with no upstream equivalent, added in commit `b05ce86` (see t
 
 `iterate` builds a living application one verified batch at a time. It settles only the decisions the current batch needs, implements the batch, checks it, and lets the result decide what comes next. The application evolves in place from its first runnable batch; replacing it is your decision.
 
-It coordinates other skills rather than replacing them: [refine](../reference/refine.md) roots its interview in the current batch, [prioritize](../shaping/prioritize.md) picks a focus when scope is tangled, [research](../shaping/research.md) answers external facts, [test-first](./test-first.md) and [debug](../upkeep/debug.md) cover tests and stubborn failures, and [review-and-refactor](./review-and-refactor.md) runs at milestones.
+It coordinates other skills rather than replacing them: [refine](../reference/refine.md) roots its interview in the current batch, [prioritize](../shaping/prioritize.md) picks a focus when scope is tangled, [research](../shaping/research.md) answers external facts, [test-first](./test-first.md) covers any batch that adds or changes tests, [debug](../upkeep/debug.md) takes every bug you report before code is edited, as well as stubborn failures, and [review-and-refactor](./review-and-refactor.md) runs at milestones.
 
 ## When to reach for it
 
@@ -46,6 +46,8 @@ Yes. Working state is updated when a batch is agreed and after it is implemented
 
 - Each batch ends with a report of what changed, the verification result, and how to run it.
 - `documentation/work-in-progress.md` names the next step and matches the code.
+- `CHANGELOG.md` gains a Delivery for each completed increment and an Agreement for each consequential choice, such as a tool or a direction that is costly to reverse.
+- A bug you report is reproduced before any fix lands.
 - Unresolved questions stay pending and ruled-out ideas stay apart from deferred ones.
 - You are asked to approve behavior and tradeoffs, not routine implementation choices.
 

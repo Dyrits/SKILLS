@@ -101,9 +101,13 @@ Edit `CLAUDE.md` if it exists; otherwise edit `AGENTS.md` if it exists. If neith
 ### Project documents
 
 Call the Skill tool with "document" before creating or updating project documents, to apply the shared authority, requirements, publication, resumption, and changelog rules.
+
+### Reusable knowledge
+
+Before writing a script or multi-step pipeline, read `.agents/scripts/INDEX.md` when it exists and reuse or extend a match. Call the Skill tool with "memorize" the moment something is rebuilt a second time or the user corrects a behavior.
 ```
 
-Omit the triage block and file when triage is not installed.
+Omit the triage block and file when triage is not installed. Omit the reusable knowledge block when the instruction file already points at the scriptbook.
 
 Seed `documentation/agents/issue-tracker.md` from the selected template:
 

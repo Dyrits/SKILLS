@@ -1,8 +1,7 @@
 ---
 name: hand-off
-description: Compact the current conversation into a versioned handoff document in .agents/handoffs/ for another agent to pick up.
+description: Compact the current conversation into a versioned handoff document in .agents/handoffs/ for another agent to pick up. Use when the user asks for a handoff, at a phase boundary they name, or when a compaction gate blocks until a fresh handoff exists.
 argument-hint: "What will the next session be used for?"
-disable-model-invocation: true
 ---
 
 Write a handoff document summarising the current conversation so a fresh agent can continue the work.
@@ -18,7 +17,7 @@ Save to `.agents/handoffs/` in the current workspace, versioned so history accum
 
 ## Document contents
 
-Include a "suggested skills" section naming useful skills and their invocation modes. The next agent calls model-invoked skills through the Skill tool; user-only skills are recommendations for the human to invoke, not permission for an autonomous call.
+Include a "suggested skills" section naming useful skills and their invocation modes. Check each name against the skills installed in this session, and drop or replace any that are missing. The next agent calls model-invoked skills through the Skill tool; user-only skills are recommendations for the human to invoke, not permission for an autonomous call.
 
 Also include, near the top: a "supersedes" line pointing at any earlier handoff in `.agents/handoffs/` this one replaces, so the chain is traceable.
 

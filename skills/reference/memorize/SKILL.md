@@ -1,6 +1,6 @@
 ---
 name: memorize
-description: Memorize reusable knowledge where it will be found again, and recall it before redoing work. Use when the user says to remember something, after a correction or a repeated rebuild, and before writing any script or multi-step shell pipeline.
+description: Memorize reusable knowledge where it will be found again, and recall it before redoing work. Use the moment you rebuild something a second time, when the user corrects a behavior, when the user says to remember something, and before writing any script or multi-step shell pipeline.
 ---
 
 # Memorize

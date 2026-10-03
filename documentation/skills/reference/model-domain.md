@@ -27,7 +27,7 @@ None up front. The skill writes into two places and creates both lazily:
 
 - **`GLOSSARY.md`** at the repository root, created by the first resolved term. In a repository with a `GLOSSARY-MAP.md` at the root, terms go into the per-context `GLOSSARY.md` the map points at instead.
 - **`documentation/architecture-decision-record/`**, created by the first architecture decision record that clears the bar.
-- **`GUIDELINES.md`** at the repository root, created when [review-and-refactor](../workflow/review-and-refactor.md), [improve-codebase-architecture](../upkeep/improve-codebase-architecture.md), or [setup-ai-workspace](../getting-started/setup-ai-workspace.md) offers to and you accept. The skill interviews you about your conventions and writes only judgement-call rules, each with its reason; declining is recorded in `documentation/agents/domain.md`.
+- **`GUIDELINES.md`** at the repository root, created when [review-and-refactor](../workflow/review-and-refactor.md), [improve-codebase-architecture](../upkeep/improve-codebase-architecture.md), or [setup-ai-workspace](../getting-started/setup-ai-workspace.md) offers to and you accept. The skill interviews you about your conventions one rule at a time, and may draft candidate rules from the code, but keeps each only once you confirm it and give its reason. It writes only judgement-call rules; declining is recorded in `documentation/agents/domain.md`.
 
 Nothing needs to exist before you start, and nothing is created speculatively.
 

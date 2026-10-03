@@ -158,7 +158,6 @@ The manifest is the source of truth for this list; it holds every skill outside 
 
 - [ask-someone-else](./skills/productivity/ask-someone-else/SKILL.md): Write a questionnaire for the person who holds missing knowledge.
 - [re-explain](./skills/productivity/re-explain/SKILL.md): Re-explain a message with the missing context.
-- [hand-off](./skills/productivity/hand-off/SKILL.md): Save a versioned handoff with pointers to authoritative artifacts.
 - [take-over](./skills/productivity/take-over/SKILL.md): Resume from the latest handoff and its primary sources.
 - [teach](./skills/productivity/teach/SKILL.md): Maintain a stateful teaching workspace.
 - [design-workflow](./skills/productivity/design-workflow/SKILL.md): Turn recurring work loops into implementable workflow specifications.
@@ -166,6 +165,7 @@ The manifest is the source of truth for this list; it holds every skill outside 
 
 #### Model-invoked
 
+- [hand-off](./skills/productivity/hand-off/SKILL.md): Save a versioned handoff with pointers to authoritative artifacts.
 - [illustrate](./skills/productivity/illustrate/SKILL.md): Explain a topic with the smallest useful visual.
 - [optimize-process](./skills/productivity/optimize-process/SKILL.md): Improve a recurring process using observed friction.
 - [walk-through](./skills/productivity/walk-through/SKILL.md): Generate a guided script for steps only a human can perform.

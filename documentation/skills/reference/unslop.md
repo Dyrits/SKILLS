@@ -6,7 +6,7 @@ Source: Cursor's pstack `unslop` skill, adopted in commit `6585eba`. This fork e
 
 ## When to reach for it
 
-Type `/unslop`, or the agent reaches for it automatically when writing or editing text. The skill applies to all writing, including drafts that already seem polished.
+Type `/unslop`, or the agent reaches for it at three moments: before showing you copy meant for others (captions, interface text, messages), before a final report, and before writing prose into a repository. It applies to drafts that already seem polished too.
 
 ## The editing pass
 

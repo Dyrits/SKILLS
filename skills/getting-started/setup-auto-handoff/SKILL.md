@@ -18,7 +18,7 @@ Gates compaction: when Claude Code is about to compact (auto or manual), a `PreC
 
 The bundled script is at [scripts/precompact-handoff-gate.sh](scripts/precompact-handoff-gate.sh)
 
-Copy to `.claude/hooks/precompact-handoff-gate.sh` and make it executable (`chmod +x`).
+Copy to `.claude/hooks/precompact-handoff-gate.sh` and make it executable (`chmod +x`). Replace an existing copy whose block message names `"handoff"`: earlier versions pointed at a skill name that does not exist.
 
 ### 2. Register the hook
 

@@ -65,7 +65,7 @@ Keep authoritative work state current before changing context.
 | `/hand-off`, then `/take-over` | Moving between sessions, workspaces, or agents needs session-specific context and source pointers. |
 | Compact | You need the same session with less conversational detail; preserve unresolved agreements, running assignments, and recovery pointers first. |
 
-`hand-off` writes a new versioned file in `.agents/handoffs/`; `take-over` reads the latest one and follows earlier pointers only when needed. Live working state does not replace the session handoff, and the handoff should not duplicate all project documents.
+`hand-off` writes a new versioned file in `.agents/handoffs/`; `take-over` reads the latest one and follows earlier pointers only when needed. The agent can also run `hand-off` on its own, which is how the `setup-auto-handoff` gate gets a handoff before compaction. Live working state does not replace the session handoff, and the handoff should not duplicate all project documents.
 
 ## Standalone and supporting skills
 

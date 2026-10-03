@@ -20,7 +20,7 @@ Facts the environment already states, such as a `package.json` script or `--help
 
 ## When to reach for it
 
-Type `/memorize`, or the agent reaches for it automatically when a task fits: when you ask it to remember something, after a correction or a repeated rebuild, and before it writes any script or multi-step shell pipeline. For writing the instruction file itself, it hands off to [write-for-agents](./write-for-agents.md).
+Type `/memorize`, or the agent reaches for it automatically when a task fits: the moment it rebuilds something a second time, when you correct a behavior, when you ask it to remember something, and before it writes any script or multi-step shell pipeline. For writing the instruction file itself, it hands off to [write-for-agents](./write-for-agents.md).
 
 ## Scriptbooks
 
@@ -36,7 +36,7 @@ It was folded into `memorize` as its script branch. The agent no longer needs a 
 
 **Why does it care about pointers?**
 
-A skill description alone fires unreliably during a long task. The repository evidence is a session that wrote inline Python for bulk edits while a matching saved script existed. So the nearest `AGENTS.md` or `CLAUDE.md` gets one always-loaded line pointing at the scriptbook index, added once after checking for an existing one.
+A skill description alone fires unreliably during a long task. The repository evidence is a session that wrote inline Python for bulk edits while a matching saved script existed. So the nearest `AGENTS.md` or `CLAUDE.md` gets one always-loaded line pointing at the scriptbook index, added once after checking for an existing one. [setup-ai-workspace](../getting-started/setup-ai-workspace.md) writes that line as part of its agent-instruction block.
 
 **Does it duplicate a fact in several homes?**
 

@@ -8,9 +8,9 @@ What it buys is **portability**, not compression. That makes the skill narrower 
 
 ## When to reach for it
 
-You invoke this by typing `/hand-off`; the agent won't reach for it on its own. Pass a note about what the next session is for, and the document is written for it.
+You usually invoke this by typing `/hand-off`. Pass a note about what the next session is for, and the document is written for it. The agent also reaches for it on its own when you ask for a handoff in plain words, or when the [setup-auto-handoff](../getting-started/setup-auto-handoff.md) gate blocks compaction until a fresh handoff exists.
 
-Four situations are the whole trigger:
+Four situations are the whole trigger when you choose:
 
 | Situation | Why a file |
 | --- | --- |
@@ -31,7 +31,7 @@ These choices preserve different things. Compaction compresses conversational co
 
 ## What travels, and what doesn't
 
-The document carries the live thread (what's in flight, why, and what's next) plus a **suggested skills** section naming useful skills and their invocation modes. The next agent calls model-invoked skills; user-only skills remain human actions. Secrets are redacted before it's written.
+The document carries the live thread (what's in flight, why, and what's next) plus a **suggested skills** section naming useful skills and their invocation modes, each checked against the skills installed in the session so a renamed or removed skill does not slip through. The next agent calls model-invoked skills; user-only skills remain human actions. Secrets are redacted before it's written.
 
 What it deliberately does not carry is anything already written down. Specifications, plans, ADRs, issues, commits and diffs are referenced by path or URL, never copied. That keeps the file small, and it keeps the settled detail in one place instead of two that drift.
 
@@ -70,7 +70,7 @@ A repeated criticism. State what the next session is for so relevant reasoning s
 No. `documentation/work-in-progress.md` owns unfinished current work, blockers, and recovery state. The handoff carries session-specific reasoning and pointers for another agent. Keep them consistent without copying the same task history into both.
 
 **Why is it a skill rather than a slash command?**
-Both work; they suit different situations. As a skill it ships and updates through the same install path as everything else here, which is what makes it shareable; the constraint that the agent won't fire it itself is set by its frontmatter rather than by the mechanism.
+Both work; they suit different situations. As a skill it ships and updates through the same install path as everything else here, which is what makes it shareable. It is model-invoked so the compaction gate can get a handoff without you; typing `/hand-off` works the same as before.
 
 ## It's working if
 
@@ -78,7 +78,7 @@ Both work; they suit different situations. As a skill it ships and updates throu
 - You can read it cold, without the original session open, and know what to do next.
 - The fresh agent starts working instead of asking you to re-explain the setup.
 - In the fork case, your original session is still sitting there untouched when you come back to it.
-- The suggested-skills section names the skill you'd have reached for yourself.
+- The suggested-skills section names the skill you'd have reached for yourself, and every name in it exists.
 - Nothing in it is a key, a token, or a password.
 
 ## Where it fits

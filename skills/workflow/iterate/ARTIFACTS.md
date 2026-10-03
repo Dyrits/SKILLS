@@ -17,7 +17,7 @@ Read this when recording agreed work, completing a batch, or resuming. The "docu
 
 Prune finished items once code, tests, or lasting documentation captures them. Intended behavior those cannot express goes into a focused document under `documentation/`. Call the Skill tool with "model-domain" to record a consequential choice in `documentation/architecture-decision-record/`.
 
-On resumption, compare working state with the actual code and check results, and resolve discrepancies before trusting its status. A user-invoked `hand-off` can point at this file and add session context.
+On resumption, compare working state with the actual code and check results, and resolve discrepancies before trusting its status. A `hand-off` can point at this file and add session context.
 
 ## Project-wide history
 

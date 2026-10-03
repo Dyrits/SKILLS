@@ -1,6 +1,6 @@
 ---
 name: setup-git-hooks
-description: Set up versioned git hooks via core.hooksPath (no Husky) with lint-staged (Biome where it applies, Prettier otherwise), plus typecheck and build. Use when user wants to add pre-commit hooks, commit-time formatting/linting/typechecking, or to replace Husky with git's built-in hooks path.
+description: Set up versioned git hooks via core.hooksPath (no Husky) with lint-staged (Biome, plus Prettier only for languages Biome leaves uncovered and only if the user wants it), plus typecheck and build. Use when user wants to add pre-commit hooks, commit-time formatting/linting/typechecking, or to replace Husky with git's built-in hooks path.
 ---
 
 # Setup Git Hooks
@@ -8,9 +8,9 @@ description: Set up versioned git hooks via core.hooksPath (no Husky) with lint-
 ## What This Sets Up
 
 - **`core.hooksPath`** pointing at a committed `.githooks/` dir (git built-in, no Husky needed)
-- **lint-staged** running Biome on supported files and Prettier on the rest
+- **lint-staged** running Biome on the languages it supports
 - **Biome** config (if missing)
-- **Prettier** config (if missing, for languages Biome does not cover)
+- **Prettier** for the languages Biome leaves uncovered, only when the user opts in
 - **typecheck** and **build** scripts in the pre-commit hook
 
 Why not Husky: Husky's only job is copying runners into `.git/hooks/`. `git config core.hooksPath .githooks` does the same with zero dependencies. A `prepare` script sets the config on every `npm install`, so teammates are covered on clone.
@@ -21,17 +21,19 @@ Why not Husky: Husky's only job is copying runners into `.git/hooks/`. `git conf
 
 Check for `package-lock.json` (npm), `pnpm-lock.yaml` (pnpm), `yarn.lock` (yarn), `bun.lockb` (bun). Use whichever is present. Default to npm if unclear.
 
-### 2. Install dependencies
+### 2. Map formatter coverage
 
-Install as devDependencies:
+List the languages the repository contains, then check which ones the Biome version you will install formats and lints (its documentation or `biome --help`). Some languages, HTML among them in Biome 2.x, are covered only once enabled in `biome.json`; count them as covered and enable them in step 7. Keep a formatter the project already uses (oxfmt, dprint, Prettier) and route its languages to it.
 
-```
-lint-staged @biomejs/biome prettier
-```
+When languages remain uncovered, offer Prettier for them, naming each language, and let the user decline.
 
-If the repository already has `biome` or `prettier`, skip reinstalling that one.
+Completion: every language in the repository is assigned to Biome, an existing formatter, Prettier (accepted), or no formatter (declined).
 
-### 3. Create `.githooks/pre-commit`
+### 3. Install dependencies
+
+Install `lint-staged` and `@biomejs/biome` as devDependencies, plus `prettier` only when the user accepted it. Skip any tool the repository already has.
+
+### 4. Create `.githooks/pre-commit`
 
 Write this file and make it executable (`chmod +x .githooks/pre-commit`):
 
@@ -44,7 +46,7 @@ npm run build --if-present
 
 **Adapt**: Replace `npm` with detected package manager (`pnpm --if-present` is not supported, so check package.json for the script first and omit the line if missing). Omit `typecheck` or `build` if the repository has no such script in package.json, and tell the user.
 
-### 4. Point git at the hooks dir
+### 5. Point git at the hooks dir
 
 ```bash
 git config core.hooksPath .githooks
@@ -62,9 +64,9 @@ This is local config; new clones need it too. Add a `prepare` script to package.
 
 Merge into existing scripts; if `prepare` already exists, append the `git config` call (e.g. `&&`). Note: if the repository already uses Husky (`.husky/` dir or `prepare: husky`), ask the user whether to migrate off it or keep Husky and stop here.
 
-### 5. Create `.lintstagedrc`
+### 6. Create `.lintstagedrc`
 
-Biome handles format and lint (`check`) for languages it supports. Prettier covers the rest:
+Biome handles format and lint (`check`) for the languages assigned to it in step 2. Add a Prettier entry only for languages the user assigned to Prettier:
 
 ```json
 {
@@ -73,11 +75,11 @@ Biome handles format and lint (`check`) for languages it supports. Prettier cove
 }
 ```
 
-Do not point both tools at the same glob. If the repository uses only Biome-supported languages, omit the Prettier entry (but keep Prettier installed as fallback). If the repository does not want Prettier at all, omit the second entry and tell the user.
+Give each glob exactly one tool, and list only the extensions the repository contains.
 
-### 6. Create `biome.json` and `.prettierrc` (if missing)
+### 7. Create `biome.json` and `.prettierrc` (if missing)
 
-Only create a config if none exists (check for `biome.json`, `biome.jsonc`, `.prettierrc`, `.prettierrc.json`, `prettier.config.*`).
+Only create a config if none exists (check for `biome.json`, `biome.jsonc`, `.prettierrc`, `.prettierrc.json`, `prettier.config.*`). Enable the opt-in languages step 2 assigned to Biome. Write `.prettierrc` only when Prettier was accepted.
 
 Biome defaults (`biome.json`). Ask the user for base formatter preferences before writing (see questions below), then write the file:
 
@@ -123,7 +125,7 @@ Ask the user for base parameters before writing `biome.json` (skip any already a
 - Quote style for JS/TS (default: double)?
 - Semicolons and arrow parens (defaults: always / always)?
 
-Prettier defaults (`.prettierrc`, for non-Biome languages only, mirrors Biome base):
+Prettier defaults (`.prettierrc`, when accepted, mirrors Biome base):
 
 ```json
 {
@@ -137,21 +139,21 @@ Prettier defaults (`.prettierrc`, for non-Biome languages only, mirrors Biome ba
 }
 ```
 
-### 7. Verify
+### 8. Verify
 
 - [ ] `.githooks/pre-commit` exists and is executable
 - [ ] `git config core.hooksPath` prints `.githooks`
 - [ ] `prepare` script in package.json sets `core.hooksPath`
 - [ ] `.lintstagedrc` exists
 - [ ] `biome.json` exists (or pre-existing Biome config found)
-- [ ] `prettier` config exists (or pre-existing config found)
+- [ ] `prettier` config exists, when Prettier was accepted
 - [ ] Run `npx lint-staged` to verify it works
 
-### 8. Commit
+### 9. Commit
 
-Stage all changed/created files and commit with message: `Add git hooks via core.hooksPath (lint-staged + biome + prettier)`
+Stage only the files this setup created or changed: `.githooks/`, `.lintstagedrc`, the formatter configs, `package.json`, and the lockfile. When other uncommitted changes are present and the branch is the default branch, ask before committing. Commit with a message naming the tools installed, for example `Add git hooks via core.hooksPath (lint-staged + biome)`.
 
-This will run through the new pre-commit hook: a good smoke test that everything works.
+The commit runs through the new pre-commit hook: a good smoke test that everything works.
 
 ## Notes
 
