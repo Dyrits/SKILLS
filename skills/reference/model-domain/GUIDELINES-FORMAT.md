@@ -10,7 +10,7 @@ Route everything else to its owner, through the named skill, and tell the user w
 
 | The candidate is | It belongs in | Through |
 | --- | --- | --- |
-| What the product must do or never do, a content or wording rule | requirements or a capability specification | `document` |
+| What the product must do or never do, a content or wording rule | `documentation/requirements.md` when it binds the whole product; the capability's requirements or specifications when it binds one capability | `document` |
 | A hard-to-reverse design choice with real alternatives | an architecture decision record | this skill |
 | The meaning of a domain term | `GLOSSARY.md` | this skill |
 | How the agent works: verification, approvals, who confirms what | `AGENTS.md` or `CLAUDE.md` | direct edit |

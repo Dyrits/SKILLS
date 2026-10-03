@@ -10,7 +10,8 @@ Supersedes: `.agents/handoffs/2026-10-04-0150-issue-2-feedback-and-git-guardrail
 
 ## Out of scope
 
-- **LIFELINE migration**: the user will handle it. The proposed moves were given in conversation only: the line invariant goes to requirements, "built ahead without the DOM" to an architecture decision record, the visible-text rule splits (keep "no user-facing string literals in rendering code", the language pair goes to requirements), the caption voice goes to requirements and fact confirmation to `AGENTS.md`, and screenshot verification to `AGENTS.md`.
+- **LIFELINE migration**: the user will handle it. The proposed moves were given in conversation only: the line invariant goes to global `documentation/requirements.md`, "built ahead without the DOM" to an architecture decision record, the visible-text rule splits (keep "no user-facing string literals in rendering code"; the language pair, French typography and "French is the source" go to global requirements), the caption voice goes to a captions capability's requirements when one exists (global otherwise) and fact confirmation to `AGENTS.md`, and screenshot verification to `AGENTS.md`. LIFELINE has neither `documentation/requirements.md` nor `documentation/capabilities/` yet.
+- **Follow-up**: the routing table row in `GUIDELINES-FORMAT.md` now names both requirement levels (global `documentation/requirements.md` versus a capability's requirements or specifications), matching `skills/reference/document/PROJECT-DOCUMENTS.md`.
 
 ## Unverified
 
