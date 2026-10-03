@@ -1,0 +1,5 @@
+interface:
+  display_name: "Improve Skills"
+  short_description: "Review a session's skill use and report it on the skills repository."
+policy:
+  allow_implicit_invocation: false

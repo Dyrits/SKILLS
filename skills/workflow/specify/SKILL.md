@@ -24,7 +24,7 @@ When code or visual exploration would settle a question, propose a separately sc
 
 ## Synthesize and maintain
 
-Record newly established constraints in the project or feature requirements document, with their source, and point to them from the specification.
+Record newly established constraints in the project or capability requirements document, with their source, and point to them from the specification.
 
 Write or update the canonical repository specification for the selected scope. Include the problem and intended outcome, agreed behavior and relevant edge cases, design and interfaces, acceptance and validation, requirement references, dependencies, and explicit exclusions. Complete this scope without demanding an exhaustive specification for future product work.
 

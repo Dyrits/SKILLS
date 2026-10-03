@@ -4,7 +4,7 @@ Upstream skill: `setup-matt-pocock-skills`, adapted here as `setup-ai-workspace`
 
 Configures one repository's task tracker, ticket-writing convention, triage-role vocabulary, and domain documentation. Its output is editable Markdown under `documentation/agents/`, plus an agent-instruction block. It changes project configuration, not the installed skills. It then offers the other getting-started setups, so one run can prepare the whole workspace.
 
-The tracker choice does not move specification authority. Agreed living behavior, design, and acceptance stay in `documentation/<feature>/specifications.md`. Remote tasks link to or summarize that specification. Local documents can be maintained within scope without publishing remote records.
+The tracker choice does not move specification authority. Agreed living behavior, design, and acceptance stay in `documentation/capabilities/<capability>/specifications.md`. Remote tasks link to or summarize that specification. Local documents can be maintained within scope without publishing remote records.
 
 ## When to reach for it
 
@@ -34,7 +34,7 @@ Future work uses the shared project-document model. Project requirements constra
 
 **Do I have to use GitHub?**
 
-No. GitHub, GitLab, Jira, and local Markdown are supported. Another tracker works through a verified connector, command-line tool, API workflow, or an explicitly manual workflow. Local task bodies live under `documentation/<feature>/tasks/`; remote task references can use a title and link instead of a copied body.
+No. GitHub, GitLab, Jira, and local Markdown are supported. Another tracker works through a verified connector, command-line tool, API workflow, or an explicitly manual workflow. Local task bodies live under `documentation/capabilities/<capability>/tasks/`; remote task references can use a title and link instead of a copied body.
 
 **Does setup create my remote labels?**
 

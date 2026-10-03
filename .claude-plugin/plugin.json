@@ -45,7 +45,7 @@
     "./skills/shaping/research",
     "./skills/shaping/graphify",
     "./skills/upkeep/debug",
-    "./skills/upkeep/improve-agent-environment",
+    "./skills/upkeep/improve-skills",
     "./skills/upkeep/improve-codebase-architecture",
     "./skills/version-control/resolve-merge-conflicts",
     "./skills/upkeep/triage",

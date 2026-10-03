@@ -12,11 +12,15 @@ Type `/document`, or the agent reaches for it automatically when a task fits. Us
 
 ## One source for each obligation
 
-Global requirements constrain all work. Feature requirements add constraints; they cannot silently override global ones. Specifications record agreed behavior in the repository. Drafts contain unresolved proposals. A local backlog captures candidates; a remote backlog is authoritative when configured and the local file links to it. Work-in-progress remains local for unfinished execution and recovery, not copied tracker status.
+Global requirements constrain all work. Capability requirements add constraints; they cannot silently override global ones. Specifications record agreed behavior in the repository. Drafts contain unresolved proposals. A local backlog captures candidates; a remote backlog is authoritative when configured and the local file links to it. Work-in-progress remains local for unfinished execution and recovery, not copied tracker status.
 
 Local upkeep is autonomous within approved work. Remote publication and updates require explicit approval. Once a task is published remotely, its local draft becomes a pointer rather than a competing body.
 
 The changelog records authorized Agreement events and verified Delivery events, never a transcript or every mechanical edit. Records come in two weights with the same heading and vocabulary: full records for the planned workflow and team use, light records (summary, references, validation) for just-in-time work by one person, where an Agreement is written only for a consequential decision.
+
+## Capabilities, not features or tickets
+
+Specifications and tasks live under `documentation/capabilities/<capability>/`. A capability is anything with lasting agreed behavior, so the folder suits an infrastructure area or a security concern as well as a user-facing feature, and it outlives the work that changes it. A bugfix is a task under the capability it repairs, not a folder of its own. The [naming rules](../../../skills/reference/document/PROJECT-DOCUMENTS.md#capabilities) cover kebab-case glossary names, flat folders, numbered tasks, and why a name stays fixed once referenced. The [architecture decision record](../../architecture-decision-record/0003-group-specifications-by-capability.md) explains the choice.
 
 ## Common questions
 
@@ -25,6 +29,12 @@ No. Create a file when it holds useful information. Existing applicable requirem
 
 **Why does it no longer list README or runbook sections?**
 The model already knows what those documents contain, so the lists changed nothing. What it adds is the reader-first habit and the check against the current system.
+
+**Why `capabilities/` and not `features/`?**
+Not all work is a feature. A folder named after features invites a separate folder for each bugfix or chore, which spreads one area's behavior across folders that go stale once the work ships. Naming the folder after what persists keeps one specification per area.
+
+**What about projects that already have folders directly under `documentation/`?**
+They are read where they are. The agent moves them under `capabilities/` only with your approval.
 
 **Can a completed item stay in work-in-progress for history?**
 Capture durable evidence first, then prune it from unfinished state. Delivery history belongs in the changelog and linked evidence.

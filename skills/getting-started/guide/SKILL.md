@@ -18,7 +18,7 @@ disable-model-invocation: true
 
 ### Planned development
 
-1. `/specify` reads the current context, resolves only outstanding decisions through `refine`, and writes or updates the selected feature's requirements and specifications. Settled decisions go straight to synthesis.
+1. `/specify` reads the current context, resolves only outstanding decisions through `refine`, and writes or updates the selected capability's requirements and specifications. Settled decisions go straight to synthesis.
 2. When conversation cannot settle a design question, suggest `/prototype`. The user requests or approves a scoped experiment. Its validated answer and evidence feed the specification; useful code can be integrated after production checks without mandatory rebuilding. `/research` handles consequential unknown external facts.
 3. `/taskify` decomposes selected work into coherent tasks with acceptance criteria and blocking dependencies. Drafts remain local until explicit publication. The word task is tracker-neutral: a remote tracker may call it an issue or ticket.
 4. `/implement` builds an authorized task, specification, or small approved batch. `/implement-all` instead implements a task graph on one integration branch, using concurrent work where dependencies allow.
@@ -27,13 +27,13 @@ disable-model-invocation: true
 
 ### Just-in-time development
 
-`/iterate` primarily maintains `documentation/backlog.md`, `documentation/work-in-progress.md`, and root `CHANGELOG.md`. It respects existing requirements and specifications but does not generate feature documents or tasks just to run a batch.
+`/iterate` primarily maintains `documentation/backlog.md`, `documentation/work-in-progress.md`, and root `CHANGELOG.md`. It respects existing requirements and specifications but does not generate capability documents or tasks just to run a batch.
 
 It evolves the living application, including alternative implementations when useful. A prototype rebuild is not a prerequisite. Approved interaction or appearance needs user acceptance where judgment matters; routine internal changes use agreed automated checks.
 
 When unclear scope, competing outcomes, or dependencies prevent choosing an increment, it invokes `prioritize`. That branch retains candidates and deferrals, recommends one focus, and gets approval without requiring implementation tasks. Small clear changes bypass it. Completing one outcome does not approve the next.
 
-Research, test-first work, diagnosis, and milestone reviews remain conditional branches. Corrections and process concerns are captured in `.agents/feedbacks/`; they do not become requirements merely by being recorded.
+Research, test-first work, diagnosis, and milestone reviews remain conditional branches.
 
 ## Shared project documents
 
@@ -73,7 +73,7 @@ Keep authoritative work state current before changing context.
 | --- | --- |
 | `/debug` | Build a tight reproduction loop, diagnose, fix, and regression-test. |
 | `/resolve-merge-conflicts` | Resolve an in-progress conflict by intent and finish the operation. |
-| `/improve-agent-environment` | Review session difficulties and recommend environment improvements. |
+| `/improve-skills` | Review a session's skill use with the user and report skill problems as an issue on the skills repository. |
 | `/re-explain` | Re-explain a message with missing context and canonical vocabulary. |
 | `/illustrate` | Explain with the smallest useful diagram, sketch, or HTML artifact. |
 | `/teach` | Maintain a mission-grounded teaching workspace across sessions. |

@@ -18,6 +18,7 @@ Agents relearn the same things every session: the helper written yesterday, the 
 | Project agreements, working state, or delivery history | The shared project documents | Call the Skill tool with "document" |
 | A procedure only a human can carry out, worth repeating | A saved wizard | Call the Skill tool with "walk-through" |
 | A personal preference that holds across projects | The harness's own memory when it provides one; otherwise `~/.agents/memory/` | See **Personal memory** below |
+| A defect in a skill itself (a wrong trigger, an unclear step, a missing skill) | The skills repository, reported once the session ends | Tell the user that `/improve-skills` reports it |
 
 The environment is a home too: a `package.json` script, a config file, or `--help` output already states its fact. Leave those facts there.
 

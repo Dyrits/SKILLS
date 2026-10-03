@@ -21,7 +21,7 @@ You invoke this by typing `/guide`; the agent won't reach for it on its own.
 | Agents keep rebuilding the same helper or relearning the same lesson | [memorize](../reference/memorize.md), files lessons where the next agent will look and checks there first, including saved scripts |
 | An idea, and no idea where to start | A choice between planned development, just-in-time development, and clarification without development |
 | Bugs and requests arriving from other people | The [triage](../upkeep/triage.md) on-ramp, and why tickets you generated yourself don't belong on it |
-| Two skills that look interchangeable | [refine](../reference/refine.md) clarifies a decision; [specify](../workflow/specify.md) records agreed feature behavior; [graphify](../shaping/graphify.md) maps a large effort's unresolved decisions |
+| Two skills that look interchangeable | [refine](../reference/refine.md) clarifies a decision; [specify](../workflow/specify.md) records agreed capability behavior; [graphify](../shaping/graphify.md) maps a large effort's unresolved decisions |
 | A long session and a decision about the context | A session boundary that preserves authoritative work state |
 | An explanation you need to see | [illustrate](../productivity/illustrate.md) for a visual, or [re-explain](../productivity/re-explain.md) for a clearer explanation |
 | A skill you have already picked | Nothing useful. Invoke that skill directly. |
@@ -45,13 +45,13 @@ The useful idea is a **flow**, a path through skills that preserves agreements a
 
 `specify` asks only about unresolved decisions. A user-approved [prototype](../shaping/prototype.md) settles a question conversation cannot; its answer and evidence feed the specification. Useful validated code can be productionized after appropriate checks without a mandatory rebuild. [research](../shaping/research.md) resolves consequential unknown external facts.
 
-`iterate` primarily maintains `documentation/backlog.md`, `documentation/work-in-progress.md`, and root `CHANGELOG.md`. A remote backlog is linked rather than copied; working state stays local for execution and resumption. It reads existing requirements and specifications without forcing new feature documents or tasks. When scope or competing outcomes prevent selecting an increment, [prioritize](../shaping/prioritize.md) recommends a bounded focus and asks for approval. One completed outcome does not authorize the next.
+`iterate` primarily maintains `documentation/backlog.md`, `documentation/work-in-progress.md`, and root `CHANGELOG.md`. A remote backlog is linked rather than copied; working state stays local for execution and resumption. It reads existing requirements and specifications without forcing new capability documents or tasks. When scope or competing outcomes prevent selecting an increment, [prioritize](../shaping/prioritize.md) recommends a bounded focus and asks for approval. One completed outcome does not authorize the next.
 
 Both workflows share project-owned documents:
 
-- Requirements hold global and optional additional feature constraints.
-- `documentation/<feature>/specifications.md` holds living agreed behavior and acceptance. `draft.md` holds unresolved proposals only.
-- `documentation/<feature>/tasks/` holds local task bodies. After explicit remote publication, a local task becomes a title and link to the authoritative remote task. Specifications stay canonical locally.
+- Requirements hold global and optional additional capability constraints.
+- `documentation/capabilities/<capability>/specifications.md` holds living agreed behavior and acceptance. `draft.md` holds unresolved proposals only.
+- `documentation/capabilities/<capability>/tasks/` holds local task bodies. After explicit remote publication, a local task becomes a title and link to the authoritative remote task. Specifications stay canonical locally.
 - Backlog holds candidates and deferrals, not authorization. Work-in-progress holds unfinished current work and recovery state.
 - The single root changelog records meaningful agreements and verified deliveries. Types are `Documentation`, `Code`, or `Configuration`; events are `Agreement` or `Delivery`. The planned workflow writes full records; `iterate` writes light ones with the same heading and vocabulary.
 
@@ -148,6 +148,6 @@ No. They are living agreed behavior and acceptance. Drafts keep unresolved alter
 
 ## Where it fits
 
-`guide` is a standalone router over both development workflows and the supporting skills. It recommends and stops. [specify](../workflow/specify.md) starts planned development; [iterate](../workflow/iterate.md) runs just-in-time batches; [triage](../upkeep/triage.md) verifies work arriving from other people. [improve-agent-environment](../upkeep/improve-agent-environment.md) reviews session friction after useful work, without authorizing new implementation.
+`guide` is a standalone router over both development workflows and the supporting skills. It recommends and stops. [specify](../workflow/specify.md) starts planned development; [iterate](../workflow/iterate.md) runs just-in-time batches; [triage](../upkeep/triage.md) verifies work arriving from other people. [improve-skills](../upkeep/improve-skills.md) reviews how the skills behaved in a session and reports problems on this repository.
 
 It is a secondary source over the skills it describes. Where the router and a `SKILL.md` disagree, the `SKILL.md` is right.

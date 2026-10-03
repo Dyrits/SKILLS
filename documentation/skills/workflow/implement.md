@@ -14,7 +14,7 @@ You invoke this by typing `/implement`; the agent will not reach for it on its o
 
 **Do I need a standalone specification or published task?**
 
-No. An explicit approved batch in working state can supply the agreement. Global and feature requirements still apply. A backlog candidate or unresolved draft is not authorization.
+No. An explicit approved batch in working state can supply the agreement. Global and capability requirements still apply. A backlog candidate or unresolved draft is not authorization.
 
 **Does passing the test suite mean acceptance is complete?**
 

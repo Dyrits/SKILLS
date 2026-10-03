@@ -4,7 +4,7 @@ The idea-to-ship flow, with shared documents for planned and just-in-time develo
 
 ## User-invoked
 
-- [specify](./specify/SKILL.md): Resolve outstanding decisions and write or update feature requirements and specifications.
+- [specify](./specify/SKILL.md): Resolve outstanding decisions and write or update capability requirements and specifications.
 - [taskify](./taskify/SKILL.md): Decompose work into tasks with coherent outcomes, acceptance criteria, and blocking dependencies.
 - [implement](./implement/SKILL.md): Implement authorized work, validate and review it, and maintain the shared documents.
 - [implement-all](./implement-all/SKILL.md): Build a task graph on one integration branch, with concurrent work and an optional request.

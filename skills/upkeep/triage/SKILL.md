@@ -6,7 +6,7 @@ disable-model-invocation: true
 
 # Triage
 
-Move tasks on the configured tracker through a small state machine of intake roles. Triage acts on remote records or local intake task bodies; unresolved proposals in `documentation/<feature>/draft.md` have no role.
+Move tasks on the configured tracker through a small state machine of intake roles. Triage acts on remote records or local intake task bodies; unresolved proposals in `documentation/capabilities/<capability>/draft.md` have no role.
 
 If the tracker treats external pull requests as a request surface, triage covers them too. A PR is a task with attached code, using the same roles and states, with the differences noted below. Resolve a bare `#42` to an issue or PR through the tracker configuration.
 

@@ -14,7 +14,7 @@ Use the planned route (`specify`, `taskify`, `implement`, `review-and-refactor`)
 
 ## Working state
 
-`iterate` keeps light records and does not generate feature documents or tasks just to run a batch.
+`iterate` keeps light records and does not generate capability documents or tasks just to run a batch.
 
 | Document | Holds |
 | --- | --- |
@@ -22,7 +22,7 @@ Use the planned route (`specify`, `taskify`, `implement`, `review-and-refactor`)
 | `documentation/work-in-progress.md` | Current goal, agreed batch, open questions, evidence, next step |
 | `CHANGELOG.md` | A Delivery when a meaningful increment passes its checks, an Agreement for a consequential decision |
 
-Existing requirements and specifications are read and respected. [document](../reference/document.md) owns the formats. Corrections and process concerns go to `.agents/feedbacks/` so they survive an interrupted session.
+Existing requirements and specifications are read and respected. [document](../reference/document.md) owns the formats.
 
 ## Common questions
 

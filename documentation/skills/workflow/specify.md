@@ -12,7 +12,7 @@ You invoke this by typing `/specify`, and the agent won't reach for it on its ow
 
 ## The selected scope
 
-Specify accounts for applicable global and feature requirements and completes the selected scope. It does not demand every future product decision. Unresolved proposals stay separate from agreed behavior, and consequential conflicts come back to you.
+Specify accounts for applicable global and capability requirements and completes the selected scope. It does not demand every future product decision. Unresolved proposals stay separate from agreed behavior, and consequential conflicts come back to you.
 
 When a question needs a prototype, you approve that separate exploration. Useful validated prototype code can later be integrated after production validation; there is no mandatory discard-and-rebuild step.
 

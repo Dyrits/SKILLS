@@ -5,7 +5,7 @@ Every workflow that reads or writes project documents follows this model. Caller
 ## Terms
 
 - **Authorized**: the user approved the scope. A remote change (publication, update, priority change, or closure) also needs approval of its destination. Only the user authorizes: backlog entries, recommendations, tracker configuration, and passing builds are evidence, not approval.
-- **Obligation**: a global or feature requirement, including infrastructure, legal, company, budget, service, and security constraints. Only the user relaxes an obligation. When one conflicts with scope or with the implementation, ask the user and continue independent work meanwhile. Within authorized scope, the implementation approach is free to change.
+- **Obligation**: a global or capability requirement, including infrastructure, legal, company, budget, service, and security constraints. Only the user relaxes an obligation. When one conflicts with scope or with the implementation, ask the user and continue independent work meanwhile. Within authorized scope, the implementation approach is free to change.
 - **Lazy**: create a document when it carries useful information. A small batch can run on backlog, work-in-progress, and the changelog alone.
 - **Pointer**: a link to the authoritative record, used in place of a copy.
 
@@ -17,12 +17,23 @@ Every workflow that reads or writes project documents follows this model. Caller
 | `documentation/requirements.md` | Global obligations |
 | `documentation/backlog.md` | Local candidate backlog, or a pointer to the authoritative remote backlog |
 | `documentation/work-in-progress.md` | Active unfinished work and resumption state |
-| `documentation/<feature>/requirements.md` | Optional additional feature obligations |
-| `documentation/<feature>/specifications.md` | Living agreed behavior, design, and acceptance |
-| `documentation/<feature>/draft.md` | Unresolved proposals only |
-| `documentation/<feature>/tasks/<task>.md` | Local task body, or a pointer to its authoritative published remote task |
+| `documentation/capabilities/<capability>/requirements.md` | Optional additional capability obligations |
+| `documentation/capabilities/<capability>/specifications.md` | Living agreed behavior, design, and acceptance |
+| `documentation/capabilities/<capability>/draft.md` | Unresolved proposals only |
+| `documentation/capabilities/<capability>/tasks/NN-<slug>.md` | Local task body, or a pointer to its authoritative published remote task |
 
-Read global requirements first; feature requirements add obligations to them. Specifications live in the repository; remote discussions and records hold pointers or summaries.
+Read global requirements first; capability requirements add obligations to them. Specifications live in the repository; remote discussions and records hold pointers or summaries.
+
+## Capabilities
+
+A **capability** is anything with lasting agreed behavior: a user-facing feature, an integration, an infrastructure area, or a concern such as performance or security. Its folder outlives the work that changes it.
+
+- Name the folder with a kebab-case noun phrase built from `GLOSSARY.md` terms (`order-checkout`, `invoice-export`), never after a ticket, date, technology, or version. In a multi-context repository, put the context name first only when two contexts would otherwise share a name.
+- Keep the tree flat. A sub-area that needs its own specification becomes its own capability.
+- File work under the capability it changes. A bugfix is a task there, and corrects `specifications.md` when the agreed behavior was wrong or incomplete. Work that changes no behavior usually needs no folder. An undecided effort lives in the folder of the capability it will become.
+- Number tasks from `01`, with a kebab-case slug naming the outcome.
+- Treat a name as fixed once anything references it. A rename is a consequential decision: move the folder, update every pointer, and record an Agreement.
+- Read older capability folders that sit directly under `documentation/` where they are, and move them only with the user's approval.
 
 ## Backlog authority
 

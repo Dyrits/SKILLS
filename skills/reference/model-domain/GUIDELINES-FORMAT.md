@@ -1,6 +1,6 @@
 # GUIDELINES.md Format
 
-`GUIDELINES.md` holds the project's judgement-call rules: what its reviewers and architects apply and no tool can enforce. `review-and-refactor` and `improve-codebase-architecture` read it; `improve-agent-environment` proposes additions to it.
+`GUIDELINES.md` holds the project's judgement-call rules: what its reviewers and architects apply and no tool can enforce. `review-and-refactor` and `improve-codebase-architecture` read it; `memorize` files new rules into it.
 
 ## Offer
 

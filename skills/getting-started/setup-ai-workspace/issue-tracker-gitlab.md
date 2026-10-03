@@ -4,7 +4,7 @@ Backlog: <verified GitLab backlog or project-board URL>
 
 The remote backlog owns candidate outcomes, priorities, and deferrals. Local `documentation/backlog.md` links to it; `documentation/work-in-progress.md` remains local for execution and resumption. Apply the authority and publication rules supplied by the `document` skill.
 
-Published tasks for this repository live as GitLab issues. Repository `documentation/<feature>/specifications.md` remains the canonical living specification; remote records link to or summarize it. Use the [`glab`](https://gitlab.com/gitlab-org/cli) CLI for remote operations.
+Published tasks for this repository live as GitLab issues. Repository `documentation/capabilities/<capability>/specifications.md` remains the canonical living specification; remote records link to or summarize it. Use the [`glab`](https://gitlab.com/gitlab-org/cli) CLI for remote operations.
 
 ## Conventions
 
@@ -38,7 +38,7 @@ Unlike GitHub, GitLab numbers issues and MRs separately, so `#42` is unambiguous
 
 ## When a skill says "publish to the issue tracker"
 
-Create or update a GitLab issue only on an explicit user request. Local document upkeep does not authorize remote writes. When useful, keep a title/link reference under `documentation/<feature>/tasks/` instead of copying the published task body.
+Create or update a GitLab issue only on an explicit user request. Local document upkeep does not authorize remote writes. When useful, keep a title/link reference under `documentation/capabilities/<capability>/tasks/` instead of copying the published task body.
 
 ## When a skill says "fetch the relevant task"
 

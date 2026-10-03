@@ -35,18 +35,21 @@ documentation/
 ├── requirements.md
 ├── backlog.md
 ├── work-in-progress.md
-└── <feature>/
-    ├── requirements.md
-    ├── specifications.md
-    ├── draft.md
-    └── tasks/
+└── capabilities/
+    └── <capability>/
+        ├── requirements.md
+        ├── specifications.md
+        ├── draft.md
+        └── tasks/
 ```
+
+A capability is anything with lasting agreed behavior: a user-facing feature, an integration, an infrastructure area, or a concern such as security. A bugfix or chore is a task under the capability it changes, not a folder of its own. Folder names are kebab-case glossary terms and stay fixed once referenced; see [architecture decision record 0003](./documentation/architecture-decision-record/0003-group-specifications-by-capability.md).
 
 Create files when useful, not as empty scaffolding. Requirements protect obligations and constraints; specifications describe agreed behavior and design; drafts hold unresolved proposals. The backlog does not authorize implementation. Working state records unfinished work and resumption details. Root `CHANGELOG.md` distinguishes agreement changes from validated deliveries.
 
 With local tracking, `documentation/backlog.md` contains the candidate backlog. With a remote tracker, it contains only a name and link to the authoritative backlog or board. `documentation/work-in-progress.md` stays local in both cases for active execution, verification, and resumption, without duplicating remote task status.
 
-`iterate` primarily uses the backlog, working state, and changelog. It respects existing requirements and specifications without requiring new feature documents or tasks for every batch.
+`iterate` primarily uses the backlog, working state, and changelog. It respects existing requirements and specifications without requiring new capability documents or tasks for every batch.
 
 During specification work, a [prototype](./skills/shaping/prototype/SKILL.md) is a scoped experiment you request or approve. Its validated result can feed implementation, including useful code after production checks. Iteration develops the living application directly.
 
@@ -77,6 +80,7 @@ Not every retained skill comes from that upstream repository. The [primary-sourc
 | HumanLayer's `show-me` | [illustrate](./skills/productivity/illustrate/SKILL.md) | The name describes the visual explanation action without changing the external source or delivery discipline. |
 | Separate planning snapshots and iterative working records | Shared project documents | Switching development approaches should not duplicate or discard obligations, agreements, or progress. |
 | Prototype code retained only outside the application | Approved experiment with a productionization path | Validation should preserve useful work; experimental success does not itself establish production readiness. |
+| `retro` | [improve-skills](./skills/upkeep/improve-skills/SKILL.md) | The retrospective reports how the skills behaved as an issue on this repository; lessons about the project itself go through [memorize](./skills/reference/memorize/SKILL.md). |
 
 `iterate` is a fork-specific just-in-time workflow, not an upstream rename. Skills formerly under `experimental/` now live in purpose buckets and ship in the plugin. Human-facing pages identify verified original names or an explicit fork-specific origin. See [architecture decision record 0002](./documentation/architecture-decision-record/0002-share-project-documents-across-workflows.md) for the document-authority decision.
 
@@ -98,7 +102,7 @@ The manifest is the source of truth for this list; it holds every skill outside 
 
 #### User-invoked
 
-- [specify](./skills/workflow/specify/SKILL.md): Resolve outstanding decisions and maintain feature requirements and specifications.
+- [specify](./skills/workflow/specify/SKILL.md): Resolve outstanding decisions and maintain capability requirements and specifications.
 - [taskify](./skills/workflow/taskify/SKILL.md): Decompose work into tasks with acceptance criteria and dependencies.
 - [implement](./skills/workflow/implement/SKILL.md): Build authorized work, validate it, review it, and maintain project documents.
 - [implement-all](./skills/workflow/implement-all/SKILL.md): Implement a task graph on one integration branch, with concurrent work and an optional request.
@@ -128,7 +132,7 @@ The manifest is the source of truth for this list; it holds every skill outside 
 
 - [triage](./skills/upkeep/triage/SKILL.md): Verify and classify requests, recording actionable briefs or decisions.
 - [improve-codebase-architecture](./skills/upkeep/improve-codebase-architecture/SKILL.md): Present deepening opportunities in a visual audit.
-- [improve-agent-environment](./skills/upkeep/improve-agent-environment/SKILL.md): Suggest improvements based on session evidence.
+- [improve-skills](./skills/upkeep/improve-skills/SKILL.md): Review a session's skill use and report it as an issue on this repository.
 - [monitor-ai-tooling](./skills/upkeep/monitor-ai-tooling/SKILL.md): Report observed tool benefits, estimates, and quality gaps.
 
 #### Model-invoked

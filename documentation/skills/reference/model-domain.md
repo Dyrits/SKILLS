@@ -18,7 +18,7 @@ Reach for it when the *words* are the problem:
 | "Account" is doing three jobs in three files | `model-domain`: split it into Customer and User |
 | You just made a hard-to-reverse architectural choice | `model-domain` offers an architecture decision record when the choice clears the bar |
 | The module's *shape* is the problem: where the seam goes, how deep the interface is | [design-modules](./design-modules.md) |
-| You want the whole plan interrogated before you build | [specify](../workflow/specify.md), which resolves outstanding decisions and records agreed feature behavior |
+| You want the whole plan interrogated before you build | [specify](../workflow/specify.md), which resolves outstanding decisions and records agreed capability behavior |
 | You want a term looked up, not changed | Nothing. Read `GLOSSARY.md`. It is a file. |
 
 ## Prerequisites

@@ -16,9 +16,9 @@ Call the Skill tool with "document"; its terms (authorized, obligation, lazy, po
 
 Read `documentation/agents/issue-tracker.md` for map storage, parent-child relationships, blocking, claims, and frontier queries. If it is missing, tell the human to run `/setup-ai-workspace` and stop.
 
-- A local map lives at `documentation/<effort>/map.md`; its decision tasks live at `documentation/<effort>/tasks/NN-<slug>.md`.
+- A local map lives at `documentation/capabilities/<capability>/map.md`; its decision tasks live at `documentation/capabilities/<capability>/tasks/NN-<slug>.md`.
 - A remote map and its children use native tracker records and relationships.
-- `documentation/<effort>/specifications.md` holds the agreed living behavior, design, and acceptance; `draft.md` holds open proposals. The map indexes decisions and each task keeps its rationale.
+- `documentation/capabilities/<capability>/specifications.md` holds the agreed living behavior, design, and acceptance; `draft.md` holds open proposals. The map indexes decisions and each task keeps its rationale.
 
 An explicit request to chart a map authorizes creating the map, its decision tasks, and their blocking relationships on the configured tracker. A request to work through the map authorizes claiming, resolving, and closing its tasks and updating the map. Ask before any remote change outside the named effort.
 

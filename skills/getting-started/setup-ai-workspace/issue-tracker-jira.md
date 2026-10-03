@@ -4,7 +4,7 @@ Backlog: <verified Jira backlog or board URL>
 
 The remote backlog owns candidate outcomes, priorities, and deferrals. Local `documentation/backlog.md` links to it; `documentation/work-in-progress.md` remains local for execution and resumption. Apply the authority and publication rules supplied by the `document` skill.
 
-Jira is the system of record for published tasks. Repository `documentation/<feature>/specifications.md` remains the canonical living specification; Jira records link to or summarize it.
+Jira is the system of record for published tasks. Repository `documentation/capabilities/<capability>/specifications.md` remains the canonical living specification; Jira records link to or summarize it.
 
 ## Project
 
@@ -34,7 +34,7 @@ Read the issue body, comments, status, links, and labels through the verified ac
 
 ## When a skill says "publish to the issue tracker"
 
-Use the verified update operation only after the user explicitly asks to publish. Otherwise, leave the artifact locally and report its path. Local document upkeep does not authorize remote writes. When useful, keep a title/link reference under `documentation/<feature>/tasks/` instead of copying the published task body.
+Use the verified update operation only after the user explicitly asks to publish. Otherwise, leave the artifact locally and report its path. Local document upkeep does not authorize remote writes. When useful, keep a title/link reference under `documentation/capabilities/<capability>/tasks/` instead of copying the published task body.
 
 ## Wayfinding operations
 

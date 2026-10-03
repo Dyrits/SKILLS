@@ -14,7 +14,7 @@ Type `/monitor-ai-tooling`, optionally naming a project and period. It is user-i
 | --- | --- |
 | Find out whether the configured tools are used and helping | This one |
 | Install or change the tools, hooks, or measurement setup | [setup-ai-tooling](../getting-started/setup-ai-tooling.md) |
-| Improve the repository's own agent instructions and documents | [improve-agent-environment](improve-agent-environment.md) |
+| Report how the skills behaved in a session | [improve-skills](improve-skills.md) |
 
 ## Prerequisites
 
@@ -57,4 +57,4 @@ It prefers local collection with no network requests and no additional model cal
 
 ## Where it fits
 
-Periodic maintenance after [setup-ai-tooling](../getting-started/setup-ai-tooling.md): setup configures the tools, this checks whether they pay off. [improve-agent-environment](improve-agent-environment.md) is the neighbor for the repository's agent guidance. [guide](../getting-started/guide.md) maps the wider flow.
+Periodic maintenance after [setup-ai-tooling](../getting-started/setup-ai-tooling.md): setup configures the tools, this checks whether they pay off. [improve-skills](improve-skills.md) is the neighbor for the skills themselves. [guide](../getting-started/guide.md) maps the wider flow.

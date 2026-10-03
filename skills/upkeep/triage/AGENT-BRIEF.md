@@ -1,6 +1,6 @@
 # Writing Agent Briefs
 
-An agent brief is a structured comment posted on a task or PR when it moves to `ready`. It is the authoritative task-execution contract that an AFK agent works from. The original body and discussion are context. The repository's `documentation/<feature>/specifications.md` remains authoritative for living behavior, design, and acceptance; the brief links to it and applicable requirements instead of creating a competing specification. Resolve conflicts before marking the task ready.
+An agent brief is a structured comment posted on a task or PR when it moves to `ready`. It is the authoritative task-execution contract that an AFK agent works from. The original body and discussion are context. The repository's `documentation/capabilities/<capability>/specifications.md` remains authoritative for living behavior, design, and acceptance; the brief links to it and applicable requirements instead of creating a competing specification. Resolve conflicts before marking the task ready.
 
 The brief states what the agent should do. For a task, that means building the change; for a PR, it means finishing or fixing the existing diff. The same principles apply to both.
 

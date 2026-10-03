@@ -12,7 +12,7 @@ It was called `writing-great-skills` until v1.1. The rename tracks what it alway
 
 Type `/write-for-agents`, or the agent reaches for it on its own when you're creating or editing a skill, or modifying `AGENTS.md` or `CLAUDE.md`.
 
-Reach for it by hand for other agent-facing documents, specifications, tasks, and unattended prompts. The test is whether an agent reads the text. [specify](../workflow/specify.md) establishes agreed feature behavior; [document](./document.md) owns the project-document model. This reference governs how the instructions read, not what behavior the project should agree to.
+Reach for it by hand for other agent-facing documents, specifications, tasks, and unattended prompts. The test is whether an agent reads the text. [specify](../workflow/specify.md) establishes agreed capability behavior; [document](./document.md) owns the project-document model. This reference governs how the instructions read, not what behavior the project should agree to.
 
 ## The two loads
 
@@ -59,7 +59,7 @@ The common route (do the work once, then have the agent write it up as a skill) 
 
 **Should every batch create requirements, specifications, and tasks?**
 
-No. [document](./document.md) owns the shared project-document rules. Existing requirements and agreed specifications still apply, but a small living-code batch can use backlog, work-in-progress, and the root changelog without creating new feature documents. Write instructions that preserve obligations while creating records only when useful; clarity is not a reason to duplicate the same agreement in several files.
+No. [document](./document.md) owns the shared project-document rules. Existing requirements and agreed specifications still apply, but a small living-code batch can use backlog, work-in-progress, and the root changelog without creating new capability documents. Write instructions that preserve obligations while creating records only when useful; clarity is not a reason to duplicate the same agreement in several files.
 
 **English isn't my first language. Do I lose the leading-word advantage?**
 No. Finding the word that packs the most behaviour into the fewest tokens is work the reference does for you. It is one of the things it is for.
@@ -73,4 +73,4 @@ No. Finding the word that packs the most behaviour into the fewest tokens is wor
 
 ## Where it fits
 
-This is a reach-for-it-anytime standalone reference. It has no neighbour in the chain because it sits underneath the whole set rather than beside any one skill: every skill here was written against it, and the documents the other skills leave behind (a `GLOSSARY.md` and its ADRs, a specification, a ticket) are exactly the text it governs once an agent has to read them. [improve-agent-environment](../upkeep/improve-agent-environment.md) loads this reference before suggesting changes to steering files or skills. When you're unsure which skill or flow fits a task, [guide](../getting-started/guide.md) routes you over the whole set.
+This is a reach-for-it-anytime standalone reference. It has no neighbour in the chain because it sits underneath the whole set rather than beside any one skill: every skill here was written against it, and the documents the other skills leave behind (a `GLOSSARY.md` and its ADRs, a specification, a ticket) are exactly the text it governs once an agent has to read them. [memorize](./memorize.md) loads this reference before filing a lesson in a steering file. When you're unsure which skill or flow fits a task, [guide](../getting-started/guide.md) routes you over the whole set.

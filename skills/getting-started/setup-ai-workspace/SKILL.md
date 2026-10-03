@@ -24,7 +24,7 @@ Read existing configuration and conventions before proposing changes:
 - `git remote -v` and `.git/config`, to identify the host without assuming it is the tracker.
 - Root `AGENTS.md` and `CLAUDE.md`, including any `## Agent skills` section.
 - `documentation/agents/` and any verified tooling record.
-- Root `CHANGELOG.md`, `documentation/requirements.md`, `documentation/backlog.md`, `documentation/work-in-progress.md`, and relevant feature documentation.
+- Root `CHANGELOG.md`, `documentation/requirements.md`, `documentation/backlog.md`, `documentation/work-in-progress.md`, and relevant capability documentation.
 - Task templates, contribution documentation, and available ticket-writing skills.
 - `GLOSSARY.md`, `GLOSSARY-MAP.md`, `GUIDELINES.md`, and relevant architecture decision records.
 - Monorepo signals such as workspace configuration or independent packages.
@@ -39,7 +39,7 @@ Summarize what already exists. Take the following sections in order, one questio
 
 Ask where tasks live. Recommend GitHub for a GitHub remote, GitLab for a GitLab remote, or local Markdown without a remote. A different tracker is an ordinary override.
 
-- Local Markdown uses `documentation/<feature>/tasks/<task>.md` for task bodies.
+- Local Markdown uses `documentation/capabilities/<capability>/tasks/NN-<slug>.md` for task bodies.
 - A remote tracker uses its native task records. Local task files, when useful, contain a title and link to the authoritative published task rather than a copied body.
 
 Record the authoritative backlog location with the tracker choice. A local project uses `documentation/backlog.md`; a remote project uses the verified backlog or board URL and keeps only a local link in that file. Working state remains local for either tracker, with execution and resumption details rather than duplicated remote status. Preserve prior backlog history unless a migration is explicitly authorized.
@@ -114,7 +114,7 @@ Seed `documentation/agents/issue-tracker.md` from the selected template:
 
 For another tracker, use the same sections with the user's verified access and conventions. Append [refinement.md](refinement.md), which delegates the shared document contract instead of installing a separate drafting tree.
 
-Write [domain.md](domain.md), and [triage-roles.md](triage-roles.md) when applicable. Create only configuration needed now, not empty feature trees or speculative documents.
+Write [domain.md](domain.md), and [triage-roles.md](triage-roles.md) when applicable. Create only configuration needed now, not empty capability trees or speculative documents.
 
 ## 4. Optional setup
 

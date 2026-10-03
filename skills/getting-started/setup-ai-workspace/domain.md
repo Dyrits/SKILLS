@@ -10,7 +10,7 @@ How the workflow skills should consume this repository's domain documentation wh
 
 If any of these files don't exist, **proceed silently**. Don't flag their absence; don't suggest creating them upfront. The `model-domain` skill, reached through `specify` or architecture work, creates them lazily when terms or decisions actually get resolved.
 
-Before updating project or feature documents, call the Skill tool with "document" for the shared document model. Read applicable project and feature requirements as constraints; surface conflicts rather than silently changing those obligations.
+Before updating project or capability documents, call the Skill tool with "document" for the shared document model. Read applicable project and capability requirements as constraints; surface conflicts rather than silently changing those obligations.
 
 ## Guidelines
 

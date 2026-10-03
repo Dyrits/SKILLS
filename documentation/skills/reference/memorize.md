@@ -14,6 +14,7 @@ It chooses a home; it does not invent a new store for each kind of fact.
 | Agreements, working state, delivery history | The shared project documents, through [document](./document.md) |
 | A procedure only a human can carry out | A saved wizard, through [walk-through](../productivity/walk-through.md) |
 | A personal preference across projects | The harness's own memory, otherwise `~/.agents/memory/` |
+| A defect in a skill itself | No local home: the agent tells you that [improve-skills](../upkeep/improve-skills.md) reports it on this repository |
 
 Facts the environment already states, such as a `package.json` script or `--help` output, stay there. Secrets and one-conversation context are never saved.
 
@@ -50,4 +51,4 @@ No. A lesson lives in exactly one home, and an existing entry is updated or remo
 
 ## Where it fits
 
-This is a standalone discipline that other skills call; it produces no deliverable of its own. It routes to [write-for-agents](./write-for-agents.md), [model-domain](./model-domain.md), [document](./document.md), and [walk-through](../productivity/walk-through.md) depending on the lesson. [guide](../getting-started/guide.md) maps the whole system.
+This is a standalone discipline that other skills call; it produces no deliverable of its own. It routes to [write-for-agents](./write-for-agents.md), [model-domain](./model-domain.md), [document](./document.md), and [walk-through](../productivity/walk-through.md) depending on the lesson. [improve-skills](../upkeep/improve-skills.md) runs after a session and files what `memorize` cannot fix locally: problems in the skills themselves. [guide](../getting-started/guide.md) maps the whole system.

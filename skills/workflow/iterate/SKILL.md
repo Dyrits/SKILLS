@@ -13,8 +13,6 @@ Call the Skill tool with "document"; its terms (authorized, obligation, lazy, po
 
 The supporting skills named here ship with this repository. If one is missing, do its work inline and say which one was missing.
 
-When the user corrects the agent, the approach goes off course, or the user expresses uncertainty about the process, read [ARTIFACTS.md](ARTIFACTS.md) and capture the feedback promptly, including before the first batch.
-
 ## 1. Establish the starting point
 
 Read applicable repository instructions, startup and verification configuration, relevant requirements and specifications, and the project documents. Inspect code and decisions before asking questions the workspace can answer.
@@ -83,4 +81,4 @@ The user owns intended behavior and consequential tradeoffs; routine implementat
 
 When setup, migration, repeated failures, or unexpected work materially increases scope or cost, pause: report what works, the blocker, and the alternatives, recommend continuing, simplifying, or changing approach, and wait for the decision. Quote measured costs when available, and only measured ones.
 
-Call model-invoked supporting skills through the Skill tool; ask the human to run user-invoked ones. Record feedback about reusable skills or tools for a separate session and keep this run on the application.
+Call model-invoked supporting skills through the Skill tool; ask the human to run user-invoked ones.
