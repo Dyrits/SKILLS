@@ -4,7 +4,7 @@ Set up once, then find your way around.
 
 ## User-invoked
 
-- [setup-ai-workspace](./setup-ai-workspace/SKILL.md): Configure shared project documents, task tracking, triage roles, and optional tooling.
+- [setup-ai-workspace](./setup-ai-workspace/SKILL.md): Configure shared project documents, task tracking, triage roles, and the optional getting-started setups.
 - [guide](./guide/SKILL.md): Choose the next skill, workflow, or session boundary.
 - [setup-delegation-policy](./setup-delegation-policy/SKILL.md): Configure machine-wide delegation and model-tier rules.
 

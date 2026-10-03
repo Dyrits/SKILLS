@@ -100,4 +100,4 @@ Keep authoritative work state current before changing context.
 
 ## Setup
 
-Tell the user to run `/setup-ai-workspace` before a tracker-dependent flow when the tracker configuration is missing. It configures task authority, writing conventions, triage roles, and domain layout. Its optional tooling stage uses `setup-ai-tooling`. `iterate` does not require tracker setup merely to maintain its local working documents.
+Tell the user to run `/setup-ai-workspace` before a tracker-dependent flow when the tracker configuration is missing. It configures task authority, writing conventions, triage roles, and domain layout. Its optional stage offers `setup-ai-tooling`, `setup-git-hooks`, `setup-git-guardrails`, `setup-auto-handoff`, and `/setup-delegation-policy`. `iterate` does not require tracker setup merely to maintain its local working documents.

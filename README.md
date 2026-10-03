@@ -16,7 +16,7 @@ npx skills@latest add Dyrits/SKILLS
 
 Pick the skills you want, and which coding agents to install them on. **The installer lets you choose which skills to take: make sure `setup-ai-workspace` is one of them.**
 
-Run `/setup-ai-workspace` once per repository to configure local or remote task tracking, task-writing conventions, triage roles, domain documentation, and optional tooling.
+Run `/setup-ai-workspace` once per repository to configure local or remote task tracking, task-writing conventions, triage roles, domain documentation, and the optional getting-started setups (tooling, commit hooks, Git guardrails, automatic handoff, delegation policy).
 
 Specifications stay authoritative in the repository. Draft remote tasks remain local until you explicitly publish them; their local files then link to the authoritative tracker records. Agents maintain local documentation autonomously within the authorized scope.
 
@@ -86,7 +86,7 @@ The manifest is the source of truth for this list; it holds every skill outside 
 
 ### Getting started
 
-- [setup-ai-workspace](./skills/getting-started/setup-ai-workspace/SKILL.md): Configure project documents, task tracking, triage roles, and optional tooling. User-invoked.
+- [setup-ai-workspace](./skills/getting-started/setup-ai-workspace/SKILL.md): Configure project documents, task tracking, triage roles, and the optional getting-started setups. User-invoked.
 - [guide](./skills/getting-started/guide/SKILL.md): Choose the next skill, workflow, or session boundary. User-invoked.
 - [setup-delegation-policy](./skills/getting-started/setup-delegation-policy/SKILL.md): Configure machine-wide delegation and model-tier rules. User-invoked.
 - [setup-ai-tooling](./skills/getting-started/setup-ai-tooling/SKILL.md): Configure and verify selected development tools and their measurement baseline. Model-invoked.

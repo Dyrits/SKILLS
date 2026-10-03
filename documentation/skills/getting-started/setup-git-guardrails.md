@@ -40,4 +40,4 @@ It has no hook runner and no deny list. A git-level `pre-push` hook (see [setup-
 
 ## Where it fits
 
-Run-once safety setup per project or per machine. [setup-git-hooks](./setup-git-hooks.md) is the git-level layer that covers agents this cannot intercept. [guide](./guide.md) routes the rest.
+Run-once safety setup per project or per machine, also offered as an optional stage of [setup-ai-workspace](./setup-ai-workspace.md). [setup-git-hooks](./setup-git-hooks.md) is the git-level layer that covers agents this cannot intercept. [guide](./guide.md) routes the rest.

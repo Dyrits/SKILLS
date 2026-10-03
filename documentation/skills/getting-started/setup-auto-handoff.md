@@ -47,4 +47,4 @@ Remove the hook entry from `.claude/settings.json`.
 
 ## Where it fits
 
-Run-once setup per project. [hand-off](../productivity/hand-off.md) writes the handoff the gate demands, and [take-over](../productivity/take-over.md) resumes from it. [setup-ai-tooling](./setup-ai-tooling.md) records per-client recovery methods for the cases this gate cannot cover. [guide](./guide.md) routes the rest.
+Run-once setup per project, also offered as an optional stage of [setup-ai-workspace](./setup-ai-workspace.md). [hand-off](../productivity/hand-off.md) writes the handoff the gate demands, and [take-over](../productivity/take-over.md) resumes from it. [setup-ai-tooling](./setup-ai-tooling.md) records per-client recovery methods for the cases this gate cannot cover. [guide](./guide.md) routes the rest.

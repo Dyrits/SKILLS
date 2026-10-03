@@ -47,4 +47,4 @@ Ask for uninstall. The section is removed from each file and the rest left alone
 
 ## Where it fits
 
-Run-once, machine-wide setup, rerun when `POLICY.md` changes. It sits beside [setup-ai-workspace](./setup-ai-workspace.md), which configures one repository, and [setup-ai-tooling](./setup-ai-tooling.md), which provisions tools. [guide](./guide.md) routes the rest.
+Run-once, machine-wide setup, rerun when `POLICY.md` changes. It sits beside [setup-ai-workspace](./setup-ai-workspace.md), which configures one repository and tells you to run this skill when the policy is missing, and [setup-ai-tooling](./setup-ai-tooling.md), which provisions tools. [guide](./guide.md) routes the rest.

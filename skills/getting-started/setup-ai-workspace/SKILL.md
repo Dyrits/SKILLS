@@ -1,6 +1,6 @@
 ---
 name: setup-ai-workspace
-description: "Configure a repository for AI-assisted work: task tracking, ticket-writing conventions, triage roles, domain documentation, and optional tooling setup."
+description: "Configure a repository for AI-assisted work: task tracking, ticket-writing conventions, triage roles, domain documentation, and the optional getting-started setups (tooling, commit hooks, Git guardrails, automatic handoff, delegation policy)."
 disable-model-invocation: true
 ---
 
@@ -29,6 +29,7 @@ Read existing configuration and conventions before proposing changes:
 - `GLOSSARY.md`, `GLOSSARY-MAP.md`, `GUIDELINES.md`, and relevant architecture decision records.
 - Monorepo signals such as workspace configuration or independent packages.
 - Whether `triage` is installed, which determines whether role configuration is needed.
+- Which optional setups in section 4 are already present.
 
 ## 2. Present findings and ask
 
@@ -115,12 +116,22 @@ For another tracker, use the same sections with the user's verified access and c
 
 Write [domain.md](domain.md), and [triage-roles.md](triage-roles.md) when applicable. Create only configuration needed now, not empty feature trees or speculative documents.
 
-## 4. Optional tooling
+## 4. Optional setup
 
-Continue when tooling was included in the request; otherwise offer this stage once. The `setup-ai-tooling` skill owns installation and verification.
+Offer the other getting-started setups together, once, as one multi-select question. Mark each as already present or missing from the exploration, and preselect any the request already named:
 
-When selected and available, call the Skill tool with "setup-ai-tooling", passing the project, verified tracker access, known clients, and approved project/global scope. If unavailable, finish configuration and tell the human how to install or run it later. Completion requires either a verified tooling record, a stated gap, or the user's decision to skip it.
+| Setup | Present when | Run by |
+| --- | --- | --- |
+| Development tooling | A verified tooling record exists | Skill tool, "setup-ai-tooling" |
+| Commit hooks | `git config core.hooksPath` points at a committed hooks directory | Skill tool, "setup-git-hooks" |
+| Git guardrails | A `block-dangerous-git.sh` hook is registered for the client | Skill tool, "setup-git-guardrails" |
+| Automatic handoff | `.claude/settings.json` has a `PreCompact` hook gating on `.agents/handoffs/` | Skill tool, "setup-auto-handoff" |
+| Delegation policy | The global steering files contain `## Delegation and model routing` | The human, `/setup-delegation-policy` |
+
+Run the selected setups in table order, each to completion before the next, each owning its own questions, scope, and verification. Pass `setup-ai-tooling` the project, verified tracker access, known clients, and approved project/global scope. `setup-delegation-policy` is user-invoked and machine-wide: tell the user to run it rather than calling it.
+
+When a selected skill is unavailable, finish the rest and tell the human how to install or run it later. Completion requires, for each selected setup, its verified result, a stated gap, or the user's decision to skip it.
 
 ## 5. Done
 
-Report the files written and the workflow skills that consume them. The user can edit `documentation/agents/*.md` directly later. Confirm that future work uses the shared document tree, existing history remains in place, and installed skill files were not changed.
+Report the files written, the setups run or skipped, and the workflow skills that consume them. The user can edit `documentation/agents/*.md` directly later. Confirm that future work uses the shared document tree, existing history remains in place, and installed skill files were not changed.
