@@ -95,7 +95,7 @@ The manifest is the source of truth for this list; it holds every skill outside 
 - [setup-delegation-policy](./skills/getting-started/setup-delegation-policy/SKILL.md): Configure machine-wide delegation and model-tier rules. User-invoked.
 - [setup-ai-tooling](./skills/getting-started/setup-ai-tooling/SKILL.md): Configure and verify selected development tools and their measurement baseline. Model-invoked.
 - [setup-git-hooks](./skills/getting-started/setup-git-hooks/SKILL.md): Configure versioned commit hooks with formatting, linting, typechecking, and builds. Model-invoked.
-- [setup-git-guardrails](./skills/getting-started/setup-git-guardrails/SKILL.md): Block dangerous Git commands with client permissions and hooks. Model-invoked.
+- [setup-git-guardrails](./skills/getting-started/setup-git-guardrails/SKILL.md): Ask before destructive Git commands with client permissions and hooks. Model-invoked.
 - [setup-auto-handoff](./skills/getting-started/setup-auto-handoff/SKILL.md): Gate Claude Code compaction on a fresh handoff. Model-invoked.
 
 ### Workflow

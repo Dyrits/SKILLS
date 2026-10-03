@@ -1,41 +1,55 @@
-Upstream skill: `git-guardrails-claude-code`, adapted here as `setup-git-guardrails`. Commit `f85ffd7` rewrote the entrypoint to cover multiple agents and moved the bundled script unchanged. The [provenance audit](../../research/2026-10-03-retained-skill-provenance.md) records the original at `d81f3a1:skills/misc/git-guardrails-claude-code/`.
+Upstream skill: `git-guardrails-claude-code`, adapted here as `setup-git-guardrails`. Commit `f85ffd7` rewrote the entrypoint to cover multiple agents and moved the bundled script; the fork later replaced its outright block with a confirmation. The [provenance audit](../../research/2026-10-03-retained-skill-provenance.md) records the original at `d81f3a1:skills/misc/git-guardrails-claude-code/`.
 
 ## What it does
 
-Blocks dangerous git commands before a coding agent runs them: any `git push`, `git reset --hard`, `git clean -f`, `git branch -D`, `git checkout .`, and `git restore .`. The block is enforced by a hook script or a deny rule, so it holds in auto-approve mode: the agent never gets an approval prompt, the command is rejected outright.
+Puts a confirmation in front of git commands that can lose work or rewrite shared history, so you approve each one instead of the agent running it unchecked:
 
-Upstream covered Claude Code only. This fork extends it to OpenCode and Codex CLI, with a different mechanism for each.
+- `git push` to a protected branch (`main`, `master`, the remote's default branch, and any you add), a plain force push, and pushes that delete or mirror remote branches.
+- `git reset --hard`, `git clean -f`, `git branch -D`, `git checkout .` or `-- <paths>`, and `git restore` on the working tree.
+
+Routine work passes without a prompt: commits, pushes to feature branches, `--force-with-lease` to a feature branch, dry runs, and `git restore --staged`. The Claude Code script checks only the command being run, so `grep "git push"` or a commit message that mentions a push is not caught.
+
+Upstream covered Claude Code only and denied outright. This fork extends it to OpenCode and Codex CLI, and asks instead of denying.
 
 ## When to reach for it
 
-Model-invoked: you can type `/setup-git-guardrails`, and the agent can reach for it when you want to prevent destructive git operations by any coding agent. It asks whether to install for this project or globally, and for which agents.
+Model-invoked: you can type `/setup-git-guardrails`, and the agent can reach for it when you want to guard against destructive git operations by any coding agent. It asks whether to install for this project or globally, for which agents, and which branches to protect.
 
 ## What each agent gets
 
 | Agent | Mechanism |
 | --- | --- |
-| Claude Code | A `PreToolUse` hook on Bash running [block-dangerous-git.sh](../../../skills/getting-started/setup-git-guardrails/scripts/block-dangerous-git.sh) |
-| OpenCode | `permission.deny` glob rules in `opencode.json`, with bare and wildcard-prefixed variants so chained commands are caught |
-| Codex CLI | No per-command deny list exists. The skill offers a versioned `pre-push` hook and remote branch protection, and says plainly that Codex cannot be blocked at the configuration level |
+| Claude Code | A `PreToolUse` hook on Bash running [confirm-dangerous-git.sh](../../../skills/getting-started/setup-git-guardrails/scripts/confirm-dangerous-git.sh), which answers `ask` with the reason |
+| OpenCode | `permission.bash` glob rules in `opencode.json` set to `ask`, with `allow` exceptions after them (the last matching rule wins). Globs cannot read the current branch, so every non-dry-run push asks |
+| Codex CLI | No per-command rules exist. The skill offers a versioned `pre-push` hook and remote branch protection, and says plainly that Codex cannot be guarded at the configuration level |
 
 ## Common questions
 
-**Can the agent push if I approve it myself?**
+**What happens when the agent tries a guarded command?**
 
-The rules block the agent's commands. Run the push yourself in your own terminal, or remove the pattern from the script and deny rules.
+You get the normal permission prompt with the reason (for example "This pushes to the protected branch `main`"). Approve it and the command runs; refuse and the agent is told.
 
-**Can I change what is blocked?**
+**What about non-interactive sessions?**
 
-Yes. The skill asks about customization. Keep the script's pattern list and OpenCode's deny rules in sync.
+Nobody can answer the prompt there, so expect the guarded command to be refused.
+
+**I installed the older version that blocked everything.**
+
+Run the skill again. It replaces `block-dangerous-git.sh` and its registration with the confirming script.
+
+**Can I change what is guarded?**
+
+Yes. The skill asks which branches to protect and about further customization. Keep the script's checks and OpenCode's rules in sync.
 
 **Why is Codex handled differently?**
 
-It has no hook runner and no deny list. A git-level `pre-push` hook (see [setup-git-hooks](./setup-git-hooks.md)) and protected remote branches apply no matter which agent pushes.
+It has no hook runner and no per-command rules. A git-level `pre-push` hook (see [setup-git-hooks](./setup-git-hooks.md)) and protected remote branches apply no matter which agent pushes.
 
 ## It's working if
 
-- Piping a sample `git push origin main` command into the hook script exits with code 2 and a BLOCKED message on standard error.
-- OpenCode refuses a `git push --dry-run` in a session, or its configuration parses with the rules listed.
+- Piping a sample `git push origin main` command into the script prints JSON with `"permissionDecision": "ask"`, and piping `echo "git push origin main"` prints nothing.
+- Pushing a feature branch goes through without a prompt.
+- OpenCode prompts before a `git push origin main` in a session, or its configuration parses with the rules listed.
 - Your existing hooks and permission rules are still present.
 
 ## Where it fits

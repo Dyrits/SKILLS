@@ -1,21 +1,22 @@
 ---
 name: setup-git-guardrails
-description: Set up hooks and permission rules that block dangerous git commands (push, reset --hard, clean, branch -D, etc.) across Claude Code, OpenCode, and Codex CLI before they execute, including in auto-approve mode. Use when user wants to prevent destructive git operations by any coding agent.
+description: Set up hooks and permission rules that make coding agents ask before git commands that can lose work or rewrite shared history (pushing to a protected branch, force pushes, reset --hard, clean -f, branch -D, discarding changes) across Claude Code, OpenCode, and Codex CLI. Use when the user wants to guard against destructive git operations by any coding agent.
 ---
 
 # Setup Git Guardrails
 
-Blocks dangerous git commands before any coding agent executes them. Works across Claude Code, OpenCode, and Codex CLI. Protection is enforced by hook scripts and permission rules, so it holds even when the agent runs in auto-approve / full-auto mode.
+Puts a confirmation in front of destructive git commands, so the human approves each one instead of the agent running it unchecked. Routine work (commits, pushes to feature branches, dry runs) passes without a prompt. Works across Claude Code, OpenCode, and Codex CLI.
 
-## What Gets Blocked
+## What asks for confirmation
 
-- `git push` (all variants including `--force`)
+- `git push` to a protected branch (`main`, `master`, and the remote's default branch), a plain force push (`--force`, `-f`, a `+` refspec), and pushes that delete or mirror (`--delete`, `:branch`, `--mirror`, `--all`, `--prune`). `--force-with-lease` to a feature branch and `--dry-run` pass.
 - `git reset --hard`
-- `git clean -f` / `git clean -fd`
-- `git branch -D`
-- `git checkout .` / `git restore .`
+- `git clean` with `-f`, unless it is a dry run (`-n`)
+- `git branch -D` (or `--delete --force`)
+- `git checkout .` and `git checkout -- <paths>`
+- `git restore` on the working tree (`--staged` alone passes)
 
-When blocked, the agent sees a message telling it that it does not have authority to run these commands.
+The Claude Code script matches only the command being run, segment by segment across `&&`, `||`, `;`, and `|`: text that merely mentions a command (`echo "git push"`, a commit message) passes.
 
 ## Steps
 
@@ -25,18 +26,13 @@ Ask the user:
 
 - **Scope**: this project only, or all projects (global config)?
 - **Targets**: which agents? Claude Code, OpenCode, Codex CLI, or all of them. Default: all detected ones (check for `.claude/`, `.opencode/`/`opencode.json`, `.codex/` config presence).
+- **Protected branches**: keep `main` and `master` (the remote's default branch is always included), or add others such as `develop`.
 
-### 2. Install the hook script
+### 2. Install the Claude Code script
 
-The bundled script is at: [scripts/block-dangerous-git.sh](scripts/block-dangerous-git.sh)
+The bundled script is at: [scripts/confirm-dangerous-git.sh](scripts/confirm-dangerous-git.sh)
 
-Copy it to each target's hooks directory and `chmod +x`:
-
-- **Claude Code project**: `.claude/hooks/block-dangerous-git.sh`
-- **Claude Code global**: `~/.claude/hooks/block-dangerous-git.sh`
-- **OpenCode project**: `.opencode/hooks/block-dangerous-git.sh` (script dir; referenced by config, see step 3)
-- **OpenCode global**: `~/.config/opencode/hooks/block-dangerous-git.sh`
-- **Codex**: no script needed, uses config-only rules (see step 4)
+Copy it to `.claude/hooks/confirm-dangerous-git.sh` (project) or `~/.claude/hooks/confirm-dangerous-git.sh` (global) and `chmod +x`. Set `PROTECTED_BRANCHES` at its top to the branches from step 1. An earlier version installed `block-dangerous-git.sh`, which denied outright; replace it and its registration.
 
 ### 3. Wire up each agent
 
@@ -51,7 +47,7 @@ For **Claude Code**, add to `.claude/settings.json` (project) or `~/.claude/sett
         "hooks": [
           {
             "type": "command",
-            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/block-dangerous-git.sh"
+            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/confirm-dangerous-git.sh"
           }
         ]
       }
@@ -60,58 +56,57 @@ For **Claude Code**, add to `.claude/settings.json` (project) or `~/.claude/sett
 }
 ```
 
-(For global scope use `~/.claude/hooks/block-dangerous-git.sh` as the command.)
+(For global scope use `~/.claude/hooks/confirm-dangerous-git.sh` as the command.) The script answers with `permissionDecision: "ask"`, which shows the user the normal permission prompt with the reason.
 
-For **OpenCode**, use its permission system in `opencode.json` (project) or `~/.config/opencode/opencode.json` (global); there is no PreToolUse hook runner. Deny rules are enforced before any approval mode, including auto-approve:
+For **OpenCode**, use its permission system in `opencode.json` (project) or `~/.config/opencode/opencode.json` (global). Rules are globs over the parsed command, and the **last matching rule wins**, so each exception follows the rule it narrows. Globs cannot read the current branch, so every non-dry-run push asks:
 
 ```json
 {
   "permission": {
-    "deny": [
-      "bash(git push*)",
-      "bash(git reset --hard*)",
-      "bash(git clean -f*)",
-      "bash(git branch -D*)",
-      "bash(git checkout .*)",
-      "bash(git restore .*)",
-      "bash(git push --force*)",
-      "bash(*git push*)",
-      "bash(*git reset --hard*)",
-      "bash(*git clean -f*)",
-      "bash(*git branch -D*)"
-    ]
+    "bash": {
+      "git push": "ask",
+      "git push *": "ask",
+      "git push --dry-run*": "allow",
+      "git reset --hard*": "ask",
+      "git clean -*f*": "ask",
+      "git clean -n*": "allow",
+      "git clean --dry-run*": "allow",
+      "git branch -D *": "ask",
+      "git checkout .": "ask",
+      "git checkout -- *": "ask",
+      "git restore *": "ask",
+      "git restore --staged *": "allow"
+    }
   }
 }
 ```
 
-The `bash(...)` patterns use glob matching on the command string. Include both bare and `*`-prefixed variants so chained commands (`cd foo && git push`) are caught too. Merge into an existing `permission` block; never overwrite other rules.
+Merge into an existing `permission.bash` block, keeping its catch-all `"*"` rule first.
 
-For **Codex CLI**, use the Git-level fallback: it has no hook scripts and supports sandbox and approval policy in `~/.codex/config.toml` but no per-command deny list. Install a versioned `pre-push` hook (see step 5) and rely on remote branch protection. Tell the user Codex cannot be blocked at the configuration level.
+For **Codex CLI**, use the Git-level fallback: it has no hook scripts and supports sandbox and approval policy in `~/.codex/config.toml` but no per-command rules. Install a versioned `pre-push` hook (see step 5) and rely on remote branch protection. Tell the user Codex cannot be guarded at the configuration level.
 
 ### 4. Ask about customization
 
-Ask if the user wants to add or remove patterns from the blocked list. Edit the copied script(s) and the OpenCode deny rules accordingly.
+Ask if the user wants to add or remove guarded commands. Edit the copied script and the OpenCode rules accordingly.
 
 ### 5. Offer the git-level fallback
 
-For any agent that cannot be intercepted (Codex, or future tools), offer the portable layer: a versioned `pre-push` hook via Husky or `core.hooksPath`, and protected branches on the remote. These apply no matter which agent runs `git push`.
+For any agent that cannot be intercepted (Codex, or future tools), offer the portable layer: a versioned `pre-push` hook via `core.hooksPath` that refuses pushes to protected branches, and protected branches on the remote. These apply no matter which agent runs `git push`.
 
 ### 6. Verify
 
-For each installed target:
-
-Claude Code hook script:
+For the Claude Code script, from inside the repository:
 
 ```bash
-echo '{"tool_input":{"command":"git push origin main"}}' | <path-to-script>
+echo '{"tool_input":{"command":"git push origin main"},"cwd":"'"$PWD"'"}' | <path-to-script>
+echo '{"tool_input":{"command":"echo \"git push origin main\""},"cwd":"'"$PWD"'"}' | <path-to-script>
 ```
 
-Should exit with code 2 and print a BLOCKED message to stderr.
+The first prints JSON with `"permissionDecision": "ask"`; the second prints nothing. Both exit 0.
 
-OpenCode deny rules: ask the user to run `git push --dry-run` in a session and confirm OpenCode refuses it (or check `opencode.json` parses and rules are listed).
+OpenCode rules: ask the user to run `git push origin main` in a session and confirm OpenCode prompts for it (or check `opencode.json` parses and the rules are listed).
 
 ## Notes
 
-- Deny rules and PreToolUse hooks both fire before auto-approve: the agent never sees an approval prompt because the command is rejected outright.
-- Keep the pattern lists in the script and in OpenCode's deny rules in sync when customizing.
-- `git checkout .` / `git restore .` patterns use regex escaping in the shell script; OpenCode uses plain globs.
+- A confirmation needs a human to answer it. In a non-interactive session nobody can, so expect the guarded command to be refused there.
+- Keep the script's checks and the OpenCode rules in sync when customizing.

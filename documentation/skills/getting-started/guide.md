@@ -83,7 +83,7 @@ Setup and outbound skills it also routes to:
 
 - [setup-delegation-policy](./setup-delegation-policy.md) configures machine-wide delegation and model tiers.
 - [setup-git-hooks](./setup-git-hooks.md) configures versioned commit checks.
-- [setup-git-guardrails](./setup-git-guardrails.md) blocks dangerous Git operations at supported enforcement points.
+- [setup-git-guardrails](./setup-git-guardrails.md) asks before destructive Git operations at supported enforcement points.
 - [setup-auto-handoff](./setup-auto-handoff.md) gates supported compaction on a fresh handoff.
 - [classify](../productivity/classify.md) sends approved safe-to-send text to a third-party classifier and retains uncertain results.
 

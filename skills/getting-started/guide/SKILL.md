@@ -88,7 +88,7 @@ Keep authoritative work state current before changing context.
 | `/monitor-ai-tooling` | Report actual usage, quality, gaps, and evidence-supported benefits. |
 | `/setup-delegation-policy` | Install machine-wide delegation and model-tier policy. |
 | `/setup-git-hooks` | Configure versioned commit checks. |
-| `/setup-git-guardrails` | Block dangerous Git operations at supported enforcement layers. |
+| `/setup-git-guardrails` | Ask before destructive Git operations at supported enforcement layers. |
 | `/setup-auto-handoff` | Gate supported compaction on a fresh handoff. |
 | `/address-feedback` | Assess review feedback from any source, implement approved changes, and deliver approved replies. |
 | `/publish-message` | Publish established findings to any connected service after approval of exact text and destination. |

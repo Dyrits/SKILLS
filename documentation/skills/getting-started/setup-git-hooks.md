@@ -13,7 +13,7 @@ Model-invoked: you can type `/setup-git-hooks`, and the agent can reach for it w
 | Situation | Use |
 | --- | --- |
 | You want checks on every commit, for people and agents | This skill |
-| You want to stop agents from pushing or resetting | [setup-git-guardrails](./setup-git-guardrails.md) |
+| You want agents to ask before pushing to a protected branch or resetting | [setup-git-guardrails](./setup-git-guardrails.md) |
 
 ## Prerequisites
 
