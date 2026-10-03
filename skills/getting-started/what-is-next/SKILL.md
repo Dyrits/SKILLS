@@ -10,6 +10,16 @@ You don't remember every skill or what to do next, so ask.
 
 A **flow** is a path through the skills. Most paths run along one **main flow**, and two **on-ramps** merge onto it. Everything else is standalone, or a vocabulary layer that runs underneath.
 
+## Experimental solo development
+
+For a solo project where you want to discover behavior while building, choose **`/iterate`**, installed deliberately outside the plugin. It combines questioning, documented decisions, implementation, and verification in runnable batches rather than requiring the specification-and-ticket route below. The application evolves in place; a prototype rebuild is not mandatory.
+
+It maintains `documentation/work-in-progress.md`, captures corrections and process concerns in `.agents/feedbacks/`, and asks for acceptance where appearance or interaction needs your judgment. Routine internal changes use agreed automated checks. Use the main flow instead when you want separate specifications and tickets.
+
+When competing capabilities, unclear scope, or dependencies prevent choosing a useful increment, it invokes **`divide-and-conquer`**, another experimental skill installed deliberately. That skill retains a lightweight backlog, recommends one outcome, and gets focus approval without requiring tickets or implementing the whole idea. You can also invoke **`/divide-and-conquer`** directly to organize a large idea or reconsider priorities. Small clear changes skip decomposition; completing an outcome does not approve the next.
+
+External facts blocking a consequential choice trigger research; test-first and integration-test batches invoke test-driven development; agreed milestones and substantial structural or data-risk changes trigger standards-and-behavior review. These are branches within the same workflow, not additional skills the human must invoke for each batch.
+
 ## The main flow: idea → ship
 
 The route most work travels. You have an idea and want it built.

@@ -10,6 +10,8 @@ Install one directly:
 npx skills@latest add Dyrits/SKILLS --skill=<name>
 ```
 
+- **[divide-and-conquer](./divide-and-conquer/SKILL.md)**: Organize a large idea or competing backlog into bounded outcomes, retain deferred ideas, and agree one focus without implementing or requiring tickets. Model-invoked.
+- **[iterate](./iterate/SKILL.md)**: Interview, implement, and verify a solo project in runnable batches, with conditional decomposition, research, test-driven development, milestone review, and automatic feedback capture. User-invoked.
 - **[address-feedback](./address-feedback/SKILL.md)**: Assess every substantive comment on a pull request, merge request, issue, or ticket; implement the approved change plan; then draft and post a reply to each comment.
 - **[publish-message](./publish-message/SKILL.md)**: Publish a conclusion or review summary to GitHub, GitLab, or Jira, with optional inline suggestions on a pull or merge request, after the user approves the complete set and destination.
 - **[classify](./classify/SKILL.md)**: Sort or tag text with classifier.dev, filter batches before reading them, and keep uncertain results for review; reports confidence or tag scores when available.
