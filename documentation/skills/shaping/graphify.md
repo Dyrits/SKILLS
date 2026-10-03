@@ -41,17 +41,21 @@ On the configured tracker. Local maps live in the future feature tree and can be
 
 An explicit request to chart authorizes the relevant map, child tasks, and blocking operations on the configured tracker. Working through that map authorizes the relevant claim and resolution updates. A generic local documentation request does not authorize remote publication or unrelated tracker changes.
 
-**Can existing maps still be used after the rename?**
+**Which tracker labels does it use?**
 
-Yes. Native `wayfinder:map` and `wayfinder:<type>` labels remain compatibility record identifiers so existing maps and queries continue to work. They are not invocation aliases. Use `/graphify`; the rename does not require relabelling or deleting old records.
+`graphify:map` for the map and `graphify:<type>` (`research`, `prototype`, `refine`, `task`) for its decision tasks. Maps created by the upstream `wayfinder` skill carry `wayfinder:` labels; graphify does not read those.
+
+**When should I use prioritize or taskify instead?**
+
+Graphify is for an effort where what to build is still undecided and settling it takes research, prototypes, or interviews across several sessions. When what to build is known and the question is which outcome comes first, use prioritize. When the behavior is agreed and needs splitting into delivery work, use [taskify](../workflow/taskify.md).
 
 **Will I get a visual representation?**
 
 The default output is the decision graph's records and map. At the end, Graphify asks once whether you want a visual representation. If you accept or already requested one, it uses [illustrate](../productivity/illustrate.md) to choose a small inline or HTML view without requiring a new file. The view explains recorded titles, dependencies, resolution state, and evidence, with not-yet-sharp questions shown separately. It does not invent edges, replace the authoritative graph, or grant remote publication permission.
 
-**What happens to specifications and old history?**
+**How does it update specifications?**
 
-Requirements remain constraints, unresolved proposals belong in `draft.md`, and agreed behavior/design/acceptance update `specifications.md`. Existing `.refinement/` and `backlog/` history is not moved automatically. Decision rationale stays on its task and is linked, not copied.
+Requirements remain constraints, unresolved proposals belong in `draft.md`, and agreed behavior/design/acceptance update `specifications.md`. Decision rationale stays on its task and is linked, not copied.
 
 ## It's working if
 
@@ -63,4 +67,4 @@ Requirements remain constraints, unresolved proposals belong in `draft.md`, and 
 
 ## Where it fits
 
-Graphify is a shaping workflow for multi-session uncertainty. It uses [documentation](../reference/documentation.md) for shared project documents and hands a clear route to [specify](../workflow/specify.md) or [taskify](../workflow/taskify.md). [What-is-next](../getting-started/what-is-next.md) routes the surrounding flow.
+Graphify is a shaping workflow for multi-session uncertainty. It uses [document](../reference/document.md) for shared project documents and hands a clear route to [specify](../workflow/specify.md) or [taskify](../workflow/taskify.md). [Guide](../getting-started/guide.md) routes the surrounding flow.

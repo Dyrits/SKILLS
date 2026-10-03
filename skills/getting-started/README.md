@@ -3,7 +3,7 @@
 Set up once, then find your way around.
 
 - [setup-ai-workspace](./setup-ai-workspace/SKILL.md): Configure shared project documents, task tracking, triage roles, and optional tooling. User-invoked, ships in the plugin.
-- [what-is-next](./what-is-next/SKILL.md): Choose the next skill, workflow, or session boundary. User-invoked, ships in the plugin.
+- [guide](./guide/SKILL.md): Choose the next skill, workflow, or session boundary. User-invoked, ships in the plugin.
 
 ## Not in the plugin
 

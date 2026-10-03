@@ -8,7 +8,7 @@ disable-model-invocation: true
 
 Configure the repository contracts that `specify`, `taskify`, `triage`, and `graphify` consume. Explore, recommend, confirm, then write inspectable configuration. This skill configures the project, not the installed skills.
 
-Call the Skill tool with "documentation" before choosing document locations or writing configuration. Consume its shared project-document rules for lazy creation, authority, requirements, publication, resumption, and `CHANGELOG.md`. Reference that contract rather than copying its complete format into templates.
+Call the Skill tool with "document" before choosing document locations or writing configuration; its terms (authorized, obligation, lazy, pointer) and rules apply throughout. Generated templates point to that contract instead of copying it.
 
 Four decisions belong here:
 
@@ -16,8 +16,6 @@ Four decisions belong here:
 - The ticket-writing convention, the built-in `taskify` format or an established project template or skill.
 - The strings used for the two category and four intake-state roles.
 - The domain documentation layout and consumer rules.
-
-Repository specifications remain authoritative regardless of tracker. Remote tasks link to or summarize the relevant specification. Local document upkeep can proceed within the requested scope; remote publication requires an explicit user request.
 
 ## 1. Explore
 
@@ -27,13 +25,10 @@ Read existing configuration and conventions before proposing changes:
 - Root `AGENTS.md` and `CLAUDE.md`, including any `## Agent skills` section.
 - `documentation/agents/` and any verified tooling record.
 - Root `CHANGELOG.md`, `documentation/requirements.md`, `documentation/backlog.md`, `documentation/work-in-progress.md`, and relevant feature documentation.
-- Existing `backlog/` and `.refinement/` history. Preserve it in place unless the user separately requests migration.
 - Task templates, contribution documentation, and available ticket-writing skills.
 - `GLOSSARY.md`, `GLOSSARY-MAP.md`, `GUIDELINES.md`, and relevant architecture decision records.
 - Monorepo signals such as workspace configuration or independent packages.
 - Whether `triage` is installed, which determines whether role configuration is needed.
-
-Project and feature requirements constrain the setup. Infrastructure, legal, company, budget, service, and security obligations cannot be silently weakened. Adjust an implementation approach within those constraints; surface conflicts for a decision.
 
 ## 2. Present findings and ask
 
@@ -79,7 +74,7 @@ Only collect overrides if the user declines. The strings are configurable; the r
 
 Default to one root `GLOSSARY.md` and `documentation/architecture-decision-record/` without asking. Offer a root `GLOSSARY-MAP.md` with per-context glossaries only when monorepo signals justify it.
 
-If `GUIDELINES.md` exists, record `Guidelines: present`. Otherwise ask whether to create it through an interview, recommending yes when there is no standards document. On acceptance, call the Skill tool with "domain-modeling". On refusal, record `Guidelines: declined`.
+If `GUIDELINES.md` exists, record `Guidelines: present`. Otherwise ask whether to create it through an interview, recommending yes when there is no standards document. On acceptance, call the Skill tool with "model-domain". On refusal, record `Guidelines: declined`.
 
 ## 3. Confirm and write
 
@@ -104,7 +99,7 @@ Edit `CLAUDE.md` if it exists; otherwise edit `AGENTS.md` if it exists. If neith
 
 ### Project documents
 
-Call the Skill tool with "documentation" before creating or updating project documents, to apply the shared authority, requirements, publication, resumption, and changelog rules.
+Call the Skill tool with "document" before creating or updating project documents, to apply the shared authority, requirements, publication, resumption, and changelog rules.
 ```
 
 Omit the triage block and file when triage is not installed.

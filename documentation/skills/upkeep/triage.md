@@ -56,4 +56,4 @@ Requirements constrain the work. Triage can change an implementation approach wi
 
 ## Where it fits
 
-Triage is periodic intake maintenance. [Refine](../reference/refine.md) resolves unclear requests, while [documentation](../reference/documentation.md) owns local specifications, backlog, active-work, and changelog upkeep. [What-is-next](../getting-started/what-is-next.md) routes the next step.
+Triage is periodic intake maintenance. [Refine](../reference/refine.md) resolves unclear requests, while [document](../reference/document.md) owns local specifications, backlog, active-work, and changelog upkeep. [Guide](../getting-started/guide.md) routes the next step.

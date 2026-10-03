@@ -26,12 +26,25 @@ Work moving across session boundaries.
 - **[hand-off](./hand-off/SKILL.md)**: Compact the current conversation into a versioned handoff document in `.agents/handoffs/`.
 - **[take-over](./take-over/SKILL.md)**: Resume work from the latest handoff in `.agents/handoffs/`, following the supersedes chain deeper only when needed.
 
+## Procedures
+
+Recurring routines and one-off procedures, designed, improved, or walked through.
+
+### User-invoked
+
+- **[design-workflow](./design-workflow/SKILL.md)**: Turn recurring work loops into implementable workflow specifications.
+
+### Model-invoked
+
+- **[optimize-process](./optimize-process/SKILL.md)**: Map and improve a recurring process, including agent work and human review in practical impact estimates.
+- **[walk-through](./walk-through/SKILL.md)**: Generate a guided script (a wizard) for steps only a human can perform.
+
 ## Ungrouped
 
 ### User-invoked
 
 - **[teach](./teach/SKILL.md)**: Teach the user a new skill or concept over multiple sessions, using the current directory as a stateful teaching workspace.
 
-### Model-invoked
+## Not in the plugin
 
-- **[optimize-process](./optimize-process/SKILL.md)**: Map and improve a recurring process, including agent work and human review in practical impact estimates.
+- [classify](./classify/SKILL.md): Classify safe-to-send text with classifier.dev and retain uncertain results for review. Model-invoked.

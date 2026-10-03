@@ -36,4 +36,4 @@ No. An approved working-state batch can define scope and dependencies without ma
 
 ## Where it fits
 
-This coordinates the implementation stage after [specify](./specify.md) and [taskify](./taskify.md), then calls [code-review-and-refactor](./code-review-and-refactor.md) across the integration branch. [what-is-next](../getting-started/what-is-next.md) maps the other routes.
+This coordinates the implementation stage after [specify](./specify.md) and [taskify](./taskify.md), then calls [review-and-refactor](./review-and-refactor.md) across the integration branch. [guide](../getting-started/guide.md) maps the other routes.

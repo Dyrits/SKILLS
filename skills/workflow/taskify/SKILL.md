@@ -10,9 +10,9 @@ Create tracker-neutral tasks that deliver coherent outcomes. A small batch may n
 
 ## Establish the source
 
-Call the Skill tool with "documentation" and apply its shared project document model. Read the selected scope, applicable requirements and specifications, active working state, relevant code, domain vocabulary, and architectural decisions. Fetch the full body and comments of any referenced remote task.
+Call the Skill tool with "document"; its terms (authorized, obligation, lazy, pointer) and rules apply throughout. Read the selected scope, applicable requirements and specifications, active working state, relevant code, domain vocabulary, and architectural decisions. Fetch the full body and comments of any referenced remote task.
 
-Read configured tracker and task-writing conventions when available. Local drafting does not require tracker setup. Ask about material missing scope or conflicting obligations rather than silently choosing. Link canonical repository specifications instead of producing another copy.
+Read configured tracker and task-writing conventions when present; local drafting works without tracker setup. Ask the user about material missing scope.
 
 ## Decompose into outcomes
 
@@ -27,14 +27,12 @@ Every task must state:
 - Checkable acceptance criteria owned by this task, including how completion is demonstrated.
 - Explicit blockers: task references, external prerequisites, unresolved decisions, or "None".
 
-Check that acceptance distinguishes the intended change from the starting state and does not claim another task's result. Use native tracker dependencies where supported, body links as the fallback. Avoid incidental implementation paths or snippets; retain decision-rich prototype shapes when they express an agreed decision precisely.
+Check that acceptance distinguishes the intended change from the starting state and does not claim another task's result. Use native tracker dependencies where supported, body links as the fallback. Keep task bodies at the level of outcomes; include a decision-rich prototype shape when it expresses an agreed decision precisely.
 
 ## Approve and save
 
 Present the proposed outcome breakdown, acceptance, and blocking edges. Ask the user to approve granularity and dependencies; merge or split where useful. Keep unresolved blockers visible.
 
-Save approved local bodies or drafts at the shared model's task paths, in dependency order. Local upkeep is autonomous within authorized scope. Publish remotely only after explicit approval of the destination and publication scope, following configured conventions. Publish blockers first so later dependencies can reference real identifiers. Verify native dependency and parent links where applicable.
-
-After approved remote publication, replace the local draft with its title and authoritative remote link. Leave specifications canonical in the repository. Do not update or close a remote parent outside publication approval.
+Save approved drafts at the shared task paths, in dependency order. Once publication is authorized, publish following configured conventions: blockers first so later tasks can reference real identifiers, then verify native dependency and parent links. Each published local draft becomes a pointer. Change a remote parent only when the authorization covers it.
 
 Report saved paths or published links, remaining blockers, and the **frontier** of tasks whose prerequisites are complete. Taskify stops at decomposition and approved publication, not execution.

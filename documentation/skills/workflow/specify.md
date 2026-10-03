@@ -36,4 +36,4 @@ No. Choose [taskify](taskify.md) only when decomposition is useful. Small delive
 
 ## Where it fits
 
-Specify is an optional chain step before [taskify](taskify.md) or [implement](implement.md). It uses [refine](../reference/refine.md) for unresolved choices and [documentation](../reference/documentation.md) for shared project records. [What-is-next](../getting-started/what-is-next.md) maps these paths.
+Specify is an optional chain step before [taskify](taskify.md) or [implement](implement.md). It uses [refine](../reference/refine.md) for unresolved choices and [document](../reference/document.md) for shared project records. [Guide](../getting-started/guide.md) maps these paths.

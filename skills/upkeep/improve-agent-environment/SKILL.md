@@ -8,7 +8,7 @@ The user has asked for a **retrospective**. You are suggesting improvements to t
 
 ## Steps
 
-1. Call the Skill tool with `writing-for-agents` for the writing style guide.
+1. Call the Skill tool with `write-for-agents` for the writing style guide.
 
 2. Read the primary sources for the session the user specifies. This may mean searching through session logs on this machine. If the user doesn't specify a session, default to the current one.
 
@@ -40,5 +40,5 @@ You have access to several files in the repository:
 
 - `CLAUDE.md`/`AGENTS.md`: these files are pushed to the context window of any agent working in this repository. They should be used incredibly sparingly, usually only for **navigation pointers** to other files.
 - `GUIDELINES.md`: this file is read during review, not implementation. Add **navigation pointers** to documentation folders if the standards file gets more than 1,000 lines long.
-- Documentation: use reference documents pointed to by other files. Look for existing documentation before writing new material; call the Skill tool with "documentation" when maintaining it.
-- Skills: use skills for reusable agent disciplines (their descriptions are available for discovery), or for user-invoked commands. Follow the advice in the `writing-for-agents` skill.
+- Documentation: use reference documents pointed to by other files. Look for existing documentation before writing new material; call the Skill tool with "document" when maintaining it.
+- Skills: use skills for reusable agent disciplines (their descriptions are available for discovery), or for user-invoked commands. Follow the advice in the `write-for-agents` skill.

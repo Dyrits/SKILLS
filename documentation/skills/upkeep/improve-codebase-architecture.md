@@ -23,13 +23,13 @@ It sits outside the build loop: it is not a step in the main loop but something 
 
 Where it is confusable with siblings:
 
-- For designing one module you have already chosen, use [codebase-design](../reference/codebase-design.md): that is the bench, this is the survey that finds what to put on it.
+- For designing one module you have already chosen, use [design-modules](../reference/design-modules.md): that is the bench, this is the survey that finds what to put on it.
 - For a whole effort too big to hold in one session, use [graphify](../shaping/graphify.md).
 - For "this specific thing is broken," use [debug](./debug.md). It hands back here when the real finding is that there is no good seam to lock the bug down.
 
 ## Prerequisites
 
-None to run it. When `GUIDELINES.md` is missing it asks whether to create one. If you accept, [domain-modeling](../reference/domain-modeling.md) interviews you about your architecture conventions and rules first; declining is recorded in `documentation/agents/domain.md` and skips it. It reads `GLOSSARY.md` and any ADRs in `documentation/architecture-decision-record/` if they exist, and speaks in your domain's own nouns when they do: a candidate reads as "deepen the Order intake module," not "refactor the FooBarHandler."
+None to run it. When `GUIDELINES.md` is missing it asks whether to create one. If you accept, [model-domain](../reference/model-domain.md) interviews you about your architecture conventions and rules first; declining is recorded in `documentation/agents/domain.md` and skips it. It reads `GLOSSARY.md` and any ADRs in `documentation/architecture-decision-record/` if they exist, and speaks in your domain's own nouns when they do: a candidate reads as "deepen the Order intake module," not "refactor the FooBarHandler."
 
 The report goes to `documentation/architecture-audit/architecture-audit-<timestamp>.html`, one file per run. Refinement can also sharpen terms in `GLOSSARY.md` and offer an architecture decision record for a consequential rejection. That offer is conditional: rejecting a candidate does not automatically merit a permanent decision record.
 
@@ -71,11 +71,11 @@ With the next thing you are building in mind. Where a big build is coming up, po
 
 **Does it work on a large legacy codebase?**
 
-Results vary. Users with out-of-control projects reported limited help, and one report on an eight-year legacy codebase described the model going in circles. Bound the survey to an actively changing area and a concrete source of friction. If domain terms are inconsistent, use [domain-modeling](../reference/domain-modeling.md) to establish shared vocabulary before comparing designs.
+Results vary. Users with out-of-control projects reported limited help, and one report on an eight-year legacy codebase described the model going in circles. Bound the survey to an actively changing area and a concrete source of friction. If domain terms are inconsistent, use [model-domain](../reference/model-domain.md) to establish shared vocabulary before comparing designs.
 
-**How is this different from `/codebase-design`?**
+**How is this different from `/design-modules`?**
 
-`/codebase-design` is a reference, not a session driver. It supplies the vocabulary (module, interface, depth, seam, adapter, leverage, locality), and this skill borrows it. Pointing a fresh agent at `/codebase-design` as the thing to "do" is a known failure: with no process of its own to follow, the agent invents one, re-explores code and runs for a very long time before asking you anything. Drive with this skill; consume that one.
+`/design-modules` is a reference, not a session driver. It supplies the vocabulary (module, interface, depth, seam, adapter, leverage, locality), and this skill borrows it. Pointing a fresh agent at `/design-modules` as the thing to "do" is a known failure: with no process of its own to follow, the agent invents one, re-explores code and runs for a very long time before asking you anything. Drive with this skill; consume that one.
 
 **Will it ever tell me the codebase is fine?**
 
@@ -100,4 +100,4 @@ There is no good answer shipped with the skill. The recurring request is for a `
 
 ## Where it fits
 
-`improve-codebase-architecture` is periodic maintenance that generates candidate work rather than implementing it. [codebase-design](../reference/codebase-design.md) supplies depth-and-seam vocabulary; [refine](../reference/refine.md) explores the selected candidate; [domain-modeling](../reference/domain-modeling.md) records settled domain meanings and qualifying decisions. Approved work enters planned or just-in-time development without weakening existing obligations. [improve-agent-environment](./improve-agent-environment.md) reviews the surrounding checks and steering. [what-is-next](../getting-started/what-is-next.md) maps both workflows.
+`improve-codebase-architecture` is periodic maintenance that generates candidate work rather than implementing it. [design-modules](../reference/design-modules.md) supplies depth-and-seam vocabulary; [refine](../reference/refine.md) explores the selected candidate; [model-domain](../reference/model-domain.md) records settled domain meanings and qualifying decisions. Approved work enters planned or just-in-time development without weakening existing obligations. [improve-agent-environment](./improve-agent-environment.md) reviews the surrounding checks and steering. [guide](../getting-started/guide.md) maps both workflows.

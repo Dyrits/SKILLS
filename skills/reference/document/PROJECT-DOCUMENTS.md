@@ -1,0 +1,73 @@
+# Shared project documents
+
+Every workflow that reads or writes project documents follows this model. Callers use the terms below instead of restating these rules.
+
+## Terms
+
+- **Authorized**: the user approved the scope. A remote change (publication, update, priority change, or closure) also needs approval of its destination. Only the user authorizes: backlog entries, recommendations, tracker configuration, and passing builds are evidence, not approval.
+- **Obligation**: a global or feature requirement, including infrastructure, legal, company, budget, service, and security constraints. Only the user relaxes an obligation. When one conflicts with scope or with the implementation, ask the user and continue independent work meanwhile. Within authorized scope, the implementation approach is free to change.
+- **Lazy**: create a document when it carries useful information. A small batch can run on backlog, work-in-progress, and the changelog alone.
+- **Pointer**: a link to the authoritative record, used in place of a copy.
+
+## Sources of truth
+
+| Path | Owns |
+| --- | --- |
+| `CHANGELOG.md` | Authorized agreements and verified deliveries |
+| `documentation/requirements.md` | Global obligations |
+| `documentation/backlog.md` | Local candidate backlog, or a pointer to the authoritative remote backlog |
+| `documentation/work-in-progress.md` | Active unfinished work and resumption state |
+| `documentation/<feature>/requirements.md` | Optional additional feature obligations |
+| `documentation/<feature>/specifications.md` | Living agreed behavior, design, and acceptance |
+| `documentation/<feature>/draft.md` | Unresolved proposals only |
+| `documentation/<feature>/tasks/<task>.md` | Local task body, or a pointer to its authoritative published remote task |
+
+Read global requirements first; feature requirements add obligations to them. Specifications live in the repository; remote discussions and records hold pointers or summaries.
+
+## Backlog authority
+
+Read `documentation/agents/issue-tracker.md` when present to find the configured tracker. With a local tracker, `documentation/backlog.md` holds candidate outcomes, priorities, dependencies, and deferrals. With a remote tracker, its backlog or board holds them, and `documentation/backlog.md` holds only its name and verified link.
+
+Read the remote backlog when selecting or reprioritizing work. When it cannot be read, say so, ask for the records the decision needs, and continue authorized work whose agreement is recoverable locally.
+
+## Working state and tasks
+
+`documentation/work-in-progress.md` stays local with either tracker. It holds the selected scope, current agreements, running assignments, verification, acceptance, blockers, next actions, and pending publication, with pointers to remote records for their status. Prune an item once code, tests, or a durable record captures it; delivery history belongs in the changelog.
+
+Tasks are optional for small batches. A task owns a coherent outcome, checkable acceptance criteria, and explicit blockers; a missing prerequisite is a blocker. Before publication a task is a local draft. After authorized publication the remote task is authoritative and the local file becomes a pointer with its title.
+
+Local document upkeep within authorized scope is autonomous.
+
+## Changelog
+
+Keep one root `CHANGELOG.md` and append to its history. Every record uses this heading and field order:
+
+```markdown
+## CHG-NNNN · YYYY-MM-DD · title
+
+Type: Documentation
+Event: Agreement
+Scope: Sentence case display label
+
+Summary: What changed or was authorized.
+Reason: Why this agreement or delivery matters.
+References: Links to the relevant authoritative records.
+Validation: The authorization for an agreement, or completed checks and acceptance for a delivery.
+Evidence: Durable evidence supporting the record.
+```
+
+`Type` is `Documentation`, `Code`, or `Configuration`. `Event` is `Agreement` or `Delivery`. Allocate the next free `CHG-NNNN`. `Scope` is a sentence case display label. Fields may continue onto following lines for lists or longer evidence. `Task` and `Revision` are optional extra fields.
+
+- An **Agreement** records an authorized decision.
+- A **Delivery** records that the agreed checks passed and any required human acceptance was given. While acceptance is pending, the work stays in working state.
+
+Records come in two weights that share the heading, vocabulary, and identifier sequence, so a project moves between workflows without converting its history:
+
+- **Full**: all five content fields. Use it in the planned workflow and whenever a team shares the record.
+- **Light**: `Summary`, `References`, and `Validation`, adding `Reason` or `Evidence` when the references leave them unclear. Use it for just-in-time work by one person. Write a light Agreement only for a consequential decision (costly to reverse, or changing scope); an approved batch lives in working state until its Delivery.
+
+Record meaningful decisions and deliveries. Executable evidence stays in tests and code, with pointers from the record.
+
+## Review evidence
+
+Review against the behavior authorized for the selected scope. Requirements, applicable specifications, changelog agreements, and active working state establish that intent together; a batch authorized in working state is reviewable as it is. Identify the source of each obligation and compare it with the implementation and acceptance evidence. When records disagree on a consequential obligation, ask the user.

@@ -13,4 +13,4 @@ Explore an open question and produce an answer that feeds development.
 
 ## Not in the plugin
 
-- [divide-and-conquer](./divide-and-conquer/SKILL.md): Organize candidate outcomes and agree a useful focus without requiring tasks or implementation. Model-invoked.
+- [prioritize](./prioritize/SKILL.md): Organize candidate outcomes and agree a useful focus without requiring tasks or implementation. Model-invoked.

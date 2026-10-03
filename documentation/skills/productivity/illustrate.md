@@ -42,5 +42,5 @@ The agent opens the file when its tools support that and gives you a file link.
 ## Where it fits
 
 `illustrate` is a reach-for-it-anytime standalone for understanding a topic visually.
-[to-pull-request](../workflow/to-pull-request.md) also uses it to shape the summary visual in a request body.
-[what-is-next](../getting-started/what-is-next.md) helps you choose where to go next.
+[draft-merge-request](../version-control/draft-merge-request.md) also uses it to shape the summary visual in a request body.
+[guide](../getting-started/guide.md) helps you choose where to go next.

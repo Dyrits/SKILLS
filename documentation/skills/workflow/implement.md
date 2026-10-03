@@ -4,7 +4,7 @@ Derived from upstream `implement`, verified at revision `d81f3a1`. The [archived
 
 `implement` builds authorized work and commits it on the current branch. Its input is settled intended behavior, not an invitation to redesign the scope. It accepts shared specifications, a task, or an explicit user-approved living work batch.
 
-It uses test-driven development at agreed seams and independent review before completion. Local documents stay current autonomously, with unfinished acceptance and evidence in `documentation/work-in-progress.md`. Completed authorized agreements and deliveries enter root `CHANGELOG.md` using the format owned by [documentation](../reference/documentation.md).
+It uses test-driven development at agreed seams and independent review before completion. Local documents stay current autonomously, with unfinished acceptance and evidence in `documentation/work-in-progress.md`. Completed authorized agreements and deliveries enter root `CHANGELOG.md` using the format owned by [document](../reference/document.md).
 
 ## When to reach for it
 
@@ -28,4 +28,4 @@ Only for the behavior those tests establish. Appearance and interaction may need
 
 ## Where it fits
 
-This is the implementation chain step after [taskify](./taskify.md), following [specify](./specify.md), and before [code-review-and-refactor](./code-review-and-refactor.md). Living iteration can reach it directly with an approved batch. [implement-all](./implement-all.md) coordinates parallel work; [what-is-next](../getting-started/what-is-next.md) maps the whole system.
+This is the implementation chain step after [taskify](./taskify.md), following [specify](./specify.md), and before [review-and-refactor](./review-and-refactor.md). Living iteration can reach it directly with an approved batch. [implement-all](./implement-all.md) coordinates parallel work; [guide](../getting-started/guide.md) maps the whole system.

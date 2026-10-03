@@ -32,4 +32,4 @@ It checks why they exist and keeps the decisions and controls that affect the ou
 
 ## Where it fits
 
-`optimize-process` is a standalone productivity skill. A recommendation that calls for a software change can enter planned development at [specify](../workflow/specify.md), or a small approved living-code batch through separately installed [iterate](../../../skills/workflow/iterate/SKILL.md). [what-is-next](../getting-started/what-is-next.md) maps the rest of the skills.
+`optimize-process` is a standalone productivity skill. A recommendation that calls for a software change can enter planned development at [specify](../workflow/specify.md), or a small approved living-code batch through separately installed [iterate](../../../skills/workflow/iterate/SKILL.md). [guide](../getting-started/guide.md) maps the rest of the skills.

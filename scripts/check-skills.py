@@ -22,7 +22,7 @@ def check(repository):
 
     skill_files = sorted((root / "skills").glob("*/*/SKILL.md"))
     skills = {path.parent.relative_to(root): path for path in skill_files}
-    router = (root / "skills/getting-started/what-is-next/SKILL.md").read_text()
+    router = (root / "skills/getting-started/guide/SKILL.md").read_text()
     top = (root / "README.md").read_text()
     listing = top.split("## Plugin skills", 1)[-1].split("## Separately installed skills", 1)[0]
     required_sections = (
@@ -111,7 +111,9 @@ def check(repository):
             resolved = (root / target.lstrip("/")) if target.startswith("/") else path.parent / target
             if not resolved.exists():
                 errors.append(f"{path.relative_to(root)}: broken link {target}")
-        if re.search(r'call the Skill tool[^\n]*(?:"grilling"|"grill-me"|"to-tickets"|"to-specifications")',
+        if re.search(r'call the Skill tool[^\n]*(?:"grilling"|"grill-me"|"to-tickets"|"to-specifications"'
+                     r'|"code-review-and-refactor"|"to-pull-request"|"documentation"|"writing-for-agents"'
+                     r'|"divide-and-conquer"|"test-driven-development"|"wizard"|"codebase-design"|"domain-modeling"|"scriptbook")',
                      text, re.IGNORECASE):
             errors.append(f"{path.relative_to(root)}: operative call to retired skill.")
 

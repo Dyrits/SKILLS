@@ -7,7 +7,7 @@ description: "Set up free AI development tools for a project and its installed a
 
 Provision **tooling**, with complete review evidence and a measurable baseline.
 Run installation and configuration only within an explicit tooling setup request, including a tooling stage the user selected during workspace setup.
-Call the Skill tool with "writing-for-agents" when changing agent instructions.
+Call the Skill tool with "write-for-agents" when changing agent instructions.
 
 ## Process
 

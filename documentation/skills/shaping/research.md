@@ -73,4 +73,4 @@ No. Graphify's charting session starts a subagent that calls `research` for each
 
 ## Where it fits
 
-`research` is a reach-for-it-anytime standalone that feeds [refine](../reference/refine.md), [specify](../workflow/specify.md), and [graphify](./graphify.md) with cited facts. Separately installed [iterate](../../../skills/workflow/iterate/SKILL.md) also uses it when an external unknown blocks an approved batch. [what-is-next](../getting-started/what-is-next.md) maps the workflows.
+`research` is a reach-for-it-anytime standalone that feeds [refine](../reference/refine.md), [specify](../workflow/specify.md), and [graphify](./graphify.md) with cited facts. Separately installed [iterate](../../../skills/workflow/iterate/SKILL.md) also uses it when an external unknown blocks an approved batch. [guide](../getting-started/guide.md) maps the workflows.

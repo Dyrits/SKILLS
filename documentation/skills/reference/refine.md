@@ -35,4 +35,4 @@ No. Bound the session to the selected question. A long interview may mean that s
 
 ## Where it fits
 
-Refine is a reach-for-it-anytime standalone and a model-invoked interview discipline. [Specify](../workflow/specify.md) calls it for unresolved software decisions; [graphify](../shaping/graphify.md) uses it to resolve bounded questions in a larger effort. [What-is-next](../getting-started/what-is-next.md) maps the available flows.
+Refine is a reach-for-it-anytime standalone and a model-invoked interview discipline. [Specify](../workflow/specify.md) calls it for unresolved software decisions; [graphify](../shaping/graphify.md) uses it to resolve bounded questions in a larger effort. [Guide](../getting-started/guide.md) maps the available flows.

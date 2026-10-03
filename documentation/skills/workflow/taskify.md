@@ -36,4 +36,4 @@ No. The task points to applicable requirements and specifications; the agreed sp
 
 ## Where it fits
 
-Taskify is an optional chain step after [specify](specify.md) and before [implement](implement.md) or [implement-all](implement-all.md). It produces a task graph, not an execution run. [What-is-next](../getting-started/what-is-next.md) maps the alternatives.
+Taskify is an optional chain step after [specify](specify.md) and before [implement](implement.md) or [implement-all](implement-all.md). It produces a task graph, not an execution run. [Guide](../getting-started/guide.md) maps the alternatives.

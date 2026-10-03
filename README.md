@@ -24,10 +24,10 @@ Specifications stay authoritative in the repository. Draft remote tasks remain l
 
 | Approach | Route |
 | --- | --- |
-| Planned development | `specify → taskify → implement → code-review-and-refactor`; skip decomposition for small work that does not need separate tasks. |
+| Planned development | `specify → taskify → implement → review-and-refactor`; skip decomposition for small work that does not need separate tasks. |
 | Just-in-time development | [iterate](./skills/workflow/iterate/SKILL.md), installed separately from the plugin, clarifies, builds, and validates the next useful increment. |
 
-The [documentation](./skills/reference/documentation/SKILL.md) skill owns the [shared project-document rules](./skills/reference/documentation/PROJECT-DOCUMENTS.md).
+The [document](./skills/reference/document/SKILL.md) skill owns the [shared project-document rules](./skills/reference/document/PROJECT-DOCUMENTS.md).
 
 ```text
 CHANGELOG.md
@@ -69,7 +69,11 @@ Not every retained skill comes from that upstream repository. The [primary-sourc
 | `grill-with-docs`, then `to-spec` | [specify](./skills/workflow/specify/SKILL.md) | Clarification and recording belong to one selected-scope operation. Already settled context goes straight to synthesis. |
 | `to-tickets` | [taskify](./skills/workflow/taskify/SKILL.md) | Task is a tracker-neutral word for delivery, investigation, enabling, or maintenance work. |
 | `wait-what` | [re-explain](./skills/productivity/re-explain/SKILL.md) | The name describes the requested action while retaining the context-aware explanation discipline. |
-| `wayfinder` | [graphify](./skills/shaping/graphify/SKILL.md) | The name emphasizes the decision graph; native tracker labels remain compatible with existing records. |
+| `wayfinder` | [graphify](./skills/shaping/graphify/SKILL.md) | The name emphasizes the decision graph; tracker labels use the `graphify:` prefix. |
+| `tdd` | [test-first](./skills/workflow/test-first/SKILL.md) | Skill names read as commands; the description keeps the TDD and red-green-refactor triggers. |
+| `codebase-design` | [design-modules](./skills/reference/design-modules/SKILL.md) | The name reads as a command and leads with the skill's subject, deep modules. |
+| `domain-modeling` | [model-domain](./skills/reference/model-domain/SKILL.md) | The name reads as a command; the discipline is unchanged. |
+| `wizard` | [walk-through](./skills/productivity/walk-through/SKILL.md) | The name describes the action; the script it produces is still called a wizard. |
 | HumanLayer's `show-me` | [illustrate](./skills/productivity/illustrate/SKILL.md) | The name describes the visual explanation action without changing the external source or delivery discipline. |
 | Separate planning snapshots and iterative working records | Shared project documents | Switching development approaches should not duplicate or discard obligations, agreements, or progress. |
 | Prototype code retained only outside the application | Approved experiment with a productionization path | Validation should preserve useful work; experimental success does not itself establish production readiness. |
@@ -83,7 +87,7 @@ The manifest is the source of truth for this list. **User-invoked** skills run o
 ### Getting started
 
 - [setup-ai-workspace](./skills/getting-started/setup-ai-workspace/SKILL.md): Configure project documents, task tracking, triage roles, and optional tooling. User-invoked.
-- [what-is-next](./skills/getting-started/what-is-next/SKILL.md): Choose the next skill, workflow, or session boundary. User-invoked.
+- [guide](./skills/getting-started/guide/SKILL.md): Choose the next skill, workflow, or session boundary. User-invoked.
 
 ### Workflow
 
@@ -93,13 +97,11 @@ The manifest is the source of truth for this list. **User-invoked** skills run o
 - [taskify](./skills/workflow/taskify/SKILL.md): Decompose work into tasks with acceptance criteria and dependencies.
 - [implement](./skills/workflow/implement/SKILL.md): Build authorized work, validate it, review it, and maintain project documents.
 - [implement-all](./skills/workflow/implement-all/SKILL.md): Implement a task graph on one integration branch, with concurrent work and an optional request.
-- [design-workflow](./skills/workflow/design-workflow/SKILL.md): Turn recurring work loops into implementable workflow specifications.
 
 #### Model-invoked
 
-- [test-driven-development](./skills/workflow/test-driven-development/SKILL.md): Establish behavior through red/green, one vertical slice at a time.
-- [code-review-and-refactor](./skills/workflow/code-review-and-refactor/SKILL.md): Independently review Standards and Specifications, refactor, and verify.
-- [to-pull-request](./skills/workflow/to-pull-request/SKILL.md): Write a request body with a summary visual, before/after evidence, and merge danger.
+- [test-first](./skills/workflow/test-first/SKILL.md): Establish behavior through red/green, one vertical slice at a time.
+- [review-and-refactor](./skills/workflow/review-and-refactor/SKILL.md): Independently review Standards and Specifications, refactor, and verify.
 
 ### Shaping
 
@@ -123,7 +125,13 @@ The manifest is the source of truth for this list. **User-invoked** skills run o
 #### Model-invoked
 
 - [debug](./skills/upkeep/debug/SKILL.md): Build a tight reproduction loop, diagnose the cause, and verify the fix.
-- [resolve-merge-conflicts](./skills/upkeep/resolve-merge-conflicts/SKILL.md): Resolve conflicts by intent and finish the operation.
+
+### Version control
+
+Both promoted version-control skills are model-invoked.
+
+- [draft-merge-request](./skills/version-control/draft-merge-request/SKILL.md): Write a request body with a summary visual, before/after evidence, and merge danger.
+- [resolve-merge-conflicts](./skills/version-control/resolve-merge-conflicts/SKILL.md): Resolve conflicts by intent and finish the operation.
 
 ### Productivity
 
@@ -134,22 +142,23 @@ The manifest is the source of truth for this list. **User-invoked** skills run o
 - [hand-off](./skills/productivity/hand-off/SKILL.md): Save a versioned handoff with pointers to authoritative artifacts.
 - [take-over](./skills/productivity/take-over/SKILL.md): Resume from the latest handoff and its primary sources.
 - [teach](./skills/productivity/teach/SKILL.md): Maintain a stateful teaching workspace.
+- [design-workflow](./skills/productivity/design-workflow/SKILL.md): Turn recurring work loops into implementable workflow specifications.
 
 #### Model-invoked
 
 - [illustrate](./skills/productivity/illustrate/SKILL.md): Explain a topic with the smallest useful visual.
 - [optimize-process](./skills/productivity/optimize-process/SKILL.md): Improve a recurring process using observed friction.
+- [walk-through](./skills/productivity/walk-through/SKILL.md): Generate a guided script for steps only a human can perform.
 
 ### Reference
 
-All promoted reference skills are model- or user-reachable.
+Disciplines other skills call; each is also model- or user-reachable.
 
 - [refine](./skills/reference/refine/SKILL.md): Resolve decisions through recommended questions in dependency-aware rounds.
-- [domain-modeling](./skills/reference/domain-modeling/SKILL.md): Maintain domain vocabulary, consequential decisions, and guidelines.
-- [codebase-design](./skills/reference/codebase-design/SKILL.md): Design deep modules with clear interfaces and useful seams.
-- [documentation](./skills/reference/documentation/SKILL.md): Maintain technical documentation and shared project-document rules.
-- [writing-for-agents](./skills/reference/writing-for-agents/SKILL.md): Write predictable agent instructions with clear completion criteria.
-- [wizard](./skills/reference/wizard/SKILL.md): Generate a guided script for steps only a human can perform.
+- [model-domain](./skills/reference/model-domain/SKILL.md): Maintain domain vocabulary, consequential decisions, and guidelines.
+- [design-modules](./skills/reference/design-modules/SKILL.md): Design deep modules with clear interfaces and useful seams.
+- [document](./skills/reference/document/SKILL.md): Maintain technical documentation and shared project-document rules.
+- [write-for-agents](./skills/reference/write-for-agents/SKILL.md): Write predictable agent instructions with clear completion criteria.
 - [unslop](./skills/reference/unslop/SKILL.md): Remove filler and recurring AI writing patterns.
 
 ## Separately installed skills
@@ -157,14 +166,16 @@ All promoted reference skills are model- or user-reachable.
 Skills outside the plugin remain in their purpose buckets. Each bucket's **Not in the plugin** section lists them:
 
 - [Getting started](./skills/getting-started/README.md#not-in-the-plugin): tooling, delegation policy, Git hooks/guardrails, and compaction handoff setup.
-- [Workflow](./skills/workflow/README.md#not-in-the-plugin): iteration, feedback/publication, and Git worktree/branch workflows.
+- [Workflow](./skills/workflow/README.md#not-in-the-plugin): just-in-time iteration.
+- [Version control](./skills/version-control/README.md#not-in-the-plugin): worktrees, branch transfer and rebase, review feedback, and publication.
 - [Shaping](./skills/shaping/README.md#not-in-the-plugin): outcome decomposition.
 - [Upkeep](./skills/upkeep/README.md#not-in-the-plugin): tooling measurement reports.
-- [Reference](./skills/reference/README.md#not-in-the-plugin): classification and script reuse.
+- [Productivity](./skills/productivity/README.md#not-in-the-plugin): text classification.
+- [Reference](./skills/reference/README.md#not-in-the-plugin): memory and script reuse.
 
 ## Credits
 
 - [illustrate](./skills/productivity/illustrate/SKILL.md) adapts [Dex Horthy](https://github.com/dexhorthy)'s original [`show-me` skill from HumanLayer](https://github.com/humanlayer/skills/tree/main/plugins/show-me/skills/show-me).
-- [to-pull-request](./skills/workflow/to-pull-request/SKILL.md) came from [`mattpocock/skills`](https://github.com/mattpocock/skills), where it was named `pr`; its summary visual guidance comes from HumanLayer's original `show-me`, now [illustrate](./skills/productivity/illustrate/SKILL.md) in this fork.
+- [draft-merge-request](./skills/version-control/draft-merge-request/SKILL.md) came from [`mattpocock/skills`](https://github.com/mattpocock/skills), where it was named `pr`; its summary visual guidance comes from HumanLayer's original `show-me`, now [illustrate](./skills/productivity/illustrate/SKILL.md) in this fork.
 - [unslop](./skills/reference/unslop/SKILL.md) adapts the [`unslop` skill in Cursor's `pstack` plugin](https://github.com/cursor/plugins/tree/main/pstack/skills/unslop).
-- [documentation](./skills/reference/documentation/SKILL.md) adapts [Anthropic's `documentation` skill](https://github.com/anthropics/knowledge-work-plugins/blob/1bd42820da111e5f0206e570bf5228a1c35839c7/engineering/skills/documentation/SKILL.md), extended here with the shared project-document model.
+- [document](./skills/reference/document/SKILL.md) adapts [Anthropic's `documentation` skill](https://github.com/anthropics/knowledge-work-plugins/blob/1bd42820da111e5f0206e570bf5228a1c35839c7/engineering/skills/documentation/SKILL.md), extended here with the shared project-document model.

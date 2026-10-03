@@ -7,7 +7,7 @@ description: Build a scoped experimental prototype to answer a user-requested or
 
 A prototype is **experimental code that answers a question**. The question decides the shape. Proceed only when the user requests or approves the scoped experiment, including during specify. Living iteration directly evolves the implementation; it does not require a prototype by default.
 
-Call the Skill tool with "documentation" for shared project-document ownership. Record unresolved proposals separately from agreed behavior. Capture the question, verdict, evidence, and remaining acceptance in the feature's draft or specifications as appropriate, and in working state. Preserve historical inputs. Automatically record completed authorized agreements and deliveries in root `CHANGELOG.md` using the shared format, without implying experimental code is production-ready.
+Call the Skill tool with "document" for shared project-document ownership. Record unresolved proposals separately from agreed behavior. Capture the question, verdict, evidence, and remaining acceptance in the feature's draft or specifications as appropriate, and in working state. Record completed agreements in the root `CHANGELOG.md`, stating that the prototype's code still needs production validation.
 
 ## Pick a branch
 

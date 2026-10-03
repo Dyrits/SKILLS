@@ -18,7 +18,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 CAPTURE = ROOT / ".agents/scripts/capture-review-state.py"
-PROPOSE = ROOT / ".agents/scripts/propose-reference-updates.py"
+UPDATE = ROOT / ".agents/scripts/update-references.py"
 spec = importlib.util.spec_from_file_location("capture_review", CAPTURE)
 capture_review = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(capture_review)
@@ -83,27 +83,45 @@ class HelperChecks(unittest.TestCase):
         metadata = json.loads((self.output / "symlinks.json").read_text())
         self.assertEqual(metadata["tracked/file.txt"]["type"], "symlink-parent")
 
-    def test_patch_rejects_missing_final_newline(self):
-        source = self.temporary / "source.md"
-        source.write_text("old")
-        result = subprocess.run(
-            ["python3", str(PROPOSE), "--replace", "old", "new", "--", str(source)],
-            capture_output=True, text=True, check=False
-        )
+    def update(self, *arguments, check=True):
+        return subprocess.run(["python3", str(UPDATE), *arguments], cwd=self.repository,
+                              capture_output=True, text=True, check=check)
+
+    def test_apply_patch_rejects_missing_final_newline(self):
+        (self.repository / "source.md").write_text("old")
+        result = self.update("--replace", "old", "new", "--format", "apply-patch",
+                             "--", "source.md", check=False)
         self.assertNotEqual(result.returncode, 0)
         self.assertIn("final newline", result.stderr)
         self.assertEqual(result.stdout, "")
 
-    def test_patch_has_separate_lines_and_markers(self):
-        source = self.temporary / "source.md"
-        source.write_text("old\n")
-        result = subprocess.run(
-            ["python3", str(PROPOSE), "--replace", "old", "new", "--", str(source)],
-            capture_output=True, text=True, check=True
-        )
+    def test_apply_patch_has_separate_lines_and_markers(self):
+        (self.repository / "source.md").write_text("old\n")
+        result = self.update("--replace", "old", "new", "--format", "apply-patch",
+                             "--", "source.md")
         self.assertIn("-old\n+new\n", result.stdout)
         self.assertTrue(result.stdout.endswith("*** End Patch\n"))
 
+    def test_default_diff_is_accepted_by_git_apply(self):
+        (self.repository / "README.md").write_text("Baseline old.\n")
+        (self.repository / "tail.md").write_text("old without newline")
+        result = self.update("--replace", "old", "new", "--", "README.md", "tail.md")
+        self.assertEqual((self.repository / "README.md").read_text(), "Baseline old.\n")
+        subprocess.run(["git", "-C", str(self.repository), "apply", "-"],
+                       input=result.stdout, text=True, check=True)
+        self.assertEqual((self.repository / "README.md").read_text(), "Baseline new.\n")
+        self.assertEqual((self.repository / "tail.md").read_text(), "new without newline")
+
+    def test_search_with_exclude_and_apply(self):
+        (self.repository / "kept.md").write_text("old\n")
+        (self.repository / "skipped").mkdir()
+        (self.repository / "skipped/file.md").write_text("old\n")
+        result = self.update("--replace", "old", "new", "--search",
+                             "--exclude", "skipped", "--apply")
+        self.assertEqual((self.repository / "kept.md").read_text(), "new\n")
+        self.assertEqual((self.repository / "skipped/file.md").read_text(), "old\n")
+        self.assertIn("+++ b/kept.md", result.stdout)
+        self.assertIn("updated 1 file(s)", result.stderr)
 
 if __name__ == "__main__":
     unittest.main()

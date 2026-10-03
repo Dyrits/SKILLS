@@ -14,7 +14,7 @@ Run `/setup-ai-workspace` yourself once per repository, or when the tracker or c
 | --- | --- |
 | Workflow skills guess task locations or role strings | Run setup |
 | The project already has a tracker and templates | Run setup to record the existing conventions |
-| You only need to maintain project documents | Use [documentation](../reference/documentation.md) |
+| You only need to maintain project documents | Use [document](../reference/document.md) |
 | You want optional development-tool installation | Include tooling in the setup request |
 
 ## The configuration contract
@@ -24,7 +24,7 @@ Run `/setup-ai-workspace` yourself once per repository, or when the tracker or c
 - `documentation/agents/domain.md` records glossary and architecture-decision conventions.
 - An `## Agent skills` block points consumers at those files and the shared documentation rules.
 
-Future work uses the shared project-document model. Project requirements constrain all work. A local backlog records candidates and deferrals; with a remote tracker, `documentation/backlog.md` links to the authoritative backlog instead. Work-in-progress remains local for execution, verification, and resumption with either tracker. Feature documents separate optional requirements, living specifications, unresolved proposals, and tasks. Files appear only when useful. Existing `.refinement/` and `backlog/` history stays in place.
+Future work uses the shared project-document model. Project requirements constrain all work. A local backlog records candidates and deferrals; with a remote tracker, `documentation/backlog.md` links to the authoritative backlog instead. Work-in-progress remains local for execution, verification, and resumption with either tracker. Feature documents separate optional requirements, living specifications, unresolved proposals, and tasks. Files appear only when useful.
 
 ## Common questions
 
@@ -54,4 +54,4 @@ Setup prefers an existing `CLAUDE.md`, then an existing `AGENTS.md`. If both con
 
 ## Where it fits
 
-This is run-once setup for [specify](../workflow/specify.md), [taskify](../workflow/taskify.md), [triage](../upkeep/triage.md), and [graphify](../shaping/graphify.md). [Documentation](../reference/documentation.md) owns the shared document rules; [what-is-next](what-is-next.md) routes the workflow.
+This is run-once setup for [specify](../workflow/specify.md), [taskify](../workflow/taskify.md), [triage](../upkeep/triage.md), and [graphify](../shaping/graphify.md). [Document](../reference/document.md) owns the shared document rules; [guide](guide.md) routes the workflow.

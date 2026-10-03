@@ -12,9 +12,7 @@ If the tracker treats external pull requests as a request surface, triage covers
 
 ## Document and tracker contract
 
-Call the Skill tool with "documentation" before updating project documents. Read project and relevant feature requirements, canonical `specifications.md`, active-work context, and backlog references when present. Keep files lazy and link authoritative content instead of copying it. Preserve existing `.refinement/` and `backlog/` history without automatic migration.
-
-Requirements constrain the work, including infrastructure, legal, company, budget, service, and security obligations. Surface conflicts rather than weakening those obligations. Implementation approaches can change within the approved scope.
+Call the Skill tool with "document" before updating project documents; its terms (authorized, obligation, lazy, pointer) and rules apply throughout. Read the relevant requirements, specifications, working state, and backlog when present.
 
 Read `documentation/agents/issue-tracker.md` and `documentation/agents/triage-roles.md`. If either is missing, tell the human to run `/setup-ai-workspace` and stop. This user-invoked skill cannot invoke setup itself.
 
@@ -82,7 +80,7 @@ When PRs are in scope, tag entries `[PR]` or `[task]`. Discovery includes extern
 1. **Gather context.** Read body, comments, roles, author, dates, and prior triage notes; for a PR, also read the diff. Explore with the domain glossary and applicable architecture decision records. Search for an existing implementation by domain concept and report where you looked. Read `documentation/out-of-scope/*.md` when present and surface matching prior rejections.
 2. **Recommend.** Present a category and state with reasoning and a relevant codebase summary, including any already-implemented behavior. Wait for direction.
 3. **Verify.** Before refinement, reproduce a bug from the reporter's steps. For a PR, check the diff against its claims and run relevant tests or commands. Report confirmed behavior with its code path, failure, or insufficient detail. Insufficient detail supports an on-hold recommendation.
-4. **Refine if needed.** Call the Skill tool twice, for "refine" and "domain-modeling". Resolve questions with the human one round at a time. Keep unresolved proposals in `draft.md`, incorporate agreed behavior/design/acceptance into `specifications.md`, and update domain terms and architecture decision records as decisions land.
+4. **Refine if needed.** Call the Skill tool twice, for "refine" and "model-domain". Resolve questions with the human one round at a time. Keep unresolved proposals in `draft.md`, incorporate agreed behavior/design/acceptance into `specifications.md`, and update domain terms and architecture decision records as decisions land.
 5. **Apply the confirmed outcome:**
    - `ready`: post an [agent brief](AGENT-BRIEF.md). It is the authoritative task-execution contract, linked to canonical specifications and applicable requirements. State any reason the work needs a human.
    - `on-hold`: post notes naming exactly what the hold waits on. Keep candidate deferrals in the authoritative configured backlog: local bodies for local tracking, approved remote updates for remote tracking. Pending publication and active paused work belong in local `documentation/work-in-progress.md`, not in a competing backlog or copied tracker status.

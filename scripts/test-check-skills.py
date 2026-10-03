@@ -29,12 +29,12 @@ class LayoutChecks(unittest.TestCase):
         self.write("README.md", "## Plugin skills\n[example](skills/reference/example/SKILL.md)\n"
                    "## Separately installed skills\n")
         self.write("CLAUDE.md", "Repository instructions.\n")
-        self.write("skills/getting-started/what-is-next/SKILL.md",
-                   "---\nname: what-is-next\n---\nRoute to /example and /what-is-next.\n")
-        self.write("skills/getting-started/what-is-next/agents/openai.yaml",
+        self.write("skills/getting-started/guide/SKILL.md",
+                   "---\nname: guide\n---\nRoute to /example and /guide.\n")
+        self.write("skills/getting-started/guide/agents/openai.yaml",
                    "interface:\n  display_name: Router\n")
         self.write("skills/getting-started/README.md",
-                   "## Not in the plugin\n[router](./what-is-next/SKILL.md)\n")
+                   "## Not in the plugin\n[router](./guide/SKILL.md)\n")
         self.write("skills/reference/example/SKILL.md", "---\nname: example\n---\nAn example skill.\n")
         self.write("skills/reference/example/agents/openai.yaml", "interface:\n  display_name: Example\n")
         self.write("skills/reference/README.md", "[example](./example/SKILL.md)\n")
@@ -84,6 +84,17 @@ class LayoutChecks(unittest.TestCase):
     def test_retired_operative_call(self):
         self.write("CLAUDE.md", 'Call the Skill tool with "grilling".\n')
         self.assertIn("operative call to retired", self.result()[1])
+
+    def test_renamed_operative_calls(self):
+        for retired in ("code-review-and-refactor", "to-pull-request",
+                        "documentation", "writing-for-agents"):
+            with self.subTest(skill=retired):
+                self.write("CLAUDE.md", f'Call the Skill tool with "{retired}".\n')
+                self.assertIn("operative call to retired", self.result()[1])
+
+    def test_historical_names_are_allowed(self):
+        self.write("CLAUDE.md", 'Source skill: `documentation`, now named `document`.\n')
+        self.assertEqual(self.result()[0], False)
 
     def test_missing_where_it_fits(self):
         path = self.root / "documentation/skills/reference/example.md"

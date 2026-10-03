@@ -4,14 +4,12 @@ description: "Implement authorized work from specifications, tasks, or an agreed
 disable-model-invocation: true
 ---
 
-Call the Skill tool with "documentation" for the shared project-document model before reading or updating work records.
+Call the Skill tool with "document"; its terms (authorized, obligation, lazy, pointer) and rules apply throughout.
 
-Identify the authorized intended behavior and its originating agreement. Accept a task, shared specifications and requirements, or an explicit user-approved batch recorded in working state. A living iteration can operate from `documentation/backlog.md` and `documentation/work-in-progress.md` without creating feature specifications or tasks. Recover historical inputs where needed; preserve them rather than automatically migrating them.
+Identify the authorized behavior and its originating agreement: a task, specifications with their requirements, or a user-approved batch in `documentation/work-in-progress.md`. Read the applicable requirements. Record the starting commit and work scope for review.
 
-Read applicable global and feature requirements. Resolve consequential scope or obligation conflicts with the user; never silently weaken requirements. Record the starting commit and work scope for review.
+Call the Skill tool with "test-first" where possible, at pre-agreed seams. Run typechecking and individual test files regularly, and the full test suite once at the end. Verify acceptance against the originating agreement, including appearance and interaction evidence when human judgment is needed, and state which checks passed, failed, or could not run.
 
-Call the Skill tool with "test-driven-development" where possible, at pre-agreed seams. Run typechecking and individual test files regularly, and the full test suite once at the end. Verify acceptance against the originating agreement, including appearance and interaction evidence when human judgment is needed. Distinguish passing checks from missing or blocked validation.
+Keep `documentation/work-in-progress.md` current with unfinished work, evidence, blockers, and resumption pointers.
 
-Maintain unfinished work, evidence, blockers, assignments, and resumption pointers in `documentation/work-in-progress.md` autonomously. Keep agreed behavior and local task records current under the shared model. After authorized publication, the remote tracker is authoritative for tasks; local task files are title/link pointers.
-
-Call the Skill tool with "code-review-and-refactor" with the starting commit, scope, originating agreement, and verification evidence. Commit the work to the current branch. Automatically record completed authorized agreements and deliveries in root `CHANGELOG.md` using the format owned by "documentation"; leave unfinished acceptance visible in working state.
+Call the Skill tool with "review-and-refactor" with the starting commit, scope, originating agreement, and verification evidence. Commit the work to the current branch, and record completed agreements and deliveries in the root `CHANGELOG.md`; unfinished acceptance stays in working state.

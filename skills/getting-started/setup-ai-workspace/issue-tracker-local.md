@@ -2,9 +2,9 @@
 
 Backlog: `documentation/backlog.md`
 
-The local backlog owns candidate outcomes, priorities, and deferrals. Working state remains in `documentation/work-in-progress.md` for active execution and resumption. Apply the shared document rules supplied by the `documentation` skill.
+The local backlog owns candidate outcomes, priorities, and deferrals. Working state remains in `documentation/work-in-progress.md` for active execution and resumption. Apply the shared document rules supplied by the `document` skill.
 
-Local task bodies live in `documentation/<feature>/tasks/`. The living specification is `documentation/<feature>/specifications.md`. Call the Skill tool with "documentation" for the shared authority, requirements, publication, and changelog rules.
+Local task bodies live in `documentation/<feature>/tasks/`. The living specification is `documentation/<feature>/specifications.md`. Call the Skill tool with "document" for the shared authority, requirements, publication, and changelog rules.
 
 ## Conventions
 
@@ -28,7 +28,7 @@ Write or update the selected task body under `documentation/<feature>/tasks/` wi
 
 ## When a skill says "fetch the relevant task"
 
-Read the referenced task body. Existing historical paths remain readable.
+Read the referenced task body.
 
 ## Wayfinding operations
 

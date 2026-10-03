@@ -1,3 +1,0 @@
-interface:
-  display_name: "Code Review and Refactor"
-  short_description: "Review two axes and refactor after red/green"

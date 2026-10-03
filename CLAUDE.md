@@ -4,8 +4,9 @@ Skills are organized into bucket folders under `skills/`:
 - `workflow/`: the idea-to-ship spine, in order
 - `shaping/`: explore an open question and produce a decision or answer that feeds the flow
 - `upkeep/`: keep the codebase and issue list healthy; generates work for the flow
-- `productivity/`: human-facing workflows you run, not about code
-- `reference/`: the reusable layer other skills invoke or cite
+- `version-control/`: branches, merge requests, and the review conversations around them
+- `productivity/`: human-facing workflows and procedures you run, not part of the delivery flow
+- `reference/`: disciplines that shape how another task is done, called by other skills; they produce no result of their own
 - `deprecated/`: no longer used
 
 **Promotion is per-path, not per-bucket.** A skill is promoted exactly when it has an entry in `.claude-plugin/plugin.json`'s `skills` array (the Claude Code plugin ships exactly that set). Every promoted skill must also have a reference in the top-level `README.md` and its bucket's `README.md`. Skills outside that array are installed separately, stay out of promoted listings, and appear in their bucket's **Not in the plugin** section. Moving a skill between buckets does not promote it. `setup-ai-workspace` is in the plugin and is promoted.
@@ -20,9 +21,11 @@ Every **promoted** skill also has a human-facing documentation page at `document
 
 Every `SKILL.md` is either user-invoked (`disable-model-invocation: true` plus `policy.allow_implicit_invocation: false` in `agents/openai.yaml`, reachable only by the human) or model-invoked (model- or user-reachable). See [.agents/invocation.md](./.agents/invocation.md).
 
-[`what-is-next`](./skills/getting-started/what-is-next/SKILL.md) is the router that maps every user-reachable skill and how they relate. The same trigger that re-syncs a documentation page applies to it: whenever you add, rename, remove, or change how a user-reachable skill fits the flows, re-read `what-is-next`'s `SKILL.md` and update it so the map stays accurate: a new skill it never mentions, or a stale one it still routes to, is a router that lies.
+[`guide`](./skills/getting-started/guide/SKILL.md) is the router that maps every user-reachable skill and how they relate. The same trigger that re-syncs a documentation page applies to it: whenever you add, rename, remove, or change how a user-reachable skill fits the flows, re-read `guide`'s `SKILL.md` and update it so the map stays accurate: a new skill it never mentions, or a stale one it still routes to, is a router that lies.
 
 To (re)link every skill outside `deprecated/` into the local harness skill directories (`~/.claude/skills`, `~/.agents/skills`), run `scripts/link-skills.sh`. Each entry is a symlink into this repository, so a `git pull` keeps installed skills current; re-run the script after adding, removing, or renaming a skill.
+
+Before writing a script or multi-step pipeline, read `.agents/scripts/INDEX.md` and reuse or extend a match; save new reusable scripts there following [memorize](./skills/reference/memorize/SCRIPTS.md).
 
 ## Language and naming
 

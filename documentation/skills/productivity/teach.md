@@ -96,4 +96,4 @@ There is no canonical answer, and the reported differences are large. Higher rea
 
 `teach` is a **reach-for-it-anytime standalone**. It is not a step in a build chain and shares no artifacts with the engineering flow; it owns its directory and lives there for as long as the topic lasts.
 
-Its nearest neighbour is [hand-off](./hand-off.md). When refinement exposes something you need to learn, hand off to a teaching workspace, use `/teach` there, then return to the unresolved decision. [research](../shaping/research.md) is the alternative when you want a cited document rather than lessons and retention. [what-is-next](../getting-started/what-is-next.md) routes you over the whole set.
+Its nearest neighbour is [hand-off](./hand-off.md). When refinement exposes something you need to learn, hand off to a teaching workspace, use `/teach` there, then return to the unresolved decision. [research](../shaping/research.md) is the alternative when you want a cited document rather than lessons and retention. [guide](../getting-started/guide.md) routes you over the whole set.

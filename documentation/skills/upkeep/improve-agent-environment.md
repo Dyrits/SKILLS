@@ -68,7 +68,7 @@ Discard advice that cannot be traced to the session, and review the severity ord
 
 No skill ships the file for your project.
 The retrospective can propose creating it for a judgement-call rule.
-[setup-ai-workspace](../getting-started/setup-ai-workspace.md), [improve-codebase-architecture](./improve-codebase-architecture.md), and [code-review-and-refactor](../workflow/code-review-and-refactor.md) also offer to create it through the [domain-modeling](../reference/domain-modeling.md) interview, and the last two read it once it exists.
+[setup-ai-workspace](../getting-started/setup-ai-workspace.md), [improve-codebase-architecture](./improve-codebase-architecture.md), and [review-and-refactor](../workflow/review-and-refactor.md) also offer to create it through the [model-domain](../reference/model-domain.md) interview, and the last two read it once it exists.
 An existing standards document such as `CONTRIBUTING.md` works too.
 
 ## It's working if
@@ -80,4 +80,4 @@ An existing standards document such as `CONTRIBUTING.md` works too.
 
 ## Where it fits
 
-`improve-agent-environment` is periodic maintenance after useful work in either development workflow. Run it before clearing the session, or point a new session at the log. [improve-codebase-architecture](./improve-codebase-architecture.md) surveys code structure; [writing-for-agents](../reference/writing-for-agents.md) guides steering instructions. [documentation](../reference/documentation.md) owns the project-document model so improvements do not create competing sources of truth. [what-is-next](../getting-started/what-is-next.md) maps the whole set.
+`improve-agent-environment` is periodic maintenance after useful work in either development workflow. Run it before clearing the session, or point a new session at the log. [improve-codebase-architecture](./improve-codebase-architecture.md) surveys code structure; [write-for-agents](../reference/write-for-agents.md) guides steering instructions. [document](../reference/document.md) owns the project-document model so improvements do not create competing sources of truth. [guide](../getting-started/guide.md) maps the whole set.

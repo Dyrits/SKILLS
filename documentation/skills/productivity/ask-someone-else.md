@@ -77,4 +77,4 @@ Yes, and plenty of people did before it existed: `OPEN_QUESTIONS.md` files, spre
 
 `ask-someone-else` is a reach-for-it-anytime standalone. It sits at the boundary of your own knowledge, where the next move is another person rather than another skill, most often mid-flow, when planning has stalled on something that isn't yours to decide.
 
-Its neighbour is [refine](../reference/refine.md): refinement asks you, a questionnaire asks someone else. Feed the answers into refinement or [specify](../workflow/specify.md) when the work is heading for a build. When you're unsure which skill fits, [what-is-next](../getting-started/what-is-next.md) routes you.
+Its neighbour is [refine](../reference/refine.md): refinement asks you, a questionnaire asks someone else. Feed the answers into refinement or [specify](../workflow/specify.md) when the work is heading for a build. When you're unsure which skill fits, [guide](../getting-started/guide.md) routes you.

@@ -11,7 +11,6 @@ Keep the codebase and request list healthy.
 ## Model-invoked
 
 - [debug](./debug/SKILL.md): Diagnose bugs through a tight reproduction loop and regression evidence.
-- [resolve-merge-conflicts](./resolve-merge-conflicts/SKILL.md): Resolve conflicts by intent and finish the operation.
 
 ## Not in the plugin
 
