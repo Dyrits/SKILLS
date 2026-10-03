@@ -1,6 +1,6 @@
 ---
 name: documentation
-description: Write and maintain technical documentation. Use when the user asks to document a system, create a README, write an API reference, runbook, architecture document, or onboarding guide.
+description: Write and maintain technical documentation and shared project documents. Use when the user asks to document a system, create a README, API reference, runbook, architecture document, or onboarding guide, or when a workflow needs requirements, specifications, backlog, working state, tasks, or semantic changelog records.
 ---
 
 # Technical documentation
@@ -8,6 +8,8 @@ description: Write and maintain technical documentation. Use when the user asks 
 Write technical documentation for its intended readers and their tasks. Follow repository-specific writing rules and document formats where they exist. Use the document-type lists below as prompts, not required sections.
 
 For a document that instructs agents, call the Skill tool with "writing-for-agents" and apply its guidance alongside this skill.
+
+For project requirements, specifications, drafts, backlog, work-in-progress, tasks, or changelog records, read [PROJECT-DOCUMENTS.md](PROJECT-DOCUMENTS.md) and apply its shared source-of-truth and authorization rules. Calling workflows consume this model through the Skill tool with "documentation".
 
 ## Document types
 

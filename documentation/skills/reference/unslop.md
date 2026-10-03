@@ -1,3 +1,5 @@
+Source: Cursor's pstack `unslop` skill, adopted in commit `6585eba`. This fork extends the editing pass to the source language.
+
 ## What it does
 
 `/unslop` edits writing in any language to remove patterns that make it sound AI-generated. It preserves the meaning and intended tone, then checks the revision for patterns that remain.

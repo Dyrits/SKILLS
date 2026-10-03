@@ -18,7 +18,7 @@ Save to `.agents/handoffs/` in the current workspace, versioned so history accum
 
 ## Document contents
 
-Include a "suggested skills" section in the document, naming which skills the next agent should call the Skill tool for.
+Include a "suggested skills" section naming useful skills and their invocation modes. The next agent calls model-invoked skills through the Skill tool; user-only skills are recommendations for the human to invoke, not permission for an autonomous call.
 
 Also include, near the top: a "supersedes" line pointing at any earlier handoff in `.agents/handoffs/` this one replaces, so the chain is traceable.
 
@@ -26,4 +26,4 @@ Do not duplicate content already captured in other artifacts (specifications, pl
 
 Redact any sensitive information, such as API keys, passwords, or personally identifiable information.
 
-If the user passed arguments, treat them as a description of what the next session will focus on and tailor the doc accordingly.
+If the user passed arguments, treat them as a description of what the next session will focus on and tailor the document accordingly.

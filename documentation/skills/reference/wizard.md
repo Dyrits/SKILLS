@@ -1,3 +1,5 @@
+Upstream source: `wizard`, verified in the `d81f3a1` tree.
+
 ## What it does
 
 `wizard` generates an interactive bash script that walks a human, step by step, through a manual procedure: wiring up third-party services, running a one-off migration, moving a project from state A to state B. It opens each URL, says what to click and copy, captures what comes back, and writes it into `.env` files and GitHub Actions secrets.
@@ -17,7 +19,7 @@ Reach for it when the next thing blocking you is a trip through a dashboard:
 | A project has to move from state A to state B once | Walks the transition and reports what it could not do |
 | You are about to write those steps into a README | Writes an executable version instead, which can't rot as quietly |
 
-Don't reach for it to *decide* what to build; for that, [grill-with-documentation](../workflow/grill-with-documentation.md) and [to-specifications](../workflow/to-specifications.md) are the tools.
+To decide what to build, use [refine](./refine.md); to record agreed feature behavior, use [specify](../workflow/specify.md). A wizard handles manual execution after the procedure is understood.
 
 ## Prerequisites
 
@@ -27,7 +29,7 @@ None to generate one. The wizard it writes runs on bash, and uses `gh` when a st
 
 A **stage** is one focused task on one screen. The script clears the terminal between stages, so a stage that overflows the screen loses the part that scrolled away. You author stages in dependency order and set `TOTAL_STAGES`, which drives the progress display.
 
-Scoping happens before a line is written. The skill reads the repository instead of asking cold: `.env*`, `docker-compose*`, framework config, and every `secrets.*` / `vars.*` reference in `.github/workflows/`: each of those is a value the wizard has to produce. It then shows you the ordered stage list to confirm, and only after that maps each stage to the exact path a human follows ("Dashboard → Developers → API keys → Reveal test key → copy"). Where it doesn't know the current UI, it asks you or checks the docs rather than inventing clicks.
+Scoping happens before the script is written. The agent reads environment files, service configuration, and `secrets.*` or `vars.*` references in CI to find the values the wizard must produce. It shows you the ordered stages for confirmation, then maps them to the human procedure. Where it does not know the current dashboard, it asks you or checks official documentation rather than inventing clicks.
 
 For each captured value, scoping settles where it lands:
 
@@ -41,7 +43,7 @@ For each captured value, scoping settles where it lands:
 
 ## The template already solves the UX
 
-The [template](https://github.com/mattpocock/skills/blob/main/skills/reference/wizard/template.sh) ships the whole experience: progress with time remaining, confirmation gates, cross-platform URL opening including WSL, hidden entry for secrets, idempotent `.env` upserts, `gh secret` / `gh variable` writes, and a closing summary of everything it had to skip. Everything above the `STAGES` marker is a fixed library, identical in every wizard and never hand-edited. The consistency is the point. Your job is only to scope the procedure and author its stages.
+The [template](../../../skills/reference/wizard/template.sh) supplies progress, confirmation gates, cross-platform URL opening including WSL, hidden entry for secrets, idempotent `.env` upserts, `gh secret` / `gh variable` writes, and a closing summary of skipped actions. Its fixed library stays unchanged; the agent scopes the procedure and authors its stages.
 
 The agent that writes a wizard never runs it end to end, because it opens browsers and waits for human input. It verifies statically instead: `bash -n`, `shellcheck` where available, and a trace that every value lands where scoping said it would, with every `set_secret` name matching a real `secrets.*` reference in CI. Set your expectations accordingly: the first run is yours, and that run is the test.
 
@@ -70,7 +72,7 @@ Partly, and less than the launch reactions assumed. It reads the repository befo
 
 **Where does it sit in the workflow, after grilling and the specification?**
 
-Nowhere in particular. It's a standalone, not a chain step. The common guess is `/grill-with-documentation → /to-specifications → /wizard`, and that sequence is fine, but the trigger is a manual procedure showing up, which can happen at any point: before you start, mid-build, or long after ship. It also works as a discovery tool: scoping surfaces the hidden prerequisites of a task, like the three API keys you hadn't thought about, before you commit to the work.
+Nowhere in particular. It is a standalone, not a chain step. A manual procedure can appear before development, during a build, or after delivery. Scoping can also uncover hidden prerequisites, such as API keys you had not accounted for. Generating a script does not approve its irreversible actions; its confirmation gates remain part of the human run.
 
 **Does it work outside Claude Code?**
 
@@ -82,7 +84,7 @@ It did. It's now model-invoked, so the agent reaches for it unprompted when it h
 
 **It used to be in `work-in-progress/`: where is it now?**
 
-`engineering/`, as of v1.2. It graduated out of the beta bucket and now ships in the plugin, so it arrives with the rest of the promoted set rather than needing an individual install. Its behaviour didn't change on graduation.
+It graduated upstream into `engineering/` in v1.2. This fork places it in `reference/`, and its manifest entry includes it in the plugin. A bucket move alone does not promote a skill.
 
 ## It's working if
 
@@ -95,4 +97,4 @@ It did. It's now model-invoked, so the agent reaches for it unprompted when it h
 
 ## Where it fits
 
-`wizard` is a reach-for-it-anytime standalone, sitting at the line where automation stops and a human has to click. Its nearest neighbour is [setup-ai-workspace](../getting-started/setup-ai-workspace.md), because both exist to get a repository into a working state: that one configures this skill set, while `wizard` generates a setup path for everything else. It also pairs with [implement](../workflow/implement.md): when a build lands a feature that needs credentials or a manual cutover, a wizard is how the human half gets done. When you're unsure which skill fits the moment, what-is-next routes you.
+`wizard` is a reach-for-it-anytime standalone for the steps only a human can perform. [setup-ai-workspace](../getting-started/setup-ai-workspace.md) configures this skill set; a wizard handles other manual setup. [implement](../workflow/implement.md) may expose a credentials or cutover step that needs one. [what-is-next](../getting-started/what-is-next.md) routes you when the next move is unclear.

@@ -1,96 +1,79 @@
-# Writing documentation pages
+# Writing skill documentation pages
 
-Every **promoted** skill (one with an entry in `.claude-plugin/plugin.json`'s `skills` array) has a human-facing **documentation page** at `documentation/<bucket>/<skill-name>.md`. The documentation tree mirrors the bucket folders under `skills/` one level deep; skills sit flat inside their bucket, never in subfolders, so the path is always bucket plus skill name. The page is maintained in this repository and is not assumed to be published elsewhere. It is not the skill and not a copy of `SKILL.md`. Non-promoted skills (the `setup-*` trio in `getting-started/`, and everything in `experimental/` and `deprecated/`) ship no documentation page.
+Each promoted skill has a human-facing page at `documentation/skills/<bucket>/<name>.md`. Promotion is determined only by `.claude-plugin/plugin.json`, not by its bucket. Non-plugin skills get no page, even when they share a bucket with promoted skills.
 
-Most of these skills are **user-invoked**: the agent will never fire them for you, so *you* are the index that has to remember they exist and when to reach for them. That memory is **cognitive load**. The job of a documentation page is to relieve it: to orient one reader around one skill so they can hold it in their head, know when to reach for it, and see where it sits in the system. The pages are collectively a distributed router; each is a node.
+Create or re-sync the page when a promoted skill is added, renamed, moved, or behaviorally changed. Remove stale pages after renames or removals. Update active cross-links, bucket listings, the top-level README, and the `what-is-next` router together. Historical upstream archives and handoffs remain unchanged.
 
-Act whenever a promoted skill is added, renamed, or has its behaviour changed: create or re-sync its documentation page. A rename moves the file too (`documentation/<bucket>/<old>.md` → `documentation/<bucket>/<new>.md`); a skill that moves buckets moves its documentation file to the matching folder. A skill gaining a plugin entry gains a page; one losing it loses the page.
+The page helps a reader choose and understand one skill; it does not repeat the agent's runbook. There is no H1. Installation commands live only in the top-level README, copied from [the canonical install block](./install-block.md).
 
-Use repository-relative links. A documentation page links to another skill's page under `documentation/`, and links to repository files by their relative paths. Validate every relative target after moving or renaming a page.
+## Provenance first
 
-There is no H1. The filename supplies the page identity in the documentation tree.
+Start with a plain provenance sentence identifying the original upstream skill name or names. Verify them against `.upstream/` artifacts or retained Git history rather than inferring them from today's directory names.
+
+- A renamed skill identifies its upstream name and its current name.
+- A combined skill identifies the contributing upstream skills.
+- A fork-added skill says so explicitly instead of inventing an upstream equivalent.
+- An external source identifies its skill and project; do not imply it came from the upstream fork.
+
+Use literal historical names only for provenance or migration explanations, not as active invocation names or aliases. A relative link to supporting provenance is allowed. Explain consequential drift and its reason on the page or in the top-level README, not merely that a rename occurred.
 
 ## Page structure
 
-Fill the template below, keeping its order. The **fixed frame** (`## What it does`, `## When to reach for it`, `## Where it fits`) appears on every page. `## Prerequisites` and the free-form substance sections carry only what this particular skill needs; delete the rest.
+Use this order. The four sections `What it does`, `When to reach for it`, `Common questions`, and `It's working if` are required. `Where it fits` is also present on every page.
 
-Four sections make a page worth reading: `What it does`, `When to reach for it`, `Common questions`, `It's working if`. The first two orient the reader; the last two are where the page stops summarising the skill and starts answering the reader's own situation. Each of the last two has a bar to clear, below, but treat a page that clears neither as unfinished, not as finished-and-short.
+### What it does
 
-**A page carries no install commands.** Installation belongs in the top-level `README.md`; repeating it on every page creates copies that drift. The canonical wording lives in [the install block](./install-block.md).
+Lead with the one-sentence job, then its defining constraint. For example, `specify` resolves only outstanding decisions and can synthesize settled context without repeating an interview. State what it actually does, not what an earlier upstream version did.
 
-<page-template>
+### When to reach for it
 
-## What it does
+State invocation mode and the trigger boundary.
 
-One or two plain-language paragraphs. Lead with the skill's one-sentence job, then state the **defining constraint**: the single fact that makes this skill behave differently from the obvious default (for `to-specifications`: it does not interview the user again, it synthesises what is already known). Write it as a plain declarative sentence, never a labelled aside like "The defining constraint:" or "The key thing:"; the formula reads as filler. This line is the most valuable on the page; never omit it.
+- User-invoked: the user types `/<name>`; the agent does not reach for it automatically.
+- Model-invoked: the user can type `/<name>` and the agent can reach for it when the task fits.
 
-## When to reach for it
+Where it is confusable with another skill, explain the distinction and link to that page. A non-plugin neighbor links directly to its `SKILL.md`, not to a nonexistent human-facing page.
 
-How and when you reach for the skill, in two beats that are both effectively always present:
+### Prerequisites
 
-- **Invocation mode.** State whether you type it or the agent fires it. A user-invoked skill: "You invoke this by typing `/<name>`, and the agent won't reach for it on its own." A model-invoked skill: "Type `/<name>`, or the agent reaches for it automatically when a task fits."
-- **Trigger boundary.** The index entry: "reach for this when …". Where the skill is confusable with a sibling, add the other half and link to the sibling's repository documentation page.
+Include this optional section only when the skill needs a workspace, configuration, access, or tooling. State what setup is actually required. Do not make local refinement or `iterate` depend on a remote tracker merely to maintain documents.
 
-## Prerequisites
+### Focused substance
 
-Optional: include only when the skill needs something in place to be functional; omit the heading entirely otherwise. Covers: a **workspace it writes into** (a stateful skill like `grill-with-documentation` writes `GLOSSARY.md` and ADRs; `teach` builds a whole directory, so say what it writes and where), **prior setup** (`triage`/`to-specifications`/`to-tickets` need `setup-ai-workspace` to have configured an issue tracker), or **repository-specific tooling**. A stateless skill that runs anywhere has no prerequisites, so drop the section.
+Use one to three optional sections in the skill's own vocabulary. Explain its defining idea and artifact responsibilities without copying steps or templates. Put choices in a table or list, not a dense paragraph.
 
-## <free-form middle>
+### Common questions
 
-One to three short sections, in the skill's *own vocabulary*, that make it click. Choose whatever headings fit the skill: the loop it runs, the artifact it produces, the fork it makes, the one anti-pattern it kills. There is no prescribed heading; the skills are too heterogeneous for one.
+Use bold questions followed by plain answers. Prefer observed questions from this repository's issues, discussion, existing pages, Git history, and changelog over invented ones. The current request is primary evidence when it reveals confusion, such as the former split between interviewing and specification writing.
 
-The single non-negotiable: **surface the skill's leading word / defining idea** (`tight` feedback loop, `deep module`, throwaway-code-answers-a-question, red-green). It pays off twice: the reader learns what the skill *is*, and learns the word they'll later think with to *reach for* it.
+Keep the count proportional to useful evidence. Do not pad thin pages. Historical reports are evidence of past behavior, not proof that a bug remains unfixed after a change.
 
-## Common questions
+### It's working if
 
-The questions readers really ask about this skill, each in bold with the answer in the lines beneath it. No sub-headings.
+Use checkable signals in the reader's work or trace. A reader should not have to inspect the skill's internal compliance details to recognize success.
 
-An observed question always beats an invented one, so go and find them before you write any:
+### Where it fits
 
-- **This repository's issues.** Search issues for the skill name. A question filed twice is a question the page owes an answer to.
-- **The existing documentation and git history.** Look for prior names, reported confusion, and behavior the page must explain without relying on an upstream website.
-- **`CHANGELOG.md`.** Anything renamed, moved, or behaviourally changed generates a "where did it go?" that the page has to answer.
+Identify the role: a chain step, run-once setup, periodic maintenance, or standalone discipline. Link the relevant neighbors with a reason, then link to `../getting-started/what-is-next.md`.
 
-Where the hunt comes up thin, the section may also carry a question a reader would plainly ask, but **the count stays honest to the evidence**. A well-discussed skill earns six; an obscure one earns one or two, or none at all. Padding a thin skill out to match a rich one is how the section fills with questions nobody has, and an invented question teaches the reader nothing.
+The planned development route is `specify → taskify → implement → code-review-and-refactor`. Just-in-time development uses the separately installed `iterate` skill and the same project documents. General `refine` does not force a software specification.
 
-Order them by how often each comes up, sharpest first, and say the unflattering thing where it is true: a very long grilling session usually means the scope was too big; a model asked to write its own skill produces something verbose. Omit the heading where there is nothing worth answering.
+## Writing and links
 
-## It's working if
-
-A few bullets naming what the reader sees when the skill is doing its job. The bar on each is that the reader can check it without opening `SKILL.md`: a signal in their own work, or in the trace in front of them. "The document gets shorter as it gets better" passes; "the library section is byte-identical to `template.sh`" is a compliance check on the skill's internals wearing this section's name. Include it wherever the tells are crisp; omit the heading where they stay vague.
-
-## Where it fits
-
-Always present. Situate the skill in the system in a sentence or two:
-
-- **Role.** Name it: a **chain step** (`grill-with-documentation → to-specifications → to-tickets → implement → code-review-and-refactor`), a **run-once setup** (`setup-ai-workspace`), **periodic maintenance** (`improve-codebase-architecture`, "every few days"), or a **reach-for-it-anytime standalone** (`debug`, `prototype`, `hand-off`). A standalone's map is one honest sentence, which is far better than omitting the section.
-- **Neighbours.** The one or two siblings that matter, each with a because-clause and a repository-relative link.
-- **The map.** Point to [what-is-next](../documentation/skills/getting-started/what-is-next.md), the router over the whole set, so this page stays a node and never has to redraw the graph.
-
-</page-template>
-
-## Conventions
-
-- Explain the **why**, not the process. The page orients and situates the skill; it never reproduces the `SKILL.md` steps or template dumps: a human choosing a tool does not need the runbook.
-- **Never name the author.** The page is a technical document, not a record of who said what. "Matt says", "Matt's own answer", "his position is", a quoted reply: all of it goes. A finding from the question hunt is worth keeping; its attribution is not. State the substance as a plain claim about the skill ("the fix is a direct instruction: …", "the split comes down to session count") and drop the frame. The reader is deciding whether to use a tool; an opinion carries the same weight either way, and an attributed one dates as soon as the position moves. Quoting a *user* stays fine: "one user reported …" is evidence about the skill in the wild, and stays anonymous.
-- Use the skill's **leading words** (_seam_, _deep module_, _tracer bullet_) so the page and the skill speak one language.
-- **Use clear, established terminology.** Prefer familiar terms such as _context window_, _subagent_, _harness_, and _primary source_ over invented synonyms. Define a specialist term on first use when the surrounding sentence does not make it clear. The repository documentation must remain understandable without an external glossary.
-- **Branches go in a table or a list, never in a paragraph.** Where the page presents a choice (two artifacts the skill can produce, four situations that trigger it, five options at a boundary), the reader is scanning for the one row that matches their situation. A paragraph makes them read all of it to find out. A short markdown table (condition in the left column, what to do in the right) or a bulleted list gives it back in one glance. This applies wherever the branch appears, most often in `## When to reach for it` and the free-form middle.
-- Keep the page itself low-load. It is documentation *about* low-cognitive-load skills; furniture (spare headings, restated links) is the thing it is arguing against.
+- Follow repository language rules and apply `unslop`.
+- Explain behavior and its reason, not author opinions.
+- Preserve useful primary evidence and questions without repeating upstream commentary as current fact.
+- Keep specialist terminology understandable and use the skill's established vocabulary.
+- Link rather than duplicate requirements, specifications, or shared format rules.
+- Resolve relative links from the page's actual directory. A skill link from a page under `documentation/skills/<bucket>/` starts with `../../../skills/`.
+- Keep supporting links repository-relative; do not rely on an upstream website to explain this fork.
 
 ## Done when
 
-- The page exists at `documentation/<bucket>/<name>.md`, and no stale page survives a rename or bucket move.
-- The page carries no source link and writes no install command of its own.
-- `## What it does` states the defining constraint, as plain prose rather than a labelled aside.
-- The page names no author and quotes no author: every claim stands on its own.
-- `## When to reach for it` states invocation mode and the trigger boundary.
-- `## Where it fits` names the role and links to `what-is-next`.
-- A prerequisite (workspace, prior setup, tooling) is stated where one exists, and the section is absent where none does.
-- The middle surfaces the leading word.
-- Specialist terminology is either clear from context or defined on first use, without depending on an external glossary.
-- Every multi-way branch is a table or a list, not a paragraph the reader has to read in full.
-- The hunt for real questions ran (the repository issues, documentation, git history, and changelog), and `## Common questions` is sized to what it found, not padded to match a richer skill's page.
-- Every `## It's working if` bullet is checkable without opening `SKILL.md`.
-- The sections appear in the template's order.
-- Every link is repository-relative, and every one resolves.
+- The page matches the promoted skill's current bucket and name; no orphan page remains.
+- The first line has verified provenance or an explicit fork-specific note.
+- Required sections are present in order, with invocation and defining constraint accurately stated.
+- Meaningful upstream drift is explained on the page or in the README.
+- Every relative target resolves and active names match installed skill identifiers.
+- No installation command is copied into the page.
+- `python3 scripts/check-skills.py` passes after the integrated change.

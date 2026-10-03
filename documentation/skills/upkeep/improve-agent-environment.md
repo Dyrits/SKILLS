@@ -1,3 +1,5 @@
+Upstream source: `retro`, verified in the `d81f3a1` tree.
+
 ## What it does
 
 `improve-agent-environment` conducts a retrospective on a coding agent's session and recommends targeted improvements to the repository's steering, standards, and tooling. It audits session friction across seven categories: navigation, automated checks, coding standards, global steering files, tool economy, no-ops, and information access.
@@ -32,7 +34,11 @@ The skill's defining lever is **mechanical classification**. When an agent repea
 
 The skill evaluates suggestions through the lens of **context pressure**. Implementation agents operate under heavy context pressure: they explore files, run commands, and write code. Reviewer agents operate under low context pressure: they inspect an isolated diff.
 
-Therefore, rules that govern code style belong to the review agent or automated tooling, not the implementation agent. Steering files loaded on every turn (`CLAUDE.md`, `AGENTS.md`) stay minimal and contain primarily **navigation pointers** rather than comprehensive rulebooks.
+Put mechanical checks in tooling and judgement-call standards where the review can apply them. Steering files loaded on every turn (`CLAUDE.md`, `AGENTS.md`) stay small and primarily carry navigation pointers. This division reduces context load; it does not excuse an implementation agent from applicable requirements or repository rules.
+
+## Documentation as reference
+
+Use existing Documentation as reference material, reached through useful pointers, before proposing another file. A recommendation to reorganize documents must preserve requirements, agreed behavior, and validation evidence. Local upkeep within approved work can update those records autonomously; this retrospective itself only recommends changes and does not authorize implementation.
 
 ## Common questions
 
@@ -74,4 +80,4 @@ An existing standards document such as `CONTRIBUTING.md` works too.
 
 ## Where it fits
 
-`improve-agent-environment` closes the main flow after a session worth learning from. Run it before clearing the session, or point it at the session log from a fresh window. It is also periodic maintenance whenever accumulated session friction needs review. Its nearest neighbours are [improve-codebase-architecture](./improve-codebase-architecture.md), which audits codebase structure rather than the agent's working environment, and [writing-for-agents](../reference/writing-for-agents.md), which provides the underlying style guide for steering files and documentation. For the full map of skills, see [what-is-next](../getting-started/what-is-next.md).
+`improve-agent-environment` is periodic maintenance after useful work in either development workflow. Run it before clearing the session, or point a new session at the log. [improve-codebase-architecture](./improve-codebase-architecture.md) surveys code structure; [writing-for-agents](../reference/writing-for-agents.md) guides steering instructions. [documentation](../reference/documentation.md) owns the project-document model so improvements do not create competing sources of truth. [what-is-next](../getting-started/what-is-next.md) maps the whole set.

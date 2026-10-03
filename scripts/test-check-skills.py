@@ -1,0 +1,95 @@
+#!/usr/bin/env python3
+"""Exercise the layout check against small temporary repository fixtures.
+
+Usage: python3 scripts/test-check-skills.py
+Needs: Python 3 standard library. Uses temporary files only.
+"""
+
+import contextlib
+import importlib.util
+import io
+import json
+import os
+import tempfile
+import unittest
+from pathlib import Path
+
+
+spec = importlib.util.spec_from_file_location("check_skills", Path(__file__).with_name("check-skills.py"))
+checker = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(checker)
+
+
+class LayoutChecks(unittest.TestCase):
+    def setUp(self):
+        self.temporary = tempfile.TemporaryDirectory(dir=os.environ.get("DELTA_SCRATCH_DIR"))
+        self.addCleanup(self.temporary.cleanup)
+        self.root = Path(self.temporary.name)
+        self.write(".claude-plugin/plugin.json", json.dumps({"skills": ["./skills/reference/example"]}))
+        self.write("README.md", "## Plugin skills\n[example](skills/reference/example/SKILL.md)\n"
+                   "## Separately installed skills\n")
+        self.write("CLAUDE.md", "Repository instructions.\n")
+        self.write("skills/getting-started/what-is-next/SKILL.md",
+                   "---\nname: what-is-next\n---\nRoute to /example and /what-is-next.\n")
+        self.write("skills/getting-started/what-is-next/agents/openai.yaml",
+                   "interface:\n  display_name: Router\n")
+        self.write("skills/getting-started/README.md",
+                   "## Not in the plugin\n[router](./what-is-next/SKILL.md)\n")
+        self.write("skills/reference/example/SKILL.md", "---\nname: example\n---\nAn example skill.\n")
+        self.write("skills/reference/example/agents/openai.yaml", "interface:\n  display_name: Example\n")
+        self.write("skills/reference/README.md", "[example](./example/SKILL.md)\n")
+        self.write("documentation/skills/reference/example.md",
+                   "Upstream skill: `example`.\n\n## What it does\nOne job.\n\n"
+                   "## When to reach for it\nA trigger.\n\n## Common questions\nA question.\n\n"
+                   "## It's working if\nA signal.\n\n## Where it fits\nA role.\n")
+
+    def write(self, relative, content):
+        path = self.root / relative
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(content)
+
+    def result(self):
+        with contextlib.redirect_stdout(io.StringIO()) as output:
+            failed = checker.check(self.root)
+        return failed, output.getvalue()
+
+    def test_consistent_fixture(self):
+        self.assertEqual(self.result()[0], False)
+
+    def test_invocation_mismatch(self):
+        self.write("skills/reference/example/agents/openai.yaml",
+                   "policy:\n  allow_implicit_invocation: false\n")
+        failed, output = self.result()
+        self.assertTrue(failed)
+        self.assertIn("invocation policy differs", output)
+
+    def test_broken_relative_link(self):
+        self.write("CLAUDE.md", "[missing](missing.md)\n")
+        self.assertIn("broken link missing.md", self.result()[1])
+
+    def test_missing_provenance(self):
+        path = self.root / "documentation/skills/reference/example.md"
+        path.write_text(path.read_text().replace("Upstream skill: `example`.", "## Example"))
+        self.assertIn("missing top provenance", self.result()[1])
+
+    def test_orphan_documentation_page(self):
+        self.write("documentation/skills/reference/retired.md", "Retired.\n")
+        self.assertIn("orphan or non-plugin", self.result()[1])
+
+    def test_missing_non_plugin_section(self):
+        self.write(".claude-plugin/plugin.json", '{"skills": []}')
+        (self.root / "documentation/skills/reference/example.md").unlink()
+        self.assertIn("non-plugin skill is not", self.result()[1])
+
+    def test_retired_operative_call(self):
+        self.write("CLAUDE.md", 'Call the Skill tool with "grilling".\n')
+        self.assertIn("operative call to retired", self.result()[1])
+
+    def test_missing_where_it_fits(self):
+        path = self.root / "documentation/skills/reference/example.md"
+        path.write_text(path.read_text().replace("## Where it fits\nA role.\n", ""))
+        self.assertIn("required sections missing", self.result()[1])
+
+
+if __name__ == "__main__":
+    unittest.main()

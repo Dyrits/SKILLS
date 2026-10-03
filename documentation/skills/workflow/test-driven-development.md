@@ -1,94 +1,31 @@
+Derived from upstream `tdd`, verified at revision `d81f3a1` at `skills/engineering/tdd/SKILL.md`. The [upstream port record](../../../.upstream/sync/2026-09-30.md) records its maintained counterpart.
+
 ## What it does
 
-`test-driven-development` builds a feature or fixes a bug test-first: one failing test, then just enough code to pass it, then the next behaviour. It carries the standards that make that loop produce tests worth keeping: what a good test is, where tests go, what mocks are for, and the three anti-patterns that quietly ruin a suite.
+`test-driven-development` builds behavior through a red/green loop at agreed seams. A seam is a public boundary where a test observes behavior without inspecting implementation details. One failing test and one minimal implementation form each vertical slice.
 
-It writes no test at a seam you have not agreed to first. Before any test exists, it names the public boundaries it intends to test at and stops for your confirmation, because testing effort is finite and this is where you spend it on the critical paths instead of on every edge case. The other thing to know is that `test-driven-development` is a **reference**, not a driver. It holds the rules of the loop, and something else (you, or [implement](./implement.md)) runs the session that applies them.
+Expected results come from an independent originating agreement, not from restating the implementation. Shared requirements and specifications, tasks, or an approved living work batch can supply that agreement.
 
 ## When to reach for it
 
-Type `/test-driven-development`, or the agent reaches for it automatically when a task fits: building a feature or fixing a bug test-first, or when you say "red-green-refactor".
-
-Reach for it when there is a concrete behaviour to build, with an input and an observable output, and you want tests that survive a refactor.
-
-| Your situation | Where to go |
-| --- | --- |
-| A behaviour with defined inputs and outputs (business logic, a request/response contract, a transformation, validation) | `test-driven-development` |
-| The behaviour isn't pinned down yet | [to-specifications](./to-specifications.md), which also agrees the test seams before any code is written |
-| The question is really the shape of the interface, not the tests | [codebase-design](../reference/codebase-design.md) |
-| You have a specification or tickets and want the whole build run for you | [implement](./implement.md), which drives `test-driven-development` per ticket |
-| Config, wiring, glue, type annotations, straight CRUD delegation | Nothing here fits well; see the open gap below |
-
-That last row is a real hole, not a stylistic preference. The skill decides *where* the seams go; nothing in it decides *whether* a change is worth the loop at all. Run it on a change with no independent source of truth to assert against and you get a test that restates the implementation: the tautological anti-pattern the skill itself warns about, arrived at from the other direction. It is [issue #746](https://github.com/mattpocock/skills/issues/746) and it is open. Until it closes, that judgement is yours or your `CLAUDE.md`'s.
-
-## Prerequisites
-
-[codebase-design](../reference/codebase-design.md) needs to be installed. `test-driven-development` used to carry its own deep-module and interface-design notes; in v1.0 those were deleted in favour of the shared skill, and `test-driven-development` now leans on it for interface-design vocabulary. Nothing else; the skill is stateless and writes no files of its own.
-
-## The loop, and the seam it runs at
-
-Three words carry this skill.
-
-**Red-green.** Write the failing test, then only enough code to pass it. No anticipating the test after next. There is no refactor phase: it was dropped in June 2026 because agents essentially never performed it, and because implementation and refactoring have separate responsibilities. [code-review-and-refactor](./code-review-and-refactor.md) owns the subsequent refactor phase, reviewing standards and applying supported changes while preserving behavior.
-
-**Vertical slice.** One seam, one test, one minimal implementation, then repeat, the first cycle being a **tracer bullet** that proves a single path end to end. The opposite is horizontal slicing: all the tests first, then all the code. Bulk tests verify *imagined* behaviour, they check the shape of things rather than what a user does, and they commit you to a test structure before you understand the implementation.
-
-**Pre-agreed seam.** A seam is the public boundary you observe behaviour at without reaching inside. The rule is absolute: no test at an unconfirmed seam. In the full chain the seams are agreed earlier, during [to-specifications](./to-specifications.md): `/test-driven-development` works at the agreed seams, and `/code-review-and-refactor` checks those seams against the specifications. Invoked on its own, `test-driven-development` asks you directly.
-
-The three anti-patterns it is written to prevent:
-
-| Anti-pattern | The tell |
-| --- | --- |
-| Implementation-coupled | The test breaks when you rename an internal function, though behaviour did not change. Mocked internal collaborators, asserted call counts, database queries used to verify instead of the interface. |
-| Tautological | The expected value is computed the way the code computes it, so the test passes by construction. Expected values have to come from somewhere else: a known-good literal, a worked example, the specification. |
-| Horizontal slicing | A batch of tests landed before any implementation. |
-
-Mocks are for system boundaries only: external APIs, time, randomness, sometimes the filesystem or the database. Not your own modules.
+Type `/test-driven-development`, or the agent reaches for it when a task fits. Use it for concrete behavior with an observable public boundary and an independent expected result. Agree the seams before writing tests.
 
 ## Common questions
 
-**Why doesn't it refactor? The description says "red-green-refactor".**
+**Can I use it without a full specification?**
 
-Because the refactor step was removed and the description was not. The removal was deliberate: agents essentially never did it, and separating implementation from the subsequent review and refactor phase gives each a clear responsibility. Whether the result still counts as TDD by the book matters less than whether the loop produces better code. The mismatch between the trigger phrase and the body is filed as [issue #589](https://github.com/mattpocock/skills/issues/589) and is still open, so "red-green-refactor" continues to work as a phrase that fires the skill. What you get is red → green. [code-review-and-refactor](./code-review-and-refactor.md) completes the separate refactor phase with standards checks, supported edits, and verification.
+Yes. An approved working-state agreement can establish the behavior. An unresolved draft or unapproved backlog candidate cannot.
 
-**It asked me to choose a test seam and I had no idea which to pick.**
+**Should every change get a test?**
 
-This is the most-reported friction with the skill ([issue #607](https://github.com/mattpocock/skills/issues/607)). The prompt lists candidate seams by name only, with nothing about what each one catches or misses, so you are choosing between labels. There is no fix shipped yet. The practical workaround is to ask the agent for the trade-offs before answering: what does the component-level seam miss that the integration seam catches, and how much slower is it. It is also why the chain agrees seams up front in `to-specifications`, where you have the whole feature in view rather than one prompt.
-
-**It wrote the implementation before the test, even though the skill says red first.**
-
-It happens. One user pushed the model on it and got an unusually honest answer: "I knew the skill said 'one test at a time, watch it fail for the right reason'. I read it. I just defaulted to my normal habit." The skill is written to live with this. No instruction makes an agent comply 100% of the time, and forcing the point harder restricts the agent's creativity for little gain; the loop is worth running even when it is not followed strictly, because the results are still better overall. If strict adherence matters for a particular slice, watch the run rather than trusting the skill to enforce it.
-
-**Should it write browser or end-to-end tests first?**
-
-Usually not, and the skill will not stop it. A user reported the agent writing a Playwright test first, then burning a long loop re-running it and concluding the *test* was broken for a feature that did not exist yet. Configure this in your `CLAUDE.md`. Browser tests are slow enough that the red-green feedback loop stops paying for itself; declare in your repository's `CLAUDE.md` that they are written after the behaviour works.
-
-**Does `/test-driven-development` replace `/implement`, or the course's `/do-work`?**
-
-No. `/test-driven-development` documents the methodology; `/implement` is a very simple work→feedback→commit loop and is the direct stand-in for `/do-work`. The course's single `/do-work` step is now split across `/implement`, `/test-driven-development` and `/code-review-and-refactor`. If you are asking which one to run against a ticket, the answer is almost always `/implement`.
-
-**Where did the deep-modules and interface-design guidance go?**
-
-Into [codebase-design](../reference/codebase-design.md) in v1.0, generalised so several skills share one vocabulary. `refactoring.md` left at the same time; [code-review-and-refactor](./code-review-and-refactor.md) carries the Fowler smell baseline for identifying supported refactors in the subsequent phase.
-
-**Does it know about my other tickets?**
-
-No. Run against one ticket, it will happily propose work that belongs to a sibling ticket, because it has no view of the rest of the issue graph ([issue #129](https://github.com/mattpocock/skills/issues/129)). Matt's position is that this is not `test-driven-development`'s job. Passing the specification alongside the ticket helps; right-sizing the tickets in the first place helps more.
+No. Tests need a useful seam and an independent expected result. Appearance and interaction may also need human acceptance; a passing suite cannot establish judgments it never exercises.
 
 ## It's working if
 
-- It stops and names the seams it intends to test at, and waits, before any test file exists.
-- One test appears, goes red, gets just enough code to pass, and only then does the next test appear, not a batch of tests followed by a batch of code.
-- Test names read as capabilities ("user can checkout with valid cart"), not as internals ("checkout calls paymentService.process").
-- Expected values in assertions are literals you can trace to the specification, not values recomputed the way the code computes them.
-- Renaming an internal function breaks nothing in the suite.
-- Mocks appear only at external boundaries (the payment API, the clock) and never around your own modules.
+- A new test fails for the expected missing behavior before implementation.
+- Tests survive structural refactors because they observe public behavior.
+- Unfinished cycles and verification gaps remain visible in working state.
 
 ## Where it fits
 
-`test-driven-development` is the engine inside the build step of the main chain, rather than a step of its own:
-
-```txt
-grill-with-documentation → to-specifications → to-tickets → implement → code-review-and-refactor → improve-agent-environment
-```
-
-[to-specifications](./to-specifications.md) agrees the test seams up front, [implement](./implement.md) drives `test-driven-development` per ticket, and [code-review-and-refactor](./code-review-and-refactor.md) checks afterwards that only the agreed seams were used, and applies supported refactors with verification that required behavior remains intact. Its other neighbour is [codebase-design](../reference/codebase-design.md), the shared source of the seam and deep-module vocabulary `test-driven-development` speaks. You can also reach for it on its own, whenever there is a concrete behaviour to build and no full specifications in play. When you are unsure which skill fits your situation, [what-is-next](../getting-started/what-is-next.md) routes you.
+This is model-invoked implementation machinery used by [implement](./implement.md) and [implement-all](./implement-all.md). [code-review-and-refactor](./code-review-and-refactor.md) follows red/green and handles structural refactoring. [what-is-next](../getting-started/what-is-next.md) maps the other routes.

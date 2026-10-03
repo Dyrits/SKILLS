@@ -1,6 +1,8 @@
+Upstream source: `writing-for-agents`, verified in the `d81f3a1` tree.
+
 ## What it does
 
-`writing-for-agents` is the reference you write agent-facing documents against: a skill, an `AGENTS.md` / `CLAUDE.md`, a specification, a runtime prompt, a README, any doc an agent reads. The packaging differs; the writing does not: the same levers make each one predictable, so the agent takes the same *process* every run rather than producing the same output.
+`writing-for-agents` guides writing a skill, steering file, specification, runtime prompt, or other document an agent reads. It aims for predictable process across runs, not identical output.
 
 Its default move is deletion, not explanation. Ask an agent to write instructions for another agent and it spends most of its words explaining what the model already knows. Every one of those lines is a **no-op**, paying context and changing no behaviour. This reference is the lens that finds them, which is why it earns its keep at least as often on a document you already have as on a blank file.
 
@@ -10,7 +12,7 @@ It was called `writing-great-skills` until v1.1. The rename tracks what it alway
 
 Type `/writing-for-agents`, or the agent reaches for it on its own when you're creating or editing a skill, or modifying `AGENTS.md` or `CLAUDE.md`.
 
-Reach for it by hand for everything else an agent reads: your docs, specifications and tickets, system and AFK prompts. The test is one question: does an agent read this? And it does not matter how the document gets in front of it, whether a pointer names it, a human pastes it, or it simply sits in the repository. For working out what a codebase actually contains in the first place, use [grill-with-documentation](../workflow/grill-with-documentation.md); this reference governs how a document reads, not what it knows.
+Reach for it by hand for other agent-facing documents, specifications, tasks, and unattended prompts. The test is whether an agent reads the text. [specify](../workflow/specify.md) establishes agreed feature behavior; [documentation](./documentation.md) owns the project-document model. This reference governs how the instructions read, not what behavior the project should agree to.
 
 ## The two loads
 
@@ -32,7 +34,7 @@ Once you think in these two loads, most authoring decisions (split or don't, inl
 ## Common questions
 
 **Where did `/writing-great-skills` go?**
-It is this skill, renamed in v1.1. Practitioners were already pointing it at `AGENTS.md`, docs, specifications, tickets and runtime prompts long before the name caught up; structure, leading words and pruning turn out to be the craft of any text an agent reads. There is no alias. Reinstall under the new name.
+It is this skill, renamed upstream in v1.1. Its structure, leading words, and pruning apply to steering documents, specifications, tasks, and runtime prompts as well as skills. There is no alias; update saved references to the current name.
 
 **"Writing for agents": so the agent does the writing?**
 The other way round. You are the author; the agent is the reader. That is the whole difficulty of the genre: you are writing for a reader who has already read everything, so explanation is waste and precision is the entire job.
@@ -54,6 +56,10 @@ Mostly no, and over-fitting to one model is its own trap. Updating for a new mod
 
 **My skill only works on the exact task I built it from.**
 The common route (do the work once, then have the agent write it up as a skill) over-indexes on that one run, and the exemplars come out too specific. Keep the run as evidence, then abstract deliberately: strip what belonged to that repository and those files, and write for the class of task.
+
+**Should every batch create requirements, specifications, and tasks?**
+
+No. [documentation](./documentation.md) owns the shared project-document rules. Existing requirements and agreed specifications still apply, but a small living-code batch can use backlog, work-in-progress, and the root changelog without creating new feature documents. Write instructions that preserve obligations while creating records only when useful; clarity is not a reason to duplicate the same agreement in several files.
 
 **English isn't my first language. Do I lose the leading-word advantage?**
 No. Finding the word that packs the most behaviour into the fewest tokens is work the reference does for you. It is one of the things it is for.

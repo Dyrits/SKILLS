@@ -1,3 +1,5 @@
+Upstream source: `teach`, verified in the `d81f3a1` tree.
+
 ## What it does
 
 `teach` turns the directory you run it in into a standing teaching workspace and teaches you one topic across many sessions, in short self-contained HTML lessons.
@@ -14,10 +16,10 @@ Reach for it when the learning is the project: a language, a framework, a codeba
 | --- | --- |
 | To learn a topic over weeks, with sessions that accumulate | `teach` |
 | One idea explained inside the session you are already in | Just ask, in that session |
-| The agent's last message re-pitched because it didn't land | [wait-what](./wait-what.md) |
-| To sharpen thinking you already have, rather than acquire new material | [grill-me](./grill-me.md) |
+| The agent's last message re-pitched because it didn't land | [re-explain](./re-explain.md) |
+| To sharpen thinking you already have, rather than acquire new material | [refine](../reference/refine.md) |
 | A background agent to read primary sources and leave you a cited document | [research](../shaping/research.md) |
-| To learn something that came up mid-grilling, without derailing the grilling | [handoff](./hand-off.md) out to a teaching workspace, then `teach` there |
+| To learn something that came up mid-refinement, without derailing the decision | [hand-off](./hand-off.md) to a teaching workspace, then `teach` there |
 
 ## Prerequisites
 
@@ -31,7 +33,7 @@ What accumulates in that directory:
 | `RESOURCES.md` | The vetted sources it teaches from, split into Knowledge and Wisdom (communities) |
 | `lessons/*.html` | The numbered lessons: the primary unit of teaching |
 | `reference/*.html` | Compressed cheat-sheets, algorithms, glossaries: the documents you actually return to |
-| `learning-records/*.md` | ADR-style notes on what you have demonstrably learned, used to decide what to teach next |
+| `learning-records/*.md` | Structured records of what you have demonstrably learned, used to decide what to teach next |
 | `assets/*` | Reusable components, starting with a shared stylesheet, so the lessons look like one course |
 | `NOTES.md` | Your stated teaching preferences |
 
@@ -94,4 +96,4 @@ There is no canonical answer, and the reported differences are large. Higher rea
 
 `teach` is a **reach-for-it-anytime standalone**. It is not a step in a build chain and shares no artifacts with the engineering flow; it owns its directory and lives there for as long as the topic lasts.
 
-Its one real neighbour is [handoff](./hand-off.md), through the composition Matt named as the answer to "what do I do if I'm being grilled about something I don't understand?": don't stop the grilling to learn: `/hand-off` to a teaching workspace, learn it there with `/teach`, then go back and pick up where you left off. The nearby alternative is [research](../shaping/research.md), for when what you want is a cited document rather than lessons and retention. When you are not sure which skill or flow fits, [what-is-next](../getting-started/what-is-next.md) routes you over the whole set.
+Its nearest neighbour is [hand-off](./hand-off.md). When refinement exposes something you need to learn, hand off to a teaching workspace, use `/teach` there, then return to the unresolved decision. [research](../shaping/research.md) is the alternative when you want a cited document rather than lessons and retention. [what-is-next](../getting-started/what-is-next.md) routes you over the whole set.

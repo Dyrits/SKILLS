@@ -1,0 +1,5 @@
+interface:
+  display_name: "Specify"
+  short_description: "Resolve open decisions and synthesize agreed behavior"
+policy:
+  allow_implicit_invocation: false

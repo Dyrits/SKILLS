@@ -1,3 +1,5 @@
+Fork-specific skill, added in commit `26542d8` to improve recurring human and agent work processes.
+
 ## What it does
 
 `optimize-process` maps a recurring process, finds the work and waiting that slow it down, and recommends a sequence to try on the next cycle. Its impact comparison accounts for work an agent can complete in hours or minutes, plus the human time needed to set it up, make decisions, and review the result.
@@ -30,4 +32,4 @@ It checks why they exist and keeps the decisions and controls that affect the ou
 
 ## Where it fits
 
-`optimize-process` is a standalone productivity skill. A recommendation that calls for a software change can enter the main build flow at [grill-with-documentation](../workflow/grill-with-documentation.md) or [to-specifications](../workflow/to-specifications.md). [What-is-next](../getting-started/what-is-next.md) maps the rest of the skills.
+`optimize-process` is a standalone productivity skill. A recommendation that calls for a software change can enter planned development at [specify](../workflow/specify.md), or a small approved living-code batch through separately installed [iterate](../../../skills/workflow/iterate/SKILL.md). [what-is-next](../getting-started/what-is-next.md) maps the rest of the skills.

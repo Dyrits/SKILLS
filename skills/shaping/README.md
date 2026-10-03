@@ -1,12 +1,16 @@
 # Shaping
 
-Explore an open question and produce a decision or answer that feeds the flow.
+Explore an open question and produce an answer that feeds development.
 
 ## User-invoked
 
-- **[wayfinder](./wayfinder/SKILL.md)**: Plan a huge, foggy effort as a shared map of decision tickets on the issue tracker, resolved one at a time until the way is clear.
+- [graphify](./graphify/SKILL.md): Map a large uncertain effort and resolve decision tasks one at a time.
 
 ## Model-invoked
 
-- **[research](./research/SKILL.md)**: Investigate a question against high-trust primary sources and capture the findings as a cited Markdown file, run as a background agent.
-- **[prototype](./prototype/SKILL.md)**: Build a throwaway prototype to answer a design question: state/logic as a shareable HTML file, or toggleable UI variations.
+- [research](./research/SKILL.md): Investigate primary sources in the background and save cited findings.
+- [prototype](./prototype/SKILL.md): Build a scoped experiment and validate its answer before production integration.
+
+## Not in the plugin
+
+- [divide-and-conquer](./divide-and-conquer/SKILL.md): Organize candidate outcomes and agree a useful focus without requiring tasks or implementation. Model-invoked.

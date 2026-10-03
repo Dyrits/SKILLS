@@ -1,3 +1,5 @@
+Upstream source: `handoff`, verified in the `d81f3a1` tree. This fork adds durable versioned session handoffs.
+
 ## What it does
 
 `hand-off` compacts the conversation you are in into a **handoff document**: one markdown file, written to `.agents/handoffs/` in the workspace as a versioned, timestamped file, that a fresh agent can read to pick the work up.
@@ -17,7 +19,7 @@ Four situations are the whole trigger:
 | Sending the work to a colleague | They need something they can read |
 | Forking a side task found mid-phase | You keep working; a second agent takes the fork |
 
-For anything else (same harness, same directory, you are done grilling and moving to implementation), `/compact` is the move. [what-is-next](../getting-started/what-is-next.md) carries the ordered tree over all five options at a phase boundary.
+Staying in the same workspace does not automatically call for compaction. Continue when context remains useful; clear only when authoritative sources preserve the next task; compact when you need the same session with less conversation. [what-is-next](../getting-started/what-is-next.md) helps choose the boundary.
 
 ## Branching is the use people skip
 
@@ -25,21 +27,25 @@ The skill's description reads like session resumption: write a summary, end here
 
 That is what the detour through [prototype](../shaping/prototype.md) uses. You are deep in a design conversation, you hit a question that only running code will settle, and you do not want to spend the thread you built on finding out. Hand off to a prototype session, get the answer, hand the answer back, and reference it from the original thread. Two crossings, one live conversation, nothing re-explained.
 
-Three of the five options at a phase boundary preserve different things: `/compact` preserves your intent, `/clear` preserves nothing, `/hand-off` preserves the work's ability to move.
+These choices preserve different things. Compaction compresses conversational context. Clearing removes that context, but should leave authoritative work state intact. A handoff makes session-specific context portable.
 
 ## What travels, and what doesn't
 
-The document carries the live thread (what's in flight, why, and what's next) plus a **suggested skills** section naming what the next agent should reach for. Secrets are redacted before it's written.
+The document carries the live thread (what's in flight, why, and what's next) plus a **suggested skills** section naming useful skills and their invocation modes. The next agent calls model-invoked skills; user-only skills remain human actions. Secrets are redacted before it's written.
 
 What it deliberately does not carry is anything already written down. Specifications, plans, ADRs, issues, commits and diffs are referenced by path or URL, never copied. That keeps the file small, and it keeps the settled detail in one place instead of two that drift.
 
 ## Common questions
 
 **Handoff or compact?**
-`/compact` unless something is travelling. Staying on the same task is a compact, not a handoff: same harness, same directory, and you need to stay in the loop is where the phase-boundary tree lands most days. `/hand-off`'s advantage is not that it summarises better; it's that the result is a file you can carry somewhere `/compact` can't reach.
+Use compact to reduce conversational detail within the same session. Use a handoff when another session, agent, or workspace needs the brief. The handoff's advantage is a portable file, not a claim that it summarizes better.
 
 **So what's the actual difference between compact, clear and handoff?**
-Three different things being preserved. `/compact` compresses this context and keeps you going in a fresh window: intent survives. `/clear` empties the window and starts from nothing: correct when everything behind you is disposable, and one-way if it isn't. `/hand-off` writes a portable file: the work survives the move to somewhere else. Note that all three turn a **primary source** (the conversation as it happened) into a **secondary source** (a summary of it). Continuing is the only move that doesn't, which is why it's the first one to rule out.
+- Compact compresses context within the same session.
+- Clear discards conversational context. Preserve necessary work state first.
+- Hand off writes a portable brief for another session.
+
+Summaries are secondary sources. Keep pointers to the requirements, specifications, decisions, and evidence they summarize.
 
 **Where did my handoff file go?**
 `.agents/handoffs/YYYY-MM-DD-HHMM-<slug>.md` in the workspace: same place every time, sorted by name gives you the newest first, and nothing depends on per-OS temp paths. The skill prints the full path when it writes; keep it before you move on.
@@ -57,7 +63,11 @@ Analogous, not identical, and `/branch` isn't a shipped skill here; `/hand-off` 
 Ask whether it's true next month. `CLAUDE.md` is standing context about the project, loaded into every session whether it's relevant or not. A handoff is about one piece of work in flight and is dead once that work lands. Facts that keep getting re-explained are a `CLAUDE.md` problem; a half-finished task is a handoff.
 
 **It captures the what, not the why.**
-A fair and repeated criticism. Two things help. Pass the argument (tell it what the next session is for) so the reasoning that bears on *that* is kept rather than flattened. And watch for confident claims the session never actually verified: "X isn't built", "Y is done". The next agent treats the document as a contract and will not re-check it, so a belief written as a fact becomes a false premise for everything that follows. Read the document before you hand it over, and downgrade anything you only assumed.
+A repeated criticism. State what the next session is for so relevant reasoning survives. Watch for confident claims the session never verified, such as "X isn't built" or "Y is done". [take-over](./take-over.md) flags assumptions and resolves source pointers, but review before handing over still matters.
+
+**Does work-in-progress replace a handoff?**
+
+No. `documentation/work-in-progress.md` owns unfinished current work, blockers, and recovery state. The handoff carries session-specific reasoning and pointers for another agent. Keep them consistent without copying the same task history into both.
 
 **Why is it a skill rather than a slash command?**
 Both work; they suit different situations. As a skill it ships and updates through the same install path as everything else here, which is what makes it shareable; the constraint that the agent won't fire it itself is set by its frontmatter rather than by the mechanism.
@@ -73,4 +83,4 @@ Both work; they suit different situations. As a skill it ships and updates throu
 
 ## Where it fits
 
-`hand-off` is a **reach-for-it-anytime standalone** that lives at the seam between sessions rather than inside a build chain, but a narrow one, and the honest map is that you'll use it less often than the other four options at a phase boundary. Its closest neighbour is [prototype](../shaping/prototype.md), because a prototype lives in its own directory and the round trip out and back is exactly the crossing this skill is for. When you're at a boundary and unsure whether to continue, clear, hand off, delegate or compact, [what-is-next](../getting-started/what-is-next.md) carries the tree that orders those five, and routes you over the rest of the set.
+`hand-off` is a reach-for-it-anytime standalone between sessions, not a development chain step. [take-over](./take-over.md) consumes its newest brief. An approved [prototype](../shaping/prototype.md) in another session can use a handoff for the question and return evidence, but isolation is not a universal prototype requirement. [what-is-next](../getting-started/what-is-next.md) helps choose the session boundary.

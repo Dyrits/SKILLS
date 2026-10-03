@@ -1,8 +1,10 @@
+Upstream source: `pr`, verified in the `d81f3a1` tree.
+
 ## What it does
 
 `to-pull-request` writes the body of a pull request, or a merge request on GitLab, in a fixed three-part shape: a **summary** visual, **evidence** as a before/after pair, and the **merge danger**. It is a format reference, not a workflow: it does not open the request, push the branch, or review anything.
 
-What it writes is aimed at the reviewer's missing information, never at restating what changed. The reviewer already has the diff open, so a body that narrates the diff back tells them nothing they cannot scroll to. Why the change exists comes from its **primary source**, the ticket or specification that asked for it, and the diff only decides which shape shows it.
+It explains the reviewer's missing information rather than narrating the diff. The reason for a change comes from its authoritative agreement: a task, living specification, applicable requirements, or approved working-state scope. The diff determines which visual shows the change; it does not establish that every obligation was met.
 
 ## When to reach for it
 
@@ -13,14 +15,14 @@ Type `/to-pull-request`, or the agent reaches for it automatically when a task f
 | A branch is finished and needs a description a human can read fast | `/to-pull-request` |
 | The change is not reviewed yet | [code-review-and-refactor](./code-review-and-refactor.md) first, then this |
 | The ticket is not built yet | [implement](./implement.md), which closes out with the review |
-| The request is already open and reviewers have commented | [address-feedback](../../../skills/experimental/address-feedback/SKILL.md), which is experimental |
-| The conclusion is already written and just needs posting | [publish-message](../../../skills/experimental/publish-message/SKILL.md), which is experimental |
+| The request is already open and reviewers have commented | Separately installed [address-feedback](../../../skills/workflow/address-feedback/SKILL.md) |
+| The conclusion is already written and just needs posting | Separately installed [publish-message](../../../skills/workflow/publish-message/SKILL.md), after approval of text and destination |
 
 ## The summary is a shape, not a paragraph
 
 The summary's job is one visual sized to the single point the change makes.
-The skill calls [show-me](../productivity/show-me.md) to choose the shape and render it inline in the request body.
-If `show-me` is not installed, it uses the formats named in the template to produce the summary itself.
+The skill calls [illustrate](../productivity/illustrate.md) to choose the shape and render it inline in the request body.
+If `illustrate` is not installed, it uses the formats named in the template to produce the summary itself.
 
 The instruction that does the work is **pick the smallest view that makes the key point clear**. A component tree pruned to the two components that moved beats the same tree drawn in full, because everything else on it is a line the reviewer has to rule out. Using one shape is usual, several happens, and all of them never does.
 
@@ -47,7 +49,7 @@ Because other skills need to reach it. [implement-all](./implement-all.md) can o
 That is the failure the skill is written against, and it usually means the primary source was not in the window. Give it the ticket or the specification, not just the branch, and the summary has something to be about.
 
 **Where did `pr` go?**
-It was named `pr` in the repository this fork started from, where it sat in an `in-progress` bucket. Porting it here renamed it to full words and to this repository's `to-<artifact>` convention, alongside [to-specifications](./to-specifications.md) and [to-tickets](./to-tickets.md).
+It was named `pr` upstream. This fork adopted the full-word name `to-pull-request`. The current planned workflow uses [specify](./specify.md) and [taskify](./taskify.md), not old-name aliases.
 
 **Is there a matching skill for commit messages?**
 No. The original proposal upstream paired a `/to-commit` with this one, so the commit template would feed the request body. Only the request half exists, and [implement](./implement.md) still commits with a single line of its own guidance.
@@ -88,4 +90,4 @@ Use a call tree, file tree, or shaped diff when your review surface does not ren
 
 ## Where it fits
 
-A **chain step**, the last one before the work leaves your machine: `implement` → `code-review-and-refactor` → `to-pull-request`. Its neighbours are [code-review-and-refactor](./code-review-and-refactor.md), because the findings it produces are what the evidence and merge danger sections have to be honest about, and [address-feedback](../../../skills/experimental/address-feedback/SKILL.md), which picks the thread back up once reviewers reply. After a session worth learning from, [improve-agent-environment](../upkeep/improve-agent-environment.md) proposes changes to the checks and standards future reviews use. For the whole map, see [what-is-next](../getting-started/what-is-next.md).
+`to-pull-request` is a chain step after [code-review-and-refactor](./code-review-and-refactor.md), and a standalone format reference when rewriting a description. Its evidence must reflect agreed checks, actual results, and any pending human acceptance rather than declaring delivery prematurely. Separately installed [address-feedback](../../../skills/workflow/address-feedback/SKILL.md) continues when reviewers reply. [improve-agent-environment](../upkeep/improve-agent-environment.md) reviews useful session lessons, and [what-is-next](../getting-started/what-is-next.md) maps both development workflows.

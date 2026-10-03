@@ -1,3 +1,5 @@
+Upstream source: `to-questionnaire`, verified in the `d81f3a1` tree.
+
 ## What it does
 
 `ask-someone-else` turns a decision you can't settle on your own into a **questionnaire**: a Markdown document you hand to the one person who holds what you're missing, for them to fill in async or for the two of you to work through in a meeting.
@@ -12,8 +14,8 @@ Reach for it when a decision is blocked on knowledge that lives in one other per
 
 | The answers are in… | Reach for |
 | --- | --- |
-| Your own head, unsharpened | [grill-me](./grill-me.md) |
-| The codebase | [grill-with-documentation](../workflow/grill-with-documentation.md) |
+| Your own head, unsharpened | [refine](../reference/refine.md) |
+| The codebase | [specify](../workflow/specify.md) |
 | Someone else's head | `ask-someone-else` |
 | Nobody's head yet, the question needs something to react to | [prototype](../shaping/prototype.md) |
 
@@ -57,8 +59,8 @@ The document tells them to say so. "I don't know" and partial answers are asked 
 **Does it send it anywhere (Slack, an issue tracker, email)?**
 No. It writes a Markdown file in the current directory and tells you the path. Delivery is yours: paste it into a ticket, drop it in a Slack thread, attach it to an email, or open it on a shared screen and work through it live. People have wired up all four by hand.
 
-**Isn't this just `/grill-me` in batch mode?**
-No, and the distinction is worth holding. `grill-me` already asks in **rounds**: the whole frontier at once, then recomputed from your answers, so the "give me all the questions at once" need is met there. `ask-someone-else` is about a different axis: not how the questions are delivered, but whose head the answers are in. Answering them yourself faster is `grill-me`; getting them out of someone else is this.
+**Isn't this just `/refine` in batch mode?**
+No. `refine` already asks in rounds and recomputes the next questions from your answers. `ask-someone-else` differs in whose head the answers are in, not how many questions it asks at once.
 
 **Couldn't I just ask the agent for this without a skill?**
 Yes, and plenty of people did before it existed: `OPEN_QUESTIONS.md` files, spreadsheets sent to clients, a "needs more info" ticket per unanswered question. The skill buys you two things: the interview never drifts onto the subject, and the document comes out in a shape a non-technical recipient can actually fill in. If you already have a house format that works, the honest answer is that you don't need this.
@@ -75,4 +77,4 @@ Yes, and plenty of people did before it existed: `OPEN_QUESTIONS.md` files, spre
 
 `ask-someone-else` is a reach-for-it-anytime standalone. It sits at the boundary of your own knowledge, where the next move is another person rather than another skill, most often mid-flow, when planning has stalled on something that isn't yours to decide.
 
-Its neighbour is [grill-me](./grill-me.md), and the two split on where the answers live: grilling mines you, a questionnaire mines someone else. What comes back is raw material: feed it into another grilling round, or into [grill-with-documentation](../workflow/grill-with-documentation.md) or [to-specifications](../workflow/to-specifications.md) if the work is heading for a build. When you're unsure which skill fits the moment, [what-is-next](../getting-started/what-is-next.md) routes you.
+Its neighbour is [refine](../reference/refine.md): refinement asks you, a questionnaire asks someone else. Feed the answers into refinement or [specify](../workflow/specify.md) when the work is heading for a build. When you're unsure which skill fits, [what-is-next](../getting-started/what-is-next.md) routes you.

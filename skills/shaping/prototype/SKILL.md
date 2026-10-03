@@ -1,11 +1,13 @@
 ---
 name: prototype
-description: Build a throwaway prototype to answer a design question. Use when the user wants to sanity-check whether a state model or logic feels right, or explore what a UI should look like.
+description: Build a scoped experimental prototype to answer a user-requested or approved design question about logic, state, or UI.
 ---
 
 # Prototype
 
-A prototype is **throwaway code that answers a question**. The question decides the shape.
+A prototype is **experimental code that answers a question**. The question decides the shape. Proceed only when the user requests or approves the scoped experiment, including during specify. Living iteration directly evolves the implementation; it does not require a prototype by default.
+
+Call the Skill tool with "documentation" for shared project-document ownership. Record unresolved proposals separately from agreed behavior. Capture the question, verdict, evidence, and remaining acceptance in the feature's draft or specifications as appropriate, and in working state. Preserve historical inputs. Automatically record completed authorized agreements and deliveries in root `CHANGELOG.md` using the shared format, without implying experimental code is production-ready.
 
 ## Pick a branch
 
@@ -18,9 +20,9 @@ The two branches produce very different artifacts, so getting this wrong wastes 
 
 ## Rules that apply to both
 
-1. **Throwaway from day one, and clearly marked as such.** Locate the prototype code close to where it will actually be used (next to the module or page it's prototyping for) so context is obvious, but name it so a casual reader can see it's a prototype, not production. For throwaway UI routes, obey whatever routing convention the project already uses; don't invent a new top-level structure.
+1. **Experimental from day one, and clearly marked as such.** Keep the experiment isolated from application behavior and production delivery. Locate it near the relevant module or page when useful, and name it clearly as a prototype. For experimental UI routes, follow the project's routing conventions.
 2. **Trivial to run.** A UI prototype starts from one command in the project's task runner: `pnpm <name>`, `python <path>`, `bun <path>`, etc. A logic demo is a single HTML file the user double-clicks. Either way, no thinking required to start it.
 3. **No persistence by default.** State lives in memory. Persistence is the thing the prototype is _checking_, not something it should depend on. If the question explicitly involves a database, hit a scratch DB or a local file with a clear "PROTOTYPE, wipe me" name.
 4. **Skip the polish.** No tests, no error handling beyond what makes the prototype _runnable_, no abstractions. The point is to learn something fast.
 5. **Surface the state.** After every action (logic) or on every variant switch (UI), print or render the full relevant state so the user can see what changed.
-6. **Capture it when done.** Fold any validated decision into the real code, then capture the prototype itself as a **primary source**: commit it to a throwaway branch, out of main, and leave a context pointer to that branch on the implementation issue. Capture the answer too (the verdict and the question it settled) in the issue or a commit. The main branch keeps only the validated decision.
+6. **Capture it when done.** Preserve the experiment as a primary source with a context pointer in the relevant work record. Keep unselected experiments outside production. Validated useful code may be integrated without mandatory rebuilding, but only after authorized acceptance and the application's production checks, including tests, error handling, appearance and interaction acceptance where judgment is needed. Remove experimental controls and labels from integrated code. A successful experiment alone establishes no production-readiness claim.

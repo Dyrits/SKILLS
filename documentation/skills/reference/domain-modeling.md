@@ -1,3 +1,5 @@
+Upstream source: `domain-modeling`, verified in the `d81f3a1` tree.
+
 ## What it does
 
 `domain-modeling` builds and sharpens a project's **ubiquitous language** while you are designing: challenging a term that conflicts with the glossary, forcing a precise word where you used a vague one, and stress-testing a relationship with a concrete scenario until the boundaries are exact.
@@ -6,7 +8,7 @@ It is the **active** discipline, not the passive one. Reading `GLOSSARY.md` to b
 
 ## When to reach for it
 
-Type `/domain-modeling`, or the agent reaches for it automatically when a task fits. In practice, automatic invocation is the weakest part of the skill: when `grill-with-documentation` or `wayfinder` say to load it, models frequently load `grilling` and skip this one. If a grilling session runs and `GLOSSARY.md` is untouched at the end, that is what happened; invoke it by name alongside the other skill.
+Type `/domain-modeling`, or the agent reaches for it automatically when a task fits. Earlier reports found callers loading the interview discipline but skipping this reference. If resolved domain terms never reach the glossary, invoke it explicitly. An unchanged glossary alone is not proof of failure: a session may settle no new term.
 
 Reach for it when the *words* are the problem:
 
@@ -14,9 +16,9 @@ Reach for it when the *words* are the problem:
 | --- | --- |
 | Two people mean different things by "cancellation" | `domain-modeling`: pick the canonical term, list the other under `_Avoid_` |
 | "Account" is doing three jobs in three files | `domain-modeling`: split it into Customer and User |
-| You just made a hard-to-reverse architectural choice | `domain-modeling`: it offers an ADR, if the choice clears the bar |
+| You just made a hard-to-reverse architectural choice | `domain-modeling` offers an architecture decision record when the choice clears the bar |
 | The module's *shape* is the problem: where the seam goes, how deep the interface is | [codebase-design](./codebase-design.md) |
-| You want the whole plan interrogated before you build | [grill-with-documentation](../workflow/grill-with-documentation.md), which drives this skill underneath |
+| You want the whole plan interrogated before you build | [specify](../workflow/specify.md), which resolves outstanding decisions and records agreed feature behavior |
 | You want a term looked up, not changed | Nothing. Read `GLOSSARY.md`. It is a file. |
 
 ## Prerequisites
@@ -24,7 +26,7 @@ Reach for it when the *words* are the problem:
 None up front. The skill writes into two places and creates both lazily:
 
 - **`GLOSSARY.md`** at the repository root, created by the first resolved term. In a repository with a `GLOSSARY-MAP.md` at the root, terms go into the per-context `GLOSSARY.md` the map points at instead.
-- **`documentation/architecture-decision-record/`**, created by the first ADR that clears the bar.
+- **`documentation/architecture-decision-record/`**, created by the first architecture decision record that clears the bar.
 - **`GUIDELINES.md`** at the repository root, created when [code-review-and-refactor](../workflow/code-review-and-refactor.md), [improve-codebase-architecture](../upkeep/improve-codebase-architecture.md), or [setup-ai-workspace](../getting-started/setup-ai-workspace.md) offers to and you accept. The skill interviews you about your conventions and writes only judgement-call rules, each with its reason; declining is recorded in `documentation/agents/domain.md`.
 
 Nothing needs to exist before you start, and nothing is created speculatively.
@@ -33,7 +35,7 @@ Nothing needs to exist before you start, and nothing is created speculatively.
 
 ## Two artifacts, two bars
 
-The glossary and the ADR are held to different standards, and conflating them is where most of the trouble in this skill comes from.
+The glossary and architecture decision record are held to different standards. The first defines terms; the second records a consequential choice.
 
 | | `GLOSSARY.md` | `documentation/architecture-decision-record/NNNN-slug.md` |
 | --- | --- | --- |
@@ -42,7 +44,7 @@ The glossary and the ADR are held to different standards, and conflating them is
 | Written | Inline, the moment the term is settled | Offered, not assumed |
 | Never holds | Implementation details, a specification, a scratch pad, general programming concepts | A diary of every choice made this session |
 
-Miss any one of the ADR's three tests and there is no ADR. An easily-reversed decision will just get reversed; an unsurprising one is nobody's question; one with no real alternative records that you did the obvious thing.
+Miss any of those three tests and no architecture decision record is needed. An easily reversed decision, an unsurprising choice, or a choice with no real alternative does not earn a separate record.
 
 The `GLOSSARY.md` rule is the one to actually hold onto, because it is the one that breaks in the field. **It is a glossary and nothing else.** Left unchecked, models treat "write to `GLOSSARY.md`" as permission to persist every answer you give, and the file turns into a running specification. This is the most-reported problem with the skill, across several models.
 
@@ -55,7 +57,7 @@ The limit is worth knowing. It cross-references **code** and the committed `GLOS
 ## Common questions
 
 **My `GLOSSARY.md` is 500 lines. 1,000. 3,000. What do I do?**
-The size is a symptom, not the disease: the file has absorbed implementation detail and decisions that were never glossary material. The fix is a direct instruction: `/grill-with-documentation make my GLOSSARY.md more concise and remove any implementation details from it`. Run it against a bloated file and most of it goes. Only reach for a `GLOSSARY-MAP.md` split once the file is genuinely lean and still covers two domains that a reader would not want to hold at once; splitting a bloated file just gives you several bloated files. The skill's guidance here is not yet strong enough to prevent the growth in the first place, and the issue tracking that is still open.
+Check whether it has absorbed implementation detail and decisions that are not glossary material. Ask `/domain-modeling` to separate those meanings: terms stay in the glossary, agreed behavior belongs in specifications, constraints in requirements, and unresolved proposals in drafts. Preserve obligations rather than deleting them to reduce length. Only split through `GLOSSARY-MAP.md` once the lean glossary genuinely covers distinct contexts; splitting a bloated file just gives you several bloated files.
 
 **What happened to `CONTEXT.md` and `CONTEXT-MAP.md`?**
 
@@ -68,10 +70,10 @@ Historical documents and pinned URLs keep the names used at the time.
 It was removed, and it was not deprecated. Its job moved into `domain-modeling`, which maintains the whole model continuously rather than dumping a glossary out of one conversation. Vocabulary enforcement got more load-bearing, not less: it now runs underneath grilling, triage and mapping rather than as a separate pass you remember to do.
 
 **How do I get a glossary for a codebase that has none?**
-Ask for it explicitly rather than waiting for it to accumulate. `/grill-with-documentation help me scaffold my existing repository with a GLOSSARY.md` is the documented route; expect a long interrogation: one user reported 50+ questions before the file was in shape. Incidental use builds the glossary far too slowly on a brownfield repository.
+Ask `/domain-modeling` explicitly to scaffold the glossary rather than waiting for terms to accumulate incidentally. An earlier report described 50+ questions for an existing repository. Bound the scope to one context and supply known terms first; settled meanings do not need another interview.
 
-**Can I keep the domain model and use my own ADR format?**
-Not cleanly today. The glossary half and the ADR half ship in one skill, so a team with an established ADR convention (different template, different location, different naming) gets instructions that conflict with its house style. The current options are to copy the skill locally and edit it, or to override the ADR conventions in your repository's own agent docs. Splitting the two apart is [an open request](https://github.com/mattpocock/skills/issues/557).
+**Can I keep the domain model and use my own architecture decision record format?**
+The glossary and decision-record instructions ship together, so an established team format may conflict with the default. State the repository's authoritative convention explicitly in its steering documents, and surface any conflict instead of silently replacing old records. Separating the two disciplines was requested in [issue #557](https://github.com/mattpocock/skills/issues/557).
 
 **Does a glossary actually earn its keep? It is one more artifact to review, and it can go stale.**
 Sometimes it does not, and it is worth being honest about where. DDD gets less useful the closer it gets to the implementation: the payoff is upstream, in naming and concept alignment, not in aggregates and layer ceremony. Synonym control matters at naming boundaries: module names, table names, status enums, issue titles, CLI commands. It matters much less in ordinary prose. There is also a live objection that domain terms compress communication *between humans* who already share them, and that an agent responds the same way to the plain-English description. On that reading, the glossary's value is keeping you and your reviewers aligned with what the agent is doing, not making the agent better. On a one-day build, skip it. And an unreviewed, agent-authored glossary is worse than none: it becomes confident-sounding lore that later sessions treat as truth.
@@ -83,11 +85,11 @@ No, and there is no plan for a skill that does. A domain language you do not und
 
 - It stops you mid-sentence to ask which of two things you meant, instead of picking one and moving on.
 - `GLOSSARY.md` changes **during** the conversation, not in a burst at the end.
-- It refuses to write an ADR for something you could undo tomorrow, and says which of the three tests failed.
+- It declines a decision record for something you could undo tomorrow and says which test failed.
 - New entries define what a thing *is* in one or two sentences and name the words you are giving up under `_Avoid_`.
 - It quotes your code back at you when your code and your sentence disagree.
 - `GLOSSARY.md` gets shorter as often as it gets longer.
 
 ## Where it fits
 
-`domain-modeling` is a **model-invoked reference** that runs *underneath* other skills more often than it runs on its own. [grill-with-documentation](../workflow/grill-with-documentation.md) drives it through a grilling session, [wayfinder](../shaping/wayfinder.md) loads it while charting a map, [triage](../upkeep/triage.md) uses it to keep tickets in the project's own words, and [improve-codebase-architecture](../upkeep/improve-codebase-architecture.md) calls it as decisions crystallise. Its closest sibling is [codebase-design](./codebase-design.md): the two are the vocabulary layer under everything else, this one for the *domain*, that one for the module's *shape*. It is also reachable directly, when you want the discipline without committing to the steps of whatever skill would normally pull it in. When you are unsure which skill fits, [what-is-next](../getting-started/what-is-next.md) routes you.
+`domain-modeling` is a model-invoked reference used by [specify](../workflow/specify.md), [graphify](../shaping/graphify.md), and [triage](../upkeep/triage.md) when domain meaning needs sharpening. [codebase-design](./codebase-design.md) supplies vocabulary for module shape rather than the problem domain. [documentation](./documentation.md) keeps the resulting terms, decisions, constraints, and agreed behavior in their separate records. [what-is-next](../getting-started/what-is-next.md) routes you when the next move is unclear.

@@ -1,3 +1,5 @@
+Upstream source: `improve-codebase-architecture`, verified in the `d81f3a1` tree.
+
 ## What it does
 
 `improve-codebase-architecture` surveys a codebase for **deepening opportunities**: places where a shallow module (an interface nearly as complex as the thing it hides) could become a deep one. It writes them up as a self-contained HTML report, and then grills you through whichever one you pick.
@@ -22,14 +24,14 @@ It sits outside the build loop: it is not a step in the main loop but something 
 Where it is confusable with siblings:
 
 - For designing one module you have already chosen, use [codebase-design](../reference/codebase-design.md): that is the bench, this is the survey that finds what to put on it.
-- For a whole effort too big to hold in one session, use [wayfinder](../shaping/wayfinder.md).
+- For a whole effort too big to hold in one session, use [graphify](../shaping/graphify.md).
 - For "this specific thing is broken," use [debug](./debug.md). It hands back here when the real finding is that there is no good seam to lock the bug down.
 
 ## Prerequisites
 
 None to run it. When `GUIDELINES.md` is missing it asks whether to create one. If you accept, [domain-modeling](../reference/domain-modeling.md) interviews you about your architecture conventions and rules first; declining is recorded in `documentation/agents/domain.md` and skips it. It reads `GLOSSARY.md` and any ADRs in `documentation/architecture-decision-record/` if they exist, and speaks in your domain's own nouns when they do: a candidate reads as "deepen the Order intake module," not "refactor the FooBarHandler."
 
-It writes in two places. The report goes to `documentation/architecture-audit/architecture-audit-<timestamp>.html` in the repository, one file per run so history accumulates. During the grilling loop it will add or sharpen terms in `GLOSSARY.md`, creating that file if it does not exist, and offer to record a rejected candidate as an ADR so a future run does not re-suggest it.
+The report goes to `documentation/architecture-audit/architecture-audit-<timestamp>.html`, one file per run. Refinement can also sharpen terms in `GLOSSARY.md` and offer an architecture decision record for a consequential rejection. That offer is conditional: rejecting a candidate does not automatically merit a permanent decision record.
 
 ## Depth, and the report that hunts for it
 
@@ -47,7 +49,7 @@ The report ends with a **Top recommendation** (the one it would tackle first), a
 
 ## What happens after you pick one
 
-Picking a candidate starts a [grilling](../reference/grilling.md) session over it: constraints, what sits behind the seam, which tests survive, what the deepened interface should look like. The output of that session is a decision, not a diff. From there the normal flow applies: take the decision into [to-specifications](../workflow/to-specifications.md), then [to-tickets](../workflow/to-tickets.md), then [implement](../workflow/implement.md).
+Picking a candidate starts [refine](../reference/refine.md) over its constraints, seam, surviving tests, and interface. The output is a decision, not a diff. Record agreed behavior through [specify](../workflow/specify.md), then use [taskify](../workflow/taskify.md) when decomposition is useful before [implement](../workflow/implement.md). A small approved living-code batch can instead enter separately installed [iterate](../../../skills/workflow/iterate/SKILL.md), respecting existing requirements and specifications.
 
 ## Common questions
 
@@ -61,7 +63,7 @@ The report loads Tailwind and Mermaid from CDNs, so it needs network access when
 
 **It gave me twelve candidates. Do I work through them in the same session or start a new one?**
 
-One candidate per session. Working through several in one conversation fills the context window with the report, the grilling, the domain-model edits and the code changes all at once. The reports accumulate in `documentation/architecture-audit/`, but they are records of past surveys, not live documents: carry the candidate itself rather than the file. Pick one, grill it, take the decision into `/to-specifications`, and turn the rest into tickets you can pick up independently later. Put the chosen improvement into a specification rather than going straight to implementation. This is a recurring question with no documented workflow in the skill itself.
+Prefer one candidate per session. Several candidates mix survey evidence, refinement, and implementation context before you have selected a scope. Reports in `documentation/architecture-audit/` are historical surveys, not living specifications. Record the chosen outcome and evidence in the appropriate current documents; retain other candidates in backlog as deferrals, not automatic authorization. A planned change can use `/specify`; a small approved iterative batch need not manufacture a new specification.
 
 **How should I prompt it?**
 
@@ -69,7 +71,7 @@ With the next thing you are building in mind. Where a big build is coming up, po
 
 **Does it work on a large legacy codebase?**
 
-Partly. It is strong on big existing codebases lacking consistent structure, and it is the recommended upkeep mechanism after any one-time structural setup. The honest counterweight: users with genuinely out-of-control projects report it "helped a little but still doesn't seem to cut it," and one developer with an eight-year legacy codebase reported the model going in circles where the same skill produces a clean graph on a tidy repository. There is no dedicated `/refactor` skill for that case yet. If the codebase has no shared vocabulary at all, [grill-with-documentation](../workflow/grill-with-documentation.md) to establish one first tends to make this skill's output much better.
+Results vary. Users with out-of-control projects reported limited help, and one report on an eight-year legacy codebase described the model going in circles. Bound the survey to an actively changing area and a concrete source of friction. If domain terms are inconsistent, use [domain-modeling](../reference/domain-modeling.md) to establish shared vocabulary before comparing designs.
 
 **How is this different from `/codebase-design`?**
 
@@ -94,8 +96,8 @@ There is no good answer shipped with the skill. The recurring request is for a `
 - No code changed during the run. The only new file is the HTML report in `documentation/architecture-audit/`.
 - It stops after the report and asks which candidate you want, rather than continuing on its own.
 - Each card explains the payoff as locality or leverage, and says which tests get simpler, not just "this is cleaner."
-- Rejecting a candidate for a durable reason gets you an offer to record an ADR, so the next run does not re-suggest it.
+- A consequential rejection earns an offer to record the decision and reason, so later surveys can account for it.
 
 ## Where it fits
 
-`improve-codebase-architecture` is **periodic maintenance**: run it every few days, outside any chain, to queue up work rather than to do it. Its neighbours are [codebase-design](../reference/codebase-design.md), which owns the depth-and-seam vocabulary every candidate is written in, [grilling](../reference/grilling.md), which walks the decision tree once you have chosen a candidate, and [domain-modeling](../reference/domain-modeling.md), which keeps `GLOSSARY.md` and the ADRs current as the decision settles. What it produces is an idea, which re-enters the main build flow at [grill-with-documentation](../workflow/grill-with-documentation.md) or [to-specifications](../workflow/to-specifications.md). After a build, [improve-agent-environment](./improve-agent-environment.md) reviews the checks, standards, and steering around the codebase. For which skill fits a situation, [what-is-next](../getting-started/what-is-next.md) is the router over the whole set.
+`improve-codebase-architecture` is periodic maintenance that generates candidate work rather than implementing it. [codebase-design](../reference/codebase-design.md) supplies depth-and-seam vocabulary; [refine](../reference/refine.md) explores the selected candidate; [domain-modeling](../reference/domain-modeling.md) records settled domain meanings and qualifying decisions. Approved work enters planned or just-in-time development without weakening existing obligations. [improve-agent-environment](./improve-agent-environment.md) reviews the surrounding checks and steering. [what-is-next](../getting-started/what-is-next.md) maps both workflows.

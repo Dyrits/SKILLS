@@ -39,6 +39,6 @@ This means that the review agent should be responsible for imposing coding stand
 You have access to several files in the repository:
 
 - `CLAUDE.md`/`AGENTS.md`: these files are pushed to the context window of any agent working in this repository. They should be used incredibly sparingly, usually only for **navigation pointers** to other files.
-- `GUIDELINES.md`: this file is read during review, not implementation. Add **navigation pointers** to docs folders if the standards file gets more than 1,000 lines long.
-- Docs: use docs as references files, pointed to by other files. Look for existing docs before writing new ones.
-- Skills: use skills for docs (since their description goes into the agent's context window), or for user-invoked commands. Follow the advice in the `writing-for-agents` skill.
+- `GUIDELINES.md`: this file is read during review, not implementation. Add **navigation pointers** to documentation folders if the standards file gets more than 1,000 lines long.
+- Documentation: use reference documents pointed to by other files. Look for existing documentation before writing new material; call the Skill tool with "documentation" when maintaining it.
+- Skills: use skills for reusable agent disciplines (their descriptions are available for discovery), or for user-invoked commands. Follow the advice in the `writing-for-agents` skill.

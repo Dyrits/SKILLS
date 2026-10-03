@@ -1,3 +1,5 @@
+Upstream source: `loop-me`, verified in `skills/in-progress/loop-me/` in the `d81f3a1` tree.
+
 ## What it does
 
 `design-workflow` grills you into a specification for a recurring workflow, using the current directory as a stateful workspace. It runs the standard grilling discipline, but aimed at **loops**: recurring patterns in your work (a morning inbox pass, a weekly review, an onboarding routine) that are predictable enough to delegate. Its output is `workflows/*.md`, one specification per workflow, and its bar is absolute: a specification is done only when an implementer agent could build it without asking a single question.
@@ -5,7 +7,7 @@
 ## When to reach for it
 
 - **Invocation mode.** You invoke this by typing `/design-workflow`, and the agent won't reach for it on its own.
-- **Trigger boundary.** Reach for it when a *recurring* activity in your work wants delegating and needs designing: what fires it, where the human checkpoints sit, what the brief shows you. For a one-off piece of engineering, use `grill-with-documentation` instead; `design-workflow` is only for loops you will run again.
+- **Trigger boundary.** Reach for it when a recurring activity needs a design: what fires it, where human checkpoints belong, and what the brief shows you. For a codebase feature, use [specify](./specify.md); `design-workflow` designs loops you will run again.
 
 ## The loop lens
 
@@ -27,4 +29,4 @@ No. A workflow is a specification of a loop; whether an agent, a script, or a hu
 
 ## Where it fits
 
-A **reach-for-it-anytime standalone** on the specification side: it is `grill-with-documentation`'s shape (stateful grilling, a workspace, a paper trail) pointed at recurring operational loops instead of a codebase feature. Its nearest sibling is [grill-with-documentation](./grill-with-documentation.md) (one-off ideas, domain model); its output is consumed by whatever implementer you point at the finished specification. For the map over the whole set, see [what-is-next](../getting-started/what-is-next.md).
+`design-workflow` is a reach-for-it-anytime standalone for recurring operational loops. [refine](../reference/refine.md) supplies the interview discipline; [specify](./specify.md) instead records codebase feature behavior. The finished workflow specification is input to the implementer you choose, not permission to start development automatically. [what-is-next](../getting-started/what-is-next.md) maps the whole set.

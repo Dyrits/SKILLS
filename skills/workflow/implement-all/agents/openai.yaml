@@ -1,5 +1,5 @@
 interface:
-  display_name: "Implement Specification"
-  short_description: "Implement a whole specification on one integration branch."
+  display_name: "Implement All"
+  short_description: "Implement an authorized batch on one integration branch."
 policy:
   allow_implicit_invocation: false

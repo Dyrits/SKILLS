@@ -1,0 +1,5 @@
+interface:
+  display_name: "Re-explain"
+  short_description: "Explain again, with the context I am missing"
+policy:
+  allow_implicit_invocation: false

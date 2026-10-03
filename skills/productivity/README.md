@@ -10,13 +10,12 @@ Understanding built or repaired in conversation.
 
 Reachable only when you type them (Claude Code: `disable-model-invocation: true`; Codex: `policy.allow_implicit_invocation: false` in `agents/openai.yaml`).
 
-- **[grill-me](./grill-me/SKILL.md)**: Get relentlessly interviewed about a plan or design until every branch of the design tree is resolved.
 - **[ask-someone-else](./ask-someone-else/SKILL.md)**: Turn a decision you can't answer alone into a Markdown questionnaire for the one person who can (filled in async, or together over a meeting).
-- **[wait-what](./wait-what/SKILL.md)**: Fire this the moment a message doesn't land. The agent re-pitches it with the context you were missing, in your language, using your `GLOSSARY.md` vocabulary.
+- **[re-explain](./re-explain/SKILL.md)**: Fire this the moment a message does not land. The agent explains it again with missing context, in your language, using your `GLOSSARY.md` vocabulary.
 
 ### Model-invoked
 
-- **[show-me](./show-me/SKILL.md)**: Explain the current topic with the smallest useful diagram, code sketch, or focused HTML artifact.
+- **[illustrate](./illustrate/SKILL.md)**: Explain the current topic with the smallest useful diagram, code sketch, or focused HTML artifact.
 
 ## Transport
 

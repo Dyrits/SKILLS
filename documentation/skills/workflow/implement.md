@@ -1,104 +1,31 @@
+Derived from upstream `implement`, verified at revision `d81f3a1`. The [archived upstream page](../../../.upstream/snapshots/d81f3a1/files/docs/engineering/implement.md) preserves its provenance.
+
 ## What it does
 
-`implement` builds work that has already been decided. You point it at a ticket, specifications, or the plan you just agreed in the conversation, and it writes the code, drives [test-driven-development](./test-driven-development.md) at the seams, typechecks as it goes, runs [code-review-and-refactor](./code-review-and-refactor.md) at the end, and commits to the current branch.
+`implement` builds authorized work and commits it on the current branch. Its input is settled intended behavior, not an invitation to redesign the scope. It accepts shared specifications, a task, or an explicit user-approved living work batch.
 
-It never reopens the plan. There is no interview, no clarifying round, no proposal of a different approach. Whatever was settled upstream is the input, and the skill's whole job is to turn that into a commit. That is what separates it from typing "build this" at a fresh agent, which will happily redesign the work while it builds it.
+It uses test-driven development at agreed seams and independent review before completion. Local documents stay current autonomously, with unfinished acceptance and evidence in `documentation/work-in-progress.md`. Completed authorized agreements and deliveries enter root `CHANGELOG.md` using the format owned by [documentation](../reference/documentation.md).
 
 ## When to reach for it
 
-You invoke this by typing `/implement` yourself: the agent won't reach for it on its own. It ships with `disable-model-invocation: true`, so no other skill can call it either. Wherever [what-is-next](../getting-started/what-is-next.md) or [to-tickets](./to-tickets.md) says "then `/implement` per ticket", that is an instruction to you, not something the agent will do unprompted.
-
-Where the work currently lives decides whether this is the right skill:
-
-| The work is… | Reach for |
-| --- | --- |
-| A ticket on the tracker | `/implement #42`, one ticket per session, clearing context between tickets |
-| A specification, not yet split up, and the build spans sessions | [to-tickets](./to-tickets.md) first, then `/implement` per ticket |
-| A specification, and the build is small | `/implement` directly against the specification |
-| Only in the conversation you just had, and it's still small | `/implement` right there, in the same window |
-| Not written down anywhere yet | [grill-with-documentation](./grill-with-documentation.md), or [grill-me](../productivity/grill-me.md) if there's no codebase |
-| One concrete behaviour you want test-first, with no specification | [test-driven-development](./test-driven-development.md) directly |
-| Already built, and you want it checked | [code-review-and-refactor](./code-review-and-refactor.md) directly |
-
-The same-session case is worth naming because the skill's own first line doesn't cover it. `SKILL.md` says "the specification or tickets", which nudges the model to go hunting for a file that doesn't exist. If the plan lives only in the thread, say so when you invoke it.
-
-## Prerequisites
-
-`implement` commits to the branch you are on. It does not create one, and it does not ask. Check you are on the branch you want the work on before you start.
-
-If the tickets came from [to-tickets](./to-tickets.md), the tracker they live on was configured by [setup-ai-workspace](../getting-started/setup-ai-workspace.md). `code-review-and-refactor` reads the same configuration to find the originating specifications at close-out.
-
-## What one run does
-
-A run is five beats, in order:
-
-1. Read the ticket or specification and work out the seams.
-2. Drive [test-driven-development](./test-driven-development.md) at the pre-agreed seams, one red-green slice at a time.
-3. Typecheck often, run single test files as it goes.
-4. Run the full test suite once, at the end.
-5. Run [code-review-and-refactor](./code-review-and-refactor.md), then commit to the current branch.
-
-One run covers one ticket. The tickets [to-tickets](./to-tickets.md) produces are tracer-bullet vertical slices sized to fit a single fresh context window, so the intended rhythm is: clear context, implement one ticket, commit, clear again. Each ticket is self-contained, which is what makes the previous ticket's context disposable.
-
-## Pre-agreed seams
-
-The idea the skill runs on is the **seam**: the public boundary you observe behaviour at, without reaching inside. Tests live at seams. Working at a seam agreed before any code is written is what keeps the tests durable, because the implementation underneath can be rewritten without the tests moving.
-
-The word "pre-agreed" is doing real work, and it is also the skill's weakest joint. Nothing inside `implement` agrees the seams. `test-driven-development` is the skill that asks, and it refuses to write a test at an unconfirmed seam. So in practice the agreement happens either upstream in the specification, or in the first exchange of the run. If it happens nowhere, the precondition never fires and the run quietly becomes "just write the code". Naming the seams in the specification is what stops that.
+You invoke this by typing `/implement`; the agent will not reach for it on its own. Use it when the behavior is agreed and the next step is code. Use [prototype](../shaping/prototype.md) only for a user-approved experiment answering an unresolved design question.
 
 ## Common questions
 
-**It finished, but my ticket is still open and the acceptance criteria are still unchecked.**
+**Do I need a standalone specification or published task?**
 
-Correct, and expected. `implement` has no completion step. It ends at the commit and never touches the work item, confirmed on GitHub Issues and on the local markdown tracker, so it is not a tracker integration problem. The closing refactor phase applies supported standards changes, but the workflow does not tick the `- [ ]` boxes on the originating issue. Close the ticket and reconcile the criteria yourself. This bites hardest on a dependency chain, because `to-tickets` defines the frontier as tickets whose blockers are all closed. If nothing gets closed, nothing ever becomes visibly unblocked.
+No. An explicit approved batch in working state can supply the agreement. Global and feature requirements still apply. A backlog candidate or unresolved draft is not authorization.
 
-**Can I point it at all my tickets at once, or run several in parallel?**
+**Does passing the test suite mean acceptance is complete?**
 
-`implement` covers one ticket per invocation. For a whole specification in one run, [implement-all](./implement-all.md) dispatches implementers in separate worktrees and merges completed tickets onto one integration branch. Running several `/implement` sessions side by side in one checkout is worse than unsupported: one field report describes a `git commit --amend` in one session landing on another session's commit, a stash vanishing from `refs/stash`, and commits landing on the wrong branch, all in a single afternoon across three issues. The sessions share one working directory, one index, and one HEAD. Git worktrees are the community workaround, and note that `refs/stash` is shared across worktrees too, so worktrees alone do not fix the stash case. Use `implement-all` for orchestrated parallel work instead of sharing one checkout between sessions.
-
-**Can it open a pull request instead of committing?**
-
-Not built in. It commits straight to the current branch, which several people find too eager: the code lands before they have had a chance to verify it works. There is no configuration flag and no PR mode. People override it in the invocation ("commit to a branch and open a PR") or by editing their local copy of the skill. [to-pull-request](./to-pull-request.md) supplies the body when the agent writes one.
-
-**Which phase is responsible for standards?**
-
-`implement` focuses on red/green, establishing the required behavior with passing tests.
-The closing [code-review-and-refactor](./code-review-and-refactor.md) phase checks standards, applies supported refactors, and verifies that behavior remains intact.
-Specifications findings that need behavior changes identify further implementation work.
-
-**Does the closing refactor phase see uncommitted changes?**
-
-Yes.
-Supply a fixed point, such as the commit before implementation, so it can capture the current work, including tracked uncommitted changes and new files in scope.
-It leaves its refactors uncommitted so `implement` can commit the verified result together.
-Independent reviewers receive the starting diff and source documents in fresh contexts, then retain their context for verification after the coordinator edits.
-
-**One ticket burned 150k tokens. Am I using it wrong?**
-
-Probably the ticket is too big rather than the skill being misused. A run does codebase exploration, a red-green loop per seam, a full suite, and a review, so a non-trivial ticket exceeding 100k tokens is normal rather than a sign something broke. The lever is upstream: right-size the tickets in [to-tickets](./to-tickets.md) so each fits one fresh window. If a single ticket keeps blowing out, split it rather than raising the effort level.
-
-**`/implement #2` in a fresh session worked on something completely unrelated.**
-
-`#2` is resolved against whatever numbered list the agent can see, which in a fresh session may be a todo file, a checklist, or another work list rather than the configured tracker. The resolution is confident rather than fail-closed, so the mistake is not obvious until it has started. Pass the full reference, the issue URL or `owner/repo#2`, and ask it to confirm the title back before it begins.
+Only for the behavior those tests establish. Appearance and interaction may need human judgment. Missing validation remains visible instead of becoming a delivery claim.
 
 ## It's working if
 
-- The session opens by reading the ticket or specification and restating what it will build, rather than asking you what to build.
-- You can see an actual `/test-driven-development` invocation in the trace, not just tests appearing in the diff.
-- Typechecks and single test files run repeatedly during the run, and the full suite runs once near the end.
-- The run reaches a commit on your current branch without you prompting it to carry on.
-- The diff is one ticket's worth of change: a vertical slice through every layer, not several tickets swept together.
+- The review can trace intended behavior to the originating agreement.
+- The commit includes verified work, and unfinished acceptance has evidence and a resumption pointer.
+- Scope conflicts come back to you rather than becoming weaker requirements.
 
 ## Where it fits
 
-`implement` is the build step of the main chain:
-
-```txt
-grill-with-documentation → to-specifications → to-tickets → implement → code-review-and-refactor → improve-agent-environment
-```
-
-Its neighbours are [to-tickets](./to-tickets.md), which produces the tickets it consumes and declares the blocking edges that decide their order; [test-driven-development](./test-driven-development.md), which it drives internally at each seam; and [code-review-and-refactor](./code-review-and-refactor.md), which it runs before committing. It sits downstream of the planning skills and trusts them. It does not re-validate the shape of what it was handed, so a badly-structured map or a horizontally-layered ticket gets built as written.
-
-That trust is why [wayfinder](../shaping/wayfinder.md) merges onto the chain at [to-specifications](./to-specifications.md) rather than looping its map straight into `implement`. Go straight to `implement` from a map only when the effort turned out genuinely small.
-
-[what-is-next](../getting-started/what-is-next.md) is the router over the whole set when you are not sure which flow you are in.
+This is the implementation chain step after [taskify](./taskify.md), following [specify](./specify.md), and before [code-review-and-refactor](./code-review-and-refactor.md). Living iteration can reach it directly with an approved batch. [implement-all](./implement-all.md) coordinates parallel work; [what-is-next](../getting-started/what-is-next.md) maps the whole system.

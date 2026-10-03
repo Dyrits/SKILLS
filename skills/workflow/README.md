@@ -1,22 +1,28 @@
 # Workflow
 
-The idea→ship spine, in order.
+The idea-to-ship flow, with shared documents for planned and just-in-time development.
 
 ## User-invoked
 
-Reachable only when you type them (Claude Code: `disable-model-invocation: true`; Codex: `policy.allow_implicit_invocation: false` in `agents/openai.yaml`).
-
-- **[grill-with-documentation](./grill-with-documentation/SKILL.md)**: Stateful grilling that sharpens an idea while building the domain model (`GLOSSARY.md`, architecture decision records) as it goes.
-- **[design-workflow](./design-workflow/SKILL.md)**: Stateful grilling that turns the recurring loops in your work into implementable workflow specifications.
-- **[to-specifications](./to-specifications/SKILL.md)**: Turn the current conversation into a local draft specification, or publish it to the issue tracker when requested.
-- **[to-tickets](./to-tickets/SKILL.md)**: Break a plan, specification, or conversation into tracer-bullet tickets, each declaring its blocking edges.
-- **[implement](./implement/SKILL.md)**: Build one ticket or a small set of specifications: `/test-driven-development` at pre-agreed seams, `/code-review-and-refactor`, commit.
-- **[implement-all](./implement-all/SKILL.md)**: Implement a whole specification on one integration branch, with concurrent ticket work and an optional pull or merge request.
+- [specify](./specify/SKILL.md): Resolve outstanding decisions and write or update feature requirements and specifications.
+- [taskify](./taskify/SKILL.md): Decompose work into tasks with coherent outcomes, acceptance criteria, and blocking dependencies.
+- [implement](./implement/SKILL.md): Implement authorized work, validate and review it, and maintain the shared documents.
+- [implement-all](./implement-all/SKILL.md): Build a task graph on one integration branch, with concurrent work and an optional request.
+- [design-workflow](./design-workflow/SKILL.md): Turn recurring work loops into implementable workflow specifications.
 
 ## Model-invoked
 
-Model- or user-reachable (rich trigger phrasing so the model can reach for them).
+- [test-driven-development](./test-driven-development/SKILL.md): Establish behavior through red/green, one vertical slice at a time.
+- [code-review-and-refactor](./code-review-and-refactor/SKILL.md): Review Standards and Specifications independently, apply supported refactors, and verify them.
+- [to-pull-request](./to-pull-request/SKILL.md): Write a request body with a summary visual, before/after evidence, and merge danger.
 
-- **[test-driven-development](./test-driven-development/SKILL.md)**: Test-driven development with a red-green-refactor loop, one vertical slice at a time.
-- **[code-review-and-refactor](./code-review-and-refactor/SKILL.md)**: Review Standards and Specifications independently, apply supported refactors after red/green, and verify with the same reviewers.
-- **[to-pull-request](./to-pull-request/SKILL.md)**: Write the body of a pull or merge request: a summary visual, before/after evidence, and the merge danger.
+## Not in the plugin
+
+Install deliberately; placement in this bucket does not promote a skill.
+
+- [iterate](./iterate/SKILL.md): Develop the living application just in time, maintaining backlog, working state, and root changelog. User-invoked.
+- [address-feedback](./address-feedback/SKILL.md): Assess comments, implement approved changes, and publish approved replies. User-invoked.
+- [publish-message](./publish-message/SKILL.md): Publish established conclusions after approval of exact text and destination. User-invoked.
+- [work-in-tree](./work-in-tree/SKILL.md): Carry out work in an isolated checkout with a verified return destination. User-invoked.
+- [sync-tree](./sync-tree/SKILL.md): Transfer committed work to the verified corresponding local branch. User-invoked.
+- [rebase](./rebase/SKILL.md): Rebase local branches with recovery records, checks, and separately approved publication. User-invoked.

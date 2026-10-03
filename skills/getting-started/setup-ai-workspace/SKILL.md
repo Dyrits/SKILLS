@@ -1,166 +1,131 @@
 ---
 name: setup-ai-workspace
-description: "Configure a repository for AI-assisted work: issue tracking, ticket conventions, triage roles, domain documentation, and optional tooling setup."
+description: "Configure a repository for AI-assisted work: task tracking, ticket-writing conventions, triage roles, domain documentation, and optional tooling setup."
 disable-model-invocation: true
 ---
 
-# Setup AI Workspace
+# Setup AI workspace
 
-Scaffold the per-repository configuration that the workflow skills assume. Four decisions:
+Configure the repository contracts that `specify`, `taskify`, `triage`, and `graphify` consume. Explore, recommend, confirm, then write inspectable configuration. This skill configures the project, not the installed skills.
 
-- **Issue tracker**: the system of record for published issues, either local markdown under `backlog/` or a remote tracker (GitHub, GitLab, Jira, or one you describe)
-- **Ticket writing convention**: the built-in `to-tickets` format, or an existing project template or ticket-writing skill
-- **Triage roles**: the strings this repository uses for the two category and four state roles
-- **Domain documentation**: where `GLOSSARY.md` and architecture decision records live, whether `GUIDELINES.md` exists, and the consumer rules for reading them
+Call the Skill tool with "documentation" before choosing document locations or writing configuration. Consume its shared project-document rules for lazy creation, authority, requirements, publication, resumption, and `CHANGELOG.md`. Reference that contract rather than copying its complete format into templates.
 
-An optional **tooling** stage provisions free development tools through `setup-ai-tooling`; that skill owns installation, client integration, verification, and measurement setup.
+Four decisions belong here:
 
-**Refinement is not a decision.** Whatever tracker a repository picks, it drafts in `.refinement/` and publishes only when the user asks. A remote tracker with its own refinement or analysis status changes nothing here: local drafting comes first, publication pushes the result. [refinement.md](./refinement.md) holds those conventions and every generated tracker file carries them.
+- The task tracker, local Markdown or a remote service.
+- The ticket-writing convention, the built-in `taskify` format or an established project template or skill.
+- The strings used for the two category and four intake-state roles.
+- The domain documentation layout and consumer rules.
 
-This is a prompt-driven skill, not a deterministic script. Explore, present what you found, confirm with the user, then write.
+Repository specifications remain authoritative regardless of tracker. Remote tasks link to or summarize the relevant specification. Local document upkeep can proceed within the requested scope; remote publication requires an explicit user request.
 
-## Process
+## 1. Explore
 
-### 1. Explore
+Read existing configuration and conventions before proposing changes:
 
-Look at the current repository to understand its starting state. Read whatever exists; don't assume:
+- `git remote -v` and `.git/config`, to identify the host without assuming it is the tracker.
+- Root `AGENTS.md` and `CLAUDE.md`, including any `## Agent skills` section.
+- `documentation/agents/` and any verified tooling record.
+- Root `CHANGELOG.md`, `documentation/requirements.md`, `documentation/backlog.md`, `documentation/work-in-progress.md`, and relevant feature documentation.
+- Existing `backlog/` and `.refinement/` history. Preserve it in place unless the user separately requests migration.
+- Task templates, contribution documentation, and available ticket-writing skills.
+- `GLOSSARY.md`, `GLOSSARY-MAP.md`, `GUIDELINES.md`, and relevant architecture decision records.
+- Monorepo signals such as workspace configuration or independent packages.
+- Whether `triage` is installed, which determines whether role configuration is needed.
 
-- `git remote -v` and `.git/config`: is there a remote, and which host?
-- `AGENTS.md` and `CLAUDE.md` at the repository root: does either exist? Is there already an `## Agent skills` section in either?
-- `GLOSSARY.md`, `GLOSSARY-MAP.md`, and `GUIDELINES.md` at the repository root
-- `documentation/architecture-decision-record/` and any `src/*/documentation/architecture-decision-record/` directories
-- `documentation/agents/`: does this skill's prior output already exist?
-- `documentation/agents/ai-tooling.md`: has tooling setup already recorded verified integrations and a baseline?
-- `backlog/` and `.refinement/`: existing tracker records and refinement workspaces
-- Issue templates, contribution documentation, and available ticket-writing skills: is there an established ticket structure, language, or required metadata?
-- Is the `triage` skill installed? (a `triage` skill folder alongside this one, or `triage` in your available skills.) This decides whether Section C runs at all.
-- Monorepo signals: a `pnpm-workspace.yaml`, a `workspaces` field in `package.json`, or a populated `packages/*` with its own `src/`. These are present only in a genuinely large multi-package repository; their absence means single-context, which is almost every repository.
+Project and feature requirements constrain the setup. Infrastructure, legal, company, budget, service, and security obligations cannot be silently weakened. Adjust an implementation approach within those constraints; surface conflicts for a decision.
 
-### 2. Present findings and ask
+## 2. Present findings and ask
 
-Summarise what's present and what's missing. Then take the sections in order. One section, one answer, then the next.
+Summarize what already exists. Take the following sections in order, one question at a time, recommending an answer the user can accept briefly.
 
-Lead each section with the recommended answer so the user can accept it in a word. Give a one-line explainer only when the choice genuinely branches; skip the section entirely when exploration already settled it (Section C when `triage` isn't installed, Section D when there's no monorepo).
+### A. Task tracker
 
-**Section A: Issue tracker.**
+Ask where tasks live. Recommend GitHub for a GitHub remote, GitLab for a GitLab remote, or local Markdown without a remote. A different tracker is an ordinary override.
 
-> Explainer: the issue tracker is the system of record for published issues and specifications. `to-tickets`, `to-specifications`, `triage`, and `wayfinder` read from it and publish to it. It is where work goes once it leaves `.refinement/`.
+- Local Markdown uses `documentation/<feature>/tasks/<task>.md` for task bodies.
+- A remote tracker uses its native task records. Local task files, when useful, contain a title and link to the authoritative published task rather than a copied body.
 
-Ask exactly one question, recommending the kind that exploration pointed at:
+Record the authoritative backlog location with the tracker choice. A local project uses `documentation/backlog.md`; a remote project uses the verified backlog or board URL and keeps only a local link in that file. Working state remains local for either tracker, with execution and resumption details rather than duplicated remote status. Preserve prior backlog history unless a migration is explicitly authorized.
 
-> Where do published issues live? (recommended: **<kind found during exploration>**)
->
-> - **Local markdown**: files under `backlog/<feature-slug>/`, committed to this repository. Fits solo projects and repositories with no remote.
-> - **Remote tracker**: GitHub Issues (`gh` CLI), GitLab Issues ([`glab`](https://gitlab.com/gitlab-org/cli) CLI), Jira (MCP connector, CLI, or REST), or another tracker (Linear, Azure DevOps, …) you describe in one paragraph.
+Record the choice in `documentation/agents/issue-tracker.md`. Preserve this established configuration filename and literal CLI/API `issue` terminology.
 
-Take the recommendation from the remote: GitHub host recommends GitHub, GitLab host (`gitlab.com` or self-hosted) recommends GitLab, no remote recommends local markdown. The user overrides freely; a GitHub remote plus a Jira project is an ordinary combination.
+For Jira or another tracker, inspect available connectors, command-line tools, and documented API workflows first. After the user provides the project identity, verify access with the smallest read-only operation. Record the verified method. If no access exists, mark it manual and prepare local Markdown without claiming to read or update the service.
 
-For Jira, inspect the tools available in the current harness before asking how access works. If a Jira connector, CLI, or documented API workflow is available, identify it and verify access with the smallest read-only operation the available tool supports after the user provides the project key. Record the verified method and project key. If no Jira access is available, record publishing as **manual**: the skills may prepare the exact Markdown locally, but must not claim they can read or update Jira.
+Resolve the backlog URL from verified project information where possible; ask for the intended board or backlog when it cannot be determined. If tracker access is manual, record that limitation rather than inventing a URL or claiming live access. The GitHub and GitLab templates default external PR/MR intake off. Leave that flag off unless the user asks to change it.
 
-Record the choice in `documentation/agents/issue-tracker.md`. The GitHub and GitLab templates carry a "PRs as a request surface" flag, defaulted **off**. Leave it off and don't raise it: a user who wants external PRs in the triage queue can flip the flag in the file later.
+### B. Ticket-writing convention
 
-**Section B: Ticket writing convention.**
+Ask whether to use the discovered convention. If none exists, recommend the built-in `taskify` format and ask whether the project has another template, installed skill, or short description.
 
-Present any convention discovered during exploration, then ask exactly one question:
+Record:
 
-> Use **<discovered convention>** when drafting tickets? (recommended: **yes**)
+- **Source:** Built-in `taskify`, a repository-relative document path, or a skill name and its durable template reference.
+- **Applies to:** Local task bodies, published tasks, or both.
+- **Rules:** Language and required metadata needed to interpret the source.
 
-When no convention was found, recommend the built-in `to-tickets` format and ask whether the repository follows another template or ticket-writing skill. Accept a repository path, an installed skill, or a short description. Choosing a skill such as `create-jira-ticket` adopts its ticket structure, language, and quality rules without adopting its creation workflow or making that skill mandatory.
+Keep the full template at its source. An external ticket-writing skill contributes structure and quality rules, not its creation workflow or publication authority. `taskify` still owns tracer-bullet decomposition, blocking edges, acceptance criteria, and publication approval.
 
-Fill the "Ticket writing convention" section of the tracker template with:
+### C. Triage roles
 
-- **Source:** `Built-in to-tickets`, a repository-relative document path, or the skill name plus the durable reference path that contains its templates.
-- **Applies to:** refinement drafts, published tickets, or both.
-- **Rules:** only the decisions needed to interpret the source, such as ticket language or required tracker metadata. Keep the full template in its source instead of copying it here.
+Skip this section when `triage` is not installed. Otherwise ask whether to retain the default role strings:
 
-The built-in convention remains available as a fallback on every run. An external convention changes the shape of each ticket, while `to-tickets` continues to own tracer-bullet decomposition, blocking edges, acceptance criteria, and publication approval.
+- Category roles: `bug`, `enhancement`.
+- State roles: `to-evaluate`, `on-hold`, `ready`, `not-planned`.
 
-**Section C: Triage role vocabulary.** Skip this section entirely if the `triage` skill isn't installed (exploration told you), since an uninstalled skill needs no vocabulary.
+Only collect overrides if the user declines. The strings are configurable; the role set stays fixed because downstream skills consume it.
 
-If it is installed, ask exactly one question:
+### D. Domain documentation
 
-> Do you want to keep the default triage role strings? (recommended: **yes**)
+Default to one root `GLOSSARY.md` and `documentation/architecture-decision-record/` without asking. Offer a root `GLOSSARY-MAP.md` with per-context glossaries only when monorepo signals justify it.
 
-The defaults are the two canonical category roles (`bug`, `enhancement`) and the four canonical state roles (`to-evaluate`, `on-hold`, `ready`, `not-planned`), each string equal to its role name. On **yes**, write them as-is. Only if the user says no, usually because their tracker already uses other names (e.g. `bug:triage` for `to-evaluate`), collect the overrides so `triage` reuses existing vocabulary instead of creating duplicates. Only the strings are customisable; the role set itself stays canonical, because `to-tickets` and `to-specifications` apply `ready`.
+If `GUIDELINES.md` exists, record `Guidelines: present`. Otherwise ask whether to create it through an interview, recommending yes when there is no standards document. On acceptance, call the Skill tool with "domain-modeling". On refusal, record `Guidelines: declined`.
 
-**Section D: Domain documentation.** Default to **single-context** (one `GLOSSARY.md` plus `documentation/architecture-decision-record/` at the repository root). This fits almost every repository; write it without asking.
+## 3. Confirm and write
 
-Offer **multi-context** (a root `GLOSSARY-MAP.md` pointing to per-context `GLOSSARY.md` files) only when exploration found monorepo signals. Then confirm which layout they want.
+Show the proposed agent-instruction block and configuration contents before writing. Let the user adjust them.
 
-Then, when `GUIDELINES.md` is missing, ask exactly one question:
-
-> Create `GUIDELINES.md` now, with an interview about your conventions and rules? (recommended: **yes** when no standards document exists)
-
-On yes, call the Skill tool with "domain-modeling" for the interview (code and architecture focus). On no, set `Guidelines: declined` in `domain.md`. When the file already exists, set `Guidelines: present` and skip the question.
-
-### 3. Confirm and edit
-
-Show the user a draft of:
-
-- The `## Agent skills` block to add to whichever of `CLAUDE.md` / `AGENTS.md` is being edited (see step 4 for selection rules)
-- The contents of `documentation/agents/issue-tracker.md`, `documentation/agents/domain.md`, and `documentation/agents/triage-roles.md` (the last only when `triage` is installed)
-
-Let them edit before writing.
-
-### 4. Write
-
-**Pick the file to edit:**
-
-- If `CLAUDE.md` exists, edit it.
-- Else if `AGENTS.md` exists, edit it.
-- If neither exists, ask the user which one to create; don't pick for them.
-
-Never create `AGENTS.md` when `CLAUDE.md` already exists (or vice versa); always edit the one that's already there.
-
-If an `## Agent skills` block already exists in the chosen file, update its contents in-place rather than appending a duplicate. Don't overwrite user edits to the surrounding sections.
-
-The block:
+Edit `CLAUDE.md` if it exists; otherwise edit `AGENTS.md` if it exists. If neither exists, ask which to create. Update an existing `## Agent skills` block in place and preserve surrounding user instructions.
 
 ```markdown
 ## Agent skills
 
-### Issue tracker
+### Task tracker
 
-[one-line summary: the system-of-record tracker, and that drafting happens in `.refinement/` until an explicit publish]. See `documentation/agents/issue-tracker.md`.
+<one-line tracker summary; repository specifications are authoritative and remote publication is explicit>. See `documentation/agents/issue-tracker.md`.
 
 ### Triage roles
 
-[one-line summary of the role vocabulary]. See `documentation/agents/triage-roles.md`.
+<one-line role-vocabulary summary>. See `documentation/agents/triage-roles.md`.
 
 ### Domain documentation
 
-[one-line summary of layout: "single-context" or "multi-context"]. See `documentation/agents/domain.md`.
+<single-context or multi-context summary>. See `documentation/agents/domain.md`.
+
+### Project documents
+
+Call the Skill tool with "documentation" before creating or updating project documents, to apply the shared authority, requirements, publication, resumption, and changelog rules.
 ```
 
-Include the `### Triage roles` sub-block, and write `documentation/agents/triage-roles.md`, only when `triage` is installed and Section C ran. When it isn't, both are omitted.
+Omit the triage block and file when triage is not installed.
 
-Write `documentation/agents/issue-tracker.md` from the seed template matching the chosen tracker, then append [refinement.md](./refinement.md) verbatim, adjusting only its publication line to the tracker in use:
+Seed `documentation/agents/issue-tracker.md` from the selected template:
 
-- [issue-tracker-local.md](./issue-tracker-local.md): local-markdown tracker
-- [issue-tracker-github.md](./issue-tracker-github.md): GitHub
-- [issue-tracker-gitlab.md](./issue-tracker-gitlab.md): GitLab
-- [issue-tracker-jira.md](./issue-tracker-jira.md): Jira
-- For any other remote tracker, write the system-of-record sections from the user's paragraph, following the shape of the templates above: conventions, ticket writing convention, what "publish to the issue tracker" means, what "fetch the relevant ticket" means, and wayfinding operations.
+- [issue-tracker-local.md](issue-tracker-local.md)
+- [issue-tracker-github.md](issue-tracker-github.md)
+- [issue-tracker-gitlab.md](issue-tracker-gitlab.md)
+- [issue-tracker-jira.md](issue-tracker-jira.md)
 
-Then write the remaining files:
+For another tracker, use the same sections with the user's verified access and conventions. Append [refinement.md](refinement.md), which delegates the shared document contract instead of installing a separate drafting tree.
 
-- [triage-roles.md](./triage-roles.md): role vocabulary (only if `triage` is installed)
-- [domain.md](./domain.md): domain documentation consumer rules and layout
+Write [domain.md](domain.md), and [triage-roles.md](triage-roles.md) when applicable. Create only configuration needed now, not empty feature trees or speculative documents.
 
-### 5. Optional tooling
+## 4. Optional tooling
 
-If the user included tooling in the workspace setup request, continue within that scope.
-Otherwise offer the tooling stage once, recommending it when relevant integrations are missing; accepting it covers project configuration and any missing global dependencies identified in the setup plan.
-Skip this stage when declined, and reuse an existing verified setup when no changes are requested.
+Continue when tooling was included in the request; otherwise offer this stage once. The separately installed `setup-ai-tooling` skill owns installation and verification.
 
-The experimental `setup-ai-tooling` skill is installed separately and is not shipped in the plugin.
-Call the Skill tool with "setup-ai-tooling" when this stage is selected and the skill is available.
-Pass the project, verified tracker access, known client integrations, and the authorized project/global scope so it can reuse the work above.
-Keep tool selection and installation steps in that skill rather than copying them here.
-If it is unavailable, finish workspace configuration and tell the user how to install or invoke `setup-ai-tooling` later.
-Done when the selected tooling stage has returned a verified record or an explicit gap, or the user skipped it.
+When selected and available, call the Skill tool with "setup-ai-tooling", passing the project, verified tracker access, known clients, and approved project/global scope. If unavailable, finish configuration and tell the human how to install or run it later. Completion requires either a verified tooling record, a stated gap, or the user's decision to skip it.
 
-### 6. Done
+## 5. Done
 
-Tell the user the setup is complete and which workflow skills will now read from these files. Mention they can edit `documentation/agents/*.md` directly later; re-running this skill is only necessary if they want to switch issue trackers or restart from scratch.
-When tooling ran, include its record path and tell the user to run the separately installed experimental `/monitor-ai-tooling` later for a report from collected measurements.
+Report the files written and the workflow skills that consume them. The user can edit `documentation/agents/*.md` directly later. Confirm that future work uses the shared document tree, existing history remains in place, and installed skill files were not changed.

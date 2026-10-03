@@ -7,6 +7,10 @@ description: Test-driven development. Use when the user wants to build features 
 
 TDD is the red → green loop. This skill is the reference that makes that loop produce tests worth keeping: what a good test is, where tests go, the anti-patterns, and the rules of the loop. Every section applies on every cycle: consult them before and during the loop, not after.
 
+Call the Skill tool with "documentation" when reading or updating project agreements and work records. Derive expected behavior from the authorized originating agreement and applicable requirements, whether it is a task, shared specifications, or a user-approved living work batch. A standalone specification is not required. Keep unresolved proposals distinct from agreed behavior, and resolve consequential conflicts with the user rather than weakening requirements or assertions. Preserve historical input documents.
+
+Record unfinished cycles and verification evidence in working state under the shared model. Tests establish only what they exercise; appearance and interaction acceptance may require human judgment. The calling implementation workflow records completed authorized agreements and deliveries in root `CHANGELOG.md` using the shared format.
+
 When exploring the codebase, read `GLOSSARY.md` (if it exists) so test names and interface vocabulary match the project's domain language, and respect ADRs in the area you're touching.
 
 ## What a good test is

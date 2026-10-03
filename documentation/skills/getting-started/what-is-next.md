@@ -1,8 +1,10 @@
+Upstream source: `ask-matt`, verified in the `d81f3a1` tree. This fork renamed the router and extended it to planned and just-in-time development.
+
 ## What it does
 
 `what-is-next` is the router over the skills in this repository. You describe the situation you are in (an idea you cannot start, a pile of incoming bug reports, a session that has run long), and it names the skill or the sequence of skills that fits, plus where the human decisions in that sequence sit.
 
-It recommends and stops. It does not grill, write a specification, open a file or fire the skill it just named; what you get back is the next thing to type, and you type it. It is also a hand-written map of the skills in this repository rather than a scan of what you have installed, so it will not route you over your own skills or another author's.
+It recommends and stops. It reads the relevant skill before making a consequential claim about its behavior, but does not start the recommended work. It is a maintained map of this repository's skills, not a scan of everything you have installed.
 
 ## When to reach for it
 
@@ -10,67 +12,107 @@ You invoke this by typing `/what-is-next`; the agent won't reach for it on its o
 
 | Your situation | What the router gives back |
 | --- | --- |
-| A project whose AI tooling needs setup | Experimental [setup-ai-tooling](../../../skills/experimental/setup-ai-tooling/SKILL.md), also offered as an optional stage of [setup-ai-workspace](./setup-ai-workspace.md) when separately installed |
-| Tools are configured and you want evidence of their benefit | Experimental [monitor-ai-tooling](../../../skills/experimental/monitor-ai-tooling/SKILL.md), separately installed, for a report from existing measurements |
-| A task should run outside the original checkout | Experimental [work-in-tree](../../../skills/experimental/work-in-tree/SKILL.md), separately installed, to establish isolation before editing |
-| Committed work in a worktree needs to reach its original local branch | Experimental [sync-tree](../../../skills/experimental/sync-tree/SKILL.md), separately installed, for a local transfer rather than upstream publication |
-| Local branches need rebasing onto a target, then pushing | Experimental [rebase](../../../skills/experimental/rebase/SKILL.md), separately installed and user-invoked: rebases in place, runs the checks, and asks before a force-with-lease push |
+| A project whose AI tooling needs setup | [setup-ai-tooling](../../../skills/getting-started/setup-ai-tooling/SKILL.md), separately installed, also offered as an optional stage of [setup-ai-workspace](./setup-ai-workspace.md) |
+| Tools are configured and you want evidence of their benefit | [monitor-ai-tooling](../../../skills/upkeep/monitor-ai-tooling/SKILL.md), separately installed, reports from existing measurements |
+| A task should run outside the original checkout | [work-in-tree](../../../skills/workflow/work-in-tree/SKILL.md), separately installed, establishes isolation before editing |
+| Committed work in a worktree needs to reach its original local branch | [sync-tree](../../../skills/workflow/sync-tree/SKILL.md), separately installed, transfers locally rather than publishing upstream |
+| Local branches need rebasing onto a target | [rebase](../../../skills/workflow/rebase/SKILL.md), separately installed, verifies the result and asks separately before publication |
 | Git has already stopped on conflicts | [resolve-merge-conflicts](../upkeep/resolve-merge-conflicts.md), which resolves the current operation rather than starting a batch of rebases |
-| Agents keep rebuilding the same helper script | Experimental [scriptbook](../../../skills/experimental/scriptbook/SKILL.md), separately installed and model-invoked, so scripts are looked up and saved with an index |
-| An idea, and no idea where to start | The head of the main flow, and whether the build is small enough to skip the specification |
+| Agents keep rebuilding the same helper script | [scriptbook](../../../skills/reference/scriptbook/SKILL.md), separately installed, looks up reusable scripts before writing another |
+| An idea, and no idea where to start | A choice between planned development, just-in-time development, and clarification without development |
 | Bugs and requests arriving from other people | The [triage](../upkeep/triage.md) on-ramp, and why tickets you generated yourself don't belong on it |
-| Two skills that look interchangeable | The line between them, and it is usually one concrete test rather than a matter of taste. [grill-me](../productivity/grill-me.md) or [grill-with-documentation](../workflow/grill-with-documentation.md) turns on whether you are in a working directory; [grill-with-documentation](../workflow/grill-with-documentation.md) or [wayfinder](../shaping/wayfinder.md) turns on whether the effort fits one session |
-| A long session and a decision about the context | The ordered tree over the five options at a phase boundary |
-| An explanation you need to see | [show-me](../productivity/show-me.md) for a visual, or [wait-what](../productivity/wait-what.md) for a clearer rephrasing |
+| Two skills that look interchangeable | [refine](../reference/refine.md) clarifies a decision; [specify](../workflow/specify.md) records agreed feature behavior; [graphify](../shaping/graphify.md) maps a large effort's unresolved decisions |
+| A long session and a decision about the context | A session boundary that preserves authoritative work state |
+| An explanation you need to see | [illustrate](../productivity/illustrate.md) for a visual, or [re-explain](../productivity/re-explain.md) for a clearer explanation |
 | A skill you have already picked | Nothing useful. Invoke that skill directly. |
 
 ## Prerequisites
 
 The router names skills; it does not install them.
-Everything it points at has to be installed for the recommendation to be actionable, including experimental skills that are installed separately from the plugin.
+Everything it points at has to be installed for the recommendation to be actionable. A skill's bucket does not establish promotion; the plugin manifest does. Separately installed skills have no human documentation page.
 
-The tracker-dependent routes (triage, `to-specifications`, `to-tickets`, `implement`) assume [setup-ai-workspace](./setup-ai-workspace.md) has already configured the system-of-record tracker, local markdown or remote. Refinement drafts stay under `.refinement/` until publication in every case, so that part needs no configuring. The router will happily recommend them before that has happened.
+For tracker-dependent work, the router asks you to run [setup-ai-workspace](./setup-ai-workspace.md) when tracker configuration is missing. Local just-in-time work does not require tracker setup merely to maintain its working documents.
 
 ## Flows, not skills
 
-The word the skill gives you to think with is **flow**: a path *through* the skills, not a single one. Naming your situation places you on a flow at a step, which is a different answer from "here is the skill that matches your keywords". Five kinds of route exist, and the skill itself carries them in full:
+The useful idea is a **flow**, a path through skills that preserves agreements and progress. Choose the development workflow before choosing the next command:
 
-- **The main flow**, idea to ship. Grill, specification, tickets, implement, review, then [improve-agent-environment](../upkeep/improve-agent-environment.md) after a session worth learning from. Build one ticket at a time with `implement`, or the whole graph with [implement-all](../workflow/implement-all.md). Two branches sit inside it: a prototype detour when a question needs runnable code to settle, and the specification-and-tickets split, which only earns its cost when the build spans more than one session.
-- **On-ramps**, for a situation that generates work and then merges onto the main flow: incoming bug reports, something broken, or an effort too foggy and too large to hold in one session.
-- **Codebase health**, upkeep that produces work: [improve-codebase-architecture](../upkeep/improve-codebase-architecture.md) surveys for deepening opportunities, which re-enter the main flow as ideas.
-- **Standalones**, off every flow, reached for on their own terms: the prototype, the questionnaire, the merge conflict you are already sitting in.
-- **A vocabulary layer underneath**, the two references the other skills pull in when the words rather than the process are the problem.
+| What you need | Route |
+| --- | --- |
+| Explicit planning and execution | [specify](../workflow/specify.md), [taskify](../workflow/taskify.md), [implement](../workflow/implement.md), then [code-review-and-refactor](../workflow/code-review-and-refactor.md). Skip task decomposition when a small approved scope does not need it. |
+| Discover behavior while building a living application | Separately installed [iterate](../../../skills/workflow/iterate/SKILL.md) clarifies, implements, and verifies one useful batch at a time. |
+| Clarify a decision without starting development | [refine](../reference/refine.md). Its caller records useful results in the appropriate documents. |
 
-For publishing conclusions already reached, the router names the experimental [publish-message](../../../skills/experimental/publish-message/SKILL.md).
-It publishes ordinary comments or review summaries, with inline suggestions when requested, after approval of the complete set and destination.
+`specify` asks only about unresolved decisions. A user-approved [prototype](../shaping/prototype.md) settles a question conversation cannot; its answer and evidence feed the specification. Useful validated code can be productionized after appropriate checks without a mandatory rebuild. [research](../shaping/research.md) resolves consequential unknown external facts.
+
+`iterate` primarily maintains `documentation/backlog.md`, `documentation/work-in-progress.md`, and root `CHANGELOG.md`. A remote backlog is linked rather than copied; working state stays local for execution and resumption. It reads existing requirements and specifications without forcing new feature documents or tasks. When scope or competing outcomes prevent selecting an increment, separately installed [divide-and-conquer](../../../skills/shaping/divide-and-conquer/SKILL.md) recommends a bounded focus and asks for approval. One completed outcome does not authorize the next.
+
+Both workflows share project-owned documents:
+
+- Requirements hold global and optional additional feature constraints.
+- `documentation/<feature>/specifications.md` holds living agreed behavior and acceptance. `draft.md` holds unresolved proposals only.
+- `documentation/<feature>/tasks/` holds local task bodies. After explicit remote publication, a local task becomes a title and link to the authoritative remote task. Specifications stay canonical locally.
+- Backlog holds candidates and deferrals, not authorization. Work-in-progress holds unfinished current work and recovery state.
+- The single root changelog records meaningful agreements and verified deliveries. Types are `Documentation`, `Code`, or `Configuration`; events are `Agreement` or `Delivery`, with validation and evidence.
+
+Create these files when useful. Preserve legacy `.refinement/` and `backlog/` history. Local upkeep is autonomous within authorized scope, but an agent must surface conflicting obligations rather than weaken a requirement to make implementation pass.
+
+For publishing conclusions already reached, separately installed [publish-message](../../../skills/workflow/publish-message/SKILL.md) requires approval of the exact text and destination. [address-feedback](../../../skills/workflow/address-feedback/SKILL.md) assesses substantive review comments. [to-pull-request](../workflow/to-pull-request.md) writes the request body, not the publication.
+
+## On-ramps and supporting work
+
+| Situation | Next move |
+| --- | --- |
+| A large effort has too many unresolved decisions | [graphify](../shaping/graphify.md) maps decisions; refinement, research, or approved experiments resolve them. |
+| A recurring operational loop needs an implementable design | [design-workflow](../workflow/design-workflow.md). |
+| An architectural seam causes friction | [improve-codebase-architecture](../upkeep/improve-codebase-architecture.md), then explore one selected candidate. |
+| Another person has the missing answers | [ask-someone-else](../productivity/ask-someone-else.md), then bring the answers into refinement or specification. |
+| An approved task graph needs concurrent implementation | [implement-all](../workflow/implement-all.md), instead of individual task sessions. |
+| Behavior needs a red/green check | [test-driven-development](../workflow/test-driven-development.md), at an agreed seam. |
+| A known failure needs diagnosis | [debug](../upkeep/debug.md), starting with a tight reproduction loop. |
+| Learning is a continuing project | [teach](../productivity/teach.md), in a dedicated teaching workspace. |
+| A recurring process has waiting, rework, or handoff friction | [optimize-process](../productivity/optimize-process.md), using evidence from actual cycles. |
+| Domain terms are inconsistent | [domain-modeling](../reference/domain-modeling.md). |
+| A module needs a deeper interface or useful seam | [codebase-design](../reference/codebase-design.md). |
+| Project documents need maintenance | [documentation](../reference/documentation.md), preserving their separate responsibilities. |
+| Skills or steering instructions need clearer agent-facing text | [writing-for-agents](../reference/writing-for-agents.md). |
+| A manual dashboard, credentials, or cutover step blocks automation | [wizard](../reference/wizard.md). |
+| Writing needs filler and AI patterns removed | [unslop](../reference/unslop.md). |
+
+Some supporting skills are installed separately even though they now live in purpose buckets:
+
+- [setup-delegation-policy](../../../skills/getting-started/setup-delegation-policy/SKILL.md) configures machine-wide delegation and model tiers.
+- [setup-git-hooks](../../../skills/getting-started/setup-git-hooks/SKILL.md) configures versioned commit checks.
+- [setup-git-guardrails](../../../skills/getting-started/setup-git-guardrails/SKILL.md) blocks dangerous Git operations at supported enforcement points.
+- [setup-auto-handoff](../../../skills/getting-started/setup-auto-handoff/SKILL.md) gates supported compaction on a fresh handoff.
+- [classify](../../../skills/reference/classify/SKILL.md) sends approved safe-to-send text to a third-party classifier and retains uncertain results.
 
 ## The phase boundary
 
-The other idea it hands you is the **phase boundary**. A phase is a chunk of work inside a session (the grilling, the implementation, the QA), and the boundary between two of them is the only place the question "what do I do with this context?" belongs. Mid-phase there is nothing to decide: continue, or split what is left into subagents.
+At a **session boundary**, keep authoritative work state current before changing context.
 
 | Option | Take it when |
 | --- | --- |
-| **Continue** | The next phase wants this one verbatim, or you have smart zone left. It is the only move that keeps the session as a primary source, so rule it out first |
-| **`/clear`** | Everything behind you is disposable. Cheapest move on the board, and one-way if you were wrong |
-| **[handoff](../productivity/hand-off.md)** | Something has to travel: a new harness, a new directory, a colleague, a side task forked mid-phase |
-| **Subagent** | The task is scoped tightly enough to run with you away from the keyboard |
-| **`/compact`** | None of the above. The default, and it lands here often |
+| Continue | The current context remains relevant to the next step. |
+| Clear | The next task is self-contained and authoritative sources preserve what it needs. |
+| [hand-off](../productivity/hand-off.md), then [take-over](../productivity/take-over.md) | Moving between sessions, workspaces, or agents needs session-specific context and source pointers. |
+| Compact | You need the same session with less conversational detail; preserve unresolved agreements, running assignments, and recovery pointers first. |
 
-Two of those are routinely got wrong, which is why the router carries the order rather than the list. `/hand-off` reads like the general bridge between windows and is not: portability is the whole of what it buys. `/compact` is the bottom of the tree rather than the first reach, because the four questions above it are each cheaper or more precise.
+Work-in-progress does not replace a session handoff. The handoff supplies context and pointers rather than copying every project document. Scoped independent work can be delegated without changing the parent session.
 
 ## Common questions
 
 **Isn't there just a list of the skills in the right order?**
 
-People keep asking for one in the README. This skill is that list: it is what it exists for. A static table would say `wayfinder → to-specifications → to-tickets → implement → code-review-and-refactor → improve-agent-environment` and be wrong for most situations, because the interesting parts are the branches: is there a codebase, does the build span sessions, can this question be settled by talking. The honest cost is that the router is hand-maintained and lags the repository. `/grilling` and `/resolve-merge-conflicts` both shipped long before the router named them.
+Planned development has an order, but it is not the only workflow. Use `specify`, optional `taskify`, `implement`, and review when explicit planning helps. Use `iterate` for approved living-code batches. The branches matter: existing agreements may settle the next step, or an experiment may still be needed. The router is maintained by hand, so compare consequential recommendations with the skill itself.
 
 **It told me half the skills aren't installed.**
 
-A known bug, unfixed. Most of the skills the router routes you through set `disable-model-invocation: true`, which means the harness leaves them out of the skill list it injects into the agent's context. The agent reads that list as exhaustive and reports them missing. One reported session had it declare the whole specification-and-tickets flow absent and reroute to bare `/grilling` and `/test-driven-development`. Several promoted skills carry that flag; the list visible to the model is not an inventory of the plugin. They are installed. Type the slash command anyway, or check `.claude-plugin/plugin.json`, which is the authority on what is present.
+This is a reported harness failure. User-invoked skills may be omitted from the list visible to the model, which then mistakes that list for the installation inventory. Check `.claude-plugin/plugin.json` for promoted skills and your installed command list for separately installed ones. An omitted model listing does not establish that a command is missing.
 
 **It described a skill's behaviour, and the skill doesn't do that.**
 
-Also real, also unfixed. The router answers from its own one-line summary of each skill rather than from the skill. One detailed report tracked three instances in a single session, including a recommendation to skip [to-specifications](../workflow/to-specifications.md) on the strength of the gloss "turn the thread into a specification": `to-specifications/SKILL.md` was never opened. In every case it verified only after the user pushed back, and never on its own initiative. Skipping `to-specifications` there cost a real seam check, and the tickets that came out undercounted the work. When the router asserts something load-bearing about another skill, ask it to open that `SKILL.md` first. The same applies to questions the map does not cover at all, such as whether to use plan mode: that answer is the model's inference, not something written down here.
+Earlier reports found recommendations based only on summaries, including skipped planning work that undercounted tasks. The current router explicitly reads the relevant `SKILL.md` before a consequential behavioral claim. If that evidence is missing from the trace, ask it to verify. Advice outside the map, such as harness plan-mode choices, remains an inference unless supported separately.
 
 **Why is it prose instead of a numbered checklist?**
 
@@ -86,7 +128,15 @@ That advice is often correct and rarely durable. Someone asked it how to make [i
 
 **It named a skill I don't have, or missed one I do.**
 
-Check the changelog for a rename before assuming it is gone. `writing-great-skills` became [writing-for-agents](../reference/writing-for-agents.md) with no alias, `to-prd` became `to-spec` and then [to-specifications](../workflow/to-specifications.md), and `pathfinder` became [wayfinder](../shaping/wayfinder.md). Four skills were retired outright into the skills that absorbed them: `ubiquitous-language`, `design-an-interface`, `qa` and `request-refactor-plan`. The reverse case is the router's own lag, above.
+Check the changelog for a rename before assuming a skill is gone. Older planning commands now lead to [specify](../workflow/specify.md) and [taskify](../workflow/taskify.md); the general interview is [refine](../reference/refine.md), and the explanation repair is [re-explain](../productivity/re-explain.md). These are current names, not aliases. Promotion depends on a manifest entry, not a bucket move.
+
+**Does choosing just-in-time work discard existing specifications?**
+
+No. It changes how the next batch is selected and delivered, not its obligations. Applicable requirements and living specifications still govern. Work-in-progress can establish approved scope for a small batch without another specification; conflicting records must be surfaced rather than quietly rewritten.
+
+**Are specifications snapshots of the original plan?**
+
+No. They are living agreed behavior and acceptance. Drafts keep unresolved alternatives separate, and the root changelog preserves meaningful agreement and delivery history. A historical survey or research report can drift from the current agreement; use it as evidence, not as an override.
 
 ## It's working if
 
@@ -98,6 +148,6 @@ Check the changelog for a rename before assuming it is gone. `writing-great-skil
 
 ## Where it fits
 
-`what-is-next` is a **standalone router** that sits over the whole set. It is never a step in a chain; it points into every chain, and it is the node the other docs pages link back to so none of them has to redraw the graph. From here you most often land on [grill-with-documentation](../workflow/grill-with-documentation.md), the head of the main flow, or [triage](../upkeep/triage.md), the on-ramp for work that arrived rather than work you started.
+`what-is-next` is a standalone router over both development workflows and the supporting skills. It recommends and stops. [specify](../workflow/specify.md) starts planned development; separately installed [iterate](../../../skills/workflow/iterate/SKILL.md) runs just-in-time batches; [triage](../upkeep/triage.md) verifies work arriving from other people. [improve-agent-environment](../upkeep/improve-agent-environment.md) reviews session friction after useful work, without authorizing new implementation.
 
 It is a secondary source over the skills it describes. Where the router and a `SKILL.md` disagree, the `SKILL.md` is right.

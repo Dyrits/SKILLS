@@ -1,0 +1,2 @@
+- `capture-review-state.py`: Capture an unstaged Git review patch, scope, and changed-file contents outside the repository. Usage: `python3 .agents/scripts/capture-review-state.py OUTPUT BASE [REPOSITORY]`. Needs: Python 3 and Git.
+- `propose-reference-updates.py`: Propose reviewed literal reference updates as an apply_patch patch without editing files. Usage: `python3 .agents/scripts/propose-reference-updates.py --replace OLD NEW -- PATH...`. Needs: Python 3.

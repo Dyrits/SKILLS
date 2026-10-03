@@ -2,8 +2,8 @@
 
 The `documentation/out-of-scope/` directory in a repository stores persistent records of rejected feature requests. It serves two purposes:
 
-1. **Institutional memory**: why a feature was rejected, so the reasoning isn't lost when the issue is closed
-2. **Deduplication**: when a new issue comes in that matches a prior rejection, the skill can surface the previous decision instead of re-litigating it
+1. **Institutional memory**: why a feature was rejected, so the reasoning isn't lost when the task is closed
+2. **Deduplication**: when a new task matches a prior rejection, surface the previous decision
 
 ## Directory structure
 
@@ -14,7 +14,7 @@ documentation/out-of-scope/
 └── graphql-api.md
 ```
 
-One file per **concept**, not per issue. Multiple issues requesting the same thing are grouped under one file.
+One file per concept, not per task. Multiple tasks requesting the same thing are grouped under one file.
 
 ## File format
 
@@ -67,9 +67,11 @@ The reason should be substantive: not "we don't want this" but why. Good reasons
 
 The reason should be durable. Avoid referencing temporary circumstances ("we're too busy right now"); those aren't real rejections, they're deferrals.
 
+Candidate priorities and temporary deferrals follow documentation's configured backlog authority. Local tracking stores them in `documentation/backlog.md`; remote tracking keeps only the verified backlog name/link there and requires publication approval for remote changes. Pending publication and active paused work stay in local `documentation/work-in-progress.md`. The rejection knowledge base remains separate from both. Call the Skill tool with "documentation" before updating those records.
+
 ## When to check `documentation/out-of-scope/`
 
-During triage (Step 1: Gather context), read all files in `documentation/out-of-scope/`. When evaluating a new issue:
+During triage's Gather context step, read files in `documentation/out-of-scope/` when present. When evaluating a new task:
 
 - Check if the request matches an existing out-of-scope concept
 - Matching is by concept similarity, not keyword: "night theme" matches `dark-mode.md`
@@ -77,13 +79,13 @@ During triage (Step 1: Gather context), read all files in `documentation/out-of-
 
 The maintainer may:
 
-- **Confirm**: the new issue gets added to the existing file's "Prior requests" list, then closed
-- **Reconsider**: the out-of-scope file gets deleted or updated, and the issue proceeds through normal triage
-- **Disagree**: the issues are related but distinct, proceed with normal triage
+- **Confirm**: add the new task to the existing file's "Prior requests" list, then close it
+- **Reconsider**: update or remove the out-of-scope record, and continue normal triage
+- **Disagree**: the tasks are related but distinct, so continue normal triage
 
 ## When to write to `documentation/out-of-scope/`
 
-Only when an **enhancement** (not a bug) is *rejected* as `not-planned`. This applies to enhancement PRs exactly as it does to issues: a rejected PR is recorded here so the same request doesn't return as fresh code.
+Only when an enhancement, not a bug, is rejected as `not-planned`. This applies to enhancement PRs as it does to tasks: record the rejected request so it does not return as fresh code.
 
 Do **not** write here when something is closed as `not-planned` because it's **already implemented**. That's a built feature, not a rejected one; recording it would poison the dedup checks with false rejections. Instead, the closing comment points to where the feature already lives.
 
@@ -91,15 +93,15 @@ The flow:
 
 1. Maintainer decides a feature request is out of scope
 2. Check if a matching `documentation/out-of-scope/` file already exists
-3. If yes: append the new issue to the "Prior requests" list
+3. If yes: append the new task to the "Prior requests" list
 4. If no: create a new file with the concept name, decision, reason, and first prior request
-5. Post a comment on the issue explaining the decision and mentioning the `documentation/out-of-scope/` file
-6. Close the issue with the `not-planned` role
+5. Post a comment on the task explaining the decision and linking the `documentation/out-of-scope/` file
+6. Close the task with the `not-planned` role
 
 ## Updating or removing out-of-scope files
 
 If the maintainer changes their mind about a previously rejected concept:
 
 - Delete the `documentation/out-of-scope/` file
-- The skill does not need to reopen old issues; they're historical records
-- The new issue that triggered the reconsideration proceeds through normal triage
+- Historical tasks remain closed unless reopening is explicitly requested
+- The new task that triggered reconsideration proceeds through normal triage

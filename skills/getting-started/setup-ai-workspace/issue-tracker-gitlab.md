@@ -1,6 +1,10 @@
 # Issue tracker: GitLab
 
-Issues and specifications for this repository live as GitLab issues. Use the [`glab`](https://gitlab.com/gitlab-org/cli) CLI for all operations.
+Backlog: <verified GitLab backlog or project-board URL>
+
+The remote backlog owns candidate outcomes, priorities, and deferrals. Local `documentation/backlog.md` links to it; `documentation/work-in-progress.md` remains local for execution and resumption. Apply the authority and publication rules supplied by the `documentation` skill.
+
+Published tasks for this repository live as GitLab issues. Repository `documentation/<feature>/specifications.md` remains the canonical living specification; remote records link to or summarize it. Use the [`glab`](https://gitlab.com/gitlab-org/cli) CLI for remote operations.
 
 ## Conventions
 
@@ -16,9 +20,9 @@ Infer the repository from `git remote -v`; `glab` does this automatically when r
 
 ## Ticket writing convention
 
-- **Source:** Built-in `to-tickets`
-- **Applies to:** Refinement drafts and published tickets
-- **Rules:** Use the built-in ticket template unless the user selects another configured convention for the run.
+- **Source:** Built-in `taskify`
+- **Applies to:** Local task bodies and published tasks
+- **Rules:** Use the built-in task template unless the user selects another configured convention for the run.
 
 ## Merge requests as a triage surface
 
@@ -34,19 +38,19 @@ Unlike GitHub, GitLab numbers issues and MRs separately, so `#42` is unambiguous
 
 ## When a skill says "publish to the issue tracker"
 
-Create a GitLab issue.
+Create or update a GitLab issue only on an explicit user request. Local document upkeep does not authorize remote writes. When useful, keep a title/link reference under `documentation/<feature>/tasks/` instead of copying the published task body.
 
-## When a skill says "fetch the relevant ticket"
+## When a skill says "fetch the relevant task"
 
 Run `glab issue view <number> --comments`.
 
 ## Wayfinding operations
 
-Used by `/wayfinder`. The **map** is a single issue with **child** issues as tickets.
+Used by `/graphify`. The map is a single GitLab issue with child issues as decision tasks.
 
 - **Map**: a single issue labelled `wayfinder:map`, holding the Notes / Decisions-so-far / Fog body. `glab issue create --label wayfinder:map`. (On GitLab tiers with native epics, an epic may hold the map instead; a labelled issue works everywhere.)
-- **Child ticket**: an issue carrying `Part of #<map>` at the top of its description and labels `wayfinder:<type>` (`research`/`prototype`/`grilling`/`task`). Once claimed, the ticket is assigned to the driving dev.
-- **Blocking**: GitLab's **native blocking link**, the canonical, UI-visible representation. Add it with the `/blocked_by #<n>` quick action, posted as a note (`glab issue note <child> --message "/blocked_by #<blocker>"`). Native blocking links are a Premium/Ultimate feature; on the free tier (or where unavailable) fall back to a `Blocked by: #<n>, #<n>` line at the top of the description. A ticket is unblocked when every blocker is closed.
+- **Child task**: an issue carrying `Part of #<map>` at the top of its description and labels `wayfinder:<type>` (`research`/`prototype`/`refine`/`task`). Once claimed, the task is assigned to the driving developer. Existing `wayfinder:grilling` labels remain historical.
+- **Blocking**: GitLab's **native blocking link**, the canonical, UI-visible representation. Add it with the `/blocked_by #<n>` quick action, posted as a note (`glab issue note <child> --message "/blocked_by #<blocker>"`). Native blocking links are a Premium/Ultimate feature; on the free tier (or where unavailable) fall back to a `Blocked by: #<n>, #<n>` line at the top of the description. A task is unblocked when every blocker is closed.
 - **Frontier query**: `glab issue list -F json` scoped to the map's children, drop any with an open blocker: a native `blocked_by` link to an open issue (`glab api projects/:id/issues/:iid/links`), or an open issue in the `Blocked by` line, or an assignee; first in map order wins.
 - **Claim**: `glab issue update <n> --assignee @me`, the session's first write.
 - **Resolve**: `glab issue note <n> --message "<answer>"`, then `glab issue close <n>`, then append a context pointer (gist + link) to the map's Decisions-so-far.

@@ -40,7 +40,7 @@ Copy it to each target's hooks directory and `chmod +x`:
 
 ### 3. Wire up each agent
 
-**Claude Code** — add to `.claude/settings.json` (project) or `~/.claude/settings.json` (global):
+For **Claude Code**, add to `.claude/settings.json` (project) or `~/.claude/settings.json` (global):
 
 ```json
 {
@@ -62,7 +62,7 @@ Copy it to each target's hooks directory and `chmod +x`:
 
 (For global scope use `~/.claude/hooks/block-dangerous-git.sh` as the command.)
 
-**OpenCode** — OpenCode has no PreToolUse hook runner; use its permission system in `opencode.json` (project) or `~/.config/opencode/opencode.json` (global). Deny rules are enforced before any approval mode, including auto-approve:
+For **OpenCode**, use its permission system in `opencode.json` (project) or `~/.config/opencode/opencode.json` (global); there is no PreToolUse hook runner. Deny rules are enforced before any approval mode, including auto-approve:
 
 ```json
 {
@@ -86,7 +86,7 @@ Copy it to each target's hooks directory and `chmod +x`:
 
 The `bash(...)` patterns use glob matching on the command string. Include both bare and `*`-prefixed variants so chained commands (`cd foo && git push`) are caught too. Merge into an existing `permission` block; never overwrite other rules.
 
-**Codex CLI** — Codex has no hook scripts; it supports sandbox and approval policy in `~/.codex/config.toml` but no per-command deny list. The reliable guardrail is git itself: install a versioned `pre-push` hook (see step 5) and rely on remote branch protection. Tell the user Codex cannot be blocked at the config level.
+For **Codex CLI**, use the Git-level fallback: it has no hook scripts and supports sandbox and approval policy in `~/.codex/config.toml` but no per-command deny list. Install a versioned `pre-push` hook (see step 5) and rely on remote branch protection. Tell the user Codex cannot be blocked at the configuration level.
 
 ### 4. Ask about customization
 

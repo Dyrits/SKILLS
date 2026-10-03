@@ -1,3 +1,5 @@
+Upstream source: `codebase-design`, verified in the `d81f3a1` tree.
+
 ## What it does
 
 `codebase-design` fixes the words you use to design a module: **module**, **interface**, **depth**, **seam**, **adapter**, **leverage**, **locality**. It defines each one precisely, bans the loose substitutes ("component", "service", "API", "boundary"), and states the handful of principles that follow from them.
@@ -17,7 +19,7 @@ Several skills sit close to it. Which one you want depends on what the actual pr
 | The shape of one module: its interface, its seam, its depth | `codebase-design` |
 | The *words of the domain*: "account" means three things, two people mean different things by "cancellation" | [domain-modeling](./domain-modeling.md) |
 | You don't yet know *which* module to redesign | [improve-codebase-architecture](../upkeep/improve-codebase-architecture.md) (the survey that finds candidates) |
-| You want the design argued with, not just named | [grilling](./grilling.md) |
+| You want the design argued with, not just named | [refine](./refine.md) |
 | There's a concrete behaviour to build and you want tests that survive a refactor | [test-driven-development](../workflow/test-driven-development.md) |
 
 ## The vocabulary
@@ -43,17 +45,23 @@ Depth is deliberately *not* defined as the ratio of implementation lines to inte
 - **The interface is the test surface.** Callers and tests cross the same seam. If you want to test *past* the interface, the module is the wrong shape.
 - **One adapter means a hypothetical seam. Two adapters means a real one.** Don't cut a seam until something actually varies across it. A single-adapter seam is just indirection.
 
-Two supporting files go further, and the skill reads them on demand rather than up front. [DEEPENING.md](https://github.com/mattpocock/skills/blob/main/skills/reference/codebase-design/DEEPENING.md) classifies a candidate's dependencies into four categories (in-process, local-substitutable, remote-but-owned, true-external), because the category decides how the deepened module gets tested across its seam. [DESIGN-IT-TWICE.md](https://github.com/mattpocock/skills/blob/main/skills/reference/codebase-design/DESIGN-IT-TWICE.md) spins up parallel sub-agents to produce three or more radically different interfaces for the same module, then compares them on depth, locality and seam placement.
+Two supporting files go further, and the skill reads them on demand rather than up front. [DEEPENING.md](../../../skills/reference/codebase-design/DEEPENING.md) classifies dependencies as in-process, local-substitutable, remote-but-owned, or true-external, because the category decides how the module gets tested across its seam. [DESIGN-IT-TWICE.md](../../../skills/reference/codebase-design/DESIGN-IT-TWICE.md) produces contrasting interfaces and compares their depth, locality, and seam placement.
 
 ## Common questions
 
 **How do I actually build a deep module in TypeScript?**
 
-This is the most-asked question about the skill and the skill does not answer it. It defines what a deep module *is*; it says nothing about how to stop a stray import from reaching past the interface. [Issue #458](https://github.com/mattpocock/skills/issues/458) put it plainly: "let's say we're happy with the interface, it hides the details, etc. But how do we enforce it? I think without linting or clear guardrails, humans and LLMs alike will start making it messy over time." Matt's answer, in that thread, was three options: wrap it in a class or IIFE and accept that the class gets enormous; make it a package in a monorepo and accept the monorepo tooling; or use a linter like [dependency-cruiser](https://github.com/sverweij/dependency-cruiser) to forbid imports that bypass the interface. He has separately called Effect the best mechanism and dependency-cruiser the second-best. This fork once shipped a `setup-ts-deep-modules` skill that laid down a `src/packages/<name>/index.ts` convention wired to dependency-cruiser; it has been removed, so wiring the guardrail is again on you.
+The skill defines a deep module but does not enforce import access. [Issue #458](https://github.com/mattpocock/skills/issues/458) asks how to keep humans and agents from bypassing the agreed interface. The practical choices have different costs:
+
+- A class or immediately invoked function expression can hide internals, but may become large.
+- A package can enforce a public entry point, but introduces package tooling.
+- A linter such as [dependency-cruiser](https://github.com/sverweij/dependency-cruiser) can reject imports that bypass the interface, but needs rules for your layout.
+
+This fork once shipped `setup-ts-deep-modules` with an `index.ts` and dependency-cruiser convention. It was removed; this reference does not configure that guardrail for you.
 
 **I pointed a session at it and it burned 100k tokens redesigning things I never asked about.**
 
-Known, and filed as [issue #449](https://github.com/mattpocock/skills/issues/449). The skill is model-invoked and describes itself as vocabulary, but nothing in it hard-stops an agent from treating it as a runnable process. Told to "resume in /codebase-design and drive the open decisions", an agent reached for the most action-shaped content it could find: the parallel sub-agents in `DESIGN-IT-TWICE.md`. It re-explored code a previous session had already mapped, and ran a long way before asking anything. None of the guardrails a driver skill has (checkpoints, one question at a time, no auto-advance) are present here, because a reference has none. The workaround is to name a driver skill and let this one sit underneath it: `/grill-with-documentation`, `/improve-codebase-architecture` or `/test-driven-development` with `codebase-design` as the vocabulary. The issue is open.
+This failure is recorded in [issue #449](https://github.com/mattpocock/skills/issues/449). Told to drive open decisions from this reference, an agent treated the parallel-design technique as a process, re-explored already mapped code, and spent roughly 100k tokens on unrequested redesign. Name a driver such as [specify](../workflow/specify.md) or [improve-codebase-architecture](../upkeep/improve-codebase-architecture.md), give it a bounded question, and use `codebase-design` for vocabulary. A reference alone does not authorize a refactor.
 
 **Where did `design-an-interface` go? And is there an `/interface-design` skill?**
 

@@ -8,14 +8,14 @@
     {
       "name": "dyrits-skills",
       "source": "./",
-      "description": "Agent skills for real engineering (grilling, specification and ticket flows, TDD, code review, domain modelling and more).",
+      "description": "Agent skills for real engineering (refinement, specification and task flows, TDD, code review, domain modelling and more).",
       "category": "engineering",
       "keywords": [
         "engineering",
         "skills",
         "tdd",
         "code-review-and-refactor",
-        "grilling"
+        "refine"
       ]
     }
   ]

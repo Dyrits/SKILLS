@@ -1,14 +1,18 @@
 # Upkeep
 
-Keep the codebase and issue list healthy; generates work for the flow.
+Keep the codebase and request list healthy.
 
 ## User-invoked
 
-- **[improve-agent-environment](./improve-agent-environment/SKILL.md)**: Suggest improvements to the coding agent's environment after a session, with candidates ordered by severity.
+- [triage](./triage/SKILL.md): Verify and classify requests, recording briefs, holds, or rejection decisions.
+- [improve-codebase-architecture](./improve-codebase-architecture/SKILL.md): Present deepening opportunities and explore the selected candidate.
+- [improve-agent-environment](./improve-agent-environment/SKILL.md): Suggest environment improvements based on session evidence.
 
 ## Model-invoked
 
-- **[triage](./triage/SKILL.md)**: Move incoming issues and PRs through a state machine of triage roles into agent-ready issues.
-- **[debug](./debug/SKILL.md)**: Disciplined diagnosis loop for hard bugs and regressions: tight feedback loop → minimise → hypothesise → instrument → fix → regression-test.
-- **[improve-codebase-architecture](./improve-codebase-architecture/SKILL.md)**: Scan for deepening opportunities, present them as a visual HTML report, then grill through whichever one you pick.
-- **[resolve-merge-conflicts](./resolve-merge-conflicts/SKILL.md)**: Work an in-progress merge or rebase conflict hunk by hunk, resolving by intent traced to each side's primary source.
+- [debug](./debug/SKILL.md): Diagnose bugs through a tight reproduction loop and regression evidence.
+- [resolve-merge-conflicts](./resolve-merge-conflicts/SKILL.md): Resolve conflicts by intent and finish the operation.
+
+## Not in the plugin
+
+- [monitor-ai-tooling](./monitor-ai-tooling/SKILL.md): Produce a dated report separating observed tool benefits, estimates, and quality gaps. User-invoked.

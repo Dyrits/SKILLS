@@ -1,6 +1,6 @@
 ---
 name: code-review-and-refactor
-description: "Review and refactor changes since a fixed point against repository standards and the originating specifications. Runs independent Standards and Specifications reviews, applies supported refactors, and reuses the reviewers to verify them. Use for the refactor phase after red/green implementation, or when asked to review and refactor a branch, pull request, or work in progress."
+description: "Review and refactor changes since a fixed point against repository standards and the originating behavior agreement. Runs independent Standards and Specifications reviews, applies supported refactors, and reuses the reviewers to verify them. Use for the refactor phase after red/green implementation, or when asked to review and refactor a branch, pull request, or work in progress."
 ---
 
 This is the **refactor** phase of red-green-refactor.
@@ -9,7 +9,7 @@ Implementation establishes the required behavior with passing tests; this skill 
 Two independent axes inspect the same starting diff:
 
 - **Standards**: does the code conform to the repository's documented coding standards, and which baseline smells justify a refactor?
-- **Specifications**: does the code faithfully implement the originating specifications, and does the refactor preserve their requirements?
+- **Specifications**: does the code faithfully implement the originating behavior agreement, and does the refactor preserve its requirements?
 
 Reviewers gather evidence and propose concrete changes.
 The coordinating agent checks their evidence and performs the edits, then asks the same reviewers to verify the result using their existing context.
@@ -36,17 +36,16 @@ Restrict every captured diff to the agreed work scope.
 Save the starting patch, starting contents of reviewed files, commit list (`git log <fixed-point>..<starting-HEAD> --oneline`), and review scope outside the repository for both reviewers.
 A bad reference or an empty complete diff ends the run before dispatch.
 
-### 2. Identify the sources of specifications
+### 2. Identify the originating behavior agreement
 
-Look for the originating specifications, in this order:
+Call the Skill tool with "documentation" for the shared project-document model.
+Recover the authorized intended behavior from the caller or user, tasks, shared specifications and requirements, or an explicit user-approved batch in `documentation/work-in-progress.md`. Include applicable global and feature requirements. Living iteration may use backlog and working state without standalone feature specifications or tasks.
 
-1. When `documentation/agents/issue-tracker.md` exists, fetch issue references in commit messages through its documented workflow.
-When that file is missing, skip tracker lookup.
-2. Use the paths or contents of specifications supplied by the user or calling implementation workflow.
-3. Find specifications under `documentation/`, `specifications/`, `backlog/`, or `.refinement/` matching the branch or feature.
-4. If nothing is found, ask the user to configure tracker lookup with `/setup-ai-workspace`, provide the specifications, or continue with Standards alone.
-If they choose setup, tell them to run it and resume discovery afterward.
-If they choose Standards alone, skip the Specifications reviewer and report "no specifications available".
+When `documentation/agents/issue-tracker.md` exists, fetch relevant task references through its workflow. Remote tasks are authoritative after authorized publication; shared specifications remain canonical locally. Historical `specifications/`, `backlog/`, or `.refinement/` inputs may still supply the agreement; preserve them rather than automatically migrating them.
+
+Freeze copies or revisions of the originating agreement and the verification evidence alongside the starting diff for both reviewers. Distinguish agreed behavior from unresolved proposals in `draft.md` and unapproved backlog candidates. Do not infer the agreement solely from the implementation under review.
+
+If no behavior agreement is recoverable, ask the user to supply it or explicitly consent to Standards alone. Only after that consent skip the Specifications reviewer and report "no specifications available". Tracker setup and a standalone specification are not prerequisites for reviewing a recoverable agreement.
 
 ### 3. Identify the standards sources
 
@@ -89,9 +88,9 @@ Ask for every documented violation, citing its source file and rule, and each pl
 Distinguish documented violations from judgement calls, honor repository overrides, and skip rules already enforced by tooling.
 For a smell, explain the concrete benefit of the proposed refactor rather than treating its label as sufficient evidence.
 
-The **Specifications** brief includes the paths or fetched contents of specifications.
+The **Specifications** brief includes frozen contents or revisions of the originating agreement, applicable requirements, and verification evidence.
 Ask for missing or partial requirements, behavior beyond the agreed scope, and requirements implemented incorrectly.
-Quote the specifications for each finding, and identify which existing tests establish the required behavior.
+Quote the originating agreement for each finding, and identify which existing tests or acceptance evidence establish the required behavior. Appearance and interaction acceptance may need human judgment; do not claim success from automated checks alone.
 
 ### 5. Apply supported refactors
 
@@ -133,6 +132,8 @@ Distinguish verified refactors from outstanding implementation requirements, rej
 Include the checks run and their results, and say that edits remain uncommitted.
 With no specifications, state "no specifications available" in that axis.
 
+Update local working state autonomously with findings still open, evidence, blockers, and resumption pointers. Resolve consequential scope or obligation conflicts with the user, never by silently weakening requirements. Record completed authorized agreements and deliveries automatically in root `CHANGELOG.md` using the shared format owned by "documentation"; a review report alone is not delivery evidence.
+
 End with findings resolved and still open per axis, and the worst remaining issue within each axis.
 Keep both axes separate rather than choosing one overall verdict.
 
@@ -141,7 +142,7 @@ Keep both axes separate rather than choosing one overall verdict.
 Ask whether to publish the final report and where, such as a GitHub/GitLab pull or merge request or a Jira issue.
 Publishing requires explicit user authorization.
 
-`publish-message` is user-invoked and experimental.
+`publish-message` is user-invoked and installed separately from the plugin.
 If the user wants publication, tell them to run `/publish-message` with this report and destination, requesting inline suggestions if wanted.
 If it is unavailable, name its install command: `npx skills@latest add Dyrits/SKILLS --skill=publish-message`.
 The publication preserves finding dispositions and verification limits, checks whether local refactors are present in the destination branch, and validates requested suggestions against its current diff.

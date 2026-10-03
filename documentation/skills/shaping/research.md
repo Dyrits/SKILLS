@@ -1,6 +1,8 @@
+Upstream source: `research`, verified in the `d81f3a1` tree.
+
 ## What it does
 
-`research` answers a question by reading the sources that own the answer, then leaves a cited Markdown file in the repository. It works only from **primary sources**: official docs, source code, specifications, first-party APIs. It follows every claim back to the source that owns it, so it will not repeat a blog post's account of an API when the API's own docs are reachable.
+`research` answers a question by reading primary sources and leaves a cited Markdown file in the repository. Official documentation, source code, specifications, and first-party APIs qualify; a blog post's account of an API does not replace the API's own documentation.
 
 It does not answer you in the conversation. The output is a file, written where the repository already keeps such notes, with a link on each claim. That is the point: a document you can react to, hand to another agent, or throw away, rather than an answer that vanishes when the session ends.
 
@@ -13,12 +15,12 @@ Reach for it when the next step is *finding something out* from outside the work
 | What you need | Reach for |
 | --- | --- |
 | An external fact a decision is waiting on | `research` |
-| A decision made *with* you, by interview | [grilling](../reference/grilling.md) |
-| A durable architecture decision, written into `GLOSSARY.md` and ADRs | [grill-with-documentation](../workflow/grill-with-documentation.md) |
+| A decision made with you, by interview | [refine](../reference/refine.md) |
+| Agreed feature behavior that needs a durable local record | [specify](../workflow/specify.md) |
 | To find out whether an approach works in your codebase | [prototype](./prototype.md) |
-| A plan too big to hold in one session | [wayfinder](./wayfinder.md) |
+| A plan too big to hold in one session | [graphify](./graphify.md) |
 
-The line between `research` and `grill-with-documentation` is the **shelf life of what comes back**. Research produces short-lived assets: what this library's auth mechanism does as of this week. An ADR records a decision you keep. If what you are producing is a decision rather than a fact, you are grilling, not researching.
+The distinction is between **facts and agreements**. Research captures what a source says at a particular version or date. Refinement makes a decision with you, and specification records agreed behavior. Findings can inform an agreement, but are not approval to change it. Keep evidence useful to later readers and recheck facts whose source or version has changed.
 
 ## Delegated legwork
 
@@ -42,13 +44,13 @@ The skill puts the file where the repository already keeps notes and does not ha
 
 **What counts as a "high-trust" primary source, and who decides?**
 
-The model does. The skill names the *kinds* of source that qualify (official docs, source code, specifications, first-party APIs), and there is no allowlist, no domain gate, and no verification pass. This was the loudest objection when the skill was first proposed and it has never been answered publicly: "Five research subagents pointed at junk just gives you five confident wrong answers faster. How are you gating what counts as high-trust sources?" The mitigation you actually have is the citation on each claim. Follow two or three of them. If they land on a summary of the thing rather than the thing, the run failed at its one job.
+The agent selects sources. The skill names qualifying kinds but provides no allowlist or independent verification pass. An early objection asked how multiple research agents could avoid producing confident answers from poor sources. The citation on each claim is your practical check: follow several and confirm they reach the official documentation or actual source, at the relevant version, rather than someone else's summary.
 
 **Does a later session reuse what an earlier run found?**
 
 No. Nothing auto-loads a past research file; it is a document sitting in the repository until a human or a skill points at it. This was raised early as the strongest challenge to the design: "the value's the markdown becoming context the agent re-reads later, not the fetch itself. A write-once dead file is just a fancy search." The shipped skill does not solve it. In practice the file earns its keep by being fed into the next step deliberately: attach it to a specification, quote it into a grilling session, point a ticket at it.
 
-**Why not just ask the agent to go read the docs?**
+**Why not just ask the agent to read the documentation?**
 
 You can, and a two-line prompt saying exactly that was the practice this skill replaced. Two things the skill buys over the prompt: it runs in the background so your session keeps its context clean, and the primary-source constraint and the cited-file output come out the same way every time rather than however you happened to phrase it. Against a harness's own deep-research mode, the difference is the artifact and the source discipline, not the search. If a two-line prompt gets you what you need on a small question, use the two-line prompt.
 
@@ -56,18 +58,19 @@ You can, and a two-line prompt saying exactly that was the practice this skill r
 
 There is no stopping criterion in the skill, and this shows up as two complaints that look opposite but are the same gap: agents that go far too deep, and agents that cover a topic broadly while missing the one specific detail that mattered. One practitioner put it as "deep-research skills are a bit too deep sometimes. And telling an agent to research usually results in missing crucial details." Scoping is on you. A narrow, answerable question (one API, one behaviour, one version claim) comes back far better than "research X".
 
-**`/wayfinder` created research tickets. Do I resolve those myself?**
+**`/graphify` created research tickets. Do I resolve those myself?**
 
-No, it now fires them for you. In the unreleased changes since v1.1, a charting session spawns a `/research` subagent per research ticket and burns them down in parallel, capturing findings on a throwaway `research/<name>` branch with a context pointer from the ticket. Research tickets are the one exception to wayfinder's one-ticket-per-session rule, because they are AFK: nothing waits on you. Two known snags with those branches: the subagent has been seen opening a draft PR from a branch that is never meant to merge ([issue #576](https://github.com/mattpocock/skills/issues/576)), and deleting the branch later breaks the context pointers the tickets hold.
+No. Graphify's charting session starts a subagent that calls `research` for each research task and captures findings on a throwaway `research/<name>` branch with a context pointer from the task. Parallel research tasks are the exception to Graphify's one-decision-task-per-session rule because they are agent-driven. Historical upstream evidence reports a subagent opening a draft pull request from a branch never meant to merge ([issue #576](https://github.com/mattpocock/skills/issues/576)); that report is not a claim about the current fork. Deleting a findings branch can still break the task's context pointer.
 
 ## It's working if
 
 - Your own session keeps going. If you are sitting watching it read, the delegation didn't happen.
 - Exactly one new background task appears. A second one with a near-identical name is the nesting bug.
 - One new Markdown file shows up, in the folder the repository already uses for notes, and the agent tells you the path.
-- Every claim in it carries a link, and following two at random lands you on an official doc, a specification, or the actual source file, not on someone's write-up of it.
-- You can make the decision you were stuck on from the file alone, without going back to the sources yourself.
+- Claims carry citations to official documentation, specifications, or actual source files.
+- Findings identify the relevant version and separate sourced facts from unresolved uncertainty.
+- The file supplies the evidence needed for your decision without implying that research itself approved a change.
 
 ## Where it fits
 
-A reach-for-it-anytime standalone that feeds the thinking skills rather than sitting in the build chain. Its file is something to take *into* the flow: [grilling](../reference/grilling.md) and [grill-with-documentation](../workflow/grill-with-documentation.md) ask sharper questions when the facts are already on the table, and [to-specifications](../workflow/to-specifications.md) can synthesise against it. [wayfinder](./wayfinder.md) is the one skill that invokes it directly, resolving each research ticket on its map with a `/research` subagent. For the whole map, see [what-is-next](../getting-started/what-is-next.md).
+`research` is a reach-for-it-anytime standalone that feeds [refine](../reference/refine.md), [specify](../workflow/specify.md), and [graphify](./graphify.md) with cited facts. Separately installed [iterate](../../../skills/workflow/iterate/SKILL.md) also uses it when an external unknown blocks an approved batch. [what-is-next](../getting-started/what-is-next.md) maps the workflows.

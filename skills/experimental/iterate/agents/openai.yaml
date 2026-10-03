@@ -1,5 +1,0 @@
-interface:
-  display_name: "Iterate"
-  short_description: "Interview, build, and verify a solo project in small batches"
-policy:
-  allow_implicit_invocation: false

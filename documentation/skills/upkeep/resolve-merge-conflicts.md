@@ -1,3 +1,5 @@
+Upstream source: `resolving-merge-conflicts`, verified in history before its removal in commit `daa01d8`. The `d81f3a1` tree retains its archived documentation but no active skill; this fork preserves the skill as `resolve-merge-conflicts`.
+
 ## What it does
 
 `resolve-merge-conflicts` works through an in-progress git merge or rebase, hunk by hunk, then runs the project's own checks and finishes the operation with a commit.
@@ -48,4 +50,4 @@ Aborting throws away the resolution work and returns you to the same conflict, u
 
 ## Where it fits
 
-A reach-for-it-anytime standalone with no dependencies on any other skill. It starts when Git stalls and ends when the tree is clean and committed. Experimental [rebase](../../../skills/experimental/rebase/SKILL.md), installed separately, invokes it whenever one of its branch rebases stops on conflicts. [debug](./debug.md) takes over when a merge resolved cleanly but the merged code misbehaves, because that needs diagnosis rather than conflict resolution. [what-is-next](../getting-started/what-is-next.md) maps the wider flow.
+A reach-for-it-anytime standalone for an already authorized merge or rebase. Separately installed [rebase](../../../skills/workflow/rebase/SKILL.md) uses it when an operation stops on conflicts. [debug](./debug.md) takes over when a textually resolved merge still misbehaves. [what-is-next](../getting-started/what-is-next.md) maps the wider flow.

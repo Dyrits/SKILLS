@@ -1,6 +1,6 @@
 {
   "name": "dyrits-skills",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "private": true,
   "description": "Agent skills for real engineering",
   "repository": {
@@ -9,7 +9,10 @@
   },
   "license": "MIT",
   "scripts": {
-    "check-plugin-version": "node scripts/sync-plugin-version.mjs --check"
+    "check-plugin-version": "node scripts/sync-plugin-version.mjs --check",
+    "check-skills": "python3 scripts/check-skills.py",
+    "test-skills-check": "python3 scripts/test-check-skills.py",
+    "test-scriptbook-helpers": "python3 scripts/test-scriptbook-helpers.py"
   },
   "devDependencies": {},
   "packageManager": "npm@10.9.4"

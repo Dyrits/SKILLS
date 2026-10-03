@@ -1,3 +1,5 @@
+Upstream source: `diagnosing-bugs`, verified in the `d81f3a1` tree.
+
 ## What it does
 
 `debug` runs a six-phase diagnosis on a hard bug or a performance regression: build a repro, minimise it, rank hypotheses, instrument, fix with a regression test, clean up.
@@ -75,6 +77,10 @@ Snyk flags it, and the flag is a false positive. It is the only skill in the set
 
 **What happened to `/diagnose`?**
 Formerly `/diagnose`, then `diagnosing-bugs`; this fork renamed it to `/debug`. Anything of yours that chains an old name (a wrapper skill, a saved prompt) needs updating.
+
+**Can the fix change the agreed behavior to make the repro pass?**
+
+Not silently. A reproduction shows a failure; it does not authorize weakening requirements or changing acceptance criteria. If the symptom, existing specification, and code disagree about intended behavior, surface that conflict. Preserve the observed red/green evidence and any still-pending acceptance instead of declaring delivery from a nearby passing test.
 
 ## It's working if
 

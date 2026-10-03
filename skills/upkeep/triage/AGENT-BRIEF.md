@@ -1,18 +1,18 @@
 # Writing Agent Briefs
 
-An agent brief is a structured comment posted on an issue or PR when it moves to `ready`. It is the authoritative specification that an AFK agent will work from. The original body and discussion are context: the agent brief is the contract.
+An agent brief is a structured comment posted on a task or PR when it moves to `ready`. It is the authoritative task-execution contract that an AFK agent works from. The original body and discussion are context. The repository's `documentation/<feature>/specifications.md` remains authoritative for living behavior, design, and acceptance; the brief links to it and applicable requirements instead of creating a competing specification. Resolve conflicts before marking the task ready.
 
-The brief states **what the agent should do**, which stretches to both surfaces: for an issue, that's building the change from nothing; for a PR, it's what's left to do *to the existing diff*: finish it, close gaps, address review points. Same principles either way; the PR example below shows the difference.
+The brief states what the agent should do. For a task, that means building the change; for a PR, it means finishing or fixing the existing diff. The same principles apply to both.
 
 ## Principles
 
 ### Durability over precision
 
-The issue may sit in `ready` for days or weeks. The codebase will change in the meantime. Write the brief so it stays useful even as files are renamed, moved, or refactored.
+The task may sit in `ready` for days or weeks. The codebase will change in the meantime. Write the brief so it stays useful even as files are renamed, moved, or refactored.
 
 - **Do** describe interfaces, types, and behavioral contracts
 - **Do** name specific types, function signatures, or config shapes that the agent should look for or modify
-- **Don't** reference file paths: they go stale
+- Link authoritative specification and requirements documents. Avoid implementation file paths, which go stale.
 - **Don't** reference line numbers
 - **Don't** assume the current implementation structure will remain the same
 
@@ -22,7 +22,7 @@ Describe **what** the system should do, not **how** to implement it. The agent w
 
 - **Good:** "The `SkillConfig` type should accept an optional `schedule` field of type `CronExpression`"
 - **Bad:** "Open src/types/skill.ts and add a schedule field on line 42"
-- **Good:** "When a user runs `/triage` with no arguments, they should see a summary of issues needing attention"
+- **Good:** "When a user runs `/triage` with no arguments, they should see a summary of tasks needing attention"
 - **Bad:** "Add a switch statement in the main handler function"
 
 ### Complete acceptance criteria
@@ -43,6 +43,7 @@ State what is out of scope. This prevents the agent from gold-plating or making 
 
 **Category:** bug / enhancement
 **Summary:** one-line description of what needs to happen
+**Specification and requirements:** links to the canonical repository documents
 
 **Current behavior:**
 Describe what happens now. For bugs, this is the broken behavior.
@@ -62,8 +63,10 @@ Be specific about edge cases and error conditions.
 - [ ] Specific, testable criterion 2
 - [ ] Specific, testable criterion 3
 
+**Validation and evidence:** how completion will be checked, with results recorded as work completes
+
 **Out of scope:**
-- Thing that should NOT be changed or addressed in this issue
+- Thing that should not be changed or addressed in this task
 - Adjacent feature that might seem related but is separate
 ```
 
@@ -113,31 +116,31 @@ and append "..." to indicate truncation.
 **Summary:** Add `documentation/out-of-scope/` directory support for tracking rejected feature requests
 
 **Current behavior:**
-When a feature request is rejected, the issue is closed with a `not-planned` label
+When a feature request is rejected, the task is closed with a `not-planned` role
 and a comment. There is no persistent record of the decision or reasoning.
 Future similar requests require the maintainer to recall or search for the
 prior discussion.
 
 **Desired behavior:**
 Rejected feature requests should be documented in `documentation/out-of-scope/<concept>.md`
-files that capture the decision, reasoning, and links to all issues that
-requested the feature. When triaging new issues, these files should be
+files that capture the decision, reasoning, and links to all tasks that
+requested the feature. When triaging new tasks, these files should be
 checked for matches.
 
 **Key interfaces:**
 - Markdown file format in `documentation/out-of-scope/`: each file should have a
   `# Concept Name` heading, a `**Decision:**` line, a `**Reason:**` line,
-  and a `**Prior requests:**` list with issue links
+  and a `**Prior requests:**` list with task links
 - The triage workflow should read all `documentation/out-of-scope/*.md` files early
-  and match incoming issues against them by concept similarity
+  and match incoming tasks against them by concept similarity
 
 **Acceptance criteria:**
 - [ ] Closing a feature as not-planned creates/updates a file in `documentation/out-of-scope/`
-- [ ] The file includes the decision, reasoning, and link to the closed issue
-- [ ] If a matching `documentation/out-of-scope/` file already exists, the new issue is
+- [ ] The file includes the decision, reasoning, and link to the closed task
+- [ ] If a matching `documentation/out-of-scope/` file already exists, the new task is
       appended to its "Prior requests" list rather than creating a duplicate
 - [ ] During triage, existing `documentation/out-of-scope/` files are checked and surfaced
-      when a new issue matches a prior rejection
+      when a new task matches a prior rejection
 
 **Out of scope:**
 - Automated matching (human confirms the match)

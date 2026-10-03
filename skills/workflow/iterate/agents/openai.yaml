@@ -1,0 +1,5 @@
+interface:
+  display_name: "Iterate"
+  short_description: "Refine, build, and verify a living implementation in small batches"
+policy:
+  allow_implicit_invocation: false
