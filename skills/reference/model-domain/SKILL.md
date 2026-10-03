@@ -75,4 +75,4 @@ If any of the three is missing, skip the architecture decision record. Use the f
 
 ## Guidelines
 
-`GUIDELINES.md` at the repository root holds the project's judgement-call rules for review and architecture work. Creating it is part of this skill when a calling skill asks, or when the user wants to write down their conventions. Read [GUIDELINES-FORMAT.md](./GUIDELINES-FORMAT.md) for the interview, the format, and what to do when the user declines.
+`GUIDELINES.md` at the repository root holds the project's code conventions: portable rules a reviewer applies to any diff, never product behaviour. Creating it is part of this skill when a calling skill asks, or when the user wants to write down their conventions. Read [GUIDELINES-FORMAT.md](./GUIDELINES-FORMAT.md) for what belongs, the interview, the format, auditing an existing file, and declining.

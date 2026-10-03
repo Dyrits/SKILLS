@@ -39,7 +39,7 @@ Research, test-first work, diagnosis, and milestone reviews remain conditional b
 
 The `document` skill owns the shared project documents: requirements, specifications, drafts, tasks, backlog, work-in-progress, and the changelog. When the user asks what each one holds, read its `PROJECT-DOCUMENTS.md`. Both workflows use the same documents, so switching between them keeps agreements and progress; `iterate` writes light changelog records and the planned workflow writes full ones.
 
-`GLOSSARY.md`, architecture decision records, and `GUIDELINES.md` retain their separate roles: domain language, consequential decisions, and judgment-call review rules.
+`GLOSSARY.md`, architecture decision records, and `GUIDELINES.md` retain their separate roles: domain language, consequential decisions, and portable code conventions.
 
 ## On-ramps and open questions
 

@@ -75,7 +75,7 @@ Only collect overrides if the user declines. The strings are configurable; the r
 
 Default to one root `GLOSSARY.md` and `documentation/architecture-decision-record/` without asking. Offer a root `GLOSSARY-MAP.md` with per-context glossaries only when monorepo signals justify it.
 
-If `GUIDELINES.md` exists, record `Guidelines: present`. Otherwise ask whether to create it through an interview, recommending yes when there is no standards document. On acceptance, call the Skill tool with "model-domain". On refusal, record `Guidelines: declined`.
+If `GUIDELINES.md` exists, record `Guidelines: present`. Otherwise ask whether to create it through an interview, recommending yes when there is no standards document. On acceptance, call the Skill tool with "model-domain" for its Guidelines step, with the **code** focus. On refusal, record `Guidelines: declined`.
 
 ## 3. Confirm and write
 

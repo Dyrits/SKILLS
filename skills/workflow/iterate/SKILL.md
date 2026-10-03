@@ -47,7 +47,7 @@ Summarize the batch's behavior, scope, verification, and choices needing approva
 
 In a versioned project, record the goal's starting revision when its first batch is agreed. When a batch starts an agreed milestone or substantial structural or data-risk work, read [MILESTONE-REVIEW.md](MILESTONE-REVIEW.md) before implementation.
 
-Call the Skill tool with "model-domain" when sharpening domain terms, recording a consequential decision, or establishing judgment-call guidelines, and with "design-modules" when a module's interface or testability needs design.
+Call the Skill tool with "model-domain" when sharpening domain terms, recording a consequential decision, or establishing code conventions, and with "design-modules" when a module's interface or testability needs design.
 
 Completion: the batch can be implemented and checked without guessing at an open decision, and each consequential choice it settled (costly to reverse, or changing scope) has an Agreement in `CHANGELOG.md`. Record the agreed batch and pending questions using [ARTIFACTS.md](ARTIFACTS.md).
 

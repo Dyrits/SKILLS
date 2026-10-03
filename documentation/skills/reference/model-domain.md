@@ -23,11 +23,11 @@ Reach for it when the *words* are the problem:
 
 ## Prerequisites
 
-None up front. The skill writes into two places and creates both lazily:
+None up front. The skill writes into three places and creates each lazily:
 
 - **`GLOSSARY.md`** at the repository root, created by the first resolved term. In a repository with a `GLOSSARY-MAP.md` at the root, terms go into the per-context `GLOSSARY.md` the map points at instead.
 - **`documentation/architecture-decision-record/`**, created by the first architecture decision record that clears the bar.
-- **`GUIDELINES.md`** at the repository root, created when [review-and-refactor](../workflow/review-and-refactor.md), [improve-codebase-architecture](../upkeep/improve-codebase-architecture.md), or [setup-ai-workspace](../getting-started/setup-ai-workspace.md) offers to and you accept. The skill interviews you about your conventions one rule at a time, and may draft candidate rules from the code, but keeps each only once you confirm it and give its reason. It writes only judgement-call rules; declining is recorded in `documentation/agents/domain.md`.
+- **`GUIDELINES.md`** at the repository root, created when [review-and-refactor](../workflow/review-and-refactor.md), [improve-codebase-architecture](../upkeep/improve-codebase-architecture.md), or [setup-ai-workspace](../getting-started/setup-ai-workspace.md) offers to and you accept. The skill interviews you about code conventions one topic at a time (naming, types, error handling, side effects, comments, tests, dependencies), drafting candidates from how the code is already written, and keeps each only once you confirm it and give its reason. It writes only portable rules, ones that would still hold if the product changed; product behaviour, design decisions, and agent workflow are routed to requirements, an architecture decision record, or `AGENTS.md` instead. Declining is recorded in `documentation/agents/domain.md`.
 
 Nothing needs to exist before you start, and nothing is created speculatively.
 
@@ -81,6 +81,9 @@ Sometimes it does not, and it is worth being honest about where. DDD gets less u
 **Can it turn my vague prompts into domain language for me?**
 No, and there is no plan for a skill that does. A domain language you do not understand yourself becomes meaningless drivel once written down. This skill enforces precision once you have the understanding; it does not manufacture vocabulary you do not have. The related trap is using domain words without doing the modelling: right nouns over the wrong conceptual structure produce output that reads correct and is not.
 
+**My `GUIDELINES.md` reads like a specification. How do I fix it?**
+Ask the skill to check it. Each rule is tested for portability: would it still hold if the product changed and only the stack and team stayed? Rules that describe what the product does move to requirements, design trade-offs to an architecture decision record, and verification or approval steps to `AGENTS.md`. A mixed rule splits, for example "visible text lives in data, in two languages" keeps "no user-facing string literals in rendering code" and moves the language pair to requirements. Nothing moves without your approval.
+
 ## It's working if
 
 - It stops you mid-sentence to ask which of two things you meant, instead of picking one and moving on.
@@ -89,6 +92,7 @@ No, and there is no plan for a skill that does. A domain language you do not und
 - New entries define what a thing *is* in one or two sentences and name the words you are giving up under `_Avoid_`.
 - It quotes your code back at you when your code and your sentence disagree.
 - `GLOSSARY.md` gets shorter as often as it gets longer.
+- Every `GUIDELINES.md` rule could be pasted into another project on the same stack and still make sense.
 
 ## Where it fits
 

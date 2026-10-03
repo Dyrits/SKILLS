@@ -14,7 +14,7 @@ Before updating project or capability documents, call the Skill tool with "docum
 
 ## Guidelines
 
-**`GUIDELINES.md`** at the repository root holds the project's judgement-call rules. Read it before reviewing code or auditing architecture.
+**`GUIDELINES.md`** at the repository root holds the project's code conventions. Read it before reviewing code or auditing architecture.
 
 If it doesn't exist, the review and architecture skills offer to create it through `/model-domain` unless the line below says otherwise.
 

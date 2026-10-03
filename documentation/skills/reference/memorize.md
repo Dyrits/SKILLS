@@ -10,7 +10,7 @@ It chooses a home; it does not invent a new store for each kind of fact.
 | --- | --- |
 | A reusable action | A scriptbook: `.agents/scripts/` for the repository, `~/.agents/scripts/` for any repository |
 | A convention or gotcha agents keep missing | The nearest `AGENTS.md` or `CLAUDE.md` |
-| A judgment-call review rule, a term, or a decision | `GUIDELINES.md`, `GLOSSARY.md`, or an architecture decision record, through [model-domain](./model-domain.md) |
+| A code convention, a term, or a decision | `GUIDELINES.md`, `GLOSSARY.md`, or an architecture decision record, through [model-domain](./model-domain.md) |
 | Agreements, working state, delivery history | The shared project documents, through [document](./document.md) |
 | A procedure only a human can carry out | A saved wizard, through [walk-through](../productivity/walk-through.md) |
 | A personal preference across projects | The harness's own memory, otherwise `~/.agents/memory/` |
