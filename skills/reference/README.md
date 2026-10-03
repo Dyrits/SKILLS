@@ -8,7 +8,4 @@ Disciplines that shape how another task is done. They produce no result of their
 - [document](./document/SKILL.md): Maintain technical documentation and the shared project-document model.
 - [write-for-agents](./write-for-agents/SKILL.md): Write agent instructions with clear steps, completion criteria, and references.
 - [unslop](./unslop/SKILL.md): Edit prose to remove filler and recurring AI writing patterns.
-
-## Not in the plugin
-
-- [memorize](./memorize/SKILL.md): File lessons where the next agent will look, and recall them before redoing work, including saved scripts. Model-invoked.
+- [memorize](./memorize/SKILL.md): File lessons where the next agent will look, and recall them before redoing work, including saved scripts.

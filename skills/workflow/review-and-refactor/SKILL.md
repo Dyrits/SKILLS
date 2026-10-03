@@ -139,12 +139,11 @@ Keep both axes separate rather than choosing one overall verdict.
 
 ### 8. Offer to publish
 
-Ask whether to publish the final report and where, such as a GitHub/GitLab pull or merge request or a Jira issue.
+Ask whether to publish the final report and where, such as a pull or merge request, a ticket, or a chat thread.
 Publishing requires explicit user authorization.
 
-`publish-message` is user-invoked and installed separately from the plugin.
+`publish-message` is user-invoked.
 If the user wants publication, tell them to run `/publish-message` with this report and destination, requesting inline suggestions if wanted.
-If it is unavailable, name its install command: `npx skills@latest add Dyrits/SKILLS --skill=publish-message`.
 The publication preserves finding dispositions and verification limits, checks whether local refactors are present in the destination branch, and validates requested suggestions against its current diff.
 
 ## Why two axes

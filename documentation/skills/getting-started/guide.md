@@ -12,13 +12,13 @@ You invoke this by typing `/guide`; the agent won't reach for it on its own.
 
 | Your situation | What the router gives back |
 | --- | --- |
-| A project whose AI tooling needs setup | [setup-ai-tooling](../../../skills/getting-started/setup-ai-tooling/SKILL.md), separately installed, also offered as an optional stage of [setup-ai-workspace](./setup-ai-workspace.md) |
-| Tools are configured and you want evidence of their benefit | [monitor-ai-tooling](../../../skills/upkeep/monitor-ai-tooling/SKILL.md), separately installed, reports from existing measurements |
-| A task should run outside the original checkout | [work-in-tree](../../../skills/version-control/work-in-tree/SKILL.md), separately installed, establishes isolation before editing |
-| Committed work in a worktree needs to reach its original local branch | [sync-tree](../../../skills/version-control/sync-tree/SKILL.md), separately installed, transfers locally rather than publishing upstream |
-| Local branches need rebasing onto a target | [rebase](../../../skills/version-control/rebase/SKILL.md), separately installed, verifies the result and asks separately before publication |
+| A project whose AI tooling needs setup | [setup-ai-tooling](./setup-ai-tooling.md), also offered as an optional stage of [setup-ai-workspace](./setup-ai-workspace.md) |
+| Tools are configured and you want evidence of their benefit | [monitor-ai-tooling](../upkeep/monitor-ai-tooling.md), reports from existing measurements |
+| A task should run outside the original checkout | [work-in-tree](../version-control/work-in-tree.md), establishes isolation before editing |
+| Committed work in a worktree needs to reach its original local branch | [sync-tree](../version-control/sync-tree.md), transfers locally rather than publishing upstream |
+| Local branches need rebasing onto a target | [rebase](../version-control/rebase.md), verifies the result and asks separately before publication |
 | Git has already stopped on conflicts | [resolve-merge-conflicts](../version-control/resolve-merge-conflicts.md), which resolves the current operation rather than starting a batch of rebases |
-| Agents keep rebuilding the same helper or relearning the same lesson | [memorize](../../../skills/reference/memorize/SKILL.md), separately installed, files lessons where the next agent will look and checks there first, including saved scripts |
+| Agents keep rebuilding the same helper or relearning the same lesson | [memorize](../reference/memorize.md), files lessons where the next agent will look and checks there first, including saved scripts |
 | An idea, and no idea where to start | A choice between planned development, just-in-time development, and clarification without development |
 | Bugs and requests arriving from other people | The [triage](../upkeep/triage.md) on-ramp, and why tickets you generated yourself don't belong on it |
 | Two skills that look interchangeable | [refine](../reference/refine.md) clarifies a decision; [specify](../workflow/specify.md) records agreed feature behavior; [graphify](../shaping/graphify.md) maps a large effort's unresolved decisions |
@@ -29,7 +29,7 @@ You invoke this by typing `/guide`; the agent won't reach for it on its own.
 ## Prerequisites
 
 The router names skills; it does not install them.
-Everything it points at has to be installed for the recommendation to be actionable. A skill's bucket does not establish promotion; the plugin manifest does. Separately installed skills have no human documentation page.
+Everything it points at has to be installed for the recommendation to be actionable. The plugin ships every skill outside `deprecated/`, so installing the plugin or the whole set covers it.
 
 For tracker-dependent work, the router asks you to run [setup-ai-workspace](./setup-ai-workspace.md) when tracker configuration is missing. Local just-in-time work does not require tracker setup merely to maintain its working documents.
 
@@ -40,12 +40,12 @@ The useful idea is a **flow**, a path through skills that preserves agreements a
 | What you need | Route |
 | --- | --- |
 | Explicit planning and execution | [specify](../workflow/specify.md), [taskify](../workflow/taskify.md), [implement](../workflow/implement.md), then [review-and-refactor](../workflow/review-and-refactor.md). Skip task decomposition when a small approved scope does not need it. |
-| Discover behavior while building a living application | Separately installed [iterate](../../../skills/workflow/iterate/SKILL.md) clarifies, implements, and verifies one useful batch at a time. |
+| Discover behavior while building a living application | [iterate](../workflow/iterate.md) clarifies, implements, and verifies one useful batch at a time. |
 | Clarify a decision without starting development | [refine](../reference/refine.md). Its caller records useful results in the appropriate documents. |
 
 `specify` asks only about unresolved decisions. A user-approved [prototype](../shaping/prototype.md) settles a question conversation cannot; its answer and evidence feed the specification. Useful validated code can be productionized after appropriate checks without a mandatory rebuild. [research](../shaping/research.md) resolves consequential unknown external facts.
 
-`iterate` primarily maintains `documentation/backlog.md`, `documentation/work-in-progress.md`, and root `CHANGELOG.md`. A remote backlog is linked rather than copied; working state stays local for execution and resumption. It reads existing requirements and specifications without forcing new feature documents or tasks. When scope or competing outcomes prevent selecting an increment, separately installed [prioritize](../../../skills/shaping/prioritize/SKILL.md) recommends a bounded focus and asks for approval. One completed outcome does not authorize the next.
+`iterate` primarily maintains `documentation/backlog.md`, `documentation/work-in-progress.md`, and root `CHANGELOG.md`. A remote backlog is linked rather than copied; working state stays local for execution and resumption. It reads existing requirements and specifications without forcing new feature documents or tasks. When scope or competing outcomes prevent selecting an increment, [prioritize](../shaping/prioritize.md) recommends a bounded focus and asks for approval. One completed outcome does not authorize the next.
 
 Both workflows share project-owned documents:
 
@@ -57,7 +57,7 @@ Both workflows share project-owned documents:
 
 Create these files when useful. Local upkeep is autonomous within authorized scope; when an obligation conflicts with the work, the agent asks you instead of relaxing it.
 
-For publishing conclusions already reached, separately installed [publish-message](../../../skills/version-control/publish-message/SKILL.md) requires approval of the exact text and destination. [address-feedback](../../../skills/version-control/address-feedback/SKILL.md) assesses substantive review comments. [draft-merge-request](../version-control/draft-merge-request.md) writes the request body, not the publication.
+For publishing conclusions already reached, [publish-message](../productivity/publish-message.md) requires approval of the exact text and destination. [address-feedback](../workflow/address-feedback.md) assesses review feedback from any source. [draft-merge-request](../version-control/draft-merge-request.md) writes the request body, not the publication.
 
 ## On-ramps and supporting work
 
@@ -79,13 +79,13 @@ For publishing conclusions already reached, separately installed [publish-messag
 | A manual dashboard, credentials, or cutover step blocks automation | [walk-through](../productivity/walk-through.md). |
 | Writing needs filler and AI patterns removed | [unslop](../reference/unslop.md). |
 
-Some supporting skills are installed separately even though they now live in purpose buckets:
+Setup and outbound skills it also routes to:
 
-- [setup-delegation-policy](../../../skills/getting-started/setup-delegation-policy/SKILL.md) configures machine-wide delegation and model tiers.
-- [setup-git-hooks](../../../skills/getting-started/setup-git-hooks/SKILL.md) configures versioned commit checks.
-- [setup-git-guardrails](../../../skills/getting-started/setup-git-guardrails/SKILL.md) blocks dangerous Git operations at supported enforcement points.
-- [setup-auto-handoff](../../../skills/getting-started/setup-auto-handoff/SKILL.md) gates supported compaction on a fresh handoff.
-- [classify](../../../skills/productivity/classify/SKILL.md) sends approved safe-to-send text to a third-party classifier and retains uncertain results.
+- [setup-delegation-policy](./setup-delegation-policy.md) configures machine-wide delegation and model tiers.
+- [setup-git-hooks](./setup-git-hooks.md) configures versioned commit checks.
+- [setup-git-guardrails](./setup-git-guardrails.md) blocks dangerous Git operations at supported enforcement points.
+- [setup-auto-handoff](./setup-auto-handoff.md) gates supported compaction on a fresh handoff.
+- [classify](../productivity/classify.md) sends approved safe-to-send text to a third-party classifier and retains uncertain results.
 
 ## The phase boundary
 
@@ -108,7 +108,7 @@ Planned development has an order, but it is not the only workflow. Use `specify`
 
 **It told me half the skills aren't installed.**
 
-This is a reported harness failure. User-invoked skills may be omitted from the list visible to the model, which then mistakes that list for the installation inventory. Check `.claude-plugin/plugin.json` for promoted skills and your installed command list for separately installed ones. An omitted model listing does not establish that a command is missing.
+This is a reported harness failure. User-invoked skills may be omitted from the list visible to the model, which then mistakes that list for the installation inventory. Check `.claude-plugin/plugin.json` and your installed command list. An omitted model listing does not establish that a command is missing.
 
 **It described a skill's behaviour, and the skill doesn't do that.**
 
@@ -148,6 +148,6 @@ No. They are living agreed behavior and acceptance. Drafts keep unresolved alter
 
 ## Where it fits
 
-`guide` is a standalone router over both development workflows and the supporting skills. It recommends and stops. [specify](../workflow/specify.md) starts planned development; separately installed [iterate](../../../skills/workflow/iterate/SKILL.md) runs just-in-time batches; [triage](../upkeep/triage.md) verifies work arriving from other people. [improve-agent-environment](../upkeep/improve-agent-environment.md) reviews session friction after useful work, without authorizing new implementation.
+`guide` is a standalone router over both development workflows and the supporting skills. It recommends and stops. [specify](../workflow/specify.md) starts planned development; [iterate](../workflow/iterate.md) runs just-in-time batches; [triage](../upkeep/triage.md) verifies work arriving from other people. [improve-agent-environment](../upkeep/improve-agent-environment.md) reviews session friction after useful work, without authorizing new implementation.
 
 It is a secondary source over the skills it describes. Where the router and a `SKILL.md` disagree, the `SKILL.md` is right.

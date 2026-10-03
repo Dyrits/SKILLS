@@ -117,7 +117,7 @@ Write [domain.md](domain.md), and [triage-roles.md](triage-roles.md) when applic
 
 ## 4. Optional tooling
 
-Continue when tooling was included in the request; otherwise offer this stage once. The separately installed `setup-ai-tooling` skill owns installation and verification.
+Continue when tooling was included in the request; otherwise offer this stage once. The `setup-ai-tooling` skill owns installation and verification.
 
 When selected and available, call the Skill tool with "setup-ai-tooling", passing the project, verified tracker access, known clients, and approved project/global scope. If unavailable, finish configuration and tell the human how to install or run it later. Completion requires either a verified tooling record, a stated gap, or the user's decision to skip it.
 

@@ -39,12 +39,20 @@ Recurring routines and one-off procedures, designed, improved, or walked through
 - **[optimize-process](./optimize-process/SKILL.md)**: Map and improve a recurring process, including agent work and human review in practical impact estimates.
 - **[walk-through](./walk-through/SKILL.md)**: Generate a guided script (a wizard) for steps only a human can perform.
 
+## Outbound
+
+Results leaving the session for other people or services.
+
+### User-invoked
+
+- **[publish-message](./publish-message/SKILL.md)**: Publish established conclusions to any connected service, adapted to its conventions, after approval of exact text and destination.
+
+### Model-invoked
+
+- **[classify](./classify/SKILL.md)**: Classify safe-to-send text with classifier.dev and retain uncertain results for review.
+
 ## Ungrouped
 
 ### User-invoked
 
 - **[teach](./teach/SKILL.md)**: Teach the user a new skill or concept over multiple sessions, using the current directory as a stateful teaching workspace.
-
-## Not in the plugin
-
-- [classify](./classify/SKILL.md): Classify safe-to-send text with classifier.dev and retain uncertain results for review. Model-invoked.

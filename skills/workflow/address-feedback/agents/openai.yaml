@@ -1,5 +1,5 @@
 interface:
   display_name: "Address Feedback"
-  short_description: "Assess, implement, and answer review feedback"
+  short_description: "Assess, implement, and answer feedback from any source"
 policy:
   allow_implicit_invocation: false

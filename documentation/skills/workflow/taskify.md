@@ -8,7 +8,7 @@ Local drafting is tracker-neutral. Remote publication requires explicit approval
 
 ## When to reach for it
 
-You invoke this by typing `/taskify`, and the agent won't reach for it on its own. Use it when work benefits from sequencing or parallel delivery. If the whole change fits a small batch, [iterate](../../../skills/workflow/iterate/SKILL.md) or [implement](implement.md) may be enough.
+You invoke this by typing `/taskify`, and the agent won't reach for it on its own. Use it when work benefits from sequencing or parallel delivery. If the whole change fits a small batch, [iterate](../workflow/iterate.md) or [implement](implement.md) may be enough.
 
 ## Tracer bullets and blocking edges
 

@@ -25,21 +25,25 @@ class LayoutChecks(unittest.TestCase):
         self.temporary = tempfile.TemporaryDirectory(dir=os.environ.get("DELTA_SCRATCH_DIR"))
         self.addCleanup(self.temporary.cleanup)
         self.root = Path(self.temporary.name)
-        self.write(".claude-plugin/plugin.json", json.dumps({"skills": ["./skills/reference/example"]}))
+        self.write(".claude-plugin/plugin.json", json.dumps(
+            {"skills": ["./skills/reference/example", "./skills/getting-started/guide"]}))
         self.write("README.md", "## Plugin skills\n[example](skills/reference/example/SKILL.md)\n"
-                   "## Separately installed skills\n")
+                   "[guide](skills/getting-started/guide/SKILL.md)\n")
         self.write("CLAUDE.md", "Repository instructions.\n")
         self.write("skills/getting-started/guide/SKILL.md",
                    "---\nname: guide\n---\nRoute to /example and /guide.\n")
         self.write("skills/getting-started/guide/agents/openai.yaml",
                    "interface:\n  display_name: Router\n")
-        self.write("skills/getting-started/README.md",
-                   "## Not in the plugin\n[router](./guide/SKILL.md)\n")
+        self.write("skills/getting-started/README.md", "[router](./guide/SKILL.md)\n")
         self.write("skills/reference/example/SKILL.md", "---\nname: example\n---\nAn example skill.\n")
         self.write("skills/reference/example/agents/openai.yaml", "interface:\n  display_name: Example\n")
         self.write("skills/reference/README.md", "[example](./example/SKILL.md)\n")
         self.write("documentation/skills/reference/example.md",
                    "Upstream skill: `example`.\n\n## What it does\nOne job.\n\n"
+                   "## When to reach for it\nA trigger.\n\n## Common questions\nA question.\n\n"
+                   "## It's working if\nA signal.\n\n## Where it fits\nA role.\n")
+        self.write("documentation/skills/getting-started/guide.md",
+                   "Fork-specific router.\n\n## What it does\nRoutes.\n\n"
                    "## When to reach for it\nA trigger.\n\n## Common questions\nA question.\n\n"
                    "## It's working if\nA signal.\n\n## Where it fits\nA role.\n")
 
@@ -74,12 +78,22 @@ class LayoutChecks(unittest.TestCase):
 
     def test_orphan_documentation_page(self):
         self.write("documentation/skills/reference/retired.md", "Retired.\n")
-        self.assertIn("orphan or non-plugin", self.result()[1])
+        self.assertIn("orphan documentation page", self.result()[1])
 
-    def test_missing_non_plugin_section(self):
-        self.write(".claude-plugin/plugin.json", '{"skills": []}')
+    def test_skill_missing_from_manifest(self):
+        self.write(".claude-plugin/plugin.json", '{"skills": ["./skills/getting-started/guide"]}')
         (self.root / "documentation/skills/reference/example.md").unlink()
-        self.assertIn("non-plugin skill is not", self.result()[1])
+        self.assertIn("missing from the plugin manifest", self.result()[1])
+
+    def test_deprecated_skill_in_manifest(self):
+        self.write("skills/deprecated/old/SKILL.md", "---\nname: old\n---\nRetired.\n")
+        self.write("skills/deprecated/old/agents/openai.yaml", "interface:\n  display_name: Old\n")
+        self.write("skills/deprecated/README.md", "[old](./old/SKILL.md)\n")
+        self.write("skills/getting-started/guide/SKILL.md",
+                   "---\nname: guide\n---\nRoute to /example, /guide, and /old.\n")
+        self.write(".claude-plugin/plugin.json", json.dumps({"skills": [
+            "./skills/reference/example", "./skills/getting-started/guide", "./skills/deprecated/old"]}))
+        self.assertIn("deprecated skill is in the plugin manifest", self.result()[1])
 
     def test_retired_operative_call(self):
         self.write("CLAUDE.md", 'Call the Skill tool with "grilling".\n')

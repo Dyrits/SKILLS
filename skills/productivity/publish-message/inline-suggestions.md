@@ -1,14 +1,14 @@
 # Inline suggestions
 
 Read this reference when the requested publication includes inline suggestions.
-The main process in [SKILL.md](SKILL.md) owns target resolution, prose, and approval of the complete publication.
+The main process in [SKILL.md](SKILL.md) owns destination resolution, prose, and approval of the complete publication.
 
 ## Place the findings
 
 Account for every finding in exactly one place:
 
 - **Inline suggestion:** an open finding on GitHub or GitLab whose fix is small, unambiguous, and confined to one hunk in the current destination diff.
-- **Summary:** completed work, unresolved requirements, decisions, uncertain changes, changes spanning hunks or files, and every finding on Jira.
+- **Summary:** completed work, unresolved requirements, decisions, uncertain changes, changes spanning hunks or files, and every finding when the destination is not a GitHub or GitLab request.
 
 Use a suggestion only when a literal replacement fully addresses the finding and the proposed change is still absent from the destination diff.
 Keep judgement calls in the summary with their evidence and disposition.
@@ -25,7 +25,7 @@ Keep a finding in the summary if its replacement or valid diff location cannot b
 Draft the summary from the remaining findings, preserving their dispositions and distinguishing local work from changes present in the destination.
 When a summary accompanies suggestions, include their drafted count only if it helps the reader locate them.
 An explicitly requested set of inline comments can stand alone when there are no summary findings.
-Jira and publications with no eligible suggestions use a single summary comment and return to the main process.
+Other destinations and publications with no eligible suggestions use a single summary message and return to the main process.
 Done when every suggestion is a validated, destination-specific draft and any summary count agrees with the drafted set.
 
 ## Submit the approved set

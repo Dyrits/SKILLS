@@ -13,7 +13,7 @@ disable-model-invocation: true
 | Situation | Route |
 | --- | --- |
 | You want explicit planning and execution phases | `/specify → /taskify → /implement → /review-and-refactor`. Skip task decomposition when the selected work is small enough to implement directly. |
-| You want to discover behavior while building a living application | `/iterate`, installed separately from the plugin. It clarifies, implements, and verifies one useful batch at a time. |
+| You want to discover behavior while building a living application | `/iterate` clarifies, implements, and verifies one useful batch at a time. |
 | You want to clarify a decision without starting development | `/refine`, the general interview discipline. The caller records useful results in the appropriate documents. |
 
 ### Planned development
@@ -47,7 +47,7 @@ The `document` skill owns the shared project documents: requirements, specificat
 | --- | --- |
 | A published request needs verification and a maintainer decision | `/triage`, then implementation of its ready brief or further specification as needed. |
 | What to build is still undecided, and settling it needs research, prototypes, or interviews across several sessions | `/graphify` builds a decision graph and resolves one decision per session. |
-| What to build is known, but there are several candidate outcomes and the question is which comes first | `/prioritize`, installed separately, groups outcomes and recommends one focus within a session. |
+| What to build is known, but there are several candidate outcomes and the question is which comes first | `/prioritize` groups outcomes and recommends one focus within a session. |
 | Agreed behavior needs splitting into delivery work | `/taskify` produces tasks with acceptance criteria and blockers. |
 | One decision or plan needs stress-testing | `/refine` interviews until the frontier is empty. |
 | A recurring work loop needs an implementable design | `/design-workflow`. |
@@ -84,21 +84,14 @@ Keep authoritative work state current before changing context.
 | `/write-for-agents` | Write skills, steering instructions, and agent references. |
 | `/walk-through` | Generate an interactive script for steps only a human can perform. |
 | `/unslop` | Remove filler and recurring AI writing patterns from prose. |
-
-## Separately installed supporting skills
-
-These live in purpose buckets but have no plugin entry.
-
-| Skill | Responsibility |
-| --- | --- |
 | `/setup-ai-tooling` | Configure verified tool integrations, measurements, and recovery methods. |
 | `/monitor-ai-tooling` | Report actual usage, quality, gaps, and evidence-supported benefits. |
 | `/setup-delegation-policy` | Install machine-wide delegation and model-tier policy. |
 | `/setup-git-hooks` | Configure versioned commit checks. |
 | `/setup-git-guardrails` | Block dangerous Git operations at supported enforcement layers. |
 | `/setup-auto-handoff` | Gate supported compaction on a fresh handoff. |
-| `/address-feedback` | Assess every substantive comment, implement approved changes, and publish approved replies. |
-| `/publish-message` | Publish established findings after approval of exact text and destination. |
+| `/address-feedback` | Assess review feedback from any source, implement approved changes, and deliver approved replies. |
+| `/publish-message` | Publish established findings to any connected service after approval of exact text and destination. |
 | `/work-in-tree` | Create or reuse an isolated task checkout. |
 | `/sync-tree` | Transfer committed work to its verified corresponding local branch. |
 | `/rebase` | Rebase branches with recovery state, intent checks, and separately approved publication. |
@@ -107,4 +100,4 @@ These live in purpose buckets but have no plugin entry.
 
 ## Setup
 
-Tell the user to run `/setup-ai-workspace` before a tracker-dependent flow when the tracker configuration is missing. It configures task authority, writing conventions, triage roles, and domain layout. Its optional tooling stage uses the separately installed `setup-ai-tooling` skill. `iterate` does not require tracker setup merely to maintain its local working documents.
+Tell the user to run `/setup-ai-workspace` before a tracker-dependent flow when the tracker configuration is missing. It configures task authority, writing conventions, triage roles, and domain layout. Its optional tooling stage uses `setup-ai-tooling`. `iterate` does not require tracker setup merely to maintain its local working documents.

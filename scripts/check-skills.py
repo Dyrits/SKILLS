@@ -24,7 +24,7 @@ def check(repository):
     skills = {path.parent.relative_to(root): path for path in skill_files}
     router = (root / "skills/getting-started/guide/SKILL.md").read_text()
     top = (root / "README.md").read_text()
-    listing = top.split("## Plugin skills", 1)[-1].split("## Separately installed skills", 1)[0]
+    listing = top.split("## Plugin skills", 1)[-1]
     required_sections = (
         "What it does", "When to reach for it", "Common questions", "It's working if", "Where it fits"
     )
@@ -59,11 +59,14 @@ def check(repository):
         skill_link = f"./{name}/SKILL.md"
         if skill_link not in bucket:
             errors.append(f"{relative}: missing bucket README link.")
+        deprecated = relative.parts[1] == "deprecated"
+        if deprecated and relative in promoted:
+            errors.append(f"{relative}: deprecated skill is in the plugin manifest.")
+        elif not deprecated and relative not in promoted:
+            errors.append(f"{relative}: missing from the plugin manifest.")
         if relative in promoted:
             if str(relative) + "/SKILL.md" not in listing:
                 errors.append(f"{relative}: missing promoted top-level README entry.")
-            if skill_link not in bucket.split("## Not in the plugin", 1)[0]:
-                errors.append(f"{relative}: missing promoted bucket entry.")
             page = root / "documentation/skills" / relative.relative_to("skills")
             page = page.with_suffix(".md")
             expected_pages.add(page)
@@ -79,14 +82,12 @@ def check(repository):
             first = document.splitlines()[0] if document else ""
             if not re.match(r"(Upstream|Source|Provenance|Fork-|Derived from upstream)", first):
                 errors.append(f"{page.relative_to(root)}: missing top provenance note.")
-        elif "## Not in the plugin" not in bucket or skill_link not in bucket.split("## Not in the plugin", 1)[-1]:
-            errors.append(f"{relative}: non-plugin skill is not in its separate bucket listing.")
 
     for relative in promoted - skills.keys():
         errors.append(f"{relative}: manifest target does not exist.")
     actual_pages = set((root / "documentation/skills").glob("*/*.md"))
     for page in actual_pages - expected_pages:
-        errors.append(f"{page.relative_to(root)}: orphan or non-plugin documentation page.")
+        errors.append(f"{page.relative_to(root)}: orphan documentation page.")
     if any((root / "skills/experimental").rglob("*")):
         errors.append("skills/experimental still contains entries.")
 

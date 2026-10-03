@@ -1,6 +1,6 @@
 # Writing skill documentation pages
 
-Each promoted skill has a human-facing page at `documentation/skills/<bucket>/<name>.md`. Promotion is determined only by `.claude-plugin/plugin.json`, not by its bucket. Non-plugin skills get no page, even when they share a bucket with promoted skills.
+Every skill outside `deprecated/` is promoted and has a human-facing page at `documentation/skills/<bucket>/<name>.md`. Deprecated skills get no page.
 
 Create or re-sync the page when a promoted skill is added, renamed, moved, or behaviorally changed. Remove stale pages after renames or removals. Update active cross-links, bucket listings, the top-level README, and the `guide` router together. Historical upstream archives and handoffs remain unchanged.
 
@@ -32,7 +32,7 @@ State invocation mode and the trigger boundary.
 - User-invoked: the user types `/<name>`; the agent does not reach for it automatically.
 - Model-invoked: the user can type `/<name>` and the agent can reach for it when the task fits.
 
-Where it is confusable with another skill, explain the distinction and link to that page. A non-plugin neighbor links directly to its `SKILL.md`, not to a nonexistent human-facing page.
+Where it is confusable with another skill, explain the distinction and link to that page.
 
 ### Prerequisites
 
@@ -56,7 +56,7 @@ Use checkable signals in the reader's work or trace. A reader should not have to
 
 Identify the role: a chain step, run-once setup, periodic maintenance, or standalone discipline. Link the relevant neighbors with a reason, then link to `../getting-started/guide.md`.
 
-The planned development route is `specify → taskify → implement → review-and-refactor`. Just-in-time development uses the separately installed `iterate` skill and the same project documents. General `refine` does not force a software specification.
+The planned development route is `specify → taskify → implement → review-and-refactor`. Just-in-time development uses the `iterate` skill and the same project documents. General `refine` does not force a software specification.
 
 ## Writing and links
 

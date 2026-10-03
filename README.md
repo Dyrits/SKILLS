@@ -25,7 +25,7 @@ Specifications stay authoritative in the repository. Draft remote tasks remain l
 | Approach | Route |
 | --- | --- |
 | Planned development | `specify → taskify → implement → review-and-refactor`; skip decomposition for small work that does not need separate tasks. |
-| Just-in-time development | [iterate](./skills/workflow/iterate/SKILL.md), installed separately from the plugin, clarifies, builds, and validates the next useful increment. |
+| Just-in-time development | [iterate](./skills/workflow/iterate/SKILL.md) clarifies, builds, and validates the next useful increment. |
 
 The [document](./skills/reference/document/SKILL.md) skill owns the [shared project-document rules](./skills/reference/document/PROJECT-DOCUMENTS.md).
 
@@ -58,7 +58,7 @@ Not every retained skill comes from that upstream repository. The [primary-sourc
 
 - Tasks can be local Markdown or native remote issues.
 - Both workflows use project-owned documents rather than separate artifact systems.
-- Skills are grouped by purpose, not publication status. Moving a skill does not promote it.
+- Skills are grouped by purpose. Every skill outside `deprecated/` ships in the plugin.
 - Upstream changes are adopted deliberately. Historical names remain in provenance notes, not as active aliases.
 
 ### Intentional workflow drift
@@ -78,16 +78,21 @@ Not every retained skill comes from that upstream repository. The [primary-sourc
 | Separate planning snapshots and iterative working records | Shared project documents | Switching development approaches should not duplicate or discard obligations, agreements, or progress. |
 | Prototype code retained only outside the application | Approved experiment with a productionization path | Validation should preserve useful work; experimental success does not itself establish production readiness. |
 
-`iterate` is a fork-specific just-in-time workflow, not an upstream rename. Skills formerly under `experimental/` now live in purpose buckets and keep their individual plugin status. Human-facing pages identify verified original names or an explicit fork-specific origin. See [architecture decision record 0002](./documentation/architecture-decision-record/0002-share-project-documents-across-workflows.md) for the document-authority decision.
+`iterate` is a fork-specific just-in-time workflow, not an upstream rename. Skills formerly under `experimental/` now live in purpose buckets and ship in the plugin. Human-facing pages identify verified original names or an explicit fork-specific origin. See [architecture decision record 0002](./documentation/architecture-decision-record/0002-share-project-documents-across-workflows.md) for the document-authority decision.
 
 ## Plugin skills
 
-The manifest is the source of truth for this list. **User-invoked** skills run only when you ask; **model-invoked** skills can also be reached automatically. A skill can call model-invoked skills, not user-only workflows.
+The manifest is the source of truth for this list; it holds every skill outside `deprecated/`. **User-invoked** skills run only when you ask; **model-invoked** skills can also be reached automatically. A skill can call model-invoked skills, not user-only workflows.
 
 ### Getting started
 
 - [setup-ai-workspace](./skills/getting-started/setup-ai-workspace/SKILL.md): Configure project documents, task tracking, triage roles, and optional tooling. User-invoked.
 - [guide](./skills/getting-started/guide/SKILL.md): Choose the next skill, workflow, or session boundary. User-invoked.
+- [setup-delegation-policy](./skills/getting-started/setup-delegation-policy/SKILL.md): Configure machine-wide delegation and model-tier rules. User-invoked.
+- [setup-ai-tooling](./skills/getting-started/setup-ai-tooling/SKILL.md): Configure and verify selected development tools and their measurement baseline. Model-invoked.
+- [setup-git-hooks](./skills/getting-started/setup-git-hooks/SKILL.md): Configure versioned commit hooks with formatting, linting, typechecking, and builds. Model-invoked.
+- [setup-git-guardrails](./skills/getting-started/setup-git-guardrails/SKILL.md): Block dangerous Git commands with client permissions and hooks. Model-invoked.
+- [setup-auto-handoff](./skills/getting-started/setup-auto-handoff/SKILL.md): Gate Claude Code compaction on a fresh handoff. Model-invoked.
 
 ### Workflow
 
@@ -97,6 +102,8 @@ The manifest is the source of truth for this list. **User-invoked** skills run o
 - [taskify](./skills/workflow/taskify/SKILL.md): Decompose work into tasks with acceptance criteria and dependencies.
 - [implement](./skills/workflow/implement/SKILL.md): Build authorized work, validate it, review it, and maintain project documents.
 - [implement-all](./skills/workflow/implement-all/SKILL.md): Implement a task graph on one integration branch, with concurrent work and an optional request.
+- [iterate](./skills/workflow/iterate/SKILL.md): Develop the living application just in time, maintaining backlog, working state, and root changelog.
+- [address-feedback](./skills/workflow/address-feedback/SKILL.md): Assess review feedback from any source, implement approved changes, and deliver approved replies.
 
 #### Model-invoked
 
@@ -113,6 +120,7 @@ The manifest is the source of truth for this list. **User-invoked** skills run o
 
 - [research](./skills/shaping/research/SKILL.md): Investigate primary sources and save cited findings.
 - [prototype](./skills/shaping/prototype/SKILL.md): Settle a design question with a scoped experiment and validate before integration.
+- [prioritize](./skills/shaping/prioritize/SKILL.md): Organize candidate outcomes and agree on one focus, keeping the rest in the backlog.
 
 ### Upkeep
 
@@ -121,6 +129,7 @@ The manifest is the source of truth for this list. **User-invoked** skills run o
 - [triage](./skills/upkeep/triage/SKILL.md): Verify and classify requests, recording actionable briefs or decisions.
 - [improve-codebase-architecture](./skills/upkeep/improve-codebase-architecture/SKILL.md): Present deepening opportunities in a visual audit.
 - [improve-agent-environment](./skills/upkeep/improve-agent-environment/SKILL.md): Suggest improvements based on session evidence.
+- [monitor-ai-tooling](./skills/upkeep/monitor-ai-tooling/SKILL.md): Report observed tool benefits, estimates, and quality gaps.
 
 #### Model-invoked
 
@@ -128,7 +137,13 @@ The manifest is the source of truth for this list. **User-invoked** skills run o
 
 ### Version control
 
-Both promoted version-control skills are model-invoked.
+#### User-invoked
+
+- [work-in-tree](./skills/version-control/work-in-tree/SKILL.md): Carry out work in an isolated checkout with a verified return destination.
+- [sync-tree](./skills/version-control/sync-tree/SKILL.md): Transfer committed work to the verified corresponding local branch.
+- [rebase](./skills/version-control/rebase/SKILL.md): Rebase local branches with recovery records, checks, and separately approved publication.
+
+#### Model-invoked
 
 - [draft-merge-request](./skills/version-control/draft-merge-request/SKILL.md): Write a request body with a summary visual, before/after evidence, and merge danger.
 - [resolve-merge-conflicts](./skills/version-control/resolve-merge-conflicts/SKILL.md): Resolve conflicts by intent and finish the operation.
@@ -143,12 +158,14 @@ Both promoted version-control skills are model-invoked.
 - [take-over](./skills/productivity/take-over/SKILL.md): Resume from the latest handoff and its primary sources.
 - [teach](./skills/productivity/teach/SKILL.md): Maintain a stateful teaching workspace.
 - [design-workflow](./skills/productivity/design-workflow/SKILL.md): Turn recurring work loops into implementable workflow specifications.
+- [publish-message](./skills/productivity/publish-message/SKILL.md): Publish established conclusions to any connected service after approval of exact text and destination.
 
 #### Model-invoked
 
 - [illustrate](./skills/productivity/illustrate/SKILL.md): Explain a topic with the smallest useful visual.
 - [optimize-process](./skills/productivity/optimize-process/SKILL.md): Improve a recurring process using observed friction.
 - [walk-through](./skills/productivity/walk-through/SKILL.md): Generate a guided script for steps only a human can perform.
+- [classify](./skills/productivity/classify/SKILL.md): Classify safe-to-send text with classifier.dev and retain uncertain results.
 
 ### Reference
 
@@ -160,18 +177,7 @@ Disciplines other skills call; each is also model- or user-reachable.
 - [document](./skills/reference/document/SKILL.md): Maintain technical documentation and shared project-document rules.
 - [write-for-agents](./skills/reference/write-for-agents/SKILL.md): Write predictable agent instructions with clear completion criteria.
 - [unslop](./skills/reference/unslop/SKILL.md): Remove filler and recurring AI writing patterns.
-
-## Separately installed skills
-
-Skills outside the plugin remain in their purpose buckets. Each bucket's **Not in the plugin** section lists them:
-
-- [Getting started](./skills/getting-started/README.md#not-in-the-plugin): tooling, delegation policy, Git hooks/guardrails, and compaction handoff setup.
-- [Workflow](./skills/workflow/README.md#not-in-the-plugin): just-in-time iteration.
-- [Version control](./skills/version-control/README.md#not-in-the-plugin): worktrees, branch transfer and rebase, review feedback, and publication.
-- [Shaping](./skills/shaping/README.md#not-in-the-plugin): outcome decomposition.
-- [Upkeep](./skills/upkeep/README.md#not-in-the-plugin): tooling measurement reports.
-- [Productivity](./skills/productivity/README.md#not-in-the-plugin): text classification.
-- [Reference](./skills/reference/README.md#not-in-the-plugin): memory and script reuse.
+- [memorize](./skills/reference/memorize/SKILL.md): File lessons where the next agent will look, and reuse saved scripts before writing new ones.
 
 ## Credits
 

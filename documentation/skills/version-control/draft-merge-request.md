@@ -15,8 +15,8 @@ Type `/draft-merge-request`, or the agent reaches for it automatically when a ta
 | A branch is finished and needs a description a human can read fast | `/draft-merge-request` |
 | The change is not reviewed yet | [review-and-refactor](../workflow/review-and-refactor.md) first, then this |
 | The ticket is not built yet | [implement](../workflow/implement.md), which closes out with the review |
-| The request is already open and reviewers have commented | Separately installed [address-feedback](../../../skills/version-control/address-feedback/SKILL.md) |
-| The conclusion is already written and just needs posting | Separately installed [publish-message](../../../skills/version-control/publish-message/SKILL.md), after approval of text and destination |
+| The request is already open and reviewers have commented | [address-feedback](../workflow/address-feedback.md) |
+| The conclusion is already written and just needs posting | [publish-message](../productivity/publish-message.md), after approval of text and destination |
 
 ## The summary is a shape, not a paragraph
 
@@ -90,4 +90,4 @@ Use a call tree, file tree, or shaped diff when your review surface does not ren
 
 ## Where it fits
 
-`draft-merge-request` is a chain step after [review-and-refactor](../workflow/review-and-refactor.md), and a standalone format reference when rewriting a description. Its evidence must reflect agreed checks, actual results, and any pending human acceptance rather than declaring delivery prematurely. Separately installed [address-feedback](../../../skills/version-control/address-feedback/SKILL.md) continues when reviewers reply. [improve-agent-environment](../upkeep/improve-agent-environment.md) reviews useful session lessons, and [guide](../getting-started/guide.md) maps both development workflows.
+`draft-merge-request` is a chain step after [review-and-refactor](../workflow/review-and-refactor.md), and a standalone format reference when rewriting a description. Its evidence must reflect agreed checks, actual results, and any pending human acceptance rather than declaring delivery prematurely. [address-feedback](../workflow/address-feedback.md) continues when reviewers reply. [improve-agent-environment](../upkeep/improve-agent-environment.md) reviews useful session lessons, and [guide](../getting-started/guide.md) maps both development workflows.

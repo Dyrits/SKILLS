@@ -48,6 +48,21 @@
     "./skills/upkeep/improve-agent-environment",
     "./skills/upkeep/improve-codebase-architecture",
     "./skills/version-control/resolve-merge-conflicts",
-    "./skills/upkeep/triage"
+    "./skills/upkeep/triage",
+    "./skills/getting-started/setup-ai-tooling",
+    "./skills/getting-started/setup-auto-handoff",
+    "./skills/getting-started/setup-delegation-policy",
+    "./skills/getting-started/setup-git-guardrails",
+    "./skills/getting-started/setup-git-hooks",
+    "./skills/productivity/classify",
+    "./skills/productivity/publish-message",
+    "./skills/reference/memorize",
+    "./skills/shaping/prioritize",
+    "./skills/upkeep/monitor-ai-tooling",
+    "./skills/version-control/rebase",
+    "./skills/version-control/sync-tree",
+    "./skills/version-control/work-in-tree",
+    "./skills/workflow/address-feedback",
+    "./skills/workflow/iterate"
   ]
 }
