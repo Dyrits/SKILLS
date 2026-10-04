@@ -11,6 +11,7 @@ The accompanying JSON inventory maps upstream paths to maintained fork paths or 
 An ancestry merge records the upstream tip without changing content; the following port commit adopts changes into this fork's own names and structure.
 
 - [2026-09-30](./sync/2026-09-30.md): port through `d81f3a1`, retaining this fork's branding and custom workflows.
+- [2026-10-04](./sync/2026-10-04.md): port through `24fe0ef` (`v1.3.1`), adopting the `diagnosing-bugs` routing correction.
 
 ## Snapshots
 

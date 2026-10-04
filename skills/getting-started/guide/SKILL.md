@@ -70,7 +70,7 @@ Keep authoritative work state current before changing context.
 
 | Skill | Responsibility |
 | --- | --- |
-| `/debug` | Build a tight reproduction loop, diagnose, fix, and regression-test. |
+| `/debug` | Build a tight reproduction loop, diagnose, fix, and regression-test. When it finds no correct seam for the test, follow the fix with `/improve-codebase-architecture`. |
 | `/resolve-merge-conflicts` | Resolve an in-progress conflict by intent and finish the operation. |
 | `/improve-skills` | Review a session's skill use with the user and report skill problems as an issue on the skills repository. |
 | `/re-explain` | Re-explain a message with missing context and canonical vocabulary. |
