@@ -18,6 +18,9 @@ from pathlib import Path
 spec = importlib.util.spec_from_file_location("check_skills", Path(__file__).with_name("check-skills.py"))
 checker = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(checker)
+spec = importlib.util.spec_from_file_location("build_skill_graph", Path(__file__).with_name("build-skill-graph.py"))
+builder = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(builder)
 
 
 class LayoutChecks(unittest.TestCase):
@@ -187,6 +190,34 @@ class LayoutChecks(unittest.TestCase):
         path = self.root / "documentation/skills/reference/example.md"
         path.write_text(path.read_text().replace("## Where it fits\nA role.\n", ""))
         self.assertIn("required sections missing", self.result()[1])
+
+    def write_skill_map(self, skills=("example", "guide")):
+        self.write("scripts/skill-graph/flow.json", json.dumps({
+            "artifacts": {"note": {"label": "Note", "description": "A note."}},
+            "skills": {name: {"inputs": [], "outputs": ["note"], "next": []} for name in skills}}))
+        self.write("skills/getting-started/README.md", "# Getting started\n\nSet up.\n\n- [guide](./guide/SKILL.md): Route.\n")
+        self.write("skills/reference/README.md", "# Reference\n\nDisciplines.\n\n- [example](./example/SKILL.md): Example.\n")
+        self.write("scripts/skill-graph/template.html", "<script>const DATA = /*SKILL_GRAPH_DATA*/null;</script>\n")
+        with contextlib.redirect_stdout(io.StringIO()):
+            builder.main([str(self.root)])
+
+    def test_current_skill_map_passes(self):
+        self.write_skill_map()
+        self.assertEqual(self.result()[0], False)
+
+    def test_stale_skill_map(self):
+        self.write_skill_map()
+        self.write("index.html", "old")
+        self.assertIn("stale skill map", self.result()[1])
+
+    def test_skill_missing_from_bucket_listing(self):
+        self.write_skill_map()
+        self.write("skills/reference/README.md", "# Reference\n\nDisciplines.\n\n[example](./example/SKILL.md)\n")
+        self.assertIn("no one-line entry for example", self.result()[1])
+
+    def test_skill_missing_from_map(self):
+        self.write_skill_map(skills=("guide",))
+        self.assertIn("no entry for promoted skill example", self.result()[1])
 
 
 if __name__ == "__main__":

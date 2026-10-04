@@ -11,6 +11,8 @@ Skills are organized into bucket folders under `skills/`:
 
 **Every skill outside `deprecated/` is promoted.** A promoted skill has an entry in `.claude-plugin/plugin.json`'s `skills` array (the Claude Code plugin ships exactly that set), a reference in the top-level `README.md` and in its bucket's `README.md`, and a documentation page. Adding a skill means adding all four; deprecating one means removing its manifest entry and page. `scripts/check-skills.py` enforces this.
 
+The skills page at the root `index.html`, one small graph per skill, is generated: each promoted skill also needs an entry in `scripts/skill-graph/flow.json` (the artifacts it reads and writes, and its usual next skills). Its section, order, and one-liner come from the bucket `README.md`, its text from the documentation page, and its calls and hand-overs from the dependency paragraph. Change `flow.json` or `scripts/skill-graph/template.html`, never `index.html`, then run `python3 scripts/build-skill-graph.py`; `check-skills.py` fails on a missing entry or a stale map.
+
 Install commands are copied verbatim from [.agents/install-block.md](./.agents/install-block.md). `.claude-plugin/marketplace.json` makes the repository its own single-plugin marketplace (a fallback the install block explains, not the documented route). Run `claude plugin validate . --strict` after touching either manifest. Why a Claude plugin but not (yet) a Codex one lives in [architecture decision record 0002](./.upstream/architecture-decision-record/0002-ship-as-a-claude-code-plugin.md), an upstream decision archived under `.upstream/`; this fork's own decisions live in `documentation/architecture-decision-record/`.
 
 Each skill entry in the top-level `README.md` must link the skill name to its `SKILL.md`.

@@ -29,6 +29,8 @@ Specifications stay authoritative in the repository. Draft remote tasks remain l
 
 The [document](./skills/reference/document/SKILL.md) skill owns the [shared project-document rules](./skills/reference/document/PROJECT-DOCUMENTS.md).
 
+To see what each skill reads and writes and which skills it works with, open the [skills page](./index.html) in a browser: every skill has a small graph.
+
 ```text
 CHANGELOG.md
 documentation/

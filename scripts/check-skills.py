@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-"""Check skill layout, invocation metadata, dependency paragraphs, documentation, and local links.
+"""Check skill layout, invocation metadata, dependency paragraphs, documentation, local links, and the skill map.
 
 Usage: python3 scripts/check-skills.py [repository]
 Needs: Python 3 standard library. Reads files only.
 """
 
+import importlib.util
 import json
 import re
 import sys
@@ -181,6 +182,16 @@ def check(repository):
             for name in call_names(call):
                 if name not in callable_names:
                     errors.append(f"{path.relative_to(root)}: operative call to retired or unknown skill {name}.")
+
+    # The skill map at index.html is generated; keep it covering every promoted skill and current.
+    if (root / "scripts/skill-graph/flow.json").exists():
+        spec = importlib.util.spec_from_file_location("build_skill_graph", Path(__file__).with_name("build-skill-graph.py"))
+        builder = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(builder)
+        html, problems = builder.render(root)
+        errors.extend(problems)
+        if not problems and (not (root / "index.html").exists() or (root / "index.html").read_text() != html):
+            errors.append("index.html: stale skill map; run python3 scripts/build-skill-graph.py.")
 
     for error in errors:
         print(f"ERROR: {error}")
