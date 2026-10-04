@@ -1,7 +1,6 @@
 ---
 name: setup-delegation-policy
-description: Install the delegation and model routing rule into the global steering files on this machine.
-disable-model-invocation: true
+description: "Install the delegation and model routing rule into the global steering files on this machine. Use when the user asks to set up delegation or model routing."
 ---
 
 # Setup Delegation Policy

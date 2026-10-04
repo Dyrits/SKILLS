@@ -1,7 +1,6 @@
 ---
 name: guide
-description: "Choose the next skill, development workflow, or session boundary from the current situation."
-disable-model-invocation: true
+description: "Choose the next skill, development workflow, or session boundary from the current situation. Use when the user asks which skill or workflow to use next, or when a flow stalls and the next move is unclear."
 ---
 
 # Guide
@@ -21,15 +20,15 @@ disable-model-invocation: true
 1. `/specify` reads the current context, resolves only outstanding decisions through `refine`, and writes or updates the selected capability's requirements and specifications. Settled decisions go straight to synthesis.
 2. When conversation cannot settle a design question, suggest `/prototype`. The user requests or approves a scoped experiment. Its validated answer and evidence feed the specification; useful code can be integrated after production checks without mandatory rebuilding. `/research` handles consequential unknown external facts.
 3. `/taskify` decomposes selected work into coherent tasks with acceptance criteria and blocking dependencies. Drafts remain local until explicit publication. The word task is tracker-neutral: a remote tracker may call it an issue or ticket.
-4. `/implement` builds an authorized task, specification, or small approved batch. `/implement-all` instead implements a task graph on one integration branch, using concurrent work where dependencies allow.
+4. `/implement` builds an authorized task, specification, or small approved batch. `/divide-and-conquer` instead implements a task graph on one integration branch: it routes each task to the least expensive capable agent, asks the user to approve that routing table, runs the tasks concurrently where dependencies allow, and reviews once.
 5. `/test-first` establishes behavior through red/green at agreed seams. `/review-and-refactor` reviews Standards and Specifications against a fixed starting point, applies supported refactors, and verifies them. An explicit living agreement is valid review input; a separate specification is not mandatory for an iterative batch.
-6. `/draft-merge-request` writes a request body with a summary visual, before/after evidence, and merge danger. It does not push or open the request. `/implement-all` can publish or open one only when explicit destination-and-scope authorization covers those actions; tracker configuration alone is not authorization.
+6. `/draft-merge-request` writes a request body with a summary visual, before/after evidence, and merge danger. It does not push or open the request. `/divide-and-conquer` can publish or open one only when explicit destination-and-scope authorization covers those actions; tracker configuration alone is not authorization.
 
 ### Just-in-time development
 
 `/iterate` primarily maintains `documentation/backlog.md`, `documentation/work-in-progress.md`, and root `CHANGELOG.md`. It respects existing requirements and specifications but does not generate capability documents or tasks just to run a batch.
 
-It evolves the living application, including alternative implementations when useful. A prototype rebuild is not a prerequisite. Approved interaction or appearance needs user acceptance where judgment matters; routine internal changes use agreed automated checks.
+It builds each batch through `implement`, or through `divide-and-conquer` when a batch splits into independent tasks. It evolves the living application, including alternative implementations when useful. A prototype rebuild is not a prerequisite. Approved interaction or appearance needs user acceptance where judgment matters; routine internal changes use agreed automated checks.
 
 When unclear scope, competing outcomes, or dependencies prevent choosing an increment, it invokes `prioritize`. That branch retains candidates and deferrals, recommends one focus, and gets approval without requiring implementation tasks. Small clear changes bypass it. Completing one outcome does not approve the next.
 

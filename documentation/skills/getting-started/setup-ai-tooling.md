@@ -8,7 +8,7 @@ It runs only inside an explicit tooling request, including a tooling stage you c
 
 ## When to reach for it
 
-Model-invoked: you can type `/setup-ai-tooling`, and the agent can reach for it when you ask to install or configure AI tooling. It does not start on its own for ordinary coding work.
+Type `/setup-ai-tooling`, or an agent or another skill can reach for it when you ask to install or configure AI tooling. It does not start on its own for ordinary coding work.
 
 | Situation | Use |
 | --- | --- |

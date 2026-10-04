@@ -8,7 +8,7 @@ It is installed rather than invoked because a skill fires only after reasoning h
 
 ## When to reach for it
 
-User-invoked: you type `/setup-delegation-policy`; the agent does not reach for it automatically, because it edits files outside any one repository.
+Type `/setup-delegation-policy`, or an agent or another skill can reach for it. Because it edits files outside any one repository, its trigger is your explicit request, and `setup-ai-workspace` calls it only after you agree.
 
 ## What it changes
 

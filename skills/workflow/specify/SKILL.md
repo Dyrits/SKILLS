@@ -1,7 +1,6 @@
 ---
 name: specify
-description: Resolve the open decisions in a selected scope and synthesize its living repository specification.
-disable-model-invocation: true
+description: "Resolve the open decisions in a selected scope and synthesize its living repository specification. Use when the user asks to specify a capability, or when requirements have outstanding decisions before implementation."
 ---
 
 # Specify

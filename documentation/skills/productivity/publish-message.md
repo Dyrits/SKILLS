@@ -8,7 +8,7 @@ Nothing is posted without that approval, and any revision brings the changed set
 
 ## When to reach for it
 
-You invoke this by typing `/publish-message`, optionally with where to post and what to say; the agent will not reach for it on its own. Use it after you have reached findings or a decision and want them shared. To answer someone else's feedback point by point, use [address-feedback](../workflow/address-feedback.md). To write a pull request description, use [draft-merge-request](../version-control/draft-merge-request.md).
+Type `/publish-message`, optionally with where to post and what to say; an agent or another skill can also reach for it, but it always waits for approval of the exact text and destination. Use it after you have reached findings or a decision and want them shared. To answer someone else's feedback point by point, use [address-feedback](../workflow/address-feedback.md). To write a pull request description, use [draft-merge-request](../version-control/draft-merge-request.md).
 
 ## Prerequisites
 

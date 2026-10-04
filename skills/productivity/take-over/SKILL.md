@@ -1,8 +1,7 @@
 ---
 name: take-over
-description: Resume work from the latest handoff document in .agents/handoffs/, following the supersedes chain deeper only when the newest document leaves questions open.
+description: "Resume work from the latest handoff document in .agents/handoffs/, following the supersedes chain only when questions stay open. Use when the user asks to take over, resume, or continue from a handoff."
 argument-hint: "Optional: a note on what this session will focus on"
-disable-model-invocation: true
 ---
 
 Resume work from the last handoff document written by the `hand-off` skill.
@@ -13,7 +12,7 @@ Resume work from the last handoff document written by the `hand-off` skill.
 2. **Read it fully** before doing anything else. It is the contract for this session: the next agent treats its claims as fact, so while reading, flag anything stated as fact that was only an assumption.
 3. **Follow the chain only if needed**: each handoff names the one it supersedes. Read earlier handoffs **only** when the newest one references something you can't resolve (a decision whose reasoning isn't there, a path that no longer exists, a "supersedes" question).
 4. **Resolve referenced artifacts**: open the specifications, plans, ADRs, issues, commits and diffs the document points at, by path or URL. They are the primary sources; the handoff is a summary of them.
-5. **Use the suggested skills**: verify their current names and invocation modes. Call model-invoked skills through the Skill tool rather than improvising; tell the human to invoke a needed user-only skill. A handoff does not override invocation restrictions.
+5. **Use the suggested skills**: verify their current names. Call them through the Skill tool rather than improvising.
 6. **Confirm the brief back to the user in two or three sentences** before starting: what was in flight, what you'll do next. This catches stale or wrong handoffs before they cost an hour.
 7. **Start working.** Leave the handoff files untouched: if this session reaches a new phase boundary, the user runs `hand-off` again, which writes a new versioned file.
 

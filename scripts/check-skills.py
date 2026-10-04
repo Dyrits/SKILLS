@@ -12,6 +12,10 @@ from pathlib import Path
 from urllib.parse import unquote
 
 
+# Skills called by name that ship outside this repository.
+EXTERNAL_SKILLS = {"webapp-testing"}
+
+
 def check(repository):
     root = Path(repository).resolve()
     errors = []
@@ -43,12 +47,11 @@ def check(repository):
         if not metadata_path.exists():
             errors.append(f"{relative}: missing agents/openai.yaml.")
             continue
-        user_only = bool(re.search(r"^disable-model-invocation:\s*true\s*$", content, re.MULTILINE))
-        codex_user_only = bool(re.search(
+        # Every skill stays reachable by the human, the model, and other skills.
+        if re.search(r"^disable-model-invocation:\s*true\s*$", content, re.MULTILINE) or re.search(
             r"^\s*allow_implicit_invocation:\s*false\s*$", metadata_path.read_text(), re.MULTILINE
-        ))
-        if user_only != codex_user_only:
-            errors.append(f"{relative}: invocation policy differs between clients.")
+        ):
+            errors.append(f"{relative}: skill blocks model invocation.")
         if not re.search(rf"/{re.escape(name)}(?![\w-])", router):
             errors.append(f"{relative}: router does not name /{name}.")
         bucket_readme = path.parent.parent / "README.md"
@@ -83,6 +86,15 @@ def check(repository):
             if not re.match(r"(Upstream|Source|Provenance|Fork-|Derived from upstream)", first):
                 errors.append(f"{page.relative_to(root)}: missing top provenance note.")
 
+    # ROUTING.md carries a fallback copy of the policy's tiers; keep the two identical.
+    policy = root / "skills/getting-started/setup-delegation-policy/POLICY.md"
+    routing = root / "skills/workflow/divide-and-conquer/ROUTING.md"
+    if policy.exists() and routing.exists():
+        tier_line = re.compile(r"^(?:- \*\*(?:Light|Balanced|Heavy|Frontier)\*\*|\| (?:Tier|Light|Balanced|Heavy|Frontier) ).*$",
+                               re.MULTILINE)
+        if tier_line.findall(policy.read_text()) != tier_line.findall(routing.read_text()):
+            errors.append("skills/workflow/divide-and-conquer/ROUTING.md: tiers differ from the delegation policy.")
+
     for relative in promoted - skills.keys():
         errors.append(f"{relative}: manifest target does not exist.")
     actual_pages = set((root / "documentation/skills").glob("*/*.md"))
@@ -95,6 +107,11 @@ def check(repository):
     markdown += list((root / ".agents").glob("*.md"))
     markdown += list((root / "skills").rglob("*.md"))
     markdown += sorted(actual_pages)
+    callable_names = {relative.name for relative in skills if relative.parts[1] != "deprecated"}
+    callable_names |= EXTERNAL_SKILLS
+    # "Call the Skill tool with "a"" or "Call the Skill tool twice, for "a" and "b"".
+    call_pattern = re.compile(r'Skill tool(?: twice,)? (?:with|for) ((?:"[^"\n]+"(?:,? (?:and|or) )?)+)',
+                              re.IGNORECASE)
     link_pattern = re.compile(r"!?\[[^\]]*\]\(([^)\s]+)(?:\s+\"[^\"]*\")?\)")
     for path in markdown:
         text = path.read_text()
@@ -112,11 +129,10 @@ def check(repository):
             resolved = (root / target.lstrip("/")) if target.startswith("/") else path.parent / target
             if not resolved.exists():
                 errors.append(f"{path.relative_to(root)}: broken link {target}")
-        if re.search(r'call the Skill tool[^\n]*(?:"grilling"|"grill-me"|"to-tickets"|"to-specifications"'
-                     r'|"code-review-and-refactor"|"to-pull-request"|"documentation"|"writing-for-agents"'
-                     r'|"divide-and-conquer"|"test-driven-development"|"wizard"|"codebase-design"|"domain-modeling"|"scriptbook")',
-                     text, re.IGNORECASE):
-            errors.append(f"{path.relative_to(root)}: operative call to retired skill.")
+        for call in call_pattern.finditer(text):
+            for name in re.findall(r'"([^"]+)"', call.group(1)):
+                if name not in callable_names:
+                    errors.append(f"{path.relative_to(root)}: operative call to retired or unknown skill {name}.")
 
     for error in errors:
         print(f"ERROR: {error}")

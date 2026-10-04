@@ -1,7 +1,6 @@
 ---
 name: work-in-tree
-description: Create or reuse an isolated Git worktree and carry out the requested task there, preserving the original checkout.
-disable-model-invocation: true
+description: "Create or reuse an isolated Git worktree and carry out the task there, preserving the original checkout. Use when the user asks to work in a worktree, or when a task must not touch the current checkout."
 ---
 
 # Work in a tree

@@ -8,7 +8,7 @@ It will not let the agent form a theory until a **tight** feedback loop exists: 
 
 ## When to reach for it
 
-Type `/debug`, or the agent reaches for it on its own when a task fits: it is model-invoked, and fires on "diagnose" / "debug this" or on a report that something is broken, throwing, failing, or slow.
+Type `/debug`, or an agent or another skill can reach for it when a task fits, such as on "diagnose" / "debug this" or on a report that something is broken, throwing, failing, or slow.
 
 Reach for it on the hard ones: a bug that resists a first look, an intermittent flake, a regression that crept in between two known-good states. It is heavy by design, and the wrong tool for a question you want answered in one message.
 

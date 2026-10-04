@@ -8,7 +8,7 @@ It explains the reviewer's missing information rather than narrating the diff. T
 
 ## When to reach for it
 
-Type `/draft-merge-request`, or the agent reaches for it automatically when a task fits: writing a request description, rewriting one that reviewers bounced, or closing out a branch that is about to go up for review.
+Type `/draft-merge-request`, or an agent or another skill can reach for it when a task fits: writing a request description, rewriting one that reviewers bounced, or closing out a branch that is about to go up for review.
 
 | Where you are | What to run |
 | --- | --- |
@@ -40,10 +40,10 @@ Both are the author's call, stated up front, rather than something the reviewer 
 ## Common questions
 
 **Does it open the pull request?**
-No. It writes the body and stops. Pushing the branch, opening the request, and setting its reviewers stay yours, or stay with [implement-all](../workflow/implement-all.md), which opens a request for a whole specification when the tracker workflow or user calls for one.
+No. It writes the body and stops. Pushing the branch, opening the request, and setting its reviewers stay yours, or stay with [divide-and-conquer](../workflow/divide-and-conquer.md), which opens a request for a whole specification when the tracker workflow or user calls for one.
 
-**Why is it model-invoked when other planned workflow steps are user-invoked?**
-Because other skills need to reach it. [implement-all](../workflow/implement-all.md) can open a request as part of its run, and a body format that only a human can trigger would be unreachable at exactly the moment it is needed. Typing `/draft-merge-request` still works: model-invocation adds the agent's reach, it never removes yours.
+**Why can other skills reach it?**
+Because they need it. [divide-and-conquer](../workflow/divide-and-conquer.md) can open a request as part of its run, and a body format that only a human could trigger would be unreachable at exactly the moment it is needed. Typing `/draft-merge-request` works the same way for you.
 
 **It described the diff instead of explaining the change.**
 That is the failure the skill is written against, and it usually means the primary source was not in the window. Give it the ticket or the specification, not just the branch, and the summary has something to be about.

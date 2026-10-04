@@ -28,4 +28,4 @@ No. Tests need a useful seam and an independent expected result. Appearance and 
 
 ## Where it fits
 
-This is model-invoked implementation machinery used by [implement](./implement.md) and [implement-all](./implement-all.md). [review-and-refactor](./review-and-refactor.md) follows red/green and handles structural refactoring. [guide](../getting-started/guide.md) maps the other routes.
+This is implementation machinery used by [implement](./implement.md) and [divide-and-conquer](./divide-and-conquer.md). [review-and-refactor](./review-and-refactor.md) follows red/green and handles structural refactoring. [guide](../getting-started/guide.md) maps the other routes.

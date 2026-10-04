@@ -1,0 +1,3 @@
+interface:
+  display_name: "Divide and Conquer"
+  short_description: "Route tasks to the cheapest capable agent, build in parallel, review once."

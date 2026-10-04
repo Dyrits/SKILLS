@@ -8,7 +8,7 @@ It recommends and stops. It reads the relevant skill before making a consequenti
 
 ## When to reach for it
 
-You invoke this by typing `/guide`; the agent won't reach for it on its own.
+Type `/guide`, or an agent or another skill can reach for it when the task fits.
 
 | Your situation | What the router gives back |
 | --- | --- |
@@ -67,7 +67,7 @@ For publishing conclusions already reached, [publish-message](../productivity/pu
 | A recurring operational loop needs an implementable design | [design-workflow](../productivity/design-workflow.md). |
 | An architectural seam causes friction | [improve-codebase-architecture](../upkeep/improve-codebase-architecture.md), then explore one selected candidate. |
 | Another person has the missing answers | [ask-someone-else](../productivity/ask-someone-else.md), then bring the answers into refinement or specification. |
-| An approved task graph needs concurrent implementation | [implement-all](../workflow/implement-all.md), instead of individual task sessions. |
+| An approved task graph needs concurrent implementation | [divide-and-conquer](../workflow/divide-and-conquer.md), instead of individual task sessions. |
 | Behavior needs a red/green check | [test-first](../workflow/test-first.md), at an agreed seam. |
 | A known failure needs diagnosis | [debug](../upkeep/debug.md), starting with a tight reproduction loop. |
 | Learning is a continuing project | [teach](../productivity/teach.md), in a dedicated teaching workspace. |
@@ -108,7 +108,7 @@ Planned development has an order, but it is not the only workflow. Use `specify`
 
 **It told me half the skills aren't installed.**
 
-This is a reported harness failure. User-invoked skills may be omitted from the list visible to the model, which then mistakes that list for the installation inventory. Check `.claude-plugin/plugin.json` and your installed command list. An omitted model listing does not establish that a command is missing.
+This is a reported harness failure. Skills may be omitted from the list visible to the model, which then mistakes that list for the installation inventory. Check `.claude-plugin/plugin.json` and your installed command list. An omitted model listing does not establish that a command is missing.
 
 **It described a skill's behaviour, and the skill doesn't do that.**
 

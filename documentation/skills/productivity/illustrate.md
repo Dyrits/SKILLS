@@ -4,11 +4,11 @@ Source: HumanLayer's [`show-me` skill](https://github.com/humanlayer/skills/tree
 
 `illustrate` explains the current topic with a diagram, code sketch, or focused HTML artifact.
 It picks the **smallest view** that answers the question, keeping only the relationships and boundaries you need to see.
-The fork renamed it to make its visual-explanation purpose clearer; its behaviour and model or user invocation remain unchanged.
+The fork renamed it to make its visual-explanation purpose clearer; its behaviour remains unchanged.
 
 ## When to reach for it
 
-Type `/illustrate`, or the agent reaches for it automatically when a task needs a visual explanation.
+Type `/illustrate`, or an agent or another skill can reach for it when a task needs a visual explanation.
 Use it during a discussion when you need to see the structure, sequence, or difference between options.
 
 | Your question | What you might see |

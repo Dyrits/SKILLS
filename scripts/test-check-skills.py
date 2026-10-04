@@ -60,12 +60,17 @@ class LayoutChecks(unittest.TestCase):
     def test_consistent_fixture(self):
         self.assertEqual(self.result()[0], False)
 
-    def test_invocation_mismatch(self):
+    def test_codex_blocks_model_invocation(self):
         self.write("skills/reference/example/agents/openai.yaml",
                    "policy:\n  allow_implicit_invocation: false\n")
         failed, output = self.result()
         self.assertTrue(failed)
-        self.assertIn("invocation policy differs", output)
+        self.assertIn("skill blocks model invocation", output)
+
+    def test_claude_blocks_model_invocation(self):
+        self.write("skills/reference/example/SKILL.md",
+                   "---\nname: example\ndisable-model-invocation: true\n---\nAn example skill.\n")
+        self.assertIn("skill blocks model invocation", self.result()[1])
 
     def test_broken_relative_link(self):
         self.write("CLAUDE.md", "[missing](missing.md)\n")
@@ -106,9 +111,35 @@ class LayoutChecks(unittest.TestCase):
                 self.write("CLAUDE.md", f'Call the Skill tool with "{retired}".\n')
                 self.assertIn("operative call to retired", self.result()[1])
 
+    def test_second_name_in_paired_call(self):
+        self.write("CLAUDE.md", 'Call the Skill tool twice, for "example" and "grill-me".\n')
+        output = self.result()[1]
+        self.assertIn("unknown skill grill-me", output)
+        self.assertNotIn("unknown skill example", output)
+
+    def test_deprecated_skill_is_not_callable(self):
+        self.write("skills/deprecated/old/SKILL.md", "---\nname: old\n---\nRetired.\n")
+        self.write("skills/deprecated/old/agents/openai.yaml", "interface:\n  display_name: Old\n")
+        self.write("skills/deprecated/README.md", "[old](./old/SKILL.md)\n")
+        self.write("skills/getting-started/guide/SKILL.md",
+                   "---\nname: guide\n---\nRoute to /example, /guide, and /old.\n")
+        self.write("CLAUDE.md", 'Call the Skill tool with "old".\n')
+        self.assertIn("unknown skill old", self.result()[1])
+
+    def test_known_and_external_calls_pass(self):
+        self.write("CLAUDE.md", 'Call the Skill tool with "example". Call the Skill tool with "webapp-testing".\n')
+        self.assertEqual(self.result()[0], False)
+
     def test_historical_names_are_allowed(self):
         self.write("CLAUDE.md", 'Source skill: `documentation`, now named `document`.\n')
         self.assertEqual(self.result()[0], False)
+
+    def test_routing_tiers_follow_policy(self):
+        self.write("skills/getting-started/setup-delegation-policy/POLICY.md", "| Light | Haiku | Luna |\n")
+        self.write("skills/workflow/divide-and-conquer/ROUTING.md", "| Light | Haiku | Luna |\n")
+        self.assertNotIn("tiers differ", self.result()[1])
+        self.write("skills/workflow/divide-and-conquer/ROUTING.md", "| Light | Sonnet | Luna |\n")
+        self.assertIn("tiers differ", self.result()[1])
 
     def test_missing_where_it_fits(self):
         path = self.root / "documentation/skills/reference/example.md"

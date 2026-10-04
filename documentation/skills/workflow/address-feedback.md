@@ -15,7 +15,7 @@ The subject can be code, a document, a design, a specification, or a configurati
 
 ## When to reach for it
 
-You invoke this by typing `/address-feedback`, with a reference, a file path, or pasted text; the agent will not reach for it on its own. Use it when someone has reviewed your work and you need to respond to every point. To publish a conclusion you already reached, use [publish-message](../productivity/publish-message.md). To review code yourself, use [review-and-refactor](./review-and-refactor.md).
+Type `/address-feedback`, with a reference, a file path, or pasted text; an agent or another skill can also reach for it. Use it when someone has reviewed your work and you need to respond to every point. To publish a conclusion you already reached, use [publish-message](../productivity/publish-message.md). To review code yourself, use [review-and-refactor](./review-and-refactor.md).
 
 ## Dispositions
 

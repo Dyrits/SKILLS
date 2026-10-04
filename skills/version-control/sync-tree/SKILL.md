@@ -1,7 +1,6 @@
 ---
 name: sync-tree
-description: Sync a completed Git worktree branch to its corresponding branch in the original local repository.
-disable-model-invocation: true
+description: "Sync a completed Git worktree branch to its corresponding branch in the original local repository. Use when the user asks to sync, land, or bring worktree work back to the original checkout."
 metadata:
   delta-action: land
 ---

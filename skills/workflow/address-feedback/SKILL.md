@@ -1,7 +1,6 @@
 ---
 name: address-feedback
-description: Assess review feedback from any source (a pull or merge request, issue, ticket, document comments, or pasted notes), propose a disposition and change plan, then implement and reply.
-disable-model-invocation: true
+description: "Assess review feedback from any source (pull or merge request, issue, ticket, document comments, pasted notes), propose dispositions, then implement and reply. Use when the user shares feedback to address or asks to handle review comments."
 argument-hint: "Feedback source: PR, MR, issue, or ticket reference, a file path, or pasted text"
 ---
 

@@ -1,8 +1,7 @@
 ---
 name: rebase
-description: "Rebase local branches in place onto one target, resolve conflicts, run the checks, then report and push on approval with an explicit force-with-lease."
+description: "Rebase local branches in place onto one target, resolve conflicts, run checks, then push with force-with-lease on approval. Use when the user asks to rebase branches onto a target."
 argument-hint: "branch... --onto target [--remote remote]"
-disable-model-invocation: true
 ---
 
 # Rebase in place

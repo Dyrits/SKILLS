@@ -86,75 +86,53 @@ Not every retained skill comes from that upstream repository. The [primary-sourc
 
 ## Plugin skills
 
-The manifest is the source of truth for this list; it holds every skill outside `deprecated/`. **User-invoked** skills run only when you ask; **model-invoked** skills can also be reached automatically. A skill can call model-invoked skills, not user-only workflows.
+The manifest is the source of truth for this list; it holds every skill outside `deprecated/`. Every skill can be run by you or reached by an agent, and a skill can call any other skill.
 
 ### Getting started
 
-- [setup-ai-workspace](./skills/getting-started/setup-ai-workspace/SKILL.md): Configure project documents, task tracking, triage roles, and the optional getting-started setups. User-invoked.
-- [guide](./skills/getting-started/guide/SKILL.md): Choose the next skill, workflow, or session boundary. User-invoked.
-- [setup-delegation-policy](./skills/getting-started/setup-delegation-policy/SKILL.md): Configure machine-wide delegation and model-tier rules. User-invoked.
-- [setup-ai-tooling](./skills/getting-started/setup-ai-tooling/SKILL.md): Configure and verify selected development tools and their measurement baseline. Model-invoked.
-- [setup-git-hooks](./skills/getting-started/setup-git-hooks/SKILL.md): Configure versioned commit hooks with formatting, linting, typechecking, and builds. Model-invoked.
-- [setup-git-guardrails](./skills/getting-started/setup-git-guardrails/SKILL.md): Ask before destructive Git commands with client permissions and hooks. Model-invoked.
-- [setup-auto-handoff](./skills/getting-started/setup-auto-handoff/SKILL.md): Gate Claude Code compaction on a fresh handoff. Model-invoked.
+- [setup-ai-workspace](./skills/getting-started/setup-ai-workspace/SKILL.md): Configure project documents, task tracking, triage roles, and the optional getting-started setups.
+- [guide](./skills/getting-started/guide/SKILL.md): Choose the next skill, workflow, or session boundary.
+- [setup-delegation-policy](./skills/getting-started/setup-delegation-policy/SKILL.md): Configure machine-wide delegation and model-tier rules.
+- [setup-ai-tooling](./skills/getting-started/setup-ai-tooling/SKILL.md): Configure and verify selected development tools and their measurement baseline.
+- [setup-git-hooks](./skills/getting-started/setup-git-hooks/SKILL.md): Configure versioned commit hooks with formatting, linting, typechecking, and builds.
+- [setup-git-guardrails](./skills/getting-started/setup-git-guardrails/SKILL.md): Ask before destructive Git commands with client permissions and hooks.
+- [setup-auto-handoff](./skills/getting-started/setup-auto-handoff/SKILL.md): Gate Claude Code compaction on a fresh handoff.
 
 ### Workflow
-
-#### User-invoked
 
 - [specify](./skills/workflow/specify/SKILL.md): Resolve outstanding decisions and maintain capability requirements and specifications.
 - [taskify](./skills/workflow/taskify/SKILL.md): Decompose work into tasks with acceptance criteria and dependencies.
 - [implement](./skills/workflow/implement/SKILL.md): Build authorized work, validate it, review it, and maintain project documents.
-- [implement-all](./skills/workflow/implement-all/SKILL.md): Implement a task graph on one integration branch, with concurrent work and an optional request.
+- [divide-and-conquer](./skills/workflow/divide-and-conquer/SKILL.md): Route each task to the least expensive capable agent, build a task graph in parallel on one integration branch, then review once.
+- [test-first](./skills/workflow/test-first/SKILL.md): Establish behavior through red/green, one vertical slice at a time.
+- [review-and-refactor](./skills/workflow/review-and-refactor/SKILL.md): Independently review Standards and Specifications, refactor, and verify.
 - [iterate](./skills/workflow/iterate/SKILL.md): Develop the living application just in time, maintaining backlog, working state, and root changelog.
 - [address-feedback](./skills/workflow/address-feedback/SKILL.md): Assess review feedback from any source, implement approved changes, and deliver approved replies.
 
-#### Model-invoked
-
-- [test-first](./skills/workflow/test-first/SKILL.md): Establish behavior through red/green, one vertical slice at a time.
-- [review-and-refactor](./skills/workflow/review-and-refactor/SKILL.md): Independently review Standards and Specifications, refactor, and verify.
-
 ### Shaping
 
-#### User-invoked
-
 - [graphify](./skills/shaping/graphify/SKILL.md): Map a large uncertain effort and resolve its decision tasks.
-
-#### Model-invoked
-
 - [research](./skills/shaping/research/SKILL.md): Investigate primary sources and save cited findings.
 - [prototype](./skills/shaping/prototype/SKILL.md): Settle a design question with a scoped experiment and validate before integration.
 - [prioritize](./skills/shaping/prioritize/SKILL.md): Organize candidate outcomes and agree on one focus, keeping the rest in the backlog.
 
 ### Upkeep
 
-#### User-invoked
-
 - [triage](./skills/upkeep/triage/SKILL.md): Verify and classify requests, recording actionable briefs or decisions.
 - [improve-codebase-architecture](./skills/upkeep/improve-codebase-architecture/SKILL.md): Present deepening opportunities in a visual audit.
 - [improve-skills](./skills/upkeep/improve-skills/SKILL.md): Review a session's skill use and report it as an issue on this repository.
 - [monitor-ai-tooling](./skills/upkeep/monitor-ai-tooling/SKILL.md): Report observed tool benefits, estimates, and quality gaps.
-
-#### Model-invoked
-
 - [debug](./skills/upkeep/debug/SKILL.md): Build a tight reproduction loop, diagnose the cause, and verify the fix.
 
 ### Version control
 
-#### User-invoked
-
 - [work-in-tree](./skills/version-control/work-in-tree/SKILL.md): Carry out work in an isolated checkout with a verified return destination.
 - [sync-tree](./skills/version-control/sync-tree/SKILL.md): Transfer committed work to the verified corresponding local branch.
 - [rebase](./skills/version-control/rebase/SKILL.md): Rebase local branches with recovery records, checks, and separately approved publication.
-
-#### Model-invoked
-
 - [draft-merge-request](./skills/version-control/draft-merge-request/SKILL.md): Write a request body with a summary visual, before/after evidence, and merge danger.
 - [resolve-merge-conflicts](./skills/version-control/resolve-merge-conflicts/SKILL.md): Resolve conflicts by intent and finish the operation.
 
 ### Productivity
-
-#### User-invoked
 
 - [ask-someone-else](./skills/productivity/ask-someone-else/SKILL.md): Write a questionnaire for the person who holds missing knowledge.
 - [re-explain](./skills/productivity/re-explain/SKILL.md): Re-explain a message with the missing context.
@@ -162,9 +140,6 @@ The manifest is the source of truth for this list; it holds every skill outside 
 - [teach](./skills/productivity/teach/SKILL.md): Maintain a stateful teaching workspace.
 - [design-workflow](./skills/productivity/design-workflow/SKILL.md): Turn recurring work loops into implementable workflow specifications.
 - [publish-message](./skills/productivity/publish-message/SKILL.md): Publish established conclusions to any connected service after approval of exact text and destination.
-
-#### Model-invoked
-
 - [hand-off](./skills/productivity/hand-off/SKILL.md): Save a versioned handoff with pointers to authoritative artifacts.
 - [illustrate](./skills/productivity/illustrate/SKILL.md): Explain a topic with the smallest useful visual.
 - [optimize-process](./skills/productivity/optimize-process/SKILL.md): Improve a recurring process using observed friction.
@@ -173,7 +148,7 @@ The manifest is the source of truth for this list; it holds every skill outside 
 
 ### Reference
 
-Disciplines other skills call; each is also model- or user-reachable.
+Disciplines other skills call; each can also be run directly by you or an agent.
 
 - [refine](./skills/reference/refine/SKILL.md): Resolve decisions through recommended questions in dependency-aware rounds.
 - [model-domain](./skills/reference/model-domain/SKILL.md): Maintain domain vocabulary, consequential decisions, and guidelines.

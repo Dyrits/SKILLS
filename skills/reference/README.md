@@ -1,6 +1,6 @@
 # Reference
 
-Disciplines that shape how another task is done. They produce no result of their own; other skills call them, and the model or the user can reach them directly.
+Disciplines that shape how another task is done. They produce no result of their own; other skills call them, and you or an agent can also reach them directly.
 
 - [refine](./refine/SKILL.md): Resolve decisions through questions asked in dependency-aware rounds.
 - [model-domain](./model-domain/SKILL.md): Sharpen vocabulary and record qualifying decisions and review guidelines.

@@ -8,7 +8,7 @@ Local drafting is tracker-neutral. Remote publication requires explicit approval
 
 ## When to reach for it
 
-You invoke this by typing `/taskify`, and the agent won't reach for it on its own. Use it when work benefits from sequencing or parallel delivery. If the whole change fits a small batch, [iterate](../workflow/iterate.md) or [implement](implement.md) may be enough.
+Type `/taskify`, or an agent or another skill can reach for it when the task fits. Use it when work benefits from sequencing or parallel delivery. If the whole change fits a small batch, [iterate](../workflow/iterate.md) or [implement](implement.md) may be enough.
 
 ## Tracer bullets and blocking edges
 
@@ -36,4 +36,4 @@ No. The task points to applicable requirements and specifications; the agreed sp
 
 ## Where it fits
 
-Taskify is an optional chain step after [specify](specify.md) and before [implement](implement.md) or [implement-all](implement-all.md). It produces a task graph, not an execution run. [Guide](../getting-started/guide.md) maps the alternatives.
+Taskify is an optional chain step after [specify](specify.md) and before [implement](implement.md) or [divide-and-conquer](divide-and-conquer.md). It produces a task graph, not an execution run. [Guide](../getting-started/guide.md) maps the alternatives.

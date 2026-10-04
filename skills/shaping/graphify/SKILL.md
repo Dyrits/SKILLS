@@ -1,7 +1,6 @@
 ---
 name: graphify
-description: Build and work through a shared decision graph for an effort too large for one session.
-disable-model-invocation: true
+description: "Build and work through a shared decision graph for an effort too large for one session. Use when the user asks to graphify an effort or to resolve the next decision task on an existing graph."
 ---
 
 # Graphify
@@ -106,7 +105,7 @@ Record a candidate deferred to another effort in the backlog, following the "doc
 
 ## Invocation
 
-The human runs `/graphify`. Resolve no more than one decision task per session, except parallel research tasks.
+Resolve no more than one decision task per session, except parallel research tasks.
 
 ### Chart the map
 
@@ -125,7 +124,7 @@ The user supplies a map URL, identifier, or local path. Naming a decision task i
 
 1. Load the map, relevant requirements, and canonical specification without loading every task body.
 2. Use the named task, or choose the first frontier task in map order. Claim it before work.
-3. Resolve it. Fetch related task bodies only as needed. Call the Skill tool for model-invoked skills named in Notes; if Notes require a user-only skill, tell the human to run it. If unsure, call the Skill tool twice, for "refine" and "model-domain".
+3. Resolve it. Fetch related task bodies only as needed. Call the Skill tool for skills named in Notes. If unsure, call the Skill tool twice, for "refine" and "model-domain".
 4. Record the answer, rationale, and evidence as a resolution comment or the configured local answer. Close or resolve the task, then append a titled context pointer to Decisions-so-far. Update agreed living specifications and remove settled proposals from the draft without copying whole task bodies.
 5. Create newly sharp tasks and wire their blockers. Clear graduated fog. Close tasks beyond the destination and record them under Out of scope. Update invalidated tasks; ask before deleting historical remote records.
 6. Update working state and the changelog. Offer the optional visual delivery below, then stop after this decision, leaving the next frontier visible.

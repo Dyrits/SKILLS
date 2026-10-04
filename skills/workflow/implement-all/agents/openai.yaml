@@ -1,5 +1,0 @@
-interface:
-  display_name: "Implement All"
-  short_description: "Implement an authorized batch on one integration branch."
-policy:
-  allow_implicit_invocation: false

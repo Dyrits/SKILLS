@@ -8,7 +8,7 @@ Its defining constraint is that the agent's reading of the session is only a sta
 
 ## When to reach for it
 
-You invoke this by typing `/improve-skills`, and the agent will not reach for it on its own. Run it after a session, optionally naming the session to review and what you expected from it.
+Type `/improve-skills`, or an agent or another skill can reach for it when the task fits. Run it after a session, optionally naming the session to review and what you expected from it.
 
 | Situation | Action |
 | --- | --- |

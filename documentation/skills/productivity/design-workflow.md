@@ -6,7 +6,7 @@ Upstream source: `loop-me`, verified in `skills/in-progress/loop-me/` in the `d8
 
 ## When to reach for it
 
-- **Invocation mode.** You invoke this by typing `/design-workflow`, and the agent won't reach for it on its own.
+- **Invocation mode.** Type `/design-workflow`, or an agent or another skill can reach for it when the task fits.
 - **Trigger boundary.** Reach for it when a recurring activity needs a design: what fires it, where human checkpoints belong, and what the brief shows you. For a codebase capability, use [specify](../workflow/specify.md); `design-workflow` designs loops you will run again.
 
 ## The loop lens

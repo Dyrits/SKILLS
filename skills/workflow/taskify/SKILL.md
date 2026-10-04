@@ -1,7 +1,6 @@
 ---
 name: taskify
-description: Decompose approved work into coherent, verifiable tasks with explicit blocking dependencies, locally or on an approved tracker.
-disable-model-invocation: true
+description: "Decompose approved work into verifiable tasks with explicit blocking dependencies, locally or on an approved tracker. Use when the user asks to break agreed work into tasks, or when specifications need splitting into delivery work."
 ---
 
 # Taskify

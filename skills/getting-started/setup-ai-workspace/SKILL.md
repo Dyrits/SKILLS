@@ -1,7 +1,6 @@
 ---
 name: setup-ai-workspace
-description: "Configure a repository for AI-assisted work: task tracking, ticket-writing conventions, triage roles, domain documentation, and the optional getting-started setups (tooling, commit hooks, Git guardrails, automatic handoff, delegation policy)."
-disable-model-invocation: true
+description: "Configure a repository for AI-assisted work: task tracking, ticket conventions, triage roles, domain documentation, optional tooling setups. Use when the user asks to set up or reconfigure the AI workspace."
 ---
 
 # Setup AI workspace
@@ -132,7 +131,7 @@ Offer the other getting-started setups together, once, as one multi-select quest
 | Automatic handoff | `.claude/settings.json` has a `PreCompact` hook gating on `.agents/handoffs/` | Skill tool, "setup-auto-handoff" |
 | Delegation policy | The global steering files contain `## Delegation and model routing` | The human, `/setup-delegation-policy` |
 
-Run the selected setups in table order, each to completion before the next, each owning its own questions, scope, and verification. Pass `setup-ai-tooling` the project, verified tracker access, known clients, and approved project/global scope. `setup-delegation-policy` is user-invoked and machine-wide: tell the user to run it rather than calling it.
+Run the selected setups in table order, each to completion before the next, each owning its own questions, scope, and verification. Pass `setup-ai-tooling` the project, verified tracker access, known clients, and approved project/global scope. `setup-delegation-policy` is machine-wide: call it through the Skill tool only after the user agrees to it.
 
 When a selected skill is unavailable, finish the rest and tell the human how to install or run it later. Completion requires, for each selected setup, its verified result, a stated gap, or the user's decision to skip it.
 

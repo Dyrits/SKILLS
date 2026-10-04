@@ -6,11 +6,11 @@ Upstream source: `writing-for-agents`, verified in the `d81f3a1` tree, now `writ
 
 Its default move is deletion, not explanation. Ask an agent to write instructions for another agent and it spends most of its words explaining what the model already knows. Every one of those lines is a **no-op**, paying context and changing no behaviour. This reference is the lens that finds them, which is why it earns its keep at least as often on a document you already have as on a blank file.
 
-It was called `writing-great-skills` until v1.1. The rename tracks what it always was underneath: almost none of it is skill-specific. The skill-only mechanics (frontmatter, the model- versus user-invoked choice, router skills) are disclosed to a linked `SKILL-MECHANICS.md` you read only when the document in front of you is a skill.
+It was called `writing-great-skills` until v1.1. The rename tracks what it always was underneath: almost none of it is skill-specific. The skill-only mechanics (frontmatter, router skills) are disclosed to a linked `SKILL-MECHANICS.md` you read only when the document in front of you is a skill.
 
 ## When to reach for it
 
-Type `/write-for-agents`, or the agent reaches for it on its own when you're creating or editing a skill, or modifying `AGENTS.md` or `CLAUDE.md`.
+Type `/write-for-agents`, or an agent or another skill can reach for it when you're creating or editing a skill, or modifying `AGENTS.md` or `CLAUDE.md`.
 
 Reach for it by hand for other agent-facing documents, specifications, tasks, and unattended prompts. The test is whether an agent reads the text. [specify](../workflow/specify.md) establishes agreed capability behavior; [document](./document.md) owns the project-document model. This reference governs how the instructions read, not what behavior the project should agree to.
 

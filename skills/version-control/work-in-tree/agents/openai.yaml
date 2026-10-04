@@ -1,5 +1,3 @@
 interface:
   display_name: "Work in Tree"
   short_description: "Work in an isolated checkout without changing the original"
-policy:
-  allow_implicit_invocation: false

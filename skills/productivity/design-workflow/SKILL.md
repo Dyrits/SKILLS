@@ -1,7 +1,6 @@
 ---
 name: design-workflow
-description: Grill you into implementable workflow specifications for the recurring loops in your work, using the current directory as a stateful workspace.
-disable-model-invocation: true
+description: "Interview the user into implementable workflow specifications for recurring loops in their work, using the current directory as a stateful workspace. Use when the user wants to design or specify a workflow."
 argument-hint: "A workflow to design, or nothing to go find one"
 ---
 

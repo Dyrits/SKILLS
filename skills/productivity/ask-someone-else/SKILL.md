@@ -1,7 +1,6 @@
 ---
 name: ask-someone-else
-description: Turn a decision you can't fully answer into a questionnaire for someone else to fill in.
-disable-model-invocation: true
+description: "Turn a decision the user cannot fully answer into a questionnaire for someone else to fill in. Use when an answer sits with another person, or the user wants questions to send or bring to a meeting."
 ---
 
 Turn something the user can't answer alone into a **questionnaire**: a Markdown document they hand to one person to fill in async, or fill out together over a meeting. The recipient holds knowledge the user lacks; the questionnaire pulls it out of them.

@@ -1,5 +1,3 @@
 interface:
   display_name: "Publish Message"
   short_description: "Publish approved messages to any connected service"
-policy:
-  allow_implicit_invocation: false

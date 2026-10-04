@@ -6,11 +6,11 @@ Fork-specific companion to `hand-off`, first added as `takeover` in commit `f85f
 
 ## When to reach for it
 
-You invoke this by typing `/take-over`; the agent won't reach for it on its own. Reach for it at the start of a session continuing handed-off work. It finds the newest file itself. For writing a handoff rather than consuming one, use [hand-off](./hand-off.md).
+Type `/take-over`, or an agent or another skill can reach for it when the task fits. Reach for it at the start of a session continuing handed-off work. It finds the newest file itself. For writing a handoff rather than consuming one, use [hand-off](./hand-off.md).
 
 ## The loop it runs
 
-Find the newest handoff by filename sort (the `YYYY-MM-DD-HHMM-<slug>.md` names sort chronologically), read it fully, and resolve the artifacts it points at by path or URL. Check current names and invocation modes before using suggested skills: the agent calls model-invoked skills and tells the human to invoke user-only ones. Confirm the brief in two or three sentences before starting work, so stale context is caught before implementation.
+Find the newest handoff by filename sort (the `YYYY-MM-DD-HHMM-<slug>.md` names sort chronologically), read it fully, and resolve the artifacts it points at by path or URL. Check current names before using suggested skills. Confirm the brief in two or three sentences before starting work, so stale context is caught before implementation.
 
 The chain rule is the skill's leading idea: **newest first, deeper only on demand**. A handoff that can't be understood without its predecessor was a badly written handoff; the skill treats that as a recoverable defect rather than a reason to read everything.
 
@@ -25,7 +25,7 @@ The chain rule is the skill's leading idea: **newest first, deeper only on deman
 - The fresh agent starts working instead of asking you to re-explain the setup.
 - It read one handoff file, not five, to get there.
 - Its two-sentence brief back to you matches what you thought you handed off.
-- It used suggested model-invoked skills and identified any user-only action instead of calling it autonomously.
+- It used suggested skills by their current names and left any step only a human can perform to the human.
 
 ## Where it fits
 

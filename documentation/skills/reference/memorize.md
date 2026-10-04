@@ -20,7 +20,7 @@ Facts the environment already states, such as a `package.json` script or `--help
 
 ## When to reach for it
 
-Type `/memorize`, or the agent reaches for it automatically when a task fits: the moment it rebuilds something a second time, when you correct a behavior, when you ask it to remember something, and before it writes any script or multi-step shell pipeline. For writing the instruction file itself, it hands off to [write-for-agents](./write-for-agents.md).
+Type `/memorize`, or an agent or another skill can reach for it when a task fits: the moment it rebuilds something a second time, when you correct a behavior, when you ask it to remember something, and before it writes any script or multi-step shell pipeline. For writing the instruction file itself, it hands off to [write-for-agents](./write-for-agents.md).
 
 ## Scriptbooks
 

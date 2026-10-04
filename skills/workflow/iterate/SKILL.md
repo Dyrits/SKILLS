@@ -1,7 +1,6 @@
 ---
 name: iterate
-description: Build a living application one verified batch at a time, settling decisions just in time and recording them as you go.
-disable-model-invocation: true
+description: "Build a living application one verified batch at a time, settling decisions just in time. Use when the user asks to iterate on an idea or continue building an existing project in batches."
 argument-hint: "An idea to build, or an existing project to continue"
 ---
 
@@ -53,13 +52,9 @@ Completion: the batch can be implemented and checked without guessing at an open
 
 ## 4. Implement and verify
 
-Implement the settled batch, preserving accepted behavior. Prefer targeted edits over regenerating unchanged code or documents. Put mechanical conventions in formatter, compiler, and lint configuration; keep `GUIDELINES.md` for judgment those tools cannot enforce. Comments capture reasons and constraints the code cannot show.
+Call the Skill tool with "implement" for the settled batch. Pass the batch recorded in working state as its agreement, the test interfaces agreed in step 3, and that this workflow owns the project records; record its returned evidence through [ARTIFACTS.md](ARTIFACTS.md).
 
-When a batch adds or changes tests, call the Skill tool with "test-first" before writing them, using the test interfaces agreed in step 3. Keep the evidence: a meaningful red check, then green.
-
-When the user reports a bug, call the Skill tool with "debug" before editing code, so the fix follows a reproduced cause. Call it too for a resistant failure instead of stacking speculative fixes, and call the Skill tool with "webapp-testing" when browser interaction is needed.
-
-Delegate a bounded task when it benefits from a fresh context; a small edit is usually cheaper locally. Give a worker the agreed behavior, document pointers, edit scope, and verification criteria. Keep overlapping edits sequential. Continue independent questions while work runs; hold dependent ones until the result arrives. When feedback changes a running assignment, update or stop it, then check the returned work against the revised agreement.
+When the batch splits into several independent tasks that each justify a fresh context, call the Skill tool with "divide-and-conquer" instead; the user's approval of its routing table is the go-ahead. A batch that fits one session stays with "implement", which is usually cheaper. When feedback changes a running assignment, update or stop it, then check the returned work against the revised agreement. Continue independent questions while work runs; hold dependent ones until the result arrives.
 
 Run relevant checks and exercise the result the way it will be used. A passing build is evidence of correctness; intended behavior and appearance need their own checks or user review. For new or changed setup, document and run the startup command and early-error checks.
 
@@ -81,4 +76,4 @@ The user owns intended behavior and consequential tradeoffs; routine implementat
 
 When setup, migration, repeated failures, or unexpected work materially increases scope or cost, pause: report what works, the blocker, and the alternatives, recommend continuing, simplifying, or changing approach, and wait for the decision. Quote measured costs when available, and only measured ones.
 
-Call model-invoked supporting skills through the Skill tool; ask the human to run user-invoked ones.
+Call supporting skills through the Skill tool.

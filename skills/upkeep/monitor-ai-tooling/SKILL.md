@@ -1,7 +1,6 @@
 ---
 name: monitor-ai-tooling
-description: "Report AI tooling usage, measured output reduction, quality signals, and gaps from existing local measurements."
-disable-model-invocation: true
+description: "Report AI tooling usage, measured output reduction, quality signals, and gaps from existing local measurements. Use when the user asks how the AI tooling is performing or what it saves."
 ---
 
 # Monitor AI tooling

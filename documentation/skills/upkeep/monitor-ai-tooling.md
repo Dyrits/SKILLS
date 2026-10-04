@@ -8,7 +8,7 @@ Collection stays deterministic: it does not install tools, change configuration,
 
 ## When to reach for it
 
-Type `/monitor-ai-tooling`, optionally naming a project and period. It is user-invoked: the agent does not run it automatically.
+Type `/monitor-ai-tooling`, optionally naming a project and period. An agent or another skill can also reach for it.
 
 | Your situation | Skill |
 | --- | --- |

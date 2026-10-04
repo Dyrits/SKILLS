@@ -8,7 +8,7 @@ The map is an index. It holds the destination, unresolved fog, boundaries, and l
 
 ## When to reach for it
 
-Run `/graphify` yourself. It is user-invoked; agents cannot start it automatically.
+Run `/graphify`, or let an agent or another skill reach for it when a large uncertain effort needs mapping.
 
 | Situation | Use |
 | --- | --- |

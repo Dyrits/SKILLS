@@ -8,7 +8,7 @@ lint-staged assigns Biome to the languages it supports, including those it cover
 
 ## When to reach for it
 
-Model-invoked: you can type `/setup-git-hooks`, and the agent can reach for it when you want commit-time formatting, linting, or typechecking, or want to replace Husky.
+Type `/setup-git-hooks`, or an agent or another skill can reach for it when you want commit-time formatting, linting, or typechecking, or want to replace Husky.
 
 | Situation | Use |
 | --- | --- |

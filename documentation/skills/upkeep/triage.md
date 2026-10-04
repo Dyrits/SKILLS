@@ -8,7 +8,7 @@ The **ready brief** is the authoritative task-execution contract. It links to th
 
 ## When to reach for it
 
-Run `/triage` yourself. It is user-invoked; agents do not launch it automatically.
+Run `/triage`, or let an agent or another skill reach for it when requests need verifying and classifying.
 
 | Situation | Request |
 | --- | --- |

@@ -27,10 +27,7 @@ Lead with the one-sentence job, then its defining constraint. For example, `spec
 
 ### When to reach for it
 
-State invocation mode and the trigger boundary.
-
-- User-invoked: the user types `/<name>`; the agent does not reach for it automatically.
-- Model-invoked: the user can type `/<name>` and the agent can reach for it when the task fits.
+State how it is reached and the trigger boundary. Every skill can be run by the user typing `/<name>` or reached by an agent or another skill when the task fits; do not describe a skill as user-only or model-only. Say instead when it fits, and name any approval gate it keeps (for example, publication or writes outside the repository).
 
 Where it is confusable with another skill, explain the distinction and link to that page.
 
@@ -72,7 +69,7 @@ The planned development route is `specify → taskify → implement → review-a
 
 - The page matches the promoted skill's current bucket and name; no orphan page remains.
 - The first line has verified provenance or an explicit fork-specific note.
-- Required sections are present in order, with invocation and defining constraint accurately stated.
+- Required sections are present in order, with the trigger boundary and defining constraint accurately stated.
 - Meaningful upstream drift is explained on the page or in the README.
 - Every relative target resolves and active names match installed skill identifiers.
 - No installation command is copied into the page.

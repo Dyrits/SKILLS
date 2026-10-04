@@ -1,7 +1,6 @@
 ---
 name: triage
-description: Move tasks and external PRs through triage roles, categorize, verify, refine if needed, and write agent-ready briefs.
-disable-model-invocation: true
+description: "Move tasks and external PRs through triage roles: categorize, verify, refine, and write agent-ready briefs. Use when the user asks to triage, or when a published request needs verification and a maintainer decision."
 ---
 
 # Triage
@@ -14,7 +13,7 @@ If the tracker treats external pull requests as a request surface, triage covers
 
 Call the Skill tool with "document" before updating project documents; its terms (authorized, obligation, lazy, pointer) and rules apply throughout. Read the relevant requirements, specifications, working state, and backlog when present.
 
-Read `documentation/agents/issue-tracker.md` and `documentation/agents/triage-roles.md`. If either is missing, tell the human to run `/setup-ai-workspace` and stop. This user-invoked skill cannot invoke setup itself.
+Read `documentation/agents/issue-tracker.md` and `documentation/agents/triage-roles.md`. If either is missing, tell the human to run `/setup-ai-workspace` and stop.
 
 "Comment", "apply a role", and "close" resolve through the tracker configuration:
 

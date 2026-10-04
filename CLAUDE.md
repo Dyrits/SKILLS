@@ -15,13 +15,13 @@ Install commands are copied verbatim from [.agents/install-block.md](./.agents/i
 
 Each skill entry in the top-level `README.md` must link the skill name to its `SKILL.md`.
 
-Each bucket folder has a `README.md` that lists every skill in the bucket with a one-line description, with the skill name linked to its `SKILL.md`. Bucket `README.md`s and the top-level `README.md` group entries into **User-invoked** and **Model-invoked** where the mix warrants it; buckets that are all one kind use a flat list.
+Each bucket folder has a `README.md` that lists every skill in the bucket with a one-line description, with the skill name linked to its `SKILL.md`.
 
 Every promoted skill has a human-facing documentation page at `documentation/skills/<bucket>/<skill-name>.md` (the documentation tree mirrors the bucket folders under `skills/`, two levels deep; skills sit flat inside buckets). When you add, rename, or change the behaviour of a skill, create or re-sync its documentation page following [.agents/writing-documentation.md](./.agents/writing-documentation.md). A finished page carries four sections: **What it does**, **When to reach for it**, **Common questions**, and **It's working if**. Each page starts with verified upstream skill names or an explicit fork-specific provenance note. `writing-documentation.md` holds the template, the section order, and where to hunt for the questions. Deprecated skills get **no** documentation page.
 
-Every `SKILL.md` is either user-invoked (`disable-model-invocation: true` plus `policy.allow_implicit_invocation: false` in `agents/openai.yaml`, reachable only by the human) or model-invoked (model- or user-reachable). See [.agents/invocation.md](./.agents/invocation.md).
+Every `SKILL.md` is reachable by both the human and the model, so any skill can call any other: no `disable-model-invocation`, no `policy.allow_implicit_invocation: false`, and a model-facing description. See [.agents/invocation.md](./.agents/invocation.md).
 
-[`guide`](./skills/getting-started/guide/SKILL.md) is the router that maps every user-reachable skill and how they relate. The same trigger that re-syncs a documentation page applies to it: whenever you add, rename, remove, or change how a user-reachable skill fits the flows, re-read `guide`'s `SKILL.md` and update it so the map stays accurate: a new skill it never mentions, or a stale one it still routes to, is a router that lies.
+[`guide`](./skills/getting-started/guide/SKILL.md) is the router that maps every skill and how they relate. The same trigger that re-syncs a documentation page applies to it: whenever you add, rename, remove, or change how a skill fits the flows, re-read `guide`'s `SKILL.md` and update it so the map stays accurate: a new skill it never mentions, or a stale one it still routes to, is a router that lies.
 
 To (re)link every skill outside `deprecated/` into the local harness skill directories (`~/.claude/skills`, `~/.agents/skills`), run `scripts/link-skills.sh`. Each entry is a symlink into this repository, so a `git pull` keeps installed skills current; re-run the script after adding, removing, or renaming a skill.
 

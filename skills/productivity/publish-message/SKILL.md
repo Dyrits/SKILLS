@@ -1,7 +1,6 @@
 ---
 name: publish-message
-description: Publish an established conclusion or review summary to any connected service (code host, tracker, chat, documentation, email), adapted to its conventions, with optional inline suggestions on a pull or merge request.
-disable-model-invocation: true
+description: "Publish an established conclusion or review summary to a connected service (code host, tracker, chat, documentation, email) in its conventions. Use when the user asks to post, publish, or send findings to one."
 argument-hint: "Optional: where to post, and what to say"
 ---
 

@@ -8,7 +8,7 @@ The five-minute window is the defining constraint: a stale handoff from earlier 
 
 ## When to reach for it
 
-Model-invoked: you can type `/setup-auto-handoff`, and the agent can reach for it when you want automatic handoff at the context limit or protection for long sessions from compaction data loss.
+Type `/setup-auto-handoff`, or an agent or another skill can reach for it when you want automatic handoff at the context limit or protection for long sessions from compaction data loss.
 
 ## Prerequisites
 

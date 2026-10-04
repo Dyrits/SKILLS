@@ -1,4 +1,4 @@
-Fork-created skill with no upstream equivalent, added in commit `b05ce86` under the name `divide-and-conquer` and renamed `prioritize` in this fork (see the [provenance audit](../../research/2026-10-03-retained-skill-provenance.md)).
+Fork-created skill with no upstream equivalent, added in commit `b05ce86` under the name `divide-and-conquer` and renamed `prioritize` in this fork (the name now belongs to the former `implement-all`) (see the [provenance audit](../../research/2026-10-03-retained-skill-provenance.md)).
 
 ## What it does
 
@@ -8,7 +8,7 @@ It groups ideas into vertical outcomes such as "members can book a slot", not la
 
 ## When to reach for it
 
-Type `/prioritize`, or the agent reaches for it automatically when competing capabilities, unclear scope, or dependencies block choosing the next increment. [iterate](../workflow/iterate.md) invokes it that way and continues once you approve the focus. A clear small change skips it.
+Type `/prioritize`, or an agent or another skill can reach for it when competing capabilities, unclear scope, or dependencies block choosing the next increment. [iterate](../workflow/iterate.md) invokes it that way and continues once you approve the focus. A clear small change skips it.
 
 Four skills border each other on decomposition.
 

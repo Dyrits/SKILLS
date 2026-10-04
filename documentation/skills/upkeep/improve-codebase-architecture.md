@@ -10,7 +10,7 @@ Two filters keep the report from becoming generic cleanup advice. Every candidat
 
 ## When to reach for it
 
-You invoke this by typing `/improve-codebase-architecture`; the agent will not reach for it on its own.
+Type `/improve-codebase-architecture`, or an agent or another skill can reach for it when the task fits.
 
 It sits outside the build loop: it is not a step in the main loop but something you run periodically to queue up more work to improve the codebase. The four situations it gets used in:
 

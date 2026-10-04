@@ -8,7 +8,7 @@ It is the **active** discipline, not the passive one. Reading `GLOSSARY.md` to b
 
 ## When to reach for it
 
-Type `/model-domain`, or the agent reaches for it automatically when a task fits. Earlier reports found callers loading the interview discipline but skipping this reference. If resolved domain terms never reach the glossary, invoke it explicitly. An unchanged glossary alone is not proof of failure: a session may settle no new term.
+Type `/model-domain`, or an agent or another skill can reach for it when a task fits. Earlier reports found callers loading the interview discipline but skipping this reference. If resolved domain terms never reach the glossary, invoke it explicitly. An unchanged glossary alone is not proof of failure: a session may settle no new term.
 
 Reach for it when the *words* are the problem:
 
@@ -96,4 +96,4 @@ Ask the skill to check it. Each rule is tested for portability: would it still h
 
 ## Where it fits
 
-`model-domain` is a model-invoked reference used by [specify](../workflow/specify.md), [graphify](../shaping/graphify.md), and [triage](../upkeep/triage.md) when domain meaning needs sharpening. [design-modules](./design-modules.md) supplies vocabulary for module shape rather than the problem domain. [document](./document.md) keeps the resulting terms, decisions, constraints, and agreed behavior in their separate records. [guide](../getting-started/guide.md) routes you when the next move is unclear.
+`model-domain` is a reference used by [specify](../workflow/specify.md), [graphify](../shaping/graphify.md), and [triage](../upkeep/triage.md) when domain meaning needs sharpening. [design-modules](./design-modules.md) supplies vocabulary for module shape rather than the problem domain. [document](./document.md) keeps the resulting terms, decisions, constraints, and agreed behavior in their separate records. [guide](../getting-started/guide.md) routes you when the next move is unclear.

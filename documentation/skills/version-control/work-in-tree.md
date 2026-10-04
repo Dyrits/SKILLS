@@ -8,13 +8,13 @@ Its defining constraint is verified isolation. A linked worktree on the target's
 
 ## When to reach for it
 
-Type `/work-in-tree` followed by the task. It is user-invoked: the agent does not move your work into a worktree on its own. Invoked with no task, it prepares the checkout and asks what to work on.
+Type `/work-in-tree` followed by the task. The agent or another skill can also reach for it when work needs an isolated checkout. Invoked with no task, it prepares the checkout and asks what to work on.
 
 | Your situation | Skill |
 | --- | --- |
 | Do a task without disturbing the current checkout | This one |
 | The task is committed and should land on the original branch | [sync-tree](sync-tree.md) |
-| Several tickets to run, each in its own tree | [implement-all](../workflow/implement-all.md) |
+| Several tickets to run, each in its own tree | [divide-and-conquer](../workflow/divide-and-conquer.md) |
 
 ## What it needs
 

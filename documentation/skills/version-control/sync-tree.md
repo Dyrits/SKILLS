@@ -8,7 +8,7 @@ It moves history only. It makes no code changes, creates no merge commits, and d
 
 ## When to reach for it
 
-Type `/sync-tree`, usually after [work-in-tree](work-in-tree.md) has left its handoff. It is user-invoked: the agent does not land work on its own.
+Type `/sync-tree`, usually after [work-in-tree](work-in-tree.md) has left its handoff. An agent or another skill can also reach for it when committed work is ready to land.
 
 | Your situation | Skill |
 | --- | --- |

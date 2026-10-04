@@ -1,5 +1,3 @@
 interface:
   display_name: "Setup AI Workspace"
   short_description: "Configure workspace conventions and optional AI tooling"
-policy:
-  allow_implicit_invocation: false

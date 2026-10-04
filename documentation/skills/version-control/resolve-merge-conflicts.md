@@ -8,7 +8,7 @@ It refuses to treat a conflict as a text problem. Before touching a hunk it trac
 
 ## When to reach for it
 
-Type `/resolve-merge-conflicts`, or the agent reaches for it automatically when a task fits.
+Type `/resolve-merge-conflicts`, or an agent or another skill can reach for it when a task fits.
 
 Reach for it when git has already stopped on conflicts it could not resolve itself. It is scoped to the conflict in front of you, not to anything either side of it:
 

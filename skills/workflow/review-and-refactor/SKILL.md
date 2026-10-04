@@ -142,8 +142,7 @@ Keep both axes separate rather than choosing one overall verdict.
 Ask whether to publish the final report and where, such as a pull or merge request, a ticket, or a chat thread.
 Publishing requires explicit user authorization.
 
-`publish-message` is user-invoked.
-If the user wants publication, tell them to run `/publish-message` with this report and destination, requesting inline suggestions if wanted.
+If the user wants publication, call the Skill tool with "publish-message", passing this report and destination, and requesting inline suggestions if wanted.
 The publication preserves finding dispositions and verification limits, checks whether local refactors are present in the destination branch, and validates requested suggestions against its current diff.
 
 ## Why two axes

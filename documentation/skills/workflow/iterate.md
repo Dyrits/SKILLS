@@ -4,11 +4,11 @@ Fork-created skill with no upstream equivalent, added in commit `b05ce86` (see t
 
 `iterate` builds a living application one verified batch at a time. It settles only the decisions the current batch needs, implements the batch, checks it, and lets the result decide what comes next. The application evolves in place from its first runnable batch; replacing it is your decision.
 
-It coordinates other skills rather than replacing them: [refine](../reference/refine.md) roots its interview in the current batch, [prioritize](../shaping/prioritize.md) picks a focus when scope is tangled, [research](../shaping/research.md) answers external facts, [test-first](./test-first.md) covers any batch that adds or changes tests, [debug](../upkeep/debug.md) takes every bug you report before code is edited, as well as stubborn failures, and [review-and-refactor](./review-and-refactor.md) runs at milestones.
+It coordinates other skills rather than replacing them: [refine](../reference/refine.md) roots its interview in the current batch, [prioritize](../shaping/prioritize.md) picks a focus when scope is tangled, [research](../shaping/research.md) answers external facts, [implement](./implement.md) builds each settled batch (bringing [test-first](./test-first.md) and [debug](../upkeep/debug.md) with it), [divide-and-conquer](./divide-and-conquer.md) takes a batch that splits into independent tasks, after you approve its routing table, and [review-and-refactor](./review-and-refactor.md) runs at milestones.
 
 ## When to reach for it
 
-You invoke this by typing `/iterate`; the agent will not reach for it on its own. Use it when you want questions, decisions, code, and checks to advance together, for a new idea or an existing project.
+Type `/iterate`, or an agent or another skill can reach for it when the task fits. Use it when you want questions, decisions, code, and checks to advance together, for a new idea or an existing project.
 
 Use the planned route (`specify`, `taskify`, `implement`, `review-and-refactor`) when you want separate specification and task documents before code. Both routes share the same project documents, so you can switch between them without losing agreements or progress.
 
@@ -53,4 +53,4 @@ Yes. Working state is updated when a batch is agreed and after it is implemented
 
 ## Where it fits
 
-This is the just-in-time alternative to the planned route; it shares project documents with [specify](./specify.md), [taskify](./taskify.md), [implement](./implement.md), and [review-and-refactor](./review-and-refactor.md). [prioritize](../shaping/prioritize.md) is its focus-selection branch. [guide](../getting-started/guide.md) maps the whole system.
+This is the just-in-time alternative to the planned route; it shares project documents with [specify](./specify.md), [taskify](./taskify.md), and [review-and-refactor](./review-and-refactor.md), and builds every batch through [implement](./implement.md). [prioritize](../shaping/prioritize.md) is its focus-selection branch. [guide](../getting-started/guide.md) maps the whole system.

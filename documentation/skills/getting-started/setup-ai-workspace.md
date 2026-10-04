@@ -8,7 +8,7 @@ The tracker choice does not move specification authority. Agreed living behavior
 
 ## When to reach for it
 
-Run `/setup-ai-workspace` yourself once per repository, or when the tracker or conventions change. It is user-invoked; agents and other skills cannot launch it for you.
+Run `/setup-ai-workspace` once per repository, or when the tracker or conventions change. An agent or another skill can also reach for it when a workflow finds the workspace unconfigured.
 
 | Situation | Use |
 | --- | --- |

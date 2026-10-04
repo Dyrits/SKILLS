@@ -1,5 +1,3 @@
 interface:
   display_name: "Taskify"
   short_description: "Create coherent tasks with acceptance and blockers"
-policy:
-  allow_implicit_invocation: false

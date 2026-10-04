@@ -8,7 +8,7 @@ Project records have distinct jobs and are created only when useful. A small bat
 
 ## When to reach for it
 
-Type `/document`, or the agent reaches for it automatically when a task fits. Use it for a README, API reference, runbook, architecture document, onboarding guide, or project-state upkeep. Use [write-for-agents](write-for-agents.md) alongside it for documents that instruct an agent.
+Type `/document`, or an agent or another skill can reach for it when a task fits. Use it for a README, API reference, runbook, architecture document, onboarding guide, or project-state upkeep. Use [write-for-agents](write-for-agents.md) alongside it for documents that instruct an agent.
 
 ## One source for each obligation
 
@@ -48,4 +48,4 @@ Capture durable evidence first, then prune it from unfinished state. Delivery hi
 
 ## Where it fits
 
-Document is a model-invoked reference used by [specify](../workflow/specify.md), [taskify](../workflow/taskify.md), and delivery workflows. [Model-domain](model-domain.md) owns active terminology and qualifying architectural decisions. [Guide](../getting-started/guide.md) maps the surrounding flows.
+Document is a reference used by [specify](../workflow/specify.md), [taskify](../workflow/taskify.md), and delivery workflows. [Model-domain](model-domain.md) owns active terminology and qualifying architectural decisions. [Guide](../getting-started/guide.md) maps the surrounding flows.

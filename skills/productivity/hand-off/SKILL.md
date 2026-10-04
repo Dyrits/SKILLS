@@ -17,7 +17,7 @@ Save to `.agents/handoffs/` in the current workspace, versioned so history accum
 
 ## Document contents
 
-Include a "suggested skills" section naming useful skills and their invocation modes. Check each name against the skills installed in this session, and drop or replace any that are missing. The next agent calls model-invoked skills through the Skill tool; user-only skills are recommendations for the human to invoke, not permission for an autonomous call.
+Include a "suggested skills" section naming useful skills and their invocation modes. Check each name against the skills installed in this session, and drop or replace any that are missing. The next agent calls them through the Skill tool.
 
 Also include, near the top: a "supersedes" line pointing at any earlier handoff in `.agents/handoffs/` this one replaces, so the chain is traceable.
 

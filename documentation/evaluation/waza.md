@@ -19,7 +19,7 @@ Generated on 2026-09-21 with `waza` 0.38.7, one `waza check <skill>` run per ski
 Every skill that parsed returns "needs some work before submission". The recurring causes, in order of impact:
 
 1. **Token budget.** 27 of 37 parsed skills exceed waza's hard limit of 500 tokens. The largest: `shaping/wayfinder` (2715), `reference/writing-for-agents` (2349), `getting-started/setup-ai-workspace` (2323), `productivity/teach` (1946), `upkeep/debug` (2001).
-2. **Unknown frontmatter fields** against the agentskills.io spec: `disable-model-invocation` in 21 skills (a deliberate convention here, see `.agents/invocation.md`) and `argument-hint` in 8 skills. One security advisory on top: `experimental/classify`, whose `argument-hint` value contains XML angle brackets.
+2. **Unknown frontmatter fields** against the agentskills.io spec: `disable-model-invocation` in 21 skills at evaluation time (a convention here then; the repository has since dropped the user-only split) and `argument-hint` in 8 skills. One security advisory on top: `experimental/classify`, whose `argument-hint` value contains XML angle brackets.
 3. **Compliance score Low.** waza wants explicit `USE FOR:` / `DO NOT USE FOR:` trigger sections and routing labels; these skills describe triggers in prose instead.
 4. **No eval suites.** No skill in the repository has an `eval.yaml`, so none can be benchmarked with `waza run`.
 
@@ -80,7 +80,7 @@ Tokens are measured against waza's default hard limit of 500. "Spec issues" list
 
 ## How to read this
 
-waza grades against the agentskills.io submission spec: allowed frontmatter fields only, a 500-token hard limit, explicit trigger sections, and an eval suite per skill. This repository deliberately deviates from some of that (`argument-hint`, `disable-model-invocation`, prose-style bodies without `USE FOR:` blocks, and reference skills that are intentionally longer than 500 tokens), so treat the Low scores as "distance from the agentskills.io submission bar" rather than a list of defects. The findings that do point at real problems:
+waza grades against the agentskills.io submission spec: allowed frontmatter fields only, a 500-token hard limit, explicit trigger sections, and an eval suite per skill. This repository deliberately deviates from some of that (`argument-hint`, the former `disable-model-invocation`, prose-style bodies without `USE FOR:` blocks, and reference skills that are intentionally longer than 500 tokens), so treat the Low scores as "distance from the agentskills.io submission bar" rather than a list of defects. The findings that do point at real problems:
 
 - The `what-is-next` YAML parse error (waza could not read the file at all, and any tool parsing that frontmatter strictly hit the same wall). Fixed by quoting the `description` value.
 - The angle-bracket security advisory on `classify`.

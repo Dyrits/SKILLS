@@ -8,7 +8,7 @@ Its defining constraint is that nothing is published without your answer. The br
 
 ## When to reach for it
 
-Type `/rebase fix/a feat/b --onto origin/develop`, or describe the branches and target in plain language. It is user-invoked: the agent does not reach for it on its own, because it can rewrite published history.
+Type `/rebase fix/a feat/b --onto origin/develop`, or describe the branches and target in plain language. An agent or another skill can also reach for it. Because it can rewrite published history, publication stays separately approved by you.
 
 | Your situation | Skill |
 | --- | --- |
