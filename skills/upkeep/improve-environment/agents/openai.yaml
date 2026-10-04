@@ -1,0 +1,3 @@
+interface:
+  display_name: "Improve Environment"
+  short_description: "Trace a session's friction to the environment and fix it there."

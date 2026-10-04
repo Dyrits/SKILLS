@@ -148,6 +148,6 @@ No. They are living agreed behavior and acceptance. Drafts keep unresolved alter
 
 ## Where it fits
 
-`guide` is a standalone router over both development workflows and the supporting skills. It recommends and stops. [specify](../workflow/specify.md) starts planned development; [iterate](../workflow/iterate.md) runs just-in-time batches; [triage](../upkeep/triage.md) verifies work arriving from other people. [improve-skills](../upkeep/improve-skills.md) reviews how the skills behaved in a session and reports problems on this repository.
+`guide` is a standalone router over both development workflows and the supporting skills. It recommends and stops. [specify](../workflow/specify.md) starts planned development; [iterate](../workflow/iterate.md) runs just-in-time batches; [triage](../upkeep/triage.md) verifies work arriving from other people. [improve-skills](../upkeep/improve-skills.md) reviews how the skills behaved in a session and reports problems on this repository; [improve-environment](../upkeep/improve-environment.md) changes the project's environment after a session's friction.
 
 It is a secondary source over the skills it describes. Where the router and a `SKILL.md` disagree, the `SKILL.md` is right.

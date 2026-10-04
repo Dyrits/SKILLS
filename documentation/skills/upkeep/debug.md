@@ -20,6 +20,7 @@ Reach for it on the hard ones: a bug that resists a first look, an intermittent 
 | A raw bug report from someone else, not yet confirmed or written up | [triage](./triage.md) first |
 | Throwaway code to answer a design question, not chase a defect | [prototype](../shaping/prototype.md) |
 | Building a planned behaviour test-first | [test-first](../workflow/test-first.md) |
+| Asking what would have prevented the bug, once it is fixed | [improve-environment](./improve-environment.md), in the same session |
 | No good seam exists to lock the bug down | [improve-codebase-architecture](./improve-codebase-architecture.md), which you start once the fix is in |
 
 ## The tight loop is the skill
@@ -96,4 +97,4 @@ Not silently. A reproduction shows a failure; it does not authorize weakening re
 
 `debug` is a reach-for-it-anytime standalone. You drop into it when something is broken and drop out when the fix and its regression test are in; it holds no state and needs no prior setup. [guide](../getting-started/guide.md) routes "Something's broken" here.
 
-Two neighbours matter. [improve-codebase-architecture](./improve-codebase-architecture.md) is the follow-up when the real finding is that the code has no seam to lock the bug down; `debug` records that finding but never starts the follow-up itself, so you choose it after the fix is in, when there is more information. [triage](./triage.md) sits upstream of it for bugs that arrive as raw reports from other people, and does a shallower version of the same first two phases.
+Three neighbours matter. [improve-environment](./improve-environment.md) comes after it: once the fix is in, run it in the same session to ask what would have prevented the bug, when there is more information than at the start. [improve-codebase-architecture](./improve-codebase-architecture.md) is the follow-up when the real finding is that the code has no seam to lock the bug down; `debug` records that finding but never starts the follow-up itself, so you choose it after the fix is in, when there is more information. [triage](./triage.md) sits upstream of it for bugs that arrive as raw reports from other people, and does a shallower version of the same first two phases.

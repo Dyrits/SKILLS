@@ -6,7 +6,7 @@ argument-hint: "Optional: the session to review, and what you expected from it"
 
 The user has asked for a **retrospective** on a session. Together you establish what went right, what went wrong, whether the skills were used correctly or used at all, and whether the outcome is the one expected. The findings about skills become an issue on the skills repository, [Dyrits/SKILLS](https://github.com/Dyrits/SKILLS), where they are fixed in a separate session.
 
-**Calls:** `memorize`, `unslop`. If a called skill is not installed, tell the user its name and install command, `npx skills@latest add Dyrits/SKILLS --skill=<name>`, then carry out that step from its stated intent and report the step as done without the skill.
+**Calls:** `memorize`, `unslop`. If a called skill is not installed, tell the user its name and install command, `npx skills@latest add Dyrits/SKILLS --skill=<name>`, then carry out that step from its stated intent and report the step as done without the skill. **Hands over to:** `/improve-environment`. When one is not installed, give the user its install command, `npx skills@latest add Dyrits/SKILLS --skill=<name>`, along with the instruction to run it.
 
 ## Steps
 
@@ -39,8 +39,9 @@ Completion: the user has confirmed or corrected every finding, and the outcome q
 Give each finding one home:
 
 - **A skill finding**: a trigger that fired wrongly or never fired, an ambiguous or missing step, conflicting skills, a stale route in `guide`, a missing skill. These go into the issue.
-- **A project lesson**: a convention, command, or rule of the project the session ran in. Call the Skill tool with "memorize" to file it there. A mechanical violation (a banned pattern, an import shape, a file location) is better caught by a deterministic check; propose the lint rule, hook, or CI job instead of a written rule.
-- **Agent behavior no skill could have steered**: report it to the user and leave it out of the issue.
+- **A project lesson**: a convention, command, or rule of the project the session ran in. Call the Skill tool with "memorize" to file it there.
+- **An environment finding**: friction a check, guardrail, navigation pointer, steering-file cut, tool, or access change would have prevented, including a mechanical violation a lint rule could catch. Once the issue is settled, tell the user to run `/improve-environment` with these findings.
+- **Agent behavior neither a skill nor the environment could have steered**: report it to the user and leave it out of the issue.
 
 Completion: every confirmed finding has exactly one home, and the user agrees with the sorting.
 

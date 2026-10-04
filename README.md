@@ -57,7 +57,7 @@ During specification work, a [prototype](./skills/shaping/prototype/SKILL.md) is
 
 This repository forked from [Matt Pocock's skills](https://aihero.dev/skills) at a known commit and diverges deliberately. The upstream website does not document this fork's behavior. See [architecture decision record 0001](./documentation/architecture-decision-record/0001-maintain-as-an-independent-fork.md) and the [upstream archive index](./.upstream/README.md).
 
-Not every retained skill comes from that upstream repository. The [primary-source provenance audit](./documentation/research/2026-10-03-retained-skill-provenance.md) traces all 47 retained skills: 29 Matt-derived, three other external adaptations, and 15 created in this fork. Original names and sources are identified on promoted skill pages. Removed upstream skills remain absent; the archive is evidence, not an install inventory.
+Not every retained skill comes from that upstream repository. The [primary-source provenance audit](./documentation/research/2026-10-03-retained-skill-provenance.md) traces the 47 skills retained on that date: 29 Matt-derived, three other external adaptations, and 15 created in this fork. [improve-environment](./skills/upkeep/improve-environment/SKILL.md), added later, ports upstream `retro`. Original names and sources are identified on promoted skill pages. Removed upstream skills remain absent; the archive is evidence, not an install inventory.
 
 - Tasks can be local Markdown or native remote issues.
 - Both workflows use project-owned documents rather than separate artifact systems.
@@ -80,7 +80,7 @@ Not every retained skill comes from that upstream repository. The [primary-sourc
 | HumanLayer's `show-me` | [illustrate](./skills/productivity/illustrate/SKILL.md) | The name describes the visual explanation action without changing the external source or delivery discipline. |
 | Separate planning snapshots and iterative working records | Shared project documents | Switching development approaches should not duplicate or discard obligations, agreements, or progress. |
 | Prototype code retained only outside the application | Approved experiment with a productionization path | Validation should preserve useful work; experimental success does not itself establish production readiness. |
-| `retro` | [improve-skills](./skills/upkeep/improve-skills/SKILL.md) | The retrospective reports how the skills behaved as an issue on this repository; lessons about the project itself go through [memorize](./skills/reference/memorize/SKILL.md). |
+| `retro` | [improve-environment](./skills/upkeep/improve-environment/SKILL.md) and [improve-skills](./skills/upkeep/improve-skills/SKILL.md) | One retrospective changes the project's environment after agreeing each change with you; the other reports how the skills behaved as an issue on this repository. Written project lessons go through [memorize](./skills/reference/memorize/SKILL.md). |
 
 `iterate` is a fork-specific just-in-time workflow, not an upstream rename. Skills formerly under `experimental/` now live in purpose buckets and ship in the plugin. Human-facing pages identify verified original names or an explicit fork-specific origin. See [architecture decision record 0002](./documentation/architecture-decision-record/0002-share-project-documents-across-workflows.md) for the document-authority decision.
 
@@ -121,6 +121,7 @@ The manifest is the source of truth for this list; it holds every skill outside 
 - [triage](./skills/upkeep/triage/SKILL.md): Verify and classify requests, recording actionable briefs or decisions.
 - [improve-codebase-architecture](./skills/upkeep/improve-codebase-architecture/SKILL.md): Present deepening opportunities in a visual audit.
 - [improve-skills](./skills/upkeep/improve-skills/SKILL.md): Review a session's skill use and report it as an issue on this repository.
+- [improve-environment](./skills/upkeep/improve-environment/SKILL.md): Trace a session's friction to the project's environment and fix it there.
 - [monitor-ai-tooling](./skills/upkeep/monitor-ai-tooling/SKILL.md): Report observed tool benefits, estimates, and quality gaps.
 - [debug](./skills/upkeep/debug/SKILL.md): Build a tight reproduction loop, diagnose the cause, and verify the fix.
 

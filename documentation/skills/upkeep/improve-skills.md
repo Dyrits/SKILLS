@@ -1,4 +1,4 @@
-Upstream source: `retro`, verified in the `d81f3a1` tree. This fork first renamed it `improve-agent-environment`, then renamed it `improve-skills` and changed its target: it now reports on the skills themselves instead of recommending changes to the project's environment.
+Upstream source: `retro`, verified in the `d81f3a1` tree. This fork first renamed it `improve-agent-environment`, then renamed it `improve-skills` and changed its target: it now reports on the skills themselves. Upstream's environment retrospective returned as [improve-environment](./improve-environment.md).
 
 ## What it does
 
@@ -15,6 +15,7 @@ Type `/improve-skills`, or an agent or another skill can reach for it when the t
 | A skill fired when it should not have, or never fired | Run `/improve-skills` |
 | The agent followed a skill but the outcome missed what you wanted | Run `/improve-skills` |
 | A session went well and you want to record what to keep | Run `/improve-skills` |
+| The session's friction came from the project, not a skill: a missing check, a long search, missing information | Use [improve-environment](./improve-environment.md) instead |
 | The agent keeps missing a convention of your own project | [memorize](../reference/memorize.md) files it in the project; you can also just tell the agent |
 | Code architecture or module seams need review | Use [improve-codebase-architecture](./improve-codebase-architecture.md) instead |
 | A specific defect needs root-cause diagnosis | Use [debug](./debug.md) instead |
@@ -24,8 +25,9 @@ Type `/improve-skills`, or an agent or another skill can reach for it when the t
 | Finding | Home |
 | --- | --- |
 | A skill problem: a wrong or missing trigger, an unclear or missing step, conflicting skills, a stale route in `guide`, a missing skill | The issue on the skills repository |
-| A lesson about your project: a convention, a command, a review rule | Filed in the project through [memorize](../reference/memorize.md). A mechanical violation gets a proposed lint rule, hook, or CI job instead of a written rule. |
-| Agent behavior no skill could have steered | Reported to you, left out of the issue |
+| A lesson about your project: a convention, a command, a review rule | Filed in the project through [memorize](../reference/memorize.md) |
+| Friction the environment could have prevented: a missing check or guardrail, a long search, an expensive tool, missing information | Handed to [improve-environment](./improve-environment.md) once the issue is settled |
+| Agent behavior neither a skill nor the environment could have steered | Reported to you, left out of the issue |
 
 What went right goes into the issue too, so a later fix does not break behavior worth keeping.
 
@@ -49,7 +51,7 @@ It tries a connected GitHub server, then the `gh` command, then the GitHub API w
 
 **What happened to `/improve-agent-environment`?**
 
-It became `improve-skills`. Its narrower checks on your own project (steering files, missing guardrails, tool cost) now arrive through the project-lesson path above rather than as a ranked list of environment changes.
+It was split. `improve-skills` reports on the skills themselves, and [improve-environment](./improve-environment.md) carries the checks on your own project (steering files, missing guardrails, tool cost) that upstream's `retro` made.
 
 **What if a skill it calls is not installed?**
 It names the missing skill with its install command, carries out that step from its stated intent, and tells you the step ran without it. The skills involved are listed at the top of its [`SKILL.md`](../../../skills/upkeep/improve-skills/SKILL.md).
@@ -58,9 +60,9 @@ It names the missing skill with its install command, carries out that step from 
 
 - Every finding in the issue points to a moment in the session and was confirmed by you.
 - The issue names each skill involved, how it was reached, and whether it behaved as intended.
-- Project lessons were filed locally and do not appear in the issue.
+- Project lessons and environment findings stayed local and do not appear in the issue.
 - The issue contains nothing that identifies your private project, and its URL is reported once posted, or you are told where its feedback record was saved.
 
 ## Where it fits
 
-`improve-skills` is periodic maintenance after a session in either development workflow. Run it before clearing the session, or point a new session at the log. [memorize](../reference/memorize.md) handles corrections during the session; this skill handles what the skills themselves got wrong. Fixing a reported problem happens in a separate session on this repository, following [write-for-agents](../reference/write-for-agents.md). [guide](../getting-started/guide.md) maps the whole set.
+`improve-skills` is periodic maintenance after a session in either development workflow. Run it before clearing the session, or point a new session at the log. [memorize](../reference/memorize.md) handles corrections during the session; this skill handles what the skills themselves got wrong, and [improve-environment](./improve-environment.md) what the project's environment got wrong. Fixing a reported problem happens in a separate session on this repository, following [write-for-agents](../reference/write-for-agents.md). [guide](../getting-started/guide.md) maps the whole set.
