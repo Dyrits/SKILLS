@@ -26,6 +26,9 @@ No. An explicit approved batch in working state can supply the agreement. Global
 
 Only for the behavior those tests establish. Appearance and interaction may need human judgment. Missing validation remains visible instead of becoming a delivery claim.
 
+**What if a skill it calls or hands over to is not installed?**
+It names the missing skill with its install command, carries out that step from its stated intent, and tells you the step ran without it. Without `document` it waits instead, because its rules use that skill's terms: install it, or tell it to proceed anyway. When it tells you to run a skill you don't have, it gives the install command with it. The skills involved are listed at the top of its [`SKILL.md`](../../../skills/workflow/implement/SKILL.md).
+
 ## It's working if
 
 - The final report traces intended behavior to the originating agreement, ready for review.

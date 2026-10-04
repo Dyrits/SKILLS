@@ -21,6 +21,9 @@ No. A workflow is a specification of a loop; whether an agent, a script, or a hu
 **Where do the specifications live?**
 `workflows/*.md` in the workspace you run the skill in, with `NOTES.md` alongside capturing raw notes on your world, tools, channels, and your own terms for them. Thin notes mean the skill interviews you about your world before specifying anything.
 
+**What if a skill it calls is not installed?**
+It names the missing skill with its install command, carries out that step from its stated intent, and tells you the step ran without it. The skills involved are listed at the top of its [`SKILL.md`](../../../skills/productivity/design-workflow/SKILL.md).
+
 ## It's working if
 
 - Each finished `workflows/*.md` leaves no open question an implementer would have to ask.

@@ -51,6 +51,9 @@ It tries a connected GitHub server, then the `gh` command, then the GitHub API w
 
 It became `improve-skills`. Its narrower checks on your own project (steering files, missing guardrails, tool cost) now arrive through the project-lesson path above rather than as a ranked list of environment changes.
 
+**What if a skill it calls is not installed?**
+It names the missing skill with its install command, carries out that step from its stated intent, and tells you the step ran without it. The skills involved are listed at the top of its [`SKILL.md`](../../../skills/upkeep/improve-skills/SKILL.md).
+
 ## It's working if
 
 - Every finding in the issue points to a moment in the session and was confirmed by you.

@@ -48,6 +48,9 @@ No. Percentages are not summed across tools, estimates are not added to provider
 
 It prefers local collection with no network requests and no additional model calls. A model-backed comparison is only proposed, with its expected cost, and waits for your request.
 
+**What if a skill it hands over to is not installed?**
+It gives you the install command along with the instruction to run it. The skills involved are listed at the top of its [`SKILL.md`](../../../skills/upkeep/monitor-ai-tooling/SKILL.md).
+
 ## It's working if
 
 - A dated report appears under `.agents/tooling/reports/` (or your chosen destination) with a row for every configured tool.

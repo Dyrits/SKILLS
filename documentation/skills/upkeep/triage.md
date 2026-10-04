@@ -46,6 +46,9 @@ No. Close it with evidence of the existing implementation. The rejection knowled
 
 Requirements constrain the work. Triage can change an implementation approach within scope, but must surface a conflicting obligation. Remote comments, role changes, and closing follow the explicit triage request or confirmed outcome. General local document upkeep grants no remote publication permission.
 
+**What if a skill it calls or hands over to is not installed?**
+It names the missing skill with its install command, carries out that step from its stated intent, and tells you the step ran without it. Without `document` it waits instead, because its rules use that skill's terms: install it, or tell it to proceed anyway. When it tells you to run a skill you don't have, it gives the install command with it. The skills involved are listed at the top of its [`SKILL.md`](../../../skills/upkeep/triage/SKILL.md).
+
 ## It's working if
 
 - Each intake item has one category and one state, with conflicting states raised before action.

@@ -27,6 +27,9 @@ That is a separate demo project, not this skill's one-question experiment. A who
 
 Keep it as a primary source with a context pointer in the relevant work record. Preserve the question, verdict, evidence, and remaining acceptance rather than only a prose conclusion.
 
+**What if a skill it calls is not installed?**
+It names the missing skill with its install command, carries out that step from its stated intent, and tells you the step ran without it. Without `document` it waits instead, because its rules use that skill's terms: install it, or tell it to proceed anyway. The skills involved are listed at the top of its [`SKILL.md`](../../../skills/shaping/prototype/SKILL.md).
+
 ## It's working if
 
 - The question is narrow enough to state in one sentence and appears in the demo.

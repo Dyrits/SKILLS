@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Check skill layout, invocation metadata, documentation, and local links.
+"""Check skill layout, invocation metadata, dependency paragraphs, documentation, and local links.
 
 Usage: python3 scripts/check-skills.py [repository]
 Needs: Python 3 standard library. Reads files only.
@@ -14,6 +14,50 @@ from urllib.parse import unquote
 
 # Skills called by name that ship outside this repository.
 EXTERNAL_SKILLS = {"webapp-testing"}
+
+# "Call the Skill tool with "a"" or "Call the Skill tool twice, for "a" and "b"": names quoted, escaped, or in backticks.
+CALL_PATTERN = re.compile(r'Skill tool(?: twice,)? (?:with|for) ((?:\\?["`][\w-]+\\?["`](?:,? (?:and |or )?)?)+)',
+                          re.IGNORECASE)
+# "tell the user to run `/a`": the human invokes it.
+HANDOVER_PATTERN = re.compile(r"to run `/([\w-]+)")
+SCANNED_SUFFIXES = {".md", ".sh"}
+
+
+def call_names(match):
+    return re.findall(r'["`]([\w-]+)\\?["`]', match.group(1))
+
+
+def skill_references(folder):
+    """Other skills a skill folder calls through the Skill tool, and those it tells the user to run."""
+    calls, handovers = set(), set()
+    for path in folder.rglob("*"):
+        if path.suffix not in SCANNED_SUFFIXES or not path.is_file():
+            continue
+        text = path.read_text()
+        for call in CALL_PATTERN.finditer(text):
+            calls.update(call_names(call))
+        handovers.update(HANDOVER_PATTERN.findall(text))
+    calls.discard(folder.name)
+    return calls, handovers - calls - {folder.name}
+
+
+def calls_block(calls, handovers=frozenset()):
+    """The dependency paragraph a skill carries, since skills install one by one."""
+    install = "`npx skills@latest add Dyrits/SKILLS --skill=<name>`"
+    sentences = []
+    if calls:
+        listed = ", ".join(f"`{name}`" for name in sorted(calls))
+        sentences.append(f"**Calls:** {listed}. If a called skill is not installed, tell the user its name and "
+                         f"install command, {install}, then carry out that step from its stated intent and "
+                         "report the step as done without the skill.")
+        if "document" in calls:
+            sentences.append("Without `document`, wait until the user installs it or tells you to proceed: "
+                             "this skill's rules use its terms.")
+    if handovers:
+        listed = ", ".join(f"`/{name}`" for name in sorted(handovers))
+        sentences.append(f"**Hands over to:** {listed}. When one is not installed, give the user its install "
+                         f"command, {install}, along with the instruction to run it.")
+    return " ".join(sentences)
 
 
 def check(repository):
@@ -52,6 +96,13 @@ def check(repository):
             r"^\s*allow_implicit_invocation:\s*false\s*$", metadata_path.read_text(), re.MULTILINE
         ):
             errors.append(f"{relative}: skill blocks model invocation.")
+        # Externals are left out: their install command is not this repository's.
+        calls, handovers = (found - EXTERNAL_SKILLS for found in skill_references(path.parent))
+        # The router names skills as labels for the human to pick from, not as dependencies.
+        block = calls_block(calls, handovers) if relative.parts[1] != "deprecated" and name != "guide" else ""
+        expected = [block] if block else []
+        if re.findall(r"^\*\*(?:Calls|Hands over to):\*\*.*$", content, re.MULTILINE) != expected:
+            errors.append(f"{relative}: dependency paragraph should read: {expected[0] if expected else '(none)'}")
         if not re.search(rf"/{re.escape(name)}(?![\w-])", router):
             errors.append(f"{relative}: router does not name /{name}.")
         bucket_readme = path.parent.parent / "README.md"
@@ -109,9 +160,6 @@ def check(repository):
     markdown += sorted(actual_pages)
     callable_names = {relative.name for relative in skills if relative.parts[1] != "deprecated"}
     callable_names |= EXTERNAL_SKILLS
-    # "Call the Skill tool with "a"" or "Call the Skill tool twice, for "a" and "b"".
-    call_pattern = re.compile(r'Skill tool(?: twice,)? (?:with|for) ((?:"[^"\n]+"(?:,? (?:and|or) )?)+)',
-                              re.IGNORECASE)
     link_pattern = re.compile(r"!?\[[^\]]*\]\(([^)\s]+)(?:\s+\"[^\"]*\")?\)")
     for path in markdown:
         text = path.read_text()
@@ -129,8 +177,8 @@ def check(repository):
             resolved = (root / target.lstrip("/")) if target.startswith("/") else path.parent / target
             if not resolved.exists():
                 errors.append(f"{path.relative_to(root)}: broken link {target}")
-        for call in call_pattern.finditer(text):
-            for name in re.findall(r'"([^"]+)"', call.group(1)):
+        for call in CALL_PATTERN.finditer(text):
+            for name in call_names(call):
                 if name not in callable_names:
                     errors.append(f"{path.relative_to(root)}: operative call to retired or unknown skill {name}.")
 

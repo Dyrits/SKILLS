@@ -8,6 +8,8 @@ argument-hint: "branch... --onto target [--remote remote]"
 
 Rebase each named local branch onto one target so the branch itself moves. Resolve conflicts by intent, validate every result, report, and push only the branches the user approves.
 
+**Calls:** `resolve-merge-conflicts`. If a called skill is not installed, tell the user its name and install command, `npx skills@latest add Dyrits/SKILLS --skill=<name>`, then carry out that step from its stated intent and report the step as done without the skill.
+
 Accept branches and a target in natural language or as `/rebase fix/a feat/b --onto origin/develop`. `--remote` names the publication remote when a branch has no upstream or an ambiguous one. `--onto` names the target, not Git's three-argument transplant.
 
 ## 1. Establish the batch

@@ -7,6 +7,8 @@ description: "Implement an authorized task graph in parallel: route each task to
 
 Call the Skill tool with "document"; its terms (authorized, obligation, lazy, pointer) and rules apply throughout.
 
+**Calls:** `document`, `draft-merge-request`, `implement`, `review-and-refactor`. If a called skill is not installed, tell the user its name and install command, `npx skills@latest add Dyrits/SKILLS --skill=<name>`, then carry out that step from its stated intent and report the step as done without the skill. Without `document`, wait until the user installs it or tells you to proceed: this skill's rules use its terms. **Hands over to:** `/setup-ai-workspace`. When one is not installed, give the user its install command, `npx skills@latest add Dyrits/SKILLS --skill=<name>`, along with the instruction to run it.
+
 Identify the authorized behavior and originating agreement for the batch: specifications with tasks, or a user-approved batch in `documentation/work-in-progress.md`. Read the applicable requirements. For remote tracker work, read `documentation/agents/issue-tracker.md` for the configured workflow; if it is missing, tell the user to run `/setup-ai-workspace`. Local-only work runs without tracker setup.
 
 The goal is the entire authorized batch implemented on a single **integration branch**, each task built by the least expensive agent that can do it reliably, with each task's implementation and validation accounted for. The run has three phases: **divide** routes every task, **conquer** builds them in parallel, **combine** merges and reviews once.

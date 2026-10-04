@@ -14,7 +14,11 @@ This is about **operative** instructions: a skill's own steps telling the agent 
 
 The Skill tool takes one skill per call. A step that needs two skills is two calls, not one call with two names: say so (`Call the Skill tool twice, for "refine" and "model-domain"`), not "call it with X and Y," which reads as a single call taking both.
 
-Every named skill must exist outside `deprecated/` (or be a listed external skill); `scripts/check-skills.py` rejects a call to a retired or unknown name. Calling is not always right: when the timing or the decision belongs to the human (setting up the workspace, syncing a finished worktree), hand it over as an instruction to act on, "tell the user to run `/setup-ai-workspace`", and leave the Skill tool out of it.
+Every named skill must exist outside `deprecated/` (or be a listed external skill); `scripts/check-skills.py` rejects a call to a retired or unknown name.
+
+Users install skills one by one, so a called skill can be absent at runtime. Every skill that calls another carries a **Calls** paragraph right after its opening: the names it calls, then what to do when one is not installed (name it with its install command, carry out the step from its stated intent, report the gap). A skill that calls `document` waits for the user instead, because its rules use `document`'s terms. A skill that tells the user to run another carries a **Hands over to** clause in the same paragraph, so the instruction comes with the install command when that skill is absent. Write handovers as "tell the user to run `/name`" so the check finds them.
+
+`check-skills.py` owns the wording: it derives both lists from the Skill tool calls and handovers in the skill's folder (Markdown and shell scripts), leaves out external skills and the `guide` router, and prints the expected paragraph when one is missing or stale. Calling is not always right: when the timing or the decision belongs to the human (setting up the workspace, syncing a finished worktree), hand it over as an instruction to act on, "tell the user to run `/setup-ai-workspace`", and leave the Skill tool out of it.
 
 ## Passive vs active domain work
 

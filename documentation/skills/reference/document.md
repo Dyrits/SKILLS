@@ -39,6 +39,9 @@ They are read where they are. The agent moves them under `capabilities/` only wi
 **Can a completed item stay in work-in-progress for history?**
 Capture durable evidence first, then prune it from unfinished state. Delivery history belongs in the changelog and linked evidence.
 
+**What if a skill it calls is not installed?**
+It names the missing skill with its install command, carries out that step from its stated intent, and tells you the step ran without it. The skills involved are listed at the top of its [`SKILL.md`](../../../skills/reference/document/SKILL.md).
+
 ## It's working if
 
 - You can find the authoritative requirement, agreement, or task without choosing between competing copies.

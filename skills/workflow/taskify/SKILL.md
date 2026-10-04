@@ -7,6 +7,8 @@ description: "Decompose approved work into verifiable tasks with explicit blocki
 
 Create tracker-neutral tasks that deliver coherent outcomes. A small batch may need no tasks: recommend direct implementation or iterate when decomposition adds no value.
 
+**Calls:** `document`. If a called skill is not installed, tell the user its name and install command, `npx skills@latest add Dyrits/SKILLS --skill=<name>`, then carry out that step from its stated intent and report the step as done without the skill. Without `document`, wait until the user installs it or tells you to proceed: this skill's rules use its terms.
+
 ## Establish the source
 
 Call the Skill tool with "document"; its terms (authorized, obligation, lazy, pointer) and rules apply throughout. Read the selected scope, applicable requirements and specifications, active working state, relevant code, domain vocabulary, and architectural decisions. Fetch the full body and comments of any referenced remote task.

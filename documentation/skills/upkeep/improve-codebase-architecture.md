@@ -89,6 +89,9 @@ Partially. The exploration step names Claude Code's `Agent` tool with `subagent_
 
 There is no good answer shipped with the skill. The recurring request is for a `TYPESCRIPT.md` giving concrete file and module layouts for the principles, and it does not exist. The skill will tell you where a deepening belongs and what should sit behind the seam; translating that into a package or directory structure is currently on you.
 
+**What if a skill it calls is not installed?**
+It names the missing skill with its install command, carries out that step from its stated intent, and tells you the step ran without it. The skills involved are listed at the top of its [`SKILL.md`](../../../skills/upkeep/improve-codebase-architecture/SKILL.md).
+
 ## It's working if
 
 - The candidates name your domain's concepts, not invented class names: "the Order intake module," not "the FooBarHandler."

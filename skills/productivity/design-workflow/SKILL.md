@@ -6,6 +6,8 @@ argument-hint: "A workflow to design, or nothing to go find one"
 
 Call the Skill tool with "refine" for a stateful interview whose output is **workflow** specifications. Use dependency-aware question rounds with recommended answers, aimed at the vocabulary and goal below. Create and update specifications as decisions are resolved; remove an obsolete specification only when its replacement and useful history are preserved.
 
+**Calls:** `refine`. If a called skill is not installed, tell the user its name and install command, `npx skills@latest add Dyrits/SKILLS --skill=<name>`, then carry out that step from its stated intent and report the step as done without the skill.
+
 ## The loop lens
 
 A **loop** is a recurring pattern in the user's life: their career, their week, their morning, a single repeated activity. Picturing a life as loops within loops reveals how predictable its activities really are, which is what makes them worth **delegating**. Use the lens to find loops worth specifying, and propose ones the user hasn't noticed.

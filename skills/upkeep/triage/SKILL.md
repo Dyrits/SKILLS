@@ -7,13 +7,15 @@ description: "Move tasks and external PRs through triage roles: categorize, veri
 
 Move tasks on the configured tracker through a small state machine of intake roles. Triage acts on remote records or local intake task bodies; unresolved proposals in `documentation/capabilities/<capability>/draft.md` have no role.
 
+**Calls:** `document`, `model-domain`, `refine`. If a called skill is not installed, tell the user its name and install command, `npx skills@latest add Dyrits/SKILLS --skill=<name>`, then carry out that step from its stated intent and report the step as done without the skill. Without `document`, wait until the user installs it or tells you to proceed: this skill's rules use its terms. **Hands over to:** `/setup-ai-workspace`. When one is not installed, give the user its install command, `npx skills@latest add Dyrits/SKILLS --skill=<name>`, along with the instruction to run it.
+
 If the tracker treats external pull requests as a request surface, triage covers them too. A PR is a task with attached code, using the same roles and states, with the differences noted below. Resolve a bare `#42` to an issue or PR through the tracker configuration.
 
 ## Document and tracker contract
 
 Call the Skill tool with "document" before updating project documents; its terms (authorized, obligation, lazy, pointer) and rules apply throughout. Read the relevant requirements, specifications, working state, and backlog when present.
 
-Read `documentation/agents/issue-tracker.md` and `documentation/agents/triage-roles.md`. If either is missing, tell the human to run `/setup-ai-workspace` and stop.
+Read `documentation/agents/issue-tracker.md` and `documentation/agents/triage-roles.md`. If either is missing, tell the user to run `/setup-ai-workspace` and stop.
 
 "Comment", "apply a role", and "close" resolve through the tracker configuration:
 

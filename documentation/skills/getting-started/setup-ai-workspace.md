@@ -48,6 +48,9 @@ Re-run it when an older configuration no longer matches the workflows consuming 
 
 Setup prefers an existing `CLAUDE.md`, then an existing `AGENTS.md`. If both conventions are used in your repository, keep the relevant instructions reachable by the agent you use. If neither file exists, setup asks which to create.
 
+**What if a skill it calls is not installed?**
+It names the missing skill with its install command, carries out that step from its stated intent, and tells you the step ran without it. Without `document` it waits instead, because its rules use that skill's terms: install it, or tell it to proceed anyway. The skills involved are listed at the top of its [`SKILL.md`](../../../skills/getting-started/setup-ai-workspace/SKILL.md).
+
 ## It's working if
 
 - Workflow skills read the tracker and writing conventions without guessing.

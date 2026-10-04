@@ -8,6 +8,8 @@ description: "Report AI tooling usage, measured output reduction, quality signal
 Run an on-demand **report** from existing measurements.
 Collection stays deterministic; this skill does not install tools or start recurring model analysis.
 
+**Hands over to:** `/setup-ai-tooling`. When one is not installed, give the user its install command, `npx skills@latest add Dyrits/SKILLS --skill=<name>`, along with the instruction to run it.
+
 ## Process
 
 ### 1. Establish the evidence
@@ -17,7 +19,7 @@ Use configured tool analytics, saved verification results, or an export from the
 Inspect source schemas and installed help before choosing read-only export commands; preserve source files and redact credentials or unrelated session content from the report.
 For RTK, inspect `gain` and supported history/export options without changing counters or configuration.
 Prefer local collection without network requests or additional model calls.
-If setup or data is missing, produce a gaps report and tell the user how `/setup-ai-tooling` or a future measurement period can fill it.
+If setup or data is missing, produce a gaps report: name the gaps a future measurement period fills, and for missing setup tell the user to run `/setup-ai-tooling`.
 Treat no observations as unknown usage, not proof a tool was unused.
 Done when every source has a provenance, unit, period, scope, and project attribution or an explicit attribution gap.
 
@@ -45,4 +47,4 @@ Done when the report accounts for every configured tool, source gaps, quality fi
 ### 4. Finish
 
 Summarize observed benefits, quality problems, and unknowns with the report path.
-Recommend `/setup-ai-tooling` for configuration changes; leave installations, hook edits, and account changes to an explicit setup request.
+For configuration changes, tell the user to run `/setup-ai-tooling`; leave installations, hook edits, and account changes to an explicit setup request.

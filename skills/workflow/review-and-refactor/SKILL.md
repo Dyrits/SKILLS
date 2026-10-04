@@ -6,6 +6,8 @@ description: "Review and refactor changes since a fixed point against repository
 This is the **refactor** phase of red-green-refactor.
 Implementation establishes the required behavior with passing tests; this skill then checks standards and compliance with specifications and applies supported refactors while preserving behavior.
 
+**Calls:** `document`, `model-domain`, `publish-message`. If a called skill is not installed, tell the user its name and install command, `npx skills@latest add Dyrits/SKILLS --skill=<name>`, then carry out that step from its stated intent and report the step as done without the skill. Without `document`, wait until the user installs it or tells you to proceed: this skill's rules use its terms.
+
 Two independent axes inspect the same starting diff:
 
 - **Standards**: does the code conform to the repository's documented coding standards, and which baseline smells justify a refactor?

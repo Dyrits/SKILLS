@@ -42,6 +42,9 @@ No. A clear small change goes straight to a batch. Decomposition through `priori
 
 Yes. Working state is updated when a batch is agreed and after it is implemented or reviewed, so no final handoff is needed. On resumption the agent compares the record with the actual code and check results before trusting it.
 
+**What if a skill it calls is not installed?**
+It names the missing skill with its install command, carries out that step from its stated intent, and tells you the step ran without it. Without `document` it waits instead, because its rules use that skill's terms: install it, or tell it to proceed anyway. The skills involved are listed at the top of its [`SKILL.md`](../../../skills/workflow/iterate/SKILL.md).
+
 ## It's working if
 
 - Each batch ends with a report of what changed, the verification result, and how to run it.

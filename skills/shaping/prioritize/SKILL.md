@@ -11,7 +11,7 @@ The open question here is which outcome comes first. When the effort instead hin
 
 Call the Skill tool with "document"; its terms (authorized, obligation, lazy, pointer) and rules apply throughout. This skill works on `documentation/backlog.md`, `documentation/work-in-progress.md`, and the root `CHANGELOG.md`, and links existing requirements and specifications.
 
-The supporting skills named here ship with this repository. If one is missing, do its work inline and say which one was missing.
+**Calls:** `document`, `refine`, `research`. If a called skill is not installed, tell the user its name and install command, `npx skills@latest add Dyrits/SKILLS --skill=<name>`, then carry out that step from its stated intent and report the step as done without the skill. Without `document`, wait until the user installs it or tells you to proceed: this skill's rules use its terms.
 
 ## 1. Recover the direction
 

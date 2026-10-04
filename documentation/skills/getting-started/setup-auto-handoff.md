@@ -39,6 +39,9 @@ Yes. Edit `FRESH_WINDOW_MINUTES` in the copied script.
 
 Remove the hook entry from `.claude/settings.json`.
 
+**What if a skill it calls is not installed?**
+It names the missing skill with its install command, carries out that step from its stated intent, and tells you the step ran without it. The skills involved are listed at the top of its [`SKILL.md`](../../../skills/getting-started/setup-auto-handoff/SKILL.md).
+
 ## It's working if
 
 - The simulated compaction with no fresh handoff returns a `decision: block` result.

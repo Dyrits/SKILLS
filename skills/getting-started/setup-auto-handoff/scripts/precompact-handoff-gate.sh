@@ -23,6 +23,6 @@ fi
 cat <<EOF
 {
   "decision": "block",
-  "reason": "Compaction is gated: write a handoff first. Call the Skill tool with \"hand-off\" to write a versioned handoff document to .agents/handoffs/, then let compaction proceed. Without it, the detail compaction discards is lost. (trigger: ${trigger})"
+  "reason": "Compaction is gated: write a handoff first. Call the Skill tool with \"hand-off\" to write a versioned handoff document to .agents/handoffs/, then let compaction proceed. If that skill is not installed, write the handoff file there yourself, named YYYY-MM-DD-HHMM-<slug>.md: state, decisions, open risks, next steps. Without it, the detail compaction discards is lost. (trigger: ${trigger})"
 }
 EOF

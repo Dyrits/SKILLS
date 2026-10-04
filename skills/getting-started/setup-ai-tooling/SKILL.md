@@ -9,6 +9,8 @@ Provision **tooling**, with complete review evidence and a measurable baseline.
 Run installation and configuration only within an explicit tooling setup request, including a tooling stage the user selected during workspace setup.
 Call the Skill tool with "write-for-agents" when changing agent instructions.
 
+**Calls:** `write-for-agents`. If a called skill is not installed, tell the user its name and install command, `npx skills@latest add Dyrits/SKILLS --skill=<name>`, then carry out that step from its stated intent and report the step as done without the skill. **Hands over to:** `/monitor-ai-tooling`. When one is not installed, give the user its install command, `npx skills@latest add Dyrits/SKILLS --skill=<name>`, along with the instruction to run it.
+
 ## Process
 
 ### 1. Inspect

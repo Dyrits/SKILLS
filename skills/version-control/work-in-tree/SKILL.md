@@ -9,6 +9,8 @@ Establish an isolated checkout before editing task files, then continue the
 requested work there. Keep the original checkout and target branch unchanged
 until the user requests a sync.
 
+**Hands over to:** `/sync-tree`. When one is not installed, give the user its install command, `npx skills@latest add Dyrits/SKILLS --skill=<name>`, along with the instruction to run it.
+
 ## 1. Identify the starting point
 
 Read applicable repository instructions, Git status, branch, HEAD, common Git

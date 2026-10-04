@@ -10,7 +10,7 @@ Coordinate refinement and implementation in one living development workflow. An 
 
 Call the Skill tool with "document"; its terms (authorized, obligation, lazy, pointer) and rules apply throughout. This workflow runs on `documentation/backlog.md`, `documentation/work-in-progress.md`, and the root `CHANGELOG.md` with light records, and links existing requirements and specifications where they apply.
 
-The supporting skills named here ship with this repository. If one is missing, do its work inline and say which one was missing.
+**Calls:** `design-modules`, `divide-and-conquer`, `document`, `implement`, `model-domain`, `prioritize`, `refine`, `research`, `review-and-refactor`. If a called skill is not installed, tell the user its name and install command, `npx skills@latest add Dyrits/SKILLS --skill=<name>`, then carry out that step from its stated intent and report the step as done without the skill. Without `document`, wait until the user installs it or tells you to proceed: this skill's rules use its terms.
 
 ## 1. Establish the starting point
 
@@ -46,7 +46,7 @@ Summarize the batch's behavior, scope, verification, and choices needing approva
 
 In a versioned project, record the goal's starting revision when its first batch is agreed. When a batch starts an agreed milestone or substantial structural or data-risk work, read [MILESTONE-REVIEW.md](MILESTONE-REVIEW.md) before implementation.
 
-Call the Skill tool with "model-domain" when sharpening domain terms, recording a consequential decision, or establishing code conventions, and with "design-modules" when a module's interface or testability needs design.
+Call the Skill tool with "model-domain" when sharpening domain terms, recording a consequential decision, or establishing code conventions. Call the Skill tool with "design-modules" when a module's interface or testability needs design.
 
 Completion: the batch can be implemented and checked without guessing at an open decision, and each consequential choice it settled (costly to reverse, or changing scope) has an Agreement in `CHANGELOG.md`. Record the agreed batch and pending questions using [ARTIFACTS.md](ARTIFACTS.md).
 

@@ -7,6 +7,8 @@ description: Set up a Claude Code PreCompact hook that blocks compaction until a
 
 Gates compaction: when Claude Code is about to compact (auto or manual), a `PreCompact` hook blocks it unless a handoff was written to `.agents/handoffs/` in the last 5 minutes. The block reason tells the agent to run the `hand-off` skill first; the next compaction attempt passes once the handoff exists.
 
+**Calls:** `hand-off`. If a called skill is not installed, tell the user its name and install command, `npx skills@latest add Dyrits/SKILLS --skill=<name>`, then carry out that step from its stated intent and report the step as done without the skill.
+
 ## What works where
 
 - **Claude Code**: fully supported (`PreCompact` hook). This setup's main path.
@@ -19,6 +21,8 @@ Gates compaction: when Claude Code is about to compact (auto or manual), a `PreC
 The bundled script is at [scripts/precompact-handoff-gate.sh](scripts/precompact-handoff-gate.sh)
 
 Copy to `.claude/hooks/precompact-handoff-gate.sh` and make it executable (`chmod +x`). Replace an existing copy whose block message names `"handoff"`: earlier versions pointed at a skill name that does not exist.
+
+The block message calls `hand-off`, which must be in your skill listing for the gate to resolve cleanly. When it is absent, recommend installing it first; the message's fallback (write the handoff file directly) still lets compaction proceed without it.
 
 ### 2. Register the hook
 

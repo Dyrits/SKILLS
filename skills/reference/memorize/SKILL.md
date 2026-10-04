@@ -7,6 +7,8 @@ description: Memorize reusable knowledge where it will be found again, and recal
 
 Agents relearn the same things every session: the helper written yesterday, the convention the user corrected twice, the term the team already settled. **Memorize** files each lesson in the home the next agent will read when it matters; **recall** checks that home before redoing the work.
 
+**Calls:** `document`, `model-domain`, `walk-through`, `write-for-agents`. If a called skill is not installed, tell the user its name and install command, `npx skills@latest add Dyrits/SKILLS --skill=<name>`, then carry out that step from its stated intent and report the step as done without the skill. Without `document`, wait until the user installs it or tells you to proceed: this skill's rules use its terms. **Hands over to:** `/improve-skills`. When one is not installed, give the user its install command, `npx skills@latest add Dyrits/SKILLS --skill=<name>`, along with the instruction to run it.
+
 ## Homes
 
 | Lesson | Home | How |
@@ -18,7 +20,7 @@ Agents relearn the same things every session: the helper written yesterday, the 
 | Project agreements, working state, or delivery history | The shared project documents | Call the Skill tool with "document" |
 | A procedure only a human can carry out, worth repeating | A saved wizard | Call the Skill tool with "walk-through" |
 | A personal preference that holds across projects | The harness's own memory when it provides one; otherwise `~/.agents/memory/` | See **Personal memory** below |
-| A defect in a skill itself (a wrong trigger, an unclear step, a missing skill) | The skills repository, reported once the session ends | Tell the user that `/improve-skills` reports it |
+| A defect in a skill itself (a wrong trigger, an unclear step, a missing skill) | The skills repository, reported once the session ends | Tell the user to run `/improve-skills` |
 
 The environment is a home too: a `package.json` script, a config file, or `--help` output already states its fact. Leave those facts there.
 

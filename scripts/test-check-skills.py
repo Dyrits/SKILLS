@@ -141,6 +141,48 @@ class LayoutChecks(unittest.TestCase):
         self.write("skills/workflow/divide-and-conquer/ROUTING.md", "| Light | Sonnet | Luna |\n")
         self.assertIn("tiers differ", self.result()[1])
 
+    def test_calling_skill_needs_dependency_paragraph(self):
+        body = '---\nname: example\n---\nCall the Skill tool with "guide".\n'
+        self.write("skills/reference/example/SKILL.md", body)
+        self.assertIn("dependency paragraph should read: **Calls:** `guide`.", self.result()[1])
+        self.write("skills/reference/example/SKILL.md", body + "\n" + checker.calls_block({"guide"}) + "\n")
+        self.assertEqual(self.result()[0], False)
+
+    def test_dependency_paragraph_skips_external_skills(self):
+        self.write("skills/reference/example/SKILL.md",
+                   '---\nname: example\n---\nCall the Skill tool with "webapp-testing".\n')
+        self.assertEqual(self.result()[0], False)
+
+    def test_stale_dependency_paragraph(self):
+        self.write("skills/reference/example/SKILL.md",
+                   "---\nname: example\n---\n" + checker.calls_block({"guide"}) + "\n")
+        self.assertIn("dependency paragraph should read: (none)", self.result()[1])
+
+    def test_document_dependency_waits(self):
+        self.assertIn("wait until the user installs it", checker.calls_block({"document"}))
+        self.assertNotIn("wait until", checker.calls_block({"guide"}))
+
+    def test_backtick_and_script_calls_count(self):
+        self.write("skills/reference/example/SKILL.md",
+                   "---\nname: example\n---\nCall the Skill tool with `guide`.\n")
+        self.assertIn("should read: **Calls:** `guide`.", self.result()[1])
+        self.write("skills/reference/example/SKILL.md", "---\nname: example\n---\nAn example skill.\n")
+        self.write("skills/reference/example/scripts/gate.sh", 'echo "Call the Skill tool with \\"guide\\"."\n')
+        self.assertIn("should read: **Calls:** `guide`.", self.result()[1])
+
+    def test_handover_needs_dependency_paragraph(self):
+        body = "---\nname: example\n---\nTell the user to run `/guide`.\n"
+        self.write("skills/reference/example/SKILL.md", body)
+        self.assertIn("should read: **Hands over to:** `/guide`.", self.result()[1])
+        block = checker.calls_block(set(), {"guide"})
+        self.write("skills/reference/example/SKILL.md", body + "\n" + block + "\n")
+        self.assertEqual(self.result()[0], False)
+
+    def test_router_carries_no_dependency_paragraph(self):
+        self.write("skills/getting-started/guide/SKILL.md",
+                   "---\nname: guide\n---\nRoute to /example and /guide. Tell the user to run `/example`.\n")
+        self.assertEqual(self.result()[0], False)
+
     def test_missing_where_it_fits(self):
         path = self.root / "documentation/skills/reference/example.md"
         path.write_text(path.read_text().replace("## Where it fits\nA role.\n", ""))

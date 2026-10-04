@@ -7,6 +7,8 @@ description: Write and maintain project documentation, including the shared proj
 
 For requirements, specifications, drafts, backlog, work-in-progress, tasks, or changelog records, read [PROJECT-DOCUMENTS.md](PROJECT-DOCUMENTS.md). Workflows call this skill instead of restating its rules.
 
+**Calls:** `write-for-agents`. If a called skill is not installed, tell the user its name and install command, `npx skills@latest add Dyrits/SKILLS --skill=<name>`, then carry out that step from its stated intent and report the step as done without the skill.
+
 For any other document:
 
 1. Name the reader and the task the document supports; put what that task needs first.

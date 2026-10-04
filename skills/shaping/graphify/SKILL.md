@@ -7,13 +7,15 @@ description: "Build and work through a shared decision graph for an effort too l
 
 A loose idea has arrived, too big for one agent session, and wrapped in fog. Chart a shared decision graph toward a named **destination** and work its **decision tasks** one at a time. These are questions whose resolution is a decision, not implementation slices. The graph consists of task records and blocking relationships; a rendered diagram is an optional view, not the graph itself.
 
+**Calls:** `document`, `illustrate`, `model-domain`, `prototype`, `refine`, `research`. If a called skill is not installed, tell the user its name and install command, `npx skills@latest add Dyrits/SKILLS --skill=<name>`, then carry out that step from its stated intent and report the step as done without the skill. Without `document`, wait until the user installs it or tells you to proceed: this skill's rules use its terms. **Hands over to:** `/setup-ai-workspace`. When one is not installed, give the user its install command, `npx skills@latest add Dyrits/SKILLS --skill=<name>`, along with the instruction to run it.
+
 The destination might be a specification to hand off, a decision to settle before planning, or an in-place migration. It shapes every task. This workflow fits engineering and other domains with the same decision structure.
 
 ## Document and tracker contract
 
 Call the Skill tool with "document"; its terms (authorized, obligation, lazy, pointer) and rules apply throughout, and requirements constrain the destination and every decision.
 
-Read `documentation/agents/issue-tracker.md` for map storage, parent-child relationships, blocking, claims, and frontier queries. If it is missing, tell the human to run `/setup-ai-workspace` and stop.
+Read `documentation/agents/issue-tracker.md` for map storage, parent-child relationships, blocking, claims, and frontier queries. If it is missing, tell the user to run `/setup-ai-workspace` and stop.
 
 - A local map lives at `documentation/capabilities/<capability>/map.md`; its decision tasks live at `documentation/capabilities/<capability>/tasks/NN-<slug>.md`.
 - A remote map and its children use native tracker records and relationships.

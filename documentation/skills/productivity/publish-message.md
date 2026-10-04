@@ -45,6 +45,9 @@ It reports what is confirmed posted and what remains, then stops. It checks the 
 
 Only when the destination contains it. Otherwise the message describes a local change awaiting publication, or states that the destination status is unverified.
 
+**What if a skill it calls is not installed?**
+It names the missing skill with its install command, carries out that step from its stated intent, and tells you the step ran without it. The skills involved are listed at the top of its [`SKILL.md`](../../../skills/productivity/publish-message/SKILL.md).
+
 ## It's working if
 
 - The message arrives in the right place, in the destination's format and language.

@@ -20,6 +20,9 @@ Yes. An approved working-state agreement can establish the behavior. An unresolv
 
 No. Tests need a useful seam and an independent expected result. Appearance and interaction may also need human acceptance; a passing suite cannot establish judgments it never exercises.
 
+**What if a skill it calls is not installed?**
+It names the missing skill with its install command, carries out that step from its stated intent, and tells you the step ran without it. Without `document` it waits instead, because its rules use that skill's terms: install it, or tell it to proceed anyway. The skills involved are listed at the top of its [`SKILL.md`](../../../skills/workflow/test-first/SKILL.md).
+
 ## It's working if
 
 - A new test fails for the expected missing behavior before implementation.

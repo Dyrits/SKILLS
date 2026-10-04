@@ -7,6 +7,8 @@ description: "Resolve the open decisions in a selected scope and synthesize its 
 
 Turn the selected scope into agreed behavior, design, and acceptance. Interview only where decisions remain unresolved; synthesize directly when current context is settled.
 
+**Calls:** `document`, `model-domain`, `prototype`, `refine`. If a called skill is not installed, tell the user its name and install command, `npx skills@latest add Dyrits/SKILLS --skill=<name>`, then carry out that step from its stated intent and report the step as done without the skill. Without `document`, wait until the user installs it or tells you to proceed: this skill's rules use its terms.
+
 ## Gather and reconcile
 
 Call the Skill tool with "document"; its terms (authorized, obligation, lazy, pointer) and rules apply throughout, with full changelog records. Inspect the conversation, applicable instructions, global and feature requirements, existing specifications, backlog, working state, glossary, architecture decisions, and relevant code. Fetch the full body and comments of referenced remote records when they are relevant inputs.
