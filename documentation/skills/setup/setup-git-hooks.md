@@ -31,7 +31,7 @@ A Node project with a package manager the skill can detect from its lock file (n
 
 **My repository already uses Husky.**
 
-The skill asks whether to migrate off it or keep Husky and stop.
+Before it installs or writes anything, the skill asks whether to migrate off it or keep Husky and stop.
 
 **Do hooks in `.git/hooks/` still run?**
 

@@ -80,7 +80,7 @@ The artifact does, unconditionally: it's a plain bash script and it doesn't care
 
 **It used to be in `work-in-progress/`: where is it now?**
 
-It graduated upstream into `engineering/` in v1.2. This fork places it in `reference/`, and its manifest entry includes it in the plugin. A bucket move alone does not promote a skill.
+It graduated upstream into `engineering/` in v1.2. This fork places it in `productivity/`, and its manifest entry includes it in the plugin. A bucket move alone does not promote a skill.
 
 ## It's working if
 

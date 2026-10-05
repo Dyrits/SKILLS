@@ -113,6 +113,5 @@ Report the source, target, destination, and verified commit. Keep existing test
 evidence separate from transfer verification; syncing alone requires no code
 changes or test rerun.
 
-When running in a harness that provides `report-landed`, call the Skill tool
-with that skill for a completed transfer or terminal failure. Otherwise use a
-plain summary. An already-synced branch is a no-op, not a landing.
+Give a plain summary for a completed transfer or a terminal failure. An
+already-synced branch is a no-op, not a landing.

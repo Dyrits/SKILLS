@@ -21,7 +21,7 @@ No. Validated useful code can be integrated after authorized acceptance and prod
 
 **Should I prototype the whole application?**
 
-That is a separate demo project, not this skill's one-question experiment. A whole application has no natural stopping point and can acquire production obligations before anyone checks readiness.
+That is not a prototype. The skill asks which single question the experiment should answer and narrows to it, or tells you to run `/iterate` when you want the application itself. A whole application has no natural stopping point and can acquire production obligations before anyone checks readiness.
 
 **How does the next session recover the experiment?**
 

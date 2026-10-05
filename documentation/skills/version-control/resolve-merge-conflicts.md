@@ -2,9 +2,9 @@ Upstream source: `resolving-merge-conflicts`, verified in history before its rem
 
 ## What it does
 
-`resolve-merge-conflicts` works through an in-progress git merge or rebase, hunk by hunk, then runs the project's own checks and finishes the operation with a commit.
+`resolve-merge-conflicts` works through an in-progress git merge or rebase, hunk by hunk, then runs the project's own checks and finishes the operation: a commit for a merge, `git rebase --continue` for a rebase.
 
-It refuses to treat a conflict as a text problem. Before touching a hunk it traces each side back to its **primary source** (the commit message, the PR, the original issue), so it is choosing between two intents rather than between two blocks of text, and it preserves both wherever they are compatible. Where they genuinely are not, it picks the side matching the merge's stated goal and names the trade-off. It invents no new behaviour to paper over a clash, and `--abort` is not an option it has: the merge is always carried to a finished commit.
+It refuses to treat a conflict as a text problem. Before touching a hunk it traces each side back to its **primary source** (the commit message, the PR, the original issue), so it is choosing between two intents rather than between two blocks of text, and it preserves both wherever they are compatible. Where they genuinely are not, it picks the side matching the merge's stated goal and names the trade-off. It invents no new behaviour to paper over a clash. When intent stays uncertain after the primary sources, or the choice is a product decision, it stops, asks you one precise question, and leaves the operation in progress. It never runs `--abort` on its own.
 
 ## When to reach for it
 
@@ -38,7 +38,7 @@ One caveat from a user report on parallel worktrees: when sibling sessions each 
 
 **Why never `--abort`?**
 
-Aborting throws away the resolution work and returns you to the same conflict, unchanged, the next time you try. The skill is written for the case where the merge is going to happen. If you have decided it should not happen, that is a decision to make before invoking, not a branch inside the loop.
+Aborting throws away the resolution work and returns you to the same conflict, unchanged, the next time you try. The skill is written for the case where the merge is going to happen. If you have decided it should not happen, that is a decision to make before invoking, not a branch inside the loop. When it cannot tell what you want, it asks and leaves the operation in progress, so you can resume or abort yourself.
 
 ## It's working if
 

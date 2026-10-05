@@ -83,7 +83,7 @@ Rarely, and you should know that going in. The skill is built to output findings
 
 **Does it work in Codex or another harness?**
 
-Partially. The exploration step names Claude Code's `Agent` tool with `subagent_type=Explore` directly, so a harness without that tool may skip the parallel exploration rather than substitute its own. The skill still runs; the scan is just less thorough. A harness-neutral rewrite has been proposed but is not merged.
+Yes. The exploration step says to spawn a sub-agent to walk the codebase and names no harness tool. A harness without sub-agents can run the scan in the main session; it is just less isolated.
 
 **How do I actually implement deep modules in TypeScript?**
 

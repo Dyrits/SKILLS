@@ -17,9 +17,11 @@ Why not Husky: Husky's only job is copying runners into `.git/hooks/`. `git conf
 
 ## Steps
 
-### 1. Detect package manager
+### 1. Detect package manager and existing hook tooling
 
 Check for `package-lock.json` (npm), `pnpm-lock.yaml` (pnpm), `yarn.lock` (yarn), `bun.lockb` (bun). Use whichever is present. Default to npm if unclear.
+
+If the repository already uses Husky (a `.husky/` directory or `prepare: husky`), ask the user now, before anything is installed or written, whether to migrate off it or keep Husky and stop here.
 
 ### 2. Map formatter coverage
 
@@ -62,7 +64,7 @@ This is local config; new clones need it too. Add a `prepare` script to package.
 }
 ```
 
-Merge into existing scripts; if `prepare` already exists, append the `git config` call (e.g. `&&`). Note: if the repository already uses Husky (`.husky/` dir or `prepare: husky`), ask the user whether to migrate off it or keep Husky and stop here.
+Merge into existing scripts; if `prepare` already exists, append the `git config` call (e.g. `&&`).
 
 ### 6. Create `.lintstagedrc`
 

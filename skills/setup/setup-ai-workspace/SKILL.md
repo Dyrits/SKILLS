@@ -129,7 +129,7 @@ Offer the other setups together, once, as one multi-select question. Mark each a
 | --- | --- | --- |
 | Development tooling | A verified tooling record exists | `setup-ai-tooling` |
 | Commit hooks | `git config core.hooksPath` points at a committed hooks directory | `setup-git-hooks` |
-| Git guardrails | A `block-dangerous-git.sh` hook is registered for the client | `setup-git-guardrails` |
+| Git guardrails | A `confirm-dangerous-git.sh` hook is registered for the client | `setup-git-guardrails` |
 | Automatic handoff | `.claude/settings.json` has a `PreCompact` hook gating on `.agents/handoffs/` | `setup-auto-handoff` |
 | Delegation policy | The global steering files contain `## Delegation and model routing` | `setup-delegation-policy` |
 

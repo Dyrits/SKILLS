@@ -36,7 +36,7 @@ No. The policy names tiers, with model names only as examples, and tells the age
 
 **How do I remove it?**
 
-Ask for uninstall. The section is removed from each file and the rest left alone. The skill asks separately about OpenCode tier agent files, since they are inert without the rule.
+Ask for uninstall. The section is removed from each file and the rest left alone. The skill asks separately about the tier agent files for OpenCode, ZCode, and Gemini CLI, since they are inert without the rule.
 
 ## It's working if
 
@@ -47,4 +47,4 @@ Ask for uninstall. The section is removed from each file and the rest left alone
 
 ## Where it fits
 
-Run-once, machine-wide setup, rerun when `POLICY.md` changes. It sits beside [setup-ai-workspace](./setup-ai-workspace.md), which configures one repository and tells you to run this skill when the policy is missing, and [setup-ai-tooling](./setup-ai-tooling.md), which provisions tools. [guide](../productivity/guide.md) routes the rest.
+Run-once, machine-wide setup, rerun when `POLICY.md` changes. It sits beside [setup-ai-workspace](./setup-ai-workspace.md), which configures one repository and offers this skill when the policy is missing, calling it only after you agree, and [setup-ai-tooling](./setup-ai-tooling.md), which provisions tools. [guide](../productivity/guide.md) routes the rest.

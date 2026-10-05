@@ -6,8 +6,8 @@ Work in the branch's assigned checkout, on the branch itself. Update the branch'
 
 1. Verify that the checkout is on `refs/heads/<name>` at the recorded start, with a clean index and working tree and no Git operation in progress. Verify that the target pin exists as a commit.
 2. Run `GIT_EDITOR=true git -c rebase.updateRefs=false rebase --no-autostash "$target_pin"`. Add `--rebase-merges` or, for an approved stack, `--update-refs` in place of the `-c` override, when the record says so. The override keeps user configuration from moving other local branches.
-3. When Git stops on conflicts, call the Skill tool with "resolve-merge-conflicts". Give it the target pin as the goal and both histories. It owns intent-led resolution and continuation through the remaining commits. Keep `GIT_EDITOR=true` on every command that can open an editor.
-4. Replace that skill's final "stage everything and commit" with: stage only the reviewed conflict paths and run `git rebase --continue`, which keeps each commit's own message and order. Missing tracker access is not a Git failure: use commit messages, diffs, and local specifications where they establish intent. When intent stays uncertain or needs a product decision, stop with a precise question and leave the rebase in progress, so the user can resume from that exact commit.
+3. When Git stops on conflicts, call the Skill tool with "resolve-merge-conflicts". Give it the target pin as the goal and both histories. It owns intent-led resolution, the stop-and-ask path, and continuation through the remaining commits. Keep `GIT_EDITOR=true` on every command that can open an editor.
+4. Missing tracker access is not a Git failure: use commit messages, diffs, and local specifications where they establish intent. When that skill stops with a question, relay it and leave the rebase in progress, so the user can resume from that exact commit.
 
 Completion: every commit is accounted for and Git reports no unfinished rebase and no unmerged entries. Otherwise record `blocked` with the current commit and the question.
 

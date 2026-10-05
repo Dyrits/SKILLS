@@ -68,7 +68,7 @@ The tier agents from step 3, and any model aliases they depend on, are this skil
 
 When the user asks to uninstall, delete the `## Delegation and model routing` section from each of the files in step 2, from its heading up to the next `##` heading or end of file, and leave the rest of each file untouched. Verify with the same `grep -c`, expecting zero.
 
-Ask separately about the OpenCode tier agents, naming the files. They are inert once the rule is gone, and a user who is re-syncing rather than leaving will want them kept.
+Ask separately about the tier agent files step 3 wrote for OpenCode, ZCode, and Gemini CLI, naming the files. They are inert once the rule is gone, and a user who is re-syncing rather than leaving will want them kept.
 
 ## Notes
 
