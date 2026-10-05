@@ -18,7 +18,7 @@ The chain rule is the skill's leading idea: **newest first, deeper only on deman
 
 **The newest handoff references a file that no longer exists.** Follow `supersedes` to the previous handoff for the context of what that file was, but resolve the gap against the primary sources (git log, the issue tracker) rather than the summary. The handoff is a secondary source; the repository is the truth.
 
-**There are no handoffs in `.agents/handoffs/`.** The skill says so and asks for a path or a fresh brief rather than guessing. An empty directory means either the work was never handed off or the handoff was written elsewhere (an older version of `hand-off` wrote to the OS temp directory).
+**There are no handoffs in `.agents/handoffs/`.** The skill says so and asks for a path or a fresh brief rather than guessing. An empty directory means either the work was never handed off or the handoff was written elsewhere.
 
 ## It's working if
 

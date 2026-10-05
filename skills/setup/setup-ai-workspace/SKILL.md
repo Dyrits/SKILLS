@@ -24,7 +24,7 @@ Read existing configuration and conventions before proposing changes:
 
 - `git remote -v` and `.git/config`, to identify the host without assuming it is the tracker.
 - Root `AGENTS.md` and `CLAUDE.md`, including any `## Agent skills` section.
-- `.agents/` and any verified tooling record, plus a legacy `documentation/agents/` folder from an earlier setup.
+- `.agents/` and any verified tooling record.
 - Root `CHANGELOG.md`, `documentation/requirements.md`, `documentation/backlog.md`, `documentation/work-in-progress.md`, and relevant capability documentation.
 - Task templates, contribution documentation, and available ticket-writing skills.
 - `GLOSSARY.md`, `GLOSSARY-MAP.md`, `CONVENTIONS.md`, and relevant architecture decision records.
@@ -81,8 +81,6 @@ If `CONVENTIONS.md` exists, record `Conventions: present`. Otherwise ask whether
 ## 3. Confirm and write
 
 Show the proposed agent-instruction block and configuration contents before writing. Let the user adjust them.
-
-When a legacy `documentation/agents/` folder exists, propose moving its files into `.agents/` with `git mv`, keeping their names, and updating every pointer to them in `CLAUDE.md`, `AGENTS.md`, and project documents. Move only with the user's approval, then review the moved files as existing configuration. Other skills read only `.agents/`.
 
 Edit `CLAUDE.md` if it exists; otherwise edit `AGENTS.md` if it exists. If neither exists, ask which to create. Update an existing `## Agent skills` block in place and preserve surrounding user instructions.
 

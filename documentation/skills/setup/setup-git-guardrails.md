@@ -33,10 +33,6 @@ You get the normal permission prompt with the reason (for example "This pushes t
 
 Nobody can answer the prompt there, so expect the guarded command to be refused.
 
-**I installed the older version that blocked everything.**
-
-Run the skill again. It replaces `block-dangerous-git.sh` and its registration with the confirming script.
-
 **Can I change what is guarded?**
 
 Yes. The skill asks which branches to protect and about further customization. Keep the script's checks and OpenCode's rules in sync.

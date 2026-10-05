@@ -32,7 +32,7 @@ Ask the user:
 
 The bundled script is at: [scripts/confirm-dangerous-git.sh](scripts/confirm-dangerous-git.sh)
 
-Copy it to `.claude/hooks/confirm-dangerous-git.sh` (project) or `~/.claude/hooks/confirm-dangerous-git.sh` (global) and `chmod +x`. Set `PROTECTED_BRANCHES` at its top to the branches from step 1. An earlier version installed `block-dangerous-git.sh`, which denied outright; replace it and its registration.
+Copy it to `.claude/hooks/confirm-dangerous-git.sh` (project) or `~/.claude/hooks/confirm-dangerous-git.sh` (global) and `chmod +x`. Set `PROTECTED_BRANCHES` at its top to the branches from step 1.
 
 ### 3. Wire up each agent
 

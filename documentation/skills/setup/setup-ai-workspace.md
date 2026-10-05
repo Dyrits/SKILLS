@@ -44,10 +44,6 @@ No. The role file maps names; it does not provision them. Graphify labels also n
 
 Re-run it when an older configuration no longer matches the workflows consuming it. Day-to-day edits to the configuration can be made directly. A new document model does not authorize moving old history automatically.
 
-**My project keeps this configuration under `documentation/agents/`.**
-
-That is the location earlier versions used. Skills now read only `.agents/`, beside handoffs and the scriptbook, so re-run setup: it offers to move the files with `git mv`, keeping their names, and to update every pointer to them. Nothing moves without your approval.
-
 **It wrote to `CLAUDE.md`, but my agent reads `AGENTS.md`.**
 
 Setup prefers an existing `CLAUDE.md`, then an existing `AGENTS.md`. If both conventions are used in your repository, keep the relevant instructions reachable by the agent you use. If neither file exists, setup asks which to create.
