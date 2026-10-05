@@ -4,6 +4,13 @@ Generate **several radically different UI variations** on a single route, switch
 
 If the question is about logic/state rather than what something looks like, this is the wrong branch. Use [LOGIC.md](LOGIC.md).
 
+## Contents
+
+- When this is the right shape
+- Two sub-shapes: strongly prefer sub-shape A
+- Process
+- Anti-patterns
+
 ## When this is the right shape
 
 - "What should this page look like?"

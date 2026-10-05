@@ -105,7 +105,7 @@ Call the Skill tool with "document" before creating or updating project document
 
 ### Reusable knowledge
 
-Before writing a script or multi-step pipeline, read `.agents/scripts/INDEX.md` when it exists and reuse or extend a match. Call the Skill tool with "memorize" the moment something is rebuilt a second time or the user corrects a behavior.
+Before writing a script or multi-step pipeline, read `.agents/scripts/INDEX.md` when it exists and reuse or extend a match. Call the Skill tool with "memorize" when the user corrects a behavior or states a standing rule, and when something is rebuilt a second time.
 ```
 
 Omit the triage block and file when triage is not installed. Omit the reusable knowledge block when the instruction file already points at the scriptbook.

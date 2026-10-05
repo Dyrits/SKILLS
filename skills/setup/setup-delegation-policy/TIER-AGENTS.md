@@ -4,6 +4,16 @@ One agent per tier, each file named for the tier it serves: `light`, `balanced`,
 
 Run this once per model-per-agent harness present, skipping any whose agent directory does not exist. For a harness not in the table, inspect its delegation tool first. A per-call model override needs no tier agent files.
 
+## Contents
+
+- Where each harness keeps them
+- Pre-defined ladders
+- When a harness has fewer rungs than the policy
+- Choosing OpenCode's ladder
+- Writing the agents
+- Verify
+- Bodies
+
 ## Where each harness keeps them
 
 | | OpenCode | ZCode | Gemini CLI |

@@ -5,6 +5,14 @@ The `documentation/out-of-scope/` directory in a repository stores persistent re
 1. **Institutional memory**: why a feature was rejected, so the reasoning isn't lost when the task is closed
 2. **Deduplication**: when a new task matches a prior rejection, surface the previous decision
 
+## Contents
+
+- Directory structure
+- File format
+- When to check `documentation/out-of-scope/`
+- When to write to `documentation/out-of-scope/`
+- Updating or removing out-of-scope files
+
 ## Directory structure
 
 ```

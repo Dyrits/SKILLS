@@ -20,7 +20,7 @@ Facts the environment already states, such as a `package.json` script or `--help
 
 ## When to reach for it
 
-Type `/memorize`, or an agent or another skill can reach for it when a task fits: the moment it rebuilds something a second time, when you correct a behavior, when you ask it to remember something, and before it writes any script or multi-step shell pipeline. For writing the instruction file itself, it hands off to [write-for-agents](./write-for-agents.md).
+Type `/memorize`, or an agent or another skill can reach for it when a task fits: before it writes any script or multi-step shell pipeline, when you correct a behavior, state a standing rule ("always", "never", "from now on") or ask it to remember something, and when it rebuilds something a second time. A plain "remember this" still goes through it, because the harness's own memory is one home among several and a project fact belongs in the project. For writing the instruction file itself, it hands off to [write-for-agents](./write-for-agents.md).
 
 ## Scriptbooks
 
@@ -36,7 +36,7 @@ It was folded into `memorize` as its script branch. The agent no longer needs a 
 
 **Why does it care about pointers?**
 
-A skill description alone fires unreliably during a long task. The repository evidence is a session that wrote inline Python for bulk edits while a matching saved script existed. So the nearest `AGENTS.md` or `CLAUDE.md` gets one always-loaded line pointing at the scriptbook index, added once after checking for an existing one. [setup-ai-workspace](../setup/setup-ai-workspace.md) writes that line as part of its agent-instruction block.
+A skill description alone fires unreliably during a long task. The repository evidence is a session that wrote inline Python for bulk edits while a matching saved script existed. So the nearest `AGENTS.md` or `CLAUDE.md` gets one always-loaded pointer, added once after checking for an existing one: read the scriptbook index before writing a script, and call `memorize` when you correct a behavior or state a standing rule, or when something is rebuilt a second time. [setup-ai-workspace](../setup/setup-ai-workspace.md) writes that line as part of its agent-instruction block.
 
 **Does it duplicate a fact in several homes?**
 
@@ -50,7 +50,8 @@ It names the missing skill with its install command, carries out that step from 
 - The agent reuses a saved script instead of rewriting it.
 - After you correct something once, you are told in one line what was saved and where.
 - Every scriptbook file has one index line and every index line points to a file.
-- The nearest instruction file carries the scriptbook pointer exactly once.
+- The nearest instruction file carries the pointer exactly once.
+- A project convention you state mid-session lands in the project's instruction file, not only in the agent's personal memory.
 
 ## Where it fits
 

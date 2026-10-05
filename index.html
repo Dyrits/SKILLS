@@ -617,7 +617,7 @@ const DATA = {
    "argumentHint": "<text> [option, option, option]",
    "bucket": "productivity",
    "calls": [],
-   "description": "Classify text against your own labels with classifier.dev. Use to triage, filter, bucket, or route many items before reading them, or when the user requests an API verdict.",
+   "description": "Classify text against custom labels with classifier.dev. Use to triage, filter, bucket, or route many items before reading them, or when the user requests an API verdict.",
    "fits": [
     "A standalone productivity discipline for sorting before reading. research and triage are places where many items arrive and pre-sorting may help. guide maps the wider flow."
    ],
@@ -1128,7 +1128,7 @@ const DATA = {
     "walk-through",
     "write-for-agents"
    ],
-   "description": "Memorize reusable knowledge where it will be found again, and recall it before redoing work. Use the moment you rebuild something a second time, when the user corrects a behavior, when the user says to remember something, and before writing any script or multi-step shell pipeline.",
+   "description": "File a lesson in the home the next agent will read (instruction file, scriptbook, glossary, personal memory) and recall saved scripts and lessons before redoing work. Use before writing any script or multi-step shell pipeline, when the user corrects a behavior, states a standing rule (\"always\", \"never\", \"from now on\") or says to remember something, and when the same thing is rebuilt a second time.",
    "fits": [
     "This is a standalone discipline that other skills call; it produces no deliverable of its own. It routes to write-for-agents, model-domain, document, and walk-through depending on the lesson. improve-skills runs after a session and files what memorize cannot fix locally: problems in the skills themselves. guide maps the whole system."
    ],
@@ -1273,7 +1273,7 @@ const DATA = {
    "calls": [
     "document"
    ],
-   "description": "Build a scoped experimental prototype to answer a user-requested or approved design question about logic, state, or UI.",
+   "description": "Build a scoped experimental prototype to answer a user-requested or approved design question about logic, state, or UI. Use when the user asks to try an idea before committing to it, or to see a state model or interface variants.",
    "fits": [
     "This is a standalone experiment and an optional, user-approved aid during specify. refine explores the question; implement builds the agreed result. guide maps the whole system."
    ],
@@ -1437,7 +1437,7 @@ const DATA = {
    "argumentHint": "",
    "bucket": "version-control",
    "calls": [],
-   "description": "Use when you need to resolve an in-progress git merge/rebase conflict.",
+   "description": "Resolve an in-progress git merge or rebase conflict. Use when a merge, rebase, cherry-pick, or pull stops on conflict markers or unmerged paths.",
    "fits": [
     "A reach-for-it-anytime standalone for an already authorized merge or rebase. rebase uses it when an operation stops on conflicts. debug takes over when a textually resolved merge still misbehaves. guide maps the wider flow."
    ],
@@ -1953,7 +1953,7 @@ const DATA = {
    "argumentHint": "",
    "bucket": "reference",
    "calls": [],
-   "description": "Writing documents for agents. Use when creating or editing skills, or modifying AGENTS.md or CLAUDE.md.",
+   "description": "Write documents for agents: skills, AGENTS.md, CLAUDE.md, and documents reached by a pointer. Use when creating or editing skills, or modifying AGENTS.md or CLAUDE.md.",
    "fits": [
     "This is a reach-for-it-anytime standalone reference. It has no neighbour in the chain because it sits underneath the whole set rather than beside any one skill: every skill here was written against it, and the documents the other skills leave behind (a GLOSSARY.md and its ADRs, a specification, a ticket) are exactly the text it governs once an agent has to read them. memorize loads this reference before filing a lesson in a steering file. When you're unsure which skill or flow fits a task, guide routes you over the whole set."
    ],

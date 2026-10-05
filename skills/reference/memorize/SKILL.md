@@ -1,6 +1,6 @@
 ---
 name: memorize
-description: Memorize reusable knowledge where it will be found again, and recall it before redoing work. Use the moment you rebuild something a second time, when the user corrects a behavior, when the user says to remember something, and before writing any script or multi-step shell pipeline.
+description: File a lesson in the home the next agent will read (instruction file, scriptbook, glossary, personal memory) and recall saved scripts and lessons before redoing work. Use before writing any script or multi-step shell pipeline, when the user corrects a behavior, states a standing rule ("always", "never", "from now on") or says to remember something, and when the same thing is rebuilt a second time.
 ---
 
 # Memorize
@@ -32,7 +32,7 @@ Completion: a matching entry is reused or extended, or the relevant homes were c
 
 ## Memorize
 
-Memorize when the user asks you to remember something, when the user corrects a behavior likely to recur, or when the same thing has been rebuilt twice.
+Memorize when the user asks you to remember something, corrects a behavior likely to recur, or states a standing rule, and when the same thing has been rebuilt twice. Route even a plain "remember this": the harness's own memory is one home among several, so a project fact still goes to the project.
 
 1. State the lesson in one sentence, with its reason when the reason is not obvious.
 2. Pick its home from the table: the place that is read at the moment the lesson matters.
@@ -45,11 +45,13 @@ Completion: the lesson exists in exactly one home, and the user knows where.
 
 ## Pointers
 
-A home works only when the next agent reads it, and a skill description alone fires unreliably during a long task. When you create a project scriptbook or start relying on one, make sure the nearest `AGENTS.md` or `CLAUDE.md` carries an always-loaded pointer to it, for example: "Before writing a script or multi-step pipeline, read `.agents/scripts/INDEX.md` and reuse or extend a match." Add the pointer once; check for an existing one first.
+A home works only when the next agent reads it, and a skill description alone fires unreliably during a long task. When you create a project scriptbook, start relying on one, or find the nearest `AGENTS.md` or `CLAUDE.md` without this skill's own pointer, add the always-loaded pointer there once, checking for an existing one first:
+
+> Before writing a script or multi-step pipeline, read `.agents/scripts/INDEX.md` and reuse or extend a match. Call the Skill tool with "memorize" when the user corrects a behavior or states a standing rule, and when something is rebuilt a second time.
 
 ## Personal memory
 
-Use the harness's memory system when it has one, following its format. Otherwise keep `~/.agents/memory/`: one fact per Markdown file with a line on why it holds, and an `INDEX.md` with one line per file, `- [Title](<file>.md): when it applies`. Read the index during recall and open only the files whose hook matches the task.
+Use the harness's memory system when it has one, following its format. It holds personal preferences only: a teammate's agent never reads it, so a project convention filed there is lost to everyone else. Otherwise keep `~/.agents/memory/`: one fact per Markdown file with a line on why it holds, and an `INDEX.md` with one line per file, `- [Title](<file>.md): when it applies`. Read the index during recall and open only the files whose hook matches the task.
 
 ## Delegating
 

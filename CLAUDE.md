@@ -27,7 +27,7 @@ Every `SKILL.md` is reachable by both the human and the model, so any skill can 
 
 To (re)link every skill outside `deprecated/` into the local harness skill directories (`~/.claude/skills`, `~/.agents/skills`), run `scripts/link-skills.sh`. Each entry is a symlink into this repository, so a `git pull` keeps installed skills current; re-run the script after adding, removing, or renaming a skill.
 
-Before writing a script or multi-step pipeline, read `.agents/scripts/INDEX.md` and reuse or extend a match; save new reusable scripts there following [memorize](./skills/reference/memorize/SCRIPTS.md).
+Before writing a script or multi-step pipeline, read `.agents/scripts/INDEX.md` and reuse or extend a match; save new reusable scripts there following [memorize](./skills/reference/memorize/SCRIPTS.md). Call the Skill tool with "memorize" when the user corrects a behavior or states a standing rule, and when something is rebuilt a second time.
 
 ## Language and naming
 

@@ -1,6 +1,6 @@
 ---
 name: classify
-description: Classify text against your own labels with classifier.dev. Use to triage, filter, bucket, or route many items before reading them, or when the user requests an API verdict.
+description: Classify text against custom labels with classifier.dev. Use to triage, filter, bucket, or route many items before reading them, or when the user requests an API verdict.
 argument-hint: "<text> [option, option, option]"
 ---
 

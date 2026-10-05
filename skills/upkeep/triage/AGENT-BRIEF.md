@@ -4,6 +4,12 @@ An agent brief is a structured comment posted on a task or PR when it moves to `
 
 The brief states what the agent should do. For a task, that means building the change; for a PR, it means finishing or fixing the existing diff. The same principles apply to both.
 
+## Contents
+
+- Principles
+- Template
+- Examples
+
 ## Principles
 
 ### Durability over precision
