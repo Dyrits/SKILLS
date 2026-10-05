@@ -1,6 +1,6 @@
 ---
 name: memorize
-description: File a lesson in the home the next agent will read (instruction file, scriptbook, glossary, personal memory) and recall saved scripts and lessons before redoing work. Use before writing any script or multi-step shell pipeline, when the user corrects a behavior, states a standing rule ("always", "never", "from now on") or says to remember something, and when the same thing is rebuilt a second time.
+description: File a lesson in the home the next agent will read, and recall saved scripts and lessons before redoing work. Use the moment the user corrects you, says "always", "never", "from now on" or "remember", or explains how it should be done next time; before writing any script or multi-step shell pipeline; and when you rebuild something a second time. Use it even when the harness has its own memory: a project lesson belongs in the project.
 ---
 
 # Memorize
@@ -32,7 +32,7 @@ Completion: a matching entry is reused or extended, or the relevant homes were c
 
 ## Memorize
 
-Memorize when the user asks you to remember something, corrects a behavior likely to recur, or states a standing rule, and when the same thing has been rebuilt twice. Route even a plain "remember this": the harness's own memory is one home among several, so a project fact still goes to the project.
+Memorize the moment the user corrects you, states a standing rule, or asks you to remember something, and when the same thing has been rebuilt twice. Do it in that turn, before carrying on with the task: a lesson deferred to the end of a long task is a lesson lost. Route even a plain "remember this": the harness's own memory is one home among several, so a project fact still goes to the project.
 
 1. State the lesson in one sentence, with its reason when the reason is not obvious.
 2. Pick its home from the table: the place that is read at the moment the lesson matters.
@@ -47,7 +47,7 @@ Completion: the lesson exists in exactly one home, and the user knows where.
 
 A home works only when the next agent reads it, and a skill description alone fires unreliably during a long task. When you create a project scriptbook, start relying on one, or find the nearest `AGENTS.md` or `CLAUDE.md` without this skill's own pointer, add the always-loaded pointer there once, checking for an existing one first:
 
-> Before writing a script or multi-step pipeline, read `.agents/scripts/INDEX.md` and reuse or extend a match. Call the Skill tool with "memorize" when the user corrects a behavior or states a standing rule, and when something is rebuilt a second time.
+> Call the Skill tool with "memorize" the moment the user corrects you, states a standing rule, or asks you to remember something, and when something is rebuilt a second time. Before writing a script or multi-step pipeline, read `.agents/scripts/INDEX.md` and reuse or extend a match.
 
 ## Personal memory
 

@@ -210,7 +210,7 @@ def check(repository):
     if any((root / "skills/experimental").rglob("*")):
         errors.append("skills/experimental still contains entries.")
 
-    markdown = [root / "README.md", root / "CLAUDE.md"]
+    markdown = [root / "README.md", root / "AGENTS.md"]
     markdown += list((root / ".agents").glob("*.md"))
     markdown += [path for path in (root / "skills").rglob("*.md") if "evals" not in path.relative_to(root / "skills").parts[2:3]]
     markdown += sorted(actual_pages)

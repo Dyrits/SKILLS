@@ -1128,7 +1128,7 @@ const DATA = {
     "walk-through",
     "write-for-agents"
    ],
-   "description": "File a lesson in the home the next agent will read (instruction file, scriptbook, glossary, personal memory) and recall saved scripts and lessons before redoing work. Use before writing any script or multi-step shell pipeline, when the user corrects a behavior, states a standing rule (\"always\", \"never\", \"from now on\") or says to remember something, and when the same thing is rebuilt a second time.",
+   "description": "File a lesson in the home the next agent will read, and recall saved scripts and lessons before redoing work. Use the moment the user corrects you, says \"always\", \"never\", \"from now on\" or \"remember\", or explains how it should be done next time; before writing any script or multi-step shell pipeline; and when you rebuild something a second time. Use it even when the harness has its own memory: a project lesson belongs in the project.",
    "fits": [
     "This is a standalone discipline that other skills call; it produces no deliverable of its own. It routes to write-for-agents, model-domain, document, and walk-through depending on the lesson. improve-skills runs after a session and files what memorize cannot fix locally: problems in the skills themselves. guide maps the whole system."
    ],
@@ -1457,8 +1457,8 @@ const DATA = {
    "requires": [],
    "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/version-control/resolve-merge-conflicts/SKILL.md",
    "summary": [
-    "resolve-merge-conflicts works through an in-progress git merge or rebase, hunk by hunk, then runs the project's own checks and finishes the operation with a commit.",
-    "It refuses to treat a conflict as a text problem. Before touching a hunk it traces each side back to its primary source (the commit message, the PR, the original issue), so it is choosing between two intents rather than between two blocks of text, and it preserves both wherever they are compatible. Where they genuinely are not, it picks the side matching the merge's stated goal and names the trade-off. It invents no new behaviour to paper over a clash, and --abort is not an option it has: the merge is always carried to a finished commit."
+    "resolve-merge-conflicts works through an in-progress git merge or rebase, hunk by hunk, then runs the project's own checks and finishes the operation: a commit for a merge, git rebase --continue for a rebase.",
+    "It refuses to treat a conflict as a text problem. Before touching a hunk it traces each side back to its primary source (the commit message, the PR, the original issue), so it is choosing between two intents rather than between two blocks of text, and it preserves both wherever they are compatible. Where they genuinely are not, it picks the side matching the merge's stated goal and names the trade-off. It invents no new behaviour to paper over a clash. When intent stays uncertain after the primary sources, or the choice is a product decision, it stops, asks you one precise question, and leaves the operation in progress. It never runs --abort on its own."
    ],
    "tagline": "Resolve conflicts by intent and finish the operation."
   },
@@ -1706,7 +1706,9 @@ const DATA = {
   "sync-tree": {
    "argumentHint": "",
    "bucket": "version-control",
-   "calls": [],
+   "calls": [
+    "rebase"
+   ],
    "description": "Sync a completed Git worktree branch to its corresponding branch in the original local repository. Use when the user asks to sync, land, or bring worktree work back to the original checkout.",
    "fits": [
     "The return leg of the isolated-worktree route: work-in-tree prepares and works in the checkout, this lands it. guide maps the wider flow."
@@ -1724,7 +1726,7 @@ const DATA = {
    "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/version-control/sync-tree/SKILL.md",
    "summary": [
     "sync-tree transfers the committed work of a worktree branch (or an isolated local clone) to its corresponding branch in the original local repository.",
-    "It moves history only. It makes no code changes, creates no merge commits, and does not publish to an upstream. If the destination has commits the source lacks, it stops instead of removing them."
+    "It moves history only. It makes no code changes, creates no merge commits, and does not publish to an upstream. If the destination has commits the source lacks, it never removes them: it offers to rebase the source branch onto the destination first, through rebase, so the update becomes a fast-forward."
    ],
    "tagline": "Transfer committed work to the verified corresponding local branch."
   },

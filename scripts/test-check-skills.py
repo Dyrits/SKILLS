@@ -32,7 +32,7 @@ class LayoutChecks(unittest.TestCase):
             {"skills": ["./skills/reference/example", "./skills/productivity/guide"]}))
         self.write("README.md", "## Plugin skills\n[example](skills/reference/example/SKILL.md)\n"
                    "[guide](skills/productivity/guide/SKILL.md)\n")
-        self.write("CLAUDE.md", "Repository instructions.\n")
+        self.write("AGENTS.md", "Repository instructions.\n")
         self.write("skills/productivity/guide/SKILL.md",
                    "---\nname: guide\n---\nRoute to /example and /guide.\n")
         self.write("skills/productivity/guide/agents/openai.yaml",
@@ -109,7 +109,7 @@ class LayoutChecks(unittest.TestCase):
         self.assertIn("missing file evals/files/absent.txt", output)
 
     def test_broken_relative_link(self):
-        self.write("CLAUDE.md", "[missing](missing.md)\n")
+        self.write("AGENTS.md", "[missing](missing.md)\n")
         self.assertIn("broken link missing.md", self.result()[1])
 
     def test_missing_provenance(self):
@@ -137,18 +137,18 @@ class LayoutChecks(unittest.TestCase):
         self.assertIn("deprecated skill is in the plugin manifest", self.result()[1])
 
     def test_retired_operative_call(self):
-        self.write("CLAUDE.md", 'Call the Skill tool with "grilling".\n')
+        self.write("AGENTS.md", 'Call the Skill tool with "grilling".\n')
         self.assertIn("operative call to retired", self.result()[1])
 
     def test_renamed_operative_calls(self):
         for retired in ("code-review-and-refactor", "to-pull-request",
                         "documentation", "writing-for-agents"):
             with self.subTest(skill=retired):
-                self.write("CLAUDE.md", f'Call the Skill tool with "{retired}".\n')
+                self.write("AGENTS.md", f'Call the Skill tool with "{retired}".\n')
                 self.assertIn("operative call to retired", self.result()[1])
 
     def test_second_name_in_paired_call(self):
-        self.write("CLAUDE.md", 'Call the Skill tool twice, for "example" and "grill-me".\n')
+        self.write("AGENTS.md", 'Call the Skill tool twice, for "example" and "grill-me".\n')
         output = self.result()[1]
         self.assertIn("unknown skill grill-me", output)
         self.assertNotIn("unknown skill example", output)
@@ -159,15 +159,15 @@ class LayoutChecks(unittest.TestCase):
         self.write("skills/deprecated/README.md", "[old](./old/SKILL.md)\n")
         self.write("skills/productivity/guide/SKILL.md",
                    "---\nname: guide\n---\nRoute to /example, /guide, and /old.\n")
-        self.write("CLAUDE.md", 'Call the Skill tool with "old".\n')
+        self.write("AGENTS.md", 'Call the Skill tool with "old".\n')
         self.assertIn("unknown skill old", self.result()[1])
 
     def test_known_and_external_calls_pass(self):
-        self.write("CLAUDE.md", 'Call the Skill tool with "example". Call the Skill tool with "webapp-testing".\n')
+        self.write("AGENTS.md", 'Call the Skill tool with "example". Call the Skill tool with "webapp-testing".\n')
         self.assertEqual(self.result()[0], False)
 
     def test_historical_names_are_allowed(self):
-        self.write("CLAUDE.md", 'Source skill: `documentation`, now named `document`.\n')
+        self.write("AGENTS.md", 'Source skill: `documentation`, now named `document`.\n')
         self.assertEqual(self.result()[0], False)
 
     def test_routing_tiers_follow_policy(self):

@@ -11,6 +11,8 @@ Transfer committed work to its corresponding local branch. Preserve the branch
 name unless the user names a different target. Leave upstream publication,
 new merge commits, and code changes to separate requests.
 
+**Calls:** `rebase`. If a called skill is not installed, tell the user its name and install command, `npx skills@latest add Dyrits/SKILLS --skill=<name>`, then carry out that step from its stated intent and report the step as done without the skill.
+
 This skill works with linked Git worktrees and isolated local clones. The
 `delta-action` metadata also makes it eligible for Delta's Land Changes button;
 the workflow itself uses Git, not application-specific tools.
@@ -68,10 +70,22 @@ checkout of that branch is accounted for.
 ## 3. Choose the update
 
 - Equal commits: report that the branch is already synced; perform no update.
-- Target ahead of source: stop rather than remove destination commits.
+- Target ahead of source (the source commit is an ancestor of the target):
+  the target already holds the work. Report it as already landed, with the
+  destination-only commits it has beyond the source; perform no update.
 - Target absent or an ancestor of source: perform a fast-forward transfer.
-- Diverged histories: show both commit IDs and destination-only commits. Ask
-  for explicit approval to replace that target branch, even after a rebase.
+- Diverged histories: each side has commits the other lacks. Show both commit
+  IDs and the destination-only commits, then offer the choice:
+  1. **Rebase** (recommended): call the Skill tool with "rebase" for the source
+     branch in its own worktree, onto the target branch (linked worktrees) or
+     the fetched target commit (separate clones), and leave its push step
+     unused. The source's commits replay on top of the target, so no
+     destination commit is lost. Repeat steps 2 and 3 with the new tip: the
+     update is now a fast-forward. If `rebase` stops on a conflict, relay its
+     question and make no update.
+  2. **Replace** the target branch with the source, which drops the
+     destination-only commits. Proceed only on explicit approval.
+  3. **Stop** and leave both branches as they are.
 
 For linked worktrees with a different target branch:
 
@@ -103,7 +117,19 @@ If Git rejects the update, stop and explain the rejection. Preserve checkout
 protections; do not change Git configuration, reset, clean, stash, or switch
 the destination to bypass them.
 
-Completion: the update succeeded or stopped with a specific reason.
+A stop is never a dead end. Every stop reports the observed state, the reason,
+and the next move the user can take:
+
+| Stop | Offer |
+| --- | --- |
+| Source has uncommitted changes, is detached, or has an unfinished operation | Commit or finish in the source worktree, then rerun |
+| Target checkout has changes or an unfinished operation | Commit or stash there (the user's own work), or land on a different target branch, then rerun |
+| A replacement needs the target branch unchecked out | The user switches that checkout to another branch, then rerun |
+| Rebase conflict that needs the user's decision | Answer the relayed question; `rebase` resumes from that commit |
+| Git rejects the update, or the target moved meanwhile | Inspect again from step 2 with the new commits; the diverged choice above applies |
+
+Completion: the update succeeded or stopped with a specific reason and a next
+move.
 
 ## 4. Verify and report
 

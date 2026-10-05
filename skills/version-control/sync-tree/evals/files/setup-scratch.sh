@@ -9,6 +9,7 @@
 #   synced        orig is on branch scratch; main already equals the task commit
 #   uncommitted   as fast-forward, but the task worktree has an uncommitted edit
 #   unchecked     orig is on branch scratch; main is an ancestor of the task commit and not checked out
+#   conflicting   orig is on branch scratch; main edits the same line of export.py as the task branch
 #   target-ahead  orig is on branch scratch; main already contains the task commit plus one more
 set -eu
 dir="$1"; scenario="$2"
@@ -33,6 +34,9 @@ case "$scenario" in
     git checkout -q -b scratch
     git branch -f main worktree/csv-export
     git checkout -q main && echo "later" > later.txt && git add -A && git commit -q -m "Later work on main" && git checkout -q scratch ;;
+  conflicting)
+    git checkout -q -b scratch
+    git checkout -q main && echo "export_csv(main)" > export.py && git add -A && git commit -q -m "Edit export.py on main" && git checkout -q scratch ;;
   uncommitted) echo "wip" >> ../task/export.py ;;
   *) echo "unknown scenario" >&2; exit 1 ;;
 esac

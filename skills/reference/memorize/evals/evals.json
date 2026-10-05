@@ -95,6 +95,18 @@
         "The agent does not write the defect into any local home",
         "The agent tells the user to run /improve-skills, which reports it on the skills repository"
       ]
+    },
+    {
+      "id": 9,
+      "kind": "trigger",
+      "prompt": "No, stop, we use pnpm in this repo, not npm. Redo the install with pnpm. That's the third time I've said it.",
+      "expected_output": "The correction is filed in the project instruction file in the same turn, before the install is redone, and the user is told in one line.",
+      "expectations": [
+        "The memorize skill is invoked without the user naming it, in the turn the correction arrives",
+        "The lesson is filed before the agent carries on with the install, not at the end of the task",
+        "The rule lands in the nearest AGENTS.md or CLAUDE.md, not only in the harness's personal memory",
+        "The agent reports in one line what was saved and where"
+      ]
     }
   ]
 }
