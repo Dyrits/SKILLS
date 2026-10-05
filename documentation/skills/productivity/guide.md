@@ -89,16 +89,17 @@ Setup and outbound skills it also routes to:
 
 ## The phase boundary
 
-At a **session boundary**, keep authoritative work state current before changing context.
+At a **session boundary**, keep authoritative work state current before changing context. The decision belongs only at a phase boundary, never mid-phase. Work the options top to bottom; the first one that fits wins.
 
 | Option | Take it when |
 | --- | --- |
-| Continue | The current context remains relevant to the next step. |
-| Clear | The next task is self-contained and authoritative sources preserve what it needs. |
-| [hand-off](../productivity/hand-off.md), then [take-over](../productivity/take-over.md) | Moving between sessions, workspaces, or agents needs session-specific context and source pointers. |
-| Compact | You need the same session with less conversational detail; preserve unresolved agreements, running assignments, and recovery pointers first. |
+| Continue | The next step needs this context as a primary source, or enough room remains for it to fit. |
+| Clear | Everything in the session is disposable for the next task, and authoritative sources preserve what it needs. |
+| [hand-off](../productivity/hand-off.md), then [take-over](../productivity/take-over.md) | Something travels: a new harness, directory, repository, or colleague, or a side task forked mid-phase. |
+| Subagent | The next task is tightly scoped enough to run without steering, such as an automated review, and this session stays untouched. |
+| Compact | None of the above fit: relevant context, same harness and directory, and you stay in the loop. Pass an instruction naming what the next phase needs. |
 
-Work-in-progress does not replace a session handoff. The handoff supplies context and pointers rather than copying every project document. Scoped independent work can be delegated without changing the parent session.
+Work-in-progress does not replace a session handoff. The handoff supplies context and pointers rather than copying every project document. The skill keeps the full reasoning in `PHASE-BOUNDARIES.md` beside it.
 
 ## Common questions
 

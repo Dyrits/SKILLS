@@ -55,14 +55,17 @@ The `document` skill owns the shared project documents: requirements, specificat
 
 ## Session boundaries
 
-Keep authoritative work state current before changing context.
+Keep authoritative work state current before changing context. The decision belongs only at a phase boundary, never mid-phase; read [PHASE-BOUNDARIES.md](PHASE-BOUNDARIES.md) for the definition and the reasoning behind the order.
+
+Work the table top to bottom. The first row that fits wins.
 
 | Boundary | Use it when |
 | --- | --- |
-| Continue | The current context remains relevant to the next step. |
-| Clear | The next task is self-contained and its authoritative sources preserve what it needs. |
-| `/hand-off`, then `/take-over` | Moving between sessions, workspaces, or agents needs session-specific context and source pointers. |
-| Compact | You need the same session with less conversational detail; preserve unresolved agreements, running assignments, and recovery pointers first. |
+| Continue | The next step needs this context as a primary source, or enough room remains for it to fit. |
+| Clear | Everything in this session is disposable for the next task, and its authoritative sources preserve what it needs. |
+| `/hand-off`, then `/take-over` | Something travels: a new harness, directory, repository, or colleague, or a side task forked mid-phase. It needs session-specific context and source pointers. |
+| Subagent | The next task is tightly scoped enough to run without steering (an automated review is the standard case) and this session stays untouched. |
+| Compact | None of the above fit: relevant context, same harness and directory, and you stay in the loop. Pass an instruction naming what the next phase needs; preserve unresolved agreements, running assignments, and recovery pointers first. |
 
 `hand-off` writes a new versioned file in `.agents/handoffs/`; `take-over` reads the latest one and follows earlier pointers only when needed. The agent can also run `hand-off` on its own, which is how the `setup-auto-handoff` gate gets a handoff before compaction. Live working state does not replace the session handoff, and the handoff should not duplicate all project documents.
 

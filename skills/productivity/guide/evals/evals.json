@@ -73,6 +73,18 @@
     },
     {
       "id": 7,
+      "kind": "behavior",
+      "prompt": "Use the guide skill. I just finished implementing a feature and want an independent review of the diff. It is tightly scoped, I do not need to steer it, and I want to keep working in this session meanwhile. Compact, clear, or something else?",
+      "expected_output": "Subagent: the review runs AFK in its own context while this session stays untouched.",
+      "expectations": [
+        "The agent recommends sending the review to a subagent and leaving this session untouched",
+        "The agent works the boundary options in order and explains why Continue, Clear, and hand-off do not win first",
+        "The agent does not recommend compacting, and says compact is the fallback when no earlier option fits",
+        "The answer ends by naming what to do next and does not start the review"
+      ]
+    },
+    {
+      "id": 8,
       "kind": "no-trigger",
       "prompt": "The specifications for the export feature are agreed and approved. Build it test-first now, and tell me when it is done with the verification evidence.",
       "expected_output": "The user already knows the next move; implementation is carried out by implement, not routed.",
@@ -82,7 +94,7 @@
       ]
     },
     {
-      "id": 8,
+      "id": 9,
       "kind": "no-trigger",
       "prompt": "Our login endpoint started returning 500 errors after yesterday's deploy and I do not know why. Please find the cause.",
       "expected_output": "A concrete failure to diagnose belongs to debug, not to routing.",
