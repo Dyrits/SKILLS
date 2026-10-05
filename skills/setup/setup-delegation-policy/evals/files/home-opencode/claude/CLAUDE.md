@@ -1,0 +1,3 @@
+## Communication
+
+Keep answers short.

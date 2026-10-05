@@ -1,0 +1,9 @@
+{
+  "permission": {
+    "bash": {
+      "*": "allow",
+      "rm -rf *": "ask",
+      "npm publish*": "ask"
+    }
+  }
+}

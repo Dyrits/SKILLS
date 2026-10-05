@@ -1,0 +1,103 @@
+{
+  "skill_name": "setup-auto-handoff",
+  "evals": [
+    {
+      "id": 1,
+      "kind": "trigger",
+      "prompt": "My long Claude Code sessions keep getting auto-compacted and I lose the thread of what we decided. Make it so compaction can't happen without a handoff first. Scratch git repository, Claude Code is the only agent, `jq` is installed, and there is no .claude/ directory yet.",
+      "expected_output": "The gate script is copied and made executable, and the PreCompact hook is registered.",
+      "expectations": [
+        "The setup-auto-handoff skill is invoked from the request without the user naming it",
+        "The bundled script is copied to .claude/hooks/precompact-handoff-gate.sh and made executable with chmod +x",
+        "A PreCompact entry whose command is \"$CLAUDE_PROJECT_DIR\"/.claude/hooks/precompact-handoff-gate.sh is written to .claude/settings.json",
+        "The agent checks that jq is on the path",
+        "Nothing is written to a global Claude Code settings file; the hook is project scoped"
+      ]
+    },
+    {
+      "id": 2,
+      "kind": "behavior",
+      "prompt": "Use the setup-auto-handoff skill. evals/files/settings.json is the project's existing .claude/settings.json. It already has a PreToolUse Bash hook and a PreCompact hook that saves notes. Add the gate without losing either.",
+      "expected_output": "The settings file keeps every existing hook and gains the gate entry.",
+      "files": [
+        "evals/files/settings.json"
+      ],
+      "expectations": [
+        "The existing PreToolUse Bash hook is still present after the change",
+        "The existing PreCompact save-notes hook is still present after the change",
+        "The gate command is added to the PreCompact array by merging, not by replacing the array",
+        "The permissions block is unchanged",
+        "The settings file still parses with `jq . .claude/settings.json`"
+      ]
+    },
+    {
+      "id": 3,
+      "kind": "behavior",
+      "prompt": "Use the setup-auto-handoff skill in a scratch git repository where .agents/handoffs/ does not exist yet. Install it and verify it end to end.",
+      "expected_output": "Both simulations run and match the documented results, and the test file is removed.",
+      "expectations": [
+        "The checklist confirms the script exists and is executable, and settings.json parses and carries the PreCompact entry",
+        "A simulated auto-compact with no fresh handoff prints a JSON result with decision block and exits 0",
+        "A second simulation with a fresh file in .agents/handoffs/ prints nothing and exits 0",
+        "The temporary test handoff file is removed after the second simulation",
+        "The agent notes that the first blocked compaction creates .agents/handoffs/ and is also the first handoff"
+      ]
+    },
+    {
+      "id": 4,
+      "kind": "behavior",
+      "prompt": "Use the setup-auto-handoff skill. I use Claude Code and Codex CLI on this project, and I want both covered.",
+      "expected_output": "Claude Code is gated; Codex is described honestly as not gateable, with a fallback.",
+      "expectations": [
+        "The PreCompact gate is installed for Claude Code",
+        "The agent states plainly that Codex has no pre-compact hook, so no gate exists there",
+        "The fallback named is persisted transcripts (codex resume) plus running hand-off at phase boundaries",
+        "The agent does not claim Codex is protected or write a fake hook for it",
+        "The user is told the loop: auto-compact is blocked with an instruction, the agent runs hand-off, and compaction retries and passes"
+      ]
+    },
+    {
+      "id": 5,
+      "kind": "behavior",
+      "prompt": "Use the setup-auto-handoff skill. The `hand-off` skill is not installed in this environment.",
+      "expected_output": "The missing skill is named with its install command, and the gate's fallback is explained.",
+      "expectations": [
+        "The agent tells the user that hand-off is not installed and recommends installing it first with `npx skills@latest add Dyrits/SKILLS --skill=hand-off`",
+        "The agent explains that the block message's fallback (writing the handoff file directly) still lets compaction proceed without the skill",
+        "The setup steps are carried out and the missing skill is not treated as a reason to stop"
+      ]
+    },
+    {
+      "id": 6,
+      "kind": "behavior",
+      "prompt": "Use the setup-auto-handoff skill, then answer this: if my last handoff was written an hour ago, will it satisfy the gate? Also, does `/clear` trigger it, and how do I switch the gate off later or make the window longer? Scratch repository, handoff file timestamps can be set with touch -t.",
+      "expected_output": "The freshness window and the gate's scope are explained from the script, and a stale file is shown not to pass.",
+      "expectations": [
+        "The agent states that a handoff older than 5 minutes does not satisfy the gate and demonstrates it by aging a test file and showing the block",
+        "The agent says the window is tuned by editing FRESH_WINDOW_MINUTES in the copied script",
+        "The agent says manual /compact is gated the same way and /clear is not affected",
+        "The agent says the gate is removed by deleting the hook entry from .claude/settings.json"
+      ]
+    },
+    {
+      "id": 7,
+      "kind": "no-trigger",
+      "prompt": "I'm stopping for the day. Write a handoff of where we are so I can pick it up tomorrow.",
+      "expected_output": "The user wants a handoff written now; hand-off handles it, with no hook installation.",
+      "expectations": [
+        "The setup-auto-handoff skill is not invoked and no hook script or settings change is made",
+        "The hand-off skill is the one used, producing a versioned document in .agents/handoffs/"
+      ]
+    },
+    {
+      "id": 8,
+      "kind": "no-trigger",
+      "prompt": "Pick up where we left off yesterday: read the latest handoff in .agents/handoffs/ and continue from there.",
+      "expected_output": "Resuming from a handoff is take-over's job.",
+      "expectations": [
+        "The setup-auto-handoff skill is not invoked",
+        "The take-over skill is used to resume from the latest handoff"
+      ]
+    }
+  ]
+}

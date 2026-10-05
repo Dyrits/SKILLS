@@ -1,0 +1,4 @@
+Customer Alvaro Quenby (alvaro.quenby@example.test, +00 555 0100) says the portal rejects his password.
+His temporary credentials were user=aquenby pass=Tr0ub4dor-demo-9 and the API token is tok_demo_51HxQ7fake.
+Customer Mireille Dowd (mireille.dowd@example.test) asks for her account to be closed and her data deleted.
+Customer Bo Tran reports the mobile app freezes on the payment screen; account number 0000-1111-2222-demo.

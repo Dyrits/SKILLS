@@ -1,0 +1,127 @@
+{
+  "skill_name": "setup-ai-tooling",
+  "evals": [
+    {
+      "id": 1,
+      "kind": "trigger",
+      "prompt": "Scratch environment, no real accounts. Install and configure AI tooling for this project so agents navigate the code faster and can look up library documentation. It is a TypeScript monorepo called ledgerly with a package.json, a Makefile with only `build` and `test` targets, and Claude Code and Codex both installed. Nothing AI-related is set up yet.",
+      "expected_output": "The agent inspects first, then presents one combined plan before it installs anything.",
+      "expectations": [
+        "The setup-ai-tooling skill is invoked from the request without the user naming it",
+        "The agent inspects project languages, the Makefile and package scripts, instruction files, tool versions, and installed clients before proposing changes",
+        "TOOLS.md is read before the tools are chosen, and commands are checked against the installed version's help rather than assumed",
+        "CodeGraph and Context7 are recommended for this source project and its dependencies, and only free tools or free tiers are proposed",
+        "Project changes, global changes, protected commands, and verification commands are presented together before any installation",
+        "Because the environment is a scratch, any global change is applied only inside the scratch home and not to the user's real configuration"
+      ]
+    },
+    {
+      "id": 2,
+      "kind": "behavior",
+      "prompt": "Scratch environment. Use the setup-ai-tooling skill. In this project, `codegraph` is already on the path, `.codegraph/` exists with an index, and Claude Code already has a working Context7 MCP server connected. Codex has neither connected. Set up what is missing and leave what works alone.",
+      "expected_output": "Working integrations are reused, the missing client is connected, and nothing is duplicated.",
+      "expectations": [
+        "A binary, a project index, and each client's connection are assessed as separate states in the inspection result",
+        "No second Context7 server is registered for Claude Code",
+        "CodeGraph is refreshed with sync rather than re-initialized, and the existing .codegraph/ index is preserved",
+        "A known symbol is retrieved through explore and the returned source is compared against the current file",
+        "Context7 is verified with a small lookup for an actual dependency of the project, at the version it uses",
+        "The Codex gap is closed through its documented adapter and checked in Codex, or recorded as a stated gap",
+        "Rerunning the setup is described or shown to leave existing configuration unchanged"
+      ]
+    },
+    {
+      "id": 3,
+      "kind": "behavior",
+      "prompt": "Scratch environment. Use the setup-ai-tooling skill. I want RTK rewriting turned on so command output gets shorter. A binary named `rtk` is on the path, but I'm not sure it's the right one.",
+      "expected_output": "The binary is identified, protected commands are checked on the real adapter, and rewriting stays off if protection cannot be enforced.",
+      "expectations": [
+        "The agent verifies the binary is Rust Token Killer through its version output and the `gain` command, noting another project shares the executable name",
+        "`init` is previewed with the installed version's dry-run mode before any configuration is merged",
+        "The exclusions include git diff, git show, file reads, structural and text searches, and the project's test, build, and diagnostic commands, merged into an existing exclusion list rather than replacing it",
+        "The checks include invocation variants such as git -C and package-manager wrappers",
+        "The installed adapter is verified on a large patch with context, a rename, and a deliberately failing command with distinctive stderr and a nonzero exit status, compared against the original command",
+        "When the adapter cannot enforce protection, broad rewriting is left disabled, explicit RTK commands are used for selected summaries, and the gap is described",
+        "The agent does not replace the user's existing token monitor or infer the remaining plan allowance from RTK's quota estimate"
+      ]
+    },
+    {
+      "id": 4,
+      "kind": "behavior",
+      "prompt": "Scratch environment. Use the setup-ai-tooling skill to finish the setup and write the project record. CodeGraph and Context7 are verified. No token baseline from a comparable task exists, and Codex's session transcripts live under a path inside the user's home directory.",
+      "expected_output": "`.agents/ai-tooling.md` is written with honest scoping and a verified recovery path per client.",
+      "expectations": [
+        "A project record is written at .agents/ai-tooling.md",
+        "The record lists project root, setup time, selected tools and versions, project or global scope, and integration status per client",
+        "The record lists known gaps, protected commands, and raw-output bypasses",
+        "Values that are unavailable are written as unknown rather than estimated, and personal token savings are marked unavailable because no comparable task baseline exists",
+        "Measurement history and diagnostic artifacts are kept local and excluded from version control, and the committed record carries no credentials and no personal session paths",
+        "A recovery method is recorded per client (transcript location or resume command), checked on a harmless existing session where possible",
+        "Context compaction is distinguished from exhausted plan allowance, with recovery that works without a new model-generated handoff after allowance exhaustion",
+        "The final report keeps command-output reduction, task token counts, and provider allowance as separate quantities and tells the user to run /monitor-ai-tooling later"
+      ]
+    },
+    {
+      "id": 5,
+      "kind": "behavior",
+      "prompt": "Scratch environment. Use the setup-ai-tooling skill. Our QA agents will need to fill in and submit the checkout form on a staging site and log in first. Separately, the web team wants an agent to find out why the product page's Largest Contentful Paint is slow. Our other documentation is a static site the agents only read.",
+      "expected_output": "Browser tooling is chosen per task kind, and nothing is installed for the static site.",
+      "expectations": [
+        "Playwright CLI is selected for driving the checkout form and login",
+        "Chrome DevTools MCP is selected for diagnosing the slow page, with the reason that it covers performance traces and Core Web Vitals",
+        "Both are installed only because the project has both kinds of work",
+        "The agent confirms the scope with the user before attaching Chrome DevTools MCP to a running browser, since it exposes that session's profile",
+        "No browser tool is proposed for the static documentation site; built-in fetch or curl covers it",
+        "Each installed browser tool is verified with a read-only page load that returns a snapshot or trace"
+      ]
+    },
+    {
+      "id": 6,
+      "kind": "behavior",
+      "prompt": "Scratch environment, no real accounts. Use the setup-ai-tooling skill. evals/files/settings.json is the Claude Code settings the project already has. Context7 is connected there. Also, I'd like the agent to use a hosted code search service that I think needs a paid plan.",
+      "expected_output": "Credentials are reported by presence, the free tier is preferred, and the paid tool waits for the user.",
+      "files": [
+        "evals/files/settings.json"
+      ],
+      "expectations": [
+        "The existing Context7 connection is reused and no duplicate server is registered",
+        "The Context7 API key is reported only as present and its value is never repeated in the output",
+        "Only the relevant configuration sections of settings.json are inspected",
+        "The agent asks before setting up the hosted search service, because it requires payment for this user's use",
+        "Account creation or key entry for any new service is left to the user, with credentials stored through the client's normal secret mechanism"
+      ]
+    },
+    {
+      "id": 7,
+      "kind": "behavior",
+      "prompt": "Scratch environment. Use the setup-ai-tooling skill. It is a fresh agent environment where neither the `monitor-ai-tooling` skill nor the `write-for-agents` skill is installed. Finish the CodeGraph setup for this project.",
+      "expected_output": "Missing skills are named with their install command, the step is carried out from its intent, and the user is told what to run later.",
+      "expectations": [
+        "The agent tells the user that write-for-agents is not installed and gives the command `npx skills@latest add Dyrits/SKILLS --skill=write-for-agents`",
+        "When an agent instruction change is needed, it is carried out from the skill's stated intent and reported as done without the skill",
+        "At the end the user is told to run /monitor-ai-tooling and is given `npx skills@latest add Dyrits/SKILLS --skill=monitor-ai-tooling` because it is not installed",
+        "The setup itself still completes and is not blocked by the missing skills"
+      ]
+    },
+    {
+      "id": 8,
+      "kind": "no-trigger",
+      "prompt": "How much has the AI tooling in this project actually saved us this month? Give me the numbers and say how confident they are.",
+      "expected_output": "A report on tooling performance belongs to monitor-ai-tooling; no installation happens.",
+      "expectations": [
+        "The setup-ai-tooling skill is not invoked and nothing is installed or configured",
+        "The agent points to or runs the monitor-ai-tooling skill, which reports measured output reduction, quality signals, and gaps from existing local measurements"
+      ]
+    },
+    {
+      "id": 9,
+      "kind": "no-trigger",
+      "prompt": "Find every caller of the `parseInvoice` function in this project and tell me which ones pass a second argument.",
+      "expected_output": "Ordinary code search with whatever tools already exist; no tooling is installed unprompted.",
+      "expectations": [
+        "The setup-ai-tooling skill is not invoked",
+        "The agent answers using the tools already available and does not install or configure CodeGraph, Context7, or any other tool"
+      ]
+    }
+  ]
+}

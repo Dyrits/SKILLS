@@ -1,0 +1,121 @@
+{
+  "skill_name": "setup-git-hooks",
+  "evals": [
+    {
+      "id": 1,
+      "kind": "trigger",
+      "prompt": "Add commit-time formatting, linting, and typechecking to this project, and no Husky please. Scratch git repository: a pnpm project (pnpm-lock.yaml present) written in TypeScript with a `typecheck` and a `build` script in package.json, source files in .ts, .tsx, .json, and .css only. No Biome config exists yet.",
+      "expected_output": "The package manager is detected from the lock file and the hooks directory, hook, and lint-staged setup are created.",
+      "expectations": [
+        "The setup-git-hooks skill is invoked from the request without the user naming it",
+        "pnpm is detected from pnpm-lock.yaml and used for the installs",
+        "lint-staged and @biomejs/biome are installed as devDependencies and no Prettier is installed, since Biome covers every language present",
+        "A .githooks/pre-commit file is created and made executable, and git config core.hooksPath prints .githooks",
+        "A prepare script that sets core.hooksPath is added to package.json",
+        "The .lintstagedrc glob for ts, tsx, json, and css runs biome check --write --no-errors-on-unmatched, with exactly one tool per glob"
+      ]
+    },
+    {
+      "id": 2,
+      "kind": "behavior",
+      "prompt": "Use the setup-git-hooks skill in a scratch npm project. The repository contains .ts, .json, .css, .html, .md, .yaml, and .svelte files. I'll accept Prettier for anything Biome leaves uncovered. Biome version 2.x will be installed.",
+      "expected_output": "Every language is assigned to exactly one tool, with Prettier for only what Biome leaves.",
+      "expectations": [
+        "The agent checks which languages the Biome version formats and lints, through its documentation or `biome --help`, before assigning them",
+        "HTML is counted as covered by Biome and enabled in biome.json, because Biome 2.x covers it only once enabled",
+        "Prettier is offered by naming the uncovered languages individually (for example markdown, yaml, svelte), and the user can decline",
+        "The .lintstagedrc lists only extensions the repository contains and gives each glob exactly one tool",
+        "prettier is installed and a .prettierrc is written because it was accepted",
+        "A statement confirms every language is assigned to Biome, an existing formatter, Prettier, or no formatter"
+      ]
+    },
+    {
+      "id": 3,
+      "kind": "behavior",
+      "prompt": "Use the setup-git-hooks skill in a scratch npm project containing .ts, .json, .md, and .yaml files, and a dprint.json that already formats the markdown and yaml files. When asked about Prettier, say no.",
+      "expected_output": "The existing formatter keeps its languages and Prettier is not installed.",
+      "expectations": [
+        "The existing dprint setup is kept and the markdown and yaml languages are routed to it, not to Prettier",
+        "No prettier dependency and no .prettierrc are created",
+        "Biome is assigned only the languages it covers (ts and json) in .lintstagedrc",
+        "A language the user declines to format, if any remains, is recorded as assigned to no formatter"
+      ]
+    },
+    {
+      "id": 4,
+      "kind": "behavior",
+      "prompt": "Use the setup-git-hooks skill in a scratch project. evals/files/husky-package.json is its package.json, and a .husky/ directory exists with a pre-commit file. Set up git hooks.",
+      "expected_output": "The existing Husky setup is detected and the agent stops to ask before installing or writing anything.",
+      "files": [
+        "evals/files/husky-package.json"
+      ],
+      "expectations": [
+        "The agent detects Husky from the .husky/ directory and the `prepare: husky` script",
+        "The agent asks whether to migrate off Husky or keep it and stop",
+        "No dependency is installed, no .githooks/pre-commit is written, core.hooksPath is not set, and the prepare script is not changed before the user answers",
+        "If the user chooses to keep Husky, the agent stops without changing the setup"
+      ]
+    },
+    {
+      "id": 5,
+      "kind": "behavior",
+      "prompt": "Use the setup-git-hooks skill in a scratch git repository. evals/files/package.json is its package.json: npm, with `build` but no `typecheck` script, and a `prepare` script that already runs `node scripts/generate-types.mjs`. Source is .ts and .json only.",
+      "expected_output": "The hook omits the missing script and tells the user; the existing prepare script is extended, not replaced.",
+      "files": [
+        "evals/files/package.json"
+      ],
+      "expectations": [
+        ".githooks/pre-commit contains the lint-staged and build lines and omits the typecheck line",
+        "The agent tells the user the typecheck line was omitted because package.json has no typecheck script",
+        "The existing prepare script is kept and `git config core.hooksPath .githooks` is appended with &&",
+        "git config core.hooksPath .githooks is also run now, since the setting is local and new clones rely on the prepare script",
+        "The existing devDependencies in package.json are preserved"
+      ]
+    },
+    {
+      "id": 6,
+      "kind": "behavior",
+      "prompt": "Use the setup-git-hooks skill in a scratch npm project that has no Biome config and no Prettier config. Answer the formatter questions however you need to, and show me what you ask before writing biome.json.",
+      "expected_output": "Formatter preferences are asked before biome.json is written, with the defaults offered.",
+      "expectations": [
+        "The agent asks about tabs or spaces (default spaces, width 2), line width (default 160), JavaScript quote style (default double), and semicolons and arrow parentheses (default always)",
+        "The questions are asked before biome.json is written",
+        "biome.json is written only after the answers, with the schema and the answers applied",
+        "No prettier configuration is written unless Prettier was accepted"
+      ]
+    },
+    {
+      "id": 7,
+      "kind": "behavior",
+      "prompt": "Use the setup-git-hooks skill in a scratch git repository on branch main, where biome.json already exists. There are also two uncommitted changes to unrelated files, src/cart.ts and README.md. Finish the setup including the commit.",
+      "expected_output": "An existing Biome config is kept, only setup files are staged, and the agent asks before committing on main with other changes present.",
+      "expectations": [
+        "The existing biome.json is not overwritten, and the preference questions are skipped for it",
+        "The agent asks before committing, because the branch is the default branch and other uncommitted changes are present",
+        "Only .githooks/, .lintstagedrc, the formatter configs, package.json, and the lockfile are staged, and src/cart.ts and README.md are not",
+        "The commit message names the tools installed, for example 'Add git hooks via core.hooksPath (lint-staged + biome)'",
+        "The commit runs through the new pre-commit hook, and its result is reported as the smoke test"
+      ]
+    },
+    {
+      "id": 8,
+      "kind": "no-trigger",
+      "prompt": "I don't want agents force-pushing to main or running `git reset --hard` without asking me. Put something in place for that.",
+      "expected_output": "Confirmation in front of destructive git commands is setup-git-guardrails' job, not commit-time checks.",
+      "expectations": [
+        "The setup-git-hooks skill is not invoked and no .githooks pre-commit hook or lint-staged setup is created",
+        "The setup-git-guardrails skill handles the request with agent hooks and permission rules"
+      ]
+    },
+    {
+      "id": 9,
+      "kind": "no-trigger",
+      "prompt": "My pre-commit hook fails with `error TS2345` on every commit since yesterday, and I can't tell which change broke it. Find out why.",
+      "expected_output": "A failing hook is a bug to diagnose, not a setup request.",
+      "expectations": [
+        "The setup-git-hooks skill is not invoked and the hook setup is not recreated",
+        "The debug skill drives the diagnosis through a reproduction loop and regression evidence"
+      ]
+    }
+  ]
+}

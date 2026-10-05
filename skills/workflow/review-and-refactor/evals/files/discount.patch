@@ -1,0 +1,74 @@
+diff --git a/shop/discount.py b/shop/discount.py
+new file mode 100644
+--- /dev/null
++++ b/shop/discount.py
+@@ -0,0 +1,44 @@
++"""Discount codes for carts."""
++
++
++def apply_code(cart, code, strategy=None, hooks=None):
++    if code == "PERCENT10":
++        cart["codes"] = cart.get("codes", []) + ["PERCENT10"]
++    elif code == "FIVEOFF":
++        cart["codes"] = cart.get("codes", []) + ["FIVEOFF"]
++    elif code == "FREESHIP":
++        cart["codes"] = cart.get("codes", []) + ["FREESHIP"]
++    else:
++        raise ValueError("unknown code " + code)
++    return cart
++
++
++def total(cart):
++    d = cart["subtotal"] / 100
++    for c in cart.get("codes", []):
++        if c == "PERCENT10":
++            d = d - d * 0.10
++        elif c == "FIVEOFF":
++            d = d - 5
++        elif c == "FREESHIP":
++            pass
++    return d
++
++
++def shipping(cart):
++    for c in cart.get("codes", []):
++        if c == "FREESHIP":
++            return 0
++    return cart["shipping"]
++
++
++def describe(cart):
++    out = []
++    for c in cart.get("codes", []):
++        if c == "PERCENT10":
++            out.append("10 percent off")
++        elif c == "FIVEOFF":
++            out.append("5 off")
++        elif c == "FREESHIP":
++            out.append("free shipping")
++    return ", ".join(out)
+diff --git a/tests/test_discount.py b/tests/test_discount.py
+new file mode 100644
+--- /dev/null
++++ b/tests/test_discount.py
+@@ -0,0 +1,20 @@
++import pytest
++from shop.discount import apply_code, total
++
++
++def test_percent_code_takes_ten_percent_off():
++    cart = {"subtotal": 2000, "shipping": 300}
++    apply_code(cart, "PERCENT10")
++    assert total(cart) == 18.0
++
++
++def test_unknown_code_is_rejected():
++    with pytest.raises(ValueError):
++        apply_code({"subtotal": 100, "shipping": 0}, "BOGUS")
++
++
++def test_free_shipping_code_zeroes_shipping():
++    from shop.discount import shipping
++    cart = {"subtotal": 100, "shipping": 300}
++    apply_code(cart, "FREESHIP")
++    assert shipping(cart) == 0

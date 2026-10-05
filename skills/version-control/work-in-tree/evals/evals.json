@@ -1,0 +1,142 @@
+{
+  "skill_name": "work-in-tree",
+  "evals": [
+    {
+      "id": 1,
+      "kind": "trigger",
+      "prompt": "Add a `farewell(name)` function to app.py, with a check in test_app.py, but do it in a separate worktree so my current checkout stays untouched. Scratch setup: run `sh setup-scratch.sh <empty-dir>`; the project is <empty-dir>/project, on main.",
+      "expected_output": "An isolated worktree is created at the verified base and all task changes happen there.",
+      "files": [
+        "evals/files/setup-scratch.sh"
+      ],
+      "expectations": [
+        "The work-in-tree skill is invoked from the request alone",
+        "The agent reads AGENTS.md, git status, branch, HEAD, the common Git directory, remotes, and git worktree list --porcelain, and captures the original checkout, the target branch main, and the base commit before creating anything",
+        "A linked worktree is created with git worktree add -b <task-branch> <path> <base-commit> on a new task branch, not on main",
+        "The new checkout's branch, HEAD, and clean status are verified, and the repository's own instructions there are read and its setup run",
+        "farewell and its check are written and committed in the task worktree, with git -C <worktree> or an explicit working directory on each command"
+      ]
+    },
+    {
+      "id": 2,
+      "kind": "behavior",
+      "prompt": "Use the work-in-tree skill to start a task called `farewell` in a worktree. Scratch setup: run `sh setup-scratch.sh <empty-dir>`; the project is <empty-dir>/project on main. AGENTS.md says worktrees live in ../project-trees/<task-name>.",
+      "expected_output": "The repository's location convention wins, and the default branch name applies where there is no branch convention.",
+      "files": [
+        "evals/files/setup-scratch.sh"
+      ],
+      "expectations": [
+        "The worktree path is <empty-dir>/project-trees/farewell, from the AGENTS.md convention, and it is outside the tracked project files",
+        "With no branch convention in the repository, the branch is named worktree/farewell",
+        "The agent checks that the directory and branch do not already exist before creating them",
+        "The base commit is the tip of main, and it is recorded"
+      ]
+    },
+    {
+      "id": 3,
+      "kind": "behavior",
+      "prompt": "Use the work-in-tree skill to carry out `farewell` (add a farewell(name) function with a check) in a worktree. Scratch setup: run `sh setup-scratch.sh <empty-dir>`; the project is <empty-dir>/project on main. After the work, give me the handoff.",
+      "expected_output": "A verified handoff and a pointer to sync-tree, with the original checkout and target branch unchanged and nothing synced or removed.",
+      "files": [
+        "evals/files/setup-scratch.sh"
+      ],
+      "expectations": [
+        "The handoff lists the task checkout path and branch, the original checkout path, the target branch, the base commit and current task commit, uncommitted task changes if any, and the validation results",
+        "Those fields are verified against live Git state rather than remembered",
+        "The agent tells the user to run /sync-tree with that destination once the work is committed",
+        "The original checkout's git status is unchanged and main has not moved",
+        "The agent does not sync, publish, push, or remove the worktree"
+      ]
+    },
+    {
+      "id": 4,
+      "kind": "behavior",
+      "prompt": "Use the work-in-tree skill to start `farewell` in a worktree. Scratch setup: run `sh setup-scratch.sh <empty-dir> dirty`; the project is <empty-dir>/project on main with an uncommitted half-done edit to app.py. I want that edit in the new worktree.",
+      "expected_output": "The uncommitted edit is left in place and the user is told the worktree starts from committed history.",
+      "files": [
+        "evals/files/setup-scratch.sh"
+      ],
+      "expectations": [
+        "The agent leaves the uncommitted edit in the original checkout untouched",
+        "The agent explains that a new worktree starts from committed history, so the edit will not be there",
+        "The agent asks the user to commit the edit or choose another starting point before continuing, and does not stash, copy, or commit it itself"
+      ]
+    },
+    {
+      "id": 5,
+      "kind": "behavior",
+      "prompt": "Use the work-in-tree skill to start `farewell` in a worktree. Scratch setup: run `sh setup-scratch.sh <empty-dir>`, then in <empty-dir>/project run `git checkout --detach`, so HEAD is detached.",
+      "expected_output": "With no named branch the agent asks for the target branch instead of guessing.",
+      "files": [
+        "evals/files/setup-scratch.sh"
+      ],
+      "expectations": [
+        "The agent recognizes the detached checkout and asks which local branch should receive the work",
+        "No worktree is created before the user answers",
+        "Once a branch is named, its tip is resolved and used as the base for the new worktree"
+      ]
+    },
+    {
+      "id": 6,
+      "kind": "behavior",
+      "prompt": "Use the work-in-tree skill to start `farewell` in a worktree. Scratch setup: run `sh setup-scratch.sh <empty-dir>`, then in <empty-dir>/project create a branch `worktree/farewell` at an older commit (HEAD~1) and make a directory <empty-dir>/project-trees/farewell with an unrelated file `notes.txt` in it.",
+      "expected_output": "Existing branch and directory are inspected, not overwritten or reset.",
+      "files": [
+        "evals/files/setup-scratch.sh"
+      ],
+      "expectations": [
+        "The agent finds that both the proposed branch and the proposed directory already exist",
+        "The agent inspects them instead of overwriting, deleting, or resetting either",
+        "The agent either picks a different unique name or asks the user, and does not reuse the existing path unless its path, branch, base, and task ownership are verified"
+      ]
+    },
+    {
+      "id": 7,
+      "kind": "behavior",
+      "prompt": "Use the work-in-tree skill for this project. I haven't decided what to work on yet. Scratch setup: run `sh setup-scratch.sh <empty-dir>`; the project is <empty-dir>/project on main.",
+      "expected_output": "The agent prepares the checkout, reports it, and asks what to work on.",
+      "files": [
+        "evals/files/setup-scratch.sh"
+      ],
+      "expectations": [
+        "The agent asks for a task name before creating the worktree, because the invocation supplies none, or creates it from a proposed unique name and says so",
+        "The prepared checkout is reported with its path, branch, and base commit",
+        "The agent asks what to work on and edits no task files"
+      ]
+    },
+    {
+      "id": 8,
+      "kind": "behavior",
+      "prompt": "Use the work-in-tree skill to start `farewell` in a worktree. Scratch setup: run `sh setup-scratch.sh <empty-dir>`, then in <empty-dir>/project start a merge that stops on a conflict (create a branch `other` with a conflicting change to app.py and run `git merge other` from main), leaving the merge unfinished.",
+      "expected_output": "An unfinished Git operation stops the skill.",
+      "files": [
+        "evals/files/setup-scratch.sh"
+      ],
+      "expectations": [
+        "The agent detects the unfinished merge from git status",
+        "The agent stops, and does not create a worktree or abort, reset, or finish the merge itself",
+        "The agent tells the user the operation must be finished or abandoned by them first"
+      ]
+    },
+    {
+      "id": 9,
+      "kind": "no-trigger",
+      "prompt": "The work in my worktree branch is committed and verified. Land it on main in the original checkout.",
+      "expected_output": "Landing finished worktree work is sync-tree.",
+      "expectations": [
+        "The work-in-tree skill is not invoked and no new worktree is created",
+        "The request is handled by the sync-tree skill"
+      ]
+    },
+    {
+      "id": 10,
+      "kind": "no-trigger",
+      "prompt": "Implement the discount feature on a new branch right here in this checkout, test first. I don't need a separate directory.",
+      "expected_output": "Branch work in the current checkout is ordinary implementation.",
+      "expectations": [
+        "The work-in-tree skill is not invoked and no worktree is created",
+        "The request is handled by the implement or test-first skill in the current checkout"
+      ]
+    }
+  ]
+}

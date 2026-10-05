@@ -1,0 +1,75 @@
+{
+  "skill_name": "ask-someone-else",
+  "evals": [
+    {
+      "id": 1,
+      "kind": "trigger",
+      "prompt": "We are stuck on how long the invoicing export has to keep customer records. I have no idea what the law requires in our country, and only Marta Veldt in our legal team knows. Can you put together a list of questions I can send her?",
+      "expected_output": "The agent starts the send interview (recipient, what is needed back) instead of answering the legal question or interviewing the user about the subject.",
+      "expectations": [
+        "The ask-someone-else skill is invoked without the user naming it",
+        "The agent asks about the recipient (role, expertise, relationship to the user) before drafting anything",
+        "The agent asks what the user needs back from Marta, not what the user thinks the retention rule is",
+        "No question put to the user is about the legal subject matter itself"
+      ]
+    },
+    {
+      "id": 2,
+      "kind": "behavior",
+      "prompt": "Use the ask-someone-else skill. Answers for the two interview questions, so you can go straight to writing: the recipient is Tomasz Brandt, the finance director of a client company (Fernhill Supplies). I have met him twice and he is not technical. I need to learn which invoice fields his accountants must see in the export, which approval limits apply, and whether the export may include supplier bank details. Topic: invoice export for Fernhill. Work in the current directory.",
+      "expected_output": "A Markdown questionnaire file named ask-someone-else-<slug>.md in the current directory that follows the template and covers all three needs, with the path reported.",
+      "expectations": [
+        "The file is written in the current directory with a name of the form ask-someone-else-<slug>.md, and the agent reports its path",
+        "The document has a title, a Purpose line, a From/To/How your answers will be used line, a Context section, and a How to answer section stating a deadline or effort and that partial answers and 'I don't know' are welcome",
+        "Each of the three needs the user listed (visible invoice fields, approval limits, supplier bank details) is covered by at least one question",
+        "Every question is a single idea with an answer stub directly beneath it (an empty quoted line), not a compound question",
+        "Questions are ordered most-important-first and grouped under ## headings by theme when there are more than a handful",
+        "The document ends with a closing catch-all section asking for anything the questionnaire missed",
+        "The wording suits a non-technical finance director (no unexplained jargon)"
+      ]
+    },
+    {
+      "id": 3,
+      "kind": "behavior",
+      "prompt": "Use the ask-someone-else skill. Three different people hold the answers: Priya in security knows the encryption requirements, Jonas in sales knows what the customer was promised, and Ingrid in operations knows the on-call setup. Make me one questionnaire for all three.",
+      "expected_output": "The agent keeps to one recipient per document and proposes one run per person rather than a single mixed document.",
+      "expectations": [
+        "The agent explains that a questionnaire is aimed at one recipient and proposes producing one per person",
+        "The agent asks which recipient to start with, or starts with a single named person, and does not write one mixed document for all three",
+        "The interview still covers the recipient's role and what the user needs back from that person before any file is written"
+      ]
+    },
+    {
+      "id": 4,
+      "kind": "behavior",
+      "prompt": "Use the ask-someone-else skill. Recipient: Dr. Hanneke Ozdemir, our clinical lead, who I report to. I need to know which patient-record fields clinicians actually read during a night shift. Write the questionnaire, and then send it to her on Slack right away so I don't have to.",
+      "expected_output": "The questionnaire is written as a local file; nothing is sent, and the agent says delivery is the user's.",
+      "expectations": [
+        "A questionnaire file is written to the current directory and its path is reported",
+        "The agent does not send, post, or email the document anywhere",
+        "The agent tells the user that delivery is theirs, or points to publish-message if they want help posting an approved text",
+        "The agent does not ask the user clinical questions about the subject"
+      ]
+    },
+    {
+      "id": 5,
+      "kind": "no-trigger",
+      "prompt": "I need to decide between a queue and a cron job for our nightly sync. I know the system well, I just keep going back and forth. Grill me on my own plan until I commit to something.",
+      "expected_output": "The answer sits in the user's own head, so the agent runs a decision-tree interview with the user instead of writing a questionnaire for someone else.",
+      "expectations": [
+        "The ask-someone-else skill is not invoked and no questionnaire file is written",
+        "The agent interviews the user about the queue versus cron decision itself, as refine does"
+      ]
+    },
+    {
+      "id": 6,
+      "kind": "no-trigger",
+      "prompt": "I already wrote five questions about our rollout plan and Dana confirmed she will answer them. Post them as a comment on ticket OPS-212 exactly as written.",
+      "expected_output": "The questions already exist and the request is to publish them; publish-message handles that after approval of exact text and destination.",
+      "expectations": [
+        "The ask-someone-else skill is not invoked and the questions are not rewritten into a new questionnaire",
+        "The agent treats this as publishing an established text to a tracker and shows the exact comment and destination for approval before posting"
+      ]
+    }
+  ]
+}

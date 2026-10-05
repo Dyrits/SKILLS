@@ -1,0 +1,169 @@
+{
+  "skill_name": "teach",
+  "evals": [
+    {
+      "id": 1,
+      "kind": "trigger",
+      "prompt": "I want to learn to read sheet music well enough to play simple songs on my keyboard. Teach me. Work in the current directory, which is empty.",
+      "expected_output": "In an empty directory the agent interviews the user about the reason before producing any lesson, and keeps the teaching files in the current directory.",
+      "expectations": [
+        "The teach skill is invoked without the user naming it",
+        "The agent's first move is to ask why the user wants to learn this, not to produce a lesson",
+        "No file under lessons/ is written in this first turn",
+        "Any MISSION.md, RESOURCES.md, or learning-records/ files are created in the current directory and not in the skill's install directory"
+      ]
+    },
+    {
+      "id": 2,
+      "kind": "behavior",
+      "prompt": "Use the teach skill: teach me Rust. When you ask why, my answer is 'I just think it would be interesting to understand it.' The directory is empty.",
+      "expected_output": "The vague reason is pushed back on; no abstract mission is written and no lesson is produced.",
+      "expectations": [
+        "The agent asks follow-up questions to find a concrete real-world outcome instead of accepting 'to understand Rust'",
+        "MISSION.md is not written with an abstract reason such as 'to understand Rust'",
+        "No lesson is created before a concrete mission exists",
+        "When a mission is later written it follows the template: Why, Success looks like, Constraints, Out of scope"
+      ]
+    },
+    {
+      "id": 3,
+      "kind": "behavior",
+      "prompt": "Use the teach skill. Next lesson, please. The teaching workspace is in evals/files/workspace/.",
+      "expected_output": "A short lesson in the learner's zone of proximal development is saved as the next numbered file, built from the shared stylesheet and tied to the mission.",
+      "files": [
+        "evals/files/workspace/MISSION.md",
+        "evals/files/workspace/RESOURCES.md",
+        "evals/files/workspace/NOTES.md",
+        "evals/files/workspace/learning-records/0001-names-notes-on-the-lines.md",
+        "evals/files/workspace/lessons/0001-line-notes.html",
+        "evals/files/workspace/assets/style.css",
+        "evals/files/workspace/reference/treble-clef-notes.html"
+      ],
+      "expectations": [
+        "The agent reads MISSION.md and the learning records before choosing the topic",
+        "The lesson teaches the notes on the spaces (F, A, C, E), not the line notes the learner has already shown",
+        "The lesson is saved as lessons/0002-<dash-case-name>.html",
+        "The lesson links assets/style.css instead of inlining its own stylesheet",
+        "The lesson cites sources from RESOURCES.md for its claims",
+        "The lesson recommends one primary source to read",
+        "The lesson links to the earlier lesson or to the reference document through HTML anchors",
+        "The lesson contains a reminder that the learner can ask the agent follow-up questions",
+        "The lesson stays short and has a single tangible win tied to playing the three songs",
+        "The agent opens the lesson for the user with a command"
+      ]
+    },
+    {
+      "id": 4,
+      "kind": "behavior",
+      "prompt": "Use the teach skill to build the quiz part of the next lesson. Workspace in evals/files/workspace/. I want a retrieval check on the note names so I can tell whether it stuck.",
+      "expected_output": "The quiz gives immediate feedback and shows no formatting tells, with answers of equal length.",
+      "files": [
+        "evals/files/workspace/MISSION.md",
+        "evals/files/workspace/RESOURCES.md",
+        "evals/files/workspace/learning-records/0001-names-notes-on-the-lines.md",
+        "evals/files/workspace/lessons/0001-line-notes.html",
+        "evals/files/workspace/assets/style.css"
+      ],
+      "expectations": [
+        "Every answer option in a question has the same number of words, and the same number of characters where possible",
+        "No option is distinguished by formatting such as bold, length, or extra detail",
+        "The quiz gives feedback immediately after each answer, without a separate submit-and-wait step",
+        "The questions require recall from memory before showing the answer rather than recognising a given list",
+        "A reusable quiz component is written to assets/ and linked, not inlined in the lesson",
+        "The agent does not rely on the position of the correct option, and the position varies across questions"
+      ]
+    },
+    {
+      "id": 5,
+      "kind": "behavior",
+      "prompt": "Use the teach skill. Workspace in evals/files/workspace/. Before the next lesson: I have played guitar for two years and can read tablature fluently, I just can't read standard notation. Also I used to think the bottom line of the staff was always C. I now see it is E on the treble clef.",
+      "expected_output": "Prior knowledge and a corrected misconception are each recorded as a learning record with depth, and the next lesson avoids re-teaching them.",
+      "files": [
+        "evals/files/workspace/MISSION.md",
+        "evals/files/workspace/RESOURCES.md",
+        "evals/files/workspace/learning-records/0001-names-notes-on-the-lines.md"
+      ],
+      "expectations": [
+        "A learning record is written for the disclosed prior knowledge and states the depth claimed (fluent tablature, no standard notation)",
+        "A learning record is written for the corrected misconception about the bottom line",
+        "The new records are numbered 0002 and 0003 after the existing 0001, with a dash-case name each",
+        "Each record is a short paragraph, with no session-by-session log",
+        "The note names that merely appear in the conversation are not recorded as learned without evidence of use",
+        "The next lesson skips what the records now establish"
+      ]
+    },
+    {
+      "id": 6,
+      "kind": "behavior",
+      "prompt": "Use the teach skill. Workspace in evals/files/workspace/. I've changed my mind: I no longer care about the birthday songs. I want to read jazz lead sheets so I can join a Thursday jam session in June.",
+      "expected_output": "The mission change is confirmed with the user before MISSION.md is edited, then recorded as a learning record.",
+      "files": [
+        "evals/files/workspace/MISSION.md",
+        "evals/files/workspace/RESOURCES.md",
+        "evals/files/workspace/learning-records/0001-names-notes-on-the-lines.md"
+      ],
+      "expectations": [
+        "The agent confirms the mission change with the user before editing MISSION.md",
+        "After confirmation MISSION.md is updated so the old birthday-songs goal does not stay as a stale mission",
+        "The updated MISSION.md keeps the template sections and stays within a screen",
+        "A learning record captures that the mission shifted and links to MISSION.md",
+        "The agent checks whether RESOURCES.md still fits the new mission and notes gaps instead of assuming it does"
+      ]
+    },
+    {
+      "id": 7,
+      "kind": "behavior",
+      "prompt": "Use the teach skill. Workspace in evals/files/no-resources/ has a mission but an empty RESOURCES.md. Teach me the first thing I need.",
+      "expected_output": "Resources are gathered and recorded before any lesson is written, and no teaching content comes from the model's memory.",
+      "files": [
+        "evals/files/no-resources/MISSION.md",
+        "evals/files/no-resources/RESOURCES.md"
+      ],
+      "expectations": [
+        "The agent searches for high-quality, high-trust resources before writing a lesson",
+        "RESOURCES.md gains entries grouped under Knowledge and Wisdom headings",
+        "Every entry carries a one-line annotation saying what it covers and when to use it",
+        "A Gaps section is added when no good resource exists for an area the mission needs",
+        "Claims in the first lesson carry links to those resources instead of resting on the model's memory",
+        "Marketing material and low-trust sources are left out of RESOURCES.md"
+      ]
+    },
+    {
+      "id": 8,
+      "kind": "behavior",
+      "prompt": "Use the teach skill. Workspace in evals/files/workspace/. Quick question rather than a lesson: how do I know if my sight reading is actually good, or whether my timing is off when I play alone?",
+      "expected_output": "The agent attempts an answer and points the learner to a real-world community for testing the skill.",
+      "files": [
+        "evals/files/workspace/MISSION.md",
+        "evals/files/workspace/RESOURCES.md",
+        "evals/files/workspace/NOTES.md"
+      ],
+      "expectations": [
+        "The agent gives a direct attempt at an answer",
+        "The agent points the learner to a community (online or offline) where the skill can be tested with other people",
+        "The community comes from RESOURCES.md or from a search for a high-reputation one, not from memory alone",
+        "The agent does not write a new lesson for this question"
+      ]
+    },
+    {
+      "id": 9,
+      "kind": "no-trigger",
+      "prompt": "Explain how a TCP three-way handshake works. A diagram would help. I just need to understand it for a meeting in an hour, no course needed.",
+      "expected_output": "A one-off visual explanation belongs to illustrate; no teaching workspace is started.",
+      "expectations": [
+        "The teach skill is not invoked and no MISSION.md or lessons/ directory is created",
+        "The agent uses illustrate, which gives the smallest useful diagram or focused artifact"
+      ]
+    },
+    {
+      "id": 10,
+      "kind": "no-trigger",
+      "prompt": "I didn't follow your last answer about optimistic locking. It was too dense and used words I don't know. Say it again more simply.",
+      "expected_output": "A re-explanation of one answer belongs to re-explain; no workspace is started.",
+      "expectations": [
+        "The teach skill is not invoked and no learning workspace files are created",
+        "The agent uses re-explain, which restates the answer with the missing context and familiar vocabulary"
+      ]
+    }
+  ]
+}

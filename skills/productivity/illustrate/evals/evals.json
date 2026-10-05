@@ -1,0 +1,108 @@
+{
+  "skill_name": "illustrate",
+  "evals": [
+    {
+      "id": 1,
+      "kind": "trigger",
+      "prompt": "I do not get how clicking Pay in the checkout ends up talking to the payment provider. The relevant code is under evals/files/src. Show me how it flows.",
+      "expected_output": "One Mermaid sequence or flow diagram leading the answer, using the real names from the files, with brief prose.",
+      "expectations": [
+        "The illustrate skill is invoked without the user naming it",
+        "The answer leads with a visual, and the prose around it is brief",
+        "The visual is a Mermaid sequence or flow diagram (component interaction across modules)",
+        "The diagram uses real names from the source: CheckoutForm, createOrder, chargeCard, loadCart, markCartPaid",
+        "Exactly one view is given, since one view answers the question",
+        "The order of calls in the diagram matches the source (load cart, charge, mark paid only when approved)"
+      ],
+      "files": [
+        "evals/files/src/components/CheckoutForm.tsx",
+        "evals/files/src/api/orders.ts",
+        "evals/files/src/services/payments.ts",
+        "evals/files/src/services/carts.ts"
+      ]
+    },
+    {
+      "id": 2,
+      "kind": "behavior",
+      "prompt": "Use the illustrate skill: which file does what under evals/files/src? I am about to refactor and want to see the shape.",
+      "expected_output": "A shallow file tree with a short responsibility beside each relevant entry.",
+      "expectations": [
+        "The view is a shallow file tree in a text fence, not a Mermaid diagram",
+        "Each relevant file has a short responsibility written beside it",
+        "The responsibilities are derived from the file contents (for example, orders.ts creates the order, payments.ts calls the payment provider)",
+        "Nothing is invented: no file appears that does not exist"
+      ],
+      "files": [
+        "evals/files/src/components/CheckoutForm.tsx",
+        "evals/files/src/api/orders.ts",
+        "evals/files/src/services/payments.ts",
+        "evals/files/src/services/carts.ts"
+      ]
+    },
+    {
+      "id": 3,
+      "kind": "behavior",
+      "prompt": "Use the illustrate skill. I am proposing that createOrder in evals/files/src/api/orders.ts should refuse to charge when the cart total is zero, and should record a failed attempt before returning. Show me what changes, not the whole file.",
+      "expected_output": "A diff sketch of the existing shape with proposed lines marked as proposed.",
+      "expectations": [
+        "The visual is a diff sketch (lines starting with - and +) of createOrder or its pseudocode, not the whole file",
+        "The added lines (zero-total guard, recording a failed attempt) are labelled as proposed, not current behaviour",
+        "Unchanged context lines are kept only as far as needed to show where the change goes",
+        "The existing names from the file are used unchanged"
+      ],
+      "files": [
+        "evals/files/src/api/orders.ts"
+      ]
+    },
+    {
+      "id": 4,
+      "kind": "behavior",
+      "prompt": "Use the illustrate skill. Compare the four states of the checkout form in evals/files/src/components/CheckoutForm.tsx (idle, pending, failed, done) side by side so I can see what the user sees in each. This needs a proper visual, not an inline sketch.",
+      "expected_output": "One focused HTML artifact following the HTML branch, written, checked where tools allow, opened, and linked.",
+      "expectations": [
+        "The agent reads the HTML artifact guidance before building the file",
+        "A single file named illustrate-<topic>.html is written, with its styles and scripts included for local viewing",
+        "The four states come from the source, and any illustrative values are marked as illustrative",
+        "The layout works at desktop and mobile widths, or the agent states which checks it could not perform",
+        "The agent opens the file (or says it could not) and gives a clickable file link"
+      ],
+      "files": [
+        "evals/files/src/components/CheckoutForm.tsx"
+      ]
+    },
+    {
+      "id": 5,
+      "kind": "behavior",
+      "prompt": "Use the illustrate skill to show how createOrder in evals/files/src/api/orders.ts calls the rest of the code. I am pasting your answer into a plain-text ticket field that cannot render Mermaid.",
+      "expected_output": "A fenced text call tree instead of Mermaid, because of the destination.",
+      "expectations": [
+        "No Mermaid block is used",
+        "The view is a call tree in a text fence, with nesting for calls and ordering for execution",
+        "The call tree names loadCart, chargeCard, and markCartPaid in the order the source calls them"
+      ],
+      "files": [
+        "evals/files/src/api/orders.ts"
+      ]
+    },
+    {
+      "id": 6,
+      "kind": "no-trigger",
+      "prompt": "I did not understand your last answer at all, it was too dense. Please explain it again in simpler words.",
+      "expected_output": "A failed explanation to be restated with missing context is re-explain, not a new visual.",
+      "expectations": [
+        "The illustrate skill is not invoked and no diagram is produced as the main answer",
+        "The agent re-explains the previous message in simpler language with the missing context, as re-explain does"
+      ]
+    },
+    {
+      "id": 7,
+      "kind": "no-trigger",
+      "prompt": "I cannot decide between a sidebar layout and a top navigation layout for the settings area. Build me two clickable versions I can try in the browser so I can decide.",
+      "expected_output": "An experiment to settle a design question belongs to prototype.",
+      "expectations": [
+        "The illustrate skill is not invoked",
+        "The agent treats the request as a prototype (a scoped experiment with interface variants) and confirms the scope before building"
+      ]
+    }
+  ]
+}

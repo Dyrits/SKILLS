@@ -1,0 +1,132 @@
+{
+  "skill_name": "publish-message",
+  "evals": [
+    {
+      "id": 1,
+      "kind": "trigger",
+      "prompt": "We finished reviewing pull request 57 on harbor/harbor-api (a scratch setup with no real remote; treat the posting tool as a stub that records what it is given). The findings and their dispositions are in evals/files/review-findings.md. Post the summary of the review on that pull request for Noor.",
+      "expected_output": "A complete review summary is drafted for the pull request, shown with its destination and exact text, and nothing is posted until the user approves it.",
+      "files": [
+        "evals/files/review-findings.md"
+      ],
+      "expectations": [
+        "The publish-message skill is invoked without the user naming it",
+        "The destination is confirmed as pull request 57 of harbor/harbor-api, and the request's title, description, or existing thread is read before the text is drafted",
+        "The draft accounts for all five findings and keeps each disposition, including the open question about status 429 that needs a decision from the ledger team",
+        "The draft calls the test commit a local change awaiting publication, not something already on the pull request",
+        "The unslop skill is called on the draft before it is shown",
+        "The agent shows the exact final text and the destination and asks for explicit approval before posting",
+        "Nothing is posted before approval is given"
+      ]
+    },
+    {
+      "id": 2,
+      "kind": "trigger",
+      "prompt": "Let the #payments-eng channel know what caused yesterday's payment outage. Root cause: the TLS certificate on the ledger service expired because the renewal job was silently failing. I have a fix on my local branch `fix/cert-rotation` (file `deploy/renew-cert.sh`, not pushed or merged yet). The channel includes two external contractors. Keep it short.",
+      "expected_output": "A short, conclusion-first chat message in the channel's markup, written for a mixed audience, with the fix described as local and unpublished, shown for approval before sending.",
+      "expectations": [
+        "The publish-message skill is invoked without the user naming it",
+        "The message leads with the conclusion (the expired certificate and why the renewal failed) in a few sentences",
+        "The fix is described as a local change awaiting publication, not as completed or deployed",
+        "The local branch name and the file path are left out because external contractors read the channel",
+        "No people are mentioned, since the user named none",
+        "The message uses chat markup (Slack mrkdwn, with single asterisks for bold if any) and no subject line",
+        "Detail beyond the short lead is offered as a thread reply or left out, not packed into the opening message",
+        "The agent shows the exact text and destination and waits for approval before sending"
+      ]
+    },
+    {
+      "id": 3,
+      "kind": "behavior",
+      "prompt": "Use the publish-message skill on pull request 57 of harbor/harbor-api (scratch setup, no real remote; the host tool is a stub that accepts a pending review and records it). The findings are in evals/files/review-findings.md and the diff is in evals/files/pr-57.patch. Post them as a review: whatever can be a one-click suggestion should be one.",
+      "expected_output": "Two findings become validated inline suggestions, three stay in the summary, and the complete set is shown for approval before one neutral review is submitted.",
+      "files": [
+        "evals/files/review-findings.md",
+        "evals/files/pr-57.patch"
+      ],
+      "expectations": [
+        "The agent reads inline-suggestions.md before placing findings",
+        "Findings 1 and 2 (the typo and the removed 400 retry) are placed as inline suggestions, each in exactly one place",
+        "Findings 3, 4, and 5 (the open question, the multi-file rename, and the unpushed test commit) stay in the summary and none is turned into a suggestion",
+        "Each inline suggestion is drafted with its file, diff side, line range, one sentence of reason, and a replacement in the platform's suggestion syntax",
+        "The destination head revision is recorded before drafting and checked again before posting",
+        "The approval request shows the summary text and every inline comment in full, and the agent waits for explicit approval",
+        "The review is submitted with a neutral comment event, not Approve or Request changes",
+        "The pending body and every inline comment are verified before the review is submitted"
+      ]
+    },
+    {
+      "id": 4,
+      "kind": "behavior",
+      "prompt": "Use the publish-message skill. Post this status update on the ticket PLAT-311 in our Jira project: 'The data migration rehearsal on the copy of production finished in 41 minutes with zero rejected rows; the real run needs a 60 minute window. Decision needed from Amira: which Saturday.' Scratch setup: there is no MCP server, no CLI, no credentials, and no .agents/issue-tracker.md, so nothing can reach Jira.",
+      "expected_output": "The agent finds no mechanism, still produces an approved Jira-formatted text, and hands it to the user ready to paste with the verification limit stated.",
+      "expectations": [
+        "The agent looks for an .agents/issue-tracker.md, a connected tool, a CLI, and a configured API, in that order of preference, before concluding that none works",
+        "The draft uses Jira markup and mentions Amira, since the user named her",
+        "The agent shows the text and destination and asks for approval before treating the publication as done",
+        "After approval the agent gives the final text in a ready-to-paste form and says the user will post it themselves",
+        "The agent states that it could not read the message back from Jira and does not claim it was published"
+      ]
+    },
+    {
+      "id": 5,
+      "kind": "behavior",
+      "prompt": "Use the publish-message skill. Reply on issue 88 of the scratch repository harbor/harbor-web with: the login redirect loop is caused by the session cookie being set for the wrong domain, and the fix will go out in the next release. The existing comments on the issue, which you can assume you read through the stubbed tool, are all in French, and the last one is from Camille asking whether anyone found the cause. The stub posting tool records what it receives and can return the posted comment on request.",
+      "expected_output": "The reply is written in French, placed in the existing issue thread, and verified by reading it back after posting.",
+      "expectations": [
+        "The draft is written in French because the issue already uses French, not in the language of the conversation",
+        "The draft is a reply on issue 88 and does not open a new issue",
+        "No mention of Camille is added because the user did not ask for one",
+        "The message states the cause and that the fix ships in the next release, without claiming the fix is already released",
+        "The draft is shown for approval of exact text and destination before posting",
+        "After posting, the agent reads the comment back from the destination and checks its text and placement",
+        "The agent reports the URL or reference of the posted comment"
+      ]
+    },
+    {
+      "id": 6,
+      "kind": "behavior",
+      "prompt": "Use the publish-message skill on the scratch pull request 57 of harbor/harbor-api. The approved set is: two inline suggestions (the typo at line 13 and the 400 retry at line 14 of src/webhooks/handle-payment.ts) and a separate summary comment that says 'Two suggestions posted below'. The stub tool cannot do a pending review, so the inline comments go first. The user has approved the exact text. Simulate this: the first suggestion posts, and the second call returns a network timeout with unknown outcome.",
+      "expected_output": "The agent stops at the failure, reports what is confirmed and what remains, checks the destination before any retry, and returns to approval if the summary's promised count changes.",
+      "expectations": [
+        "The agent stops after the timeout instead of posting the summary comment",
+        "The agent reports exactly one suggestion as confirmed posted and the other as remaining or uncertain",
+        "Before retrying the second suggestion, the agent checks the destination to see whether it landed, so it is posted at most once",
+        "If the summary's 'Two suggestions posted below' no longer matches the posted items, the agent shows a revised summary and asks for approval again before posting it",
+        "The final report lists published references and any partial result"
+      ]
+    },
+    {
+      "id": 7,
+      "kind": "behavior",
+      "prompt": "Use the publish-message skill. The inline suggestions for pull request 57 of harbor/harbor-api (scratch setup, stub tool) were validated and approved against head revision 9b7d0e2. Just before posting, the stub reports that the head revision is now c20f4a8, because Noor force-pushed and the file now has two extra lines above the changed hunk.",
+      "expected_output": "The agent revalidates locations against the new diff and goes back to approval if any approved location or text changes.",
+      "expectations": [
+        "The agent compares the current head revision with the one used to validate and notices they differ",
+        "The agent re-reads the new diff and revalidates each suggestion's line range and replacement",
+        "Line ranges that moved are corrected in the draft, and the agent returns to approval with the changed set instead of posting the old locations",
+        "A suggestion whose replacement no longer applies is moved to the summary instead of being posted"
+      ]
+    },
+    {
+      "id": 8,
+      "kind": "no-trigger",
+      "prompt": "I'm about to open a pull request for my branch. Write the description: a one-image summary of what the change does, before and after screenshots of the settings page, and what could go wrong if it merges.",
+      "expected_output": "The request body is written by draft-merge-request; nothing is posted as a review message.",
+      "expectations": [
+        "The publish-message skill is not invoked",
+        "The agent uses draft-merge-request, which writes a summary visual, before and after evidence, and the merge danger"
+      ]
+    },
+    {
+      "id": 9,
+      "kind": "no-trigger",
+      "prompt": "A reviewer left six comments on my pull request. Go through them, tell me which you'd accept and which you'd push back on, make the changes I agree to, and answer each comment.",
+      "expected_output": "Feedback received on the user's own work is handled by address-feedback, not by publishing a conclusion.",
+      "expectations": [
+        "The publish-message skill is not invoked",
+        "The agent uses address-feedback, which assesses the comments, proposes dispositions, implements them, and replies"
+      ]
+    }
+  ]
+}

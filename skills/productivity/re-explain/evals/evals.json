@@ -1,0 +1,106 @@
+{
+  "skill_name": "re-explain",
+  "evals": [
+    {
+      "id": 1,
+      "kind": "trigger",
+      "prompt": "(Your previous answer, in this conversation, was: 'The service is eventually consistent, so a read right after a write may hit a replica that has not applied the write yet; use read-your-writes via the primary for that path.') I did not understand that. Can you explain it again?",
+      "expected_output": "A clearer explanation in plain English that supplies the missing premise, in short sentences.",
+      "expectations": [
+        "The re-explain skill is invoked without the user naming it",
+        "The answer is in English, the language of the user's messages",
+        "The answer supplies the missing premise (there are several copies of the data, and copying changes between them takes time)",
+        "Sentences are short and use common words, with one idea per sentence and no unexplained jargon (as in Simplified Technical English)",
+        "The answer is clearer, not merely shorter: it is not reduced to a fragment or a one-line summary"
+      ]
+    },
+    {
+      "id": 2,
+      "kind": "behavior",
+      "prompt": "Je viens d'écrire tous mes messages en français. Ta dernière réponse était : 'Le cache est invalidé de façon paresseuse, donc la première requête après un déploiement paie le coût du recalcul.' Je n'ai pas compris. Peux-tu réexpliquer ?",
+      "expected_output": "The explanation is given in French, with the missing context added; English-only conventions are not applied.",
+      "expectations": [
+        "The whole answer is in French, the language the user has been writing in",
+        "The answer adds the missing context (what a cache is, and why the first request after a deployment is slow)",
+        "The agent does not switch to English and does not ask which language to use",
+        "The answer does not mention or apply Simplified Technical English rules specific to English"
+      ]
+    },
+    {
+      "id": 3,
+      "kind": "behavior",
+      "prompt": "Use the re-explain skill. The glossary for this project is evals/files/single/GLOSSARY.md. Your last answer was: 'Once the order is on hold, the warehouse will not ship it out; releasing the hold lets the shipping step send the packages.' I do not understand how an order can be stuck.",
+      "expected_output": "The explanation uses the glossary terms (dispatch, parcel, hold) in place of the loose words in the earlier answer.",
+      "expectations": [
+        "The agent reads evals/files/single/GLOSSARY.md before answering",
+        "The answer uses 'dispatch' where the earlier answer said ship or send out, and 'parcel' where it said package",
+        "The answer uses 'hold' as defined and does not invent a new name for the state",
+        "The answer explains why an order can be stopped (the missing premise) and not only rewords the earlier sentence"
+      ],
+      "files": [
+        "evals/files/single/GLOSSARY.md"
+      ]
+    },
+    {
+      "id": 4,
+      "kind": "behavior",
+      "prompt": "Use the re-explain skill. This repository has several glossaries, mapped in evals/files/multi/GLOSSARY-MAP.md. Your last answer was: 'After the cut-off the day's parcels are bundled into the carrier list and sent on, and the money lands a couple of days later.' I did not follow any of that.",
+      "expected_output": "The map is followed to the right glossaries, and terms from each (manifest, cut-off, dispatch, settlement) are used in their own meaning.",
+      "expectations": [
+        "The agent reads GLOSSARY-MAP.md and follows it to the shipping and billing glossaries",
+        "The answer uses 'manifest' for the carrier list and 'cut-off' with the glossary's meaning",
+        "The answer uses 'settlement' from the billing glossary for the money arriving two days later",
+        "The answer explains the sequence (cut-off, manifest, dispatch, settlement) so the user sees how the parts relate"
+      ],
+      "files": [
+        "evals/files/multi/GLOSSARY-MAP.md",
+        "evals/files/multi/billing/GLOSSARY.md",
+        "evals/files/multi/shipping/GLOSSARY.md"
+      ]
+    },
+    {
+      "id": 5,
+      "kind": "behavior",
+      "prompt": "Use the re-explain skill. I have written to you only in English so far, but earlier I mentioned that I read technical text more easily in Spanish. This project has no GLOSSARY.md. I did not understand your last answer: 'The migration is idempotent, so rerunning it after a partial failure is safe.'",
+      "expected_output": "The agent asks which language to use before explaining, then (once answered) explains in plain simplified language without a glossary.",
+      "expectations": [
+        "The agent asks which language the user wants before giving the explanation",
+        "The question is short and offers English or Spanish",
+        "The agent does not guess a language and explain first",
+        "The agent does not complain about the missing GLOSSARY.md and does not fail because of it"
+      ]
+    },
+    {
+      "id": 6,
+      "kind": "behavior",
+      "prompt": "(Earlier in this conversation you explained 'database index' twice: first as 'a sorted lookup structure on a column', then as 'a precomputed ordering that avoids full scans'.) Still not getting it. Third try please, I really do not see why adding an index makes a query faster.",
+      "expected_output": "A fuller explanation with the missing premise and an example, not a shorter fragment.",
+      "expectations": [
+        "The re-explain skill is invoked",
+        "The answer starts from the premise the user is missing (without an index the database reads every row to find a match)",
+        "The answer is not shorter or terser than the earlier attempts, and is not a list of fragments",
+        "The answer uses a concrete everyday example and does not repeat the earlier two definitions"
+      ]
+    },
+    {
+      "id": 7,
+      "kind": "no-trigger",
+      "prompt": "Can you draw me a diagram of how our order service talks to the warehouse service? I think seeing it will help.",
+      "expected_output": "A request for a visual belongs to illustrate.",
+      "expectations": [
+        "The re-explain skill is not invoked",
+        "The agent produces the smallest useful visual of the interaction, as illustrate does"
+      ]
+    },
+    {
+      "id": 8,
+      "kind": "no-trigger",
+      "prompt": "In our glossary we call them 'tickets' but the tracker calls them 'tasks'. Settle the term, update GLOSSARY.md, and record why we chose it.",
+      "expected_output": "Sharpening and recording domain vocabulary belongs to model-domain, even though a glossary is involved.",
+      "expectations": [
+        "The re-explain skill is not invoked",
+        "The agent works on the glossary entry and records the decision with its reason, as model-domain does"
+      ]
+    }
+  ]
+}

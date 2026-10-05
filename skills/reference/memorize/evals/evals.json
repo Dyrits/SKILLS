@@ -1,0 +1,100 @@
+{
+  "skill_name": "memorize",
+  "evals": [
+    {
+      "id": 1,
+      "kind": "trigger",
+      "prompt": "From now on, always run `npm run lint` before you commit in this project. I've had to remind you three times.",
+      "expected_output": "The standing rule is filed in the project's instruction file, and the user is told in one line where it went.",
+      "expectations": [
+        "The memorize skill is invoked without the user naming it",
+        "The rule is written to the nearest CLAUDE.md or AGENTS.md, not only to the harness's personal memory",
+        "An existing entry for the same rule is updated instead of a second one being added",
+        "The agent reports in one line what was saved and where"
+      ]
+    },
+    {
+      "id": 2,
+      "kind": "trigger",
+      "prompt": "I need to rename 40 image files from `IMG_0001.jpg` style to `2026-trip-001.jpg`. Write whatever shell you need.",
+      "expected_output": "The agent checks the scriptbook indexes and the project's task runner before writing any script.",
+      "expectations": [
+        "The memorize skill is invoked before any script or pipeline is written",
+        "Both .agents/scripts/INDEX.md and ~/.agents/scripts/INDEX.md are read when present, and the task runner is checked",
+        "When a matching entry exists it is run, or extended by one parameter, instead of a sibling script being written",
+        "When nothing matches, the new script takes every changing value as an argument and opens with a header comment giving its usage",
+        "The script is run once with its usage example before it is indexed"
+      ],
+      "files": []
+    },
+    {
+      "id": 3,
+      "kind": "behavior",
+      "prompt": "Use the memorize skill. In this repository the glossary says 'task' but I keep calling them 'tickets' and you keep mixing them up. Settle it: 'task' is the term, and it was chosen because the tracker already uses it.",
+      "expected_output": "The term decision lands in GLOSSARY.md through model-domain, once, with its reason.",
+      "expectations": [
+        "The lesson is stated in one sentence with its reason",
+        "The home chosen is GLOSSARY.md (or an architecture decision record), reached by calling model-domain, not AGENTS.md",
+        "The existing glossary is read first and an existing entry is updated rather than a duplicate added",
+        "The lesson exists in exactly one home",
+        "The user is told in one line what was saved and where"
+      ]
+    },
+    {
+      "id": 4,
+      "kind": "behavior",
+      "prompt": "Remember that I prefer short answers with no trailing summary, in every project.",
+      "expected_output": "A personal preference is filed in the harness's memory, or in ~/.agents/memory/ with an INDEX.md line, and not in any project file.",
+      "expectations": [
+        "The lesson is classified as a personal preference that holds across projects",
+        "It is saved to the harness's own memory when one exists, otherwise to ~/.agents/memory/ as one fact per file with a reason",
+        "When ~/.agents/memory/ is used, INDEX.md gains exactly one line for it in the form '- [Title](file.md): when it applies'",
+        "No project instruction file is modified"
+      ]
+    },
+    {
+      "id": 5,
+      "kind": "behavior",
+      "prompt": "Use the memorize skill. This project has a new scriptbook at .agents/scripts/ but CLAUDE.md never mentions it. Make sure agents will actually use it.",
+      "expected_output": "CLAUDE.md carries the always-loaded pointer exactly once.",
+      "expectations": [
+        "CLAUDE.md is read first to check for an existing pointer",
+        "The pointer tells agents to read .agents/scripts/INDEX.md before writing a script or multi-step pipeline",
+        "The pointer also tells agents to call memorize on a user correction, a standing rule, or a second rebuild",
+        "Running the skill again does not add a second copy"
+      ],
+      "files": []
+    },
+    {
+      "id": 6,
+      "kind": "behavior",
+      "prompt": "Save this for later: my staging API key is sk-test-1234 and the base URL is https://staging.example.test.",
+      "expected_output": "The secret is not stored in any home; the agent explains and offers an environment variable instead.",
+      "expectations": [
+        "The key is not written to AGENTS.md, a scriptbook, the glossary, or any memory file",
+        "The agent states that secrets are kept out of every home",
+        "The non-secret base URL may be filed, and the key is referred to as an environment variable"
+      ]
+    },
+    {
+      "id": 7,
+      "kind": "no-trigger",
+      "prompt": "What does the `--no-verify` flag do on `git commit`?",
+      "expected_output": "A direct factual answer; no lesson is filed and no scriptbook is consulted.",
+      "expectations": [
+        "The memorize skill is not invoked",
+        "The answer explains the flag without writing to any instruction file, scriptbook, or memory"
+      ]
+    },
+    {
+      "id": 8,
+      "kind": "no-trigger",
+      "prompt": "The memorize skill fired on a plain question yesterday and it shouldn't have. Open a report about that so it gets fixed.",
+      "expected_output": "A defect in a skill is not a lesson to file locally; the user is sent to improve-skills.",
+      "expectations": [
+        "The agent does not write the defect into any local home",
+        "The agent tells the user to run /improve-skills, which reports it on the skills repository"
+      ]
+    }
+  ]
+}

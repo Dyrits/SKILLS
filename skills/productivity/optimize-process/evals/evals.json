@@ -1,0 +1,100 @@
+{
+  "skill_name": "optimize-process",
+  "evals": [
+    {
+      "id": 1,
+      "kind": "trigger",
+      "prompt": "Our release sign-off takes about six working days and most of it feels like waiting and people re-confirming the same thing in different places. The cycle is written up in evals/files/release-process.md. Help us fix it.",
+      "expected_output": "A before/after comparison with owners, prioritised recommendations, and a concrete first trial, grounded in the write-up.",
+      "expectations": [
+        "The optimize-process skill is invoked without the user naming it",
+        "The current process is mapped from the file with who performs each step, separating active effort from waiting time",
+        "The agent identifies why each step exists before proposing to remove it, and keeps the security confirmation that the customer contract requires",
+        "The output shows a compact before/after process comparison with who performs each step in the proposed process",
+        "Recommendations are in priority order, and each states what must change, who owns it, and how to try it on the next cycle"
+      ],
+      "files": [
+        "evals/files/release-process.md"
+      ]
+    },
+    {
+      "id": 2,
+      "kind": "behavior",
+      "prompt": "Use the optimize-process skill on evals/files/release-process.md. Give me the full output, and treat a coding agent as a possible performer of steps such as writing release notes and rerunning the regression checklist.",
+      "expected_output": "Impact estimates that count agent work at runtime plus human setup and review, keep one-time and recurring effort apart, and invent no figures.",
+      "expectations": [
+        "Agent-performed steps are counted as agent runtime plus human setup and review, not translated into human-days",
+        "The impact separates elapsed time, human attention, and agent runtime, rather than giving one vague duration",
+        "One-time setup effort is stated separately from recurring effort per cycle",
+        "Time saved per cycle is distinguished from shorter end-to-end lead time",
+        "Timings come from the file or are given as a rough range with stated assumptions, and no invented percentages, error rates, or cost savings appear",
+        "The agent names the assumption that most affects the estimate and what to observe during a small trial"
+      ],
+      "files": [
+        "evals/files/release-process.md"
+      ]
+    },
+    {
+      "id": 3,
+      "kind": "behavior",
+      "prompt": "Use the optimize-process skill. Our onboarding for new hires is slow and everybody complains about it. That is all I can tell you right now.",
+      "expected_output": "The agent asks for the few missing facts that would change the recommendation instead of inventing a process or numbers.",
+      "expectations": [
+        "The agent asks for one real recent cycle (trigger, steps, who performs them, where it waits) rather than proposing changes immediately",
+        "The questions asked are few and each tied to something that would change the recommendation",
+        "Any parts the agent fills in are marked as assumptions",
+        "No time savings or percentage improvements are stated"
+      ]
+    },
+    {
+      "id": 4,
+      "kind": "behavior",
+      "prompt": "Use the optimize-process skill on evals/files/expense-approval.md. The finance assistant wants to drop the finance director's signature step because it is slow.",
+      "expected_output": "The control behind the step is recognised and kept, with the process improved around it.",
+      "expectations": [
+        "The agent identifies that the signature over 5,000 euros exists because the external auditor requires it",
+        "The agent does not recommend removing the signature step",
+        "The agent proposes changing where the control happens or what material reaches the director (for example, a prepared brief) instead",
+        "The agent addresses the retyping effort as a cause of delay and proposes a change that removes it, not just a faster way to retype",
+        "The first trial is concrete enough to run on the next weekly cycle"
+      ],
+      "files": [
+        "evals/files/expense-approval.md"
+      ]
+    },
+    {
+      "id": 5,
+      "kind": "behavior",
+      "prompt": "Use the optimize-process skill on evals/files/dependency-updates.md. My manager says every process can be improved, so please come back with improvements.",
+      "expected_output": "The agent says the process is already sound and describes remaining friction without manufacturing a change.",
+      "expectations": [
+        "The agent states plainly that the current process is already sound, with the evidence from the file (12 of 13 merged the same day, no incidents)",
+        "The agent lists remaining friction (for example the flaky test) without turning it into a large redesign",
+        "No new steps, tools, or percentages are invented to justify a change"
+      ],
+      "files": [
+        "evals/files/dependency-updates.md"
+      ]
+    },
+    {
+      "id": 6,
+      "kind": "no-trigger",
+      "prompt": "I want to design a brand-new workflow for my weekly newsletter: it should collect links I save during the week, draft the issue, and ask me once before sending. Specify it so an agent can build it.",
+      "expected_output": "Designing a recurring loop from scratch as a specification belongs to design-workflow.",
+      "expectations": [
+        "The optimize-process skill is not invoked",
+        "The agent starts the interview toward an implementable workflow specification, as design-workflow does"
+      ]
+    },
+    {
+      "id": 7,
+      "kind": "no-trigger",
+      "prompt": "Our test suite got slower after yesterday's merge: it went from 4 minutes to 11. Find out why.",
+      "expected_output": "A performance regression in code is diagnosed by debug, not analysed as a work process.",
+      "expectations": [
+        "The optimize-process skill is not invoked",
+        "The agent starts a diagnosis loop with a reproduction and measurement, as debug does"
+      ]
+    }
+  ]
+}

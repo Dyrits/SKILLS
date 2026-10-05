@@ -1,0 +1,10 @@
+{
+  "name": "ledger-app",
+  "private": true,
+  "scripts": {
+    "build": "tsc -p .",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  }
+}

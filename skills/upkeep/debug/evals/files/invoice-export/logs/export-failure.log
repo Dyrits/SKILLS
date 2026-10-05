@@ -1,0 +1,5 @@
+2026-10-02T09:14:07Z INFO  export started order=4417
+2026-10-02T09:14:07Z DEBUG request headers: Authorization: Bearer demo-token-9f8e7d6c5b4a3210 X-Request-Id: 7c1a
+2026-10-02T09:14:07Z DEBUG session cookie: sid=demo-session-aa11bb22cc33
+2026-10-02T09:14:07Z INFO  csv total=28.08 displayed_total=28.09 order=4417
+2026-10-02T09:14:08Z INFO  export finished

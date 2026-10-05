@@ -1,0 +1,155 @@
+{
+  "skill_name": "review-and-refactor",
+  "evals": [
+    {
+      "id": 1,
+      "kind": "trigger",
+      "prompt": "I finished the discount codes work in a scratch repository: main is the base, and the change is the commit applied from discount.patch on the branch feature/discounts. Please review it against our conventions and the approved specification, and clean up what you agree with.",
+      "expected_output": "Two independent axes inspect the same frozen diff before any edit.",
+      "files": [
+        "evals/files/discount.patch",
+        "evals/files/specification.md",
+        "evals/files/CONVENTIONS.md"
+      ],
+      "expectations": [
+        "The review-and-refactor skill is invoked without the user naming it",
+        "The fixed point (main) and HEAD are resolved to commit IDs and the merge-base is recorded before any edit",
+        "The starting patch, the originating agreement, and the verification evidence are saved outside the repository for the reviewers",
+        "Separate Standards and Specifications subagents are dispatched with fresh contexts, and the agent waits for both reports before editing",
+        "The agent checks each finding against its cited source and the current code before acting on it"
+      ]
+    },
+    {
+      "id": 2,
+      "kind": "behavior",
+      "prompt": "Use the review-and-refactor skill on the change in discount.patch (applied on feature/discounts, base main) with specification.md as the agreement and CONVENTIONS.md as the standards. Show me the full report.",
+      "expected_output": "Separate Standards and Specifications sections with the right findings and dispositions.",
+      "files": [
+        "evals/files/discount.patch",
+        "evals/files/specification.md",
+        "evals/files/CONVENTIONS.md"
+      ],
+      "expectations": [
+        "Standards findings cite the CONVENTIONS.md rule for the use of float money arithmetic in total and for the single-letter name d (or flagged as possible Mysterious Name)",
+        "The repeated if-cascade on the code kind in apply_code, total, and describe is reported as a labelled judgement call such as possible Repeated Switches, with the concrete benefit of the proposed refactor",
+        "The unused strategy and hooks parameters are reported as possible Speculative Generality",
+        "Specifications findings quote the agreement for the missing 50 percent cap, for codes stacking instead of being replaced, and for the total being expressed in cents (1800, not 18.0)",
+        "Those behavior gaps are not fixed by editing the specification or weakening tests: they are reported back as red/green work and kept open",
+        "The report has separate '## Standards' and '## Specifications' sections and ends without a single overall verdict, giving the worst remaining issue per axis"
+      ]
+    },
+    {
+      "id": 3,
+      "kind": "behavior",
+      "prompt": "Use the review-and-refactor skill on my current work in the scratch repository. I have not told you which commit or branch it started from.",
+      "expected_output": "Without a fixed point the agent asks for one.",
+      "expectations": [
+        "The agent asks the user to supply a fixed point such as a commit, branch, tag, main, or HEAD~5",
+        "No subagent is dispatched and no file is edited before the fixed point is given"
+      ]
+    },
+    {
+      "id": 4,
+      "kind": "behavior",
+      "prompt": "Use the review-and-refactor skill on feature/discounts against main in the scratch repository. I cannot find any specification, task, or notes for it; it was a hallway request. The conventions file is CONVENTIONS.md.",
+      "expected_output": "The agent does not invent an agreement from the code.",
+      "files": [
+        "evals/files/discount.patch",
+        "evals/files/CONVENTIONS.md"
+      ],
+      "expectations": [
+        "The agent asks the user to supply the behavior agreement or to consent explicitly to a Standards-only review",
+        "The agreement is not inferred from the implementation under review",
+        "Only after explicit consent is the Specifications reviewer skipped, and the report states 'no specifications available' in that axis"
+      ]
+    },
+    {
+      "id": 5,
+      "kind": "behavior",
+      "prompt": "Use the review-and-refactor skill on feature/discounts against main, with the attached agreement and conventions. Constraint: the working tree also has an unrelated uncommitted edit to README.md, and one untracked file shop/receipt.py that belongs to this work. Apply whatever supported refactors you accept.",
+      "expected_output": "Only the requested scope is reviewed and edited, and edits stay uncommitted.",
+      "files": [
+        "evals/files/discount.patch",
+        "evals/files/specification.md",
+        "evals/files/CONVENTIONS.md"
+      ],
+      "expectations": [
+        "git status --short is read to separate the requested work from unrelated edits",
+        "shop/receipt.py is included as a separate new-file snapshot without being staged, and the included paths are recorded",
+        "README.md is left unchanged and out of every captured diff",
+        "Accepted refactors are applied in small steps with the existing tests run before and after",
+        "The refactors are left uncommitted and the report says so"
+      ]
+    },
+    {
+      "id": 6,
+      "kind": "behavior",
+      "prompt": "Use the review-and-refactor skill on feature/discounts against main with the attached agreement and conventions. The reviewers have reported; I have accepted the Standards renames and the removal of the unused strategy and hooks parameters. Continue to the end of the run.",
+      "expected_output": "The same reviewers verify the refactors, and the run ends rather than looping.",
+      "files": [
+        "evals/files/discount.patch",
+        "evals/files/specification.md",
+        "evals/files/CONVENTIONS.md"
+      ],
+      "expectations": [
+        "The patch from the starting state to the final state and the full final diff against the pinned merge-base are captured",
+        "The original reviewers are sent the artifacts, dispositions, and check results, and their contexts are reused instead of a new full review being dispatched",
+        "Each reviewer marks its original findings resolved or open with evidence and inspects for regressions from the refactor",
+        "Further subjective smell suggestions stay in the report and do not start another review round",
+        "The report states the checks run and their results, and says the edits remain uncommitted"
+      ]
+    },
+    {
+      "id": 7,
+      "kind": "behavior",
+      "prompt": "Use the review-and-refactor skill on feature/discounts against main with the attached agreement and conventions. I only want a report this time: do not change any file.",
+      "expected_output": "The run ends after review with findings and no edits.",
+      "files": [
+        "evals/files/discount.patch",
+        "evals/files/specification.md",
+        "evals/files/CONVENTIONS.md"
+      ],
+      "expectations": [
+        "Both reviews run and the findings are reported by axis",
+        "No file in the repository is edited and no refactor is applied",
+        "The agent does not run a verification round, since nothing was changed"
+      ]
+    },
+    {
+      "id": 8,
+      "kind": "behavior",
+      "prompt": "Use the review-and-refactor skill on feature/discounts against main with the attached agreement and conventions. The report is finished. I have not said anything yet about sharing it. The scratch repository has no real remote.",
+      "expected_output": "Publication is offered, not performed.",
+      "files": [
+        "evals/files/discount.patch",
+        "evals/files/specification.md",
+        "evals/files/CONVENTIONS.md"
+      ],
+      "expectations": [
+        "The agent asks whether to publish the report and where, such as a pull request, a ticket, or a chat thread",
+        "Nothing is posted without explicit user authorization",
+        "If the user chooses a destination, the publish-message skill is called with the report and destination, preserving finding dispositions and verification limits"
+      ]
+    },
+    {
+      "id": 9,
+      "kind": "no-trigger",
+      "prompt": "A teammate left three comments on my pull request asking for a rename, a missing null check, and a different error message. Work through their comments and reply to them.",
+      "expected_output": "Existing reviewer feedback is an address-feedback request.",
+      "expectations": [
+        "The review-and-refactor skill is not invoked and no independent reviewers are dispatched",
+        "The agent uses the address-feedback skill (or names it) and starts by accounting for each comment with a disposition"
+      ]
+    },
+    {
+      "id": 10,
+      "kind": "no-trigger",
+      "prompt": "Scan the whole codebase for places where modules are shallow or tangled and show me the best candidates for restructuring. There is no particular branch or change involved.",
+      "expected_output": "A codebase-wide architecture scan is improve-codebase-architecture, not a review of a diff.",
+      "expectations": [
+        "The review-and-refactor skill is not invoked and no fixed point is requested",
+        "The agent uses the improve-codebase-architecture skill (or names it) to scan and present candidates"
+      ]
+    }
+  ]
+}

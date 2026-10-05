@@ -1,0 +1,12 @@
+Output of `git log --oneline -n 20` (this fixture has no .git directory):
+
+e4a91c2 orders: fix discount recomputed in OrderRepo
+b83d7f0 orders: validate quantity in OrderValidator
+9c12aa4 orders: add guest checkout to intake
+71fe0b8 orders: handle pricing timeout in intake
+5d0e3a6 docs: update README badges
+2a8c9b1 orders: fix rounding when quote has mixed currencies
+f6b4d17 orders: validate sku format
+c0e7a52 ci: bump node version
+8a3f1d9 orders: persist guest email on order
+3b95e04 orders: fix intake double-submit

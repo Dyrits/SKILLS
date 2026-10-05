@@ -50,6 +50,16 @@ class LayoutChecks(unittest.TestCase):
                    "## When to reach for it\nA trigger.\n\n## Common questions\nA question.\n\n"
                    "## It's working if\nA signal.\n\n## Where it fits\nA role.\n")
 
+        for bucket, name in (("reference", "example"), ("productivity", "guide")):
+            self.write(f"skills/{bucket}/{name}/evals/evals.json", json.dumps(self.evaluations(name)))
+
+    @staticmethod
+    def evaluations(name):
+        return {"skill_name": name, "evals": [
+            {"id": number, "kind": kind, "prompt": "A request.", "expected_output": "A result.",
+             "expectations": ["One observable.", "Another observable."]}
+            for number, kind in enumerate(("trigger", "behavior", "no-trigger"), 1)]}
+
     def write(self, relative, content):
         path = self.root / relative
         path.parent.mkdir(parents=True, exist_ok=True)
@@ -74,6 +84,29 @@ class LayoutChecks(unittest.TestCase):
         self.write("skills/reference/example/SKILL.md",
                    "---\nname: example\ndisable-model-invocation: true\n---\nAn example skill.\n")
         self.assertIn("skill blocks model invocation", self.result()[1])
+
+    def test_missing_evaluations(self):
+        (self.root / "skills/reference/example/evals/evals.json").unlink()
+        self.assertIn("missing evals/evals.json", self.result()[1])
+
+    def test_evaluations_need_every_kind(self):
+        document = self.evaluations("example")
+        document["evals"][2]["kind"] = "trigger"
+        self.write("skills/reference/example/evals/evals.json", json.dumps(document))
+        self.assertIn("covering trigger, behavior, no-trigger", self.result()[1])
+
+    def test_evaluations_name_must_match(self):
+        self.write("skills/reference/example/evals/evals.json", json.dumps(self.evaluations("other")))
+        self.assertIn("skill_name should be example", self.result()[1])
+
+    def test_evaluation_needs_expectations_and_files(self):
+        document = self.evaluations("example")
+        document["evals"][0]["expectations"] = ["Only one."]
+        document["evals"][1]["files"] = ["evals/files/absent.txt"]
+        self.write("skills/reference/example/evals/evals.json", json.dumps(document))
+        output = self.result()[1]
+        self.assertIn("eval 1 needs at least two", output)
+        self.assertIn("missing file evals/files/absent.txt", output)
 
     def test_broken_relative_link(self):
         self.write("CLAUDE.md", "[missing](missing.md)\n")

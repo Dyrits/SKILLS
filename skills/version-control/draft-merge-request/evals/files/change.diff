@@ -1,0 +1,35 @@
+diff --git a/migrations/0007_total_cents.py b/migrations/0007_total_cents.py
+new file mode 100644
+--- /dev/null
++++ b/migrations/0007_total_cents.py
+@@ -0,0 +1,14 @@
++def upgrade(db):
++    db.execute("ALTER TABLE orders ADD COLUMN total_cents INTEGER")
++    db.execute("UPDATE orders SET total_cents = CAST(ROUND(total * 100) AS INTEGER)")
++    db.execute("ALTER TABLE orders DROP COLUMN total")
++
++
++def downgrade(db):
++    raise NotImplementedError("the float totals are not kept")
+diff --git a/orders/models.py b/orders/models.py
+--- a/orders/models.py
++++ b/orders/models.py
+@@ -10,7 +10,7 @@ class Order:
+-    total: float
++    total_cents: int
+ 
+-    def display_total(self):
+-        return f"{self.total:.2f}"
++    def display_total(self):
++        return f"{self.total_cents // 100}.{self.total_cents % 100:02d}"
+diff --git a/orders/test_models.py b/orders/test_models.py
+--- a/orders/test_models.py
++++ b/orders/test_models.py
+@@ -4,3 +4,7 @@ from orders.models import Order
+ def test_display_total_plain():
+-    assert Order(total=12.5).display_total() == "12.50"
++    assert Order(total_cents=1250).display_total() == "12.50"
++
++
++def test_display_total_sum_of_lines():
++    assert Order(total_cents=10 + 20).display_total() == "0.30"

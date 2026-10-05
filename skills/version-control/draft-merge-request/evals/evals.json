@@ -1,0 +1,138 @@
+{
+  "skill_name": "draft-merge-request",
+  "evals": [
+    {
+      "id": 1,
+      "kind": "trigger",
+      "prompt": "I'm about to open a pull request for the order-totals change. Can you write the description? The ticket is ticket.md, the change is change.diff, and the before and after output is in before-after.txt.",
+      "expected_output": "A body in the template: a small summary visual, a before and after pair, and a door and blast radius call.",
+      "files": [
+        "evals/files/ticket.md",
+        "evals/files/change.diff",
+        "evals/files/before-after.txt"
+      ],
+      "expectations": [
+        "The draft-merge-request skill is invoked without the user naming it",
+        "The body has exactly three sections in order: Summary, Evidence, Merge danger",
+        "The Summary opens with a small visual (call tree, file tree, pseudocode, diff sketch, or Mermaid diagram) rather than a paragraph",
+        "The Summary explains why the change exists using the ticket (float drift in totals), not only which files changed",
+        "The body starts directly with the template, with no preamble before the Summary heading"
+      ]
+    },
+    {
+      "id": 2,
+      "kind": "behavior",
+      "prompt": "Use the draft-merge-request skill for the change in change.diff, with ticket.md as the source and before-after.txt as the evidence. Pay attention to the merge danger part.",
+      "expected_output": "The migration that drops a column is called a one-way door, with a blast radius that names what a bad merge reaches.",
+      "files": [
+        "evals/files/ticket.md",
+        "evals/files/change.diff",
+        "evals/files/before-after.txt"
+      ],
+      "expectations": [
+        "The Door line says one-way, because the migration drops the total column and its downgrade raises NotImplementedError",
+        "The Blast radius is named in one word, and a short line says what it reaches, including the migration that runs on deploy and every consumer of Order.total",
+        "The Evidence section shows both states as a Before and After pair, with the 0.30000000000000004 output before and 0.30 after, or the test that went from failing to passing",
+        "The failing test is sketched as pseudocode or named, not pasted in full",
+        "The Door and Blast radius lines are in bold in the template's form: '**Door:**' and '**Blast radius:**'"
+      ]
+    },
+    {
+      "id": 3,
+      "kind": "behavior",
+      "prompt": "Use the draft-merge-request skill. The ticket is ticket.fr.md (written in French), the change is change.diff, and the evidence is before-after.txt. The project glossary says to use 'commande' for order and 'total' for the amount.",
+      "expected_output": "The body is written in the language of the ticket, with the project's domain terms.",
+      "files": [
+        "evals/files/ticket.fr.md",
+        "evals/files/change.diff",
+        "evals/files/before-after.txt"
+      ],
+      "expectations": [
+        "The prose of the body is written in French, the language of the primary source",
+        "The domain terms from the glossary (commande, total) are used instead of other synonyms",
+        "Code, commands, and output keep their original form and are not translated",
+        "The body keeps the template's three sections and has no preamble"
+      ]
+    },
+    {
+      "id": 4,
+      "kind": "behavior",
+      "prompt": "Use the draft-merge-request skill for change.diff and ticket.md, with before-after.txt as evidence. The illustrate skill is not installed on this machine.",
+      "expected_output": "The agent names the missing skill with its install command, still renders a minimal inline view, and says the step ran without the skill.",
+      "files": [
+        "evals/files/ticket.md",
+        "evals/files/change.diff",
+        "evals/files/before-after.txt"
+      ],
+      "expectations": [
+        "The agent tells the user that illustrate is missing and gives the command 'npx skills@latest add Dyrits/SKILLS --skill=illustrate'",
+        "The Summary is still produced, using the smallest view from the template that makes the key point clear, rendered inline in Markdown",
+        "The agent reports the Summary step as done without the skill rather than stopping or leaving the section empty"
+      ]
+    },
+    {
+      "id": 5,
+      "kind": "behavior",
+      "prompt": "Use the draft-merge-request skill for change.diff and ticket.md. The environment cannot produce screenshots and there is no user interface in this change. The only evidence I have is: 'all 14 tests pass on the branch'.",
+      "expected_output": "A bare statement that tests pass is not accepted as a before and after pair.",
+      "files": [
+        "evals/files/ticket.md",
+        "evals/files/change.diff"
+      ],
+      "expectations": [
+        "The agent does not present 'tests pass' alone as the Evidence section",
+        "The Evidence uses the test that went from failing to passing (test_display_total_sum_of_lines) or changed console output as a Before and After pair, taken from the diff and ticket, or the agent asks for the failing run rather than inventing one",
+        "No screenshot is claimed or fabricated"
+      ]
+    },
+    {
+      "id": 6,
+      "kind": "behavior",
+      "prompt": "Use the draft-merge-request skill for change.diff. I have no ticket or specification for it, just the branch. Write the pull request description.",
+      "expected_output": "Without a primary source the agent asks for or looks for one instead of describing the diff as if it were the intent.",
+      "files": [
+        "evals/files/change.diff"
+      ],
+      "expectations": [
+        "The agent asks for the ticket or specification, or searches for it, before writing the reason for the change",
+        "The Summary does not state a purpose the diff cannot support as if it were established fact; any inferred intent is labelled as inferred",
+        "The visual is still chosen from the diff's structure"
+      ]
+    },
+    {
+      "id": 7,
+      "kind": "behavior",
+      "prompt": "Use the draft-merge-request skill for change.diff with ticket.md and before-after.txt, then open the pull request for me. This is a scratch repository with no real remote.",
+      "expected_output": "The body is written and the agent stops: opening and pushing stay with the user.",
+      "files": [
+        "evals/files/ticket.md",
+        "evals/files/change.diff",
+        "evals/files/before-after.txt"
+      ],
+      "expectations": [
+        "The agent writes the body and does not run gh pr create, git push, or any command that opens the request",
+        "The agent says that pushing, opening the request, and setting reviewers are left to the user"
+      ]
+    },
+    {
+      "id": 8,
+      "kind": "no-trigger",
+      "prompt": "A reviewer commented on my pull request that the migration should be reversible and that a variable is misnamed. Work through their comments and reply.",
+      "expected_output": "Handling review comments belongs to address-feedback.",
+      "expectations": [
+        "The draft-merge-request skill is not invoked and no new body is written",
+        "The request is handled by the address-feedback skill: assess the comments, propose dispositions, then implement and reply"
+      ]
+    },
+    {
+      "id": 9,
+      "kind": "no-trigger",
+      "prompt": "Review the changes on this branch against our standards and refactor anything that doesn't fit before I open the pull request.",
+      "expected_output": "A review and refactor of the branch belongs to review-and-refactor, not to writing a description.",
+      "expectations": [
+        "The draft-merge-request skill is not invoked",
+        "The request is handled by the review-and-refactor skill"
+      ]
+    }
+  ]
+}

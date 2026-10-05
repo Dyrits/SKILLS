@@ -1,0 +1,13 @@
+{
+  "model": "classifier-fast-demo",
+  "tier": "fast",
+  "labels": ["billing related", "not billing related"],
+  "results": [
+    {"label": "billing related", "confidence": 0.95, "scores": {"billing related": 0.95, "not billing related": 0.05}},
+    {"label": "not billing related", "confidence": 0.91, "scores": {"billing related": 0.09, "not billing related": 0.91}},
+    {"label": "not billing related", "confidence": 0.74, "scores": {"billing related": 0.26, "not billing related": 0.74}},
+    {"label": "not billing related", "confidence": null, "scores": null, "escalated": true, "unscored": "Escalated to a reasoning model; no calibrated score."},
+    {"label": "not billing related", "confidence": 0.88, "scores": {"billing related": 0.12, "not billing related": 0.88}},
+    {"label": "billing related", "confidence": 0.62, "scores": {"billing related": 0.62, "not billing related": 0.38}}
+  ]
+}

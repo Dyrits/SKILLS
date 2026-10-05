@@ -1,0 +1,149 @@
+{
+  "skill_name": "graphify",
+  "evals": [
+    {
+      "id": 1,
+      "kind": "trigger",
+      "prompt": "I want to replace the paper sign-up sheets at our climbing gym with online slot booking, but it is far too big for one session and I do not even know all the questions yet: payments, waivers, instructor-led classes, calendar invites. Do not build anything. Map out the decisions we have to settle across the next few sessions. The workspace and its tracker configuration are in the attached files; treat chart-workspace as the repository root.",
+      "expected_output": "A local decision map with sharp decision tasks and blocking relationships, vague areas kept as fog, and no implementation.",
+      "files": [
+        "evals/files/chart-workspace/.agents/issue-tracker.md"
+      ],
+      "expectations": [
+        "The graphify skill is invoked without the user naming it",
+        "The agent reads .agents/issue-tracker.md before creating any record",
+        "A named destination is settled with the user through the refine and model-domain skills before the map is created",
+        "documentation/capabilities/<capability>/map.md is created with Destination, Notes, Decisions so far (empty), Not yet specified, and Out of scope sections",
+        "Each child task under tasks/NN-<slug>.md holds a question to decide, not an implementation slice, and carries a Type line of research, prototype, refine, or task",
+        "Questions that are still too vague (for example payments or waivers) stay under Not yet specified instead of becoming tasks",
+        "Blocking lines are added in a second pass, after the child tasks exist",
+        "No application code is written",
+        "The agent asks once whether the user wants a visual representation, then stops without resolving any decision task"
+      ]
+    },
+    {
+      "id": 2,
+      "kind": "behavior",
+      "prompt": "Use the graphify skill to chart a map for a multi-session effort: moving our invoicing from a spreadsheet to a proper system. This directory is a brand-new project and has no .agents folder at all.",
+      "expected_output": "The agent stops and sends the user to set up the workspace instead of inventing tracker storage.",
+      "expectations": [
+        "The agent looks for .agents/issue-tracker.md and reports it is missing",
+        "The agent tells the user to run /setup-ai-workspace",
+        "The agent stops: no map.md, task file, or remote record is created",
+        "The agent does not guess a tracker convention to continue"
+      ]
+    },
+    {
+      "id": 3,
+      "kind": "behavior",
+      "prompt": "Work through the member-booking map in the attached workspace (treat mapped-workspace as the repository root). Do not name a task; pick the next one yourself. I am here and will answer your questions.",
+      "expected_output": "The first frontier task is claimed before work starts, and the human decision is resolved through live questions, not invented answers.",
+      "files": [
+        "evals/files/mapped-workspace/.agents/issue-tracker.md",
+        "evals/files/mapped-workspace/documentation/capabilities/member-booking/map.md",
+        "evals/files/mapped-workspace/documentation/capabilities/member-booking/tasks/01-choose-booking-model.md",
+        "evals/files/mapped-workspace/documentation/capabilities/member-booking/tasks/02-slot-picker-layout.md",
+        "evals/files/mapped-workspace/documentation/capabilities/member-booking/tasks/03-cancellation-policy.md",
+        "evals/files/mapped-workspace/documentation/capabilities/member-booking/tasks/04-waitlist-behaviour.md",
+        "evals/files/mapped-workspace/documentation/capabilities/member-booking/tasks/05-calendar-provider-rate-limits.md"
+      ],
+      "expectations": [
+        "The map is loaded once at low resolution, without opening every task body up front",
+        "The agent picks Cancellation policy: it skips Slot picker layout (already claimed) and Waitlist behaviour (blocked by an unresolved task)",
+        "Progress: claimed is set on the Cancellation policy file before any resolution work begins",
+        "Cancellation policy is a refine task, so the agent interviews the human through the refine and model-domain skills and waits for live answers",
+        "The task is not marked resolved and no Answer is written until the human has actually answered",
+        "Tasks are referred to by their titles in narration, not by bare numbers or identifiers"
+      ]
+    },
+    {
+      "id": 4,
+      "kind": "behavior",
+      "prompt": "Work through the member-booking map in the attached workspace (treat mapped-workspace as the repository root), on the Cancellation policy task. I am the gym manager, and these are my live answers. Members can cancel free of charge until 12 hours before the slot. A later cancellation forfeits one credit from their ten-slot pass. A no-show forfeits the credit and counts one strike; three strikes in 60 days pause booking for a week. I want that because empty slots cost us more than the credit is worth.",
+      "expected_output": "The task is resolved with its answer and rationale, the map and specification are updated, the next task is made visible but not started.",
+      "files": [
+        "evals/files/mapped-workspace/.agents/issue-tracker.md",
+        "evals/files/mapped-workspace/documentation/capabilities/member-booking/map.md",
+        "evals/files/mapped-workspace/documentation/capabilities/member-booking/tasks/01-choose-booking-model.md",
+        "evals/files/mapped-workspace/documentation/capabilities/member-booking/tasks/02-slot-picker-layout.md",
+        "evals/files/mapped-workspace/documentation/capabilities/member-booking/tasks/03-cancellation-policy.md",
+        "evals/files/mapped-workspace/documentation/capabilities/member-booking/tasks/04-waitlist-behaviour.md",
+        "evals/files/mapped-workspace/documentation/capabilities/member-booking/tasks/05-calendar-provider-rate-limits.md"
+      ],
+      "expectations": [
+        "Progress: claimed is set on the task before any other edit",
+        "The answer, its rationale (empty slots cost more than the credit), and evidence are appended under an Answer heading, with the original question left intact",
+        "The task is set to Progress: resolved",
+        "The map's Decisions so far gains one entry with a link wrapped around the task title and a one-line gist",
+        "The agreed cancellation behavior is written to specifications.md for the capability, without copying the whole task body",
+        "Waitlist behaviour is now unblocked but is not claimed, started, or resolved in this session",
+        "Any newly sharp question becomes a task with its blockers wired, and a graduated patch is cleared from Not yet specified",
+        "The agent asks once whether the user wants a visual representation of the graph and then stops"
+      ]
+    },
+    {
+      "id": 5,
+      "kind": "behavior",
+      "prompt": "Work through the member-booking map in the attached workspace (treat mapped-workspace as the repository root), on the Calendar provider rate limits task. The workspace is a scratch git repository with no remote.",
+      "expected_output": "The research task is delegated to a subagent that calls the research skill, with findings on a throwaway branch and linked from the task.",
+      "files": [
+        "evals/files/mapped-workspace/.agents/issue-tracker.md",
+        "evals/files/mapped-workspace/documentation/capabilities/member-booking/map.md",
+        "evals/files/mapped-workspace/documentation/capabilities/member-booking/tasks/01-choose-booking-model.md",
+        "evals/files/mapped-workspace/documentation/capabilities/member-booking/tasks/02-slot-picker-layout.md",
+        "evals/files/mapped-workspace/documentation/capabilities/member-booking/tasks/03-cancellation-policy.md",
+        "evals/files/mapped-workspace/documentation/capabilities/member-booking/tasks/04-waitlist-behaviour.md",
+        "evals/files/mapped-workspace/documentation/capabilities/member-booking/tasks/05-calendar-provider-rate-limits.md"
+      ],
+      "expectations": [
+        "The task is claimed before work begins",
+        "The agent treats it as an agent-driven research task and starts a subagent that calls the research skill, instead of asking the human to decide",
+        "The findings are captured on a throwaway research/<name> branch, with a context pointer from the task",
+        "The recorded answer links the findings instead of pasting their contents",
+        "Cancellation policy, the first frontier task, is not resolved in this run because the user named a different task"
+      ]
+    },
+    {
+      "id": 6,
+      "kind": "behavior",
+      "prompt": "Work through the member-booking map in the attached workspace (treat mapped-workspace as the repository root). Midway through the session I tell you: the cafe point-of-sale idea is definitely not part of this effort, and please add it as a task so we do not forget it. Then continue with the next frontier task.",
+      "expected_output": "Work beyond the destination is recorded under Out of scope, not as a task or fog, and the session still resolves at most one decision.",
+      "files": [
+        "evals/files/mapped-workspace/.agents/issue-tracker.md",
+        "evals/files/mapped-workspace/documentation/capabilities/member-booking/map.md",
+        "evals/files/mapped-workspace/documentation/capabilities/member-booking/tasks/01-choose-booking-model.md",
+        "evals/files/mapped-workspace/documentation/capabilities/member-booking/tasks/02-slot-picker-layout.md",
+        "evals/files/mapped-workspace/documentation/capabilities/member-booking/tasks/03-cancellation-policy.md",
+        "evals/files/mapped-workspace/documentation/capabilities/member-booking/tasks/04-waitlist-behaviour.md",
+        "evals/files/mapped-workspace/documentation/capabilities/member-booking/tasks/05-calendar-provider-rate-limits.md"
+      ],
+      "expectations": [
+        "The cafe point-of-sale work is not created as a decision task and is not placed under Not yet specified",
+        "It stays under Out of scope with a reason, and the agent explains that deferred work belongs in the backlog or a fresh effort",
+        "A candidate deferred to another effort is recorded in the backlog following the document skill's rules",
+        "At most one decision task (plus parallel research) is resolved in the session"
+      ]
+    },
+    {
+      "id": 7,
+      "kind": "no-trigger",
+      "prompt": "We have already agreed the behavior for five features of our gym booking app: waitlists, class packs, guest passes, instructor schedules, and a check-in kiosk. Nothing is open to research or decide. I just need to pick which one to build first and park the rest.",
+      "expected_output": "No decision graph is charted; the request is routed to prioritize because decisions are settled and only the order is open.",
+      "expectations": [
+        "The graphify skill is not invoked and no map or decision task is created",
+        "The agent treats the work as choosing the next outcome and uses or recommends the prioritize skill",
+        "One focus is recommended and the other four are kept as deferred or candidate outcomes"
+      ]
+    },
+    {
+      "id": 8,
+      "kind": "no-trigger",
+      "prompt": "The specification for the guest pass feature is written and approved. Break it into delivery tasks with acceptance criteria and blocking dependencies so we can start implementing.",
+      "expected_output": "The behavior is agreed, so the request belongs to taskify, not to a decision graph.",
+      "expectations": [
+        "The graphify skill is not invoked and no decision map is charted",
+        "The agent uses the taskify skill, or says taskify is the right tool, to produce tasks with acceptance criteria and explicit blockers"
+      ]
+    }
+  ]
+}

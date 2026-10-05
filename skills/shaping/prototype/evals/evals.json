@@ -1,0 +1,119 @@
+{
+  "skill_name": "prototype",
+  "evals": [
+    {
+      "id": 1,
+      "kind": "trigger",
+      "prompt": "Before we commit to our refund state machine (requested, approved, refunded, with partial refunds and chargebacks), I want to try it. I am not sure it copes with a chargeback that arrives after a partial refund. Can you make something my finance colleague, who does not code, can click through to see what happens?",
+      "expected_output": "A single self-contained HTML demo with an in-page statement of the question, a pure logic module, free-play buttons, and guided scenarios.",
+      "expectations": [
+        "The prototype skill is invoked and the logic branch is chosen, because the question is about a state model",
+        "The output is one HTML file using plain HTML, CSS, and JavaScript, with no framework, bundler, or server",
+        "A visible intro (not only a code comment) states the question being explored",
+        "The state logic sits in one pure module with no DOM or document access, and the page only calls into it",
+        "The current state is rendered as a labelled panel (not raw JSON) and re-rendered after every click",
+        "Free-play buttons exist for each action, and guided walkthroughs are tabs, each with a plain-language description and ordered buttons to press",
+        "The scenarios include a happy path, the chargeback-after-partial-refund edge case, and an attempt at something that should be illegal",
+        "Buttons and labels use domain language (refund, chargeback) rather than reducer or action names",
+        "No tests, database, or persistence are added"
+      ]
+    },
+    {
+      "id": 2,
+      "kind": "trigger",
+      "prompt": "I want to see a few options for the settings screen before we commit to a layout. The current one is a boring stack of cards. The project is attached (treat storefront as the repository root).",
+      "expected_output": "Structurally different variants rendered on the existing /settings route behind a ?variant= switcher with a floating bottom bar.",
+      "files": [
+        "evals/files/storefront/package.json",
+        "evals/files/storefront/src/app/settings/page.tsx"
+      ],
+      "expectations": [
+        "The prototype skill is invoked and the UI branch is chosen",
+        "The plan is stated in one line, such as three variants switchable via ?variant= on the existing /settings route",
+        "The variants are mounted on the existing /settings route (host-page sub-shape), not on a new throwaway route",
+        "The existing data fetching stays above the switcher and only the rendered subtree changes per variant",
+        "Three variants are produced by default, never more than five, each a clearly named component",
+        "The variants differ in structure (layout, hierarchy, primary affordance), not just in colour or copy",
+        "A floating bottom-centre bar has left and right arrows and a label naming the current variant",
+        "The arrows update the URL search param, and the left and right arrow keys also cycle, except while an input, textarea, or contenteditable is focused",
+        "The switcher is hidden in production builds",
+        "The agent tells the user how to start it with one command from the project's task runner and which ?variant= keys exist"
+      ]
+    },
+    {
+      "id": 3,
+      "kind": "behavior",
+      "prompt": "Use the prototype skill. I am away for the afternoon and cannot answer questions. Try out our idea for prorating a downgrade (the logic lives in src/billing/proration.ts, project attached, treat storefront as the repository root) and leave me something to look at when I am back.",
+      "expected_output": "With the user unreachable, the agent picks the branch from the surrounding code and states the assumption at the top of the prototype.",
+      "files": [
+        "evals/files/storefront/package.json",
+        "evals/files/storefront/src/billing/proration.ts"
+      ],
+      "expectations": [
+        "The agent does not stop to ask a clarifying question while the user is away",
+        "The logic branch is chosen because the surrounding code is a backend module",
+        "The assumption (that this is a logic question, and which question) is stated at the top of the prototype",
+        "The prototype is a shareable single HTML file the user can double-click, with the proration logic isolated in a pure module",
+        "The prototype is clearly named as a prototype and kept apart from application behavior and the production build",
+        "State is held in memory only"
+      ]
+    },
+    {
+      "id": 4,
+      "kind": "behavior",
+      "prompt": "Use the prototype skill. The settings-screen prototype is done: three variants lived on /settings behind a ?variant= switcher. I picked variant B (sidebar layout) because the notification toggles are reachable without scrolling. Capture the answer and clean up. Assume a scratch git repository with no remote.",
+      "expected_output": "The verdict and evidence are recorded, the winner is kept without a production-readiness claim, and the unselected variants are preserved off the main branch.",
+      "expectations": [
+        "The recorded answer names the winning variant, the question, and the reason (toggles reachable without scrolling)",
+        "The verdict and evidence are recorded in the feature's draft or specifications and in working state, with remaining acceptance listed",
+        "A CHANGELOG.md record states that the prototype's code still needs production validation",
+        "The full set of variants is preserved as a primary source on a throwaway branch with a context pointer in the work record, not left in the main branch",
+        "Integrating variant B is treated as needing authorized acceptance and the production checks (tests, error handling, appearance and interaction evidence) before it counts as done",
+        "The switcher and experimental labels are removed from the integrated code, and the losing variants are dropped from main",
+        "No claim is made that the experiment alone shows production readiness"
+      ]
+    },
+    {
+      "id": 5,
+      "kind": "behavior",
+      "prompt": "Prototype our whole storefront app for me: catalogue, cart, checkout, accounts, with a real database and login, so we can see if the idea works.",
+      "expected_output": "The request is not a single scoped question, so the agent narrows it to one experiment instead of building a whole application.",
+      "expectations": [
+        "The agent does not start building the whole application",
+        "The agent explains that a prototype answers one question and asks the user to name the single question (logic, state model, or UI) to test, or tells the user to run /iterate when the application itself is wanted",
+        "No real database or login is wired in; if persistence turns out to be the question, a scratch database or local file with a clear PROTOTYPE, wipe me name is proposed",
+        "The agent proceeds only once the user requests or approves a scoped experiment"
+      ]
+    },
+    {
+      "id": 6,
+      "kind": "no-trigger",
+      "prompt": "The checkout summary design is agreed and written into the specifications, including the exact layout. Build it.",
+      "expected_output": "No question remains to experiment on, so the agreed design goes to implement.",
+      "expectations": [
+        "The prototype skill is not invoked and no ?variant= switcher or demo file is created",
+        "The agent uses the implement skill, or names it as the right tool, to build the agreed specification"
+      ]
+    },
+    {
+      "id": 7,
+      "kind": "no-trigger",
+      "prompt": "Does the third-party maps API we are considering support offline tiles, and what does its documentation say about usage limits? I only want the facts before we try anything.",
+      "expected_output": "An external fact-finding request belongs to research, not to an experiment.",
+      "expectations": [
+        "The prototype skill is not invoked and no demo or variants are built",
+        "The agent uses the research skill, or names it as the right tool, to gather cited facts from the API's primary documentation"
+      ]
+    },
+    {
+      "id": 8,
+      "kind": "no-trigger",
+      "prompt": "Checkout throws a null pointer error about once in twenty runs since yesterday's deploy. Write a throwaway script that reproduces it so we can find the cause.",
+      "expected_output": "A reproduction harness for one known defect is the debug skill's feedback loop, not a design experiment.",
+      "expectations": [
+        "The prototype skill is not invoked and no state-model demo or UI variants are produced",
+        "The agent uses the debug skill, or names it as the right tool, and builds a reproduction loop for the failure"
+      ]
+    }
+  ]
+}

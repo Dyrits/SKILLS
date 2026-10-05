@@ -1,0 +1,121 @@
+{
+  "skill_name": "test-first",
+  "evals": [
+    {
+      "id": 1,
+      "kind": "trigger",
+      "prompt": "Let's do TDD on a new Python function `parse_duration(text)` that turns strings like \"1h30m\", \"45s\" and \"2h\" into a number of seconds. Work in a scratch project with pytest. The agreed behavior is exactly those three forms; anything malformed raises ValueError.",
+      "expected_output": "Seams are agreed first, then vertical red-green slices with independent expected values.",
+      "expectations": [
+        "The test-first skill is invoked without the user naming it",
+        "Before any test is written the agent states the public interface and the seams under test and asks the user to confirm them",
+        "No test is written until the seams are confirmed",
+        "The first test is run and seen failing for the expected missing behavior before any implementation is written",
+        "Expected values are known literals (for example 5400 for \"1h30m\"), not recomputed with the same arithmetic as the implementation",
+        "Each cycle is one test followed by the minimum code to pass it, not all tests first and then all code"
+      ]
+    },
+    {
+      "id": 2,
+      "kind": "behavior",
+      "prompt": "Use the test-first skill on the cart module. My plan is to write every test for apply_coupon, remove_coupon, and totals first, about 25 tests, and then implement the module in one go. Do it that way.",
+      "expected_output": "The agent declines horizontal slicing and works in vertical slices.",
+      "expectations": [
+        "The agent explains that writing all tests first verifies imagined behavior and works in vertical slices instead",
+        "One test is written and seen failing, then minimal code makes it pass, and only then is the next test written",
+        "Each later test responds to what the previous cycle revealed rather than coming from a precomputed list"
+      ]
+    },
+    {
+      "id": 3,
+      "kind": "behavior",
+      "prompt": "Use the test-first skill to fix the bug in checkout.py: an expired coupon should be rejected with CouponExpiredError per the agreed behavior in coupons.md, but apply_coupon still discounts it. Project is a scratch Python repository with pytest.",
+      "expected_output": "The bug is reproduced by a failing test at an agreed seam before the fix.",
+      "files": [
+        "evals/files/checkout.py",
+        "evals/files/coupons.md"
+      ],
+      "expectations": [
+        "The agent states the seam (apply_coupon's public interface) and confirms it before writing a test",
+        "A failing test that uses SAVE10 after its 2026-01-31 expiry and expects CouponExpiredError is written and seen failing before the fix",
+        "The fix is the minimum change that makes that test pass, with no speculative features",
+        "The test calls apply_coupon with a passed-in date and does not mock any internal collaborator or read module internals",
+        "The agent does not implement the unresolved proposals (stacking with loyalty points, category-limited coupons)"
+      ]
+    },
+    {
+      "id": 4,
+      "kind": "behavior",
+      "prompt": "Use the test-first skill on apply_coupon in checkout.py. Here is the test I want for the 10 percent rule, please add it: `expected = cart_total - cart_total * 10 // 100; assert apply_coupon(cart_total, 'SAVE10', today) == expected` with cart_total = 2000. Also I want a test that mocks COUPONS and asserts that the lookup function was called once.",
+      "expected_output": "Tautological and implementation-coupled tests are replaced with behavior tests.",
+      "files": [
+        "evals/files/checkout.py",
+        "evals/files/coupons.md"
+      ],
+      "expectations": [
+        "The agent identifies the first test as tautological because it recomputes the expected value the way the code does",
+        "The expected value is replaced with an independent literal (1800 for a cart of 2000)",
+        "The agent declines to mock COUPONS or assert on call counts, naming implementation-coupling as the reason",
+        "Mocks, if any, are limited to system boundaries such as time, and the date is passed in as a dependency"
+      ]
+    },
+    {
+      "id": 5,
+      "kind": "behavior",
+      "prompt": "Use the test-first skill on a new function `render_receipt(order)` that returns a receipt as text. It calls an external payment provider client to look up the card's last four digits. Show how you would design and test it in a scratch project.",
+      "expected_output": "Mocking is confined to the boundary and the provider is injected.",
+      "expectations": [
+        "The payment provider client is passed in as a dependency instead of being created inside render_receipt",
+        "Only the payment provider boundary is faked, and the test does not mock the project's own classes or modules",
+        "The faked provider exposes a specific function per operation rather than one generic fetcher with conditional logic",
+        "The assertion checks the rendered receipt text through the public function, not that the provider was called"
+      ]
+    },
+    {
+      "id": 6,
+      "kind": "behavior",
+      "prompt": "Use the test-first skill to take `parse_duration` through its three agreed forms in a scratch project. After the last test is green you notice the parsing function has an ugly nested conditional. Do what the skill directs.",
+      "expected_output": "Refactoring stays out of the red-green loop and is deferred to review.",
+      "expectations": [
+        "The agent does not restructure the nested conditional inside the red-green loop",
+        "The agent points to the review-and-refactor skill as the place where the cleanup belongs",
+        "Unfinished cycles and verification evidence are left in documentation/work-in-progress.md, not in the conversation alone"
+      ]
+    },
+    {
+      "id": 7,
+      "kind": "behavior",
+      "prompt": "Use the test-first skill on the coupons feature described in coupons.md. Go ahead and write tests for everything in the file, including the stacking with loyalty points.",
+      "expected_output": "Only agreed behavior becomes tests; unresolved proposals are kept distinct.",
+      "files": [
+        "evals/files/coupons.md",
+        "evals/files/checkout.py"
+      ],
+      "expectations": [
+        "Tests are derived only from the section marked as agreed (apply_coupon total, SAVE10 rounding, expired coupon)",
+        "The agent tells the user that stacking with loyalty points is an unresolved proposal and writes no test for it until it is agreed",
+        "No assertion is invented for behavior the agreement does not state"
+      ]
+    },
+    {
+      "id": 8,
+      "kind": "no-trigger",
+      "prompt": "The test test_export_handles_empty_report fails on CI but passes locally, and I have no idea why. Find out what is going on.",
+      "expected_output": "Investigating an existing failure is debug, not the red-green loop.",
+      "expectations": [
+        "The test-first skill is not invoked and no new tests are written",
+        "The agent uses the debug skill (or names it) and begins by reproducing or comparing the CI and local environments"
+      ]
+    },
+    {
+      "id": 9,
+      "kind": "no-trigger",
+      "prompt": "All tests are green and the feature is done. Please tidy the structure of the new module now: rename the unclear helpers and remove the duplicated branches. Do not change behavior.",
+      "expected_output": "A structural cleanup after green is the review-and-refactor phase.",
+      "expectations": [
+        "The test-first skill is not invoked and no new failing test is written",
+        "The agent uses the review-and-refactor skill (or names it) and asks for or resolves the fixed point"
+      ]
+    }
+  ]
+}

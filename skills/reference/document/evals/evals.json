@@ -1,0 +1,161 @@
+{
+  "skill_name": "document",
+  "evals": [
+    {
+      "id": 1,
+      "kind": "trigger",
+      "prompt": "Write a runbook for the on-call engineer on how to deal with the nightly invoice export when it hangs or fails. The files that describe the job are in evals/files/nightly-export/ (the old notes there were written in 2024).",
+      "expected_output": "A reader-first runbook whose claims are checked against the current system, with the stale notes corrected and the existing source linked.",
+      "files": [
+        "evals/files/nightly-export/crontab.txt",
+        "evals/files/nightly-export/export.sh",
+        "evals/files/nightly-export/OLD-NOTES.md"
+      ],
+      "expectations": [
+        "The document skill is invoked without the user naming it",
+        "The agent names the reader (the on-call engineer) and the task (recovering a hung or failed export), and the opening section holds what that task needs first",
+        "The runbook gives the schedule as 03:30 from crontab.txt, not 02:00 from the old notes",
+        "The runbook mentions the lock file and the exit code 75 behavior from export.sh as the cause of 'already running or stale lock'",
+        "The agent reports to the user that the old notes disagree with the current crontab and the script",
+        "The log path used is the one in the crontab (/var/log/harbor-export.log), not the old notes' path",
+        "The runbook points to export.sh and the crontab by path instead of copying their contents",
+        "A restart command from the old notes is not presented as current without a check against the system"
+      ]
+    },
+    {
+      "id": 2,
+      "kind": "behavior",
+      "prompt": "Use the document skill. The project is in evals/files/ledger/. Add the changelog record for this: the download endpoint's header row fix was delivered. Unit and integration tests pass in CI, and Marta (product) accepted it today, 2026-10-05. The task is documentation/capabilities/invoice-export/tasks/01-csv-writer.md. A team of four shares this record.",
+      "expected_output": "A full delivery record in the required heading and field order with the next free identifier.",
+      "files": [
+        "evals/files/ledger/CHANGELOG.md",
+        "evals/files/ledger/documentation/capabilities/invoice-export/tasks/01-csv-writer.md",
+        "evals/files/ledger/documentation/capabilities/invoice-export/specifications.md"
+      ],
+      "expectations": [
+        "The agent reads PROJECT-DOCUMENTS.md before writing the record",
+        "The record is appended to CHANGELOG.md and earlier records are unchanged",
+        "The heading is `## CHG-0008 · 2026-10-05 · <title>`, the next free identifier",
+        "Type is Code and Event is Delivery",
+        "Scope is a sentence case display label",
+        "All five content fields (Summary, Reason, References, Validation, Evidence) are present, because a team shares the record",
+        "Validation states the passing checks and Marta's acceptance",
+        "References point to the task file and the specifications by path"
+      ]
+    },
+    {
+      "id": 3,
+      "kind": "behavior",
+      "prompt": "Use the document skill. Project in evals/files/ledger/. We finished the second change to the invoice export and all tests pass, but Marta has not accepted it yet; she reviews on Thursday. Write the changelog record for the delivery so we don't forget.",
+      "expected_output": "No Delivery record is written yet; the work stays in working state until acceptance is given.",
+      "files": [
+        "evals/files/ledger/CHANGELOG.md",
+        "evals/files/ledger/documentation/capabilities/invoice-export/specifications.md"
+      ],
+      "expectations": [
+        "The agent does not append a Delivery record to CHANGELOG.md while the required human acceptance is pending",
+        "The agent records the pending acceptance in documentation/work-in-progress.md with its next action (Marta's review on Thursday)",
+        "The agent tells the user that the delivery record is written once acceptance is given",
+        "CHANGELOG.md is unchanged"
+      ]
+    },
+    {
+      "id": 4,
+      "kind": "behavior",
+      "prompt": "Use the document skill. Project in evals/files/ledger/. Ticket PLAT-212 reports that credit notes show up in the invoice export with a positive total. We agreed today with the user (me) that credit notes must be exported with a negative total and a leading minus sign. File this work.",
+      "expected_output": "The bugfix is filed as a task under the existing capability and the incomplete agreed behavior is corrected in its specifications.",
+      "files": [
+        "evals/files/ledger/documentation/capabilities/invoice-export/specifications.md",
+        "evals/files/ledger/documentation/capabilities/invoice-export/tasks/01-csv-writer.md",
+        "evals/files/ledger/CHANGELOG.md"
+      ],
+      "expectations": [
+        "The task is created at documentation/capabilities/invoice-export/tasks/02-<kebab-case-outcome>.md, numbered after 01",
+        "No folder is created named after the ticket PLAT-212, a date, or a technology",
+        "The slug names the outcome (for example credit notes export negative totals), not the ticket number",
+        "The task has a coherent outcome, checkable acceptance criteria, and an explicit blockers line",
+        "specifications.md is corrected to state that credit notes are exported with a negative total and a leading minus sign",
+        "The agent does not edit the files for a new capability folder or a draft, since nothing is unresolved"
+      ]
+    },
+    {
+      "id": 5,
+      "kind": "behavior",
+      "prompt": "Use the document skill. Project in evals/files/remote-tracker/. Add 'bulk invoice import' to our backlog as a candidate outcome with medium priority, blocked by the invoice export.",
+      "expected_output": "The authoritative remote backlog owns the entry; the local file stays a pointer and the remote change is gated on approval.",
+      "files": [
+        "evals/files/remote-tracker/.agents/issue-tracker.md",
+        "evals/files/remote-tracker/documentation/backlog.md"
+      ],
+      "expectations": [
+        "The agent reads .agents/issue-tracker.md to find the configured tracker",
+        "The agent does not copy the candidate outcome and its priority into documentation/backlog.md",
+        "documentation/backlog.md still holds only the board's name and its verified link",
+        "The agent shows the proposed remote entry and its destination and asks for approval before creating or changing anything in the tracker",
+        "The agent does not treat the backlog or the tracker configuration as the user's approval for the change"
+      ]
+    },
+    {
+      "id": 6,
+      "kind": "behavior",
+      "prompt": "Use the document skill. Project in evals/files/ledger/. Update the invoice-export specifications so the CSV also includes a `customer_email` column; finance asked for it. Also fix the typo 'Totals use a dot' in the same file while you are there.",
+      "expected_output": "The agent spots the conflict with the global obligation, asks the user instead of relaxing it, and continues the independent work.",
+      "files": [
+        "evals/files/ledger/documentation/requirements.md",
+        "evals/files/ledger/documentation/capabilities/invoice-export/specifications.md"
+      ],
+      "expectations": [
+        "The agent reads documentation/requirements.md before editing the specifications",
+        "The agent notices that a customer_email column conflicts with the requirement that exports never contain email addresses",
+        "The agent asks the user how to resolve the conflict and does not relax the requirement itself",
+        "The agent does not write the customer_email column into the specifications before the user answers",
+        "The agent continues the independent work, such as the typo fix, while the question is open"
+      ]
+    },
+    {
+      "id": 7,
+      "kind": "behavior",
+      "prompt": "Use the document skill. This small project has a script that exports invoices. We are adding a --dry-run flag to it today, a one-day change by one person. Set up the project documents we need for this.",
+      "expected_output": "Only the documents with useful information are created; no empty scaffold is generated.",
+      "expectations": [
+        "The agent creates documents lazily, only where they carry useful information",
+        "The agent does not create empty requirements, specifications, draft, or task files as scaffolding",
+        "The batch is tracked with the backlog, work-in-progress, and changelog alone, or fewer",
+        "A changelog record for this small batch is light, with Summary, References, and Validation, or absent until a consequential decision or delivery",
+        "Existing applicable requirements and specifications are still read and respected"
+      ]
+    },
+    {
+      "id": 8,
+      "kind": "behavior",
+      "prompt": "Use the document skill to write an onboarding guide for the coding agents that work on this project: how to run the tests, where the specifications live, and what needs the user's approval before it is changed.",
+      "expected_output": "Because the document instructs agents, the agent-writing skill is called as well.",
+      "expectations": [
+        "The agent names its reader as a coding agent and the task the document supports",
+        "The agent calls write-for-agents because the document instructs agents",
+        "The guide links to the specifications and requirements instead of copying their content",
+        "When write-for-agents is not installed, the agent names it with the install command, carries out the step from its intent, and says it did so without the skill"
+      ]
+    },
+    {
+      "id": 9,
+      "kind": "no-trigger",
+      "prompt": "This README paragraph reads like an AI wrote it: lots of 'seamlessly', 'robust', and 'it's worth noting'. Strip that out and keep the meaning.",
+      "expected_output": "Cutting AI tells from existing prose belongs to unslop, not to writing documentation.",
+      "expectations": [
+        "The document skill is not invoked",
+        "The agent uses unslop to remove the filler and recurring AI patterns without changing the meaning"
+      ]
+    },
+    {
+      "id": 10,
+      "kind": "no-trigger",
+      "prompt": "Write the description for my pull request: a summary image of what changed, before and after screenshots, and what could break after merge.",
+      "expected_output": "A request body belongs to draft-merge-request.",
+      "expectations": [
+        "The document skill is not invoked",
+        "The agent uses draft-merge-request, which writes the summary visual, the before and after evidence, and the merge danger"
+      ]
+    }
+  ]
+}

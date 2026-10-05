@@ -1,0 +1,208 @@
+{
+  "skill_name": "improve-codebase-architecture",
+  "evals": [
+    {
+      "id": 1,
+      "kind": "trigger",
+      "prompt": "The order-handling code in this service feels tangled and hard to test: I keep having to jump between four files to follow one order. Can you find refactoring candidates in that area? The project is attached (treat orders-service as the repository root).",
+      "expected_output": "A visual HTML report of deepening candidates for the named area, then a stop that asks which to explore, with no code changed.",
+      "files": [
+        "evals/files/orders-service/src/orders/OrderHandler.ts",
+        "evals/files/orders-service/src/orders/OrderValidator.ts",
+        "evals/files/orders-service/src/orders/OrderRepo.ts",
+        "evals/files/orders-service/src/orders/PricingClient.ts",
+        "evals/files/orders-service/GLOSSARY.md",
+        "evals/files/orders-service/documentation/architecture-decision-record/0007-keep-pricing-client-separate.md",
+        "evals/files/orders-service/CONVENTIONS.md"
+      ],
+      "expectations": [
+        "The improve-codebase-architecture skill is invoked without the user naming it",
+        "GLOSSARY.md, the architecture decision records in documentation/architecture-decision-record/, and CONVENTIONS.md are read before scanning",
+        "Because the user named a direction (the order-handling area), the commit-history hot-spot inference is skipped",
+        "The architecture vocabulary comes from the design-modules skill (module, interface, depth, seam, adapter, leverage, locality)",
+        "A sub-agent is spawned to walk the code, and the deletion test is applied to anything suspected of being shallow",
+        "A self-contained HTML file is written to documentation/architecture-audit/architecture-audit-<timestamp>.html and opened for the user",
+        "The agent reports the report's path relative to the repository root",
+        "No interfaces are proposed yet",
+        "No source code is changed",
+        "The agent ends by asking 'Which of these would you like to explore?' and stops without starting the refinement"
+      ]
+    },
+    {
+      "id": 2,
+      "kind": "behavior",
+      "prompt": "Use the improve-codebase-architecture skill on the attached orders-service (treat it as the repository root), focused on order intake. I want to look at the report itself, so just produce it and do not interview me yet.",
+      "expected_output": "An HTML report whose cards, diagrams, badges, and wording follow the report format and the domain glossary.",
+      "files": [
+        "evals/files/orders-service/src/orders/OrderHandler.ts",
+        "evals/files/orders-service/src/orders/OrderValidator.ts",
+        "evals/files/orders-service/src/orders/OrderRepo.ts",
+        "evals/files/orders-service/src/orders/PricingClient.ts",
+        "evals/files/orders-service/GLOSSARY.md",
+        "evals/files/orders-service/documentation/architecture-decision-record/0007-keep-pricing-client-separate.md",
+        "evals/files/orders-service/CONVENTIONS.md"
+      ],
+      "expectations": [
+        "The HTML loads Tailwind through its CDN script and Mermaid through its CDN module import, and has no other scripts",
+        "Each candidate is rendered as a card with Files, Problem, Solution, Benefits, a side-by-side Before and After diagram, and a recommendation badge of Strong, Worth exploring, or Speculative",
+        "At least one diagram is hand-built (divs or SVG) and at least one is Mermaid, instead of every diagram using the same pattern",
+        "Benefits are stated in terms of locality and leverage and say how tests would improve, not 'cleaner code' or 'easier to maintain'",
+        "Domain language follows GLOSSARY.md (for example the Order intake module), not names like 'OrderHandler service'",
+        "The words component, service, API, and boundary are not used in place of module, interface, and seam",
+        "The report ends with a Top recommendation section naming which candidate to tackle first and why",
+        "The agent stops after writing the report and does not begin interviewing"
+      ]
+    },
+    {
+      "id": 3,
+      "kind": "behavior",
+      "prompt": "Use the improve-codebase-architecture skill on the attached orders-service (treat it as the repository root), focused on order intake and pricing. Note that OrderRepo has been recomputing discounts itself, which keeps causing bugs.",
+      "expected_output": "A candidate that contradicts an architecture decision record is surfaced only because the friction is real, and is marked clearly.",
+      "files": [
+        "evals/files/orders-service/src/orders/OrderHandler.ts",
+        "evals/files/orders-service/src/orders/OrderValidator.ts",
+        "evals/files/orders-service/src/orders/OrderRepo.ts",
+        "evals/files/orders-service/src/orders/PricingClient.ts",
+        "evals/files/orders-service/GLOSSARY.md",
+        "evals/files/orders-service/documentation/architecture-decision-record/0007-keep-pricing-client-separate.md",
+        "evals/files/orders-service/CONVENTIONS.md"
+      ],
+      "expectations": [
+        "The agent reads architecture decision record 0007 before scanning",
+        "A candidate touching the PricingClient is surfaced only because pricing logic leaking into OrderRepo is real friction",
+        "That candidate's card carries a clearly marked callout saying it contradicts architecture decision record 0007 and why it is worth reopening",
+        "The report does not list every theoretical refactor the decision record forbids, and does not re-litigate the decision elsewhere",
+        "Candidates that do not conflict with a decision record carry no such callout"
+      ]
+    },
+    {
+      "id": 4,
+      "kind": "behavior",
+      "prompt": "Use the improve-codebase-architecture skill on the attached orders-service (treat it as the repository root). I have no particular area in mind, so you decide where to look. The output of `git log --oneline` is in git-log.txt, since this fixture has no .git directory.",
+      "expected_output": "With no named direction, the scan is steered by recent change history.",
+      "files": [
+        "evals/files/orders-service/src/orders/OrderHandler.ts",
+        "evals/files/orders-service/src/orders/OrderValidator.ts",
+        "evals/files/orders-service/src/orders/OrderRepo.ts",
+        "evals/files/orders-service/src/orders/PricingClient.ts",
+        "evals/files/orders-service/GLOSSARY.md",
+        "evals/files/orders-service/documentation/architecture-decision-record/0007-keep-pricing-client-separate.md",
+        "evals/files/orders-service/CONVENTIONS.md",
+        "evals/files/orders-service/git-log.txt"
+      ],
+      "expectations": [
+        "The agent reads the commit history before deciding where to scan",
+        "It identifies the frequently changed area (orders, especially intake, validation, and pricing) as the hot spot and says so",
+        "Candidates cluster around those frequently changed files, not around dormant ones",
+        "The agent explains the scoping choice briefly in its report or message"
+      ]
+    },
+    {
+      "id": 5,
+      "kind": "behavior",
+      "prompt": "Use the improve-codebase-architecture skill on the attached orders-service (treat it as the repository root), focused on order intake. There is no CONVENTIONS.md in this project yet.",
+      "expected_output": "The missing conventions document triggers the model-domain Conventions step, with an architecture focus, before scanning.",
+      "files": [
+        "evals/files/orders-service/src/orders/OrderHandler.ts",
+        "evals/files/orders-service/src/orders/OrderValidator.ts",
+        "evals/files/orders-service/src/orders/OrderRepo.ts",
+        "evals/files/orders-service/src/orders/PricingClient.ts",
+        "evals/files/orders-service/GLOSSARY.md",
+        "evals/files/orders-service/documentation/architecture-decision-record/0007-keep-pricing-client-separate.md"
+      ],
+      "expectations": [
+        "The agent notices CONVENTIONS.md is missing before scanning",
+        "The model-domain skill is called for its Conventions step with the architecture focus before the scan starts",
+        "The scan and report follow only after that step is done or declined",
+        "No code is changed"
+      ]
+    },
+    {
+      "id": 6,
+      "kind": "behavior",
+      "prompt": "Use the improve-codebase-architecture skill. The report from an earlier run is attached (treat orders-service as the repository root). I want to explore the first candidate, 'Collapse the Order intake pipeline'. Staff call that moment 'Order Placement', and I would like the deepened module named that, though it is not in the glossary yet.",
+      "expected_output": "The chosen candidate is walked through with refine, the glossary gains the new term inline, and no interface is imposed before the user wants alternatives.",
+      "files": [
+        "evals/files/orders-service/src/orders/OrderHandler.ts",
+        "evals/files/orders-service/src/orders/OrderValidator.ts",
+        "evals/files/orders-service/src/orders/OrderRepo.ts",
+        "evals/files/orders-service/src/orders/PricingClient.ts",
+        "evals/files/orders-service/GLOSSARY.md",
+        "evals/files/orders-service/documentation/architecture-decision-record/0007-keep-pricing-client-separate.md",
+        "evals/files/orders-service/CONVENTIONS.md",
+        "evals/files/orders-service/documentation/architecture-audit/architecture-audit-20261001-0900.html"
+      ],
+      "expectations": [
+        "The refine skill is called to walk the decision tree on constraints, dependencies, the shape of the deepened module, what sits behind the seam, and which tests survive",
+        "The term Order Placement is added to GLOSSARY.md during the conversation through model-domain, in the same style as existing entries",
+        "The existing Order, Quote, and Intake terms are reused and not redefined",
+        "Questions are asked in dependency-aware rounds about this one candidate, not about the other candidates",
+        "Alternative interfaces are explored through the design-modules skill's design-it-twice pattern only if the user asks for alternatives",
+        "No source code is changed"
+      ]
+    },
+    {
+      "id": 7,
+      "kind": "behavior",
+      "prompt": "Use the improve-codebase-architecture skill. From the attached earlier report (treat orders-service as the repository root), I reject candidate 1. OrderValidator has to stay a separate module because our compliance auditors review the validation rules as a standalone unit every quarter, and merging it would break that audit.",
+      "expected_output": "A load-bearing rejection earns an offer to record an architecture decision record.",
+      "files": [
+        "evals/files/orders-service/src/orders/OrderHandler.ts",
+        "evals/files/orders-service/src/orders/OrderValidator.ts",
+        "evals/files/orders-service/src/orders/OrderRepo.ts",
+        "evals/files/orders-service/src/orders/PricingClient.ts",
+        "evals/files/orders-service/GLOSSARY.md",
+        "evals/files/orders-service/documentation/architecture-decision-record/0007-keep-pricing-client-separate.md",
+        "evals/files/orders-service/CONVENTIONS.md",
+        "evals/files/orders-service/documentation/architecture-audit/architecture-audit-20261001-0900.html"
+      ],
+      "expectations": [
+        "The agent accepts the rejection without arguing the candidate again",
+        "The agent offers to record an architecture decision record, framed so future architecture reviews do not re-suggest it",
+        "The offer states the reason (the quarterly audit of validation rules as a standalone unit)",
+        "No decision record is written until the user accepts the offer"
+      ]
+    },
+    {
+      "id": 8,
+      "kind": "behavior",
+      "prompt": "Use the improve-codebase-architecture skill. From the attached earlier report (treat orders-service as the repository root), I will skip candidate 1 for now. It is not worth it right now because we are busy with the holiday release.",
+      "expected_output": "An ephemeral reason does not earn an architecture decision record.",
+      "files": [
+        "evals/files/orders-service/src/orders/OrderHandler.ts",
+        "evals/files/orders-service/src/orders/OrderValidator.ts",
+        "evals/files/orders-service/src/orders/OrderRepo.ts",
+        "evals/files/orders-service/src/orders/PricingClient.ts",
+        "evals/files/orders-service/GLOSSARY.md",
+        "evals/files/orders-service/documentation/architecture-decision-record/0007-keep-pricing-client-separate.md",
+        "evals/files/orders-service/CONVENTIONS.md",
+        "evals/files/orders-service/documentation/architecture-audit/architecture-audit-20261001-0900.html"
+      ],
+      "expectations": [
+        "The agent acknowledges the decision to skip",
+        "No architecture decision record is offered or written, because the reason is ephemeral",
+        "The agent may offer to explore another candidate, but does not start refining the skipped one"
+      ]
+    },
+    {
+      "id": 9,
+      "kind": "no-trigger",
+      "prompt": "The order total in the confirmation email is sometimes different from the one on the screen, but only for orders with a discount code. Figure out why.",
+      "expected_output": "A specific known defect belongs to debug, not to an architecture survey.",
+      "expectations": [
+        "The improve-codebase-architecture skill is not invoked and no HTML audit report is written",
+        "The agent uses the debug skill, or names it as the right tool, and starts by building a feedback loop for the symptom"
+      ]
+    },
+    {
+      "id": 10,
+      "kind": "no-trigger",
+      "prompt": "I finished the discount feature on this branch. Review the changes since main against our conventions and the agreed behavior, and refactor anything that does not meet them.",
+      "expected_output": "Reviewing and refactoring a specific diff belongs to review-and-refactor, not to a codebase-wide deepening survey.",
+      "expectations": [
+        "The improve-codebase-architecture skill is not invoked and no documentation/architecture-audit report is created",
+        "The agent uses the review-and-refactor skill, or names it as the right tool, for the changes since the fixed point"
+      ]
+    }
+  ]
+}

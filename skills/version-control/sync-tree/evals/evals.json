@@ -1,0 +1,142 @@
+{
+  "skill_name": "sync-tree",
+  "evals": [
+    {
+      "id": 1,
+      "kind": "trigger",
+      "prompt": "My CSV export work is finished and committed in the task worktree. Bring it back to the original checkout's main branch. Scratch setup: run `sh setup-scratch.sh <empty-dir> fast-forward`; the original is <empty-dir>/orig and the task worktree is <empty-dir>/task.",
+      "expected_output": "Main is fast-forwarded to the task commit and verified, with nothing pushed upstream.",
+      "files": [
+        "evals/files/setup-scratch.sh"
+      ],
+      "expectations": [
+        "The sync-tree skill is invoked from the request alone",
+        "The agent reads the source's status, branch, HEAD, and git worktree list --porcelain, and verifies the source branch worktree/csv-export, its commit, the destination repository, and the target branch main before any update",
+        "main is checked out and clean in the original, so it is fast-forwarded from that checkout with GIT_EDITOR=true git -C <original> merge --ff-only <source commit>, after rechecking its branch and HEAD",
+        "After the update the destination ref is read again and equals the captured source commit, and the target checkout's HEAD and status are verified read-only",
+        "Nothing is pushed to any upstream or network remote, and no code is changed or tests rerun",
+        "The report names the source, target, destination, and one verified commit ID"
+      ]
+    },
+    {
+      "id": 2,
+      "kind": "behavior",
+      "prompt": "Use the sync-tree skill. Scratch setup: run `sh setup-scratch.sh <empty-dir> dirty-target`; the original is <empty-dir>/orig (on main, with an uncommitted edit to README.md) and the task worktree is <empty-dir>/task. Land worktree/csv-export on main.",
+      "expected_output": "The agent stops because the target checkout has uncommitted changes and does not work around the protection.",
+      "files": [
+        "evals/files/setup-scratch.sh"
+      ],
+      "expectations": [
+        "The agent inspects the target checkout read-only and finds the uncommitted change in README.md",
+        "The agent stops and explains why, without updating main",
+        "The agent does not stash, reset, clean, commit, or switch branches in the original checkout, and does not change Git configuration to get around the stop"
+      ]
+    },
+    {
+      "id": 3,
+      "kind": "behavior",
+      "prompt": "Use the sync-tree skill. Scratch setup: run `sh setup-scratch.sh <empty-dir> diverged`; the original is <empty-dir>/orig (on branch scratch, main is not checked out and has a hotfix commit the task branch lacks) and the task worktree is <empty-dir>/task. Land worktree/csv-export on main.",
+      "expected_output": "Diverged histories are shown and a replacement waits for explicit approval; no destination commit is dropped silently.",
+      "files": [
+        "evals/files/setup-scratch.sh"
+      ],
+      "expectations": [
+        "The agent captures the exact source and target commit IDs and finds the histories diverged",
+        "The agent shows both commit IDs and the destination-only commit (Hotfix on main)",
+        "The agent asks for explicit approval before replacing the history of main, and does not update main before the answer",
+        "Even though the branch could be fast-forwarded after a rebase, the agent does not rebase or merge itself, because syncing transfers history and combining it is a separate request"
+      ]
+    },
+    {
+      "id": 4,
+      "kind": "behavior",
+      "prompt": "Use the sync-tree skill. Scratch setup: run `sh setup-scratch.sh <empty-dir> unchecked`; the original is <empty-dir>/orig (on branch scratch; main is an ancestor of the task commit and is not checked out anywhere) and the task worktree is <empty-dir>/task. Land worktree/csv-export on main.",
+      "expected_output": "The shared ref is updated with a compare-and-set, leaving every checkout untouched.",
+      "files": [
+        "evals/files/setup-scratch.sh"
+      ],
+      "expectations": [
+        "The agent reads the target ref directly from the repository, not from a cached remote-tracking ref",
+        "The update uses git update-ref refs/heads/main <source commit> <observed target commit>, so an intervening update cannot be overwritten",
+        "The scratch checkout and the task worktree are not switched or modified",
+        "The destination ref is read again and equals the source commit before the agent reports success"
+      ]
+    },
+    {
+      "id": 5,
+      "kind": "behavior",
+      "prompt": "Use the sync-tree skill. Scratch setup: run `sh setup-scratch.sh <empty-dir> synced`; main already equals the task commit. The original is <empty-dir>/orig (on branch scratch) and the task worktree is <empty-dir>/task. Land worktree/csv-export on main.",
+      "expected_output": "An already-synced branch is reported as a no-op, not a landing.",
+      "files": [
+        "evals/files/setup-scratch.sh"
+      ],
+      "expectations": [
+        "The agent compares the captured commit IDs and reports that the branch is already synced",
+        "No update, push, or fast-forward is performed",
+        "The report calls it a no-op and not a landing"
+      ]
+    },
+    {
+      "id": 6,
+      "kind": "behavior",
+      "prompt": "Use the sync-tree skill. Scratch setup: run `sh setup-scratch.sh <empty-dir> target-ahead`; main already contains the task commit plus a later commit. The original is <empty-dir>/orig (on branch scratch) and the task worktree is <empty-dir>/task. Land worktree/csv-export on main.",
+      "expected_output": "The agent refuses to remove destination commits.",
+      "files": [
+        "evals/files/setup-scratch.sh"
+      ],
+      "expectations": [
+        "The agent finds that the target is ahead of the source",
+        "The agent stops rather than moving main back, and explains that this would remove destination commits",
+        "main still points at its original commit after the run"
+      ]
+    },
+    {
+      "id": 7,
+      "kind": "behavior",
+      "prompt": "Use the sync-tree skill. Scratch setup: run `sh setup-scratch.sh <empty-dir> uncommitted`; the task worktree <empty-dir>/task has an uncommitted edit to export.py. The original is <empty-dir>/orig on main. Land the task work on main.",
+      "expected_output": "The agent stops and asks the user to commit the intended changes first.",
+      "files": [
+        "evals/files/setup-scratch.sh"
+      ],
+      "expectations": [
+        "The agent detects the uncommitted change in the source worktree and stops",
+        "The agent asks the user to commit the intended changes in the source worktree first, and does not commit them itself",
+        "main in the original is not modified"
+      ]
+    },
+    {
+      "id": 8,
+      "kind": "behavior",
+      "prompt": "Use the sync-tree skill. Scratch setup: run `sh setup-scratch.sh <empty-dir> fast-forward`. I only said: land the task worktree work. I gave no target branch, and the task branch is named worktree/csv-export, which does not exist in the original.",
+      "expected_output": "The target is not guessed from a temporary branch name.",
+      "files": [
+        "evals/files/setup-scratch.sh"
+      ],
+      "expectations": [
+        "The agent does not default to a branch named worktree/csv-export in the original and does not create one silently",
+        "The agent asks for the target repository and branch, offering main as the likely candidate it found from live Git state",
+        "No update happens before the user answers"
+      ]
+    },
+    {
+      "id": 9,
+      "kind": "no-trigger",
+      "prompt": "Rebase my branch fix/login onto origin/main, fix any conflicts, and push it with a safe force.",
+      "expected_output": "Rewriting a branch onto a new base and pushing it is rebase; sync-tree only transfers committed history.",
+      "expectations": [
+        "The sync-tree skill is not invoked",
+        "The request is handled by the rebase skill, with the push waiting for separate approval"
+      ]
+    },
+    {
+      "id": 10,
+      "kind": "no-trigger",
+      "prompt": "I want to try a risky refactor without touching my current checkout. Set up a separate worktree and do the work there.",
+      "expected_output": "Creating the isolated checkout is work-in-tree; there is nothing to sync yet.",
+      "expectations": [
+        "The sync-tree skill is not invoked",
+        "The request is handled by the work-in-tree skill, which creates the worktree and leaves a return route"
+      ]
+    }
+  ]
+}

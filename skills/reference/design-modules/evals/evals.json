@@ -1,0 +1,109 @@
+{
+  "skill_name": "design-modules",
+  "evals": [
+    {
+      "id": 1,
+      "kind": "trigger",
+      "prompt": "The order code in evals/files/order-pipeline.ts is hard to test and the three small functions are always called together. How should I reshape the interface so it's easier to test and easier for an AI agent to navigate? Don't change any files, I want the design first.",
+      "expected_output": "A design discussion in the deep-module vocabulary that applies the deletion test, picks a seam, and treats the payment provider as an injected dependency.",
+      "files": [
+        "evals/files/order-pipeline.ts"
+      ],
+      "expectations": [
+        "The design-modules skill is invoked without the user naming it",
+        "The discussion uses the terms module, interface, seam, and adapter, and does not substitute component, service, API, or boundary",
+        "The agent applies the deletion test to validateOrder, totalOrder, and saveOrder and says whether complexity would reappear in callers",
+        "The agent proposes one deeper module whose interface is small, such as a single processOrder entry point",
+        "The agent classifies the payment provider as a true external dependency and proposes it as an injected port with a mock adapter in tests",
+        "The agent notes that processOrder creating the gateway itself is what makes it hard to test",
+        "No file is edited in this turn"
+      ]
+    },
+    {
+      "id": 2,
+      "kind": "behavior",
+      "prompt": "Use the design-modules skill to review this design proposal and tell me what is weak about it: 'We will add a PaymentService component with a clean API boundary. Its API is just `charge(customerId, amount)`. We will mock the Stripe client inside it so tests stay fast.'",
+      "expected_output": "The review corrects the vocabulary and shows that the interface includes more than the type signature.",
+      "expectations": [
+        "The agent replaces service, component, API, and boundary with module, interface, and seam, and says why",
+        "The agent points out that the interface includes invariants, ordering constraints, and error modes, not only the signature charge(customerId, amount)",
+        "The agent asks what happens on a declined card or a timeout, since error modes belong to the interface",
+        "The agent notes that mocking the Stripe client inside the module tests past the interface or hides the seam",
+        "The agent states depth as leverage at the interface and does not use implementation-lines to interface-lines as the measure"
+      ]
+    },
+    {
+      "id": 3,
+      "kind": "behavior",
+      "prompt": "Use the design-modules skill. We want to add a ReportStore interface in front of our Postgres report queries. There is only ever going to be a Postgres adapter, and the team has no in-memory fake. A teammate says every dependency deserves an interface.",
+      "expected_output": "The agent calls a one-adapter seam hypothetical and discusses the dependency category and test stand-in.",
+      "expectations": [
+        "The agent states that one adapter means a hypothetical seam and that a seam is justified only when something varies across it",
+        "The agent says a port needs at least two justified adapters, typically production and test",
+        "The agent classifies Postgres as a local-substitutable dependency and suggests a local stand-in such as PGLite in the test suite as the way to test, keeping the seam internal",
+        "The agent says an interface with a single adapter would be indirection that adds nothing",
+        "The agent does not recommend exposing the internal seam at the module's external interface just because tests use it"
+      ]
+    },
+    {
+      "id": 4,
+      "kind": "behavior",
+      "prompt": "Use the design-modules skill. We merged validateOrder, totalOrder, and saveOrder into one deep module, processOrder. The three old functions have 14 unit tests between them that each call one function directly. What should we do with those tests and how should we write the new ones?",
+      "expected_output": "The agent says to replace the shallow-module tests with tests at the new interface rather than layering them.",
+      "expectations": [
+        "The agent recommends deleting the old unit tests once tests at the deepened module's interface exist",
+        "The agent says the new tests are written at the processOrder interface, since the interface is the test surface",
+        "The agent says tests assert on observable outcomes through the interface, not internal state",
+        "The agent says a test that must change when the implementation changes is testing past the interface"
+      ]
+    },
+    {
+      "id": 5,
+      "kind": "behavior",
+      "prompt": "Use the design-modules skill with its design-it-twice approach. The chosen deepening candidate is the order module from evals/files/order-pipeline.ts, with the payment provider as a true external dependency. Explore alternative interfaces for it.",
+      "expected_output": "A problem space is framed for the user first, several radically different designs are produced in parallel, and the comparison ends in an opinionated recommendation.",
+      "files": [
+        "evals/files/order-pipeline.ts"
+      ],
+      "expectations": [
+        "The agent first writes a user-facing explanation of the problem space: constraints, dependencies with their category, and a rough illustrative sketch",
+        "The agent spawns at least three sub-agents in parallel, each with a different design constraint (minimise the interface, maximise flexibility, optimise for the most common caller)",
+        "Each sub-agent receives a separate technical brief that includes the skill's vocabulary and the project's glossary vocabulary when one exists",
+        "Each design reports its interface, a usage example, what the implementation hides, its dependency strategy and adapters, and its trade-offs",
+        "The designs are presented one after another and then compared in prose by depth, locality, and seam placement",
+        "The agent ends with its own recommendation of the strongest design, proposing a hybrid if elements combine well"
+      ]
+    },
+    {
+      "id": 6,
+      "kind": "behavior",
+      "prompt": "Use the design-modules skill.",
+      "expected_output": "The reference alone does not authorize a redesign: the agent asks for a bounded question instead of exploring.",
+      "expectations": [
+        "The agent does not scan the codebase or open files looking for modules to redesign",
+        "The agent does not propose any refactor or interface change",
+        "The agent asks what module or question to apply the vocabulary to, or names a driver skill that fits a bounded question"
+      ]
+    },
+    {
+      "id": 7,
+      "kind": "no-trigger",
+      "prompt": "Running `python app.py` fails with `ImportError: cannot import name 'parse' from 'utils'`. The module utils.py clearly defines parse. Find out why it fails.",
+      "expected_output": "A failing import is a bug to diagnose, not a design question.",
+      "expectations": [
+        "The design-modules skill is not invoked and no deep-module vocabulary is applied",
+        "The agent uses debug, which runs a diagnosis loop to reproduce the failure and find its cause"
+      ]
+    },
+    {
+      "id": 8,
+      "kind": "no-trigger",
+      "prompt": "Add a failing test for the discount module that checks a 10 percent coupon on a 200 euro cart gives 20 euros off, then make it pass.",
+      "expected_output": "A test-first change request belongs to test-first, not to interface design.",
+      "expectations": [
+        "The design-modules skill is not invoked",
+        "The agent uses test-first, writing the failing test first and then the minimal code to pass it"
+      ]
+    }
+  ]
+}
