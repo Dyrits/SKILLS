@@ -24,7 +24,7 @@ Read existing configuration and conventions before proposing changes:
 
 - `git remote -v` and `.git/config`, to identify the host without assuming it is the tracker.
 - Root `AGENTS.md` and `CLAUDE.md`, including any `## Agent skills` section.
-- `documentation/agents/` and any verified tooling record.
+- `.agents/` and any verified tooling record, plus a legacy `documentation/agents/` folder from an earlier setup.
 - Root `CHANGELOG.md`, `documentation/requirements.md`, `documentation/backlog.md`, `documentation/work-in-progress.md`, and relevant capability documentation.
 - Task templates, contribution documentation, and available ticket-writing skills.
 - `GLOSSARY.md`, `GLOSSARY-MAP.md`, `GUIDELINES.md`, and relevant architecture decision records.
@@ -45,7 +45,7 @@ Ask where tasks live. Recommend GitHub for a GitHub remote, GitLab for a GitLab 
 
 Record the authoritative backlog location with the tracker choice. A local project uses `documentation/backlog.md`; a remote project uses the verified backlog or board URL and keeps only a local link in that file. Working state remains local for either tracker, with execution and resumption details rather than duplicated remote status. Preserve prior backlog history unless a migration is explicitly authorized.
 
-Record the choice in `documentation/agents/issue-tracker.md`. Preserve this established configuration filename and literal CLI/API `issue` terminology.
+Record the choice in `.agents/issue-tracker.md`. Preserve this established configuration filename and literal CLI/API `issue` terminology.
 
 For Jira or another tracker, inspect available connectors, command-line tools, and documented API workflows first. After the user provides the project identity, verify access with the smallest read-only operation. Record the verified method. If no access exists, mark it manual and prepare local Markdown without claiming to read or update the service.
 
@@ -82,6 +82,8 @@ If `GUIDELINES.md` exists, record `Guidelines: present`. Otherwise ask whether t
 
 Show the proposed agent-instruction block and configuration contents before writing. Let the user adjust them.
 
+When a legacy `documentation/agents/` folder exists, propose moving its files into `.agents/` with `git mv`, keeping their names, and updating every pointer to them in `CLAUDE.md`, `AGENTS.md`, and project documents. Move only with the user's approval, then review the moved files as existing configuration. Other skills read only `.agents/`.
+
 Edit `CLAUDE.md` if it exists; otherwise edit `AGENTS.md` if it exists. If neither exists, ask which to create. Update an existing `## Agent skills` block in place and preserve surrounding user instructions.
 
 ```markdown
@@ -89,15 +91,15 @@ Edit `CLAUDE.md` if it exists; otherwise edit `AGENTS.md` if it exists. If neith
 
 ### Task tracker
 
-<one-line tracker summary; repository specifications are authoritative and remote publication is explicit>. See `documentation/agents/issue-tracker.md`.
+<one-line tracker summary; repository specifications are authoritative and remote publication is explicit>. See `.agents/issue-tracker.md`.
 
 ### Triage roles
 
-<one-line role-vocabulary summary>. See `documentation/agents/triage-roles.md`.
+<one-line role-vocabulary summary>. See `.agents/triage-roles.md`.
 
 ### Domain documentation
 
-<single-context or multi-context summary>. See `documentation/agents/domain.md`.
+<single-context or multi-context summary>. See `.agents/domain.md`.
 
 ### Project documents
 
@@ -110,7 +112,7 @@ Before writing a script or multi-step pipeline, read `.agents/scripts/INDEX.md` 
 
 Omit the triage block and file when triage is not installed. Omit the reusable knowledge block when the instruction file already points at the scriptbook.
 
-Seed `documentation/agents/issue-tracker.md` from the selected template:
+Seed `.agents/issue-tracker.md` from the selected template:
 
 - [issue-tracker-local.md](issue-tracker-local.md)
 - [issue-tracker-github.md](issue-tracker-github.md)
@@ -123,7 +125,7 @@ Write [domain.md](domain.md), and [triage-roles.md](triage-roles.md) when applic
 
 ## 4. Optional setup
 
-Offer the other getting-started setups together, once, as one multi-select question. Mark each as already present or missing from the exploration, and preselect any the request already named:
+Offer the other setups together, once, as one multi-select question. Mark each as already present or missing from the exploration, and preselect any the request already named:
 
 | Setup | Present when | Skill |
 | --- | --- | --- |
@@ -139,4 +141,4 @@ When a selected skill is unavailable, finish the rest and tell the human how to 
 
 ## 5. Done
 
-Report the files written, the setups run or skipped, and the workflow skills that consume them. The user can edit `documentation/agents/*.md` directly later. Confirm that future work uses the shared document tree, existing history remains in place, and installed skill files were not changed.
+Report the files written, the setups run or skipped, and the workflow skills that consume them. The user can edit `.agents/*.md` directly later. Confirm that future work uses the shared document tree, existing history remains in place, and installed skill files were not changed.

@@ -22,7 +22,7 @@ It depends on the number of tasks and their tiers, since every subagent reloads 
 
 **Which models does it pick?**
 
-The ones your delegation tool actually offers, at the latest version within each tier's family. When the delegation and model routing rule from [setup-delegation-policy](../getting-started/setup-delegation-policy.md) is installed, it governs; otherwise the skill carries the same tiers.
+The ones your delegation tool actually offers, at the latest version within each tier's family. When the delegation and model routing rule from [setup-delegation-policy](../setup/setup-delegation-policy.md) is installed, it governs; otherwise the skill carries the same tiers.
 
 **Must I configure a remote tracker?**
 
@@ -48,4 +48,4 @@ It names the missing skill with its install command, carries out that step from 
 
 ## Where it fits
 
-This coordinates the implementation stage after [specify](./specify.md) and [taskify](./taskify.md), or for a batch inside [iterate](./iterate.md), then calls [review-and-refactor](./review-and-refactor.md) across the integration branch. [guide](../getting-started/guide.md) maps the other routes.
+This coordinates the implementation stage after [specify](./specify.md) and [taskify](./taskify.md), or for a batch inside [iterate](./iterate.md), then calls [review-and-refactor](./review-and-refactor.md) across the integration branch. [guide](../productivity/guide.md) maps the other routes.

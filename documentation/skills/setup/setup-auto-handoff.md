@@ -40,7 +40,7 @@ Yes. Edit `FRESH_WINDOW_MINUTES` in the copied script.
 Remove the hook entry from `.claude/settings.json`.
 
 **What if a skill it calls is not installed?**
-It names the missing skill with its install command, carries out that step from its stated intent, and tells you the step ran without it. The skills involved are listed at the top of its [`SKILL.md`](../../../skills/getting-started/setup-auto-handoff/SKILL.md).
+It names the missing skill with its install command, carries out that step from its stated intent, and tells you the step ran without it. The skills involved are listed at the top of its [`SKILL.md`](../../../skills/setup/setup-auto-handoff/SKILL.md).
 
 ## It's working if
 
@@ -50,4 +50,4 @@ It names the missing skill with its install command, carries out that step from 
 
 ## Where it fits
 
-Run-once setup per project, also offered as an optional stage of [setup-ai-workspace](./setup-ai-workspace.md). [hand-off](../productivity/hand-off.md) writes the handoff the gate demands, and [take-over](../productivity/take-over.md) resumes from it. [setup-ai-tooling](./setup-ai-tooling.md) records per-client recovery methods for the cases this gate cannot cover. [guide](./guide.md) routes the rest.
+Run-once setup per project, also offered as an optional stage of [setup-ai-workspace](./setup-ai-workspace.md). [hand-off](../productivity/hand-off.md) writes the handoff the gate demands, and [take-over](../productivity/take-over.md) resumes from it. [setup-ai-tooling](./setup-ai-tooling.md) records per-client recovery methods for the cases this gate cannot cover. [guide](../productivity/guide.md) routes the rest.

@@ -54,4 +54,4 @@ The skill suggests lefthook as the next step up, for parallel steps or per-glob 
 
 ## Where it fits
 
-Run-once setup per repository, also offered as an optional stage of [setup-ai-workspace](./setup-ai-workspace.md). [setup-git-guardrails](./setup-git-guardrails.md) pairs with it: its optional `pre-push` fallback uses this same hooks path. [guide](./guide.md) routes the rest.
+Run-once setup per repository, also offered as an optional stage of [setup-ai-workspace](./setup-ai-workspace.md). [setup-git-guardrails](./setup-git-guardrails.md) pairs with it: its optional `pre-push` fallback uses this same hooks path. [guide](../productivity/guide.md) routes the rest.

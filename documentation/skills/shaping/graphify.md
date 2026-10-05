@@ -17,7 +17,7 @@ Run `/graphify`, or let an agent or another skill reach for it when a large unce
 | The route is clear and implementation needs decomposition | Use [taskify](../workflow/taskify.md) |
 | One conversation can settle the question | Use [refine](../reference/refine.md) |
 
-The tracker configuration must exist. If it is absent, run [setup-ai-workspace](../getting-started/setup-ai-workspace.md) yourself first.
+The tracker configuration must exist. If it is absent, run [setup-ai-workspace](../setup/setup-ai-workspace.md) yourself first.
 
 ## The frontier and the fog
 
@@ -70,4 +70,4 @@ It names the missing skill with its install command, carries out that step from 
 
 ## Where it fits
 
-Graphify is a shaping workflow for multi-session uncertainty. It uses [document](../reference/document.md) for shared project documents and hands a clear route to [specify](../workflow/specify.md) or [taskify](../workflow/taskify.md). [Guide](../getting-started/guide.md) routes the surrounding flow.
+Graphify is a shaping workflow for multi-session uncertainty. It uses [document](../reference/document.md) for shared project documents and hands a clear route to [specify](../workflow/specify.md) or [taskify](../workflow/taskify.md). [Guide](../productivity/guide.md) routes the surrounding flow.

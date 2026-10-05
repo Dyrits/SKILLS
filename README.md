@@ -16,7 +16,7 @@ npx skills@latest add Dyrits/SKILLS
 
 Pick the skills you want, and which coding agents to install them on. **The installer lets you choose which skills to take: make sure `setup-ai-workspace` and `document` are among them, since most workflows rely on `document`.**
 
-Run `/setup-ai-workspace` once per repository to configure local or remote task tracking, task-writing conventions, triage roles, domain documentation, and the optional getting-started setups (tooling, commit hooks, Git guardrails, automatic handoff, delegation policy).
+Run `/setup-ai-workspace` once per repository to configure local or remote task tracking, task-writing conventions, triage roles, domain documentation, and the optional setups (tooling, commit hooks, Git guardrails, automatic handoff, delegation policy).
 
 Specifications stay authoritative in the repository. Draft remote tasks remain local until you explicitly publish them; their local files then link to the authoritative tracker records. Agents maintain local documentation autonomously within the authorized scope.
 
@@ -90,15 +90,14 @@ Not every retained skill comes from that upstream repository. The [primary-sourc
 
 The manifest is the source of truth for this list; it holds every skill outside `deprecated/`. Every skill can be run by you or reached by an agent, and a skill can call any other skill.
 
-### Getting started
+### Setup
 
-- [setup-ai-workspace](./skills/getting-started/setup-ai-workspace/SKILL.md): Configure project documents, task tracking, triage roles, and the optional getting-started setups.
-- [guide](./skills/getting-started/guide/SKILL.md): Choose the next skill, workflow, or session boundary.
-- [setup-delegation-policy](./skills/getting-started/setup-delegation-policy/SKILL.md): Configure machine-wide delegation and model-tier rules.
-- [setup-ai-tooling](./skills/getting-started/setup-ai-tooling/SKILL.md): Configure and verify selected development tools and their measurement baseline.
-- [setup-git-hooks](./skills/getting-started/setup-git-hooks/SKILL.md): Configure versioned commit hooks with formatting, linting, typechecking, and builds.
-- [setup-git-guardrails](./skills/getting-started/setup-git-guardrails/SKILL.md): Ask before destructive Git commands with client permissions and hooks.
-- [setup-auto-handoff](./skills/getting-started/setup-auto-handoff/SKILL.md): Gate Claude Code compaction on a fresh handoff.
+- [setup-ai-workspace](./skills/setup/setup-ai-workspace/SKILL.md): Configure project documents, task tracking, triage roles, and the optional setups.
+- [setup-delegation-policy](./skills/setup/setup-delegation-policy/SKILL.md): Configure machine-wide delegation and model-tier rules.
+- [setup-ai-tooling](./skills/setup/setup-ai-tooling/SKILL.md): Configure and verify selected development tools and their measurement baseline.
+- [setup-git-hooks](./skills/setup/setup-git-hooks/SKILL.md): Configure versioned commit hooks with formatting, linting, typechecking, and builds.
+- [setup-git-guardrails](./skills/setup/setup-git-guardrails/SKILL.md): Ask before destructive Git commands with client permissions and hooks.
+- [setup-auto-handoff](./skills/setup/setup-auto-handoff/SKILL.md): Gate Claude Code compaction on a fresh handoff.
 
 ### Workflow
 
@@ -137,6 +136,7 @@ The manifest is the source of truth for this list; it holds every skill outside 
 
 ### Productivity
 
+- [guide](./skills/productivity/guide/SKILL.md): Choose the next skill, workflow, or session boundary.
 - [ask-someone-else](./skills/productivity/ask-someone-else/SKILL.md): Write a questionnaire for the person who holds missing knowledge.
 - [re-explain](./skills/productivity/re-explain/SKILL.md): Re-explain a message with the missing context.
 - [take-over](./skills/productivity/take-over/SKILL.md): Resume from the latest handoff and its primary sources.

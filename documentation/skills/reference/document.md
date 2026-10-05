@@ -51,4 +51,4 @@ It names the missing skill with its install command, carries out that step from 
 
 ## Where it fits
 
-Document is a reference used by [specify](../workflow/specify.md), [taskify](../workflow/taskify.md), and delivery workflows. [Model-domain](model-domain.md) owns active terminology and qualifying architectural decisions. [Guide](../getting-started/guide.md) maps the surrounding flows.
+Document is a reference used by [specify](../workflow/specify.md), [taskify](../workflow/taskify.md), and delivery workflows. [Model-domain](model-domain.md) owns active terminology and qualifying architectural decisions. [Guide](../productivity/guide.md) maps the surrounding flows.

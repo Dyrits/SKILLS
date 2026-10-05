@@ -56,4 +56,4 @@ It names the missing skill with its install command, carries out that step from 
 
 ## Where it fits
 
-This is the just-in-time alternative to the planned route; it shares project documents with [specify](./specify.md), [taskify](./taskify.md), and [review-and-refactor](./review-and-refactor.md), and builds every batch through [implement](./implement.md). [prioritize](../shaping/prioritize.md) is its focus-selection branch. [guide](../getting-started/guide.md) maps the whole system.
+This is the just-in-time alternative to the planned route; it shares project documents with [specify](./specify.md), [taskify](./taskify.md), and [review-and-refactor](./review-and-refactor.md), and builds every batch through [implement](./implement.md). [prioritize](../shaping/prioritize.md) is its focus-selection branch. [guide](../productivity/guide.md) maps the whole system.

@@ -19,7 +19,7 @@ Type `/setup-git-guardrails`, or an agent or another skill can reach for it when
 
 | Agent | Mechanism |
 | --- | --- |
-| Claude Code | A `PreToolUse` hook on Bash running [confirm-dangerous-git.sh](../../../skills/getting-started/setup-git-guardrails/scripts/confirm-dangerous-git.sh), which answers `ask` with the reason |
+| Claude Code | A `PreToolUse` hook on Bash running [confirm-dangerous-git.sh](../../../skills/setup/setup-git-guardrails/scripts/confirm-dangerous-git.sh), which answers `ask` with the reason |
 | OpenCode | `permission.bash` glob rules in `opencode.json` set to `ask`, with `allow` exceptions after them (the last matching rule wins). Globs cannot read the current branch, so every non-dry-run push asks |
 | Codex CLI | No per-command rules exist. The skill offers a versioned `pre-push` hook and remote branch protection, and says plainly that Codex cannot be guarded at the configuration level |
 
@@ -54,4 +54,4 @@ It has no hook runner and no per-command rules. A git-level `pre-push` hook (see
 
 ## Where it fits
 
-Run-once safety setup per project or per machine, also offered as an optional stage of [setup-ai-workspace](./setup-ai-workspace.md). [setup-git-hooks](./setup-git-hooks.md) is the git-level layer that covers agents this cannot intercept. [guide](./guide.md) routes the rest.
+Run-once safety setup per project or per machine, also offered as an optional stage of [setup-ai-workspace](./setup-ai-workspace.md). [setup-git-hooks](./setup-git-hooks.md) is the git-level layer that covers agents this cannot intercept. [guide](../productivity/guide.md) routes the rest.

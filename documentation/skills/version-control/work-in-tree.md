@@ -51,4 +51,4 @@ It gives you the install command along with the instruction to run it. The skill
 
 ## Where it fits
 
-The opening leg of the isolated-worktree route, finished by [sync-tree](sync-tree.md). [rebase](rebase.md) handles bringing branches onto a new base. [guide](../getting-started/guide.md) maps the wider flow.
+The opening leg of the isolated-worktree route, finished by [sync-tree](sync-tree.md). [rebase](rebase.md) handles bringing branches onto a new base. [guide](../productivity/guide.md) maps the wider flow.

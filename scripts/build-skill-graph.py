@@ -18,7 +18,7 @@ TEMPLATE = Path("scripts/skill-graph/template.html")
 OUTPUT = Path("index.html")
 PLACEHOLDER = "/*SKILL_GRAPH_DATA*/null"
 # Sections in the order a reader reaches for them.
-BUCKET_ORDER = ["getting-started", "workflow", "shaping", "upkeep", "version-control", "productivity", "reference"]
+BUCKET_ORDER = ["setup", "workflow", "shaping", "upkeep", "version-control", "productivity", "reference"]
 ENTRY = re.compile(r"^- (?:\*\*)?\[([\w-]+)\]\(\./[\w-]+/SKILL\.md\)(?:\*\*)?:\s*(.+)$")
 
 

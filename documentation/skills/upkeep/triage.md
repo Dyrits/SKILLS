@@ -17,7 +17,7 @@ Run `/triage`, or let an agent or another skill reach for it when requests need 
 | You have decided its next state | Request the state change |
 | You need actionable work to assign | Ask what is ready |
 
-Run [setup-ai-workspace](../getting-started/setup-ai-workspace.md) first if the tracker and role mappings are absent. Triage tells you to run it rather than invoking it for you.
+Run [setup-ai-workspace](../setup/setup-ai-workspace.md) first if the tracker and role mappings are absent. Triage tells you to run it rather than invoking it for you.
 
 ## The intake machine
 
@@ -59,4 +59,4 @@ It names the missing skill with its install command, carries out that step from 
 
 ## Where it fits
 
-Triage is periodic intake maintenance. [Refine](../reference/refine.md) resolves unclear requests, while [document](../reference/document.md) owns local specifications, backlog, active-work, and changelog upkeep. [Guide](../getting-started/guide.md) routes the next step.
+Triage is periodic intake maintenance. [Refine](../reference/refine.md) resolves unclear requests, while [document](../reference/document.md) owns local specifications, backlog, active-work, and changelog upkeep. [Guide](../productivity/guide.md) routes the next step.

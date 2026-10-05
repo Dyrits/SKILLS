@@ -39,4 +39,4 @@ It names the missing skill with its install command, carries out that step from 
 
 ## Where it fits
 
-Specify is an optional chain step before [taskify](taskify.md) or [implement](implement.md). It uses [refine](../reference/refine.md) for unresolved choices and [document](../reference/document.md) for shared project records. [Guide](../getting-started/guide.md) maps these paths.
+Specify is an optional chain step before [taskify](taskify.md) or [implement](implement.md). It uses [refine](../reference/refine.md) for unresolved choices and [document](../reference/document.md) for shared project records. [Guide](../productivity/guide.md) maps these paths.

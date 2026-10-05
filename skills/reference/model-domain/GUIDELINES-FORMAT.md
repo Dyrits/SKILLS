@@ -20,7 +20,7 @@ A candidate can split: "visible text lives in data, in two languages" yields the
 
 ## Offer
 
-Check `documentation/agents/domain.md` first. When it records `Guidelines: declined`, return to the caller without asking.
+Check `.agents/domain.md` first. When it records `Guidelines: declined`, return to the caller without asking.
 Otherwise ask whether to create `GUIDELINES.md` now. On yes, run the interview below; on no, record the decline (see Declining) and return.
 
 ## Interview
@@ -57,4 +57,4 @@ When asked to check an existing `GUIDELINES.md`, run each rule through What belo
 
 ## Declining
 
-When the user declines, record `Guidelines: declined` under the Guidelines heading of `documentation/agents/domain.md` (skip when that file does not exist), so later runs do not ask again. Writing a rule later removes the line.
+When the user declines, record `Guidelines: declined` under the Guidelines heading of `.agents/domain.md` (skip when that file does not exist), so later runs do not ask again. Writing a rule later removes the line.

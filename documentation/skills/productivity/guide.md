@@ -12,7 +12,7 @@ Type `/guide`, or an agent or another skill can reach for it when the task fits.
 
 | Your situation | What the router gives back |
 | --- | --- |
-| A project whose AI tooling needs setup | [setup-ai-tooling](./setup-ai-tooling.md), also offered as an optional stage of [setup-ai-workspace](./setup-ai-workspace.md) |
+| A project whose AI tooling needs setup | [setup-ai-tooling](../setup/setup-ai-tooling.md), also offered as an optional stage of [setup-ai-workspace](../setup/setup-ai-workspace.md) |
 | Tools are configured and you want evidence of their benefit | [monitor-ai-tooling](../upkeep/monitor-ai-tooling.md), reports from existing measurements |
 | A task should run outside the original checkout | [work-in-tree](../version-control/work-in-tree.md), establishes isolation before editing |
 | Committed work in a worktree needs to reach its original local branch | [sync-tree](../version-control/sync-tree.md), transfers locally rather than publishing upstream |
@@ -31,7 +31,7 @@ Type `/guide`, or an agent or another skill can reach for it when the task fits.
 The router names skills; it does not install them.
 Everything it points at has to be installed for the recommendation to be actionable. The plugin ships every skill outside `deprecated/`, so installing the plugin or the whole set covers it.
 
-For tracker-dependent work, the router asks you to run [setup-ai-workspace](./setup-ai-workspace.md) when tracker configuration is missing. Local just-in-time work does not require tracker setup merely to maintain its working documents.
+For tracker-dependent work, the router asks you to run [setup-ai-workspace](../setup/setup-ai-workspace.md) when tracker configuration is missing. Local just-in-time work does not require tracker setup merely to maintain its working documents.
 
 ## Flows, not skills
 
@@ -81,10 +81,10 @@ For publishing conclusions already reached, [publish-message](../productivity/pu
 
 Setup and outbound skills it also routes to:
 
-- [setup-delegation-policy](./setup-delegation-policy.md) configures machine-wide delegation and model tiers.
-- [setup-git-hooks](./setup-git-hooks.md) configures versioned commit checks.
-- [setup-git-guardrails](./setup-git-guardrails.md) asks before destructive Git operations at supported enforcement points.
-- [setup-auto-handoff](./setup-auto-handoff.md) gates supported compaction on a fresh handoff.
+- [setup-delegation-policy](../setup/setup-delegation-policy.md) configures machine-wide delegation and model tiers.
+- [setup-git-hooks](../setup/setup-git-hooks.md) configures versioned commit checks.
+- [setup-git-guardrails](../setup/setup-git-guardrails.md) asks before destructive Git operations at supported enforcement points.
+- [setup-auto-handoff](../setup/setup-auto-handoff.md) gates supported compaction on a fresh handoff.
 - [classify](../productivity/classify.md) sends approved safe-to-send text to a third-party classifier and retains uncertain results.
 
 ## The phase boundary

@@ -51,7 +51,7 @@ Use checkable signals in the reader's work or trace. A reader should not have to
 
 ### Where it fits
 
-Identify the role: a chain step, run-once setup, periodic maintenance, or standalone discipline. Link the relevant neighbors with a reason, then link to `../getting-started/guide.md`.
+Identify the role: a chain step, run-once setup, periodic maintenance, or standalone discipline. Link the relevant neighbors with a reason, then link to `../productivity/guide.md`.
 
 The planned development route is `specify → taskify → implement → review-and-refactor`. Just-in-time development uses the `iterate` skill and the same project documents. General `refine` does not force a software specification.
 

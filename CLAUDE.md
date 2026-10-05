@@ -1,6 +1,6 @@
 Skills are organized into bucket folders under `skills/`:
 
-- `getting-started/`: set up once, then find your way around
+- `setup/`: set up once per repository or machine
 - `workflow/`: the idea-to-ship spine, in order
 - `shaping/`: explore an open question and produce a decision or answer that feeds the flow
 - `upkeep/`: keep the codebase and issue list healthy; generates work for the flow
@@ -23,7 +23,7 @@ Every promoted skill has a human-facing documentation page at `documentation/ski
 
 Every `SKILL.md` is reachable by both the human and the model, so any skill can call any other: no `disable-model-invocation`, no `policy.allow_implicit_invocation: false`, and a model-facing description. See [.agents/invocation.md](./.agents/invocation.md).
 
-[`guide`](./skills/getting-started/guide/SKILL.md) is the router that maps every skill and how they relate. The same trigger that re-syncs a documentation page applies to it: whenever you add, rename, remove, or change how a skill fits the flows, re-read `guide`'s `SKILL.md` and update it so the map stays accurate: a new skill it never mentions, or a stale one it still routes to, is a router that lies.
+[`guide`](./skills/productivity/guide/SKILL.md) is the router that maps every skill and how they relate. The same trigger that re-syncs a documentation page applies to it: whenever you add, rename, remove, or change how a skill fits the flows, re-read `guide`'s `SKILL.md` and update it so the map stays accurate: a new skill it never mentions, or a stale one it still routes to, is a router that lies.
 
 To (re)link every skill outside `deprecated/` into the local harness skill directories (`~/.claude/skills`, `~/.agents/skills`), run `scripts/link-skills.sh`. Each entry is a symlink into this repository, so a `git pull` keeps installed skills current; re-run the script after adding, removing, or renaming a skill.
 

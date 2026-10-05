@@ -51,4 +51,4 @@ Ordinary free-text requests do not. Anonymous proxy traffic, large inputs, or pa
 
 ## Where it fits
 
-A standalone productivity discipline for sorting before reading. [research](../shaping/research.md) and [triage](../upkeep/triage.md) are places where many items arrive and pre-sorting may help. [guide](../getting-started/guide.md) maps the wider flow.
+A standalone productivity discipline for sorting before reading. [research](../shaping/research.md) and [triage](../upkeep/triage.md) are places where many items arrive and pre-sorting may help. [guide](./guide.md) maps the wider flow.

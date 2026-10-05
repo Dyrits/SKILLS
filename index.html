@@ -19,7 +19,7 @@
     --accent: #c2410c;
     --mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
     --sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-    --getting-started: #2563eb;
+    --setup: #2563eb;
     --workflow: #c2410c;
     --shaping: #7c3aed;
     --upkeep: #be123c;
@@ -31,7 +31,7 @@
     :root {
       --bg: #0e0f11; --surface: #15171a; --sunken: #111215; --line: #24272c; --line-strong: #353a41;
       --text: #ebe9e4; --muted: #a29d93; --faint: #6d6960; --accent: #f08a4b;
-      --getting-started: #7aa7ff; --workflow: #f08a4b; --shaping: #b794f6; --upkeep: #f47c8f;
+      --setup: #7aa7ff; --workflow: #f08a4b; --shaping: #b794f6; --upkeep: #f47c8f;
       --version-control: #6fcf8f; --productivity: #5cc8bd; --reference: #b8b2a7;
     }
   }
@@ -422,7 +422,7 @@ const DATA = {
   "workspace-config": {
    "description": "Tracker, ticket conventions, triage roles, and domain layout.",
    "label": "Workspace configuration",
-   "path": "documentation/agents/"
+   "path": ".agents/"
   },
   "worktree-branch": {
    "description": "A task branch in an isolated worktree, leaving the original checkout untouched.",
@@ -431,19 +431,18 @@ const DATA = {
  },
  "buckets": [
   {
-   "blurb": "Set up once, then find your way around.",
+   "blurb": "Set up once per repository or machine.",
    "groups": {},
-   "id": "getting-started",
+   "id": "setup",
    "skills": [
     "setup-ai-workspace",
-    "guide",
     "setup-delegation-policy",
     "setup-ai-tooling",
     "setup-git-hooks",
     "setup-git-guardrails",
     "setup-auto-handoff"
    ],
-   "title": "Getting started"
+   "title": "Setup"
   },
   {
    "blurb": "The idea-to-ship flow, with shared documents for planned and just-in-time development.",
@@ -506,6 +505,7 @@ const DATA = {
     "ask-someone-else": "Sharpening",
     "classify": "Outbound",
     "design-workflow": "Procedures",
+    "guide": "Navigation",
     "hand-off": "Transport",
     "illustrate": "Sharpening",
     "optimize-process": "Procedures",
@@ -517,6 +517,7 @@ const DATA = {
    },
    "id": "productivity",
    "skills": [
+    "guide",
     "ask-someone-else",
     "re-explain",
     "illustrate",
@@ -842,7 +843,7 @@ const DATA = {
   },
   "guide": {
    "argumentHint": "",
-   "bucket": "getting-started",
+   "bucket": "productivity",
    "calls": [],
    "description": "Choose the next skill, development workflow, or session boundary from the current situation. Use when the user asks which skill or workflow to use next, or when a flow stalls and the next move is unclear.",
    "fits": [
@@ -866,13 +867,13 @@ const DATA = {
    "outputs": [
     "recommendation"
    ],
-   "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/getting-started/guide.md",
-   "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/getting-started/guide/SKILL.md",
+   "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/productivity/guide.md",
+   "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/productivity/guide/SKILL.md",
    "summary": [
     "guide is the router over the skills in this repository. You describe the situation you are in (an idea you cannot start, a pile of incoming bug reports, a session that has run long), and it names the skill or the sequence of skills that fits, plus where the human decisions in that sequence sit.",
     "It recommends and stops. It reads the relevant skill before making a consequential claim about its behavior, but does not start the recommended work. It is a maintained map of this repository's skills, not a scan of everything you have installed."
    ],
-   "tagline": "Choose the next skill, workflow, or session boundary."
+   "tagline": "Choose the next skill, development workflow, or session boundary from the current situation."
   },
   "hand-off": {
    "argumentHint": "What will the next session be used for?",
@@ -1463,7 +1464,7 @@ const DATA = {
   },
   "setup-ai-tooling": {
    "argumentHint": "",
-   "bucket": "getting-started",
+   "bucket": "setup",
    "calls": [
     "write-for-agents"
    ],
@@ -1479,8 +1480,8 @@ const DATA = {
    "outputs": [
     "tooling-config"
    ],
-   "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/getting-started/setup-ai-tooling.md",
-   "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/getting-started/setup-ai-tooling/SKILL.md",
+   "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/setup/setup-ai-tooling.md",
+   "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/setup/setup-ai-tooling/SKILL.md",
    "summary": [
     "Provisions free AI development tools for one project and the agent clients installed on the machine, then records a measurable baseline. It reuses working integrations instead of reinstalling them, and it leaves an unverified adapter or output filter disabled rather than guessing.",
     "It runs only inside an explicit tooling request, including a tooling stage you chose during setup-ai-workspace."
@@ -1489,7 +1490,7 @@ const DATA = {
   },
   "setup-ai-workspace": {
    "argumentHint": "",
-   "bucket": "getting-started",
+   "bucket": "setup",
    "calls": [
     "document",
     "memorize",
@@ -1514,17 +1515,17 @@ const DATA = {
     "workspace-config",
     "domain-records"
    ],
-   "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/getting-started/setup-ai-workspace.md",
-   "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/getting-started/setup-ai-workspace/SKILL.md",
+   "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/setup/setup-ai-workspace.md",
+   "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/setup/setup-ai-workspace/SKILL.md",
    "summary": [
-    "Configures one repository's task tracker, ticket-writing convention, triage-role vocabulary, and domain documentation. Its output is editable Markdown under documentation/agents/, plus an agent-instruction block. It changes project configuration, not the installed skills. It then offers the other getting-started setups, so one run can prepare the whole workspace.",
+    "Configures one repository's task tracker, ticket-writing convention, triage-role vocabulary, and domain documentation. Its output is editable Markdown under .agents/, plus an agent-instruction block. It changes project configuration, not the installed skills. It then offers the other setups, so one run can prepare the whole workspace.",
     "The tracker choice does not move specification authority. Agreed living behavior, design, and acceptance stay in documentation/capabilities/<capability>/specifications.md. Remote tasks link to or summarize that specification. Local documents can be maintained within scope without publishing remote records."
    ],
-   "tagline": "Configure shared project documents, task tracking, triage roles, and the optional getting-started setups."
+   "tagline": "Configure shared project documents, task tracking, triage roles, and the optional setups."
   },
   "setup-auto-handoff": {
    "argumentHint": "",
-   "bucket": "getting-started",
+   "bucket": "setup",
    "calls": [
     "hand-off"
    ],
@@ -1540,8 +1541,8 @@ const DATA = {
    "outputs": [
     "compaction-gate"
    ],
-   "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/getting-started/setup-auto-handoff.md",
-   "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/getting-started/setup-auto-handoff/SKILL.md",
+   "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/setup/setup-auto-handoff.md",
+   "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/setup/setup-auto-handoff/SKILL.md",
    "summary": [
     "Installs a Claude Code PreCompact hook that blocks compaction, automatic or manual, unless a handoff was written to .agents/handoffs/ in the last five minutes. The block message tells the agent to run hand-off first, and the next compaction attempt passes once the file exists.",
     "The five-minute window is the defining constraint: a stale handoff from earlier cannot satisfy the gate."
@@ -1550,7 +1551,7 @@ const DATA = {
   },
   "setup-delegation-policy": {
    "argumentHint": "",
-   "bucket": "getting-started",
+   "bucket": "setup",
    "calls": [],
    "description": "Install the delegation and model routing rule into the global steering files on this machine. Use when the user asks to set up delegation or model routing.",
    "fits": [
@@ -1564,8 +1565,8 @@ const DATA = {
    "outputs": [
     "delegation-policy"
    ],
-   "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/getting-started/setup-delegation-policy.md",
-   "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/getting-started/setup-delegation-policy/SKILL.md",
+   "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/setup/setup-delegation-policy.md",
+   "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/setup/setup-delegation-policy/SKILL.md",
    "summary": [
     "Installs one standing rule, \"Delegation and model routing\", into the global steering files on this machine, and gives harnesses that bind a model per agent one agent per tier. The rule tells an agent to decide at the top of a unit of work whether to do it here, hand it to one subagent, split it, or have a second agent review, and to pick the least expensive model that can do the bounded task reliably.",
     "It is installed rather than invoked because a skill fires only after reasoning has begun, and by then the decision has bent toward the plan already forming. A rule in an always-loaded file is carried every turn."
@@ -1574,7 +1575,7 @@ const DATA = {
   },
   "setup-git-guardrails": {
    "argumentHint": "",
-   "bucket": "getting-started",
+   "bucket": "setup",
    "calls": [],
    "description": "Set up hooks and permission rules that make coding agents ask before git commands that can lose work or rewrite shared history (pushing to a protected branch, force pushes, reset --hard, clean -f, branch -D, discarding changes) across Claude Code, OpenCode, and Codex CLI. Use when the user wants to guard against destructive git operations by any coding agent.",
    "fits": [
@@ -1588,8 +1589,8 @@ const DATA = {
    "outputs": [
     "git-guardrails"
    ],
-   "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/getting-started/setup-git-guardrails.md",
-   "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/getting-started/setup-git-guardrails/SKILL.md",
+   "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/setup/setup-git-guardrails.md",
+   "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/setup/setup-git-guardrails/SKILL.md",
    "summary": [
     "Puts a confirmation in front of git commands that can lose work or rewrite shared history, so you approve each one instead of the agent running it unchecked:",
     "Routine work passes without a prompt: commits, pushes to feature branches, --force-with-lease to a feature branch, dry runs, and git restore --staged. The Claude Code script checks only the command being run, so grep \"git push\" or a commit message that mentions a push is not caught.",
@@ -1599,7 +1600,7 @@ const DATA = {
   },
   "setup-git-hooks": {
    "argumentHint": "",
-   "bucket": "getting-started",
+   "bucket": "setup",
    "calls": [],
    "description": "Set up versioned git hooks via core.hooksPath (no Husky) with lint-staged (Biome, plus Prettier only for languages Biome leaves uncovered and only if the user wants it), plus typecheck and build. Use when user wants to add pre-commit hooks, commit-time formatting/linting/typechecking, or to replace Husky with git's built-in hooks path.",
    "fits": [
@@ -1611,8 +1612,8 @@ const DATA = {
    "outputs": [
     "git-hooks"
    ],
-   "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/getting-started/setup-git-hooks.md",
-   "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/getting-started/setup-git-hooks/SKILL.md",
+   "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/setup/setup-git-hooks.md",
+   "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/setup/setup-git-hooks/SKILL.md",
    "summary": [
     "Sets up versioned git hooks through core.hooksPath pointing at a committed .githooks/ directory, with no Husky. The pre-commit hook runs lint-staged on staged files, then the project's typecheck and build scripts.",
     "lint-staged assigns Biome to the languages it supports, including those it covers only once enabled, and keeps any formatter the project already uses. Prettier is offered only for the languages left over, and you can decline it. Each glob gets exactly one tool. Husky only copies runners into .git/hooks/, which core.hooksPath does with no dependency; a prepare script sets the config on every install so teammates are covered on clone."

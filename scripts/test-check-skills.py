@@ -29,15 +29,15 @@ class LayoutChecks(unittest.TestCase):
         self.addCleanup(self.temporary.cleanup)
         self.root = Path(self.temporary.name)
         self.write(".claude-plugin/plugin.json", json.dumps(
-            {"skills": ["./skills/reference/example", "./skills/getting-started/guide"]}))
+            {"skills": ["./skills/reference/example", "./skills/productivity/guide"]}))
         self.write("README.md", "## Plugin skills\n[example](skills/reference/example/SKILL.md)\n"
-                   "[guide](skills/getting-started/guide/SKILL.md)\n")
+                   "[guide](skills/productivity/guide/SKILL.md)\n")
         self.write("CLAUDE.md", "Repository instructions.\n")
-        self.write("skills/getting-started/guide/SKILL.md",
+        self.write("skills/productivity/guide/SKILL.md",
                    "---\nname: guide\n---\nRoute to /example and /guide.\n")
-        self.write("skills/getting-started/guide/agents/openai.yaml",
+        self.write("skills/productivity/guide/agents/openai.yaml",
                    "interface:\n  display_name: Router\n")
-        self.write("skills/getting-started/README.md", "[router](./guide/SKILL.md)\n")
+        self.write("skills/productivity/README.md", "[router](./guide/SKILL.md)\n")
         self.write("skills/reference/example/SKILL.md", "---\nname: example\n---\nAn example skill.\n")
         self.write("skills/reference/example/agents/openai.yaml", "interface:\n  display_name: Example\n")
         self.write("skills/reference/README.md", "[example](./example/SKILL.md)\n")
@@ -45,7 +45,7 @@ class LayoutChecks(unittest.TestCase):
                    "Upstream skill: `example`.\n\n## What it does\nOne job.\n\n"
                    "## When to reach for it\nA trigger.\n\n## Common questions\nA question.\n\n"
                    "## It's working if\nA signal.\n\n## Where it fits\nA role.\n")
-        self.write("documentation/skills/getting-started/guide.md",
+        self.write("documentation/skills/productivity/guide.md",
                    "Fork-specific router.\n\n## What it does\nRoutes.\n\n"
                    "## When to reach for it\nA trigger.\n\n## Common questions\nA question.\n\n"
                    "## It's working if\nA signal.\n\n## Where it fits\nA role.\n")
@@ -89,7 +89,7 @@ class LayoutChecks(unittest.TestCase):
         self.assertIn("orphan documentation page", self.result()[1])
 
     def test_skill_missing_from_manifest(self):
-        self.write(".claude-plugin/plugin.json", '{"skills": ["./skills/getting-started/guide"]}')
+        self.write(".claude-plugin/plugin.json", '{"skills": ["./skills/productivity/guide"]}')
         (self.root / "documentation/skills/reference/example.md").unlink()
         self.assertIn("missing from the plugin manifest", self.result()[1])
 
@@ -97,10 +97,10 @@ class LayoutChecks(unittest.TestCase):
         self.write("skills/deprecated/old/SKILL.md", "---\nname: old\n---\nRetired.\n")
         self.write("skills/deprecated/old/agents/openai.yaml", "interface:\n  display_name: Old\n")
         self.write("skills/deprecated/README.md", "[old](./old/SKILL.md)\n")
-        self.write("skills/getting-started/guide/SKILL.md",
+        self.write("skills/productivity/guide/SKILL.md",
                    "---\nname: guide\n---\nRoute to /example, /guide, and /old.\n")
         self.write(".claude-plugin/plugin.json", json.dumps({"skills": [
-            "./skills/reference/example", "./skills/getting-started/guide", "./skills/deprecated/old"]}))
+            "./skills/reference/example", "./skills/productivity/guide", "./skills/deprecated/old"]}))
         self.assertIn("deprecated skill is in the plugin manifest", self.result()[1])
 
     def test_retired_operative_call(self):
@@ -124,7 +124,7 @@ class LayoutChecks(unittest.TestCase):
         self.write("skills/deprecated/old/SKILL.md", "---\nname: old\n---\nRetired.\n")
         self.write("skills/deprecated/old/agents/openai.yaml", "interface:\n  display_name: Old\n")
         self.write("skills/deprecated/README.md", "[old](./old/SKILL.md)\n")
-        self.write("skills/getting-started/guide/SKILL.md",
+        self.write("skills/productivity/guide/SKILL.md",
                    "---\nname: guide\n---\nRoute to /example, /guide, and /old.\n")
         self.write("CLAUDE.md", 'Call the Skill tool with "old".\n')
         self.assertIn("unknown skill old", self.result()[1])
@@ -138,7 +138,7 @@ class LayoutChecks(unittest.TestCase):
         self.assertEqual(self.result()[0], False)
 
     def test_routing_tiers_follow_policy(self):
-        self.write("skills/getting-started/setup-delegation-policy/POLICY.md", "| Light | Haiku | Luna |\n")
+        self.write("skills/setup/setup-delegation-policy/POLICY.md", "| Light | Haiku | Luna |\n")
         self.write("skills/workflow/divide-and-conquer/ROUTING.md", "| Light | Haiku | Luna |\n")
         self.assertNotIn("tiers differ", self.result()[1])
         self.write("skills/workflow/divide-and-conquer/ROUTING.md", "| Light | Sonnet | Luna |\n")
@@ -182,7 +182,7 @@ class LayoutChecks(unittest.TestCase):
         self.assertEqual(self.result()[0], False)
 
     def test_router_carries_no_dependency_paragraph(self):
-        self.write("skills/getting-started/guide/SKILL.md",
+        self.write("skills/productivity/guide/SKILL.md",
                    "---\nname: guide\n---\nRoute to /example and /guide. Tell the user to run `/example`.\n")
         self.assertEqual(self.result()[0], False)
 
@@ -195,7 +195,7 @@ class LayoutChecks(unittest.TestCase):
         self.write("scripts/skill-graph/flow.json", json.dumps({
             "artifacts": {"note": {"label": "Note", "description": "A note."}},
             "skills": {name: {"inputs": [], "outputs": ["note"], "next": []} for name in skills}}))
-        self.write("skills/getting-started/README.md", "# Getting started\n\nSet up.\n\n- [guide](./guide/SKILL.md): Route.\n")
+        self.write("skills/productivity/README.md", "# Productivity\n\nWorkflows.\n\n- [guide](./guide/SKILL.md): Route.\n")
         self.write("skills/reference/README.md", "# Reference\n\nDisciplines.\n\n- [example](./example/SKILL.md): Example.\n")
         self.write("scripts/skill-graph/template.html", "<script>const DATA = /*SKILL_GRAPH_DATA*/null;</script>\n")
         with contextlib.redirect_stdout(io.StringIO()):

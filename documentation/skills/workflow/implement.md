@@ -37,4 +37,4 @@ It names the missing skill with its install command, carries out that step from 
 
 ## Where it fits
 
-This is the implementation chain step after [taskify](./taskify.md), following [specify](./specify.md), and before [review-and-refactor](./review-and-refactor.md). [iterate](./iterate.md) calls it for every batch. [divide-and-conquer](./divide-and-conquer.md) coordinates parallel work; [guide](../getting-started/guide.md) maps the whole system.
+This is the implementation chain step after [taskify](./taskify.md), following [specify](./specify.md), and before [review-and-refactor](./review-and-refactor.md). [iterate](./iterate.md) calls it for every batch. [divide-and-conquer](./divide-and-conquer.md) coordinates parallel work; [guide](../productivity/guide.md) maps the whole system.

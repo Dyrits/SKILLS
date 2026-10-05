@@ -31,4 +31,4 @@ It names the missing skill with its install command, carries out that step from 
 
 ## Where it fits
 
-This is implementation machinery used by [implement](./implement.md) and [divide-and-conquer](./divide-and-conquer.md). [review-and-refactor](./review-and-refactor.md) follows red/green and handles structural refactoring. [guide](../getting-started/guide.md) maps the other routes.
+This is implementation machinery used by [implement](./implement.md) and [divide-and-conquer](./divide-and-conquer.md). [review-and-refactor](./review-and-refactor.md) follows red/green and handles structural refactoring. [guide](../productivity/guide.md) maps the other routes.

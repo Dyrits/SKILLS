@@ -67,4 +67,4 @@ It names the missing skill with its install command, carries out that step from 
 
 ## Where it fits
 
-A standalone version-control skill for batches of local branches. It calls [resolve-merge-conflicts](resolve-merge-conflicts.md) whenever Git stops on a conflict. [work-in-tree](work-in-tree.md) and [sync-tree](sync-tree.md) cover the other worktree movements. [guide](../getting-started/guide.md) maps the wider flow.
+A standalone version-control skill for batches of local branches. It calls [resolve-merge-conflicts](resolve-merge-conflicts.md) whenever Git stops on a conflict. [work-in-tree](work-in-tree.md) and [sync-tree](sync-tree.md) cover the other worktree movements. [guide](../productivity/guide.md) maps the wider flow.

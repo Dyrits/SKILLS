@@ -27,7 +27,7 @@ None up front. The skill writes into three places and creates each lazily:
 
 - **`GLOSSARY.md`** at the repository root, created by the first resolved term. In a repository with a `GLOSSARY-MAP.md` at the root, terms go into the per-context `GLOSSARY.md` the map points at instead.
 - **`documentation/architecture-decision-record/`**, created by the first architecture decision record that clears the bar.
-- **`GUIDELINES.md`** at the repository root, created when [review-and-refactor](../workflow/review-and-refactor.md), [improve-codebase-architecture](../upkeep/improve-codebase-architecture.md), or [setup-ai-workspace](../getting-started/setup-ai-workspace.md) offers to and you accept. The skill interviews you about code conventions one topic at a time (naming, types, error handling, side effects, comments, tests, dependencies), drafting candidates from how the code is already written, and keeps each only once you confirm it and give its reason. It writes only portable rules, ones that would still hold if the product changed; product behaviour, design decisions, and agent workflow are routed to requirements, an architecture decision record, or `AGENTS.md` instead. Declining is recorded in `documentation/agents/domain.md`.
+- **`GUIDELINES.md`** at the repository root, created when [review-and-refactor](../workflow/review-and-refactor.md), [improve-codebase-architecture](../upkeep/improve-codebase-architecture.md), or [setup-ai-workspace](../setup/setup-ai-workspace.md) offers to and you accept. The skill interviews you about code conventions one topic at a time (naming, types, error handling, side effects, comments, tests, dependencies), drafting candidates from how the code is already written, and keeps each only once you confirm it and give its reason. It writes only portable rules, ones that would still hold if the product changed; product behaviour, design decisions, and agent workflow are routed to requirements, an architecture decision record, or `AGENTS.md` instead. Declining is recorded in `.agents/domain.md`.
 
 Nothing needs to exist before you start, and nothing is created speculatively.
 
@@ -52,7 +52,7 @@ The `GLOSSARY.md` rule is the one to actually hold onto, because it is the one t
 
 The move that makes the skill click: when you state how something works, it checks the code and surfaces the contradiction. *"Your code cancels entire Orders, but you just said partial cancellation is possible, which is right?"* The language and the code are made to agree, out loud, before either is changed.
 
-The limit is worth knowing. It cross-references **code** and the committed `GLOSSARY.md`/ADRs, and nothing else. It does not search your issue tracker, so a naming collision that was argued out and deliberately settled in a closed issue months ago gets surfaced as if it were new. There is [an open request](https://github.com/mattpocock/skills/issues/717) to fix this; until then, the workaround is to put the instruction in your own `documentation/agents/domain.md`, which the skills already read.
+The limit is worth knowing. It cross-references **code** and the committed `GLOSSARY.md`/ADRs, and nothing else. It does not search your issue tracker, so a naming collision that was argued out and deliberately settled in a closed issue months ago gets surfaced as if it were new. There is [an open request](https://github.com/mattpocock/skills/issues/717) to fix this; until then, the workaround is to put the instruction in your own `.agents/domain.md`, which the skills already read.
 
 ## Common questions
 
@@ -96,4 +96,4 @@ Ask the skill to check it. Each rule is tested for portability: would it still h
 
 ## Where it fits
 
-`model-domain` is a reference used by [specify](../workflow/specify.md), [graphify](../shaping/graphify.md), and [triage](../upkeep/triage.md) when domain meaning needs sharpening. [design-modules](./design-modules.md) supplies vocabulary for module shape rather than the problem domain. [document](./document.md) keeps the resulting terms, decisions, constraints, and agreed behavior in their separate records. [guide](../getting-started/guide.md) routes you when the next move is unclear.
+`model-domain` is a reference used by [specify](../workflow/specify.md), [graphify](../shaping/graphify.md), and [triage](../upkeep/triage.md) when domain meaning needs sharpening. [design-modules](./design-modules.md) supplies vocabulary for module shape rather than the problem domain. [document](./document.md) keeps the resulting terms, decisions, constraints, and agreed behavior in their separate records. [guide](../productivity/guide.md) routes you when the next move is unclear.

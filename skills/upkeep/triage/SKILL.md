@@ -15,7 +15,7 @@ If the tracker treats external pull requests as a request surface, triage covers
 
 Call the Skill tool with "document" before updating project documents; its terms (authorized, obligation, lazy, pointer) and rules apply throughout. Read the relevant requirements, specifications, working state, and backlog when present.
 
-Read `documentation/agents/issue-tracker.md` and `documentation/agents/triage-roles.md`. If either is missing, tell the user to run `/setup-ai-workspace` and stop.
+Read `.agents/issue-tracker.md` and `.agents/triage-roles.md`. If either is missing, tell the user to run `/setup-ai-workspace` and stop.
 
 "Comment", "apply a role", and "close" resolve through the tracker configuration:
 

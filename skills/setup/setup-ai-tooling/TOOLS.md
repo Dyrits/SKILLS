@@ -25,7 +25,7 @@ Published benchmark percentages are external evidence, not this project's measur
 
 ## RTK
 
-[Official configuration](https://github.com/rtk-ai/rtk/blob/develop/docs/guide/getting-started/configuration.md) documents adapters, exclusions, bypasses, and recovery storage.
+[Official configuration](https://github.com/rtk-ai/rtk/blob/develop/docs/guide/setup/configuration.md) documents adapters, exclusions, bypasses, and recovery storage.
 [Savings methodology](https://github.com/rtk-ai/rtk/blob/develop/docs/guide/resources/savings-explained.md) explains its output-byte measurements and token estimates.
 Verify the binary is Rust Token Killer using its version and `gain` command; another project shares the executable name.
 Preview `init` with the installed version's dry-run mode before merging configuration.

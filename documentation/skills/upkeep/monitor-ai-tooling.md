@@ -13,12 +13,12 @@ Type `/monitor-ai-tooling`, optionally naming a project and period. An agent or 
 | Your situation | Skill |
 | --- | --- |
 | Find out whether the configured tools are used and helping | This one |
-| Install or change the tools, hooks, or measurement setup | [setup-ai-tooling](../getting-started/setup-ai-tooling.md) |
+| Install or change the tools, hooks, or measurement setup | [setup-ai-tooling](../setup/setup-ai-tooling.md) |
 | Report how the skills behaved in a session | [improve-skills](improve-skills.md) |
 
 ## Prerequisites
 
-It reads `documentation/agents/ai-tooling.md` if present, plus whatever measurement sources exist: tool analytics, saved verification results, or an export from your existing monitor. With nothing available it still produces a gaps report and says how `/setup-ai-tooling` or a future measurement period can fill them.
+It reads `.agents/ai-tooling.md` if present, plus whatever measurement sources exist: tool analytics, saved verification results, or an export from your existing monitor. With nothing available it still produces a gaps report and says how `/setup-ai-tooling` or a future measurement period can fill them.
 
 ## Measurement discipline
 
@@ -60,4 +60,4 @@ It gives you the install command along with the instruction to run it. The skill
 
 ## Where it fits
 
-Periodic maintenance after [setup-ai-tooling](../getting-started/setup-ai-tooling.md): setup configures the tools, this checks whether they pay off. [improve-skills](improve-skills.md) is the neighbor for the skills themselves. [guide](../getting-started/guide.md) maps the wider flow.
+Periodic maintenance after [setup-ai-tooling](../setup/setup-ai-tooling.md): setup configures the tools, this checks whether they pay off. [improve-skills](improve-skills.md) is the neighbor for the skills themselves. [guide](../productivity/guide.md) maps the wider flow.

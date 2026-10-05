@@ -39,4 +39,4 @@ It names the missing skill with its install command, carries out that step from 
 
 ## Where it fits
 
-Taskify is an optional chain step after [specify](specify.md) and before [implement](implement.md) or [divide-and-conquer](divide-and-conquer.md). It produces a task graph, not an execution run. [Guide](../getting-started/guide.md) maps the alternatives.
+Taskify is an optional chain step after [specify](specify.md) and before [implement](implement.md) or [divide-and-conquer](divide-and-conquer.md). It produces a task graph, not an execution run. [Guide](../productivity/guide.md) maps the alternatives.

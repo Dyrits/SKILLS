@@ -59,4 +59,4 @@ It names the missing skill with its install command, carries out that step from 
 
 ## Where it fits
 
-This is a shaping step before building, mostly reached from [iterate](../workflow/iterate.md). Use [graphify](./graphify.md) when the question is design, [taskify](../workflow/taskify.md) once behavior is agreed, and [refine](../reference/refine.md) for single decisions; it calls refine and research itself. [guide](../getting-started/guide.md) maps the whole system.
+This is a shaping step before building, mostly reached from [iterate](../workflow/iterate.md). Use [graphify](./graphify.md) when the question is design, [taskify](../workflow/taskify.md) once behavior is agreed, and [refine](../reference/refine.md) for single decisions; it calls refine and research itself. [guide](../productivity/guide.md) maps the whole system.

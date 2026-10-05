@@ -18,7 +18,7 @@ Type `/setup-ai-tooling`, or an agent or another skill can reach for it when you
 
 ## What it configures
 
-[TOOLS.md](../../../skills/getting-started/setup-ai-tooling/TOOLS.md) holds the per-tool branches. Selection follows the project:
+[TOOLS.md](../../../skills/setup/setup-ai-tooling/TOOLS.md) holds the per-tool branches. Selection follows the project:
 
 - CodeGraph for supported source projects, and Context7 for dependency documentation.
 - ast-grep when a representative structural search adds value.
@@ -30,7 +30,7 @@ Serena stays optional when CodeGraph and native language support already cover n
 
 ## The baseline record
 
-The skill writes `documentation/agents/ai-tooling.md`: selected tools and versions, scope, per-client integration status, verification results, known gaps, protected commands, local measurement sources, and a verified session recovery method per client. Measurement history stays local and out of version control; credentials are reported by presence, never value.
+The skill writes `.agents/ai-tooling.md`: selected tools and versions, scope, per-client integration status, verification results, known gaps, protected commands, local measurement sources, and a verified session recovery method per client. Measurement history stays local and out of version control; credentials are reported by presence, never value.
 
 ## Common questions
 
@@ -51,15 +51,15 @@ It supports Codex, OpenCode, and other detected clients through their documented
 Only where a comparable task baseline exists. Command-output reduction, task token counts, and provider allowance are reported as different quantities, and personal token savings are marked unavailable otherwise.
 
 **What if a skill it calls or hands over to is not installed?**
-It names the missing skill with its install command, carries out that step from its stated intent, and tells you the step ran without it. When it tells you to run a skill you don't have, it gives the install command with it. The skills involved are listed at the top of its [`SKILL.md`](../../../skills/getting-started/setup-ai-tooling/SKILL.md).
+It names the missing skill with its install command, carries out that step from its stated intent, and tells you the step ran without it. When it tells you to run a skill you don't have, it gives the install command with it. The skills involved are listed at the top of its [`SKILL.md`](../../../skills/setup/setup-ai-tooling/SKILL.md).
 
 ## It's working if
 
 - Each configured client passes a functional check, such as a known symbol retrieved through CodeGraph and matched against the file.
 - Protected output and exit status survive the actual adapter.
-- `documentation/agents/ai-tooling.md` exists, points to real measurement sources, and carries no credentials or personal session paths.
+- `.agents/ai-tooling.md` exists, points to real measurement sources, and carries no credentials or personal session paths.
 - Rerunning the skill changes nothing that already works.
 
 ## Where it fits
 
-Run-once setup per project, offered as an optional stage of [setup-ai-workspace](./setup-ai-workspace.md). [monitor-ai-tooling](../upkeep/monitor-ai-tooling.md) is its periodic follow-up, and [setup-auto-handoff](./setup-auto-handoff.md) covers the session recovery side. [guide](./guide.md) routes the rest.
+Run-once setup per project, offered as an optional stage of [setup-ai-workspace](./setup-ai-workspace.md). [monitor-ai-tooling](../upkeep/monitor-ai-tooling.md) is its periodic follow-up, and [setup-auto-handoff](./setup-auto-handoff.md) covers the session recovery side. [guide](../productivity/guide.md) routes the rest.

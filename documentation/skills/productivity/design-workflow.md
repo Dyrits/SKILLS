@@ -32,4 +32,4 @@ It names the missing skill with its install command, carries out that step from 
 
 ## Where it fits
 
-`design-workflow` is a reach-for-it-anytime standalone for recurring operational loops. [refine](../reference/refine.md) supplies the interview discipline; [specify](../workflow/specify.md) instead records codebase capability behavior. The finished workflow specification is input to the implementer you choose, not permission to start development automatically. [guide](../getting-started/guide.md) maps the whole set.
+`design-workflow` is a reach-for-it-anytime standalone for recurring operational loops. [refine](../reference/refine.md) supplies the interview discipline; [specify](../workflow/specify.md) instead records codebase capability behavior. The finished workflow specification is input to the implementer you choose, not permission to start development automatically. [guide](./guide.md) maps the whole set.

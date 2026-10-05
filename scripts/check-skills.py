@@ -71,7 +71,7 @@ def check(repository):
 
     skill_files = sorted((root / "skills").glob("*/*/SKILL.md"))
     skills = {path.parent.relative_to(root): path for path in skill_files}
-    router = (root / "skills/getting-started/guide/SKILL.md").read_text()
+    router = (root / "skills/productivity/guide/SKILL.md").read_text()
     top = (root / "README.md").read_text()
     listing = top.split("## Plugin skills", 1)[-1]
     required_sections = (
@@ -139,7 +139,7 @@ def check(repository):
                 errors.append(f"{page.relative_to(root)}: missing top provenance note.")
 
     # ROUTING.md carries a fallback copy of the policy's tiers; keep the two identical.
-    policy = root / "skills/getting-started/setup-delegation-policy/POLICY.md"
+    policy = root / "skills/setup/setup-delegation-policy/POLICY.md"
     routing = root / "skills/workflow/divide-and-conquer/ROUTING.md"
     if policy.exists() and routing.exists():
         tier_line = re.compile(r"^(?:- \*\*(?:Light|Balanced|Heavy|Frontier)\*\*|\| (?:Tier|Light|Balanced|Heavy|Frontier) ).*$",

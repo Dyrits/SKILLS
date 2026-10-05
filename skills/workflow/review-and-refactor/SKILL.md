@@ -43,7 +43,7 @@ A bad reference or an empty complete diff ends the run before dispatch.
 Call the Skill tool with "document"; its terms and its review-evidence rules apply.
 Recover the authorized behavior from the caller or user, tasks, specifications and requirements, or a user-approved batch in `documentation/work-in-progress.md`.
 
-When `documentation/agents/issue-tracker.md` exists, fetch relevant task references through its workflow.
+When `.agents/issue-tracker.md` exists, fetch relevant task references through its workflow.
 
 Freeze copies or revisions of the originating agreement and the verification evidence alongside the starting diff for both reviewers. Distinguish agreed behavior from unresolved proposals in `draft.md` and unapproved backlog candidates. Do not infer the agreement solely from the implementation under review.
 

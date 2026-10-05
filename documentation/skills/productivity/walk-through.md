@@ -93,4 +93,4 @@ It graduated upstream into `engineering/` in v1.2. This fork places it in `refer
 
 ## Where it fits
 
-`walk-through` is a reach-for-it-anytime standalone for the steps only a human can perform. [setup-ai-workspace](../getting-started/setup-ai-workspace.md) configures this skill set; a wizard handles other manual setup. [implement](../workflow/implement.md) may expose a credentials or cutover step that needs one. [guide](../getting-started/guide.md) routes you when the next move is unclear.
+`walk-through` is a reach-for-it-anytime standalone for the steps only a human can perform. [setup-ai-workspace](../setup/setup-ai-workspace.md) configures this skill set; a wizard handles other manual setup. [implement](../workflow/implement.md) may expose a credentials or cutover step that needs one. [guide](./guide.md) routes you when the next move is unclear.

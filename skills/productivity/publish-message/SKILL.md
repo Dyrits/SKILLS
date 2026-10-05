@@ -9,7 +9,7 @@ Draft the complete publication in the destination's conventions, obtain approval
 
 **Calls:** `unslop`. If a called skill is not installed, tell the user its name and install command, `npx skills@latest add Dyrits/SKILLS --skill=<name>`, then carry out that step from its stated intent and report the step as done without the skill.
 
-`documentation/agents/issue-tracker.md`, when present, records the verified posting mechanism for the project's tracker and saves re-deriving it. Resolve the destination and posting mechanism directly (steps 1 and 2) when it is missing or does not cover the resolved destination.
+`.agents/issue-tracker.md`, when present, records the verified posting mechanism for the project's tracker and saves re-deriving it. Resolve the destination and posting mechanism directly (steps 1 and 2) when it is missing or does not cover the resolved destination.
 
 ## Process
 
@@ -23,7 +23,7 @@ Done when the service, the exact destination, its surrounding context, and its a
 
 ### 2. Resolve how to post
 
-If `documentation/agents/issue-tracker.md` covers the destination, use the mechanism it records. Otherwise prefer a connected MCP tool or connector for the service (a GitHub, GitLab, Jira, Linear, Slack, Confluence, Notion, or mail server, for example), then the service's CLI (`gh`, `glab`, and similar), then its documented API with credentials already configured.
+If `.agents/issue-tracker.md` covers the destination, use the mechanism it records. Otherwise prefer a connected MCP tool or connector for the service (a GitHub, GitLab, Jira, Linear, Slack, Confluence, Notion, or mail server, for example), then the service's CLI (`gh`, `glab`, and similar), then its documented API with credentials already configured.
 
 Ask the user how to post only when nothing resolves unambiguously: several tools could apply and it is unclear which reaches the destination, or none can. When no mechanism can reach it, step 5 hands the approved text to the user instead.
 

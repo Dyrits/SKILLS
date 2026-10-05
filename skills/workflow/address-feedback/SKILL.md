@@ -15,7 +15,7 @@ Feedback arrives in one of two kinds of **source**:
 
 The **subject** is whatever the feedback concerns: code, a document, a design, a specification, a configuration. Steps 2 to 4 are the same for both kinds of source; steps 1, 5, and 6 branch on it.
 
-`documentation/agents/issue-tracker.md`, when present, records how to read and update the configured tracker. Resolve the source and access method directly when the file is missing or silent.
+`.agents/issue-tracker.md`, when present, records how to read and update the configured tracker. Resolve the source and access method directly when the file is missing or silent.
 
 ## Process
 

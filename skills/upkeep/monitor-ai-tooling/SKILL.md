@@ -14,7 +14,7 @@ Collection stays deterministic; this skill does not install tools or start recur
 
 ### 1. Establish the evidence
 
-Read `documentation/agents/ai-tooling.md` if present, the requested project and period, and the available local measurement sources.
+Read `.agents/ai-tooling.md` if present, the requested project and period, and the available local measurement sources.
 Use configured tool analytics, saved verification results, or an export from the user's existing monitor.
 Inspect source schemas and installed help before choosing read-only export commands; preserve source files and redact credentials or unrelated session content from the report.
 For RTK, inspect `gain` and supported history/export options without changing counters or configuration.

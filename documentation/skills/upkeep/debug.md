@@ -95,6 +95,6 @@ Not silently. A reproduction shows a failure; it does not authorize weakening re
 
 ## Where it fits
 
-`debug` is a reach-for-it-anytime standalone. You drop into it when something is broken and drop out when the fix and its regression test are in; it holds no state and needs no prior setup. [guide](../getting-started/guide.md) routes "Something's broken" here.
+`debug` is a reach-for-it-anytime standalone. You drop into it when something is broken and drop out when the fix and its regression test are in; it holds no state and needs no prior setup. [guide](../productivity/guide.md) routes "Something's broken" here.
 
 Three neighbours matter. [improve-environment](./improve-environment.md) comes after it: once the fix is in, run it in the same session to ask what would have prevented the bug, when there is more information than at the start. [improve-codebase-architecture](./improve-codebase-architecture.md) is the follow-up when the real finding is that the code has no seam to lock the bug down; `debug` records that finding but never starts the follow-up itself, so you choose it after the fix is in, when there is more information. [triage](./triage.md) sits upstream of it for bugs that arrive as raw reports from other people, and does a shallower version of the same first two phases.

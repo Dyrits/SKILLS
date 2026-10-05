@@ -51,7 +51,7 @@ Done when each configured client has a functional check, protected output and ex
 
 ### 4. Record the baseline and recovery path
 
-Write the project record at `documentation/agents/ai-tooling.md` with:
+Write the project record at `.agents/ai-tooling.md` with:
 
 - Project root, setup time, selected tools and versions, project/global scope, and integration status per client.
 - Source documentation, verification commands and results, known gaps, protected commands, and raw-output bypasses.

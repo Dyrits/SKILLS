@@ -28,7 +28,7 @@
     "memory": {"label": "Saved lessons", "path": ".agents/scripts/, AGENTS.md, CLAUDE.md, harness memory", "description": "Reusable scripts, conventions, and preferences filed where the next agent looks."},
     "environment-changes": {"label": "Environment changes", "description": "Checks, guardrails, navigation pointers, steering files, tools, and access."},
     "skill-issue": {"label": "Skill issue", "path": "github.com/Dyrits/SKILLS/issues", "description": "A retrospective on how the skills behaved, published on this repository."},
-    "workspace-config": {"label": "Workspace configuration", "path": "documentation/agents/", "description": "Tracker, ticket conventions, triage roles, and domain layout."},
+    "workspace-config": {"label": "Workspace configuration", "path": ".agents/", "description": "Tracker, ticket conventions, triage roles, and domain layout."},
     "tooling-config": {"label": "AI tooling setup", "description": "Verified tool integrations, recovery methods, and a measured baseline."},
     "tooling-report": {"label": "Tooling report", "description": "Usage, output reduction, quality signals, and gaps from existing measurements."},
     "git-hooks": {"label": "Git hooks", "path": ".githooks/", "description": "Versioned pre-commit checks through core.hooksPath."},

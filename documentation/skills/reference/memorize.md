@@ -36,7 +36,7 @@ It was folded into `memorize` as its script branch. The agent no longer needs a 
 
 **Why does it care about pointers?**
 
-A skill description alone fires unreliably during a long task. The repository evidence is a session that wrote inline Python for bulk edits while a matching saved script existed. So the nearest `AGENTS.md` or `CLAUDE.md` gets one always-loaded line pointing at the scriptbook index, added once after checking for an existing one. [setup-ai-workspace](../getting-started/setup-ai-workspace.md) writes that line as part of its agent-instruction block.
+A skill description alone fires unreliably during a long task. The repository evidence is a session that wrote inline Python for bulk edits while a matching saved script existed. So the nearest `AGENTS.md` or `CLAUDE.md` gets one always-loaded line pointing at the scriptbook index, added once after checking for an existing one. [setup-ai-workspace](../setup/setup-ai-workspace.md) writes that line as part of its agent-instruction block.
 
 **Does it duplicate a fact in several homes?**
 
@@ -54,4 +54,4 @@ It names the missing skill with its install command, carries out that step from 
 
 ## Where it fits
 
-This is a standalone discipline that other skills call; it produces no deliverable of its own. It routes to [write-for-agents](./write-for-agents.md), [model-domain](./model-domain.md), [document](./document.md), and [walk-through](../productivity/walk-through.md) depending on the lesson. [improve-skills](../upkeep/improve-skills.md) runs after a session and files what `memorize` cannot fix locally: problems in the skills themselves. [guide](../getting-started/guide.md) maps the whole system.
+This is a standalone discipline that other skills call; it produces no deliverable of its own. It routes to [write-for-agents](./write-for-agents.md), [model-domain](./model-domain.md), [document](./document.md), and [walk-through](../productivity/walk-through.md) depending on the lesson. [improve-skills](../upkeep/improve-skills.md) runs after a session and files what `memorize` cannot fix locally: problems in the skills themselves. [guide](../productivity/guide.md) maps the whole system.

@@ -29,4 +29,4 @@ The chain rule is the skill's leading idea: **newest first, deeper only on deman
 
 ## Where it fits
 
-`take-over` is a reach-for-it-anytime standalone paired with [hand-off](./hand-off.md) between sessions. It restores session-specific context while project documents remain authoritative for requirements, agreements, and unfinished work. [guide](../getting-started/guide.md) helps you choose whether to continue, clear, hand off, or compact; use this skill after the handoff.
+`take-over` is a reach-for-it-anytime standalone paired with [hand-off](./hand-off.md) between sessions. It restores session-specific context while project documents remain authoritative for requirements, agreements, and unfinished work. [guide](./guide.md) helps you choose whether to continue, clear, hand off, or compact; use this skill after the handoff.

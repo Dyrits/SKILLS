@@ -29,7 +29,7 @@ Where it is confusable with siblings:
 
 ## Prerequisites
 
-None to run it. When `GUIDELINES.md` is missing it asks whether to create one. If you accept, [model-domain](../reference/model-domain.md) interviews you about your architecture conventions and rules first; declining is recorded in `documentation/agents/domain.md` and skips it. It reads `GLOSSARY.md` and any ADRs in `documentation/architecture-decision-record/` if they exist, and speaks in your domain's own nouns when they do: a candidate reads as "deepen the Order intake module," not "refactor the FooBarHandler."
+None to run it. When `GUIDELINES.md` is missing it asks whether to create one. If you accept, [model-domain](../reference/model-domain.md) interviews you about your architecture conventions and rules first; declining is recorded in `.agents/domain.md` and skips it. It reads `GLOSSARY.md` and any ADRs in `documentation/architecture-decision-record/` if they exist, and speaks in your domain's own nouns when they do: a candidate reads as "deepen the Order intake module," not "refactor the FooBarHandler."
 
 The report goes to `documentation/architecture-audit/architecture-audit-<timestamp>.html`, one file per run. Refinement can also sharpen terms in `GLOSSARY.md` and offer an architecture decision record for a consequential rejection. That offer is conditional: rejecting a candidate does not automatically merit a permanent decision record.
 
@@ -103,4 +103,4 @@ It names the missing skill with its install command, carries out that step from 
 
 ## Where it fits
 
-`improve-codebase-architecture` is periodic maintenance that generates candidate work rather than implementing it. [design-modules](../reference/design-modules.md) supplies depth-and-seam vocabulary; [refine](../reference/refine.md) explores the selected candidate; [model-domain](../reference/model-domain.md) records settled domain meanings and qualifying decisions. Approved work enters planned or just-in-time development without weakening existing obligations. [guide](../getting-started/guide.md) maps both workflows.
+`improve-codebase-architecture` is periodic maintenance that generates candidate work rather than implementing it. [design-modules](../reference/design-modules.md) supplies depth-and-seam vocabulary; [refine](../reference/refine.md) explores the selected candidate; [model-domain](../reference/model-domain.md) records settled domain meanings and qualifying decisions. Approved work enters planned or just-in-time development without weakening existing obligations. [guide](../productivity/guide.md) maps both workflows.

@@ -37,7 +37,7 @@ A **capability** is anything with lasting agreed behavior: a user-facing feature
 
 ## Backlog authority
 
-Read `documentation/agents/issue-tracker.md` when present to find the configured tracker. With a local tracker, `documentation/backlog.md` holds candidate outcomes, priorities, dependencies, and deferrals. With a remote tracker, its backlog or board holds them, and `documentation/backlog.md` holds only its name and verified link.
+Read `.agents/issue-tracker.md` when present to find the configured tracker. With a local tracker, `documentation/backlog.md` holds candidate outcomes, priorities, dependencies, and deferrals. With a remote tracker, its backlog or board holds them, and `documentation/backlog.md` holds only its name and verified link.
 
 Read the remote backlog when selecting or reprioritizing work. When it cannot be read, say so, ask for the records the decision needs, and continue authorized work whose agreement is recoverable locally.
 

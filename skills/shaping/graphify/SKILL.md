@@ -15,7 +15,7 @@ The destination might be a specification to hand off, a decision to settle befor
 
 Call the Skill tool with "document"; its terms (authorized, obligation, lazy, pointer) and rules apply throughout, and requirements constrain the destination and every decision.
 
-Read `documentation/agents/issue-tracker.md` for map storage, parent-child relationships, blocking, claims, and frontier queries. If it is missing, tell the user to run `/setup-ai-workspace` and stop.
+Read `.agents/issue-tracker.md` for map storage, parent-child relationships, blocking, claims, and frontier queries. If it is missing, tell the user to run `/setup-ai-workspace` and stop.
 
 - A local map lives at `documentation/capabilities/<capability>/map.md`; its decision tasks live at `documentation/capabilities/<capability>/tasks/NN-<slug>.md`.
 - A remote map and its children use native tracker records and relationships.

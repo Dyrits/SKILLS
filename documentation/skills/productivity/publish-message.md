@@ -12,7 +12,7 @@ Type `/publish-message`, optionally with where to post and what to say; an agent
 
 ## Prerequisites
 
-A way to reach the destination: a connected tool for the service, its command line, or its configured API. If none resolves, you receive the approved text ready to paste. `documentation/agents/issue-tracker.md` records the posting mechanism for a configured tracker and saves re-deriving it.
+A way to reach the destination: a connected tool for the service, its command line, or its configured API. If none resolves, you receive the approved text ready to paste. `.agents/issue-tracker.md` records the posting mechanism for a configured tracker and saves re-deriving it.
 
 ## Fitting the medium
 
@@ -57,4 +57,4 @@ It names the missing skill with its install command, carries out that step from 
 
 ## Where it fits
 
-This is a standalone publication step after [review-and-refactor](../workflow/review-and-refactor.md) or any other work that produced a conclusion. [address-feedback](../workflow/address-feedback.md) covers replies to feedback you received, and [draft-merge-request](../version-control/draft-merge-request.md) covers request descriptions. [guide](../getting-started/guide.md) maps the whole system.
+This is a standalone publication step after [review-and-refactor](../workflow/review-and-refactor.md) or any other work that produced a conclusion. [address-feedback](../workflow/address-feedback.md) covers replies to feedback you received, and [draft-merge-request](../version-control/draft-merge-request.md) covers request descriptions. [guide](./guide.md) maps the whole system.

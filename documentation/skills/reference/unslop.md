@@ -28,4 +28,4 @@ Yes. The examples in the skill are English, but the editing pass follows the sou
 
 ## Where it fits
 
-This is a standalone editing pass for any draft. [Write for agents](write-for-agents.md) guides the structure of instructions agents read; `/unslop` edits the prose itself. [Guide](../getting-started/guide.md) maps the full skill set.
+This is a standalone editing pass for any draft. [Write for agents](write-for-agents.md) guides the structure of instructions agents read; `/unslop` edits the prose itself. [Guide](../productivity/guide.md) maps the full skill set.

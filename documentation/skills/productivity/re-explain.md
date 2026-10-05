@@ -39,4 +39,4 @@ No. It follows the language you have been using and asks when the preference is 
 
 ## Where it fits
 
-`re-explain` is a reach-for-it-anytime standalone inside any conversation. [model-domain](../reference/model-domain.md) prevents vocabulary drift by maintaining the shared language; this skill repairs an explanation after it failed. [illustrate](./illustrate.md) is another option when a visual would make the relationship clearer. [guide](../getting-started/guide.md) helps you choose the next move.
+`re-explain` is a reach-for-it-anytime standalone inside any conversation. [model-domain](../reference/model-domain.md) prevents vocabulary drift by maintaining the shared language; this skill repairs an explanation after it failed. [illustrate](./illustrate.md) is another option when a visual would make the relationship clearer. [guide](./guide.md) helps you choose the next move.
