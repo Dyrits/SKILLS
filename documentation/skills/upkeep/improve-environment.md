@@ -2,7 +2,7 @@ Upstream source: `retro`, verified in the `24fe0ef` tree. This fork first rename
 
 ## What it does
 
-`improve-environment` looks back over a session, finds each moment of friction (a long search, a mistake, a retry, an expensive tool call, missing information), and changes the project's **environment** so the next run avoids it. The environment is everything around the code that shapes how an agent works: checks, hooks, CI, steering files, `GUIDELINES.md`, tools, and access.
+`improve-environment` looks back over a session, finds each moment of friction (a long search, a mistake, a retry, an expensive tool call, missing information), and changes the project's **environment** so the next run avoids it. The environment is everything around the code that shapes how an agent works: checks, hooks, CI, steering files, `CONVENTIONS.md`, tools, and access.
 
 It changes the environment, not the code. The bug the agent shipped stays a bug for [debug](./debug.md); this skill asks what about the repository let it happen, and proposes the check, pointer, or rule that stops it next time. Nothing changes until you accept a candidate.
 
@@ -24,8 +24,8 @@ Type `/improve-environment`, or an agent or another skill can reach for it when 
 | --- | --- |
 | A long search for a file or fact | A navigation pointer from a file the agent already reads |
 | A mistake a tool could have caught | A check: lint rule, type, test, pre-commit hook, or CI job, wiring an existing one first |
-| Review missed a judgement-call mistake | A rule in `GUIDELINES.md`, which [review-and-refactor](../workflow/review-and-refactor.md) reads |
-| A large `AGENTS.md` or `CLAUDE.md` | Steering moved out into checks or `GUIDELINES.md` |
+| Review missed a judgement-call mistake | A rule in `CONVENTIONS.md`, which [review-and-refactor](../workflow/review-and-refactor.md) reads |
+| A large `AGENTS.md` or `CLAUDE.md` | Steering moved out into checks or `CONVENTIONS.md` |
 | Steering lines that change nothing | Deleted as no-ops |
 | A tool call expensive for what it returned | A streamlined or replaced tool |
 | Information the agent could not reach | Wider access, such as a teed dev server log or read-only service access |
@@ -44,7 +44,7 @@ That is the main criticism upstream's `retro` received: once a job is done, the 
 
 **Should I just add a line to `CLAUDE.md`?**
 
-Usually not. A line there loads into every session and drifts as the code changes. A mechanical mistake gets a check; a judgement call goes to `GUIDELINES.md` for the reviewer. `AGENTS.md` and `CLAUDE.md` are mostly for navigation pointers.
+Usually not. A line there loads into every session and drifts as the code changes. A mechanical mistake gets a check; a judgement call goes to `CONVENTIONS.md` for the reviewer. `AGENTS.md` and `CLAUDE.md` are mostly for navigation pointers.
 
 **Does it remove rules too?**
 
@@ -52,7 +52,7 @@ It deletes steering lines that change nothing and moves oversized steering out o
 
 **How does it divide work with `improve-skills` and `memorize`?**
 
-Friction a skill caused goes to [improve-skills](./improve-skills.md), which reports it on this repository; each skill hands the other its findings. Written lessons (a pointer, a `GUIDELINES.md` rule, a convention) are filed through [memorize](../reference/memorize.md), which owns where they live. `improve-environment` itself builds checks and changes tools and access.
+Friction a skill caused goes to [improve-skills](./improve-skills.md), which reports it on this repository; each skill hands the other its findings. Written lessons (a pointer, a `CONVENTIONS.md` rule, a convention) are filed through [memorize](../reference/memorize.md), which owns where they live. `improve-environment` itself builds checks and changes tools and access.
 
 **What if a skill it calls is not installed?**
 

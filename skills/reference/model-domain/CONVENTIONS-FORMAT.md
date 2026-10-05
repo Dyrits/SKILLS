@@ -1,10 +1,12 @@
-# GUIDELINES.md Format
+# CONVENTIONS.md Format
 
-`GUIDELINES.md` holds the project's code conventions: how code is written here, applied by a reviewer to any diff and enforceable by no tool. `review-and-refactor` and `improve-codebase-architecture` read it; `memorize` files new conventions into it.
+`CONVENTIONS.md` holds the project's code conventions: how code is written here, applied by a reviewer to any diff and enforceable by no tool. `review-and-refactor` and `improve-codebase-architecture` read it; `memorize` files new conventions into it.
+
+The file is **domain-agnostic**. It is the technical counterpart of the functional records (`GLOSSARY.md`, requirements, specifications) and never names the product, its users, or its domain terms. The test for the whole file: copy it into another project on the same stack, with an unrelated domain, and every rule still applies there unchanged.
 
 ## What belongs
 
-A guideline is **portable**: it would still hold if the product changed entirely and only the stack and the team stayed. "Errors cross module boundaries as typed results, never thrown strings" is portable. "The line never breaks" is not: it describes what this product does, and a reviewer cannot apply it to an unrelated diff.
+A convention is **portable**: it would still hold if the product changed entirely and only the stack and the team stayed. "Errors cross module boundaries as typed results, never thrown strings" is portable. "The line never breaks" is not: it describes what this product does, and a reviewer cannot apply it to an unrelated diff. A rule that needs a domain term to be stated is not a convention.
 
 Route everything else to its owner, through the named skill, and tell the user where it went:
 
@@ -16,12 +18,12 @@ Route everything else to its owner, through the named skill, and tell the user w
 | How the agent works: verification, approvals, who confirms what | `AGENTS.md` or `CLAUDE.md` | direct edit |
 | Something a linter, formatter, type checker, hook, or CI job can check | that tool's configuration | offer to wire it |
 
-A candidate can split: "visible text lives in data, in two languages" yields the portable guideline "no user-facing string literals in rendering code" and a requirement for the language pair.
+A candidate can split: "visible text lives in data, in two languages" yields the portable convention "no user-facing string literals in rendering code" and a requirement for the language pair.
 
 ## Offer
 
-Check `.agents/domain.md` first. When it records `Guidelines: declined`, return to the caller without asking.
-Otherwise ask whether to create `GUIDELINES.md` now. On yes, run the interview below; on no, record the decline (see Declining) and return.
+Check `.agents/domain.md` first. When it records `Conventions: declined`, return to the caller without asking.
+Otherwise ask whether to create `CONVENTIONS.md` now. On yes, run the interview below; on no, record the decline (see Declining) and return.
 
 ## Interview
 
@@ -37,7 +39,9 @@ The interview is done when every topic in the focus has been asked about once an
 ## Structure
 
 ```md
-# Guidelines
+# Conventions
+
+How code is written in this project. Domain-agnostic: every rule holds in any project on the same stack. Product rules live in requirements, domain terms in `GLOSSARY.md`.
 
 ## {Topic from the interview}
 
@@ -46,15 +50,15 @@ The interview is done when every topic in the focus has been asked about once an
 
 ## Rules
 
-- **Portable only.** See What belongs.
+- **Portable only.** No product, user, or domain term appears in the file. See What belongs.
 - **Cache only what the agent cannot find by looking.** Skip anything already visible in configuration, scripts, or the directory layout.
 - **One meaning, one place.** Link to architecture decision records and `GLOSSARY.md` instead of restating them.
 - **Create lazily.** Write the file when the first rule is agreed, not as an empty scaffold.
 
 ## Auditing an existing file
 
-When asked to check an existing `GUIDELINES.md`, run each rule through What belongs and propose a move for every rule that is not portable, splitting mixed rules. Move nothing without the user's approval.
+When asked to check an existing `CONVENTIONS.md`, apply the copy test to the whole file, run each rule through What belongs, and propose a move for every rule that is not portable, splitting mixed rules. Move nothing without the user's approval.
 
 ## Declining
 
-When the user declines, record `Guidelines: declined` under the Guidelines heading of `.agents/domain.md` (skip when that file does not exist), so later runs do not ask again. Writing a rule later removes the line.
+When the user declines, record `Conventions: declined` under the Conventions heading of `.agents/domain.md` (skip when that file does not exist), so later runs do not ask again. Writing a rule later removes the line.

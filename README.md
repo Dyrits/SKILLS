@@ -154,7 +154,7 @@ The manifest is the source of truth for this list; it holds every skill outside 
 Disciplines other skills call; each can also be run directly by you or an agent.
 
 - [refine](./skills/reference/refine/SKILL.md): Resolve decisions through recommended questions in dependency-aware rounds.
-- [model-domain](./skills/reference/model-domain/SKILL.md): Maintain domain vocabulary, consequential decisions, and guidelines.
+- [model-domain](./skills/reference/model-domain/SKILL.md): Maintain domain vocabulary, consequential decisions, and domain-agnostic code conventions.
 - [design-modules](./skills/reference/design-modules/SKILL.md): Design deep modules with clear interfaces and useful seams.
 - [document](./skills/reference/document/SKILL.md): Maintain technical documentation and shared project-document rules.
 - [write-for-agents](./skills/reference/write-for-agents/SKILL.md): Write predictable agent instructions with clear completion criteria.

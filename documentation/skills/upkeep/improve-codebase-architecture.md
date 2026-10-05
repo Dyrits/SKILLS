@@ -29,7 +29,7 @@ Where it is confusable with siblings:
 
 ## Prerequisites
 
-None to run it. When `GUIDELINES.md` is missing it asks whether to create one. If you accept, [model-domain](../reference/model-domain.md) interviews you about your architecture conventions and rules first; declining is recorded in `.agents/domain.md` and skips it. It reads `GLOSSARY.md` and any ADRs in `documentation/architecture-decision-record/` if they exist, and speaks in your domain's own nouns when they do: a candidate reads as "deepen the Order intake module," not "refactor the FooBarHandler."
+None to run it. When `CONVENTIONS.md` is missing it asks whether to create one. If you accept, [model-domain](../reference/model-domain.md) interviews you about your architecture conventions and rules first; declining is recorded in `.agents/domain.md` and skips it. It reads `GLOSSARY.md` and any ADRs in `documentation/architecture-decision-record/` if they exist, and speaks in your domain's own nouns when they do: a candidate reads as "deepen the Order intake module," not "refactor the FooBarHandler."
 
 The report goes to `documentation/architecture-audit/architecture-audit-<timestamp>.html`, one file per run. Refinement can also sharpen terms in `GLOSSARY.md` and offer an architecture decision record for a consequential rejection. That offer is conditional: rejecting a candidate does not automatically merit a permanent decision record.
 

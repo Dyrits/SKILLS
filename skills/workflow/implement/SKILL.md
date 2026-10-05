@@ -9,7 +9,7 @@ Call the Skill tool with "document"; its terms (authorized, obligation, lazy, po
 
 Identify the authorized behavior and its originating agreement: a task, specifications with their requirements, or a user-approved batch in `documentation/work-in-progress.md`. Read the applicable requirements. Record the starting commit and work scope for review.
 
-Preserve accepted behavior, and prefer targeted edits over regenerating unchanged code or documents. Put mechanical conventions in formatter, compiler, and lint configuration; keep `GUIDELINES.md` for judgment those tools cannot enforce. Comments capture reasons and constraints the code cannot show.
+Preserve accepted behavior, and prefer targeted edits over regenerating unchanged code or documents. Put mechanical conventions in formatter, compiler, and lint configuration; keep `CONVENTIONS.md` for judgment those tools cannot enforce. Comments capture reasons and constraints the code cannot show.
 
 When the work fixes a reported bug, call the Skill tool with "debug" before editing code, so the fix follows a reproduced cause. Call it too for a resistant failure instead of stacking speculative fixes.
 

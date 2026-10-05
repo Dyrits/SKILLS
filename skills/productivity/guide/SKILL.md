@@ -38,7 +38,7 @@ Research, test-first work, diagnosis, and milestone reviews remain conditional b
 
 The `document` skill owns the shared project documents: requirements, specifications, drafts, tasks, backlog, work-in-progress, and the changelog. When the user asks what each one holds, read its `PROJECT-DOCUMENTS.md`. Both workflows use the same documents, so switching between them keeps agreements and progress; `iterate` writes light changelog records and the planned workflow writes full ones.
 
-`GLOSSARY.md`, architecture decision records, and `GUIDELINES.md` retain their separate roles: domain language, consequential decisions, and portable code conventions.
+`GLOSSARY.md`, architecture decision records, and `CONVENTIONS.md` retain their separate roles: domain language, consequential decisions, and domain-agnostic code conventions.
 
 ## On-ramps and open questions
 
@@ -78,7 +78,7 @@ Keep authoritative work state current before changing context.
 | `/illustrate` | Explain with the smallest useful diagram, sketch, or HTML artifact. |
 | `/teach` | Maintain a mission-grounded teaching workspace across sessions. |
 | `/optimize-process` | Improve a recurring process using actual friction and evidence. |
-| `/model-domain` | Actively sharpen domain language and record qualifying decisions or guidelines. |
+| `/model-domain` | Actively sharpen domain language and record qualifying decisions or code conventions. |
 | `/design-modules` | Design deep modules, useful seams, and testable interfaces. |
 | `/document` | Maintain technical documents and shared project artifacts. |
 | `/write-for-agents` | Write skills, steering instructions, and agent references. |

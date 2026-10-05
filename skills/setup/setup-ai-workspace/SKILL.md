@@ -27,7 +27,7 @@ Read existing configuration and conventions before proposing changes:
 - `.agents/` and any verified tooling record, plus a legacy `documentation/agents/` folder from an earlier setup.
 - Root `CHANGELOG.md`, `documentation/requirements.md`, `documentation/backlog.md`, `documentation/work-in-progress.md`, and relevant capability documentation.
 - Task templates, contribution documentation, and available ticket-writing skills.
-- `GLOSSARY.md`, `GLOSSARY-MAP.md`, `GUIDELINES.md`, and relevant architecture decision records.
+- `GLOSSARY.md`, `GLOSSARY-MAP.md`, `CONVENTIONS.md`, and relevant architecture decision records.
 - Monorepo signals such as workspace configuration or independent packages.
 - Whether `triage` is installed, which determines whether role configuration is needed.
 - Which optional setups in section 4 are already present.
@@ -76,7 +76,7 @@ Only collect overrides if the user declines. The strings are configurable; the r
 
 Default to one root `GLOSSARY.md` and `documentation/architecture-decision-record/` without asking. Offer a root `GLOSSARY-MAP.md` with per-context glossaries only when monorepo signals justify it.
 
-If `GUIDELINES.md` exists, record `Guidelines: present`. Otherwise ask whether to create it through an interview, recommending yes when there is no standards document. On acceptance, call the Skill tool with "model-domain" for its Guidelines step, with the **code** focus. On refusal, record `Guidelines: declined`.
+If `CONVENTIONS.md` exists, record `Conventions: present`. Otherwise ask whether to create it through an interview, recommending yes when there is no standards document. On acceptance, call the Skill tool with "model-domain" for its Conventions step, with the **code** focus. On refusal, record `Conventions: declined`.
 
 ## 3. Confirm and write
 

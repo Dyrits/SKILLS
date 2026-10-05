@@ -51,9 +51,9 @@ If no behavior agreement is recoverable, ask the user to supply it or explicitly
 
 ### 3. Identify the standards sources
 
-Find repository instructions about how code should be written, such as `GUIDELINES.md`, `CONTRIBUTING.md`, and applicable steering files.
-Read `GUIDELINES.md` first when it exists.
-When it is missing and no other standards document turns up, call the Skill tool with "model-domain" for its Guidelines step, with the **code** focus, then continue with whatever it produced (the smell baseline alone when declined).
+Find repository instructions about how code should be written, such as `CONVENTIONS.md`, `CONTRIBUTING.md`, and applicable steering files.
+Read `CONVENTIONS.md` first when it exists.
+When it is missing and no other standards document turns up, call the Skill tool with "model-domain" for its Conventions step, with the **code** focus, then continue with whatever it produced (the smell baseline alone when declined).
 Read relevant architecture decisions and `GLOSSARY.md` when they constrain the changed code.
 
 On top of whatever the repository documents, the Standards axis always carries the **smell baseline** below: a fixed set of Fowler code smells (_Refactoring_, ch.3) that applies even when a repository documents nothing. Two rules bind it:

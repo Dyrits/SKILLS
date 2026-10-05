@@ -1,6 +1,6 @@
 ---
 name: model-domain
-description: Build and sharpen a project's domain model. Use when discussing codebase terminology, writing or editing a GLOSSARY.md, recording or editing an architecture decision record, or creating a GUIDELINES.md.
+description: Build and sharpen a project's domain model. Use when discussing codebase terminology, writing or editing a GLOSSARY.md, recording or editing an architecture decision record, or creating a CONVENTIONS.md of domain-agnostic code conventions.
 ---
 
 # Model domain
@@ -73,6 +73,6 @@ Only offer to create an ADR when all three are true:
 
 If any of the three is missing, skip the architecture decision record. Use the format in [ARCHITECTURE-DECISION-RECORD-FORMAT.md](./ARCHITECTURE-DECISION-RECORD-FORMAT.md).
 
-## Guidelines
+## Conventions
 
-`GUIDELINES.md` at the repository root holds the project's code conventions: portable rules a reviewer applies to any diff, never product behaviour. Creating it is part of this skill when a calling skill asks, or when the user wants to write down their conventions. Read [GUIDELINES-FORMAT.md](./GUIDELINES-FORMAT.md) for what belongs, the interview, the format, auditing an existing file, and declining.
+`CONVENTIONS.md` at the repository root holds the project's code conventions: portable rules a reviewer applies to any diff, never product behaviour. It is domain-agnostic: copied into another project on the same stack, every rule would still apply. Creating it is part of this skill when a calling skill asks, or when the user wants to write down their conventions. Read [CONVENTIONS-FORMAT.md](./CONVENTIONS-FORMAT.md) for what belongs, the interview, the format, auditing an existing file, and declining.

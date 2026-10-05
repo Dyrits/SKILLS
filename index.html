@@ -266,9 +266,9 @@ const DATA = {
    "label": "Delegation policy"
   },
   "domain-records": {
-   "description": "Ubiquitous language, consequential decisions, and portable code conventions.",
+   "description": "Ubiquitous language, consequential decisions, and domain-agnostic code conventions.",
    "label": "Domain records",
-   "path": "GLOSSARY.md, architecture decision records, GUIDELINES.md"
+   "path": "GLOSSARY.md, architecture decision records, CONVENTIONS.md"
   },
   "draft-prose": {
    "description": "Writing meant for other people.",
@@ -1020,7 +1020,7 @@ const DATA = {
    "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/upkeep/improve-environment.md",
    "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/upkeep/improve-environment/SKILL.md",
    "summary": [
-    "improve-environment looks back over a session, finds each moment of friction (a long search, a mistake, a retry, an expensive tool call, missing information), and changes the project's environment so the next run avoids it. The environment is everything around the code that shapes how an agent works: checks, hooks, CI, steering files, GUIDELINES.md, tools, and access.",
+    "improve-environment looks back over a session, finds each moment of friction (a long search, a mistake, a retry, an expensive tool call, missing information), and changes the project's environment so the next run avoids it. The environment is everything around the code that shapes how an agent works: checks, hooks, CI, steering files, CONVENTIONS.md, tools, and access.",
     "It changes the environment, not the code. The bug the agent shipped stays a bug for debug; this skill asks what about the repository let it happen, and proposes the check, pointer, or rule that stops it next time. Nothing changes until you accept a candidate."
    ],
    "tagline": "Trace a session's friction to the project's environment and apply the agreed checks, pointers, and steering changes."
@@ -1136,7 +1136,7 @@ const DATA = {
    "argumentHint": "",
    "bucket": "reference",
    "calls": [],
-   "description": "Build and sharpen a project's domain model. Use when discussing codebase terminology, writing or editing a GLOSSARY.md, recording or editing an architecture decision record, or creating a GUIDELINES.md.",
+   "description": "Build and sharpen a project's domain model. Use when discussing codebase terminology, writing or editing a GLOSSARY.md, recording or editing an architecture decision record, or creating a CONVENTIONS.md of domain-agnostic code conventions.",
    "fits": [
     "model-domain is a reference used by specify, graphify, and triage when domain meaning needs sharpening. design-modules supplies vocabulary for module shape rather than the problem domain. document keeps the resulting terms, decisions, constraints, and agreed behavior in their separate records. guide routes you when the next move is unclear."
    ],
@@ -1154,7 +1154,7 @@ const DATA = {
     "model-domain builds and sharpens a project's ubiquitous language while you are designing: challenging a term that conflicts with the glossary, forcing a precise word where you used a vague one, and stress-testing a relationship with a concrete scenario until the boundaries are exact.",
     "It is the active discipline, not the passive one. Reading GLOSSARY.md to borrow its vocabulary is a one-line habit any skill can do; this skill is for when you are *changing* the model. That is what makes it interrupt. It writes a resolved term into GLOSSARY.md at the moment it is resolved, in the middle of the conversation, rather than producing a tidy glossary at the end, because the batched version is a summary of a session, and the inline version is the session's actual output."
    ],
-   "tagline": "Sharpen vocabulary and record qualifying decisions and review guidelines."
+   "tagline": "Sharpen vocabulary and record qualifying decisions and domain-agnostic code conventions."
   },
   "monitor-ai-tooling": {
    "argumentHint": "",

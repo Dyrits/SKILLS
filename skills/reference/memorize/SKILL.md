@@ -15,7 +15,7 @@ Agents relearn the same things every session: the helper written yesterday, the 
 | --- | --- | --- |
 | A reusable action (rename files, convert a format, call an endpoint) | A scriptbook: `.agents/scripts/` for this repository, `~/.agents/scripts/` for any repository | Read [SCRIPTS.md](SCRIPTS.md) |
 | A project convention, command, or gotcha agents keep missing | The nearest `AGENTS.md` or `CLAUDE.md` at the boundary where it applies | Call the Skill tool with "write-for-agents" |
-| A code convention | `GUIDELINES.md` | Call the Skill tool with "model-domain" |
+| A code convention | `CONVENTIONS.md` | Call the Skill tool with "model-domain" |
 | A domain term or consequential decision | `GLOSSARY.md` or an architecture decision record | Call the Skill tool with "model-domain" |
 | Project agreements, working state, or delivery history | The shared project documents | Call the Skill tool with "document" |
 | A procedure only a human can carry out, worth repeating | A saved wizard | Call the Skill tool with "walk-through" |

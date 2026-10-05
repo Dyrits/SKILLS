@@ -8,7 +8,7 @@
     "backlog": {"label": "Backlog", "path": "documentation/backlog.md", "description": "Candidate outcomes and deferrals not yet in progress."},
     "work-in-progress": {"label": "Work in progress", "path": "documentation/work-in-progress.md", "description": "The approved current batch, unfinished acceptance, and evidence."},
     "changelog": {"label": "Changelog", "path": "CHANGELOG.md", "description": "Semantic records of authorized agreements and deliveries."},
-    "domain-records": {"label": "Domain records", "path": "GLOSSARY.md, architecture decision records, GUIDELINES.md", "description": "Ubiquitous language, consequential decisions, and portable code conventions."},
+    "domain-records": {"label": "Domain records", "path": "GLOSSARY.md, architecture decision records, CONVENTIONS.md", "description": "Ubiquitous language, consequential decisions, and domain-agnostic code conventions."},
     "research-note": {"label": "Research note", "description": "A cited Markdown file answering a question from primary sources."},
     "prototype-verdict": {"label": "Prototype verdict", "description": "An isolated experiment and the evidence it produced for one design question."},
     "decision-graph": {"label": "Decision graph", "description": "A map of blocking questions toward a named destination, one decision per session."},

@@ -12,13 +12,13 @@ If any of these files don't exist, **proceed silently**. Don't flag their absenc
 
 Before updating project or capability documents, call the Skill tool with "document" for the shared document model. Read applicable project and capability requirements as constraints; surface conflicts rather than silently changing those obligations.
 
-## Guidelines
+## Conventions
 
-**`GUIDELINES.md`** at the repository root holds the project's code conventions. Read it before reviewing code or auditing architecture.
+**`CONVENTIONS.md`** at the repository root holds the project's code conventions, domain-agnostic and portable to any project on the same stack. Read it before reviewing code or auditing architecture.
 
 If it doesn't exist, the review and architecture skills offer to create it through `/model-domain` unless the line below says otherwise.
 
-Guidelines: {present | declined}
+Conventions: {present | declined}
 
 ## File structure
 
