@@ -39,6 +39,9 @@ No. Implementers synchronize with the integration branch, but concurrent changes
 **What if a skill it calls or hands over to is not installed?**
 It names the missing skill with its install command, carries out that step from its stated intent, and tells you the step ran without it. Without `document` it waits instead, because its rules use that skill's terms: install it, or tell it to proceed anyway. When it tells you to run a skill you don't have, it gives the install command with it. The skills involved are listed at the top of its [`SKILL.md`](../../../skills/workflow/divide-and-conquer/SKILL.md).
 
+**What about a task I keep in the coordinating session?**
+It follows the same path without the subagents: built on its own task branch cut from the integration branch, with the integration branch tip merged in, and merged into the integration branch only after its verification passes.
+
 ## It's working if
 
 - You saw and approved the routing table before any subagent started.

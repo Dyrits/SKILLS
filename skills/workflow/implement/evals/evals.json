@@ -98,6 +98,18 @@
     },
     {
       "id": 7,
+      "kind": "behavior",
+      "prompt": "Use the implement skill. Build the approved checkout-button change from documentation/work-in-progress.md. Acceptance says the button must open the payment dialog in a real browser. The webapp-testing skill is not installed on this machine.",
+      "expected_output": "The agent builds the change, tells the user webapp-testing is missing, verifies the dialog another way or reports the check as could not run.",
+      "expectations": [
+        "The agent tells the user that webapp-testing is not installed",
+        "The agent tries another way to verify the browser interaction, or reports that check as could not run",
+        "The agent does not claim the browser acceptance passed without evidence",
+        "The final report states the starting commit, scope, originating agreement, and which checks passed, failed, or could not run"
+      ]
+    },
+    {
+      "id": 8,
       "kind": "no-trigger",
       "prompt": "Our login page fails intermittently, roughly one in ten tries, and only in staging. I do not know why. Find the cause.",
       "expected_output": "An open-ended failure investigation is a debug request, not authorized implementation.",
@@ -107,7 +119,7 @@
       ]
     },
     {
-      "id": 8,
+      "id": 9,
       "kind": "no-trigger",
       "prompt": "We want users to be able to share a saved search with their team. Work out what it should do, who can see it, and what the edge cases are, so we can agree before building.",
       "expected_output": "Deciding behavior before building is a specify request.",

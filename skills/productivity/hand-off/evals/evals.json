@@ -68,6 +68,17 @@
     },
     {
       "id": 6,
+      "kind": "behavior",
+      "prompt": "Use the hand-off skill. Write a handoff for the next session. This repository's .gitignore already lists .agents/handoffs/.",
+      "expected_output": "A new handoff is written without asking the local-or-shared question, because the gitignore entry already answers it.",
+      "expectations": [
+        "The agent writes a new versioned file in .agents/handoffs/ without overwriting an earlier one",
+        "The agent does not ask whether handoffs should be local or shared",
+        "The agent prints the full path of the file"
+      ]
+    },
+    {
+      "id": 7,
       "kind": "no-trigger",
       "prompt": "This conversation is getting long but I am staying right here, same agent, same directory, same task. Shrink the context so we can keep going.",
       "expected_output": "Nothing needs to travel, so the answer is to compact this session, not to write a portable file.",
@@ -77,7 +88,7 @@
       ]
     },
     {
-      "id": 7,
+      "id": 8,
       "kind": "no-trigger",
       "prompt": "Pick up where the last agent left off. There is a handoff in .agents/handoffs/ and I want you to continue from it.",
       "expected_output": "Reading a handoff is the job of take-over; no new handoff is written.",

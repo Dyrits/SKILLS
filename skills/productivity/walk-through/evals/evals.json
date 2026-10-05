@@ -87,6 +87,17 @@
     },
     {
       "id": 6,
+      "kind": "behavior",
+      "prompt": "Use the walk-through skill. Make me a wizard to set up Stripe test keys and the matching GitHub secrets for this repository.",
+      "expected_output": "The agent scopes the stages from the repository, shows the list, and stops for confirmation before mapping or writing anything.",
+      "expectations": [
+        "The agent reads the repository (.env.example, workflows) before asking questions",
+        "The agent shows the ordered stage list with the value each stage produces",
+        "The agent stops and waits for the user to confirm the list before writing the script"
+      ]
+    },
+    {
+      "id": 7,
       "kind": "no-trigger",
       "prompt": "The project in evals/files/webapp/ is missing a STRIPE_WEBHOOK_SECRET in .env.example and the config loader doesn't read it. Add it to both, run the migrations against the local database, and install the dependencies.",
       "expected_output": "These are steps the agent performs itself, so no wizard is generated.",

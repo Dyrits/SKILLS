@@ -48,7 +48,7 @@ Free per-IP quotas count classifications, not HTTP calls. A batch of 400 single-
 
 A batch must fit the remaining quota in full. Shared label-set quotas and spending limits can reject a request before these ceilings. For larger texts, paid processing, or quota details, read the [live API reference](https://classifier.dev) before choosing a request path. Larger default-model inputs require funded, fast-tier long-context processing; preserve the text rather than silently truncating it.
 
-On failure, read the status and JSON `error`, `code`, `action`, and `retryable` fields when present. Correct invalid requests; report funding or access restrictions as such. For `429`, respect `Retry-After`; retry once if the delay is only seconds. For transient network or `5xx` failures, use one retry with backoff, respecting `Retry-After` when supplied. Report HTML errors with their status and request ID when available. If the request still fails, report the actual cause and use local judgement against the same labels where feasible, marked as your judgement without an invented confidence. If the inputs cannot be reviewed locally, report which remain unclassified.
+On failure, read the status and JSON `error`, `code`, `action`, and `retryable` fields when present. Correct invalid requests; report funding or access restrictions as such. Retry a failed request at most once in total, whichever failure came first. For `429`, respect `Retry-After` and retry only if the delay is seconds. For transient network or `5xx` failures, back off before the retry, respecting `Retry-After` when supplied. Report HTML errors with their status and request ID when available. If the request still fails, report the actual cause and use local judgement against the same labels where feasible, marked as your judgement without an invented confidence. If the inputs cannot be reviewed locally, report which remain unclassified.
 
 ## Step 3: Report the verdict
 
@@ -64,7 +64,7 @@ Check confidence and scores for null before using thresholds, even on `fast`. Re
 
 Multi-label results list tags with scores at least `0.7`, highest first, capped by `max_labels` when supplied. Report each tag with its score. Use the full score map if the caller specifies another threshold; an empty tag list is a valid outcome.
 
-For filtering, bias toward keeping. Unless the caller supplies a threshold, discard only a negative verdict with numeric confidence at least `0.8`. Keep positive, low-confidence, and unscored items for reading or review. For multi-label filters, apply the caller's tag rule using the corresponding scores and retain uncertain items.
+For filtering, bias toward keeping. A negative verdict is a label the caller named as the discard side (`irrelevant`, `none of these`). With more than two labels, ask which labels discard before filtering; until the caller says, keep every item. Unless the caller supplies a threshold, discard only a negative verdict with numeric confidence at least `0.8`. Keep positive, low-confidence, and unscored items for reading or review. For multi-label filters, apply the caller's tag rule using the corresponding scores and retain uncertain items.
 
 Report the verdicts, not the JSON. One text gets one line (`label · 0.94`). A batch gets a table or the items grouped under their labels, and where the caller wanted a filter, the kept items with the discarded count.
 

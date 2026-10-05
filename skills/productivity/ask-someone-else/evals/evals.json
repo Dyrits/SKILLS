@@ -53,6 +53,17 @@
     },
     {
       "id": 5,
+      "kind": "behavior",
+      "prompt": "Use the ask-someone-else skill. I need our finance director Maria, who owns the retention rules, to tell me the retention period for invoices and whether it differs for refunds. Make her a questionnaire.",
+      "expected_output": "The skill confirms the recipient and need in one line and writes the questionnaire without redoing the interview.",
+      "expectations": [
+        "The agent confirms the recipient and the need in one line instead of asking both interview questions again",
+        "A file named ask-someone-else-<slug>.md is written and its path reported",
+        "Every item the user named (invoice retention period, refund difference) is covered by a question"
+      ]
+    },
+    {
+      "id": 6,
       "kind": "no-trigger",
       "prompt": "I need to decide between a queue and a cron job for our nightly sync. I know the system well, I just keep going back and forth. Grill me on my own plan until I commit to something.",
       "expected_output": "The answer sits in the user's own head, so the agent runs a decision-tree interview with the user instead of writing a questionnaire for someone else.",
@@ -62,7 +73,7 @@
       ]
     },
     {
-      "id": 6,
+      "id": 7,
       "kind": "no-trigger",
       "prompt": "I already wrote five questions about our rollout plan and Dana confirmed she will answer them. Post them as a comment on ticket OPS-212 exactly as written.",
       "expected_output": "The questions already exist and the request is to publish them; publish-message handles that after approval of exact text and destination.",

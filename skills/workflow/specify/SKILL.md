@@ -7,7 +7,7 @@ description: "Resolve the open decisions in a selected scope and synthesize its 
 
 Turn the selected scope into agreed behavior, design, and acceptance. Interview only where decisions remain unresolved; synthesize directly when current context is settled.
 
-**Calls:** `document`, `model-domain`, `prototype`, `refine`. If a called skill is not installed, tell the user its name and install command, `npx skills@latest add Dyrits/SKILLS --skill=<name>`, then carry out that step from its stated intent and report the step as done without the skill. Without `document`, wait until the user installs it or tells you to proceed: this skill's rules use its terms.
+**Calls:** `document`, `model-domain`, `prototype`, `refine`. If a called skill is not installed, tell the user its name and install command, `npx skills@latest add Dyrits/SKILLS --skill=<name>`, then carry out that step from its stated intent and report the step as done without the skill. Without `document`, wait until the user installs it or tells you to proceed: this skill's rules use its terms. **Hands over to:** `/implement`, `/iterate`, `/taskify`. When one is not installed, give the user its install command, `npx skills@latest add Dyrits/SKILLS --skill=<name>`, along with the instruction to run it.
 
 ## Gather and reconcile
 
@@ -35,4 +35,4 @@ Record authorized agreements in the changelog, and keep the backlog and working 
 
 Report the canonical paths, covered requirements, agreements, unresolved blockers, and validation still needed. The scope is specified when its necessary decisions are authorized and its behavior and acceptance are coherent; if blockers remain, report partial progress honestly.
 
-The human may next choose taskify for a useful decomposition, implement for direct delivery, or iterate for a small living-code batch.
+Close by offering the user the next move: to run `/taskify` for a useful decomposition, to run `/implement` for direct delivery, or to run `/iterate` for a small living-code batch.

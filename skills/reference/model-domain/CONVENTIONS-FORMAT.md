@@ -22,8 +22,8 @@ A candidate can split: "visible text lives in data, in two languages" yields the
 
 ## Offer
 
-Check `.agents/domain.md` first. When it records `Conventions: declined`, return to the caller without asking.
-Otherwise ask whether to create `CONVENTIONS.md` now. On yes, run the interview below; on no, record the decline (see Declining) and return.
+When the user asked directly to create or write conventions, skip the offer and run the interview below; a request overrides an earlier `Conventions: declined` in `.agents/domain.md`.
+When a calling skill raised it, check `.agents/domain.md` first. If it records `Conventions: declined`, return to the caller without asking. Otherwise ask whether to create `CONVENTIONS.md` now. On yes, run the interview below; on no, record the decline (see Declining) and return.
 
 ## Interview
 

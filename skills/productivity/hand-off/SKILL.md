@@ -12,7 +12,7 @@ Save to `.agents/handoffs/` in the current workspace, versioned so history accum
 
 - Filename: `YYYY-MM-DD-HHMM-<short-slug>.md` (timestamp = when written, slug = dash-case topic)
 - Never overwrite an existing handoff; always write a new file
-- Add `.agents/handoffs/` to `.gitignore` if the user wants local-only history, or commit them if the team wants shared history. Ask once; remember via the repository's config or AGENTS.md note
+- Settle whether handoffs stay local or are shared. The repository already answers it when `.agents/handoffs/` is listed in `.gitignore` (local-only), earlier handoffs are tracked (shared), or an AGENTS.md note says so; follow that without asking. Otherwise ask once: add `.agents/handoffs/` to `.gitignore` for local-only history, or commit them for shared history. Record the answer in an AGENTS.md note
 - Print the full path when done, and tell the user to paste it into the next session's first message
 
 ## Document contents

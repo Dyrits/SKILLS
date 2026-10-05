@@ -8,6 +8,8 @@ argument-hint: "Feedback source: PR, MR, issue, or ticket reference, a file path
 
 Turn a set of review feedback into an accounted-for set of decisions, approved changes, and replies grounded in the validated result.
 
+**Calls:** `implement`. If a called skill is not installed, tell the user its name and install command, `npx skills@latest add Dyrits/SKILLS --skill=<name>`, then carry out that step from its stated intent and report the step as done without the skill.
+
 Feedback arrives in one of two kinds of **source**:
 
 - A **tracked source** has addressable comments and a reply destination: a pull or merge request, an issue, a ticket, comments on a shared document.
@@ -59,7 +61,7 @@ Done when the user has approved a concrete disposition and action for every subs
 
 ### 4. Implement and validate
 
-Implement only the approved changes, preserving unrelated work. Follow the project's development workflow and validate in proportion to the change. If implementation shows an approved disposition is wrong or needs materially broader work, stop that item, explain the evidence, and return it to the plan gate.
+Implement only the approved changes, preserving unrelated work. For changes to repository code, call the Skill tool with "implement", handing it the approved plan as the user-approved batch; tell it this run owns the project records and the review, so it returns its evidence to you. For other subjects, validate in proportion to the change. If implementation shows an approved disposition is wrong or needs materially broader work, stop that item, explain the evidence, and return it to the plan gate.
 
 Review the result against every approved disposition. A passing test suite does not account for a unit by itself; connect each one to the changed subject, existing evidence, or a stated decision.
 

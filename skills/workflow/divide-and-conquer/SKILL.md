@@ -41,6 +41,8 @@ Run subagents in the background where possible for maximum concurrency.
 
 7. Once an implementer subagent completes with passing verification, merge its work to the integration branch with a **merger subagent**. A failed task follows the escalation rule in [ROUTING.md](ROUTING.md).
 
+   A task kept in this session follows the same path without the subagents: build it on its own task branch cut from the integration branch, merge the integration branch tip into that branch, and merge into the integration branch only after its verification passes. The merge is Light, or Balanced with conflicts, as [ROUTING.md](ROUTING.md) sets it; do it here when the table kept it here, or route it to a merger subagent.
+
 8. When the **frontier** changes, start implementer subagents for newly unblocked tasks at their routed tiers.
 
 ## Combine

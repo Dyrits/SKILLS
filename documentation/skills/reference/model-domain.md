@@ -84,6 +84,9 @@ No, and there is no plan for a skill that does. A domain language you do not und
 **My `CONVENTIONS.md` reads like a specification. How do I fix it?**
 Ask the skill to check it. The file as a whole must survive being copied into an unrelated project on the same stack. Each rule is tested for portability: would it still hold if the product changed and only the stack and team stayed? Rules that describe what the product does move to requirements, design trade-offs to an architecture decision record, and verification or approval steps to `AGENTS.md`. A mixed rule splits, for example "visible text lives in data, in two languages" keeps "no user-facing string literals in rendering code" and moves the language pair to requirements. Nothing moves without your approval.
 
+**I asked for a `CONVENTIONS.md` directly. Why would it ask whether to create one?**
+It does not. When you ask for conventions yourself it goes straight to the interview, even if an earlier run recorded `Conventions: declined`. The offer, and the memory of a decline, apply only when another skill raises conventions on its own.
+
 ## It's working if
 
 - It stops you mid-sentence to ask which of two things you meant, instead of picking one and moving on.

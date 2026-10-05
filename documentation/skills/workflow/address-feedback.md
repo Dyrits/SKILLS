@@ -49,6 +49,9 @@ That item stops and returns to the plan gate with the evidence. The rest continu
 
 No. Each unit is connected to the changed subject, existing evidence, or a stated decision.
 
+**Does it write the code itself?**
+For changes to repository code it calls [implement](./implement.md) with the approved plan as the batch, and tells it that the address-feedback run owns the project records and the review, so `implement` returns its evidence instead of updating them. Other subjects, such as a document or a design, are validated in proportion to the change.
+
 ## It's working if
 
 - Every substantive comment appears exactly once in the table with a disposition.

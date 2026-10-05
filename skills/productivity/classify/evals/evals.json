@@ -93,6 +93,18 @@
     },
     {
       "id": 7,
+      "kind": "behavior",
+      "prompt": "Use the classify skill. Sort these 300 support tickets with the labels billing, outage, feature request, and spam, then drop the junk so I only read what matters. The file is tickets.csv.",
+      "expected_output": "The skill asks which labels count as junk before filtering, keeps everything until answered, and applies the 0.8 confidence rule to the discard side only.",
+      "expectations": [
+        "The agent asks which of the four labels are the discard side (for example spam) instead of assuming",
+        "Until the user answers, no item is discarded",
+        "Once the discard label is known, only items with that label and numeric confidence of at least 0.8 are discarded; unscored and low-confidence items are kept",
+        "A failed request is retried at most once in total"
+      ]
+    },
+    {
+      "id": 8,
       "kind": "no-trigger",
       "prompt": "Here are three error messages from our log: 'disk quota exceeded on /var/data', 'user clicked help button', 'connection reset by peer'. Which one is the most worrying? Just tell me what you think.",
       "expected_output": "A handful of items already in context is judged directly; no API call is made.",
@@ -102,7 +114,7 @@
       ]
     },
     {
-      "id": 8,
+      "id": 9,
       "kind": "no-trigger",
       "prompt": "Go through the open requests on our project's issue tracker, work out which ones are real bugs, decide which are ready for a developer, and write a brief for each ready one.",
       "expected_output": "Verifying published requests and writing agent-ready briefs is triage, not bulk labelling.",

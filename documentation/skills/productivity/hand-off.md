@@ -72,6 +72,9 @@ No. `documentation/work-in-progress.md` owns unfinished current work, blockers, 
 **Why is it a skill rather than a slash command?**
 Both work; they suit different situations. As a skill it ships and updates through the same install path as everything else here, which is what makes it shareable. Agents can reach it, so the compaction gate can get a handoff without you; typing `/hand-off` works the same as before.
 
+**Will it ask me about git every time?**
+No. It asks once, and only when the repository does not already answer. A `.gitignore` entry for `.agents/handoffs/` means local-only history, tracked earlier handoffs mean shared history, and an `AGENTS.md` note settles it either way; the skill follows whichever it finds.
+
 ## It's working if
 
 - The document is a small fraction of the conversation, and the specifications, issues and diffs appear in it as paths and URLs rather than as copied text.

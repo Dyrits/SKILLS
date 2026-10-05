@@ -7,7 +7,7 @@ description: Diagnosis loop for hard bugs and performance regressions. Use when 
 
 A discipline for hard bugs. Skip phases only when explicitly justified.
 
-When exploring the codebase, read `GLOSSARY.md` (if it exists) to get a clear mental model of the relevant modules, and check ADRs in the area you're touching.
+When exploring the codebase, read `GLOSSARY.md` (if it exists) to get a clear mental model of the relevant modules, and check the architecture decision records in the area you're touching.
 
 ## Redact
 
@@ -114,6 +114,8 @@ Tool preference:
 ## Phase 5: Fix + regression test
 
 Write the regression test **before the fix**, but only if there is a **correct seam** for it.
+
+A reproduction shows a failure; it does not authorize changing agreed behavior. When the symptom, the specification, and the code disagree about what is intended, surface that conflict to the user and keep the observed red and green evidence, instead of weakening a requirement to make the loop pass.
 
 A correct seam is one where the test exercises the **real bug pattern** as it occurs at the call site. If the only available seam is too shallow (single-caller test when the bug needs multiple callers, unit test that can't replicate the chain that triggered the bug), a regression test there gives false confidence.
 

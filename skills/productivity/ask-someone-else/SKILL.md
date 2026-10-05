@@ -7,6 +7,8 @@ Turn something the user can't answer alone into a **questionnaire**: a Markdown 
 
 **Grill the send, not the subject.** Interview the user only about the _send_, which they can always answer: who it goes to, and what they need back. The questions in the document then target the **gap** between what the recipient knows and what the user needs.
 
+A questionnaire has one recipient, because its tone and context are pitched at them. When the answers sit with several people, offer one questionnaire per person and start with the first. When the user's message already names the recipient and what they need back, confirm both in one line and go to step 3; ask only for what is missing.
+
 
 1. **Who is it going to?** Ask, in one exchange, the recipient's role, expertise, and relationship to the user. This fixes the questionnaire's tone and how much context it must carry. Done when you know who the recipient is and what they know that the user doesn't.
 

@@ -29,6 +29,9 @@ Only for the behavior those tests establish. Appearance and interaction may need
 **What if a skill it calls or hands over to is not installed?**
 It names the missing skill with its install command, carries out that step from its stated intent, and tells you the step ran without it. Without `document` it waits instead, because its rules use that skill's terms: install it, or tell it to proceed anyway. When it tells you to run a skill you don't have, it gives the install command with it. The skills involved are listed at the top of its [`SKILL.md`](../../../skills/workflow/implement/SKILL.md).
 
+**What if `webapp-testing` is not installed?**
+It ships outside this repository, so the skill cannot assume it. When browser interaction needs verifying and the skill is missing, the agent tells you, verifies the interaction another way (a scripted browser run, for example), and reports the check as could not run if no way is available.
+
 ## It's working if
 
 - The final report traces intended behavior to the originating agreement, ready for review.

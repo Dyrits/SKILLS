@@ -109,6 +109,17 @@
     },
     {
       "id": 7,
+      "kind": "behavior",
+      "prompt": "Use the address-feedback skill. I approved the plan: accept F1 (rename parse_date's argument) and F2 (add a docstring) in dates.py, which has tests in test_dates.py. Go ahead.",
+      "expected_output": "The approved changes to repository code are built through implement, with this run owning the records, and then replies are drafted from verified results.",
+      "expectations": [
+        "The agent calls the implement skill for the approved code changes, handing it the approved plan",
+        "The agent tells implement that this run owns the project records and the review",
+        "Replies claim a change is complete only after the implementation evidence is verified"
+      ]
+    },
+    {
+      "id": 8,
       "kind": "no-trigger",
       "prompt": "I have not received any comments yet. Look over my branch feature/export against main and tell me what a reviewer would object to, and clean up whatever you agree with.",
       "expected_output": "No feedback exists to assess; this is a review-and-refactor request.",
@@ -118,7 +129,7 @@
       ]
     },
     {
-      "id": 8,
+      "id": 9,
       "kind": "no-trigger",
       "prompt": "Post this summary as a comment on issue 12 of the scratch tracker: 'Investigation finished: the timeout comes from the retry loop, fix is tracked in issue 15.'",
       "expected_output": "An established conclusion to publish is a publish-message request, not feedback to assess.",

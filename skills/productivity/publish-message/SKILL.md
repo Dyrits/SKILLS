@@ -23,7 +23,7 @@ Done when the service, the exact destination, its surrounding context, and its a
 
 ### 2. Resolve how to post
 
-If `.agents/issue-tracker.md` covers the destination, use the mechanism it records. Otherwise prefer a connected MCP tool or connector for the service (a GitHub, GitLab, Jira, Linear, Slack, Confluence, Notion, or mail server, for example), then the service's CLI (`gh`, `glab`, and similar), then its documented API with credentials already configured.
+If `.agents/issue-tracker.md` covers the destination, use the mechanism it records. A file that names a different tool than the destination's service (a GitHub tracker file for a Slack channel) does not cover it; resolve this destination as if the file were missing. Otherwise prefer a connected MCP tool or connector for the service (a GitHub, GitLab, Jira, Linear, Slack, Confluence, Notion, or mail server, for example), then the service's CLI (`gh`, `glab`, and similar), then its documented API with credentials already configured.
 
 Ask the user how to post only when nothing resolves unambiguously: several tools could apply and it is unclear which reaches the destination, or none can. When no mechanism can reach it, step 5 hands the approved text to the user instead.
 

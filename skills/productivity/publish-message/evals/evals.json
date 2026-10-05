@@ -110,6 +110,17 @@
     },
     {
       "id": 8,
+      "kind": "behavior",
+      "prompt": "Use the publish-message skill. Post the review summary we just agreed to the #platform-reviews Slack channel. Our .agents/issue-tracker.md describes GitHub.",
+      "expected_output": "The GitHub tracker file is not used for Slack; the posting mechanism is resolved from a connected Slack tool, then others.",
+      "expectations": [
+        "The agent does not use the GitHub mechanism from .agents/issue-tracker.md for the Slack destination",
+        "The agent looks for a connected Slack tool or another mechanism that reaches the channel",
+        "The agent shows the exact text and destination and waits for approval before posting"
+      ]
+    },
+    {
+      "id": 9,
       "kind": "no-trigger",
       "prompt": "I'm about to open a pull request for my branch. Write the description: a one-image summary of what the change does, before and after screenshots of the settings page, and what could go wrong if it merges.",
       "expected_output": "The request body is written by draft-merge-request; nothing is posted as a review message.",
@@ -119,7 +130,7 @@
       ]
     },
     {
-      "id": 9,
+      "id": 10,
       "kind": "no-trigger",
       "prompt": "A reviewer left six comments on my pull request. Go through them, tell me which you'd accept and which you'd push back on, make the changes I agree to, and answer each comment.",
       "expected_output": "Feedback received on the user's own work is handled by address-feedback, not by publishing a conclusion.",

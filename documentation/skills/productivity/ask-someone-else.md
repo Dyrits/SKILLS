@@ -48,7 +48,10 @@ Two things it deliberately isn't. It isn't **branching**: the questions are a fl
 Not as a step of its own. The skill has no ingest phase: it asks about the send, then drafts. What makes it work after a grilling session is that you run it in the **same conversation**, so the session is already in context and the drafting can draw on it. Start it in a fresh session and it knows nothing about the grilling; you'll be re-supplying the topic yourself when you answer "what do you need back?".
 
 **The missing answers don't all live with the same person. Can it split them by recipient?**
-No. Step one asks for *the* recipient, singular, and the tone and context of the whole document are pitched at them. If three people hold three parts of the answer, run it three times, once per person. Routing questions by discipline or role inside a single document is a request people have made; it isn't what shipped.
+Not inside one document. A questionnaire has one recipient, because its tone and context are pitched at them. When several people hold parts of the answer, the skill offers one questionnaire per person and starts with the first; run it again for each of the others.
+
+**I already told it who the recipient is and what I need. Will it ask again?**
+No. When your message names both, it confirms them in one line and goes straight to writing the questionnaire, asking only for whatever is missing.
 
 **Are the questions dependent: does it skip sections based on earlier answers?**
 No. The dependent-question design was explored and did not ship. The output is a static document: themed groups, most-important-first, every question live. The objection against it is a fair one: a model planning more than two or three questions ahead of a real answer plans badly, and a branching document has to plan all of them ahead of every answer.

@@ -152,6 +152,17 @@
     },
     {
       "id": 10,
+      "kind": "behavior",
+      "prompt": "Use the model-domain skill. Create a CONVENTIONS.md for this project. A previous run recorded Conventions: declined in .agents/domain.md.",
+      "expected_output": "The direct request overrides the recorded decline and goes to the interview without an offer.",
+      "expectations": [
+        "The agent does not ask whether to create CONVENTIONS.md, since the user asked for it",
+        "The agent starts the code-convention interview one question at a time with a recommended answer",
+        "A previous decline does not stop the request"
+      ]
+    },
+    {
+      "id": 11,
       "kind": "no-trigger",
       "prompt": "Add a `cancelOrder` function to the shop in evals/files/shop/ that cancels a whole order before it ships, and name things using our glossary terms.",
       "expected_output": "Reading the glossary for vocabulary is not this skill; the agent implements the change.",

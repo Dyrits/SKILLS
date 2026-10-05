@@ -30,6 +30,9 @@ No. Choose [taskify](taskify.md) only when decomposition is useful. Small delive
 **What if a skill it calls is not installed?**
 It names the missing skill with its install command, carries out that step from its stated intent, and tells you the step ran without it. Without `document` it waits instead, because its rules use that skill's terms: install it, or tell it to proceed anyway. The skills involved are listed at the top of its [`SKILL.md`](../../../skills/workflow/specify/SKILL.md).
 
+**What does it offer when it finishes?**
+It reports the canonical paths, covered requirements, agreements, blockers, and validation still needed, then offers the next moves for you to run: `/taskify` for a decomposition, `/implement` for direct delivery, or `/iterate` for a small living-code batch. It does not start any of them.
+
 ## It's working if
 
 - The agreed behavior and acceptance cover the selected scope and link applicable constraints.

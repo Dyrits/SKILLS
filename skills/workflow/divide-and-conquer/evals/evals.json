@@ -98,6 +98,17 @@
     },
     {
       "id": 7,
+      "kind": "behavior",
+      "prompt": "Use the divide-and-conquer skill. The task graph is approved. In the routing table I kept task 3 in this session because it is a one-line change. How does it get merged?",
+      "expected_output": "The kept task is built on its own branch from the integration branch and merged only after verification passes.",
+      "expectations": [
+        "The task is built on its own task branch cut from the integration branch",
+        "The integration branch tip is merged into the task branch before merging back",
+        "The merge into the integration branch happens only after the task's verification passes"
+      ]
+    },
+    {
+      "id": 8,
       "kind": "no-trigger",
       "prompt": "Add a `--verbose` flag to the export command that prints each row count. It is one small change in one file, specified in the task description I pasted above: 'Print the row count when --verbose is passed.'",
       "expected_output": "A single task needs no routing table or subagents; the implement skill handles it.",
@@ -107,7 +118,7 @@
       ]
     },
     {
-      "id": 8,
+      "id": 9,
       "kind": "no-trigger",
       "prompt": "Here is the approved specification for the export feature. I have no tasks yet. Split it into tasks with dependencies so we can plan the work.",
       "expected_output": "Decomposition into tasks is taskify; divide-and-conquer starts only from an authorized task graph.",

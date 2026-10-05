@@ -48,6 +48,9 @@ Only when the destination contains it. Otherwise the message describes a local c
 **What if a skill it calls is not installed?**
 It names the missing skill with its install command, carries out that step from its stated intent, and tells you the step ran without it. The skills involved are listed at the top of its [`SKILL.md`](../../../skills/productivity/publish-message/SKILL.md).
 
+**My `.agents/issue-tracker.md` names a different tool than where I am posting. Which wins?**
+The destination. A tracker file only covers the service it names, so a GitHub tracker file does not describe a Slack channel. The skill then resolves the destination as if the file were missing: a connected tool for the service, then its command line, then its configured API.
+
 ## It's working if
 
 - The message arrives in the right place, in the destination's format and language.

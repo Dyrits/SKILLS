@@ -148,6 +148,17 @@
     },
     {
       "id": 9,
+      "kind": "behavior",
+      "prompt": "Use the triage skill. Look at #57. It carries both the ready and the on-hold labels.",
+      "expected_output": "The conflict is shown with sources and dates, a recommendation is made, and no role is applied until the maintainer decides.",
+      "expectations": [
+        "The agent shows both state labels with where and when each was set",
+        "The agent recommends one based on the latest evidence",
+        "The agent applies no role change until the maintainer picks"
+      ]
+    },
+    {
+      "id": 10,
       "kind": "no-trigger",
       "prompt": "I have an idea for a reports scheduling feature but I haven't thought it through. Grill me on it until the decisions are clear.",
       "expected_output": "An open idea to stress-test belongs to refine, not to intake triage.",
@@ -157,7 +168,7 @@
       ]
     },
     {
-      "id": 10,
+      "id": 11,
       "kind": "no-trigger",
       "prompt": "A reviewer left six comments on my pull request. Go through them, tell me which ones you'd accept, and push fixes for the ones we agree on.",
       "expected_output": "Review feedback on one's own pull request belongs to address-feedback.",

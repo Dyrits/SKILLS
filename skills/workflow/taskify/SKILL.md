@@ -7,7 +7,7 @@ description: "Decompose approved work into verifiable tasks with explicit blocki
 
 Create tracker-neutral tasks that deliver coherent outcomes. A small batch may need no tasks: recommend direct implementation or iterate when decomposition adds no value.
 
-**Calls:** `document`. If a called skill is not installed, tell the user its name and install command, `npx skills@latest add Dyrits/SKILLS --skill=<name>`, then carry out that step from its stated intent and report the step as done without the skill. Without `document`, wait until the user installs it or tells you to proceed: this skill's rules use its terms.
+**Calls:** `document`. If a called skill is not installed, tell the user its name and install command, `npx skills@latest add Dyrits/SKILLS --skill=<name>`, then carry out that step from its stated intent and report the step as done without the skill. Without `document`, wait until the user installs it or tells you to proceed: this skill's rules use its terms. **Hands over to:** `/divide-and-conquer`, `/implement`. When one is not installed, give the user its install command, `npx skills@latest add Dyrits/SKILLS --skill=<name>`, along with the instruction to run it.
 
 ## Establish the source
 
@@ -36,4 +36,4 @@ Present the proposed outcome breakdown, acceptance, and blocking edges. Ask the 
 
 Save approved drafts at the shared task paths, in dependency order. Once publication is authorized, publish following configured conventions: blockers first so later tasks can reference real identifiers, then verify native dependency and parent links. Each published local draft becomes a pointer. Change a remote parent only when the authorization covers it.
 
-Report saved paths or published links, remaining blockers, and the **frontier** of tasks whose prerequisites are complete. Taskify stops at decomposition and approved publication, not execution.
+Report saved paths or published links, remaining blockers, and the **frontier** of tasks whose prerequisites are complete. Taskify stops at decomposition and approved publication, not execution. Close by offering the user the next move: to run `/implement` for one task, or to run `/divide-and-conquer` for the whole task graph, which runs independent tasks in parallel.

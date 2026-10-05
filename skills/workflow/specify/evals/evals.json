@@ -88,6 +88,17 @@
     },
     {
       "id": 6,
+      "kind": "behavior",
+      "prompt": "Use the specify skill. The export-to-CSV capability is fully settled in this conversation. Write the specification.",
+      "expected_output": "The specification is synthesized without an interview, and the agent ends by offering taskify, implement, or iterate for the user to run.",
+      "expectations": [
+        "The agent synthesizes the specification without re-asking settled decisions",
+        "The report lists the canonical paths, covered requirements, agreements, and blockers",
+        "The agent offers `/taskify`, `/implement`, or `/iterate` as the user's next move and does not start any of them"
+      ]
+    },
+    {
+      "id": 7,
       "kind": "no-trigger",
       "prompt": "The CSV export specification is approved and in the repository. Break it into tasks with explicit blocking dependencies that I can hand to different agents.",
       "expected_output": "Decomposing agreed work is a taskify request.",
@@ -97,7 +108,7 @@
       ]
     },
     {
-      "id": 7,
+      "id": 8,
       "kind": "no-trigger",
       "prompt": "I have ten ideas for the reports area: CSV export, scheduled emails, saved filters, a mobile view, comments, and five more. I cannot tell which one to build first. Help me choose.",
       "expected_output": "Choosing among competing ideas is prioritize; specify works on one selected scope.",

@@ -53,7 +53,7 @@ These states answer whether work is actionable. In-progress, review, and deploye
 
 A ready brief can identify work a human must implement and the reason it cannot be delegated, such as access, judgment, or manual testing. This is a line in the brief, not another role. For a PR, ready means the next step on its diff is specified, whether an agent finishes it or a human merges it.
 
-Each triaged task carries exactly one category and one state. If states conflict, flag them and ask the maintainer before acting. The role file maps canonical roles to the project's actual strings; use that mapping instead of creating duplicate vocabulary.
+Each triaged task carries exactly one category and one state. If states conflict (two state lines on one task, or a role that disagrees with the tracker's own state), show each with its source and date, recommend the one the latest evidence supports (the newest comment, the linked pull request's status), and apply no role until the maintainer picks. The role file maps canonical roles to the project's actual strings; use that mapping instead of creating duplicate vocabulary.
 
 Normally, an untriaged task enters `to-evaluate`, then moves to `on-hold`, `ready`, or `not-planned`. A hold returns to `to-evaluate` when its named condition arrives. The maintainer can override; flag unusual transitions and confirm them first.
 

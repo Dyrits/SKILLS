@@ -42,6 +42,9 @@ It reads the error fields, respects `Retry-After`, and retries once for short de
 
 Ordinary free-text requests do not. Anonymous proxy traffic, large inputs, or paid processing may require a funded workspace key, which the skill reports as an access restriction.
 
+**What counts as a negative verdict when I have more than two labels?**
+Whichever labels you name as the discard side, such as `irrelevant` or `none of these`. With more than two labels the skill asks which ones discard before it filters, and keeps every item until you say. Even then it discards only a negative verdict with confidence of at least 0.8. A failed request is retried at most once in total, whichever failure came first.
+
 ## It's working if
 
 - The report shows verdicts, not raw JSON: one line per text (`label · 0.94`), or a table or grouped list for a batch.

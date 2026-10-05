@@ -82,6 +82,9 @@ The artifact does, unconditionally: it's a plain bash script and it doesn't care
 
 It graduated upstream into `engineering/` in v1.2. This fork places it in `productivity/`, and its manifest entry includes it in the plugin. A bucket move alone does not promote a skill.
 
+**Does it start writing the script before I agree to the stages?**
+No. It reads the repository, shows the ordered stage list with the values each produces, and stops for your reply. You can add, drop, or reorder stages, and it maps each stage's journey and writes the script only after you confirm the list.
+
 ## It's working if
 
 - You're shown an ordered list of stages, and the values each one produces, and asked to confirm, before any script exists.

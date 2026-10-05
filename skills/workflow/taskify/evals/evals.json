@@ -96,6 +96,17 @@
     },
     {
       "id": 7,
+      "kind": "behavior",
+      "prompt": "Use the taskify skill. I approved the breakdown of the saved searches specification exactly as proposed: six tasks, four of them independent. Save them locally and tell me what I do next.",
+      "expected_output": "The tasks are saved, the frontier is reported, and implement or divide-and-conquer is offered for the user to run.",
+      "expectations": [
+        "The agent reports the saved paths, remaining blockers, and the frontier of ready tasks",
+        "The agent offers `/implement` for one task and `/divide-and-conquer` for the whole task graph as the user's next move",
+        "The agent does not start implementing"
+      ]
+    },
+    {
+      "id": 8,
       "kind": "no-trigger",
       "prompt": "We want saved searches in the catalogue but nobody has decided what a saved search contains, who can see it, or how many a member can have. Work through those open questions with me and write down what we agree.",
       "expected_output": "Settling open decisions into agreed behavior is specify.",
@@ -105,7 +116,7 @@
       ]
     },
     {
-      "id": 8,
+      "id": 9,
       "kind": "no-trigger",
       "prompt": "Tasks 1 through 6 in documentation/capabilities/search/tasks/ are approved with their dependencies written down. Build them all now, in parallel where the dependencies allow.",
       "expected_output": "Executing an authorized task graph is divide-and-conquer; taskify stops at decomposition.",
