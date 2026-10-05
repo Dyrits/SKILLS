@@ -556,7 +556,9 @@ const DATA = {
   "address-feedback": {
    "argumentHint": "Feedback source: PR, MR, issue, or ticket reference, a file path, or pasted text",
    "bucket": "workflow",
-   "calls": [],
+   "calls": [
+    "implement"
+   ],
    "description": "Assess review feedback from any source (pull or merge request, issue, ticket, document comments, pasted notes), propose dispositions, then implement and reply. Use when the user shares feedback to address or asks to handle review comments.",
    "fits": [
     "This is a workflow step that follows a review of your work and loops back through implementation: implement and test-first style validation apply to the changes. Replies are drafted in the spirit of publish-message, which handles posting conclusions to any service. guide maps the whole system."
@@ -566,9 +568,7 @@ const DATA = {
     "feedback",
     "code"
    ],
-   "next": [
-    "implement"
-   ],
+   "next": [],
    "outputs": [
     "code",
     "verification",
@@ -647,7 +647,7 @@ const DATA = {
    "calls": [],
    "description": "Diagnosis loop for hard bugs and performance regressions. Use when the user says \"diagnose\"/\"debug this\", or reports something broken/throwing/failing/slow.",
    "fits": [
-    "debug is a reach-for-it-anytime standalone. You drop into it when something is broken and drop out when the fix and its regression test are in; it holds no state and needs no prior setup. guide routes \"Something's broken\" here.",
+    "debug is a reach-for-it-anytime standalone. You drop into it when something is broken and drop out when the fix and its regression test are in; it holds no state and needs no prior setup. guide routes \"Something's broken\" here, and implement calls it before editing code for a reported bug, so a fix follows a reproduced cause.",
     "Three neighbours matter. improve-environment comes after it: once the fix is in, run it in the same session to ask what would have prevented the bug, when there is more information than at the start. improve-codebase-architecture is the follow-up when the real finding is that the code has no seam to lock the bug down; debug records that finding but never starts the follow-up itself, so you choose it after the fix is in, when there is more information. triage sits upstream of it for bugs that arrive as raw reports from other people, and does a shallower version of the same first two phases."
    ],
    "handovers": [],
@@ -1672,7 +1672,11 @@ const DATA = {
    "fits": [
     "Specify is an optional chain step before taskify or implement. It uses refine for unresolved choices and document for shared project records. Guide maps these paths."
    ],
-   "handovers": [],
+   "handovers": [
+    "implement",
+    "iterate",
+    "taskify"
+   ],
    "inputs": [
     "idea",
     "requirements",
@@ -1683,11 +1687,7 @@ const DATA = {
     "decision-graph",
     "questionnaire"
    ],
-   "next": [
-    "taskify",
-    "implement",
-    "iterate"
-   ],
+   "next": [],
    "outputs": [
     "specification",
     "requirements",
@@ -1762,15 +1762,15 @@ const DATA = {
    "fits": [
     "Taskify is an optional chain step after specify and before implement or divide-and-conquer. It produces a task graph, not an execution run. Guide maps the alternatives."
    ],
-   "handovers": [],
+   "handovers": [
+    "divide-and-conquer",
+    "implement"
+   ],
    "inputs": [
     "specification",
     "requirements"
    ],
-   "next": [
-    "implement",
-    "divide-and-conquer"
-   ],
+   "next": [],
    "outputs": [
     "tasks"
    ],
