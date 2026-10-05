@@ -1,6 +1,6 @@
 ---
 name: memorize
-description: File a lesson in the home the next agent will read, and recall saved scripts and lessons before redoing work. Use the moment the user corrects you, says "always", "never", "from now on" or "remember", or explains how it should be done next time; before writing any script or multi-step shell pipeline; and when you rebuild something a second time. Use it even when the harness has its own memory: a project lesson belongs in the project.
+description: 'File a lesson in the home the next agent will read, and recall saved scripts and lessons before redoing work. Use the moment the user corrects you, says "always", "never", "from now on" or "remember", or explains how it should be done next time; before writing any script or multi-step shell pipeline; and when you rebuild something a second time. Use it even when the harness has its own memory: a project lesson belongs in the project.'
 ---
 
 # Memorize

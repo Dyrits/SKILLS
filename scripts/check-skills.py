@@ -115,6 +115,19 @@ def evaluation_errors(root, relative, path):
     return errors
 
 
+def frontmatter_error(content):
+    """A plain (unquoted) description holding ": " or " #" is invalid YAML, and installers silently skip the skill."""
+    match = re.search(r"^description:[ \t]*(.*)$", content, re.MULTILINE)
+    if not match:
+        return None
+    value = match.group(1).strip()
+    if value[:1] in "\"'>|":
+        return None
+    if ": " in value or " #" in value:
+        return 'description is unquoted but holds ": " or " #", which is invalid YAML. Wrap it in quotes.'
+    return None
+
+
 def check(repository):
     root = Path(repository).resolve()
     errors = []
@@ -142,6 +155,9 @@ def check(repository):
         name_field = re.search(r"^name:\s*(.+)$", content, re.MULTILINE)
         if not name_field or name_field.group(1).strip("'\"") != name:
             errors.append(f"{relative}: frontmatter name does not match directory.")
+        problem = frontmatter_error(content)
+        if problem:
+            errors.append(f"{relative}: {problem}")
         metadata_path = path.parent / "agents/openai.yaml"
         if not metadata_path.exists():
             errors.append(f"{relative}: missing agents/openai.yaml.")

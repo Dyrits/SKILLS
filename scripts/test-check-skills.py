@@ -189,6 +189,12 @@ class LayoutChecks(unittest.TestCase):
                    '---\nname: example\n---\nCall the Skill tool with "webapp-testing".\n')
         self.assertEqual(self.result()[0], False)
 
+    def test_unquoted_description_with_colon_is_invalid(self):
+        for description, flagged in (("Write things: and more.", True), ('"Write things: and more."', False),
+                                     ("'Write things: and more.'", False), ("Write things, and more.", False)):
+            self.write("skills/reference/example/SKILL.md", f"---\nname: example\ndescription: {description}\n---\nBody.\n")
+            self.assertEqual("invalid YAML" in self.result()[1], flagged, description)
+
     def test_stale_dependency_paragraph(self):
         self.write("skills/reference/example/SKILL.md",
                    "---\nname: example\n---\n" + checker.calls_block({"guide"}) + "\n")
