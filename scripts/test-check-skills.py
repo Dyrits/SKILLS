@@ -181,6 +181,11 @@ class LayoutChecks(unittest.TestCase):
         self.write("skills/reference/example/SKILL.md", body + "\n" + block + "\n")
         self.assertEqual(self.result()[0], False)
 
+    def test_handover_for_missing_setup_is_a_prerequisite(self):
+        self.write("skills/reference/example/SKILL.md", "---\nname: example\n---\n"
+                   "If it is missing, tell the user to run `/guide` and stop. Tell the user to run `/other`.\n")
+        self.assertEqual(checker.prerequisites(self.root / "skills/reference/example"), {"guide"})
+
     def test_router_carries_no_dependency_paragraph(self):
         self.write("skills/productivity/guide/SKILL.md",
                    "---\nname: guide\n---\nRoute to /example and /guide. Tell the user to run `/example`.\n")

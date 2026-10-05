@@ -21,6 +21,8 @@ CALL_PATTERN = re.compile(r'Skill tool(?: twice,)? (?:with|for) ((?:\\?["`][\w-]
                           re.IGNORECASE)
 # "tell the user to run `/a`": the human invokes it.
 HANDOVER_PATTERN = re.compile(r"to run `/([\w-]+)")
+# "If it is missing, tell the user to run `/a`": a handover that sends the human back to set something up first.
+PREREQUISITE_PATTERN = re.compile(r"missing[^.|\n]*to run `/([\w-]+)")
 SCANNED_SUFFIXES = {".md", ".sh"}
 
 
@@ -40,6 +42,17 @@ def skill_references(folder):
         handovers.update(HANDOVER_PATTERN.findall(text))
     calls.discard(folder.name)
     return calls, handovers - calls - {folder.name}
+
+
+def prerequisites(folder):
+    """The handovers a skill folder makes only when something it needs is missing, so they run before it, not after."""
+    found = set()
+    for path in folder.rglob("*"):
+        if path.suffix not in SCANNED_SUFFIXES or not path.is_file():
+            continue
+        for match in PREREQUISITE_PATTERN.finditer(path.read_text()):
+            found.add(match.group(1))
+    return found - {folder.name}
 
 
 def calls_block(calls, handovers=frozenset()):

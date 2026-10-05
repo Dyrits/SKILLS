@@ -81,6 +81,7 @@
   .legend .line-solid { width: 24px; border-top: 1.5px solid var(--faint); }
   .legend .line-dashed { width: 24px; border-top: 1.5px dashed var(--faint); }
   .legend .line-dotted { width: 24px; border-top: 2px dotted var(--faint); }
+  .legend .line-requires { width: 24px; height: 1.5px; background: repeating-linear-gradient(90deg, var(--faint) 0 9px, transparent 9px 12px, var(--faint) 12px 14px, transparent 14px 17px); }
 
   section.bucket { margin: 52px 0 0; }
   .bucket-head { display: grid; grid-template-columns: auto 1fr; column-gap: 16px; align-items: baseline; margin-bottom: 14px; }
@@ -128,6 +129,7 @@
 
   svg .edge { fill: none; stroke: var(--faint); stroke-width: 1.3; }
   svg .edge.handover { stroke-dasharray: 5 4; }
+  svg .edge.requires { stroke-dasharray: 9 3 2 3; }
   svg .edge.call { stroke-dasharray: 1.5 4; stroke-linecap: round; stroke-width: 1.8; }
   svg .label { font: 600 10.5px var(--sans); fill: var(--faint); letter-spacing: .08em; text-transform: uppercase; }
   svg .pill { cursor: pointer; }
@@ -200,6 +202,7 @@
     <span><i class="pill-doc"></i>document or result</span>
     <span><i class="line-solid"></i>reads, writes, or usually comes next</span>
     <span><i class="line-dashed"></i>hands over: tells you to run it</span>
+    <span><i class="line-requires"></i>requires: sends you to run it first when its setup is missing</span>
     <span><i class="line-dotted"></i>calls it as a step</span>
   </div>
 
@@ -572,6 +575,7 @@ const DATA = {
     "published-message"
    ],
    "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/workflow/address-feedback.md",
+   "requires": [],
    "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/workflow/address-feedback/SKILL.md",
    "summary": [
     "address-feedback turns a set of review comments into accounted-for decisions, approved changes, and replies grounded in the validated result. You approve the plan before anything is edited, and you approve the replies before anything is posted.",
@@ -601,6 +605,7 @@ const DATA = {
     "questionnaire"
    ],
    "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/productivity/ask-someone-else.md",
+   "requires": [],
    "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/productivity/ask-someone-else/SKILL.md",
    "summary": [
     "ask-someone-else turns a decision you can't settle on your own into a questionnaire: a Markdown document you hand to the one person who holds what you're missing, for them to fill in async or for the two of you to work through in a meeting.",
@@ -628,6 +633,7 @@ const DATA = {
     "labeled-items"
    ],
    "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/productivity/classify.md",
+   "requires": [],
    "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/productivity/classify/SKILL.md",
    "summary": [
     "classify sorts text against labels you choose, using the classifier.dev API, so many items can be triaged, filtered, bucketed, or routed before any of them is read.",
@@ -657,6 +663,7 @@ const DATA = {
     "verification"
    ],
    "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/upkeep/debug.md",
+   "requires": [],
    "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/upkeep/debug/SKILL.md",
    "summary": [
     "debug runs a six-phase diagnosis on a hard bug or a performance regression: build a repro, minimise it, rank hypotheses, instrument, fix with a regression test, clean up.",
@@ -679,6 +686,7 @@ const DATA = {
    ],
    "outputs": [],
    "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/reference/design-modules.md",
+   "requires": [],
    "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/reference/design-modules/SKILL.md",
    "summary": [
     "design-modules fixes the words you use to design a module: module, interface, depth, seam, adapter, leverage, locality. It defines each one precisely, bans the loose substitutes (\"component\", \"service\", \"API\", \"boundary\"), and states the handful of principles that follow from them.",
@@ -705,6 +713,7 @@ const DATA = {
     "workflow-specification"
    ],
    "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/productivity/design-workflow.md",
+   "requires": [],
    "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/productivity/design-workflow/SKILL.md",
    "summary": [
     "design-workflow grills you into a specification for a recurring workflow, using the current directory as a stateful workspace. It runs the standard grilling discipline, but aimed at loops: recurring patterns in your work (a morning inbox pass, a weekly review, an onboarding routine) that are predictable enough to delegate. Its output is workflows/*.md, one specification per workflow, and its bar is absolute: a specification is done only when an implementer agent could build it without asking a single question."
@@ -724,9 +733,7 @@ const DATA = {
    "fits": [
     "This coordinates the implementation stage after specify and taskify, or for a batch inside iterate, then calls review-and-refactor across the integration branch. guide maps the other routes."
    ],
-   "handovers": [
-    "setup-ai-workspace"
-   ],
+   "handovers": [],
    "inputs": [
     "tasks",
     "specification",
@@ -740,6 +747,9 @@ const DATA = {
     "review-findings"
    ],
    "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/workflow/divide-and-conquer.md",
+   "requires": [
+    "setup-ai-workspace"
+   ],
    "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/workflow/divide-and-conquer/SKILL.md",
    "summary": [
     "divide-and-conquer builds an authorized task graph or living work batch on one integration branch, in three phases:",
@@ -766,6 +776,7 @@ const DATA = {
     "technical-documents"
    ],
    "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/reference/document.md",
+   "requires": [],
    "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/reference/document/SKILL.md",
    "summary": [
     "document owns the shared model for project requirements, specifications, backlog, working state, tasks, and semantic changelog records. Workflows call it instead of restating those rules. For any other document (a README, runbook, or API reference) it keeps four habits: write for a named reader and task, follow the repository's formats, check claims against the current system, and link instead of copying.",
@@ -797,6 +808,7 @@ const DATA = {
     "merge-request-body"
    ],
    "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/version-control/draft-merge-request.md",
+   "requires": [],
    "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/version-control/draft-merge-request/SKILL.md",
    "summary": [
     "draft-merge-request writes the body of a pull request, or a merge request on GitLab, in a fixed three-part shape: a summary visual, evidence as a before/after pair, and the merge danger. It is a format reference, not a workflow: it does not open the request, push the branch, or review anything.",
@@ -819,9 +831,7 @@ const DATA = {
    "fits": [
     "Graphify is a shaping workflow for multi-session uncertainty. It uses document for shared project documents and hands a clear route to specify or taskify. Guide routes the surrounding flow."
    ],
-   "handovers": [
-    "setup-ai-workspace"
-   ],
+   "handovers": [],
    "inputs": [
     "idea"
    ],
@@ -834,6 +844,9 @@ const DATA = {
     "decisions"
    ],
    "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/shaping/graphify.md",
+   "requires": [
+    "setup-ai-workspace"
+   ],
    "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/shaping/graphify/SKILL.md",
    "summary": [
     "Builds and works through a shared decision graph for an effort too large for one session. Its nodes are questions, and its blocking relationships determine which questions can be resolved next. It plans the route to a named destination rather than decomposing the destination into implementation tasks.",
@@ -868,6 +881,7 @@ const DATA = {
     "recommendation"
    ],
    "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/productivity/guide.md",
+   "requires": [],
    "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/productivity/guide/SKILL.md",
    "summary": [
     "guide is the router over the skills in this repository. You describe the situation you are in (an idea you cannot start, a pile of incoming bug reports, a session that has run long), and it names the skill or the sequence of skills that fits, plus where the human decisions in that sequence sit.",
@@ -894,6 +908,7 @@ const DATA = {
     "handoff"
    ],
    "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/productivity/hand-off.md",
+   "requires": [],
    "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/productivity/hand-off/SKILL.md",
    "summary": [
     "hand-off compacts the conversation you are in into a handoff document: one markdown file, written to .agents/handoffs/ in the workspace as a versioned, timestamped file, that a fresh agent can read to pick the work up.",
@@ -918,6 +933,7 @@ const DATA = {
     "visual"
    ],
    "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/productivity/illustrate.md",
+   "requires": [],
    "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/productivity/illustrate/SKILL.md",
    "summary": [
     "illustrate explains the current topic with a diagram, code sketch, or focused HTML artifact. It picks the smallest view that answers the question, keeping only the relationships and boundaries you need to see. The fork renamed it to make its visual-explanation purpose clearer; its behaviour remains unchanged."
@@ -953,6 +969,7 @@ const DATA = {
     "changelog"
    ],
    "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/workflow/implement.md",
+   "requires": [],
    "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/workflow/implement/SKILL.md",
    "summary": [
     "implement builds authorized work and commits it on the current branch. Its input is settled intended behavior, not an invitation to redesign the scope. It accepts shared specifications, a task, or an explicit user-approved living work batch.",
@@ -986,6 +1003,7 @@ const DATA = {
     "decisions"
    ],
    "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/upkeep/improve-codebase-architecture.md",
+   "requires": [],
    "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/upkeep/improve-codebase-architecture/SKILL.md",
    "summary": [
     "improve-codebase-architecture surveys a codebase for deepening opportunities: places where a shallow module (an interface nearly as complex as the thing it hides) could become a deep one. It writes them up as a self-contained HTML report, and then grills you through whichever one you pick.",
@@ -1018,6 +1036,7 @@ const DATA = {
     "memory"
    ],
    "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/upkeep/improve-environment.md",
+   "requires": [],
    "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/upkeep/improve-environment/SKILL.md",
    "summary": [
     "improve-environment looks back over a session, finds each moment of friction (a long search, a mistake, a retry, an expensive tool call, missing information), and changes the project's environment so the next run avoids it. The environment is everything around the code that shapes how an agent works: checks, hooks, CI, steering files, CONVENTIONS.md, tools, and access.",
@@ -1047,6 +1066,7 @@ const DATA = {
     "skill-issue"
    ],
    "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/upkeep/improve-skills.md",
+   "requires": [],
    "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/upkeep/improve-skills/SKILL.md",
    "summary": [
     "improve-skills holds a retrospective on a session with you, then opens an issue on Dyrits/SKILLS describing how the skills behaved. Together you establish four things: what went right, what went wrong, whether the skills were used correctly or used at all, and whether the outcome is the one you expected.",
@@ -1091,6 +1111,7 @@ const DATA = {
     "changelog"
    ],
    "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/workflow/iterate.md",
+   "requires": [],
    "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/workflow/iterate/SKILL.md",
    "summary": [
     "iterate builds a living application one verified batch at a time. It settles only the decisions the current batch needs, implements the batch, checks it, and lets the result decide what comes next. The application evolves in place from its first runnable batch; replacing it is your decision.",
@@ -1124,6 +1145,7 @@ const DATA = {
     "agent-instructions"
    ],
    "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/reference/memorize.md",
+   "requires": [],
    "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/reference/memorize/SKILL.md",
    "summary": [
     "memorize files each lesson in the home the next agent will read when it matters, and recall checks that home before redoing work. It exists because agents relearn the same things every session: the helper written yesterday, the convention you corrected twice, the term the team already settled.",
@@ -1149,6 +1171,7 @@ const DATA = {
     "domain-records"
    ],
    "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/reference/model-domain.md",
+   "requires": [],
    "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/reference/model-domain/SKILL.md",
    "summary": [
     "model-domain builds and sharpens a project's ubiquitous language while you are designing: challenging a term that conflicts with the glossary, forcing a precise word where you used a vague one, and stress-testing a relationship with a concrete scenario until the boundaries are exact.",
@@ -1164,9 +1187,7 @@ const DATA = {
    "fits": [
     "Periodic maintenance after setup-ai-tooling: setup configures the tools, this checks whether they pay off. improve-skills is the neighbor for the skills themselves. guide maps the wider flow."
    ],
-   "handovers": [
-    "setup-ai-tooling"
-   ],
+   "handovers": [],
    "inputs": [
     "tooling-config"
    ],
@@ -1175,6 +1196,9 @@ const DATA = {
     "tooling-report"
    ],
    "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/upkeep/monitor-ai-tooling.md",
+   "requires": [
+    "setup-ai-tooling"
+   ],
    "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/upkeep/monitor-ai-tooling/SKILL.md",
    "summary": [
     "monitor-ai-tooling writes an on-demand report on AI tooling usage, measured output reduction, quality signals, and gaps, built only from measurements that already exist locally.",
@@ -1202,6 +1226,7 @@ const DATA = {
     "process-recommendation"
    ],
    "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/productivity/optimize-process.md",
+   "requires": [],
    "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/productivity/optimize-process/SKILL.md",
    "summary": [
     "optimize-process maps a recurring process, finds the work and waiting that slow it down, and recommends a sequence to try on the next cycle. Its impact comparison accounts for work an agent can complete in hours or minutes, plus the human time needed to set it up, make decisions, and review the result."
@@ -1234,6 +1259,7 @@ const DATA = {
     "work-in-progress"
    ],
    "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/shaping/prioritize.md",
+   "requires": [],
    "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/shaping/prioritize/SKILL.md",
    "summary": [
     "prioritize decomposes a large or tangled idea into outcomes, recommends one focus to build next, and keeps the rest in the backlog. Its output is direction, a lightweight backlog, and an approved or explicitly pending focus. It edits planning documents only; application code, dependencies, and external trackers belong to other workflows.",
@@ -1263,6 +1289,7 @@ const DATA = {
     "prototype-verdict"
    ],
    "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/shaping/prototype.md",
+   "requires": [],
    "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/shaping/prototype/SKILL.md",
    "summary": [
     "prototype builds a scoped experiment that answers one design question. The user requests or approves the experiment; it does not become application code merely because the demo works.",
@@ -1290,6 +1317,7 @@ const DATA = {
     "published-message"
    ],
    "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/productivity/publish-message.md",
+   "requires": [],
    "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/productivity/publish-message/SKILL.md",
    "summary": [
     "publish-message publishes a conclusion already established in the conversation to a place other people read: a pull or merge request, an issue or ticket, a chat channel or thread, a documentation page, or an email. It drafts the full message in the destination's conventions, shows you the exact text and destination, waits for explicit approval, then posts and reads it back.",
@@ -1315,6 +1343,7 @@ const DATA = {
    ],
    "outputs": [],
    "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/productivity/re-explain.md",
+   "requires": [],
    "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/productivity/re-explain/SKILL.md",
    "summary": [
     "re-explain asks the agent to explain again when you stopped following. It adds the missing premise, uses your project's vocabulary, and answers in the language you have been using. It repairs understanding rather than shortening the message until important context disappears."
@@ -1340,6 +1369,7 @@ const DATA = {
     "branches"
    ],
    "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/version-control/rebase.md",
+   "requires": [],
    "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/version-control/rebase/SKILL.md",
    "summary": [
     "rebase rebases one or more local branches in place onto a single target, resolves conflicts by intent, validates every result, reports, and pushes only the branches you approve.",
@@ -1366,6 +1396,7 @@ const DATA = {
     "decisions"
    ],
    "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/reference/refine.md",
+   "requires": [],
    "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/reference/refine/SKILL.md",
    "summary": [
     "refine interviews you about unresolved choices in a plan, decision, or idea. It asks a round of independent questions, recommends answers, and waits for your decisions before asking dependent questions.",
@@ -1394,6 +1425,7 @@ const DATA = {
     "research-note"
    ],
    "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/shaping/research.md",
+   "requires": [],
    "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/shaping/research/SKILL.md",
    "summary": [
     "research answers a question by reading primary sources and leaves a cited Markdown file in the repository. Official documentation, source code, specifications, and first-party APIs qualify; a blog post's account of an API does not replace the API's own documentation.",
@@ -1420,6 +1452,7 @@ const DATA = {
     "code"
    ],
    "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/version-control/resolve-merge-conflicts.md",
+   "requires": [],
    "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/version-control/resolve-merge-conflicts/SKILL.md",
    "summary": [
     "resolve-merge-conflicts works through an in-progress git merge or rebase, hunk by hunk, then runs the project's own checks and finishes the operation with a commit.",
@@ -1455,6 +1488,7 @@ const DATA = {
     "code"
    ],
    "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/workflow/review-and-refactor.md",
+   "requires": [],
    "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/workflow/review-and-refactor/SKILL.md",
    "summary": [
     "review-and-refactor reviews one frozen starting diff on two independent tracks, Standards and Specifications. The coordinator checks cited evidence before applying supported refactors, then asks the same reviewers to verify the result. Missing behavior returns to implementation rather than being disguised as a refactor.",
@@ -1481,6 +1515,7 @@ const DATA = {
     "tooling-config"
    ],
    "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/setup/setup-ai-tooling.md",
+   "requires": [],
    "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/setup/setup-ai-tooling/SKILL.md",
    "summary": [
     "Provisions free AI development tools for one project and the agent clients installed on the machine, then records a measurable baseline. It reuses working integrations instead of reinstalling them, and it leaves an unverified adapter or output filter disabled rather than guessing.",
@@ -1507,15 +1542,13 @@ const DATA = {
    ],
    "handovers": [],
    "inputs": [],
-   "next": [
-    "triage",
-    "taskify"
-   ],
+   "next": [],
    "outputs": [
     "workspace-config",
     "domain-records"
    ],
    "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/setup/setup-ai-workspace.md",
+   "requires": [],
    "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/setup/setup-ai-workspace/SKILL.md",
    "summary": [
     "Configures one repository's task tracker, ticket-writing convention, triage-role vocabulary, and domain documentation. Its output is editable Markdown under .agents/, plus an agent-instruction block. It changes project configuration, not the installed skills. It then offers the other setups, so one run can prepare the whole workspace.",
@@ -1542,6 +1575,7 @@ const DATA = {
     "compaction-gate"
    ],
    "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/setup/setup-auto-handoff.md",
+   "requires": [],
    "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/setup/setup-auto-handoff/SKILL.md",
    "summary": [
     "Installs a Claude Code PreCompact hook that blocks compaction, automatic or manual, unless a handoff was written to .agents/handoffs/ in the last five minutes. The block message tells the agent to run hand-off first, and the next compaction attempt passes once the file exists.",
@@ -1566,6 +1600,7 @@ const DATA = {
     "delegation-policy"
    ],
    "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/setup/setup-delegation-policy.md",
+   "requires": [],
    "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/setup/setup-delegation-policy/SKILL.md",
    "summary": [
     "Installs one standing rule, \"Delegation and model routing\", into the global steering files on this machine, and gives harnesses that bind a model per agent one agent per tier. The rule tells an agent to decide at the top of a unit of work whether to do it here, hand it to one subagent, split it, or have a second agent review, and to pick the least expensive model that can do the bounded task reliably.",
@@ -1590,6 +1625,7 @@ const DATA = {
     "git-guardrails"
    ],
    "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/setup/setup-git-guardrails.md",
+   "requires": [],
    "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/setup/setup-git-guardrails/SKILL.md",
    "summary": [
     "Puts a confirmation in front of git commands that can lose work or rewrite shared history, so you approve each one instead of the agent running it unchecked:",
@@ -1613,6 +1649,7 @@ const DATA = {
     "git-hooks"
    ],
    "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/setup/setup-git-hooks.md",
+   "requires": [],
    "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/setup/setup-git-hooks/SKILL.md",
    "summary": [
     "Sets up versioned git hooks through core.hooksPath pointing at a committed .githooks/ directory, with no Husky. The pre-commit hook runs lint-staged on staged files, then the project's typecheck and build scripts.",
@@ -1656,6 +1693,7 @@ const DATA = {
     "backlog"
    ],
    "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/workflow/specify.md",
+   "requires": [],
    "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/workflow/specify/SKILL.md",
    "summary": [
     "specify turns a selected software scope into a living repository specification of agreed behavior, design, and acceptance. It inspects what is already known and interviews you only about decisions that remain unresolved.",
@@ -1680,6 +1718,7 @@ const DATA = {
     "branches"
    ],
    "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/version-control/sync-tree.md",
+   "requires": [],
    "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/version-control/sync-tree/SKILL.md",
    "summary": [
     "sync-tree transfers the committed work of a worktree branch (or an isolated local clone) to its corresponding branch in the original local repository.",
@@ -1702,6 +1741,7 @@ const DATA = {
    "next": [],
    "outputs": [],
    "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/productivity/take-over.md",
+   "requires": [],
    "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/productivity/take-over/SKILL.md",
    "summary": [
     "take-over is the other half of hand-off. It resumes work from the newest document in .agents/handoffs/, reading history lazily: it follows the supersedes chain only when the newest handoff leaves a question unresolved. It resolves source pointers and flags assumptions before confirming the brief."
@@ -1731,6 +1771,7 @@ const DATA = {
     "tasks"
    ],
    "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/workflow/taskify.md",
+   "requires": [],
    "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/workflow/taskify/SKILL.md",
    "summary": [
     "taskify decomposes approved work into coherent tasks with acceptance criteria and explicit blockers. Each task describes an outcome someone can verify, rather than an arbitrary layer or group of edits.",
@@ -1756,6 +1797,7 @@ const DATA = {
     "teaching-workspace"
    ],
    "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/productivity/teach.md",
+   "requires": [],
    "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/productivity/teach/SKILL.md",
    "summary": [
     "teach turns the directory you run it in into a standing teaching workspace and teaches you one topic across many sessions, in short self-contained HTML lessons.",
@@ -1788,6 +1830,7 @@ const DATA = {
     "verification"
    ],
    "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/workflow/test-first.md",
+   "requires": [],
    "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/workflow/test-first/SKILL.md",
    "summary": [
     "test-first builds behavior through a red/green loop at agreed seams. A seam is a public boundary where a test observes behavior without inspecting implementation details. One failing test and one minimal implementation form each vertical slice.",
@@ -1807,9 +1850,7 @@ const DATA = {
    "fits": [
     "Triage is periodic intake maintenance. Refine resolves unclear requests, while document owns local specifications, backlog, active-work, and changelog upkeep. Guide routes the next step."
    ],
-   "handovers": [
-    "setup-ai-workspace"
-   ],
+   "handovers": [],
    "inputs": [
     "intake",
     "workspace-config"
@@ -1824,6 +1865,9 @@ const DATA = {
     "backlog"
    ],
    "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/upkeep/triage.md",
+   "requires": [
+    "setup-ai-workspace"
+   ],
    "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/upkeep/triage/SKILL.md",
    "summary": [
     "Moves intake tasks through category and state roles, verifies the request against the codebase, and records an actionable next step. Remote tasks and local task bodies follow the same state machine. External pull requests can be included when the tracker configuration enables them.",
@@ -1848,6 +1892,7 @@ const DATA = {
     "polished-prose"
    ],
    "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/reference/unslop.md",
+   "requires": [],
    "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/reference/unslop/SKILL.md",
    "summary": [
     "/unslop edits writing in any language to remove patterns that make it sound AI-generated. It preserves the meaning and intended tone, then checks the revision for patterns that remain."
@@ -1869,6 +1914,7 @@ const DATA = {
     "wizard"
    ],
    "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/productivity/walk-through.md",
+   "requires": [],
    "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/productivity/walk-through/SKILL.md",
    "summary": [
     "walk-through generates an interactive bash script that walks a human, step by step, through a manual procedure: wiring up third-party services, running a one-off migration, moving a project from state A to state B. It opens each URL, says what to click and copy, captures what comes back, and writes it into .env files and GitHub Actions secrets.",
@@ -1895,6 +1941,7 @@ const DATA = {
     "worktree-branch"
    ],
    "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/version-control/work-in-tree.md",
+   "requires": [],
    "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/version-control/work-in-tree/SKILL.md",
    "summary": [
     "work-in-tree creates or reuses an isolated Git worktree and carries out the requested task there, so your original checkout and target branch stay unchanged until you ask for a sync.",
@@ -1919,6 +1966,7 @@ const DATA = {
     "agent-instructions"
    ],
    "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/reference/write-for-agents.md",
+   "requires": [],
    "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/reference/write-for-agents/SKILL.md",
    "summary": [
     "write-for-agents guides writing a skill, steering file, specification, runtime prompt, or other document an agent reads. It aims for predictable process across runs, not identical output.",
@@ -2013,12 +2061,14 @@ function miniGraph(id, onPick) {
   const handedFrom = incoming(id, "handovers"), cameFrom = incoming(id, "next").filter(o => !handedFrom.includes(o));
   const left = column([
     { label: "Reads", items: sk.inputs.map(a => ({ kind: "doc", id: a, label: artifacts[a].label, edge: "" })) },
+    { label: "Requires", items: sk.requires.map(o => ({ kind: "skill", id: o, label: o, edge: "requires" })) },
     { label: "Comes after", items: [...cameFrom.map(o => ({ kind: "skill", id: o, label: o, edge: "" })), ...handedFrom.map(o => ({ kind: "skill", id: o, label: o, edge: "handover" }))] },
     { label: "Called by", items: incoming(id, "calls").map(o => ({ kind: "skill", id: o, label: o, edge: "call" })) },
   ]);
   const right = column([
     { label: "Writes", items: sk.outputs.map(a => ({ kind: "doc", id: a, label: artifacts[a].label, edge: "" })) },
     { label: "Leads to", items: [...sk.next.map(o => ({ kind: "skill", id: o, label: o, edge: "" })), ...sk.handovers.map(o => ({ kind: "skill", id: o, label: o, edge: "handover" }))] },
+    { label: "Required by", items: incoming(id, "requires").map(o => ({ kind: "skill", id: o, label: o, edge: "requires" })) },
   ]);
   const top = Math.max(left.height, right.height, CH + 30);
   const cy = top / 2;

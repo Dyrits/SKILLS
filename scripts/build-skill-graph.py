@@ -85,6 +85,8 @@ def graph(root):
         page = root / "documentation/skills" / bucket / f"{name}.md"
         document = page.read_text() if page.exists() else ""
         calls, handovers = (found - checker.EXTERNAL_SKILLS for found in checker.skill_references(folder))
+        requires = handovers & checker.prerequisites(folder)
+        handovers -= requires
         entry_flow = curated.get(name)
         if entry_flow is None:
             problems.append(f"{FLOW}: no entry for promoted skill {name}.")
@@ -104,6 +106,7 @@ def graph(root):
             "pageUrl": f"{repository}/blob/main/{page.relative_to(root)}" if document else "",
             "calls": sorted(calls),
             "handovers": sorted(handovers),
+            "requires": sorted(requires),
             "next": entry_flow["next"],
             "inputs": entry_flow["inputs"],
             "outputs": entry_flow["outputs"],
@@ -111,11 +114,11 @@ def graph(root):
     for name in curated.keys() - skills.keys():
         problems.append(f"{FLOW}: entry {name} is not a promoted skill.")
     for name, skill in skills.items():
-        for target in skill["calls"] + skill["handovers"] + skill["next"]:
+        for target in skill["calls"] + skill["handovers"] + skill["requires"] + skill["next"]:
             if target not in skills:
                 problems.append(f"{FLOW}: {name} links to unknown skill {target}.")
         # A curated "next" that the skill already calls or hands over to is drawn once, as the stronger link.
-        skill["next"] = [n for n in skill["next"] if n not in skill["calls"] and n not in skill["handovers"]]
+        skill["next"] = [n for n in skill["next"] if n not in skill["calls"] + skill["handovers"] + skill["requires"]]
 
     buckets = []
     for bucket in sorted(listings, key=lambda b: BUCKET_ORDER.index(b) if b in BUCKET_ORDER else len(BUCKET_ORDER)):
