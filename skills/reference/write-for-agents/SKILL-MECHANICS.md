@@ -2,7 +2,7 @@
 
 The skill-specific branch of [`write-for-agents`](SKILL.md): invocation conventions, splitting, and router skills. Everything else about writing it is the universal reference in `SKILL.md`.
 
-Before creating or editing a skill or its description, read [Anthropic's skill authoring best practices](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices). Use that page for current frontmatter requirements, name and description limits, description voice, and authoring examples rather than copying those rules here. The invocation policy below is this collection's convention, not a universal platform requirement.
+Frontmatter requirements, name and description limits, and description voice come from the official best-practices page that `SKILL.md` links. The invocation policy below is this collection's convention, not a platform requirement.
 
 ## Invocation
 

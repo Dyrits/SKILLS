@@ -518,6 +518,7 @@ Rule of thumb:
 - Coupling: none; four soft callers.
 - Evals: good; eval 7 asserts `document` shapes a README, cementing the over-trigger.
 - Verdict: fix. Add real frontmatter mechanics or point to the official page, prune coined terms, remove "Go find them", spell out "document".
+- Status (2026-10-07): addressed in `52e9cf3` and the commit that adds this status line, so the line numbers above no longer match. Done: the official page is the frontmatter source, decorative metaphors are cut (defined terms kept), "Go find them" became a conditional test, behavioral claims carry a reason instead of being stated as fact, "document" is spelled out, and the stale "sediment" expectation in eval 3 is updated. Kept on purpose: eval 7's routing expectation (READMEs are in `document`'s scope). Still open: the trigger expansion for agent instructions and delegation briefs, and a behavioral evaluation of the rewrite. Reasoning in `.agents/handoffs/2026-10-07-0052-write-for-agents-tightening.md`.
 
 ## Suggested order of work
 
@@ -528,3 +529,43 @@ Rule of thumb:
 5. Resolve the interactive-gate and records-ownership conflicts between `test-first`, `review-and-refactor`, `implement` and `divide-and-conquer`.
 6. Sweep the rule violations (abbreviations, spaced hyphens, legacy text).
 7. Split or rename the fused skills (`document`, `memorize`, `model-domain`); merge `work-in-tree` into `sync-tree`.
+
+## Name conflicts with other skill collections
+
+Many skill names are generic (`debug`, `document`, `implement`, `research`, `triage`, `rebase`, `prioritize`) and clash with skills from other collections.
+
+Where the clash happens:
+
+- **Claude Code plugin:** no clash. Plugin skills are namespaced as `plugin-name:skill`.
+- **`scripts/link-skills.sh`, skills.sh and APM:** clash. `~/.claude/skills`, `~/.agents/skills` and project skill directories are flat, so two skills with the same name collide and one wins or overwrites the other.
+
+### Potential solution: a `d4s-` prefix
+
+Prefix every skill with `d4s-`, a numeronym of the owner handle (**D**yrit**s**: four letters between the D and the s, built like `i18n`). Examples: `d4s-debug`, `d4s-implement`, `d4s-triage`.
+
+Why this prefix:
+
+- It is tied to the owner, not to a bucket, so a skill moving between buckets keeps its name.
+- It is short, and it is unlikely to clash with another collection.
+- Digits and hyphens are valid in skill names (lowercase letters, digits, hyphens, at most 64 characters). A colon is reserved for plugin namespacing, so the separator is a hyphen.
+
+Constraints:
+
+- **The name must match the folder.** The Agent Skills standard requires the `name` in `SKILL.md` frontmatter to equal the parent directory name. Prefixing only the installed name (a renamed symlink from `link-skills.sh`) breaks this at the destination, so it is not an option. The folder and the `name` both change.
+- **Prefix every skill, not only the clashing ones.** A mixed set hides which skills are this collection's.
+- **Keep upstream names in the provenance notes**, so each skill still maps back to the original it forks.
+- The prefix is not needed for the Claude Code plugin route alone, since the plugin name already namespaces it. It pays off on the skills.sh, APM and symlink routes.
+
+Blast radius of the rename:
+
+- The skill folder and the `name` in `SKILL.md`.
+- The documentation page at `documentation/skills/<bucket>/<skill-name>.md` and the `evals.json` path, which both follow the folder.
+- `.claude-plugin/plugin.json`, the top-level `README.md` and the bucket `README.md` entries.
+- `scripts/skill-graph/flow.json` and the generated `index.html` (run `python3 scripts/build-skill-graph.py`).
+- `guide`, and every cross-reference between skills, including the "Calls" lines and eval fixtures.
+- The generated `apm.yml` manifests (run `python3 .agents/scripts/generate-skill-manifests.py`, do not edit them by hand) and the root `marketplace.json`.
+- The install commands in `documentation/maintenance/standard-installation-wording.md`, then re-run `scripts/link-skills.sh`.
+
+Verification: run `scripts/check-skills.py` and `claude plugin validate . --strict`.
+
+Not verified: the name-equals-folder rule is stated from knowledge of the Agent Skills standard and has not been checked against the current specification or against how `scripts/check-skills.py` enforces it. Check both before starting the rename.

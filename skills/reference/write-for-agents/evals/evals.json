@@ -43,7 +43,7 @@
         "The reference to docs/legacy-importer.md is removed because the file no longer exists (stale)",
         "'Never use var. Never use any. Never leave console.log statements in.' is rewritten as positive instructions (state the target behavior) or removed if the linter already enforces it",
         "The five-step deploy runbook is moved behind a pointer to a separate file, or the rollback gotcha is kept while generic steps are cut, rather than left inline in an always-loaded file",
-        "The summary reports each change by its failure mode (no-op, duplication, cache, sediment, sprawl) and does not claim functionality was preserved without checking what was kept",
+        "The summary reports each change by its failure mode (no-op, duplication, cache, stale material, sprawl) and does not claim functionality was preserved without checking what was kept",
         "The result is shorter than the input",
         "No meaning is stated twice in the result"
       ]
