@@ -20,6 +20,15 @@ Run `/setup-ai-workspace` once per repository to configure local or remote task 
 
 Specifications stay authoritative in the repository. Draft remote tasks remain local until you explicitly publish them; their local files then link to the authoritative tracker records. Agents maintain local documentation autonomously within the authorized scope.
 
+To install with [Microsoft APM](https://github.com/microsoft/apm) instead, register the marketplace once, then name a skill. It comes with every skill it references.
+
+```bash
+apm marketplace add Dyrits/SKILLS
+apm install <name>@dyrits
+```
+
+Install `setup-ai-workspace` first; `document` arrives with any skill that needs it.
+
 ## Two workflows, shared documents
 
 | Approach | Route |
