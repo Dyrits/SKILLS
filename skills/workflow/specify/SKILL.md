@@ -1,6 +1,8 @@
 ---
 name: specify
 description: "Resolve the open decisions in a selected scope and synthesize its living repository specification. Use when the user asks to specify a capability, or when requirements have outstanding decisions before implementation."
+metadata:
+  forks: "mattpocock/skills/skills/engineering/grill-with-docs mattpocock/skills/skills/engineering/to-spec"
 ---
 
 # Specify

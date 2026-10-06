@@ -1,6 +1,8 @@
 ---
 name: guide
 description: "Choose the next skill, development workflow, or session boundary from the current situation. Use when the user asks which skill or workflow to use next, or when a flow stalls and the next move is unclear."
+metadata:
+  forks: "mattpocock/skills/skills/engineering/ask-matt"
 ---
 
 # Guide

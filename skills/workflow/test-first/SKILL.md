@@ -1,6 +1,8 @@
 ---
 name: test-first
 description: Build features or fix bugs test-first through the red-green loop of test-driven development (TDD), leaving refactoring to review-and-refactor. Use when the user wants test-first work, mentions TDD or red-green-refactor, or wants integration tests.
+metadata:
+  forks: "mattpocock/skills/skills/engineering/tdd"
 ---
 
 # Test-first

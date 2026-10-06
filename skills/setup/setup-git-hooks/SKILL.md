@@ -1,6 +1,8 @@
 ---
 name: setup-git-hooks
 description: Set up versioned git hooks via core.hooksPath (no Husky) with lint-staged (Biome, plus Prettier only for languages Biome leaves uncovered and only if the user wants it), plus typecheck and build. Use when user wants to add pre-commit hooks, commit-time formatting/linting/typechecking, or to replace Husky with git's built-in hooks path.
+metadata:
+  forks: "mattpocock/skills/skills/misc/setup-pre-commit"
 ---
 
 # Setup Git Hooks

@@ -1,6 +1,8 @@
 ---
 name: divide-and-conquer
 description: "Implement an authorized task graph in parallel: route each task to the least expensive capable agent, build on one integration branch, then review once. Use when the user asks to implement a whole task graph or a batch of independent tasks."
+metadata:
+  forks: "mattpocock/skills/skills/engineering/implement-spec"
 ---
 
 # Divide and conquer

@@ -1,6 +1,8 @@
 ---
 name: triage
 description: "Move tasks and external PRs through triage roles: categorize, verify, refine, and write agent-ready briefs. Use when the user asks to triage, or when a published request needs verification and a maintainer decision."
+metadata:
+  forks: "mattpocock/skills/skills/engineering/triage"
 ---
 
 # Triage

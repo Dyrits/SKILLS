@@ -1,6 +1,8 @@
 ---
 name: design-modules
 description: Shared vocabulary for designing deep modules. Use when the user wants to design or improve a module's interface, decide where a seam goes, make code more testable or AI-navigable, or when another skill needs the deep-module vocabulary.
+metadata:
+  forks: "mattpocock/skills/skills/engineering/codebase-design"
 ---
 
 # Design modules

@@ -1,6 +1,8 @@
 ---
 name: graphify
 description: "Build and work through a shared decision graph for an effort too large for one session. Use when the user asks to graphify an effort or to resolve the next decision task on an existing graph."
+metadata:
+  forks: "mattpocock/skills/skills/engineering/wayfinder"
 ---
 
 # Graphify

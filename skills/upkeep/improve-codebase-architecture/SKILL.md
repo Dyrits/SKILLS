@@ -1,6 +1,8 @@
 ---
 name: improve-codebase-architecture
 description: "Scan a codebase for deepening opportunities, present them as a visual HTML report, then interview through the chosen one. Use when the user wants architecture improvements or refactoring candidates found."
+metadata:
+  forks: "mattpocock/skills/skills/engineering/improve-codebase-architecture"
 ---
 
 # Improve Codebase Architecture

@@ -1,6 +1,8 @@
 ---
 name: design-workflow
 description: "Interview the user into implementable workflow specifications for recurring loops in their work, using the current directory as a stateful workspace. Use when the user wants to design or specify a workflow."
+metadata:
+  forks: "mattpocock/skills/skills/in-progress/loop-me"
 argument-hint: "A workflow to design, or nothing to go find one"
 ---
 

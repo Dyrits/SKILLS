@@ -1,6 +1,8 @@
 ---
 name: setup-git-guardrails
 description: Set up hooks and permission rules that make coding agents ask before git commands that can lose work or rewrite shared history (pushing to a protected branch, force pushes, reset --hard, clean -f, branch -D, discarding changes) across Claude Code, OpenCode, and Codex CLI. Use when the user wants to guard against destructive git operations by any coding agent.
+metadata:
+  forks: "mattpocock/skills/skills/misc/git-guardrails-claude-code"
 ---
 
 # Setup Git Guardrails

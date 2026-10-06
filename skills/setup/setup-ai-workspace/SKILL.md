@@ -1,6 +1,8 @@
 ---
 name: setup-ai-workspace
 description: "Configure a repository for AI-assisted work: task tracking, ticket conventions, triage roles, domain documentation, optional tooling setups. Use when the user asks to set up or reconfigure the AI workspace."
+metadata:
+  forks: "mattpocock/skills/skills/engineering/setup-matt-pocock-skills"
 ---
 
 # Setup AI workspace

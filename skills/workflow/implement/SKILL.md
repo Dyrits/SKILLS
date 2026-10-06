@@ -1,6 +1,8 @@
 ---
 name: implement
 description: "Implement authorized work test-first and report its verification evidence. Use when the user asks to build agreed specifications, a task, or an approved work batch, or when a coordinating skill hands an implementer one task."
+metadata:
+  forks: "mattpocock/skills/skills/engineering/implement"
 ---
 
 Call the Skill tool with "document"; its terms (authorized, obligation, lazy, pointer) and rules apply throughout.

@@ -1,6 +1,8 @@
 ---
 name: unslop
 description: Cut AI tells from writing in any language. Use before showing the user copy meant for others (captions, interface text, messages), before a final report, and before writing prose into a repository.
+metadata:
+  forks: "cursor/plugins/pstack/skills/unslop"
 ---
 
 # Unslop

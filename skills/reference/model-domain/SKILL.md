@@ -1,6 +1,8 @@
 ---
 name: model-domain
 description: Build and sharpen a project's domain model. Use when discussing codebase terminology, writing or editing a GLOSSARY.md, recording or editing an architecture decision record, or creating a CONVENTIONS.md of domain-agnostic code conventions.
+metadata:
+  forks: "mattpocock/skills/skills/engineering/domain-modeling"
 ---
 
 # Model domain

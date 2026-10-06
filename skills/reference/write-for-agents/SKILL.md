@@ -1,6 +1,8 @@
 ---
 name: write-for-agents
 description: "Write documents for agents: skills, AGENTS.md, and documents reached by a pointer. Use when creating or editing skills, or modifying AGENTS.md."
+metadata:
+  forks: "mattpocock/skills/skills/productivity/writing-for-agents"
 ---
 
 Reference for writing any document an agent consumes: a skill, an `AGENTS.md`, a doc reached by a pointer. The packaging differs; the writing does not: the same levers make each one predictable, since the agent takes the same _process_ every run rather than producing the same output.

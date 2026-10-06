@@ -1,6 +1,8 @@
 ---
 name: prototype
 description: Build a scoped experimental prototype to answer a user-requested or approved design question about logic, state, or UI. Use when the user asks to try an idea before committing to it, or to see a state model or interface variants.
+metadata:
+  forks: "mattpocock/skills/skills/engineering/prototype"
 ---
 
 # Prototype

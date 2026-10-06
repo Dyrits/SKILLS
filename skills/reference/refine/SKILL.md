@@ -1,6 +1,8 @@
 ---
 name: refine
 description: Refine a plan, decision, or idea through a decision-tree interview. Use when unresolved choices need shared understanding, the user wants to stress-test their thinking, or asks to be grilled.
+metadata:
+  forks: "mattpocock/skills/skills/productivity/grilling mattpocock/skills/skills/productivity/grill-me"
 ---
 
 Interview the user until you reach a shared understanding of the selected scope. Map it as a **design tree**: every decision branches into the decisions that depend on it.

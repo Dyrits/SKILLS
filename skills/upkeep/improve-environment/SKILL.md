@@ -1,6 +1,8 @@
 ---
 name: improve-environment
 description: "Hold a retrospective on a session's friction, then change the project's environment so the next run avoids it: checks, guardrails, navigation pointers, steering files, tool and information access. Use when the user asks what would have prevented a mistake, why a session was hard, or for an environment retrospective."
+metadata:
+  forks: "mattpocock/skills/skills/engineering/retro"
 argument-hint: "Optional: the session to review, and the moment that went wrong"
 ---
 

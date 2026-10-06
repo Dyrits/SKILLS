@@ -1,6 +1,8 @@
 ---
 name: document
 description: Write and maintain project documentation, including the shared project documents workflows rely on (requirements, specifications, backlog, work-in-progress, tasks, changelog records). Use when documenting a system (README, API reference, runbook, architecture or onboarding document) or when a workflow reads or updates project documents.
+metadata:
+  forks: "anthropics/knowledge-work-plugins/engineering/skills/documentation"
 ---
 
 # Document

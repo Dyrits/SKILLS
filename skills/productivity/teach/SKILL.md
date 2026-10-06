@@ -1,6 +1,8 @@
 ---
 name: teach
 description: "Teach the user a skill or concept over multiple sessions in a stateful workspace. Use when the user asks to be taught or to learn a topic, or to continue a teaching workspace."
+metadata:
+  forks: "mattpocock/skills/skills/productivity/teach"
 argument-hint: "What would you like to learn about?"
 ---
 

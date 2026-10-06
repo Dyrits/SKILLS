@@ -1,6 +1,8 @@
 ---
 name: hand-off
 description: Compact the current conversation into a versioned handoff document in .agents/handoffs/ for another agent to pick up. Use when the user asks for a handoff, at a phase boundary they name, or when a compaction gate blocks until a fresh handoff exists.
+metadata:
+  forks: "mattpocock/skills/skills/productivity/handoff"
 argument-hint: "What will the next session be used for?"
 ---
 

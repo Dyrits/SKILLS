@@ -1,6 +1,8 @@
 ---
 name: improve-skills
 description: "Hold a retrospective on a session, then report how the skills behaved as an issue on the skills repository. Use when the user asks to review skill use in a session or to report a skill problem."
+metadata:
+  forks: "mattpocock/skills/skills/engineering/retro"
 argument-hint: "Optional: the session to review, and what you expected from it"
 ---
 
