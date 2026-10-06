@@ -1,4 +1,4 @@
-# The canonical install block
+# Standard installation wording
 
 Two install routes, one wording each. `README.md` and every page under `documentation/` must say **this** and nothing else. Change it here first, then propagate.
 
@@ -43,9 +43,47 @@ apm install <name>@dyrits
 
 </canonical-block>
 
+To install all skills for your user account rather than one project:
+
+<canonical-block name="apm-global">
+
+```bash
+apm install Dyrits/SKILLS --global
+```
+
+APM selects the target agent clients from its configuration or auto-detection. Add `--target claude,codex` to select them explicitly. If existing skills cause conflicts, add `--force` only when you intend to replace them. It permits overwriting locally authored files and also bypasses blocking security findings.
+
+</canonical-block>
+
 Naming a skill installs it with every skill it references, directly or through another. Do not use `apm install Dyrits/SKILLS --skill=<name>`: in that form APM ignores the per-skill manifests and installs the one skill alone. Without a marketplace, `apm install Dyrits/SKILLS/skills/<bucket>/<name>` gives the same result.
 
 Publishing: after a skill is added, removed, renamed, or changes which skills it references, run `python3 .agents/scripts/generate-skill-manifests.py`, then `apm pack`, and commit the regenerated `marketplace.json` at the repository root. APM reads that file before `.claude-plugin/marketplace.json`, which is why the skills do not appear in Claude Code's plugin list. No tag is needed: a consumer installs at the ref they registered (`apm marketplace add Dyrits/SKILLS --ref <ref>` pins one; the default is `main`).
+
+## Updating installed skills
+
+<canonical-block name="skills-sh-update">
+
+For skills installed with skills.sh:
+
+```bash
+npx skills@latest update
+```
+
+Choose the installation scope when prompted. Add `--global` to update only user-wide skills.
+
+</canonical-block>
+
+<canonical-block name="apm-update">
+
+For skills installed globally with APM:
+
+```bash
+apm update --global
+```
+
+Review the update plan and confirm it. For project installations, run `apm update` from that project instead. Without `--global`, APM checks the project's dependencies, not your user-wide installation.
+
+</canonical-block>
 
 ## Not the install story
 

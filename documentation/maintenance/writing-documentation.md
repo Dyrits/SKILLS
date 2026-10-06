@@ -1,10 +1,10 @@
 # Writing skill documentation pages
 
-Every skill outside `deprecated/` is promoted and has a human-facing page at `documentation/skills/<bucket>/<name>.md`. Deprecated skills get no page.
+Every skill has a human-facing page at `documentation/skills/<bucket>/<name>.md`.
 
-Create or re-sync the page when a promoted skill is added, renamed, moved, or behaviorally changed. Remove stale pages after renames or removals. Update active cross-links, bucket listings, the top-level README, and the `guide` router together. Historical upstream archives and handoffs remain unchanged.
+Create or re-sync the page when a skill is added, renamed, moved, or behaviorally changed. Remove stale pages after renames or removals. Update active cross-links, bucket listings, the top-level README, and the `guide` router together. Historical upstream archives and handoffs remain unchanged.
 
-The page helps a reader choose and understand one skill; it does not repeat the agent's runbook. There is no H1. Installation commands live only in the top-level README, copied from [the canonical install block](./install-block.md).
+The page helps a reader choose and understand one skill; it does not repeat the agent's runbook. There is no H1. Installation commands live only in the top-level README, copied from [standard installation wording](./standard-installation-wording.md).
 
 ## Provenance first
 
@@ -67,7 +67,7 @@ The planned development route is `specify → taskify → implement → review-a
 
 ## Done when
 
-- The page matches the promoted skill's current bucket and name; no orphan page remains.
+- The page matches the skill's current bucket and name; no orphan page remains.
 - The first line has verified provenance or an explicit fork-specific note.
 - Required sections are present in order, with the trigger boundary and defining constraint accurately stated.
 - Meaningful upstream drift is explained on the page or in the README.

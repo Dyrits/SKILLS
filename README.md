@@ -27,7 +27,33 @@ apm marketplace add Dyrits/SKILLS
 apm install <name>@dyrits
 ```
 
+To install all skills for your user account rather than one project:
+
+```bash
+apm install Dyrits/SKILLS --global
+```
+
+APM selects the target agent clients from its configuration or auto-detection. Add `--target claude,codex` to select them explicitly. If existing skills cause conflicts, add `--force` only when you intend to replace them. It permits overwriting locally authored files and also bypasses blocking security findings.
+
 Install `setup-ai-workspace` first; `document` arrives with any skill that needs it.
+
+### Updating installed skills
+
+For skills installed with skills.sh:
+
+```bash
+npx skills@latest update
+```
+
+Choose the installation scope when prompted. Add `--global` to update only user-wide skills.
+
+For skills installed globally with APM:
+
+```bash
+apm update --global
+```
+
+Review the update plan and confirm it. For project installations, run `apm update` from that project instead. Without `--global`, APM checks the project's dependencies, not your user-wide installation.
 
 ## Two workflows, shared documents
 
@@ -68,11 +94,11 @@ During specification work, a [prototype](./skills/shaping/prototype/SKILL.md) is
 
 This repository forked from [Matt Pocock's skills](https://aihero.dev/skills) at a known commit and diverges deliberately. The upstream website does not document this fork's behavior. See [architecture decision record 0001](./documentation/architecture-decision-record/0001-maintain-as-an-independent-fork.md) and the [upstream archive index](./.upstream/README.md).
 
-Not every retained skill comes from that upstream repository. The [primary-source provenance audit](./documentation/research/2026-10-03-retained-skill-provenance.md) traces the 47 skills retained on that date: 29 Matt-derived, three other external adaptations, and 15 created in this fork. [improve-environment](./skills/upkeep/improve-environment/SKILL.md), added later, ports upstream `retro`. Original names and sources are identified on promoted skill pages. Removed upstream skills remain absent; the archive is evidence, not an install inventory.
+Not every retained skill comes from that upstream repository. The [primary-source provenance audit](./documentation/research/2026-10-03-retained-skill-provenance.md) traces the 47 skills retained on that date: 29 Matt-derived, three other external adaptations, and 15 created in this fork. [improve-environment](./skills/upkeep/improve-environment/SKILL.md), added later, ports upstream `retro`. Original names and sources are identified on skill pages. Removed upstream skills remain absent; the archive is evidence, not an install inventory.
 
 - Tasks can be local Markdown or native remote issues.
 - Both workflows use project-owned documents rather than separate artifact systems.
-- Skills are grouped by purpose. Every skill outside `deprecated/` ships in the plugin.
+- Skills are grouped by purpose. Every skill ships in the plugin.
 - Upstream changes are adopted deliberately. Historical names remain in provenance notes, not as active aliases.
 
 ### Intentional workflow drift
@@ -97,7 +123,7 @@ Not every retained skill comes from that upstream repository. The [primary-sourc
 
 ## Plugin skills
 
-The manifest is the source of truth for this list; it holds every skill outside `deprecated/`. Every skill can be run by you or reached by an agent, and a skill can call any other skill.
+The manifest is the source of truth for this list; it holds every skill in the repository. Every skill can be run by you or reached by an agent, and a skill can call any other skill.
 
 ### Setup
 

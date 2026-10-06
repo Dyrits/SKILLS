@@ -2,7 +2,7 @@
 
 This folder holds the evaluation reports worth versioning. Raw responses, snapshots, detailed grades, and viewers stay in local workspaces.
 
-Test cases live next to each skill, in `skills/<bucket>/<skill>/evals/`, in the format [`.agents/writing-evals.md`](../../.agents/writing-evals.md) defines. `python3 .agents/scripts/stage-eval-run.py` stages a skill's cases for a run and writes the grading sheet. Notes that predate this format, such as `waza.md`, stay as they are.
+Test cases live next to each skill, in `skills/<bucket>/<skill>/evals/`, in the format [writing evaluations](../maintenance/writing-evaluations.md) defines. `python3 .agents/scripts/stage-eval-run.py` stages a skill's cases for a run and writes the grading sheet. Notes that predate this format, such as `waza.md`, stay as they are.
 
 ## Report format
 

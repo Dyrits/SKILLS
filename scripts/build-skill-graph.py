@@ -66,7 +66,7 @@ def bucket_listing(readme):
 
 
 def graph(root):
-    """The page data, and the problems that keep flow.json from covering the promoted skills."""
+    """The page data, and the problems that keep flow.json from covering the plugin skills."""
     root = Path(root).resolve()
     checker = load_checker()
     manifest = json.loads((root / ".claude-plugin/plugin.json").read_text())
@@ -89,7 +89,7 @@ def graph(root):
         handovers -= requires
         entry_flow = curated.get(name)
         if entry_flow is None:
-            problems.append(f"{FLOW}: no entry for promoted skill {name}.")
+            problems.append(f"{FLOW}: no entry for skill {name}.")
             entry_flow = {"inputs": [], "outputs": [], "next": []}
         for key in ("inputs", "outputs"):
             for artifact in entry_flow[key]:
@@ -112,7 +112,7 @@ def graph(root):
             "outputs": entry_flow["outputs"],
         }
     for name in curated.keys() - skills.keys():
-        problems.append(f"{FLOW}: entry {name} is not a promoted skill.")
+        problems.append(f"{FLOW}: entry {name} is not a plugin skill.")
     for name, skill in skills.items():
         for target in skill["calls"] + skill["handovers"] + skill["requires"] + skill["next"]:
             if target not in skills:

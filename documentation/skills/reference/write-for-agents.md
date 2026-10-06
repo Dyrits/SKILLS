@@ -4,9 +4,9 @@ Upstream source: `writing-for-agents`, verified in the `d81f3a1` tree, now `writ
 
 `write-for-agents` guides writing a skill, steering file, specification, runtime prompt, or other document an agent reads. It aims for predictable process across runs, not identical output.
 
-Its default move is deletion, not explanation. Ask an agent to write instructions for another agent and it spends most of its words explaining what the model already knows. Every one of those lines is a **no-op**, paying context and changing no behaviour. This reference is the lens that finds them, which is why it earns its keep at least as often on a document you already have as on a blank file.
+It keeps requirements and approval boundaries intact while removing duplication, clarifying references, and making completion criteria checkable. This fork replaces the unconditional search for shorter wording with a conditional test: change text when there is an identifiable improvement, and leave it alone when there is not.
 
-It was called `writing-great-skills` until v1.1. The rename tracks what it always was underneath: almost none of it is skill-specific. The skill-only mechanics (frontmatter, router skills) are disclosed to a linked `SKILL-MECHANICS.md` you read only when the document in front of you is a skill.
+It was called `writing-great-skills` until v1.1. The rename reflects its wider scope. For skill-authoring work, it requires reading [Anthropic's skill authoring best practices](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices) and the bundled [skill mechanics reference](../../../skills/reference/write-for-agents/SKILL-MECHANICS.md). The official page owns current frontmatter requirements; the local reference covers invocation conventions, splitting, and routers without copying those requirements.
 
 ## When to reach for it
 
@@ -23,13 +23,13 @@ The idea the whole reference turns on is a pair of budgets every document and po
 
 Once you think in these two loads, most authoring decisions (split or don't, inline or disclose, point or push) become the same trade made in different places.
 
-## The levers
+## Key concepts
 
-- **Context pointers**: the reference held in context that names out-of-context material and encodes when to reach it. A skill description and an `AGENTS.md` line naming a doc are the same object; the pointer's *wording*, not its target, decides how reliably the agent reaches through it.
-- **Information hierarchy**: the ladder from in-file step, to in-file reference, to disclosed reference behind a pointer. **Progressive disclosure** is the move down that ladder so the top stays legible.
-- **Completion criteria**: the clarity and demand of each step's done-condition, and the **legwork** that demand drives; the defence against **premature completion**.
-- **Leading words**: a compact concept already in the model's pretraining (*tight*, *red*, *tracer bullet*) that the agent thinks with while running the document. It anchors twice: execution in the body, invocation in the pointer.
-- **Pruning**: single source of truth, relevance, and the no-op test applied sentence by sentence, against **duplication**, **sediment** and **sprawl**.
+- **Context pointers** name reference material and state when to read it. Skill descriptions and references in `AGENTS.md` both need clear conditions.
+- **Information hierarchy** separates common steps, in-file reference, and conditional reference loaded through a pointer. **Progressive disclosure** moves substantial conditional detail out of the main file.
+- **Completion criteria** state both what counts as done and what coverage the work requires. Clear criteria come before experimenting with workflow splits.
+- **Leading words** refer back to an idea without restating it. Use them for repeated ideas only when the requirements remain clear.
+- **Pruning** checks relevance, duplication, and suspected no-ops while preserving obligations. Editorial judgment is distinguished from evidence obtained through comparative runs.
 
 ## Common questions
 
@@ -37,22 +37,30 @@ Once you think in these two loads, most authoring decisions (split or don't, inl
 It is this skill, renamed upstream in v1.1. Its structure, leading words, and pruning apply to steering documents, specifications, tasks, and runtime prompts as well as skills. There is no alias; update saved references to the current name.
 
 **"Writing for agents": so the agent does the writing?**
-The other way round. You are the author; the agent is the reader. That is the whole difficulty of the genre: you are writing for a reader who has already read everything, so explanation is waste and precision is the entire job.
+The name identifies the reader. A person or an agent can write the document, but its instructions are intended for an agent to follow. Include the task-specific context it needs instead of assuming it knows your project's constraints.
 
 **Can't I just ask the agent to write it for me?**
-You can, and it will produce something verbose. Left alone the model explains what it already knows, and it will not apply the no-op test or reach for a leading word on its own. Use the reference on the draft: a review pass is where most of its value lands.
+Yes. This reference supplies criteria for drafting and reviewing the result: clear reading conditions, checkable completion criteria, and preserved requirements. A review may conclude that no change is needed.
 
 **I asked an agent to trim a document and it cut the functionality.**
-Agents told to "streamline" optimise for length, because length is the thing they can see. The no-op test is behavioural, not aesthetic: delete the line and ask whether the agent's behaviour changed. When a sentence fails, delete the whole sentence rather than trim words from it, and settle a disagreement about it by running the document, not by arguing.
+Shorter text is not proof of improvement. The skill requires preserving obligations, exceptions, approval boundaries, and recovery instructions. A no-op is a behavioral claim; without comparative runs, it remains an editorial judgment rather than a demonstrated result.
 
 **How do I know when it's done?**
-When it works, and you can no longer find duplication, sediment or no-ops. There is no automated eval here; the check is a manual run plus the failure-mode vocabulary as a diagnostic. When a document misbehaves, that vocabulary is also the repair kit: name the failure mode first, then fix that.
+When the identified problems have been addressed without losing requirements. It does not require finding an edit in every document. Repository checks can establish format and link consistency, but they do not prove improved model behavior.
+
+**Does `skill-creator` become a required dependency for every edit?**
+
+No. It is an optional external dependency from `anthropics/skills`, invoked for requested skill evaluations or behavioral comparisons. It is not bundled by this collection. If it is missing, the agent provides its installation command and asks whether to install it or leave the comparison pending. Ordinary editing, including an explicit decision to defer evaluations, does not invoke it.
+
+**Will the official guidance still be available when I install this skill elsewhere?**
+
+The skill itself carries the link and the instruction to read it before creating or editing a skill or its description. It does not depend on this repository's `AGENTS.md`. If the page cannot be accessed, the agent must report that limitation.
 
 **Should this live in `AGENTS.md` or somewhere else?**
 Ask which load you want to pay. `AGENTS.md` loads into every session unconditionally; material behind a pointer costs only the pointer's own line until it fires. Anything that applies in one context out of ten is paying context load the nine other times.
 
 **Do I need to rewrite my documents for each new model?**
-Mostly no, and over-fitting to one model is its own trap. Updating for a new model is usually another no-op pass rather than a rewrite.
+Use observed failures to decide what needs attention. The same wording may behave differently across models, but a model change alone does not establish that an instruction needs rewriting.
 
 **My skill only works on the exact task I built it from.**
 The common route (do the work once, then have the agent write it up as a skill) over-indexes on that one run, and the exemplars come out too specific. Keep the run as evidence, then abstract deliberately: strip what belonged to that repository and those files, and write for the class of task.
@@ -62,15 +70,15 @@ The common route (do the work once, then have the agent write it up as a skill) 
 No. [document](./document.md) owns the shared project-document rules. Existing requirements and agreed specifications still apply, but a small living-code batch can use backlog, work-in-progress, and the root changelog without creating new capability documents. Write instructions that preserve obligations while creating records only when useful; clarity is not a reason to duplicate the same agreement in several files.
 
 **English isn't my first language. Do I lose the leading-word advantage?**
-No. Finding the word that packs the most behaviour into the fewest tokens is work the reference does for you. It is one of the things it is for.
+The technique does not require English. Use familiar, consistently defined terms in the document's language, and keep the explicit instruction if a shorter term would lose meaning.
 
 ## It's working if
 
-- The document gets shorter as it gets better, and you are surprised how little is left.
-- You can point at a leading word and watch it doing work in more than one place.
-- Nothing is stated twice, in any form. Duplication is the most reliable sign a document was never tested.
+- Revisions address identifiable problems without dropping requirements or approval boundaries.
+- A leading word refers back to a clear definition rather than hiding an important requirement.
+- The agent distinguishes editorial checks from measured behavioral results and can leave useful text unchanged.
 - Reference that only one branch needs sits behind a pointer rather than in the main file.
 
 ## Where it fits
 
-This is a reach-for-it-anytime standalone reference. It has no neighbour in the chain because it sits underneath the whole set rather than beside any one skill: every skill here was written against it, and the documents the other skills leave behind (a `GLOSSARY.md` and its ADRs, a specification, a ticket) are exactly the text it governs once an agent has to read them. [memorize](./memorize.md) loads this reference before filing a lesson in a steering file. When you're unsure which skill or flow fits a task, [guide](../productivity/guide.md) routes you over the whole set.
+This is a standalone reference used within authoring tasks, not another delivery stage. [memorize](./memorize.md) loads it before filing a lesson in a steering file; [document](./document.md) owns shared project-document responsibilities. Requested skill evaluations use the external `skill-creator` workflow. When you're unsure which skill or flow fits a task, [guide](../productivity/guide.md) helps choose.

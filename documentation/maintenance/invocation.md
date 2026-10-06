@@ -2,7 +2,7 @@
 
 Every `SKILL.md` in this repository is a skill, and every skill is reachable by **both** the human typing its name and the model, including another skill calling it. There is no user-only skill: omit `disable-model-invocation` from the frontmatter and the `policy` block from `agents/openai.yaml`. `scripts/check-skills.py` fails on either.
 
-The `description` is therefore always **model-facing**: a context pointer carrying the trigger branches ("Use when the user wants…, asks for…"), written by the pointer rules in [write-for-agents](../skills/reference/write-for-agents/SKILL.md). Every description sits in the model's context every turn, so keep it short. For a skill with heavy cost or outward effects (publishing, pushing, long multi-agent runs, machine-wide setup), trigger on the user's explicit request so it does not fire speculatively; its body still asks before any authorized-only action.
+The `description` is therefore always **model-facing**: a context pointer carrying the trigger branches ("Use when the user wants…, asks for…"), written by the pointer rules in [write-for-agents](../../skills/reference/write-for-agents/SKILL.md). Every description sits in the model's context every turn, so keep it short. For a skill with heavy cost or outward effects (publishing, pushing, long multi-agent runs, machine-wide setup), trigger on the user's explicit request so it does not fire speculatively; its body still asks before any authorized-only action.
 
 Every skill also carries an `agents/openai.yaml` beside its `SKILL.md`, holding Codex UI metadata: `interface.display_name` and `interface.short_description` for the skill picker.
 
@@ -14,7 +14,7 @@ This is about **operative** instructions: a skill's own steps telling the agent 
 
 The Skill tool takes one skill per call. A step that needs two skills is two calls, not one call with two names: say so (`Call the Skill tool twice, for "refine" and "model-domain"`), not "call it with X and Y," which reads as a single call taking both.
 
-Every named skill must exist outside `deprecated/` (or be a listed external skill); `scripts/check-skills.py` rejects a call to a retired or unknown name.
+Every named skill must exist in the repository (or be a listed external skill); `scripts/check-skills.py` rejects a call to an unknown name.
 
 Users install skills one by one, so a called skill can be absent at runtime. Every skill that calls another carries a **Calls** paragraph right after its opening: the names it calls, then what to do when one is not installed (name it with its install command, carry out the step from its stated intent, report the gap). A skill that calls `document` waits for the user instead, because its rules use `document`'s terms. A skill that tells the user to run another carries a **Hands over to** clause in the same paragraph, so the instruction comes with the install command when that skill is absent. Write handovers as "tell the user to run `/name`" so the check finds them.
 
@@ -22,4 +22,4 @@ Users install skills one by one, so a called skill can be absent at runtime. Eve
 
 ## Passive vs active domain work
 
-Merely _reading_ `GLOSSARY.md` for vocabulary is a one-line prose pointer, not the `model-domain` skill. Only the active build/sharpen discipline (challenge terms, edge-case scenarios, write ADRs, update `GLOSSARY.md` inline) is `model-domain`.
+Merely _reading_ `GLOSSARY.md` for vocabulary is a one-line prose pointer, not the `model-domain` skill. Only the active build/sharpen discipline (challenge terms, edge-case scenarios, write architecture decision records, update `GLOSSARY.md` inline) is `model-domain`.

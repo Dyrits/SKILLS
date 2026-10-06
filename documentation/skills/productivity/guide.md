@@ -29,7 +29,7 @@ Type `/guide`, or an agent or another skill can reach for it when the task fits.
 ## Prerequisites
 
 The router names skills; it does not install them.
-Everything it points at has to be installed for the recommendation to be actionable. The plugin ships every skill outside `deprecated/`, so installing the plugin or the whole set covers it.
+Everything it points at has to be installed for the recommendation to be actionable. The plugin ships every skill, so installing the plugin or the whole set covers it.
 
 For tracker-dependent work, the router asks you to run [setup-ai-workspace](../setup/setup-ai-workspace.md) when tracker configuration is missing. Local just-in-time work does not require tracker setup merely to maintain its working documents.
 

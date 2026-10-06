@@ -1,6 +1,6 @@
 # Writing evaluations
 
-Test cases for the promoted skills, kept in each skill's own folder where `skill-creator` looks for them:
+Test cases for the skills, kept in each skill's own folder where `skill-creator` looks for them:
 
 ```
 skills/<bucket>/<skill-name>/evals/evals.json
@@ -49,7 +49,7 @@ Add more of any kind where a skill has more branches, a known failure, or a step
 
 ## Checks
 
-`python3 scripts/check-skills.py` requires an `evals/evals.json` for every promoted skill and checks it: `skill_name` matches the directory, ids are unique integers, at least three evals cover all three kinds, every eval has a prompt, an expected output, and at least two expectations, and every listed file exists.
+`python3 scripts/check-skills.py` requires an `evals/evals.json` for every skill and checks it: `skill_name` matches the directory, ids are unique integers, at least three evals cover all three kinds, every eval has a prompt, an expected output, and at least two expectations, and every listed file exists.
 
 ## Running them
 

@@ -14,7 +14,7 @@ from urllib.parse import unquote
 
 
 # Skills called by name that ship outside this repository.
-EXTERNAL_SKILLS = {"webapp-testing"}
+EXTERNAL_SKILLS = {"skill-creator", "webapp-testing"}
 
 # "Call the Skill tool with "a"" or "Call the Skill tool twice, for "a" and "b"": names quoted, escaped, or in backticks.
 CALL_PATTERN = re.compile(r'Skill tool(?: twice,)? (?:with|for) ((?:\\?["`][\w-]+\\?["`](?:,? (?:and |or )?)?)+)',
@@ -132,8 +132,8 @@ def check(repository):
     root = Path(repository).resolve()
     errors = []
     manifest = json.loads((root / ".claude-plugin/plugin.json").read_text())
-    promoted = {Path(path) for path in manifest["skills"]}
-    if len(promoted) != len(manifest["skills"]):
+    plugin_paths = {Path(path) for path in manifest["skills"]}
+    if len(plugin_paths) != len(manifest["skills"]):
         errors.append("Plugin manifest contains duplicate skill paths.")
 
     skill_files = sorted((root / "skills").glob("*/*/SKILL.md"))
@@ -170,7 +170,7 @@ def check(repository):
         # Externals are left out: their install command is not this repository's.
         calls, handovers = (found - EXTERNAL_SKILLS for found in skill_references(path.parent))
         # The router names skills as labels for the human to pick from, not as dependencies.
-        block = calls_block(calls, handovers) if relative.parts[1] != "deprecated" and name != "guide" else ""
+        block = calls_block(calls, handovers) if name != "guide" else ""
         expected = [block] if block else []
         if re.findall(r"^\*\*(?:Calls|Hands over to):\*\*.*$", content, re.MULTILINE) != expected:
             errors.append(f"{relative}: dependency paragraph should read: {expected[0] if expected else '(none)'}")
@@ -184,30 +184,26 @@ def check(repository):
         skill_link = f"./{name}/SKILL.md"
         if skill_link not in bucket:
             errors.append(f"{relative}: missing bucket README link.")
-        deprecated = relative.parts[1] == "deprecated"
-        if deprecated and relative in promoted:
-            errors.append(f"{relative}: deprecated skill is in the plugin manifest.")
-        elif not deprecated and relative not in promoted:
+        if relative not in plugin_paths:
             errors.append(f"{relative}: missing from the plugin manifest.")
-        if relative in promoted:
-            if str(relative) + "/SKILL.md" not in listing:
-                errors.append(f"{relative}: missing promoted top-level README entry.")
-            page = root / "documentation/skills" / relative.relative_to("skills")
-            page = page.with_suffix(".md")
-            expected_pages.add(page)
-            if not page.exists():
-                errors.append(f"{relative}: missing human-facing documentation page.")
-                continue
-            document = page.read_text()
-            if re.search(r"^# ", document, re.MULTILINE):
-                errors.append(f"{page.relative_to(root)}: human-facing page must not have an H1.")
-            positions = [document.find(f"## {heading}\n") for heading in required_sections]
-            if -1 in positions or positions != sorted(positions):
-                errors.append(f"{page.relative_to(root)}: required sections missing or out of order.")
-            errors.extend(evaluation_errors(root, relative, root / relative / "evals/evals.json"))
-            first = document.splitlines()[0] if document else ""
-            if not re.match(r"(Upstream|Source|Provenance|Fork-|Derived from upstream)", first):
-                errors.append(f"{page.relative_to(root)}: missing top provenance note.")
+        if str(relative) + "/SKILL.md" not in listing:
+            errors.append(f"{relative}: missing top-level README entry.")
+        errors.extend(evaluation_errors(root, relative, root / relative / "evals/evals.json"))
+        page = root / "documentation/skills" / relative.relative_to("skills")
+        page = page.with_suffix(".md")
+        expected_pages.add(page)
+        if not page.exists():
+            errors.append(f"{relative}: missing human-facing documentation page.")
+            continue
+        document = page.read_text()
+        if re.search(r"^# ", document, re.MULTILINE):
+            errors.append(f"{page.relative_to(root)}: human-facing page must not have an H1.")
+        positions = [document.find(f"## {heading}\n") for heading in required_sections]
+        if -1 in positions or positions != sorted(positions):
+            errors.append(f"{page.relative_to(root)}: required sections missing or out of order.")
+        first = document.splitlines()[0] if document else ""
+        if not re.match(r"(Upstream|Source|Provenance|Fork-|Derived from upstream)", first):
+            errors.append(f"{page.relative_to(root)}: missing top provenance note.")
 
     # ROUTING.md carries a fallback copy of the policy's tiers; keep the two identical.
     policy = root / "skills/setup/setup-delegation-policy/POLICY.md"
@@ -218,7 +214,7 @@ def check(repository):
         if tier_line.findall(policy.read_text()) != tier_line.findall(routing.read_text()):
             errors.append("skills/workflow/divide-and-conquer/ROUTING.md: tiers differ from the delegation policy.")
 
-    for relative in promoted - skills.keys():
+    for relative in plugin_paths - skills.keys():
         errors.append(f"{relative}: manifest target does not exist.")
     actual_pages = set((root / "documentation/skills").glob("*/*.md"))
     for page in actual_pages - expected_pages:
@@ -230,7 +226,7 @@ def check(repository):
     markdown += list((root / ".agents").glob("*.md"))
     markdown += [path for path in (root / "skills").rglob("*.md") if "evals" not in path.relative_to(root / "skills").parts[2:3]]
     markdown += sorted(actual_pages)
-    callable_names = {relative.name for relative in skills if relative.parts[1] != "deprecated"}
+    callable_names = {relative.name for relative in skills}
     callable_names |= EXTERNAL_SKILLS
     link_pattern = re.compile(r"!?\[[^\]]*\]\(([^)\s]+)(?:\s+\"[^\"]*\")?\)")
     for path in markdown:
@@ -252,9 +248,9 @@ def check(repository):
         for call in CALL_PATTERN.finditer(text):
             for name in call_names(call):
                 if name not in callable_names:
-                    errors.append(f"{path.relative_to(root)}: operative call to retired or unknown skill {name}.")
+                    errors.append(f"{path.relative_to(root)}: operative call to unknown skill {name}.")
 
-    # The skill map at index.html is generated; keep it covering every promoted skill and current.
+    # The skill map at index.html is generated; keep it covering every skill and current.
     if (root / "scripts/skill-graph/flow.json").exists():
         spec = importlib.util.spec_from_file_location("build_skill_graph", Path(__file__).with_name("build-skill-graph.py"))
         builder = importlib.util.module_from_spec(spec)
@@ -266,7 +262,7 @@ def check(repository):
 
     for error in errors:
         print(f"ERROR: {error}")
-    print(f"Checked {len(skills)} skills, {len(promoted)} plugin paths, "
+    print(f"Checked {len(skills)} skills, {len(plugin_paths)} plugin paths, "
           f"{len(actual_pages)} documentation pages, and {len(markdown)} Markdown files.")
     return bool(errors)
 

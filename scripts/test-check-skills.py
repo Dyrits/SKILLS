@@ -10,6 +10,7 @@ import importlib.util
 import io
 import json
 import os
+import subprocess
 import tempfile
 import unittest
 from pathlib import Path
@@ -126,26 +127,48 @@ class LayoutChecks(unittest.TestCase):
         (self.root / "documentation/skills/reference/example.md").unlink()
         self.assertIn("missing from the plugin manifest", self.result()[1])
 
-    def test_deprecated_skill_in_manifest(self):
-        self.write("skills/deprecated/old/SKILL.md", "---\nname: old\n---\nRetired.\n")
+    def add_skill_in_deprecated_bucket(self):
+        self.write("skills/deprecated/old/SKILL.md", "---\nname: old\n---\nAn ordinary skill.\n")
         self.write("skills/deprecated/old/agents/openai.yaml", "interface:\n  display_name: Old\n")
         self.write("skills/deprecated/README.md", "[old](./old/SKILL.md)\n")
         self.write("skills/productivity/guide/SKILL.md",
                    "---\nname: guide\n---\nRoute to /example, /guide, and /old.\n")
         self.write(".claude-plugin/plugin.json", json.dumps({"skills": [
             "./skills/reference/example", "./skills/productivity/guide", "./skills/deprecated/old"]}))
-        self.assertIn("deprecated skill is in the plugin manifest", self.result()[1])
+        with (self.root / "README.md").open("a") as listing:
+            listing.write("[old](skills/deprecated/old/SKILL.md)\n")
+        self.write("documentation/skills/deprecated/old.md",
+                   (self.root / "documentation/skills/reference/example.md").read_text())
+        self.write("skills/deprecated/old/evals/evals.json", json.dumps(self.evaluations("old")))
+
+    def test_deprecated_bucket_obeys_uniform_requirements(self):
+        self.add_skill_in_deprecated_bucket()
+        self.assertEqual(self.result()[0], False)
+        self.write(".claude-plugin/plugin.json", '{"skills": ["./skills/productivity/guide", "./skills/reference/example"]}')
+        (self.root / "documentation/skills/deprecated/old.md").unlink()
+        output = self.result()[1]
+        self.assertIn("skills/deprecated/old: missing from the plugin manifest", output)
+        self.assertIn("skills/deprecated/old: missing human-facing documentation page", output)
+
+    def test_deprecated_bucket_requires_evaluations_and_dependencies(self):
+        self.add_skill_in_deprecated_bucket()
+        (self.root / "skills/deprecated/old/evals/evals.json").unlink()
+        self.write("skills/deprecated/old/SKILL.md",
+                   '---\nname: old\n---\nCall the Skill tool with "example".\n')
+        output = self.result()[1]
+        self.assertIn("skills/deprecated/old: missing evals/evals.json", output)
+        self.assertIn("skills/deprecated/old: dependency paragraph should read:", output)
 
     def test_retired_operative_call(self):
         self.write("AGENTS.md", 'Call the Skill tool with "grilling".\n')
-        self.assertIn("operative call to retired", self.result()[1])
+        self.assertIn("operative call to unknown", self.result()[1])
 
     def test_renamed_operative_calls(self):
         for retired in ("code-review-and-refactor", "to-pull-request",
                         "documentation", "writing-for-agents"):
             with self.subTest(skill=retired):
                 self.write("AGENTS.md", f'Call the Skill tool with "{retired}".\n')
-                self.assertIn("operative call to retired", self.result()[1])
+                self.assertIn("operative call to unknown", self.result()[1])
 
     def test_second_name_in_paired_call(self):
         self.write("AGENTS.md", 'Call the Skill tool twice, for "example" and "grill-me".\n')
@@ -153,17 +176,26 @@ class LayoutChecks(unittest.TestCase):
         self.assertIn("unknown skill grill-me", output)
         self.assertNotIn("unknown skill example", output)
 
-    def test_deprecated_skill_is_not_callable(self):
-        self.write("skills/deprecated/old/SKILL.md", "---\nname: old\n---\nRetired.\n")
-        self.write("skills/deprecated/old/agents/openai.yaml", "interface:\n  display_name: Old\n")
-        self.write("skills/deprecated/README.md", "[old](./old/SKILL.md)\n")
-        self.write("skills/productivity/guide/SKILL.md",
-                   "---\nname: guide\n---\nRoute to /example, /guide, and /old.\n")
+    def test_deprecated_bucket_skill_is_callable(self):
+        self.add_skill_in_deprecated_bucket()
         self.write("AGENTS.md", 'Call the Skill tool with "old".\n')
-        self.assertIn("unknown skill old", self.result()[1])
+        self.assertEqual(self.result()[0], False)
+
+    def test_linker_includes_every_bucket(self):
+        self.add_skill_in_deprecated_bucket()
+        self.write("scripts/link-skills.sh", Path(__file__).with_name("link-skills.sh").read_text())
+        home = self.root / "home"
+        subprocess.run(["bash", str(self.root / "scripts/link-skills.sh")],
+                       env={**os.environ, "HOME": str(home)}, check=True, capture_output=True, text=True)
+        for harness in (".claude", ".agents"):
+            for bucket, name in (("reference", "example"), ("productivity", "guide"), ("deprecated", "old")):
+                target = home / harness / "skills" / name
+                self.assertTrue(target.is_symlink())
+                self.assertEqual(target.resolve(), self.root / "skills" / bucket / name)
 
     def test_known_and_external_calls_pass(self):
-        self.write("AGENTS.md", 'Call the Skill tool with "example". Call the Skill tool with "webapp-testing".\n')
+        self.write("AGENTS.md", 'Call the Skill tool with "example". Call the Skill tool with "webapp-testing". '
+                   'Call the Skill tool with "skill-creator".\n')
         self.assertEqual(self.result()[0], False)
 
     def test_historical_names_are_allowed(self):
@@ -186,7 +218,8 @@ class LayoutChecks(unittest.TestCase):
 
     def test_dependency_paragraph_skips_external_skills(self):
         self.write("skills/reference/example/SKILL.md",
-                   '---\nname: example\n---\nCall the Skill tool with "webapp-testing".\n')
+                   '---\nname: example\n---\nCall the Skill tool with "webapp-testing". '
+                   'Call the Skill tool with "skill-creator".\n')
         self.assertEqual(self.result()[0], False)
 
     def test_unquoted_description_with_colon_is_invalid(self):
@@ -249,6 +282,14 @@ class LayoutChecks(unittest.TestCase):
         self.write_skill_map()
         self.assertEqual(self.result()[0], False)
 
+    def test_skill_map_includes_deprecated_bucket(self):
+        self.add_skill_in_deprecated_bucket()
+        self.write("skills/deprecated/README.md", "# Other\n\nSkills.\n\n- [old](./old/SKILL.md): Ordinary.\n")
+        self.write_skill_map(skills=("example", "guide", "old"))
+        self.assertEqual(self.result()[0], False)
+        self.write_skill_map()
+        self.assertIn("no entry for skill old", self.result()[1])
+
     def test_stale_skill_map(self):
         self.write_skill_map()
         self.write("index.html", "old")
@@ -261,7 +302,7 @@ class LayoutChecks(unittest.TestCase):
 
     def test_skill_missing_from_map(self):
         self.write_skill_map(skills=("guide",))
-        self.assertIn("no entry for promoted skill example", self.result()[1])
+        self.assertIn("no entry for skill example", self.result()[1])
 
 
 if __name__ == "__main__":
