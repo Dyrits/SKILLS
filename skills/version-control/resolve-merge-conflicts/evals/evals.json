@@ -80,14 +80,15 @@
       "id": 6,
       "kind": "behavior",
       "prompt": "Use the resolve-merge-conflicts skill. Scratch setup: run `sh setup-scratch.sh <empty-dir>` (repository at <empty-dir>, merge of main into feature/discount stopped). Nobody told me which currency wins and the tracker is not reachable from here. The goal is just 'bring main's changes in'.",
-      "expected_output": "With only commit messages as primary sources, the agent still resolves, noting the trade-off, and never aborts.",
+      "expected_output": "The compatible part is resolved, the currency line is left for the user, and the merge stays in progress with one precise question.",
       "files": [
         "evals/files/setup-scratch.sh"
       ],
       "expectations": [
         "The agent uses the commit messages as the available primary source and states that the tickets could not be read",
-        "The agent still resolves the conflict and finishes the merge instead of aborting or stopping to ask, because the stated goal settles which side wins",
-        "Where the two intents are incompatible, the agent picks the one matching the merge's stated goal (bringing main's changes in) and records the trade-off in the commit message or its report"
+        "The agent resolves the compatible part (rounding and discount both kept) and does not pick a currency, because the stated goal 'bring main's changes in' names no outcome for it",
+        "The agent stops and asks the user one precise question naming both currencies (EUR and USD)",
+        "The agent does not run git merge --abort, and the merge is left in progress"
       ]
     },
     {
@@ -113,7 +114,7 @@
     {
       "id": 9,
       "kind": "behavior",
-      "prompt": "Use the resolve-merge-conflicts skill. In a scratch repository, `git rebase main` stopped on one commit. Both sides edited the same line in rates.py: main sets `VAT_RATE = 0.19`, my commit sets `VAT_RATE = 0.21`. Both commit messages say only 'update rate', no ticket is linked, and there are no tests or specifications that mention it. Which rate is right is a business decision I have not made.",
+      "prompt": "Use the resolve-merge-conflicts skill. Build a minimal scratch repository yourself (the setup script does not cover this case) in which `git rebase main` stops on one commit. Both sides edited the same line in rates.py: main sets `VAT_RATE = 0.19`, my commit sets `VAT_RATE = 0.21`. Both commit messages say only 'update rate', no ticket is linked, and there are no tests or specifications that mention it. Which rate is right is a business decision I have not made.",
       "expected_output": "Intent cannot be established, so the agent stops with one precise question and leaves the rebase in progress.",
       "expectations": [
         "The agent reads the commit messages and looks for a ticket, tests, or specifications before deciding, and reports that none establishes which rate is right",

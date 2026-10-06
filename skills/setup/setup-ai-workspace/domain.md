@@ -16,7 +16,7 @@ Before updating project or capability documents, call the Skill tool with "docum
 
 **`CONVENTIONS.md`** at the repository root holds the project's code conventions, domain-agnostic and portable to any project on the same stack. Read it before reviewing code or auditing architecture.
 
-If it doesn't exist, the review and architecture skills offer to create it through `/model-domain` unless the line below says otherwise.
+If it doesn't exist, the review and architecture skills offer to create it through `/model-domain` unless a `Conventions: declined` line below says otherwise.
 
 Conventions: {present | declined}
 

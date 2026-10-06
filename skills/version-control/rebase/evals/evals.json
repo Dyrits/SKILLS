@@ -21,7 +21,7 @@
     {
       "id": 2,
       "kind": "behavior",
-      "prompt": "Use the rebase skill to rebase fix/a onto origin/develop in the scratch repository built by `sh setup-scratch.sh <empty-dir>` (clone at <empty-dir>/work). fix/a and develop both changed TIMEOUT_SECONDS in settings.py. Do not push.",
+      "prompt": "Use the rebase skill to rebase fix/a onto origin/develop in the scratch repository built by `sh setup-scratch.sh <empty-dir>` (clone at <empty-dir>/work). fix/a and develop both changed TIMEOUT_SECONDS in settings.py. Do not push. If a conflict needs a product decision, my answer is to keep develop's 45 seconds (the gateway limit) and note the trade-off.",
       "expected_output": "The conflict is resolved by intent through resolve-merge-conflicts, continued with git rebase --continue, and validated.",
       "files": [
         "evals/files/setup-scratch.sh"
@@ -29,7 +29,7 @@
       "expectations": [
         "The rebase is run on the pinned target with GIT_EDITOR=true and with rebase.updateRefs=false overridden, and no autostash",
         "When Git stops on the conflict, the resolve-merge-conflicts skill is called with the target pin as the goal",
-        "The resolution cites the intent of both commits (OPS-31 raise to 60 seconds for slow exports, OPS-28 set 45 seconds to match the gateway limit) and states which value was kept and why, or stops with a precise question if the intent stays uncertain",
+        "The resolution cites the intent of both commits (OPS-31 raise to 60 seconds for slow exports, OPS-28 set 45 seconds to match the gateway limit), stops to ask first because the intent is incompatible, and then keeps 45 as the user decided, recording the trade-off",
         "The agent stages only the reviewed conflict path and runs git rebase --continue, so the original commit message and order are kept, instead of making a new commit",
         "Git reports no unfinished rebase and no unmerged entries after the last commit",
         "The new tip is validated: the target pin is an ancestor, git range-diff is reviewed and each changed patch explained, make check passes, and git diff --check passes"
@@ -38,7 +38,7 @@
     {
       "id": 3,
       "kind": "behavior",
-      "prompt": "Use the rebase skill on fix/a and feat/b onto origin/develop in the scratch repository built by `sh setup-scratch.sh <empty-dir>` (clone at <empty-dir>/work). When both are rebased and validated, give me your report and wait. I haven't decided what to push.",
+      "prompt": "Use the rebase skill on fix/a and feat/b onto origin/develop in the scratch repository built by `sh setup-scratch.sh <empty-dir>` (clone at <empty-dir>/work). When both are rebased and validated, give me your report and wait. I haven't decided what to push. If a conflict needs a product decision, my answer is to keep develop's 45 seconds (the gateway limit) and note the trade-off.",
       "expected_output": "One report table and an explicit question about which branches to push, with no push yet.",
       "files": [
         "evals/files/setup-scratch.sh"
@@ -83,7 +83,7 @@
     {
       "id": 6,
       "kind": "behavior",
-      "prompt": "Use the rebase skill on fix/a and feat/b onto origin/develop. Scratch setup: run `sh setup-scratch.sh <empty-dir>`, then in <empty-dir>/work run `git checkout fix/a` and append a line to notes.txt without committing. Work in <empty-dir>/work.",
+      "prompt": "Use the rebase skill on fix/a and feat/b onto origin/develop. Scratch setup: run `sh setup-scratch.sh <empty-dir>`, then in <empty-dir>/work run `git checkout fix/a` and append a line to notes.txt without committing. Work in <empty-dir>/work. If asked what to do with the uncommitted edit, my answer is to skip fix/a and carry on with feat/b.",
       "expected_output": "The user's uncommitted work is left alone and the agent asks what to do with it.",
       "files": [
         "evals/files/setup-scratch.sh"
@@ -111,7 +111,7 @@
     {
       "id": 8,
       "kind": "behavior",
-      "prompt": "Use the rebase skill on fix/a and feat/c onto origin/develop. Scratch setup: run `sh setup-scratch.sh <empty-dir>`, then in <empty-dir>/work create feat/c on top of fix/a with one extra commit, so feat/c sits on top of fix/a. Work in <empty-dir>/work.",
+      "prompt": "Use the rebase skill on fix/a and feat/c onto origin/develop. Scratch setup: run `sh setup-scratch.sh <empty-dir>`, then in <empty-dir>/work create feat/c on top of fix/a with one extra commit, so feat/c sits on top of fix/a. Work in <empty-dir>/work. If asked whether they are a stack, my answer is yes. If a conflict needs a product decision, my answer is to keep develop's 45 seconds (the gateway limit) and note the trade-off.",
       "expected_output": "The stack is detected and asked about, then rebased as one unit from its top.",
       "files": [
         "evals/files/setup-scratch.sh"
@@ -130,10 +130,10 @@
       "expected_output": "The batch is resumed from its records with the original pins, and branches whose state cannot be established are asked about.",
       "expectations": [
         "The agent reads RESUME.md and the batch directory before touching any branch",
-        "The agent keeps the recorded target pin, starts, leases and answers instead of using the advanced target or fresh fetches as new inputs",
+        "The agent keeps the recorded target pin, starts, leases and answers as its default and does not re-pin to the advanced target on its own; it may mention that the target advanced",
         "The agent establishes through the host's actual execution state that no earlier subagent can still change feat/b's checkout, and marks the branch unknown and asks when it cannot",
         "fix/a is kept as validated when its local tip equals the recorded validated tip, without redoing the rebase",
-        "The agent continues from the report step with every branch of the batch in the table"
+        "The agent's report or stop message accounts for every branch of the batch, fix/a as validated and feat/b as unknown"
       ]
     },
     {

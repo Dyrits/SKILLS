@@ -76,7 +76,7 @@ Only collect overrides if the user declines. The strings are configurable; the r
 
 Default to one root `GLOSSARY.md` and `documentation/architecture-decision-record/` without asking. Offer a root `GLOSSARY-MAP.md` with per-context glossaries only when monorepo signals justify it.
 
-If `CONVENTIONS.md` exists, record `Conventions: present`. Otherwise ask whether to create it through an interview, recommending yes when there is no standards document. On acceptance, call the Skill tool with "model-domain" for its Conventions step, with the **code** focus. On refusal, record `Conventions: declined`.
+If `CONVENTIONS.md` exists, record `Conventions: present`. Otherwise ask whether to create it through an interview, recommending yes when there is no standards document. On acceptance, call the Skill tool with "model-domain" for its Conventions step, with the **code** focus, then record `Conventions: present` once `CONVENTIONS.md` exists. On refusal, record `Conventions: declined`. When no rule was agreed and the file does not exist, delete the `Conventions:` line from `.agents/domain.md`: the template's own sentence already says the skills offer to create it.
 
 ## 3. Confirm and write
 

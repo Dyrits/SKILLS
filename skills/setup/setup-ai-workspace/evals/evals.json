@@ -42,7 +42,8 @@
         "AGENTS.md is created as the only instruction file, after the proposed block is shown",
         ".agents/issue-tracker.md is seeded from the local template, recording documentation/backlog.md as the backlog",
         "The agent records that local task bodies live under documentation/capabilities/<capability>/tasks/",
-        "The agent does not claim to read or update any remote service"
+        "The agent does not claim to read or update any remote service",
+        "When the conventions interview is accepted but no rule is agreed and no CONVENTIONS.md exists, the Conventions line is removed from .agents/domain.md, with no unresolved {present | declined} placeholder left"
       ]
     },
     {
