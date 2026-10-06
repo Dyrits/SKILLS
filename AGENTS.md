@@ -39,4 +39,6 @@ Before writing or editing a `SKILL.md` or its description, read the [skill autho
 
 Prefer full words in repository-owned prose and paths when they remain clear: use `repository`, `document` or `documentation`, `specifications`, and `architecture decision record` instead of `repo`, `doc` or `docs`, `spec`, and `ADR`. Use an abbreviation when it is an external name, a literal command or API, a widely established technical term, or when the full term has already been introduced and repetition would reduce readability. Preserve literal URLs and historical quotations.
 
+Name `AGENTS.md` as the steering file in skills, documentation, evaluations, and scripts: current Claude agents read it, so `CLAUDE.md` does not appear. Two things keep their literal `CLAUDE.md`: a home-directory path a skill installs into (`~/.claude/CLAUDE.md`), and historical records (handoffs, `.upstream/`, architecture decision records).
+
 No em-dashes anywhere in this repository's prose (`SKILL.md` files, documentation, `README.md`, `CHANGELOG.md`, architecture decision records, changesets, code comments). Where a sentence reaches for one, rewrite it instead with a comma, colon, period, parentheses, or a conjunction, whichever the sentence actually wants; never do a blind character substitution.

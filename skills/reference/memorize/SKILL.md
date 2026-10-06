@@ -14,7 +14,7 @@ Agents relearn the same things every session: the helper written yesterday, the 
 | Lesson | Home | How |
 | --- | --- | --- |
 | A reusable action (rename files, convert a format, call an endpoint) | A scriptbook: `.agents/scripts/` for this repository, `~/.agents/scripts/` for any repository | Read [SCRIPTS.md](SCRIPTS.md) |
-| A project convention, command, or gotcha agents keep missing | The nearest `AGENTS.md` or `CLAUDE.md` at the boundary where it applies | Call the Skill tool with "write-for-agents" |
+| A project convention, command, or gotcha agents keep missing | The nearest `AGENTS.md` at the boundary where it applies | Call the Skill tool with "write-for-agents" |
 | A code convention | `CONVENTIONS.md` | Call the Skill tool with "model-domain" |
 | A domain term or consequential decision | `GLOSSARY.md` or an architecture decision record | Call the Skill tool with "model-domain" |
 | Project agreements, working state, or delivery history | The shared project documents | Call the Skill tool with "document" |
@@ -45,7 +45,7 @@ Completion: the lesson exists in exactly one home, and the user knows where.
 
 ## Pointers
 
-A home works only when the next agent reads it, and a skill description alone fires unreliably during a long task. When you create a project scriptbook, start relying on one, or find the nearest `AGENTS.md` or `CLAUDE.md` without this skill's own pointer, add the always-loaded pointer there once, checking for an existing one first:
+A home works only when the next agent reads it, and a skill description alone fires unreliably during a long task. When you create a project scriptbook, start relying on one, or find the nearest `AGENTS.md` without this skill's own pointer, add the always-loaded pointer there once, checking for an existing one first:
 
 > Call the Skill tool with "memorize" the moment the user corrects you, states a standing rule, or asks you to remember something, and when something is rebuilt a second time. Before writing a script or multi-step pipeline, read `.agents/scripts/INDEX.md` and reuse or extend a match.
 

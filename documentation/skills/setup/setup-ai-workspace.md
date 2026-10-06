@@ -44,9 +44,9 @@ No. The role file maps names; it does not provision them. Graphify labels also n
 
 Re-run it when an older configuration no longer matches the workflows consuming it. Day-to-day edits to the configuration can be made directly. A new document model does not authorize moving old history automatically.
 
-**It wrote to `CLAUDE.md`, but my agent reads `AGENTS.md`.**
+**Which file does it write to?**
 
-Setup prefers an existing `CLAUDE.md`, then an existing `AGENTS.md`. If both conventions are used in your repository, keep the relevant instructions reachable by the agent you use. If neither file exists, setup asks which to create.
+The root `AGENTS.md`. Setup creates it when it does not exist, and updates an existing `## Agent skills` block in place without touching your other instructions.
 
 **What if a skill it calls is not installed?**
 It names the missing skill with its install command, carries out that step from its stated intent, and tells you the step ran without it. Without `document` it waits instead, because its rules use that skill's terms: install it, or tell it to proceed anyway. The skills involved are listed at the top of its [`SKILL.md`](../../../skills/setup/setup-ai-workspace/SKILL.md).

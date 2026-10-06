@@ -39,7 +39,7 @@ The glossary and architecture decision record are held to different standards. T
 
 | | `GLOSSARY.md` | `documentation/architecture-decision-record/NNNN-slug.md` |
 | --- | --- | --- |
-| Holds | Terms. What a thing **is**, in one or two sentences, with rejected synonyms under `_Avoid_` | One decision, in one to three sentences: context, choice, reason |
+| Holds | Terms. What a thing **is**, in one or two sentences, with rejected synonyms under `_Avoid_` and, when the user states one, a one-line `_Why_` for an easily reversed choice | One decision, in one to three sentences: context, choice, reason |
 | Bar to write | A vague term became canonical | **All three**: hard to reverse, surprising without context, the result of a real trade-off |
 | Written | Inline, the moment the term is settled | Offered, not assumed |
 | Never holds | Implementation details, a specification, a scratch pad, general programming concepts | A diary of every choice made this session |

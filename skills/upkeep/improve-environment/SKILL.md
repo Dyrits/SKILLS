@@ -24,7 +24,7 @@ Completion: each moment has a pointer into the session and a one-line account of
 
 ### 2. Read the environment
 
-Read what the agent had to work with: the repository's and the user's global `AGENTS.md` or `CLAUDE.md`, `CONVENTIONS.md`, the project's own check commands (build-tool scripts such as `lint`, `check`, `typecheck`, `test`), its hooks path or pre-commit configuration, and its CI workflows.
+Read what the agent had to work with: the repository's and the user's global `AGENTS.md`, `CONVENTIONS.md`, the project's own check commands (build-tool scripts such as `lint`, `check`, `typecheck`, `test`), its hooks path or pre-commit configuration, and its CI workflows.
 
 Completion: you know which checks exist, which of them run automatically before a commit or in CI, and which exist but are unwired or broken.
 
@@ -37,7 +37,7 @@ Match each moment of friction to a category, and each candidate to the moment it
 | **Navigation** | A long search; a hidden dependency between files | A **navigation pointer** from a file the agent already reads |
 | **Automated checks** | A mistake a tool could catch; a repository with no **guardrail** (no pre-commit hook and no CI job running its lint, typecheck, and test commands) | Wire the existing check first; otherwise a lint rule, type, test, hook, or CI job |
 | **Coding standards** | A mistake review missed | Classify it: a **mechanical** violation (a banned API, an import shape, a file location) gets a deterministic check; only a **judgement call** becomes a `CONVENTIONS.md` rule |
-| **Steering files** | A large `AGENTS.md` or `CLAUDE.md`, in the repository or global | Move each steering line out to a check or `CONVENTIONS.md`, keeping pointers |
+| **Steering files** | A large `AGENTS.md`, in the repository or global | Move each steering line out to a check or `CONVENTIONS.md`, keeping pointers |
 | **No-ops** | Steering lines that do not change the agent's behavior | Delete them |
 | **Tool economy** | An expensive call for what it returned; a token-heavy CLI or MCP server | Streamline or replace the tool |
 | **Information access** | Information the agent could not reach | Widen access: tee the dev server log to a file, give read-only access to a service |
@@ -75,7 +75,7 @@ Work passes through two stages. The implementing agent carries the most **contex
 
 ### Homes
 
-- `AGENTS.md` and `CLAUDE.md` load into every agent's context. Use them sparingly, mostly for navigation pointers to other files.
+- `AGENTS.md` loads into every agent's context. Use them sparingly, mostly for navigation pointers to other files.
 - `CONVENTIONS.md` holds the code conventions a reviewer applies to any diff and no tool can enforce. Past roughly 1,000 lines, move detail into documents it points to.
 - Documentation holds reference material reached through pointers. Look for an existing document before writing a new one.
 - A skill suits reference whose description should trigger it, or a command the user runs.

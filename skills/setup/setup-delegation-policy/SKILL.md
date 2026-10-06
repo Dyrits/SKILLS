@@ -74,4 +74,4 @@ Ask separately about the tier agent files step 3 wrote for OpenCode, ZCode, and 
 
 - Nothing here needs a restart. Steering files are read per turn.
 - `POLICY.md` is the single source of truth. Editing the rule means editing that file and re-running this skill, rather than hand-patching the installed copies.
-- Repository-scoped `CLAUDE.md` and `AGENTS.md` files are deliberately untouched: this is a rule about how the agent works, not about any one codebase.
+- Repository-scoped `AGENTS.md` files are deliberately untouched: this is a rule about how the agent works, not about any one codebase.

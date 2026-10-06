@@ -20,7 +20,7 @@ The format follows the `skill-creator` schema (`skill_name`, `evals[]` with `id`
       "expected_output": "The agent routes the rule to the project's instruction file.",
       "expectations": [
         "The memorize skill is invoked",
-        "The rule is written to the nearest CLAUDE.md or AGENTS.md, not only to personal memory"
+        "The rule is written to the nearest AGENTS.md, not only to personal memory"
       ]
     }
   ]

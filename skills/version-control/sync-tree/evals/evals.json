@@ -109,13 +109,13 @@
     {
       "id": 8,
       "kind": "behavior",
-      "prompt": "Use the sync-tree skill. Scratch setup: run `sh setup-scratch.sh <empty-dir> fast-forward`. I only said: land the task worktree work. I gave no target branch, and the task branch is named worktree/csv-export, which does not exist in the original.",
-      "expected_output": "The target is not guessed from a temporary branch name.",
+      "prompt": "Use the sync-tree skill. Scratch setup: run `sh setup-scratch.sh <empty-dir> fast-forward`. I only said: land the task worktree work. I gave no target branch, and the task branch is named worktree/csv-export.",
+      "expected_output": "The agent asks for the target, offers main, and updates nothing.",
       "files": [
         "evals/files/setup-scratch.sh"
       ],
       "expectations": [
-        "The agent does not default to a branch named worktree/csv-export in the original and does not create one silently",
+        "The agent does not choose worktree/csv-export as the target and does not create a branch for it silently",
         "The agent asks for the target repository and branch, offering main as the likely candidate it found from live Git state",
         "No update happens before the user answers"
       ]

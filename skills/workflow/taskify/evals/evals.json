@@ -28,7 +28,7 @@
         "evals/files/specification.md"
       ],
       "expectations": [
-        "Each task's acceptance describes a change observable against the starting state and does not claim another task's result",
+        "Each task's acceptance describes a change observable against the starting state and can be verified with only that task's work and its blockers' results, never a non-blocker's result",
         "The limit-of-20 acceptance, the rename and delete acceptance, and the browser check of the Saved menu each belong to exactly one task",
         "Blocking edges are listed explicitly and the tasks with no incomplete prerequisites (the frontier) are named",
         "The agent asks the user to approve granularity and dependencies and offers to merge or split",

@@ -1,6 +1,6 @@
 # Saved searches
 
-Status: approved. Project: Fernlea Catalogue (invented), a web catalogue for a lending library. Path: `documentation/capabilities/search/specification.md`.
+Status: approved. Project: Fernlea Catalogue (invented), a web catalogue for a lending library. Path: `documentation/capabilities/search/specifications.md`.
 
 ## Agreed behavior
 

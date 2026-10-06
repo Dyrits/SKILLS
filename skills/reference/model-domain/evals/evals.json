@@ -98,7 +98,7 @@
       "expectations": [
         "Rule 1 is written to CONVENTIONS.md with its reason",
         "Rule 2 is not written to CONVENTIONS.md and is routed to documentation/requirements.md or the capability's specifications through the document skill",
-        "Rule 3 is routed to AGENTS.md or CLAUDE.md, or the agent offers to wire it as a hook or CI check",
+        "Rule 3 is routed to AGENTS.md, or the agent offers to wire it as a hook or CI check",
         "Rule 4 is split: a portable rule such as no user-facing string literals in rendering code goes to CONVENTIONS.md, and the language pair goes to requirements",
         "The agent tells the user where each rule went"
       ]

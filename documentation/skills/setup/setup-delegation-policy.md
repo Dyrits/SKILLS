@@ -16,7 +16,7 @@ Type `/setup-delegation-policy`, or an agent or another skill can reach for it. 
 | --- | --- |
 | `~/.claude/CLAUDE.md`, `~/.config/opencode/AGENTS.md`, `~/.codex/AGENTS.md`, `~/.zcode/AGENTS.md`, `~/.gemini/GEMINI.md` | Each file that exists gets the policy section appended, or replaced in place so there is never a second copy |
 | Tier agent files | Written for OpenCode, ZCode, and Gemini CLI, where the agent carries the model. Claude Code and Codex use a per-call model override instead |
-| Repository `CLAUDE.md` and `AGENTS.md` | Untouched: this is a rule about how the agent works, not about one codebase |
+| Repository `AGENTS.md` | Untouched: this is a rule about how the agent works, not about one codebase |
 
 The source of truth is [POLICY.md](../../../skills/setup/setup-delegation-policy/POLICY.md); [TIER-AGENTS.md](../../../skills/setup/setup-delegation-policy/TIER-AGENTS.md) holds the per-harness tier agents. To change the rule, edit `POLICY.md` and rerun the skill instead of patching installed copies.
 

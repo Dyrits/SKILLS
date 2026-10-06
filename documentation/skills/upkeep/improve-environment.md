@@ -25,7 +25,7 @@ Type `/improve-environment`, or an agent or another skill can reach for it when 
 | A long search for a file or fact | A navigation pointer from a file the agent already reads |
 | A mistake a tool could have caught | A check: lint rule, type, test, pre-commit hook, or CI job, wiring an existing one first |
 | Review missed a judgement-call mistake | A rule in `CONVENTIONS.md`, which [review-and-refactor](../workflow/review-and-refactor.md) reads |
-| A large `AGENTS.md` or `CLAUDE.md` | Steering moved out into checks or `CONVENTIONS.md` |
+| A large `AGENTS.md` | Steering moved out into checks or `CONVENTIONS.md` |
 | Steering lines that change nothing | Deleted as no-ops |
 | A tool call expensive for what it returned | A streamlined or replaced tool |
 | Information the agent could not reach | Wider access, such as a teed dev server log or read-only service access |
@@ -42,9 +42,9 @@ No. It presents the candidates in order of severity and applies only the ones yo
 
 That is the main criticism upstream's `retro` received: once a job is done, the agent forgets the middle of the session and fills the categories with best practice. Here every candidate must point to a moment of friction in the session, and every moment must end with a candidate, a skill finding, or a reason the environment could not have prevented it. Discard any candidate you cannot trace.
 
-**Should I just add a line to `CLAUDE.md`?**
+**Should I just add a line to `AGENTS.md`?**
 
-Usually not. A line there loads into every session and drifts as the code changes. A mechanical mistake gets a check; a judgement call goes to `CONVENTIONS.md` for the reviewer. `AGENTS.md` and `CLAUDE.md` are mostly for navigation pointers.
+Usually not. A line there loads into every session and drifts as the code changes. A mechanical mistake gets a check; a judgement call goes to `CONVENTIONS.md` for the reviewer. `AGENTS.md` is mostly for navigation pointers.
 
 **Does it remove rules too?**
 

@@ -4,12 +4,12 @@
     {
       "id": 1,
       "kind": "trigger",
-      "prompt": "Scratch git repository, no real remote access. Set this repository up for AI-assisted work. `git remote -v` shows origin at https://github.com/fernwood-labs/fernwood.git. There is a CLAUDE.md with 10 lines of my own instructions and no AGENTS.md. The `document` and `triage` skills are installed. There is no `.agents/` directory and no GLOSSARY.md.",
+      "prompt": "Scratch git repository, no real remote access. Set this repository up for AI-assisted work. `git remote -v` shows origin at https://github.com/fernwood-labs/fernwood.git. There is an AGENTS.md with 10 lines of my own instructions. The `document` and `triage` skills are installed. There is no `.agents/` directory and no GLOSSARY.md.",
       "expected_output": "The agent explores first, calls document, then takes the questions in order with a recommended answer each.",
       "expectations": [
         "The setup-ai-workspace skill is invoked from the request without the user naming it",
         "The document skill is called before document locations are chosen or any configuration is written",
-        "The agent reads git remote information, the root CLAUDE.md and AGENTS.md, .agents/, GLOSSARY.md, and the project documents before proposing anything",
+        "The agent reads git remote information, the root AGENTS.md, .agents/, GLOSSARY.md, and the project documents before proposing anything",
         "The agent summarizes what already exists before asking questions",
         "The first question is the task tracker, asked alone, with GitHub recommended because the remote is GitHub",
         "The questions follow the order tracker, ticket-writing convention, triage roles, domain documentation, one at a time, each with a recommended answer"
@@ -18,11 +18,11 @@
     {
       "id": 2,
       "kind": "behavior",
-      "prompt": "Scratch git repository. Use the setup-ai-workspace skill. GitHub remote, `document` and `triage` installed, no existing conventions. I accept every recommendation you make. The CLAUDE.md already has user instructions and an `## Agent skills` section with an outdated Task tracker line, and no AGENTS.md.",
-      "expected_output": "The proposed block and files are shown before writing, CLAUDE.md is updated in place, and only needed files are created.",
+      "prompt": "Scratch git repository. Use the setup-ai-workspace skill. GitHub remote, `document` and `triage` installed, no existing conventions. I accept every recommendation you make. The AGENTS.md already has user instructions and an `## Agent skills` section with an outdated Task tracker line.",
+      "expected_output": "The proposed block and files are shown before writing, AGENTS.md is updated in place, and only needed files are created.",
       "expectations": [
         "The proposed agent-instruction block and configuration contents are shown to the user before any file is written, with a chance to adjust them",
-        "CLAUDE.md is edited in place, and AGENTS.md is not created",
+        "AGENTS.md is edited in place, and no other instruction file is created",
         "The existing `## Agent skills` block is updated rather than a second one appended, and the user's surrounding instructions are preserved",
         "The block contains Task tracker, Triage roles, Domain documentation, Project documents, and Reusable knowledge subsections",
         ".agents/issue-tracker.md is seeded from the GitHub template and the refinement text is appended",
@@ -34,12 +34,12 @@
     {
       "id": 3,
       "kind": "behavior",
-      "prompt": "Scratch git repository with no remote at all. Use the setup-ai-workspace skill. The `document` skill is installed but `triage` is not. Neither CLAUDE.md nor AGENTS.md exists.",
-      "expected_output": "Local Markdown is recommended, triage is skipped, and the agent asks which instruction file to create.",
+      "prompt": "Scratch git repository with no remote at all. Use the setup-ai-workspace skill. The `document` skill is installed but `triage` is not. No AGENTS.md exists.",
+      "expected_output": "Local Markdown is recommended, triage is skipped, and AGENTS.md is created.",
       "expectations": [
         "Local Markdown is recommended as the tracker because there is no remote",
         "The triage roles question is skipped, and no .agents/triage-roles.md or Triage roles block is written",
-        "The agent asks which of CLAUDE.md and AGENTS.md to create before creating either",
+        "AGENTS.md is created as the only instruction file, after the proposed block is shown",
         ".agents/issue-tracker.md is seeded from the local template, recording documentation/backlog.md as the backlog",
         "The agent records that local task bodies live under documentation/capabilities/<capability>/tasks/",
         "The agent does not claim to read or update any remote service"
@@ -90,7 +90,7 @@
     {
       "id": 7,
       "kind": "behavior",
-      "prompt": "Scratch git repository. Use the setup-ai-workspace skill, and take the recommended answers through the configuration. Current state: a verified tooling record exists at .agents/ai-tooling.md; `git config core.hooksPath` is unset; `.claude/settings.json` registers a `confirm-dangerous-git.sh` hook; no PreCompact hook exists; the global CLAUDE.md has no Delegation and model routing section. Pretend all setup skills are installed.",
+      "prompt": "Scratch git repository. Use the setup-ai-workspace skill, and take the recommended answers through the configuration. Current state: a verified tooling record exists at .agents/ai-tooling.md; `git config core.hooksPath` is unset; `.claude/settings.json` registers a `confirm-dangerous-git.sh` hook; no PreCompact hook exists; the global steering files have no Delegation and model routing section. Pretend all setup skills are installed.",
       "expected_output": "The optional setups are offered once, as one multi-select question, with present or missing marked.",
       "expectations": [
         "The optional setups are offered together in one multi-select question after the configuration is written, not one question per setup",
@@ -116,7 +116,7 @@
     {
       "id": 9,
       "kind": "no-trigger",
-      "prompt": "Add a rule to our CLAUDE.md: always run the linter before committing. I keep having to remind you.",
+      "prompt": "Add a rule to our AGENTS.md: always run the linter before committing. I keep having to remind you.",
       "expected_output": "A standing rule is memorize's job, not workspace setup.",
       "expectations": [
         "The setup-ai-workspace skill is not invoked and no tracker, role, or domain configuration is written",

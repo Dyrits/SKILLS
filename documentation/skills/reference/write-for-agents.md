@@ -10,7 +10,7 @@ It was called `writing-great-skills` until v1.1. The rename tracks what it alway
 
 ## When to reach for it
 
-Type `/write-for-agents`, or an agent or another skill can reach for it when you're creating or editing a skill, or modifying `AGENTS.md` or `CLAUDE.md`.
+Type `/write-for-agents`, or an agent or another skill can reach for it when you're creating or editing a skill, or modifying `AGENTS.md`.
 
 Reach for it by hand for other agent-facing documents, specifications, tasks, and unattended prompts. The test is whether an agent reads the text. [specify](../workflow/specify.md) establishes agreed capability behavior; [document](./document.md) owns the project-document model. This reference governs how the instructions read, not what behavior the project should agree to.
 
@@ -48,8 +48,8 @@ Agents told to "streamline" optimise for length, because length is the thing the
 **How do I know when it's done?**
 When it works, and you can no longer find duplication, sediment or no-ops. There is no automated eval here; the check is a manual run plus the failure-mode vocabulary as a diagnostic. When a document misbehaves, that vocabulary is also the repair kit: name the failure mode first, then fix that.
 
-**Should this live in `CLAUDE.md` or somewhere else?**
-Ask which load you want to pay. `CLAUDE.md` loads into every session unconditionally; material behind a pointer costs only the pointer's own line until it fires. Anything that applies in one context out of ten is paying context load the nine other times.
+**Should this live in `AGENTS.md` or somewhere else?**
+Ask which load you want to pay. `AGENTS.md` loads into every session unconditionally; material behind a pointer costs only the pointer's own line until it fires. Anything that applies in one context out of ten is paying context load the nine other times.
 
 **Do I need to rewrite my documents for each new model?**
 Mostly no, and over-fitting to one model is its own trap. Updating for a new model is usually another no-op pass rather than a rewrite.

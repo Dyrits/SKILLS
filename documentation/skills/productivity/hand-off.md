@@ -59,8 +59,8 @@ Open the fresh session and point it at the path: read this file, then continue. 
 **Is this the same as `/branch`, `--fork-session`, or the built-in `/hand-off`?**
 Analogous, not identical, and `/branch` isn't a shipped skill here; `/hand-off` is the canonical name. A fork inherits an exact copy of the context; this skill produces a *targeted* compression aimed at a stated next task, in a file. Where a fork will do (same machine, same harness, same directory), a fork is less work. The file wins the moment the destination is somewhere the fork can't go.
 
-**When does something belong in `CLAUDE.md` instead?**
-Ask whether it's true next month. `CLAUDE.md` is standing context about the project, loaded into every session whether it's relevant or not. A handoff is about one piece of work in flight and is dead once that work lands. Facts that keep getting re-explained are a `CLAUDE.md` problem; a half-finished task is a handoff.
+**When does something belong in `AGENTS.md` instead?**
+Ask whether it's true next month. `AGENTS.md` is standing context about the project, loaded into every session whether it's relevant or not. A handoff is about one piece of work in flight and is dead once that work lands. Facts that keep getting re-explained are an `AGENTS.md` problem; a half-finished task is a handoff.
 
 **It captures the what, not the why.**
 A repeated criticism. State what the next session is for so relevant reasoning survives. Watch for confident claims the session never verified, such as "X isn't built" or "Y is done". [take-over](./take-over.md) flags assumptions and resolves source pointers, but review before handing over still matters.

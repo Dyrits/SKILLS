@@ -15,7 +15,7 @@ Route everything else to its owner, through the named skill, and tell the user w
 | What the product must do or never do, a content or wording rule | `documentation/requirements.md` when it binds the whole product; the capability's requirements or specifications when it binds one capability | `document` |
 | A hard-to-reverse design choice with real alternatives | an architecture decision record | this skill |
 | The meaning of a domain term | `GLOSSARY.md` | this skill |
-| How the agent works: verification, approvals, who confirms what | `AGENTS.md` or `CLAUDE.md` | direct edit |
+| How the agent works: verification, approvals, who confirms what | `AGENTS.md` | direct edit |
 | Something a linter, formatter, type checker, hook, or CI job can check | that tool's configuration | offer to wire it |
 
 A candidate can split: "visible text lives in data, in two languages" yields the portable convention "no user-facing string literals in rendering code" and a requirement for the language pair.

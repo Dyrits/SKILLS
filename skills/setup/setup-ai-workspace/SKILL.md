@@ -23,7 +23,7 @@ Four decisions belong here:
 Read existing configuration and conventions before proposing changes:
 
 - `git remote -v` and `.git/config`, to identify the host without assuming it is the tracker.
-- Root `AGENTS.md` and `CLAUDE.md`, including any `## Agent skills` section.
+- Root `AGENTS.md`, including any `## Agent skills` section.
 - `.agents/` and any verified tooling record.
 - Root `CHANGELOG.md`, `documentation/requirements.md`, `documentation/backlog.md`, `documentation/work-in-progress.md`, and relevant capability documentation.
 - Task templates, contribution documentation, and available ticket-writing skills.
@@ -82,7 +82,7 @@ If `CONVENTIONS.md` exists, record `Conventions: present`. Otherwise ask whether
 
 Show the proposed agent-instruction block and configuration contents before writing. Let the user adjust them.
 
-Edit `CLAUDE.md` if it exists; otherwise edit `AGENTS.md` if it exists. If neither exists, ask which to create. Update an existing `## Agent skills` block in place and preserve surrounding user instructions.
+Edit `AGENTS.md`, creating it when it does not exist. Update an existing `## Agent skills` block in place and preserve surrounding user instructions.
 
 ```markdown
 ## Agent skills

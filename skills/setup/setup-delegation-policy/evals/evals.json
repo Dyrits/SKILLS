@@ -115,7 +115,7 @@
     {
       "id": 8,
       "kind": "no-trigger",
-      "prompt": "Add a rule to this repository's CLAUDE.md: always run `npm run lint` before committing.",
+      "prompt": "Add a rule to this repository's AGENTS.md: always run `npm run lint` before committing.",
       "expected_output": "A project standing rule is filed by memorize; the delegation policy skill leaves repository files alone.",
       "expectations": [
         "The setup-delegation-policy skill is not invoked and the global steering files are not touched",

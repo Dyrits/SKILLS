@@ -6,7 +6,7 @@ Moments are numbered; the user's words are quoted exactly.
 
 1. User: "Add an Export to PDF button to the invoices page and open a pull request."
 2. The agent starts editing `InvoicesPage.tsx` immediately. No test is written first. The `implement` skill (description: implement authorized work test-first) never fires.
-3. The agent finishes the button, then commits. It does not run `npm run lint`. The project's `CLAUDE.md` does not mention lint.
+3. The agent finishes the button, then commits. It does not run `npm run lint`. The project's `AGENTS.md` does not mention lint.
 4. User: "Lint fails in CI on an unused import. We have had this exact failure three times. Run lint before you commit."
 5. The agent fixes the import and pushes. It states "You're absolutely right, I'm so sorry" four times in the next three messages.
 6. The agent fires `draft-merge-request` by itself. The body it writes starts with a paragraph describing which files changed. The Summary section has no visual, and the Evidence section says "Tests pass" with no before and after.

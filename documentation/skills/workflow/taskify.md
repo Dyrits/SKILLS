@@ -35,7 +35,7 @@ It reports the saved paths or links, the remaining blockers, and the frontier of
 
 ## It's working if
 
-- Every task has an observable outcome and acceptance it owns.
+- Every task has an observable outcome and acceptance it owns, verifiable with only that task and its blockers.
 - The proposed breakdown and blockers reach you before publication.
 - Tasks with no incomplete prerequisites can start independently.
 - Published tasks have verified dependency links, and local pointers lead to their authoritative records.

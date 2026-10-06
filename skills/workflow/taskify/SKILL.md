@@ -28,7 +28,7 @@ Every task must state:
 - Checkable acceptance criteria owned by this task, including how completion is demonstrated.
 - Explicit blockers: task references, external prerequisites, unresolved decisions, or "None".
 
-Check that acceptance distinguishes the intended change from the starting state and does not claim another task's result. Use native tracker dependencies where supported, body links as the fallback. Keep task bodies at the level of outcomes; include a decision-rich prototype shape when it expresses an agreed decision precisely.
+Check that acceptance distinguishes the intended change from the starting state, and that each criterion can be verified with only this task's work and its blockers' results. A criterion that needs the result of any other task moves to that task, or that task becomes a blocker. Use native tracker dependencies where supported, body links as the fallback. Keep task bodies at the level of outcomes; include a decision-rich prototype shape when it expresses an agreed decision precisely.
 
 ## Approve and save
 
