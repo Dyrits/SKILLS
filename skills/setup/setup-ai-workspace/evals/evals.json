@@ -91,13 +91,13 @@
     {
       "id": 7,
       "kind": "behavior",
-      "prompt": "Scratch git repository. Use the setup-ai-workspace skill, and take the recommended answers through the configuration. Current state: a verified tooling record exists at .agents/ai-tooling.md; `git config core.hooksPath` is unset; `.claude/settings.json` registers a `confirm-dangerous-git.sh` hook; no PreCompact hook exists; the global steering files have no Delegation and model routing section. Pretend all setup skills are installed.",
+      "prompt": "Scratch git repository. Use the setup-ai-workspace skill, and take the recommended answers through the configuration. Current state: a verified tooling record exists at .agents/ai-tooling.md; `git config core.hooksPath` is unset; `.claude/settings.json` registers a `confirm-dangerous-git.sh` hook; the global steering files have no Delegation and model routing section. Pretend all setup skills are installed.",
       "expected_output": "The optional setups are offered once, as one multi-select question, with present or missing marked.",
       "expectations": [
         "The optional setups are offered together in one multi-select question after the configuration is written, not one question per setup",
         "Development tooling is marked present and commit hooks are marked missing",
         "Git guardrails is marked present, since a git guardrail hook is registered",
-        "Automatic handoff and delegation policy are marked missing",
+        "Delegation policy is marked missing",
         "Selected setups run in table order, one Skill call per setup, each to completion before the next",
         "The delegation policy is called only after the user agrees to it, since it is machine-wide",
         "The final report lists the files written, the setups run or skipped, and the workflow skills that consume them"

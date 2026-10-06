@@ -97,7 +97,6 @@ The manifest is the source of truth for this list; it holds every skill outside 
 - [setup-ai-tooling](./skills/setup/setup-ai-tooling/SKILL.md): Configure and verify selected development tools and their measurement baseline.
 - [setup-git-hooks](./skills/setup/setup-git-hooks/SKILL.md): Configure versioned commit hooks with formatting, linting, typechecking, and builds.
 - [setup-git-guardrails](./skills/setup/setup-git-guardrails/SKILL.md): Ask before destructive Git commands with client permissions and hooks.
-- [setup-auto-handoff](./skills/setup/setup-auto-handoff/SKILL.md): Gate Claude Code compaction on a fresh handoff.
 
 ### Workflow
 

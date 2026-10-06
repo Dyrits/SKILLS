@@ -51,7 +51,6 @@
     "./skills/version-control/resolve-merge-conflicts",
     "./skills/upkeep/triage",
     "./skills/setup/setup-ai-tooling",
-    "./skills/setup/setup-auto-handoff",
     "./skills/setup/setup-delegation-policy",
     "./skills/setup/setup-git-guardrails",
     "./skills/setup/setup-git-hooks",

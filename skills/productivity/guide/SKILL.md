@@ -67,7 +67,7 @@ Work the table top to bottom. The first row that fits wins.
 | Subagent | The next task is tightly scoped enough to run without steering (an automated review is the standard case) and this session stays untouched. |
 | Compact | None of the above fit: relevant context, same harness and directory, and you stay in the loop. Pass an instruction naming what the next phase needs; preserve unresolved agreements, running assignments, and recovery pointers first. |
 
-`hand-off` writes a new versioned file in `.agents/handoffs/`; `take-over` reads the latest one and follows earlier pointers only when needed. The agent can also run `hand-off` on its own, which is how the `setup-auto-handoff` gate gets a handoff before compaction. Live working state does not replace the session handoff, and the handoff should not duplicate all project documents.
+`hand-off` writes a new versioned file in `.agents/handoffs/`; `take-over` reads the latest one and follows earlier pointers only when needed. Live working state does not replace the session handoff, and the handoff should not duplicate all project documents.
 
 ## Standalone and supporting skills
 
@@ -92,7 +92,6 @@ Work the table top to bottom. The first row that fits wins.
 | `/setup-delegation-policy` | Install machine-wide delegation and model-tier policy. |
 | `/setup-git-hooks` | Configure versioned commit checks. |
 | `/setup-git-guardrails` | Ask before destructive Git operations at supported enforcement layers. |
-| `/setup-auto-handoff` | Gate supported compaction on a fresh handoff. |
 | `/address-feedback` | Assess review feedback from any source, implement approved changes, and deliver approved replies. |
 | `/publish-message` | Publish established findings to any connected service after approval of exact text and destination. |
 | `/work-in-tree` | Create or reuse an isolated task checkout. |
@@ -103,4 +102,4 @@ Work the table top to bottom. The first row that fits wins.
 
 ## Setup
 
-Tell the user to run `/setup-ai-workspace` before a tracker-dependent flow when the tracker configuration is missing. It configures task authority, writing conventions, triage roles, and domain layout. Its optional stage offers `setup-ai-tooling`, `setup-git-hooks`, `setup-git-guardrails`, `setup-auto-handoff`, and `/setup-delegation-policy`. `iterate` does not require tracker setup merely to maintain its local working documents.
+Tell the user to run `/setup-ai-workspace` before a tracker-dependent flow when the tracker configuration is missing. It configures task authority, writing conventions, triage roles, and domain layout. Its optional stage offers `setup-ai-tooling`, `setup-git-hooks`, `setup-git-guardrails`, and `/setup-delegation-policy`. `iterate` does not require tracker setup merely to maintain its local working documents.

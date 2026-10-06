@@ -62,4 +62,4 @@ It names the missing skill with its install command, carries out that step from 
 
 ## Where it fits
 
-Run-once setup per project, offered as an optional stage of [setup-ai-workspace](./setup-ai-workspace.md). [monitor-ai-tooling](../upkeep/monitor-ai-tooling.md) is its periodic follow-up, and [setup-auto-handoff](./setup-auto-handoff.md) covers the session recovery side. [guide](../productivity/guide.md) routes the rest.
+Run-once setup per project, offered as an optional stage of [setup-ai-workspace](./setup-ai-workspace.md). [monitor-ai-tooling](../upkeep/monitor-ai-tooling.md) is its periodic follow-up. [guide](../productivity/guide.md) routes the rest.

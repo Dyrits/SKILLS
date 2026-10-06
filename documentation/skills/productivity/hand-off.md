@@ -8,7 +8,7 @@ What it buys is **portability**, not compression. That makes the skill narrower 
 
 ## When to reach for it
 
-You usually invoke this by typing `/hand-off`. Pass a note about what the next session is for, and the document is written for it. An agent or another skill can also reach for it when you ask for a handoff in plain words, or when the [setup-auto-handoff](../setup/setup-auto-handoff.md) gate blocks compaction until a fresh handoff exists.
+You usually invoke this by typing `/hand-off`. Pass a note about what the next session is for, and the document is written for it. An agent or another skill can also reach for it when you ask for a handoff in plain words, or when a compaction gate you installed blocks until a fresh handoff exists.
 
 Four situations are the whole trigger when you choose:
 
@@ -70,7 +70,7 @@ A repeated criticism. State what the next session is for so relevant reasoning s
 No. `documentation/work-in-progress.md` owns unfinished current work, blockers, and recovery state. The handoff carries session-specific reasoning and pointers for another agent. Keep them consistent without copying the same task history into both.
 
 **Why is it a skill rather than a slash command?**
-Both work; they suit different situations. As a skill it ships and updates through the same install path as everything else here, which is what makes it shareable. Agents can reach it, so the compaction gate can get a handoff without you; typing `/hand-off` works the same as before.
+Both work; they suit different situations. As a skill it ships and updates through the same install path as everything else here, which is what makes it shareable. Agents can reach it, so a compaction gate can get a handoff without you; typing `/hand-off` works the same as before.
 
 **Will it ask me about git every time?**
 No. It asks once, and only when the repository does not already answer. A `.gitignore` entry for `.agents/handoffs/` means local-only history, tracked earlier handoffs mean shared history, and an `AGENTS.md` note settles it either way; the skill follows whichever it finds.

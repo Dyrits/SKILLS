@@ -7,7 +7,7 @@ description: "Configure a repository for AI-assisted work: task tracking, ticket
 
 Configure the repository contracts that `specify`, `taskify`, `triage`, and `graphify` consume. Explore, recommend, confirm, then write inspectable configuration. This skill configures the project, not the installed skills.
 
-**Calls:** `document`, `memorize`, `model-domain`, `setup-ai-tooling`, `setup-auto-handoff`, `setup-delegation-policy`, `setup-git-guardrails`, `setup-git-hooks`. If a called skill is not installed, tell the user its name and install command, `npx skills@latest add Dyrits/SKILLS --skill=<name>`, then carry out that step from its stated intent and report the step as done without the skill. Without `document`, wait until the user installs it or tells you to proceed: this skill's rules use its terms.
+**Calls:** `document`, `memorize`, `model-domain`, `setup-ai-tooling`, `setup-delegation-policy`, `setup-git-guardrails`, `setup-git-hooks`. If a called skill is not installed, tell the user its name and install command, `npx skills@latest add Dyrits/SKILLS --skill=<name>`, then carry out that step from its stated intent and report the step as done without the skill. Without `document`, wait until the user installs it or tells you to proceed: this skill's rules use its terms.
 
 Call the Skill tool with "document" before choosing document locations or writing configuration; its terms (authorized, obligation, lazy, pointer) and rules apply throughout. Generated templates point to that contract instead of copying it.
 
@@ -130,10 +130,9 @@ Offer the other setups together, once, as one multi-select question. Mark each a
 | Development tooling | A verified tooling record exists | `setup-ai-tooling` |
 | Commit hooks | `git config core.hooksPath` points at a committed hooks directory | `setup-git-hooks` |
 | Git guardrails | A `confirm-dangerous-git.sh` hook is registered for the client | `setup-git-guardrails` |
-| Automatic handoff | `.claude/settings.json` has a `PreCompact` hook gating on `.agents/handoffs/` | `setup-auto-handoff` |
 | Delegation policy | The global steering files contain `## Delegation and model routing` | `setup-delegation-policy` |
 
-Run the selected setups in table order by calling the Skill tool with "setup-ai-tooling", "setup-git-hooks", "setup-git-guardrails", "setup-auto-handoff", or "setup-delegation-policy", one call per setup, each to completion before the next, each owning its own questions, scope, and verification. Pass `setup-ai-tooling` the project, verified tracker access, known clients, and approved project/global scope. `setup-delegation-policy` is machine-wide: call it through the Skill tool only after the user agrees to it.
+Run the selected setups in table order by calling the Skill tool with "setup-ai-tooling", "setup-git-hooks", "setup-git-guardrails", or "setup-delegation-policy", one call per setup, each to completion before the next, each owning its own questions, scope, and verification. Pass `setup-ai-tooling` the project, verified tracker access, known clients, and approved project/global scope. `setup-delegation-policy` is machine-wide: call it through the Skill tool only after the user agrees to it.
 
 When a selected skill is unavailable, finish the rest and tell the human how to install or run it later. Completion requires, for each selected setup, its verified result, a stated gap, or the user's decision to skip it.
 

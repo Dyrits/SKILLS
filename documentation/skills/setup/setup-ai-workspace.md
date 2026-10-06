@@ -26,7 +26,7 @@ Run `/setup-ai-workspace` once per repository, or when the tracker or convention
 
 ## Optional setups
 
-After the configuration is written, setup offers the other setups in one multi-select question, marking which are already in place: [setup-ai-tooling](./setup-ai-tooling.md), [setup-git-hooks](./setup-git-hooks.md), [setup-git-guardrails](./setup-git-guardrails.md), and [setup-auto-handoff](./setup-auto-handoff.md) run inside the session, each asking its own questions. [setup-delegation-policy](./setup-delegation-policy.md) is machine-wide, so setup calls it only after you agree to it.
+After the configuration is written, setup offers the other setups in one multi-select question, marking which are already in place: [setup-ai-tooling](./setup-ai-tooling.md), [setup-git-hooks](./setup-git-hooks.md), and [setup-git-guardrails](./setup-git-guardrails.md) run inside the session, each asking its own questions. [setup-delegation-policy](./setup-delegation-policy.md) is machine-wide, so setup calls it only after you agree to it.
 
 Future work uses the shared project-document model. Project requirements constrain all work. A local backlog records candidates and deferrals; with a remote tracker, `documentation/backlog.md` links to the authoritative backlog instead. Work-in-progress remains local for execution, verification, and resumption with either tracker. Feature documents separate optional requirements, living specifications, unresolved proposals, and tasks. Files appear only when useful.
 
