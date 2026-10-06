@@ -1,0 +1,7 @@
+name: publish-message
+version: 0.2.0
+description: "Publish an established conclusion or review summary to a connected service (code host, tracker, chat, documentation, email) in its conventions."
+dependencies:
+  apm:
+    - git: parent
+      path: skills/reference/unslop

@@ -1,0 +1,7 @@
+name: monitor-ai-tooling
+version: 0.2.0
+description: "Report AI tooling usage, measured output reduction, quality signals, and gaps from existing local measurements."
+dependencies:
+  apm:
+    - git: parent
+      path: skills/setup/setup-ai-tooling

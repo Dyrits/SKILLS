@@ -1,0 +1,11 @@
+name: prioritize
+version: 0.2.0
+description: "Decompose a large or tangled idea into outcomes, recommend one focus to build next, and keep the rest in the backlog."
+dependencies:
+  apm:
+    - git: parent
+      path: skills/reference/document
+    - git: parent
+      path: skills/reference/refine
+    - git: parent
+      path: skills/shaping/research

@@ -1,0 +1,7 @@
+name: sync-tree
+version: 0.2.0
+description: "Sync a completed Git worktree branch to its corresponding branch in the original local repository."
+dependencies:
+  apm:
+    - git: parent
+      path: skills/version-control/rebase

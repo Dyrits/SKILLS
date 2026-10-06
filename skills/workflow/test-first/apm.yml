@@ -1,0 +1,9 @@
+name: test-first
+version: 0.2.0
+description: "Build features or fix bugs test-first through the red-green loop of test-driven development (TDD), leaving refactoring to review-and-refactor."
+dependencies:
+  apm:
+    - git: parent
+      path: skills/reference/design-modules
+    - git: parent
+      path: skills/reference/document

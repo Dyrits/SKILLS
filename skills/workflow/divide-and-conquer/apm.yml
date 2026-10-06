@@ -1,0 +1,15 @@
+name: divide-and-conquer
+version: 0.2.0
+description: "Implement an authorized task graph in parallel: route each task to the least expensive capable agent, build on one integration branch, then review once."
+dependencies:
+  apm:
+    - git: parent
+      path: skills/reference/document
+    - git: parent
+      path: skills/version-control/draft-merge-request
+    - git: parent
+      path: skills/workflow/implement
+    - git: parent
+      path: skills/workflow/review-and-refactor
+    - git: parent
+      path: skills/setup/setup-ai-workspace

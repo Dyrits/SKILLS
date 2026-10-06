@@ -1,0 +1,7 @@
+name: design-workflow
+version: 0.2.0
+description: "Interview the user into implementable workflow specifications for recurring loops in their work, using the current directory as a stateful workspace."
+dependencies:
+  apm:
+    - git: parent
+      path: skills/reference/refine

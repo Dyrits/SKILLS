@@ -1,0 +1,7 @@
+name: document
+version: 0.2.0
+description: "Write and maintain project documentation, including the shared project documents workflows rely on (requirements, specifications, backlog, work-in-progress, tasks, changelog records)."
+dependencies:
+  apm:
+    - git: parent
+      path: skills/reference/write-for-agents

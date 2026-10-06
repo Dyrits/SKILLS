@@ -1,0 +1,154 @@
+name: dyrits
+version: 0.2.0
+description: "Agent skills for real engineering"
+license: MIT
+marketplace:
+  owner:
+    name: "Dylan J. Gerrits"
+    url: https://github.com/Dyrits
+  outputs:
+    claude: {}
+  claude:
+    output: marketplace.json
+  packages:
+    - name: ask-someone-else
+      source: ./skills/productivity/ask-someone-else
+      description: "Turn a decision the user cannot fully answer into a questionnaire for someone else to fill in."
+    - name: classify
+      source: ./skills/productivity/classify
+      description: "Classify text against custom labels with classifier.dev."
+    - name: design-workflow
+      source: ./skills/productivity/design-workflow
+      description: "Interview the user into implementable workflow specifications for recurring loops in their work, using the current directory as a stateful workspace."
+    - name: guide
+      source: ./skills/productivity/guide
+      description: "Choose the next skill, development workflow, or session boundary from the current situation."
+    - name: hand-off
+      source: ./skills/productivity/hand-off
+      description: "Compact the current conversation into a versioned handoff document in .agents/handoffs/ for another agent to pick up."
+    - name: illustrate
+      source: ./skills/productivity/illustrate
+      description: "Explain the current topic visually."
+    - name: optimize-process
+      source: ./skills/productivity/optimize-process
+      description: "Analyze and improve a recurring work process when the user reports delays, excessive steps, rework, or handoff friction."
+    - name: publish-message
+      source: ./skills/productivity/publish-message
+      description: "Publish an established conclusion or review summary to a connected service (code host, tracker, chat, documentation, email) in its conventions."
+    - name: re-explain
+      source: ./skills/productivity/re-explain
+      description: "Re-explain what did not land, with the missing context and familiar vocabulary."
+    - name: take-over
+      source: ./skills/productivity/take-over
+      description: "Resume work from the latest handoff document in .agents/handoffs/, following the supersedes chain only when questions stay open."
+    - name: teach
+      source: ./skills/productivity/teach
+      description: "Teach the user a skill or concept over multiple sessions in a stateful workspace."
+    - name: walk-through
+      source: ./skills/productivity/walk-through
+      description: "Generate an interactive bash wizard that walks a human through steps only they can perform."
+    - name: design-modules
+      source: ./skills/reference/design-modules
+      description: "Shared vocabulary for designing deep modules."
+    - name: document
+      source: ./skills/reference/document
+      description: "Write and maintain project documentation, including the shared project documents workflows rely on (requirements, specifications, backlog, work-in-progress, tasks, changelog records)."
+    - name: memorize
+      source: ./skills/reference/memorize
+      description: "'File a lesson in the home the next agent will read, and recall saved scripts and lessons before redoing work."
+    - name: model-domain
+      source: ./skills/reference/model-domain
+      description: "Build and sharpen a project's domain model."
+    - name: refine
+      source: ./skills/reference/refine
+      description: "Refine a plan, decision, or idea through a decision-tree interview."
+    - name: unslop
+      source: ./skills/reference/unslop
+      description: "Cut AI tells from writing in any language."
+    - name: write-for-agents
+      source: ./skills/reference/write-for-agents
+      description: "Write documents for agents: skills, AGENTS.md, and documents reached by a pointer."
+    - name: setup-ai-tooling
+      source: ./skills/setup/setup-ai-tooling
+      description: "Set up free AI development tools for a project and its installed agent clients."
+    - name: setup-ai-workspace
+      source: ./skills/setup/setup-ai-workspace
+      description: "Configure a repository for AI-assisted work: task tracking, ticket conventions, triage roles, domain documentation, optional tooling setups."
+    - name: setup-delegation-policy
+      source: ./skills/setup/setup-delegation-policy
+      description: "Install the delegation and model routing rule into the global steering files on this machine."
+    - name: setup-git-guardrails
+      source: ./skills/setup/setup-git-guardrails
+      description: "Set up hooks and permission rules that make coding agents ask before git commands that can lose work or rewrite shared history (pushing to a protected branch, force pushes, reset --hard, clean -f, branch -D, discarding changes) across Claude Code, OpenCode, and Codex CLI."
+    - name: setup-git-hooks
+      source: ./skills/setup/setup-git-hooks
+      description: "Set up versioned git hooks via core.hooksPath (no Husky) with lint-staged (Biome, plus Prettier only for languages Biome leaves uncovered and only if the user wants it), plus typecheck and build."
+    - name: graphify
+      source: ./skills/shaping/graphify
+      description: "Build and work through a shared decision graph for an effort too large for one session."
+    - name: prioritize
+      source: ./skills/shaping/prioritize
+      description: "Decompose a large or tangled idea into outcomes, recommend one focus to build next, and keep the rest in the backlog."
+    - name: prototype
+      source: ./skills/shaping/prototype
+      description: "Build a scoped experimental prototype to answer a user-requested or approved design question about logic, state, or UI."
+    - name: research
+      source: ./skills/shaping/research
+      description: "Investigate a question against high-trust primary sources and capture the findings as a Markdown file in the repository."
+    - name: debug
+      source: ./skills/upkeep/debug
+      description: "Diagnosis loop for hard bugs and performance regressions."
+    - name: improve-codebase-architecture
+      source: ./skills/upkeep/improve-codebase-architecture
+      description: "Scan a codebase for deepening opportunities, present them as a visual HTML report, then interview through the chosen one."
+    - name: improve-environment
+      source: ./skills/upkeep/improve-environment
+      description: "Hold a retrospective on a session's friction, then change the project's environment so the next run avoids it: checks, guardrails, navigation pointers, steering files, tool and information access."
+    - name: improve-skills
+      source: ./skills/upkeep/improve-skills
+      description: "Hold a retrospective on a session, then report how the skills behaved as an issue on the skills repository."
+    - name: monitor-ai-tooling
+      source: ./skills/upkeep/monitor-ai-tooling
+      description: "Report AI tooling usage, measured output reduction, quality signals, and gaps from existing local measurements."
+    - name: triage
+      source: ./skills/upkeep/triage
+      description: "Move tasks and external PRs through triage roles: categorize, verify, refine, and write agent-ready briefs."
+    - name: draft-merge-request
+      source: ./skills/version-control/draft-merge-request
+      description: "Write the body of a pull request or merge request: a summary visual, before/after evidence, and the merge danger."
+    - name: rebase
+      source: ./skills/version-control/rebase
+      description: "Rebase local branches in place onto one target, resolve conflicts, run checks, then push with force-with-lease on approval."
+    - name: resolve-merge-conflicts
+      source: ./skills/version-control/resolve-merge-conflicts
+      description: "Resolve an in-progress git merge or rebase conflict."
+    - name: sync-tree
+      source: ./skills/version-control/sync-tree
+      description: "Sync a completed Git worktree branch to its corresponding branch in the original local repository."
+    - name: work-in-tree
+      source: ./skills/version-control/work-in-tree
+      description: "Create or reuse an isolated Git worktree and carry out the task there, preserving the original checkout."
+    - name: address-feedback
+      source: ./skills/workflow/address-feedback
+      description: "Assess review feedback from any source (pull or merge request, issue, ticket, document comments, pasted notes), propose dispositions, then implement and reply."
+    - name: divide-and-conquer
+      source: ./skills/workflow/divide-and-conquer
+      description: "Implement an authorized task graph in parallel: route each task to the least expensive capable agent, build on one integration branch, then review once."
+    - name: implement
+      source: ./skills/workflow/implement
+      description: "Implement authorized work test-first and report its verification evidence."
+    - name: iterate
+      source: ./skills/workflow/iterate
+      description: "Build a living application one verified batch at a time, settling decisions just in time."
+    - name: review-and-refactor
+      source: ./skills/workflow/review-and-refactor
+      description: "Review and refactor changes since a fixed point against repository standards and the originating behavior agreement."
+    - name: specify
+      source: ./skills/workflow/specify
+      description: "Resolve the open decisions in a selected scope and synthesize its living repository specification."
+    - name: taskify
+      source: ./skills/workflow/taskify
+      description: "Decompose approved work into verifiable tasks with explicit blocking dependencies, locally or on an approved tracker."
+    - name: test-first
+      source: ./skills/workflow/test-first
+      description: "Build features or fix bugs test-first through the red-green loop of test-driven development (TDD), leaving refactoring to review-and-refactor."

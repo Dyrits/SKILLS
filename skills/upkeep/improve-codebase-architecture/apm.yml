@@ -1,0 +1,11 @@
+name: improve-codebase-architecture
+version: 0.2.0
+description: "Scan a codebase for deepening opportunities, present them as a visual HTML report, then interview through the chosen one."
+dependencies:
+  apm:
+    - git: parent
+      path: skills/reference/design-modules
+    - git: parent
+      path: skills/reference/model-domain
+    - git: parent
+      path: skills/reference/refine

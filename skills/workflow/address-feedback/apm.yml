@@ -1,0 +1,7 @@
+name: address-feedback
+version: 0.2.0
+description: "Assess review feedback from any source (pull or merge request, issue, ticket, document comments, pasted notes), propose dispositions, then implement and reply."
+dependencies:
+  apm:
+    - git: parent
+      path: skills/workflow/implement

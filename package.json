@@ -11,6 +11,7 @@
   "scripts": {
     "check-plugin-version": "node scripts/sync-plugin-version.mjs --check",
     "check-skills": "python3 scripts/check-skills.py",
+    "check-skill-manifests": "python3 .agents/scripts/generate-skill-manifests.py --check",
     "build-skill-graph": "python3 scripts/build-skill-graph.py",
     "test-skills-check": "python3 scripts/test-check-skills.py",
     "test-scriptbook-helpers": "python3 scripts/test-scriptbook-helpers.py"

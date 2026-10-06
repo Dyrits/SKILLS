@@ -1,0 +1,7 @@
+name: draft-merge-request
+version: 0.2.0
+description: "Write the body of a pull request or merge request: a summary visual, before/after evidence, and the merge danger."
+dependencies:
+  apm:
+    - git: parent
+      path: skills/productivity/illustrate

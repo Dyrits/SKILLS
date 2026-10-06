@@ -1,0 +1,19 @@
+name: setup-ai-workspace
+version: 0.2.0
+description: "Configure a repository for AI-assisted work: task tracking, ticket conventions, triage roles, domain documentation, optional tooling setups."
+dependencies:
+  apm:
+    - git: parent
+      path: skills/reference/document
+    - git: parent
+      path: skills/reference/memorize
+    - git: parent
+      path: skills/reference/model-domain
+    - git: parent
+      path: skills/setup/setup-ai-tooling
+    - git: parent
+      path: skills/setup/setup-delegation-policy
+    - git: parent
+      path: skills/setup/setup-git-guardrails
+    - git: parent
+      path: skills/setup/setup-git-hooks

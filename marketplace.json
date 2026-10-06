@@ -1,0 +1,271 @@
+{
+  "name": "dyrits",
+  "owner": {
+    "name": "Dylan J. Gerrits",
+    "url": "https://github.com/Dyrits"
+  },
+  "plugins": [
+    {
+      "name": "ask-someone-else",
+      "description": "Turn a decision the user cannot fully answer into a questionnaire for someone else to fill in.",
+      "source": "./skills/productivity/ask-someone-else"
+    },
+    {
+      "name": "classify",
+      "description": "Classify text against custom labels with classifier.dev.",
+      "source": "./skills/productivity/classify"
+    },
+    {
+      "name": "design-workflow",
+      "description": "Interview the user into implementable workflow specifications for recurring loops in their work, using the current directory as a stateful workspace.",
+      "version": "0.2.0",
+      "source": "./skills/productivity/design-workflow"
+    },
+    {
+      "name": "guide",
+      "description": "Choose the next skill, development workflow, or session boundary from the current situation.",
+      "version": "0.2.0",
+      "source": "./skills/productivity/guide"
+    },
+    {
+      "name": "hand-off",
+      "description": "Compact the current conversation into a versioned handoff document in .agents/handoffs/ for another agent to pick up.",
+      "source": "./skills/productivity/hand-off"
+    },
+    {
+      "name": "illustrate",
+      "description": "Explain the current topic visually.",
+      "source": "./skills/productivity/illustrate"
+    },
+    {
+      "name": "optimize-process",
+      "description": "Analyze and improve a recurring work process when the user reports delays, excessive steps, rework, or handoff friction.",
+      "source": "./skills/productivity/optimize-process"
+    },
+    {
+      "name": "publish-message",
+      "description": "Publish an established conclusion or review summary to a connected service (code host, tracker, chat, documentation, email) in its conventions.",
+      "version": "0.2.0",
+      "source": "./skills/productivity/publish-message"
+    },
+    {
+      "name": "re-explain",
+      "description": "Re-explain what did not land, with the missing context and familiar vocabulary.",
+      "source": "./skills/productivity/re-explain"
+    },
+    {
+      "name": "take-over",
+      "description": "Resume work from the latest handoff document in .agents/handoffs/, following the supersedes chain only when questions stay open.",
+      "source": "./skills/productivity/take-over"
+    },
+    {
+      "name": "teach",
+      "description": "Teach the user a skill or concept over multiple sessions in a stateful workspace.",
+      "source": "./skills/productivity/teach"
+    },
+    {
+      "name": "walk-through",
+      "description": "Generate an interactive bash wizard that walks a human through steps only they can perform.",
+      "source": "./skills/productivity/walk-through"
+    },
+    {
+      "name": "design-modules",
+      "description": "Shared vocabulary for designing deep modules.",
+      "source": "./skills/reference/design-modules"
+    },
+    {
+      "name": "document",
+      "description": "Write and maintain project documentation, including the shared project documents workflows rely on (requirements, specifications, backlog, work-in-progress, tasks, changelog records).",
+      "version": "0.2.0",
+      "source": "./skills/reference/document"
+    },
+    {
+      "name": "memorize",
+      "description": "'File a lesson in the home the next agent will read, and recall saved scripts and lessons before redoing work.",
+      "version": "0.2.0",
+      "source": "./skills/reference/memorize"
+    },
+    {
+      "name": "model-domain",
+      "description": "Build and sharpen a project's domain model.",
+      "source": "./skills/reference/model-domain"
+    },
+    {
+      "name": "refine",
+      "description": "Refine a plan, decision, or idea through a decision-tree interview.",
+      "source": "./skills/reference/refine"
+    },
+    {
+      "name": "unslop",
+      "description": "Cut AI tells from writing in any language.",
+      "source": "./skills/reference/unslop"
+    },
+    {
+      "name": "write-for-agents",
+      "description": "Write documents for agents: skills, AGENTS.md, and documents reached by a pointer.",
+      "source": "./skills/reference/write-for-agents"
+    },
+    {
+      "name": "setup-ai-tooling",
+      "description": "Set up free AI development tools for a project and its installed agent clients.",
+      "version": "0.2.0",
+      "source": "./skills/setup/setup-ai-tooling"
+    },
+    {
+      "name": "setup-ai-workspace",
+      "description": "Configure a repository for AI-assisted work: task tracking, ticket conventions, triage roles, domain documentation, optional tooling setups.",
+      "version": "0.2.0",
+      "source": "./skills/setup/setup-ai-workspace"
+    },
+    {
+      "name": "setup-delegation-policy",
+      "description": "Install the delegation and model routing rule into the global steering files on this machine.",
+      "source": "./skills/setup/setup-delegation-policy"
+    },
+    {
+      "name": "setup-git-guardrails",
+      "description": "Set up hooks and permission rules that make coding agents ask before git commands that can lose work or rewrite shared history (pushing to a protected branch, force pushes, reset --hard, clean -f, branch -D, discarding changes) across Claude Code, OpenCode, and Codex CLI.",
+      "source": "./skills/setup/setup-git-guardrails"
+    },
+    {
+      "name": "setup-git-hooks",
+      "description": "Set up versioned git hooks via core.hooksPath (no Husky) with lint-staged (Biome, plus Prettier only for languages Biome leaves uncovered and only if the user wants it), plus typecheck and build.",
+      "source": "./skills/setup/setup-git-hooks"
+    },
+    {
+      "name": "graphify",
+      "description": "Build and work through a shared decision graph for an effort too large for one session.",
+      "version": "0.2.0",
+      "source": "./skills/shaping/graphify"
+    },
+    {
+      "name": "prioritize",
+      "description": "Decompose a large or tangled idea into outcomes, recommend one focus to build next, and keep the rest in the backlog.",
+      "version": "0.2.0",
+      "source": "./skills/shaping/prioritize"
+    },
+    {
+      "name": "prototype",
+      "description": "Build a scoped experimental prototype to answer a user-requested or approved design question about logic, state, or UI.",
+      "version": "0.2.0",
+      "source": "./skills/shaping/prototype"
+    },
+    {
+      "name": "research",
+      "description": "Investigate a question against high-trust primary sources and capture the findings as a Markdown file in the repository.",
+      "source": "./skills/shaping/research"
+    },
+    {
+      "name": "debug",
+      "description": "Diagnosis loop for hard bugs and performance regressions.",
+      "source": "./skills/upkeep/debug"
+    },
+    {
+      "name": "improve-codebase-architecture",
+      "description": "Scan a codebase for deepening opportunities, present them as a visual HTML report, then interview through the chosen one.",
+      "version": "0.2.0",
+      "source": "./skills/upkeep/improve-codebase-architecture"
+    },
+    {
+      "name": "improve-environment",
+      "description": "Hold a retrospective on a session's friction, then change the project's environment so the next run avoids it: checks, guardrails, navigation pointers, steering files, tool and information access.",
+      "version": "0.2.0",
+      "source": "./skills/upkeep/improve-environment"
+    },
+    {
+      "name": "improve-skills",
+      "description": "Hold a retrospective on a session, then report how the skills behaved as an issue on the skills repository.",
+      "version": "0.2.0",
+      "source": "./skills/upkeep/improve-skills"
+    },
+    {
+      "name": "monitor-ai-tooling",
+      "description": "Report AI tooling usage, measured output reduction, quality signals, and gaps from existing local measurements.",
+      "version": "0.2.0",
+      "source": "./skills/upkeep/monitor-ai-tooling"
+    },
+    {
+      "name": "triage",
+      "description": "Move tasks and external PRs through triage roles: categorize, verify, refine, and write agent-ready briefs.",
+      "version": "0.2.0",
+      "source": "./skills/upkeep/triage"
+    },
+    {
+      "name": "draft-merge-request",
+      "description": "Write the body of a pull request or merge request: a summary visual, before/after evidence, and the merge danger.",
+      "version": "0.2.0",
+      "source": "./skills/version-control/draft-merge-request"
+    },
+    {
+      "name": "rebase",
+      "description": "Rebase local branches in place onto one target, resolve conflicts, run checks, then push with force-with-lease on approval.",
+      "version": "0.2.0",
+      "source": "./skills/version-control/rebase"
+    },
+    {
+      "name": "resolve-merge-conflicts",
+      "description": "Resolve an in-progress git merge or rebase conflict.",
+      "source": "./skills/version-control/resolve-merge-conflicts"
+    },
+    {
+      "name": "sync-tree",
+      "description": "Sync a completed Git worktree branch to its corresponding branch in the original local repository.",
+      "version": "0.2.0",
+      "source": "./skills/version-control/sync-tree"
+    },
+    {
+      "name": "work-in-tree",
+      "description": "Create or reuse an isolated Git worktree and carry out the task there, preserving the original checkout.",
+      "version": "0.2.0",
+      "source": "./skills/version-control/work-in-tree"
+    },
+    {
+      "name": "address-feedback",
+      "description": "Assess review feedback from any source (pull or merge request, issue, ticket, document comments, pasted notes), propose dispositions, then implement and reply.",
+      "version": "0.2.0",
+      "source": "./skills/workflow/address-feedback"
+    },
+    {
+      "name": "divide-and-conquer",
+      "description": "Implement an authorized task graph in parallel: route each task to the least expensive capable agent, build on one integration branch, then review once.",
+      "version": "0.2.0",
+      "source": "./skills/workflow/divide-and-conquer"
+    },
+    {
+      "name": "implement",
+      "description": "Implement authorized work test-first and report its verification evidence.",
+      "version": "0.2.0",
+      "source": "./skills/workflow/implement"
+    },
+    {
+      "name": "iterate",
+      "description": "Build a living application one verified batch at a time, settling decisions just in time.",
+      "version": "0.2.0",
+      "source": "./skills/workflow/iterate"
+    },
+    {
+      "name": "review-and-refactor",
+      "description": "Review and refactor changes since a fixed point against repository standards and the originating behavior agreement.",
+      "version": "0.2.0",
+      "source": "./skills/workflow/review-and-refactor"
+    },
+    {
+      "name": "specify",
+      "description": "Resolve the open decisions in a selected scope and synthesize its living repository specification.",
+      "version": "0.2.0",
+      "source": "./skills/workflow/specify"
+    },
+    {
+      "name": "taskify",
+      "description": "Decompose approved work into verifiable tasks with explicit blocking dependencies, locally or on an approved tracker.",
+      "version": "0.2.0",
+      "source": "./skills/workflow/taskify"
+    },
+    {
+      "name": "test-first",
+      "description": "Build features or fix bugs test-first through the red-green loop of test-driven development (TDD), leaving refactoring to review-and-refactor.",
+      "version": "0.2.0",
+      "source": "./skills/workflow/test-first"
+    }
+  ]
+}
