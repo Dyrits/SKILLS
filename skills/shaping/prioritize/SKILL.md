@@ -5,19 +5,17 @@ description: Decompose a large or tangled idea into outcomes, recommend one focu
 
 # Prioritize
 
-Shape a large effort into outcomes pursued one at a time: keep the larger direction and deferred ideas, and select one useful focus. The output is direction, a lightweight backlog, and an approved or explicitly pending focus; implementation stays with the caller. A standalone run ends with the proposed next step: tell the user they can run `/iterate` to build it.
+Shape a large effort into outcomes pursued one at a time: keep the larger direction and deferred ideas, and select one useful focus. The output is direction, a lightweight backlog, and an approved or explicitly pending focus; implementation stays outside this skill. A run ends with the focus recorded in the backlog and working state, where whoever builds it next reads it.
 
-The open question here is which outcome comes first. When the effort instead hinges on design decisions that need research or prototypes over several sessions before anything can be prioritized, tell the user `/graphify` fits better.
+The open question here is which outcome comes first. When the effort instead hinges on design decisions that need research or prototypes over several sessions before anything can be prioritized, say so and stop: those decisions come before choosing a focus.
 
-Call the Skill tool with "document"; its terms (authorized, obligation, lazy, pointer) and rules apply throughout. This skill works on the backlog, working state, and the changelog, and links existing requirements and specifications.
-
-**Calls:** `document`, `interview`, `research`.
+The project documents and their rules are in [PROJECT-DOCUMENTS.md](PROJECT-DOCUMENTS.md); its terms (authorized, obligation, lazy, pointer) apply throughout. This skill works on the backlog, working state, and the changelog, and links existing requirements and specifications.
 
 ## 1. Recover the direction
 
 Read applicable instructions, relevant code, requirements, specifications, decisions, and the project documents. Reconcile actual progress before reprioritizing existing work. Inspect available facts instead of asking the user to repeat them.
 
-Establish the intended outcome, users, constraints, and exclusions. Call the Skill tool with "interview", rooting its design tree in **choosing the next focus**.
+Establish the intended outcome, users, constraints, and exclusions. Follow the [interview method](INTERVIEW.md), rooting its design tree in **choosing the next focus**.
 
 Completion: outcome, users, constraints, and exclusions are explicit, and every focus-blocking question is identified. Unanswered choices stay pending; detailed future behavior may stay open.
 
@@ -27,7 +25,7 @@ Group related ideas into recognizable user or project outcomes: vertical results
 
 Identify prerequisites that could invalidate early work: shared data needs, access rules, feasibility of a critical integration, or constraints affecting several outcomes. Mark each dependency as confirmed or suspected, and investigate the ones that affect choosing the focus.
 
-For a consequential external unknown, call the Skill tool with "research" with a bounded question. Continue independent shaping meanwhile, and decide dependent priorities once the evidence arrives. An unknown that stays unresolved remains a named blocker with its pending question.
+For a consequential external unknown, research a bounded question following [RESEARCH.md](RESEARCH.md). Continue independent shaping meanwhile, and decide dependent priorities once the evidence arrives. An unknown that stays unresolved remains a named blocker with its pending question.
 
 Completion: candidate outcomes, dependencies, and major unknowns are visible, with cycles and unresolved shared prerequisites stated.
 
@@ -55,8 +53,8 @@ Completion: one focus is approved, or the proposal and its open decision are exp
 
 ## 5. Return or reconsider
 
-Return the selected outcome, document pointers, approval status, prerequisites, and next open decisions to the caller. In `iterate`, batch refinement continues after the focus is approved. This skill edits planning documents only; application code, dependencies, and external trackers belong to other workflows.
+Return the selected outcome, document pointers, approval status, prerequisites, and next open decisions. This skill edits planning documents only; application code, dependencies, and external trackers belong to other workflows.
 
 Reconsider priorities when new evidence, conflicting goals, or changed constraints make the selection unsuitable, updating only the affected entries. Each next outcome needs its own approval.
 
-Completion: the caller or user can tell what to pursue now, what waits, and what still needs approval without rereading the conversation.
+Completion: the user can tell what to pursue now, what waits, and what still needs approval without rereading the conversation.

@@ -2,7 +2,7 @@
 
 Backlog: <verified GitLab backlog or project-board URL>
 
-The remote backlog owns candidate outcomes, priorities, and deferrals. The local backlog document links to it; working state remains local for execution and resumption. Apply the authority and publication rules supplied by the `document` skill.
+The remote backlog owns candidate outcomes, priorities, and deferrals. The local backlog document links to it; working state remains local for execution and resumption.
 
 Published tasks for this repository live as GitLab issues. The capability's specifications in the repository remain the canonical living specification; remote records link to or summarize it. Use the [`glab`](https://gitlab.com/gitlab-org/cli) CLI for remote operations.
 

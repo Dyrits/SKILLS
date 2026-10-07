@@ -4,11 +4,11 @@ Fork-created skill: it has no upstream equivalent. It was added in commit `1394b
 
 Provisions free AI development tools for one project and the agent clients installed on the machine, then records a measurable baseline. It reuses working integrations instead of reinstalling them, and it leaves an unverified adapter or output filter disabled rather than guessing.
 
-It runs only inside an explicit tooling request, including a tooling stage you chose during [setup-ai-workspace](./setup-ai-workspace.md).
+It runs only inside an explicit tooling request.
 
 ## When to reach for it
 
-Type `/setup-ai-tooling`, or an agent or another skill can reach for it when you ask to install or configure AI tooling. It does not start on its own for ordinary coding work.
+Type `/setup-ai-tooling`, or an agent can reach for it when you ask to install or configure AI tooling. It does not start on its own for ordinary coding work.
 
 | Situation | Use |
 | --- | --- |
@@ -59,4 +59,4 @@ Only where a comparable task baseline exists. Command-output reduction, task tok
 
 ## Where it fits
 
-Run-once setup per project, offered as an optional stage of [setup-ai-workspace](./setup-ai-workspace.md). [monitor-ai-tooling](../upkeep/monitor-ai-tooling.md) is its periodic follow-up. [guide](../productivity/guide.md) routes the rest.
+Run-once setup per project, run on its own request; [setup-ai-workspace](./setup-ai-workspace.md) configures the project records and leaves tooling to it. [monitor-ai-tooling](../upkeep/monitor-ai-tooling.md) is its periodic follow-up. [guide](../productivity/guide.md) routes the rest.

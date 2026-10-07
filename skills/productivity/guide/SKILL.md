@@ -39,15 +39,15 @@ Every requirement, functional or not, sits in the functional column; the technic
 
 `/iterate` primarily maintains the backlog, working state, and changelog. It respects existing requirements and specifications but does not generate capability documents or tasks just to run a batch.
 
-It builds each batch through `implement`, or through `divide-and-conquer` when a batch splits into independent tasks. It evolves the living application, including alternative implementations when useful. A prototype rebuild is not a prerequisite. Approved interaction or appearance needs user acceptance where judgment matters; routine internal changes use agreed automated checks.
+It builds each batch with its own copy of the `implement` discipline, or of `divide-and-conquer` when a batch splits into independent tasks. It evolves the living application, including alternative implementations when useful. A prototype rebuild is not a prerequisite. Approved interaction or appearance needs user acceptance where judgment matters; routine internal changes use agreed automated checks.
 
-When unclear scope, competing outcomes, or dependencies prevent choosing an increment, it invokes `prioritize`. That branch retains candidates and deferrals, recommends one focus, and gets approval without requiring implementation tasks. Small clear changes bypass it. Completing one outcome does not approve the next.
+When unclear scope, competing outcomes, or dependencies prevent choosing an increment, it runs its own copy of the `prioritize` branch. That branch retains candidates and deferrals, recommends one focus, and gets approval without requiring implementation tasks. Small clear changes bypass it. Completing one outcome does not approve the next.
 
 Research, test-first work, diagnosis, and milestone reviews remain conditional branches.
 
 ## Shared project documents
 
-The `document` skill owns the shared project documents and where each lives: requirements, specifications, drafts, tasks, backlog, work-in-progress, the changelog, the glossary, conventions, and decision records. When the user asks what each one holds, read the `document` skill. Both workflows use the same documents, so switching between them keeps agreements and progress; `iterate` writes light changelog records and the planned workflow writes full ones.
+The shared project documents live under `documentation/`: requirements (obligations), capability specifications (agreed behavior and acceptance), drafts (unresolved proposals), tasks, the backlog (candidates and deferrals), work-in-progress (active work and resumption), the changelog (agreements and deliveries), the glossary (domain terms), conventions (code rules no tool enforces), and decision records (hard-to-reverse decisions). Every skill that reads or writes them carries the same rules for them, so no skill depends on another to use them. Both workflows use the same documents, so switching between them keeps agreements and progress; `iterate` writes light changelog records and the planned workflow writes full ones.
 
 The glossary, decision records, and conventions retain their separate roles: domain language, consequential decisions, and project-agnostic code conventions. `/delineate` settles the terms, `/codify` the conventions, and `/architect` and `/engineer` the decisions they record. The domain outline (`documentation/outline.md`), the architecture (`documentation/architecture.md`), and each capability's blueprint (`blueprint.md` beside its specifications) belong to the skills that write them.
 
@@ -112,4 +112,4 @@ Work the table top to bottom. The first row that fits wins.
 
 ## Setup
 
-Tell the user to run `/setup-ai-workspace` before a tracker-dependent flow when the tracker configuration is missing. It configures task authority, writing conventions, triage roles, and domain layout. Its optional stage offers `setup-ai-tooling`, `setup-git-hooks`, `setup-git-guardrails`, and `/setup-delegation-policy`. `iterate` does not require tracker setup merely to maintain its local working documents.
+Tell the user to run `/setup-ai-workspace` before a tracker-dependent flow when the tracker configuration is missing. It configures task authority, writing conventions, and triage roles, and points agents at the project documents. Tooling, commit hooks, Git guardrails, and the delegation policy are separate setups: `/setup-ai-tooling`, `/setup-git-hooks`, `/setup-git-guardrails`, and `/setup-delegation-policy`. `iterate` does not require tracker setup merely to maintain its local working documents.

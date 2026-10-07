@@ -1,6 +1,6 @@
 ---
 name: illustrate
-description: "Explain the current topic visually. Use when the user asks to see how something works, compare states or options, understand code structure or flow, or when another skill needs a concise explanatory visual."
+description: "Explain the current topic visually. Use when the user asks to see how something works, compare states or options, or understand code structure or flow."
 metadata:
   forks: "humanlayer/skills/plugins/show-me/skills/show-me"
 ---

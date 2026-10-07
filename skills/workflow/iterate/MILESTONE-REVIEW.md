@@ -12,7 +12,7 @@ In a versioned project, the goal's starting revision recorded before its first b
 
 ## Run and resolve
 
-Call the Skill tool with "review-and-refactor", supplying the fixed point, review scope, behavior evidence, and documented standards.
+Review and refactor following [REVIEW.md](REVIEW.md), with the fixed point, review scope, behavior evidence, and documented standards.
 
 Without a usable baseline, say so and agree a lighter review with the user, using captured starting contents and the same behavior evidence, with an independent reviewer when supported. Initializing version control is a separate choice for the user.
 

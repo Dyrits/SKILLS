@@ -10,7 +10,7 @@ The specification stays canonical in the repository. A remote issue can link to 
 
 ## When to reach for it
 
-Type `/specify`, or an agent or another skill can reach for it when the task fits. Use it when the work needs explicit agreed behavior before delivery. If a small change is already clear, [iterate](../workflow/iterate.md) can work directly from active project state without generating a specification.
+Type `/specify`, or an agent can reach for it when the task fits. Use it when the work needs explicit agreed behavior before delivery. If a small change is already clear, [iterate](../workflow/iterate.md) can work directly from active project state without generating a specification.
 
 ## The selected scope
 

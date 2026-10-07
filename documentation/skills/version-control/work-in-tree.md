@@ -24,7 +24,7 @@ If your file-editing tools stay rooted at the original checkout, it asks you to 
 
 ## The return route
 
-At the end it reports a handoff: task checkout path and branch, original repository, target branch, base and current commits, any uncommitted changes, and validation results. That is what [sync-tree](sync-tree.md) consumes. The worktree is kept for review; syncing, publication, and removal are separate requests.
+At the end it reports a handoff: task checkout path and branch, original repository, target branch, base and current commits, any uncommitted changes, and validation results. Those fields are what a later sync, such as [sync-tree](sync-tree.md), needs; the skill does not start one. The worktree is kept for review; syncing, publication, and removal are separate requests.
 
 ## Common questions
 

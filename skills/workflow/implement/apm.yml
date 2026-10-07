@@ -1,13 +1,3 @@
 name: implement
 version: 0.2.0
 description: "Implement authorized work test-first and report its verification evidence."
-dependencies:
-  apm:
-    - git: parent
-      path: skills/upkeep/debug
-    - git: parent
-      path: skills/reference/document
-    - git: parent
-      path: skills/workflow/review-and-refactor
-    - git: parent
-      path: skills/workflow/test-first

@@ -18,7 +18,7 @@ Type `/monitor-ai-tooling`, optionally naming a project and period. An agent or 
 
 ## Prerequisites
 
-It reads `.agents/ai-tooling.md` if present, plus whatever measurement sources exist: tool analytics, saved verification results, or an export from your existing monitor. With nothing available it still produces a gaps report and says how `/setup-ai-tooling` or a future measurement period can fill them.
+It reads `.agents/ai-tooling.md` if present, plus whatever measurement sources exist: tool analytics, saved verification results, or an export from your existing monitor. With nothing available it still produces a gaps report, naming the setup each missing source needs or the measurement period that would fill it.
 
 ## Measurement discipline
 

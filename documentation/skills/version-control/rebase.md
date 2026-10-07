@@ -64,4 +64,4 @@ Yes. A branch without a remote is marked local only. Missing tracker access is n
 
 ## Where it fits
 
-A standalone version-control skill for batches of local branches. It calls [resolve-merge-conflicts](resolve-merge-conflicts.md) whenever Git stops on a conflict. [work-in-tree](work-in-tree.md) and [sync-tree](sync-tree.md) cover the other worktree movements. [guide](../productivity/guide.md) maps the wider flow.
+A standalone version-control skill for batches of local branches. It carries its own copy of the intent-led resolution in [resolve-merge-conflicts](resolve-merge-conflicts.md) and uses it whenever Git stops on a conflict. [work-in-tree](work-in-tree.md) and [sync-tree](sync-tree.md) cover the other worktree movements. [guide](../productivity/guide.md) maps the wider flow.

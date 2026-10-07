@@ -1,11 +1,3 @@
 name: review-and-refactor
 version: 0.2.0
 description: "Review and refactor changes since a fixed point against repository standards and the originating behavior agreement."
-dependencies:
-  apm:
-    - git: parent
-      path: skills/setup/codify
-    - git: parent
-      path: skills/reference/document
-    - git: parent
-      path: skills/productivity/publish-message

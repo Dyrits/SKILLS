@@ -10,7 +10,7 @@ Two filters keep the report from becoming generic cleanup advice. Every candidat
 
 ## When to reach for it
 
-Type `/improve-codebase-architecture`, or an agent or another skill can reach for it when the task fits.
+Type `/improve-codebase-architecture`, or an agent can reach for it when the task fits.
 
 It sits outside the build loop: it is not a step in the main loop but something you run periodically to queue up more work to improve the codebase. The four situations it gets used in:
 
@@ -23,13 +23,13 @@ It sits outside the build loop: it is not a step in the main loop but something 
 
 Where it is confusable with siblings:
 
-- For designing one module you have already chosen, use [design-modules](../reference/design-modules.md): that is the bench, this is the survey that finds what to put on it.
+- For designing one capability's modules before it is built, use [engineer](../workflow/engineer.md): that is the bench, this is the survey that finds what to put on it.
 - For a whole effort too big to hold in one session, use [graphify](../shaping/graphify.md).
 - For "this specific thing is broken," use [debug](./debug.md). It hands back here when the real finding is that there is no good seam to lock the bug down.
 
 ## Prerequisites
 
-None to run it. When the conventions file is missing it asks whether to create one. If you accept, [codify](../setup/codify.md) interviews you about your architecture conventions first; if you decline, the audit runs without them and the next run asks again. It reads the glossary and any architecture decision records if they exist, and speaks in your domain's own nouns when they do: a candidate reads as "deepen the Order intake module," not "refactor the FooBarHandler."
+None to run it. When the conventions file is missing, the audit runs without it and says so in the report; [codify](../setup/codify.md) is where conventions get written. It reads the glossary and any architecture decision records if they exist, and speaks in your domain's own nouns when they do: a candidate reads as "deepen the Order intake module," not "refactor the FooBarHandler."
 
 The report goes to `documentation/architecture-audit/architecture-audit-<timestamp>.html`, one file per run. Refinement can also sharpen terms in the glossary and offer an architecture decision record for a consequential rejection. That offer is conditional: rejecting a candidate does not automatically merit a permanent decision record.
 
@@ -49,7 +49,7 @@ The report ends with a **Top recommendation** (the one it would tackle first), a
 
 ## What happens after you pick one
 
-Picking a candidate starts [interview](../shaping/interview.md) over its constraints, seam, surviving tests, and interface. The output is a decision, not a diff. Record agreed behavior through [specify](../workflow/specify.md), then use [taskify](../workflow/taskify.md) when decomposition is useful before [implement](../workflow/implement.md). A small approved living-code batch can instead enter [iterate](../workflow/iterate.md), respecting existing requirements and specifications.
+Picking a candidate starts an interview, following the skill's own copy of the [interview](../shaping/interview.md) method, over its constraints, seam, surviving tests, and interface. The output is a decision, not a diff. Record agreed behavior through [specify](../workflow/specify.md), then use [taskify](../workflow/taskify.md) when decomposition is useful before [implement](../workflow/implement.md). A small approved living-code batch can instead enter [iterate](../workflow/iterate.md), respecting existing requirements and specifications.
 
 ## Common questions
 
@@ -71,11 +71,11 @@ With the next thing you are building in mind. Where a big build is coming up, po
 
 **Does it work on a large legacy codebase?**
 
-Results vary. Users with out-of-control projects reported limited help, and one report on an eight-year legacy codebase described the model going in circles. Bound the survey to an actively changing area and a concrete source of friction. If domain terms are inconsistent, use [delineate](../workflow/delineate.md) to establish shared vocabulary before comparing designs.
+Results vary. Users with out-of-control projects reported limited help, and one report on an eight-year legacy codebase described the model going in circles. Bound the survey to an actively changing area and a concrete source of friction. If domain terms are inconsistent, settle the vocabulary first; the skill settles a single disputed term itself, and [delineate](../workflow/delineate.md) cleans up a whole glossary.
 
-**How is this different from `/design-modules`?**
+**Where does the module vocabulary come from?**
 
-`/design-modules` is a reference, not a session driver. It supplies the vocabulary (module, interface, depth, seam, adapter, leverage, locality), and this skill borrows it. Pointing a fresh agent at `/design-modules` as the thing to "do" is a known failure: with no process of its own to follow, the agent invents one, re-explores code and runs for a very long time before asking you anything. Drive with this skill; consume that one.
+The skill carries its own copy of the vocabulary (module, interface, depth, seam, adapter, leverage, locality), with the deepening and design-it-twice references, as reference files it consults rather than a process it runs. An earlier version kept them in a separate reference skill, and pointing a fresh agent at that skill as the thing to "do" was a known failure: with no process of its own to follow, the agent invented one, re-explored code and ran for a very long time before asking anything.
 
 **Will it ever tell me the codebase is fine?**
 
@@ -100,4 +100,4 @@ There is no good answer shipped with the skill. The recurring request is for a `
 
 ## Where it fits
 
-`improve-codebase-architecture` is periodic maintenance that generates candidate work rather than implementing it. [design-modules](../reference/design-modules.md) supplies depth-and-seam vocabulary; [interview](../shaping/interview.md) explores the selected candidate; [delineate](../workflow/delineate.md) settles domain terms, [codify](../setup/codify.md) the conventions, and [document](../reference/document.md) records them and any qualifying decision. Approved work enters planned or just-in-time development without weakening existing obligations. [guide](../productivity/guide.md) maps both workflows.
+`improve-codebase-architecture` is periodic maintenance that generates candidate work rather than implementing it. It carries its own copies of the depth-and-seam vocabulary, the [interview](../shaping/interview.md) method, and the glossary and decision record formats. [delineate](../workflow/delineate.md) and [codify](../setup/codify.md) own the full glossary and the conventions. Approved work enters planned or just-in-time development without weakening existing obligations. [guide](../productivity/guide.md) maps both workflows.

@@ -7,20 +7,18 @@ description: 'File a lesson in the home the next agent will read, and recall sav
 
 Agents relearn the same things every session: the helper written yesterday, the convention the user corrected twice, the term the team already settled. **Memorize** files each lesson in the home the next agent will read when it matters; **recall** checks that home before redoing the work.
 
-**Calls:** `document`, `walk-through`, `write-for-agents`. **Hands over to:** `/improve-skills`.
-
 ## Homes
 
 | Lesson | Home | How |
 | --- | --- | --- |
 | A reusable action (rename files, convert a format, call an endpoint) | A scriptbook: `.agents/scripts/` for this repository, `~/.agents/scripts/` for any repository | Read [SCRIPTS.md](SCRIPTS.md) |
-| A project convention, command, or gotcha agents keep missing | The nearest `AGENTS.md` at the boundary where it applies | Call the Skill tool with "write-for-agents" |
-| A code convention | The project's conventions | Call the Skill tool with "document" |
-| A domain term or consequential decision | The glossary or a decision record | Call the Skill tool with "document" |
-| Project agreements, working state, or delivery history | The shared project documents | Call the Skill tool with "document" |
-| A procedure only a human can carry out, worth repeating | A saved wizard | Call the Skill tool with "walk-through" |
+| A project convention, command, or gotcha agents keep missing | The nearest `AGENTS.md` at the boundary where it applies | Follow [AGENT-INSTRUCTIONS.md](AGENT-INSTRUCTIONS.md) |
+| A code convention | The project's conventions | Follow [CONVENTIONS-FORMAT.md](CONVENTIONS-FORMAT.md) |
+| A domain term or consequential decision | The glossary or a decision record | Follow [GLOSSARY-FORMAT.md](GLOSSARY-FORMAT.md) or [DECISION-RECORD-FORMAT.md](DECISION-RECORD-FORMAT.md) |
+| Project agreements, working state, or delivery history | The shared project documents | Read [PROJECT-DOCUMENTS.md](PROJECT-DOCUMENTS.md) |
+| A procedure only a human can carry out, worth repeating | A saved wizard | Follow [WIZARD.md](WIZARD.md) |
 | A personal preference that holds across projects | The harness's own memory when it provides one; otherwise `~/.agents/memory/` | See **Personal memory** below |
-| A defect in a skill itself (a wrong trigger, an unclear step, a missing skill) | The skills repository, reported once the session ends | Tell the user to run `/improve-skills` |
+| A defect in a skill itself (a wrong trigger, an unclear step, a missing skill) | The skills repository, reported once the session ends | Name the skill, the step, and what went wrong in your final report |
 
 The environment is a home too: a `package.json` script, a config file, or `--help` output already states its fact. Leave those facts there.
 

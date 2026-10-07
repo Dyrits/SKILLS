@@ -13,7 +13,7 @@ Upstream covered Claude Code only and denied outright. This fork extends it to O
 
 ## When to reach for it
 
-Type `/setup-git-guardrails`, or an agent or another skill can reach for it when you want to guard against destructive git operations by any coding agent. It asks whether to install for this project or globally, for which agents, and which branches to protect.
+Type `/setup-git-guardrails`, or an agent can reach for it when you want to guard against destructive git operations by any coding agent. It asks whether to install for this project or globally, for which agents, and which branches to protect.
 
 ## What each agent gets
 
@@ -50,4 +50,4 @@ It has no hook runner and no per-command rules. A git-level `pre-push` hook (see
 
 ## Where it fits
 
-Run-once safety setup per project or per machine, also offered as an optional stage of [setup-ai-workspace](./setup-ai-workspace.md). [setup-git-hooks](./setup-git-hooks.md) is the git-level layer that covers agents this cannot intercept. [guide](../productivity/guide.md) routes the rest.
+Run-once safety setup per project or per machine, run on its own request. [setup-git-hooks](./setup-git-hooks.md) is the git-level layer that covers agents this cannot intercept. [guide](../productivity/guide.md) routes the rest.

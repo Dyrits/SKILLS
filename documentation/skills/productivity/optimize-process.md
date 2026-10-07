@@ -6,7 +6,7 @@ Fork-specific skill, added in commit `26542d8` to improve recurring human and ag
 
 ## When to reach for it
 
-Type `/optimize-process`, or an agent or another skill can reach for it when you describe a recurring workflow with delays, rework, or too many handoffs. It suits a process you can trace from a trigger to a finished result. For a specific broken behavior in software, use [debug](../upkeep/debug.md). For a change to one codebase's module structure, use [improve-codebase-architecture](../upkeep/improve-codebase-architecture.md).
+Type `/optimize-process`, or an agent can reach for it when you describe a recurring workflow with delays, rework, or too many handoffs. It suits a process you can trace from a trigger to a finished result. For a specific broken behavior in software, use [debug](../upkeep/debug.md). For a change to one codebase's module structure, use [improve-codebase-architecture](../upkeep/improve-codebase-architecture.md).
 
 ## Time in the loop
 

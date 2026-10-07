@@ -8,9 +8,7 @@ argument-hint: "An idea to build, or an existing project to continue"
 
 Coordinate refinement and implementation in one living development workflow. An **increment** is a coherent change validated against agreed behavior. Group related decisions into a **batch**, implement it, and let the result decide what comes next. Settle decisions **just in time**: the ones the current batch needs, and no further. The application evolves in place from its first runnable batch; replacing it is a consequential decision for the user.
 
-Call the Skill tool with "document"; its terms (authorized, obligation, lazy, pointer) and rules apply throughout. This workflow runs on the backlog, working state, and the changelog with light records, and links existing requirements and specifications where they apply.
-
-**Calls:** `codify`, `delineate`, `design-modules`, `divide-and-conquer`, `document`, `implement`, `interview`, `prioritize`, `research`, `review-and-refactor`.
+The project documents and their rules are in [PROJECT-DOCUMENTS.md](PROJECT-DOCUMENTS.md); its terms (authorized, obligation, lazy, pointer) apply throughout. This workflow runs on the backlog, working state, and the changelog with light records, and links existing requirements and specifications where they apply.
 
 ## 1. Establish the starting point
 
@@ -20,15 +18,15 @@ When working state names an approved focus, resume it with its constraints and p
 
 For a new project, establish who will use it, where it runs, whether it keeps important data, and the first useful interaction. Ask only what choosing an approach and the first batch requires. For an existing project, keep its current approach and recover the pending batch.
 
-When competing capabilities, unclear scope, or cross-cutting dependencies make choosing a useful batch premature, call the Skill tool with "prioritize" with the known direction, constraints, and document pointers, and tell the user why. Implement once the user approves its recommended focus and material deferrals. A clear small change goes straight on. Return to this branch when priorities or dependencies block the next batch; each new outcome needs its own approval.
+When competing capabilities, unclear scope, or cross-cutting dependencies make choosing a useful batch premature, choose a focus first following [PRIORITIZE.md](PRIORITIZE.md), with the known direction, constraints, and document pointers, and tell the user why. Implement once the user approves its recommended focus and material deferrals. A clear small change goes straight on. Return to this branch when priorities or dependencies block the next batch; each new outcome needs its own approval.
 
-Completion: "document" was called, the backlog, working state, and changelog were read or noted as absent, and intended use, immediate constraints, and the next decisions are explicit. Unrelated future behavior may remain open.
+Completion: [PROJECT-DOCUMENTS.md](PROJECT-DOCUMENTS.md) was read, the backlog, working state, and changelog were read or noted as absent, and intended use, immediate constraints, and the next decisions are explicit. Unrelated future behavior may remain open.
 
 ## 2. Agree the technical approach
 
 For a new project, present a short list of suitable approaches, each with its advantage and cost, and recommend one. Select for explicit structure, early meaningful error detection, visible failure handling, testing support, documentation access, setup effort, and maintenance cost; popularity is supporting evidence only. Drop approaches whose weak checking or hidden failures would undermine the agreed verification.
 
-When a consequential choice depends on external facts (framework capabilities, diagnostics, setup requirements), call the Skill tool with "research" with the specific question and constraints. Continue independent work meanwhile; decide dependent choices once its cited findings arrive.
+When a consequential choice depends on external facts (framework capabilities, diagnostics, setup requirements), research the specific question and constraints following [RESEARCH.md](RESEARCH.md). Continue independent work meanwhile; decide dependent choices once its cited findings arrive.
 
 Get approval of the approach and its consequences before setup. Make the first batch a small useful interaction that demonstrates the approach and its executable checks, started by one command in the project's natural tooling.
 
@@ -38,7 +36,7 @@ Completion: an approved approach, or a suitable existing one, with the first bat
 
 ## 3. Settle one batch
 
-Call the Skill tool with "interview", rooting its design tree in the **current batch**: traverse only the decisions needed to implement and verify it, and record later branches as pending. A confirmed batch proceeds while future questions stay pending. Continue the larger interview as increments reveal new questions.
+Follow the [interview method](INTERVIEW.md), rooting its design tree in the **current batch**: traverse only the decisions needed to implement and verify it, and record later branches as pending. A confirmed batch proceeds while future questions stay pending. Continue the larger interview as increments reveal new questions.
 
 Group questions that affect the same behavior or code. Keep exploration, agent recommendations, and user decisions distinct; implement an alternative once the user chooses it. Keep deferred in-scope questions apart from ideas the user ruled out; a ruled-out idea returns only through an explicit scope change.
 
@@ -46,15 +44,15 @@ Summarize the batch's behavior, scope, verification, and choices needing approva
 
 In a versioned project, record the goal's starting revision when its first batch is agreed. When a batch starts an agreed milestone or substantial structural or data-risk work, read [MILESTONE-REVIEW.md](MILESTONE-REVIEW.md) before implementation.
 
-When a domain term is fuzzy or disputed, call the Skill tool with "delineate". When establishing code conventions, call the Skill tool with "codify". When recording a consequential decision, call the Skill tool with "document". Call the Skill tool with "design-modules" when a module's interface or testability needs design.
+When a domain term is fuzzy or disputed, name the conflict, test it with a concrete scenario, recommend a canonical term, and once the user agrees, write it to the glossary following [GLOSSARY-FORMAT.md](GLOSSARY-FORMAT.md). When the user settles a code convention, record it with its reason following [CONVENTIONS-FORMAT.md](CONVENTIONS-FORMAT.md). Record a consequential decision following [DECISION-RECORD-FORMAT.md](DECISION-RECORD-FORMAT.md). When a module's interface or testability needs design, use the vocabulary in [MODULES.md](MODULES.md).
 
 Completion: the batch can be implemented and checked without guessing at an open decision, and each consequential choice it settled (costly to reverse, or changing scope) has an Agreement in the changelog. Record the agreed batch and pending questions using [ARTIFACTS.md](ARTIFACTS.md).
 
 ## 4. Implement and verify
 
-Call the Skill tool with "implement" for the settled batch. Pass the batch recorded in working state as its agreement, the test interfaces agreed in step 3, and that this workflow owns the project records; record its returned evidence through [ARTIFACTS.md](ARTIFACTS.md).
+Implement the settled batch following [IMPLEMENT.md](IMPLEMENT.md), with the batch recorded in working state as its agreement and the test interfaces agreed in step 3; this workflow owns the project records. Record the evidence through [ARTIFACTS.md](ARTIFACTS.md).
 
-When the batch splits into several independent tasks that each justify a fresh context, call the Skill tool with "divide-and-conquer" instead; the user's approval of its routing table is the go-ahead. A batch that fits one session stays with "implement", which is usually cheaper. When feedback changes a running assignment, update or stop it, then check the returned work against the revised agreement. Continue independent questions while work runs; hold dependent ones until the result arrives.
+When the batch splits into several independent tasks that each justify a fresh context, implement them in parallel following [DIVIDE-AND-CONQUER.md](DIVIDE-AND-CONQUER.md) instead; the user's approval of its routing table is the go-ahead. A batch that fits one session stays in this session, which is usually cheaper. When feedback changes a running assignment, update or stop it, then check the returned work against the revised agreement. Continue independent questions while work runs; hold dependent ones until the result arrives.
 
 Run relevant checks and exercise the result the way it will be used. A passing build is evidence of correctness; intended behavior and appearance need their own checks or user review. For new or changed setup, document and run the startup command and early-error checks.
 
@@ -75,5 +73,3 @@ Completion: acceptance is recorded where needed, each completed increment has a 
 The user owns intended behavior and consequential tradeoffs; routine implementation choices within the agreed approach are delegated. Ask before paid services, publishing, destructive actions, or replacing the approach.
 
 When setup, migration, repeated failures, or unexpected work materially increases scope or cost, pause: report what works, the blocker, and the alternatives, recommend continuing, simplifying, or changing approach, and wait for the decision. Quote measured costs when available, and only measured ones.
-
-Call supporting skills through the Skill tool.

@@ -8,7 +8,7 @@ It explains the reviewer's missing information rather than narrating the diff. T
 
 ## When to reach for it
 
-Type `/draft-merge-request`, or an agent or another skill can reach for it when a task fits: writing a request description, rewriting one that reviewers bounced, or closing out a branch that is about to go up for review.
+Type `/draft-merge-request`, or an agent can reach for it when a task fits: writing a request description, rewriting one that reviewers bounced, or closing out a branch that is about to go up for review.
 
 | Where you are | What to run |
 | --- | --- |
@@ -21,7 +21,7 @@ Type `/draft-merge-request`, or an agent or another skill can reach for it when 
 ## The summary is a shape, not a paragraph
 
 The summary's job is one visual sized to the single point the change makes.
-The skill calls [illustrate](../productivity/illustrate.md) to choose the shape and render it inline in the request body.
+The skill carries its own copy of the shape table from [illustrate](../productivity/illustrate.md), limited to visuals that render inline in the request body.
 
 The instruction that does the work is **pick the smallest view that makes the key point clear**. A component tree pruned to the two components that moved beats the same tree drawn in full, because everything else on it is a line the reviewer has to rule out. Using one shape is usual, several happens, and all of them never does.
 

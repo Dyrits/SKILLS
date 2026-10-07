@@ -2,9 +2,9 @@
 
 Backlog: the local backlog document
 
-The local backlog owns candidate outcomes, priorities, and deferrals. Working state remains local for active execution and resumption. Apply the shared document rules supplied by the `document` skill.
+The local backlog owns candidate outcomes, priorities, and deferrals. Working state remains local for active execution and resumption.
 
-Local task bodies live in the capability's task files, and its specifications are the living specification. Call the Skill tool with "document" for their layout and for the shared authority, requirements, publication, and changelog rules.
+Local task bodies live in the capability's task files, and its specifications are the living specification. Tasks live at `documentation/capabilities/<capability>/tasks/NN-<slug>.md` and specifications at `documentation/capabilities/<capability>/specifications.md`.
 
 ## Conventions
 

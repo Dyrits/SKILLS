@@ -4,7 +4,7 @@ Fork-created skill, no upstream equivalent: added in commit `0839ff5`, as record
 
 `sync-tree` transfers the committed work of a worktree branch (or an isolated local clone) to its corresponding branch in the original local repository.
 
-It moves history only. It makes no code changes, creates no merge commits, and does not publish to an upstream. If the destination has commits the source lacks, it never removes them: it offers to rebase the source branch onto the destination first, through [rebase](rebase.md), so the update becomes a fast-forward.
+It moves history only. It makes no code changes, creates no merge commits, and does not publish to an upstream. If the destination has commits the source lacks, it never removes them: it offers to rebase the source branch onto the destination first, with its own copy of the [rebase](rebase.md) procedure, so the update becomes a fast-forward.
 
 ## When to reach for it
 
@@ -37,7 +37,7 @@ It stops. A target checkout with staged, unstaged, or untracked changes, or an u
 
 **What if the histories diverged?**
 
-The target branch moved on while you worked. `sync-tree` shows both tips and offers three moves: rebase the source branch onto the target through [rebase](rebase.md) and then fast-forward (recommended, no commit is lost), replace the target branch (only on explicit approval, because the destination-only commits are dropped), or stop. A conflict during the rebase is relayed to you as a question, and nothing is updated until it is answered.
+The target branch moved on while you worked. `sync-tree` shows both tips and offers three moves: rebase the source branch onto the target and then fast-forward (recommended, no commit is lost), replace the target branch (only on explicit approval, because the destination-only commits are dropped), or stop. A conflict during the rebase is relayed to you as a question, and nothing is updated until it is answered.
 
 **Why not merge?**
 

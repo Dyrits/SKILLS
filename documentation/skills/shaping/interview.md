@@ -8,7 +8,7 @@ It is a general interview discipline, not a software-document generator. The cal
 
 ## When to reach for it
 
-Type `/interview`, or an agent or another skill can reach for it when a task fits. Use it to stress-test a bounded question. Use [specify](../workflow/specify.md) when you want agreed software behavior recorded in a repository specification.
+Type `/interview`, or an agent can reach for it when a task fits. Use it to stress-test a bounded question. Use [specify](../workflow/specify.md) when you want agreed software behavior recorded in a repository specification.
 
 ## Rounds and the frontier
 

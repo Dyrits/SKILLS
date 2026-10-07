@@ -1,11 +1,3 @@
 name: taskify
 version: 0.2.0
 description: "Decompose approved work into verifiable tasks with explicit blocking dependencies, locally or on an approved tracker."
-dependencies:
-  apm:
-    - git: parent
-      path: skills/workflow/divide-and-conquer
-    - git: parent
-      path: skills/reference/document
-    - git: parent
-      path: skills/workflow/implement

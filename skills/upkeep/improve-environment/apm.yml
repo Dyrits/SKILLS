@@ -1,13 +1,3 @@
 name: improve-environment
 version: 0.2.0
 description: "Hold a retrospective on a session's friction, then change the project's environment so the next run avoids it: checks, guardrails, navigation pointers, steering files, tool and information access."
-dependencies:
-  apm:
-    - git: parent
-      path: skills/upkeep/improve-skills
-    - git: parent
-      path: skills/productivity/memorize
-    - git: parent
-      path: skills/setup/setup-git-hooks
-    - git: parent
-      path: skills/productivity/write-for-agents

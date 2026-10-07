@@ -9,9 +9,7 @@ metadata:
 
 A prototype is **experimental code that answers a question**. The question decides the shape. Proceed only when the user requests or approves the scoped experiment, including during specify. Living iteration directly evolves the implementation; it does not require a prototype by default.
 
-**Calls:** `document`. **Hands over to:** `/iterate`.
-
-Call the Skill tool with "document" for shared project-document ownership. Record unresolved proposals separately from agreed behavior. Capture the question, verdict, evidence, and remaining acceptance in the feature's draft or specifications as appropriate, and in working state. Record completed agreements in the changelog, stating that the prototype's code still needs production validation.
+The shared project documents and their rules are in [PROJECT-DOCUMENTS.md](PROJECT-DOCUMENTS.md). Record unresolved proposals separately from agreed behavior. Capture the question, verdict, evidence, and remaining acceptance in the feature's draft or specifications as appropriate, and in working state. Record completed agreements in the changelog, stating that the prototype's code still needs production validation.
 
 ## Pick a branch
 
@@ -20,7 +18,7 @@ Identify which question is being answered, using the user's prompt, the surround
 - **"Does this logic / state model feel right?"** → [LOGIC.md](LOGIC.md). Build a single shareable HTML file (free-play buttons plus tabbed guided walkthroughs) that pushes the state machine through cases that are hard to reason about on paper, and that a non-developer can drive.
 - **"What should this look like?"** → [UI.md](UI.md). Generate several radically different UI variations on a single route, switchable via a URL search param and a floating bottom bar.
 
-A request to build a whole application is not a prototype. Ask which single question the experiment should answer and narrow to it; when the user wants the application itself, tell the user to run `/iterate`.
+A request to build a whole application is not a prototype. Ask which single question the experiment should answer and narrow to it; when the user wants the application itself, say that building it is not a prototype's job and stop.
 
 The two branches produce very different artifacts, so getting this wrong wastes the whole prototype. If the question is genuinely ambiguous and the user isn't reachable, default to whichever branch better matches the surrounding code (a backend module → logic; a page or component → UI) and state the assumption at the top of the prototype.
 

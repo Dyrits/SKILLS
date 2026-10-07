@@ -1,15 +1,13 @@
 ---
 name: setup-ai-tooling
-description: "Set up free AI development tools for a project and its installed agent clients. Use when explicitly asked to install or configure AI tooling, or when workspace setup includes an approved tooling stage."
+description: "Set up free AI development tools for a project and its installed agent clients. Use when explicitly asked to install or configure AI tooling."
 ---
 
 # Setup AI tooling
 
 Provision **tooling**, with complete review evidence and a measurable baseline.
-Run installation and configuration only within an explicit tooling setup request, including a tooling stage the user selected during workspace setup.
-Call the Skill tool with "write-for-agents" when changing agent instructions.
-
-**Calls:** `write-for-agents`. **Hands over to:** `/monitor-ai-tooling`.
+Run installation and configuration only within an explicit tooling setup request.
+Follow [AGENT-INSTRUCTIONS.md](AGENT-INSTRUCTIONS.md) when changing agent instructions.
 
 ## Process
 
@@ -69,5 +67,5 @@ Done when the record points to real measurement sources, counters are scoped hon
 ### 5. Finish
 
 Summarize configured tools, reused integrations, disabled filters, global changes, and verification gaps.
-Tell the user to run `/monitor-ai-tooling` later for an on-demand report.
+Point to the configuration record and the measurement sources it lists, so a later report can read the same counters.
 Report command-output reduction, task token counts, and provider allowance as different quantities; claim equivalent task quality only where the comparison checked the same correctness criteria.

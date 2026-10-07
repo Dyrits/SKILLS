@@ -17,7 +17,7 @@ Run `/graphify`, or let an agent or another skill reach for it when a large unce
 | The route is clear and implementation needs decomposition | Use [taskify](../workflow/taskify.md) |
 | One conversation can settle the question | Use [interview](../shaping/interview.md) |
 
-The tracker configuration must exist. If it is absent, run [setup-ai-workspace](../setup/setup-ai-workspace.md) yourself first.
+The tracker configuration must exist; [setup-ai-workspace](../setup/setup-ai-workspace.md) writes it. If it is absent, Graphify says so and stops.
 
 ## The frontier and the fog
 
@@ -51,7 +51,7 @@ Graphify is for an effort where what to build is still undecided and settling it
 
 **Will I get a visual representation?**
 
-The default output is the decision graph's records and map. At the end, Graphify asks once whether you want a visual representation. If you accept or already requested one, it uses [illustrate](../productivity/illustrate.md) to choose a small inline or HTML view without requiring a new file. The view explains recorded titles, dependencies, resolution state, and evidence, with not-yet-sharp questions shown separately. It does not invent edges, replace the authoritative graph, or grant remote publication permission.
+The default output is the decision graph's records and map. At the end, Graphify asks once whether you want a visual representation. If you accept or already requested one, it follows its own copy of the [illustrate](../productivity/illustrate.md) guidance to choose a small inline or HTML view without requiring a new file. The view explains recorded titles, dependencies, resolution state, and evidence, with not-yet-sharp questions shown separately. It does not invent edges, replace the authoritative graph, or grant remote publication permission.
 
 **How does it update specifications?**
 
@@ -67,4 +67,4 @@ Requirements remain constraints, unresolved proposals belong in `draft.md`, and 
 
 ## Where it fits
 
-Graphify is a shaping workflow for multi-session uncertainty. It uses [document](../reference/document.md) for shared project documents and hands a clear route to [specify](../workflow/specify.md) or [taskify](../workflow/taskify.md). [Guide](../productivity/guide.md) routes the surrounding flow.
+Graphify is a shaping workflow for multi-session uncertainty. It carries its own copies of the project document rules and of the research, prototype, interview, and illustrate steps its tasks use. The route it leaves is what [specify](../workflow/specify.md) or [taskify](../workflow/taskify.md) reads next. [Guide](../productivity/guide.md) routes the surrounding flow.

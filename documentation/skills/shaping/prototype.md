@@ -21,7 +21,7 @@ No. Validated useful code can be integrated after authorized acceptance and prod
 
 **Should I prototype the whole application?**
 
-That is not a prototype. The skill asks which single question the experiment should answer and narrows to it, or tells you to run `/iterate` when you want the application itself. A whole application has no natural stopping point and can acquire production obligations before anyone checks readiness.
+That is not a prototype. The skill asks which single question the experiment should answer and narrows to it, or, when you want the application itself, says that building it is not a prototype's job and stops; [iterate](../workflow/iterate.md) is the skill for building it. A whole application has no natural stopping point and can acquire production obligations before anyone checks readiness.
 
 **How does the next session recover the experiment?**
 

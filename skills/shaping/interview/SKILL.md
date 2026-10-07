@@ -1,6 +1,6 @@
 ---
 name: interview
-description: Interview the user in rounds of questions, each with a recommended answer, until a plan, decision, or idea is settled. Use when unresolved choices need shared understanding, when the user wants their thinking stress-tested or asks to be grilled, or when another skill needs decisions from the user.
+description: Interview the user in rounds of questions, each with a recommended answer, until a plan, decision, or idea is settled. Use when unresolved choices need shared understanding, or when the user wants their thinking stress-tested or asks to be grilled.
 metadata:
   forks: "mattpocock/skills/skills/productivity/grilling mattpocock/skills/skills/productivity/grill-me"
 ---
@@ -25,4 +25,4 @@ Recompute the frontier after each round. A question that depends on an unresolve
 
 Find facts from the environment yourself, delegating exploration when available. An exploration in progress is an unsettled prerequisite: only downstream questions wait, while independent questions proceed. Decisions belong to the user; present them and wait rather than supplying unapproved answers.
 
-Finish when the selected frontier is empty and the user confirms the shared understanding. Surface unresolved blockers explicitly. This general interview discipline mandates no software artifact; its caller owns recording authorized decisions. Confirmation of understanding is not authorization to implement or publish.
+Finish when the selected frontier is empty and the user confirms the shared understanding. Surface unresolved blockers explicitly. This general interview discipline mandates no software artifact; the work it serves owns recording authorized decisions. Confirmation of understanding is not authorization to implement or publish.

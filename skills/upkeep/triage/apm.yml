@@ -1,13 +1,3 @@
 name: triage
 version: 0.2.0
 description: "Move tasks and external PRs through triage roles: categorize, verify, refine, and write agent-ready briefs."
-dependencies:
-  apm:
-    - git: parent
-      path: skills/workflow/delineate
-    - git: parent
-      path: skills/reference/document
-    - git: parent
-      path: skills/shaping/interview
-    - git: parent
-      path: skills/setup/setup-ai-workspace

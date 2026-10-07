@@ -1,11 +1,3 @@
 name: improve-skills
 version: 0.2.0
 description: "Hold a retrospective on a session, then report how the skills behaved as an issue on the skills repository."
-dependencies:
-  apm:
-    - git: parent
-      path: skills/upkeep/improve-environment
-    - git: parent
-      path: skills/productivity/memorize
-    - git: parent
-      path: skills/productivity/unslop

@@ -8,7 +8,7 @@ It recommends and stops. It reads the relevant skill before making a consequenti
 
 ## When to reach for it
 
-Type `/guide`, or an agent or another skill can reach for it when the task fits.
+Type `/guide`, or an agent can reach for it when the task fits.
 
 | Your situation | What the router gives back |
 | --- | --- |

@@ -5,8 +5,6 @@ metadata:
   forks: "mattpocock/skills/skills/engineering/pr"
 ---
 
-**Calls:** `illustrate`.
-
 Use this template for the body:
 
 ```markdown
@@ -38,9 +36,8 @@ Skip preambles and keep prose brief. Write it in the language its primary source
 
 Why the change exists comes from its primary source. The diff decides which **shape** shows it, never what it was for.
 
-Call the Skill tool with "illustrate" to choose and render the Summary visual, using the primary source for intent and the diff for structure.
-Request an inline Markdown visual that renders in the pull or merge request body.
-If `illustrate` is unavailable, pick the smallest view from the template that makes the key point clear and render it inline.
+Choose and render the Summary visual following [SUMMARY-VISUAL.md](SUMMARY-VISUAL.md), using the primary source for intent and the diff for structure.
+Render it inline in Markdown, so it shows in the pull or merge request body.
 
 ## Evidence
 

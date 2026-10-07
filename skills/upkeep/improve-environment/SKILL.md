@@ -8,8 +8,6 @@ argument-hint: "Optional: the session to review, and the moment that went wrong"
 
 The user has asked for a **retrospective** on the project's **environment**: everything around the code that shapes how an agent works in it. You trace each moment of **friction** in a session to the part of the environment that allowed it, and change that part, not the code, so the next run goes better.
 
-**Calls:** `memorize`, `write-for-agents`. **Hands over to:** `/improve-skills`, `/setup-git-hooks`.
-
 ## Steps
 
 ### 1. Trace the friction
@@ -46,7 +44,7 @@ Match each moment of friction to a category, and each candidate to the moment it
 
 A check that exists but sits unwired or broken is the finding; fix it rather than build a second one. Read the **Reference** below before placing a standard or a steering line.
 
-Friction that a skill caused (a wrong trigger, an unclear step, a stale route) belongs to the skills repository: set it aside for `/improve-skills`.
+Friction that a skill caused (a wrong trigger, an unclear step, a stale route) belongs to the skills repository: set it aside as a skill finding, listed for the user at the end.
 
 Completion: every moment of friction from step 1 has a candidate, a skill finding, or a stated reason that the environment could not have prevented it.
 
@@ -60,12 +58,12 @@ Completion: the user has accepted or declined every candidate.
 
 Apply each accepted candidate in its home:
 
-- **A check or hook**: build it, run it against the current code to confirm it passes, and against the session's mistake when it can be reproduced to confirm it fails. When the repository has no guardrail at all, tell the user to run `/setup-git-hooks` to install one.
-- **A navigation pointer, a code convention, or a project convention**: call the Skill tool with "memorize", which owns where written lessons live.
-- **A steering file edit or deletion**: call the Skill tool with "write-for-agents" and follow it.
+- **A check or hook**: build it, run it against the current code to confirm it passes, and against the session's mistake when it can be reproduced to confirm it fails. When the repository has no hook mechanism at all, add one with the candidate: a versioned hooks directory that git's `core.hooksPath` points to.
+- **A navigation pointer, a code convention, or a project convention**: file it following [LESSONS.md](LESSONS.md), which says where written lessons live.
+- **A steering file edit or deletion**: follow [AGENT-INSTRUCTIONS.md](AGENT-INSTRUCTIONS.md).
 - **A tool or access change**: make it when it sits in the repository; otherwise give the user the exact change to make.
 
-When skill findings were set aside, tell the user to run `/improve-skills`.
+When skill findings were set aside, list them for the user (the skill, the step, and what went wrong), so they can be reported to the skills repository.
 
 Completion: every accepted candidate is applied and verified, or handed to the user with the exact change.
 

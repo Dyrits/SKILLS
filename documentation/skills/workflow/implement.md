@@ -4,13 +4,13 @@ Derived from upstream `implement`, verified at revision `d81f3a1`.
 
 `implement` builds authorized work and commits it on the current branch. Its input is settled intended behavior, not an invitation to redesign the scope. It accepts shared specifications, a task, or an explicit user-approved living work batch.
 
-It uses test-driven development at agreed seams, diagnoses a reported bug through [debug](../upkeep/debug.md) before editing code, and reports its verification evidence. Run on its own, it keeps local documents current, with unfinished acceptance and evidence in working state, and records completed authorized agreements and deliveries in the changelog using the format owned by [document](../reference/document.md). Handed one task by a coordinating skill, it returns that evidence instead, so parallel implementers never write the same records.
+It uses test-driven development at agreed seams, diagnoses a reported bug before editing code, and reports its verification evidence. It carries its own copies of the [test-first](./test-first.md) rules, the [debug](../upkeep/debug.md) diagnosis loop, and the project document contract. Run on its own, it keeps local documents current, with unfinished acceptance and evidence in working state, and records completed authorized agreements and deliveries in the changelog. Handed one task by a coordinating skill, it returns that evidence instead, so parallel implementers never write the same records.
 
-It does not review its own work. The review runs once over the whole batch: [divide-and-conquer](./divide-and-conquer.md) runs it after merging, [iterate](./iterate.md) at its milestones, and a standalone run ends by recommending [review-and-refactor](./review-and-refactor.md).
+It does not review its own work. The review runs once over the whole batch: [divide-and-conquer](./divide-and-conquer.md) runs it after merging and [iterate](./iterate.md) at its milestones. A standalone run ends with the starting commit, scope, agreement, and evidence a review such as [review-and-refactor](./review-and-refactor.md) starts from; it does not start one.
 
 ## When to reach for it
 
-Type `/implement`, or let a coordinating skill hand it a task. Use it when the behavior is agreed and the next step is code. Use [prototype](../shaping/prototype.md) only for a user-approved experiment answering an unresolved design question.
+Type `/implement`, or let an agent hand it a task, such as one implementer in a parallel run. Use it when the behavior is agreed and the next step is code. Use [prototype](../shaping/prototype.md) only for a user-approved experiment answering an unresolved design question.
 
 ## Common questions
 
@@ -37,4 +37,4 @@ It ships outside this repository, so the skill cannot assume it. When browser in
 
 ## Where it fits
 
-This is the implementation chain step after [taskify](./taskify.md), following [specify](./specify.md), and before [review-and-refactor](./review-and-refactor.md). [iterate](./iterate.md) calls it for every batch. [divide-and-conquer](./divide-and-conquer.md) coordinates parallel work; [guide](../productivity/guide.md) maps the whole system.
+This is the implementation chain step after [taskify](./taskify.md), following [specify](./specify.md), and before [review-and-refactor](./review-and-refactor.md). [iterate](./iterate.md) carries the same discipline for every batch. [divide-and-conquer](./divide-and-conquer.md) coordinates parallel work; [guide](../productivity/guide.md) maps the whole system.

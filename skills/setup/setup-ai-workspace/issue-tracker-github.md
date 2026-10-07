@@ -4,7 +4,7 @@ Published tasks for this repository live as GitHub issues. The capability's spec
 
 Backlog: <verified GitHub backlog or project-board URL>
 
-The remote backlog owns candidate outcomes, priorities, and deferrals. The local backlog document links to it; working state remains local for execution and resumption. Apply the authority and publication rules supplied by the `document` skill.
+The remote backlog owns candidate outcomes, priorities, and deferrals. The local backlog document links to it; working state remains local for execution and resumption.
 
 ## Conventions
 

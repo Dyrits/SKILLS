@@ -8,7 +8,7 @@ Local drafting is tracker-neutral. Remote publication requires explicit approval
 
 ## When to reach for it
 
-Type `/taskify`, or an agent or another skill can reach for it when the task fits. Use it when work benefits from sequencing or parallel delivery. If the whole change fits a small batch, [iterate](../workflow/iterate.md) or [implement](implement.md) may be enough.
+Type `/taskify`, or an agent can reach for it when the task fits. Use it when work benefits from sequencing or parallel delivery. If the whole change fits a small batch, [iterate](../workflow/iterate.md) or [implement](implement.md) may be enough.
 
 ## Tracer bullets and blocking edges
 
@@ -28,7 +28,7 @@ New local task bodies live under `documentation/capabilities/<capability>/tasks/
 No. The task points to applicable requirements and specifications; the agreed specification remains canonical in the repository.
 
 **What happens after the tasks are saved?**
-It reports the saved paths or links, the remaining blockers, and the frontier of tasks whose prerequisites are complete, then offers the next move for you to run: [implement](./implement.md) for one task, or [divide-and-conquer](./divide-and-conquer.md) for the whole task graph, which routes each task to the least expensive capable agent and runs independent ones in parallel. It does not start either.
+It reports the saved paths or links, the remaining blockers, and the frontier of tasks whose prerequisites are complete, and stops there. The frontier is what an implementer reads next: [implement](./implement.md) can take one task, and [divide-and-conquer](./divide-and-conquer.md) the whole graph. Taskify does not start or suggest either.
 
 ## It's working if
 

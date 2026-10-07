@@ -8,7 +8,7 @@ It is installed rather than invoked because a skill fires only after reasoning h
 
 ## When to reach for it
 
-Type `/setup-delegation-policy`, or an agent or another skill can reach for it. Because it edits files outside any one repository, its trigger is your explicit request, and `setup-ai-workspace` calls it only after you agree.
+Type `/setup-delegation-policy`, or an agent can reach for it. Because it edits files outside any one repository, its trigger is your explicit request.
 
 ## What it changes
 
@@ -47,4 +47,4 @@ Ask for uninstall. The section is removed from each file and the rest left alone
 
 ## Where it fits
 
-Run-once, machine-wide setup, rerun when `POLICY.md` changes. It sits beside [setup-ai-workspace](./setup-ai-workspace.md), which configures one repository and offers this skill when the policy is missing, calling it only after you agree, and [setup-ai-tooling](./setup-ai-tooling.md), which provisions tools. [guide](../productivity/guide.md) routes the rest.
+Run-once, machine-wide setup, rerun when `POLICY.md` changes. It sits beside [setup-ai-workspace](./setup-ai-workspace.md), which configures one repository, and [setup-ai-tooling](./setup-ai-tooling.md), which provisions tools. [guide](../productivity/guide.md) routes the rest.

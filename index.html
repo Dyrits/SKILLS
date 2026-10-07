@@ -569,9 +569,7 @@ const DATA = {
   "address-feedback": {
    "argumentHint": "Feedback source: PR, MR, issue, or ticket reference, a file path, or pasted text",
    "bucket": "workflow",
-   "calls": [
-    "implement"
-   ],
+   "calls": [],
    "description": "Assess review feedback from any source (pull or merge request, issue, ticket, document comments, pasted notes), propose dispositions, then implement and reply. Use when the user shares feedback to address or asks to handle review comments.",
    "fits": [
     "This is a workflow step that follows a review of your work and loops back through implementation: implement and test-first style validation apply to the changes. Replies are drafted in the spirit of publish-message, which handles posting conclusions to any service. guide maps the whole system."
@@ -581,7 +579,9 @@ const DATA = {
     "feedback",
     "code"
    ],
-   "next": [],
+   "next": [
+    "implement"
+   ],
    "outputs": [
     "code",
     "verification",
@@ -662,13 +662,10 @@ const DATA = {
   "codify": {
    "argumentHint": "",
    "bucket": "setup",
-   "calls": [
-    "document",
-    "interview"
-   ],
+   "calls": [],
    "description": "Define the project's code conventions by drafting candidate rules from how the code is already written and confirming each with the user and its reason, or audit an existing conventions file. Use when the user wants to write down or check how code is written here, or when a review or architecture audit finds no conventions.",
    "fits": [
-    "codify is setup you run once per repository, best after architect has chosen the stack, and again when conventions need checking. review-and-refactor, improve-codebase-architecture, setup-ai-workspace, and iterate call when conventions are missing or need settling. It uses interview for the questions and document for the file. Guide maps the surrounding flows."
+    "codify is setup you run once per repository, best after architect has chosen the stack, and again when conventions need checking. Reviews and audits read the conventions file it writes and report when it is missing. It carries its own copies of the interview method and of the formats for the conventions file and the other homes it routes rules to. Guide maps the surrounding flows."
    ],
    "handovers": [],
    "inputs": [
@@ -682,7 +679,7 @@ const DATA = {
    "requires": [],
    "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/setup/codify/SKILL.md",
    "summary": [
-    "codify writes down how code is written in your project, as rules a reviewer can apply to any diff. It drafts each candidate from patterns already in the code (how errors are handled, how tests are named), asks you to confirm it and give its reason, and has the confirmed rules written to the conventions file through document. It can also audit an existing conventions file.",
+    "codify writes down how code is written in your project, as rules a reviewer can apply to any diff. It drafts each candidate from patterns already in the code (how errors are handled, how tests are named), asks you to confirm it and give its reason, and writes the confirmed rules to the conventions file, routing anything that is not a convention to its proper home. It can also audit an existing conventions file.",
     "A convention is project-agnostic: it applies to this project but could be transposed to another one on the same stack, because it is not tied to the product or its domain. A rule about what the product does is a requirement, and anything a linter or CI job can check belongs in that tool's configuration; codify routes those away instead of writing them down."
    ],
    "tagline": "Draft the project's code conventions from how its code is written, confirm each rule and its reason, or audit existing conventions."
@@ -777,12 +774,10 @@ const DATA = {
   "design-workflow": {
    "argumentHint": "A workflow to design, or nothing to go find one",
    "bucket": "productivity",
-   "calls": [
-    "interview"
-   ],
+   "calls": [],
    "description": "Interview the user into implementable workflow specifications for recurring loops in their work, using the current directory as a stateful workspace. Use when the user wants to design or specify a workflow.",
    "fits": [
-    "design-workflow is a reach-for-it-anytime standalone for recurring operational loops. interview supplies the interview discipline; specify instead records codebase capability behavior. The finished workflow specification is input to the implementer you choose, not permission to start development automatically. guide maps the whole set."
+    "design-workflow is a reach-for-it-anytime standalone for recurring operational loops. It carries its own copy of the interview discipline from interview; specify instead records codebase capability behavior. The finished workflow specification is input to the implementer you choose, not permission to start development automatically. guide maps the whole set."
    ],
    "handovers": [],
    "inputs": [
@@ -803,15 +798,10 @@ const DATA = {
   "divide-and-conquer": {
    "argumentHint": "",
    "bucket": "workflow",
-   "calls": [
-    "document",
-    "draft-merge-request",
-    "implement",
-    "review-and-refactor"
-   ],
+   "calls": [],
    "description": "Implement an authorized task graph in parallel: route each task to the least expensive capable agent, build on one integration branch, then review once. Use when the user asks to implement a whole task graph or a batch of independent tasks.",
    "fits": [
-    "This coordinates the implementation stage after specify and taskify, or for a batch inside iterate, then calls review-and-refactor across the integration branch. guide maps the other routes."
+    "This coordinates the implementation stage after specify and taskify, or for a batch inside iterate, then reviews the integration branch once with its own copy of review-and-refactor. guide maps the other routes."
    ],
    "handovers": [],
    "inputs": [
@@ -827,9 +817,7 @@ const DATA = {
     "review-findings"
    ],
    "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/workflow/divide-and-conquer.md",
-   "requires": [
-    "setup-ai-workspace"
-   ],
+   "requires": [],
    "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/workflow/divide-and-conquer/SKILL.md",
    "summary": [
     "divide-and-conquer builds an authorized task graph or living work batch on one integration branch, in three phases:",
@@ -869,9 +857,7 @@ const DATA = {
   "draft-merge-request": {
    "argumentHint": "",
    "bucket": "version-control",
-   "calls": [
-    "illustrate"
-   ],
+   "calls": [],
    "description": "Write the body of a pull request or merge request: a summary visual, before/after evidence, and the merge danger. Use when opening one, when writing or rewriting its description, or when a reviewer needs to see what a change does without reading the diff.",
    "fits": [
     "draft-merge-request is a chain step after review-and-refactor, and a standalone format reference when rewriting a description. Its evidence must reflect agreed checks, actual results, and any pending human acceptance rather than declaring delivery prematurely. address-feedback continues when reviewers reply. improve-skills reviews how the skills behaved in the session, and guide maps both development workflows."
@@ -935,17 +921,10 @@ const DATA = {
   "graphify": {
    "argumentHint": "",
    "bucket": "shaping",
-   "calls": [
-    "delineate",
-    "document",
-    "illustrate",
-    "interview",
-    "prototype",
-    "research"
-   ],
+   "calls": [],
    "description": "Build and work through a shared decision graph for an effort too large for one session. Use when the user asks to graphify an effort or to resolve the next decision task on an existing graph.",
    "fits": [
-    "Graphify is a shaping workflow for multi-session uncertainty. It uses document for shared project documents and hands a clear route to specify or taskify. Guide routes the surrounding flow."
+    "Graphify is a shaping workflow for multi-session uncertainty. It carries its own copies of the project document rules and of the research, prototype, interview, and illustrate steps its tasks use. The route it leaves is what specify or taskify reads next. Guide routes the surrounding flow."
    ],
    "handovers": [],
    "inputs": [
@@ -960,9 +939,7 @@ const DATA = {
     "decisions"
    ],
    "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/shaping/graphify.md",
-   "requires": [
-    "setup-ai-workspace"
-   ],
+   "requires": [],
    "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/shaping/graphify/SKILL.md",
    "summary": [
     "Builds and works through a shared decision graph for an effort too large for one session. Its nodes are questions, and its blocking relationships determine which questions can be resolved next. It plans the route to a named destination rather than decomposing the destination into implementation tasks.",
@@ -1035,7 +1012,7 @@ const DATA = {
    "argumentHint": "",
    "bucket": "productivity",
    "calls": [],
-   "description": "Explain the current topic visually. Use when the user asks to see how something works, compare states or options, understand code structure or flow, or when another skill needs a concise explanatory visual.",
+   "description": "Explain the current topic visually. Use when the user asks to see how something works, compare states or options, or understand code structure or flow.",
    "fits": [
     "illustrate is a reach-for-it-anytime standalone for understanding a topic visually. draft-merge-request also uses it to shape the summary visual in a request body. guide helps you choose where to go next."
    ],
@@ -1058,18 +1035,12 @@ const DATA = {
   "implement": {
    "argumentHint": "",
    "bucket": "workflow",
-   "calls": [
-    "debug",
-    "document",
-    "test-first"
-   ],
-   "description": "Implement authorized work test-first and report its verification evidence. Use when the user asks to build agreed specifications, a task, or an approved work batch, or when a coordinating skill hands an implementer one task.",
+   "calls": [],
+   "description": "Implement authorized work test-first and report its verification evidence. Use when the user asks to build agreed specifications, a task, or an approved work batch, or when a coordinator hands an implementer one task.",
    "fits": [
-    "This is the implementation chain step after taskify, following specify, and before review-and-refactor. iterate calls it for every batch. divide-and-conquer coordinates parallel work; guide maps the whole system."
+    "This is the implementation chain step after taskify, following specify, and before review-and-refactor. iterate carries the same discipline for every batch. divide-and-conquer coordinates parallel work; guide maps the whole system."
    ],
-   "handovers": [
-    "review-and-refactor"
-   ],
+   "handovers": [],
    "inputs": [
     "specification",
     "blueprint",
@@ -1089,24 +1060,18 @@ const DATA = {
    "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/workflow/implement/SKILL.md",
    "summary": [
     "implement builds authorized work and commits it on the current branch. Its input is settled intended behavior, not an invitation to redesign the scope. It accepts shared specifications, a task, or an explicit user-approved living work batch.",
-    "It uses test-driven development at agreed seams, diagnoses a reported bug through debug before editing code, and reports its verification evidence. Run on its own, it keeps local documents current, with unfinished acceptance and evidence in working state, and records completed authorized agreements and deliveries in the changelog using the format owned by document. Handed one task by a coordinating skill, it returns that evidence instead, so parallel implementers never write the same records.",
-    "It does not review its own work. The review runs once over the whole batch: divide-and-conquer runs it after merging, iterate at its milestones, and a standalone run ends by recommending review-and-refactor."
+    "It uses test-driven development at agreed seams, diagnoses a reported bug before editing code, and reports its verification evidence. It carries its own copies of the test-first rules, the debug diagnosis loop, and the project document contract. Run on its own, it keeps local documents current, with unfinished acceptance and evidence in working state, and records completed authorized agreements and deliveries in the changelog. Handed one task by a coordinating skill, it returns that evidence instead, so parallel implementers never write the same records.",
+    "It does not review its own work. The review runs once over the whole batch: divide-and-conquer runs it after merging and iterate at its milestones. A standalone run ends with the starting commit, scope, agreement, and evidence a review such as review-and-refactor starts from; it does not start one."
    ],
    "tagline": "Implement authorized work, validate and review it, and maintain the shared documents."
   },
   "improve-codebase-architecture": {
    "argumentHint": "",
    "bucket": "upkeep",
-   "calls": [
-    "codify",
-    "delineate",
-    "design-modules",
-    "document",
-    "interview"
-   ],
+   "calls": [],
    "description": "Scan a codebase for deepening opportunities, present them as a visual HTML report, then interview through the chosen one. Use when the user wants architecture improvements or refactoring candidates found.",
    "fits": [
-    "improve-codebase-architecture is periodic maintenance that generates candidate work rather than implementing it. design-modules supplies depth-and-seam vocabulary; interview explores the selected candidate; delineate settles domain terms, codify the conventions, and document records them and any qualifying decision. Approved work enters planned or just-in-time development without weakening existing obligations. guide maps both workflows."
+    "improve-codebase-architecture is periodic maintenance that generates candidate work rather than implementing it. It carries its own copies of the depth-and-seam vocabulary, the interview method, and the glossary and decision record formats. delineate and codify own the full glossary and the conventions. Approved work enters planned or just-in-time development without weakening existing obligations. guide maps both workflows."
    ],
    "handovers": [],
    "inputs": [
@@ -1134,18 +1099,12 @@ const DATA = {
   "improve-environment": {
    "argumentHint": "Optional: the session to review, and the moment that went wrong",
    "bucket": "upkeep",
-   "calls": [
-    "memorize",
-    "write-for-agents"
-   ],
+   "calls": [],
    "description": "Hold a retrospective on a session's friction, then change the project's environment so the next run avoids it: checks, guardrails, navigation pointers, steering files, tool and information access. Use when the user asks what would have prevented a mistake, why a session was hard, or for an environment retrospective.",
    "fits": [
     "improve-environment is periodic maintenance after a session in either development workflow, most useful after one that felt harder than it should have. Run it before clearing the session, or point a new session at the log. It follows debug when you want to know what would have prevented the bug, sits beside improve-skills for problems in the skills themselves, and hands a repository with no guardrail to setup-git-hooks. guide maps the whole set."
    ],
-   "handovers": [
-    "improve-skills",
-    "setup-git-hooks"
-   ],
+   "handovers": [],
    "inputs": [
     "session"
    ],
@@ -1166,17 +1125,12 @@ const DATA = {
   "improve-skills": {
    "argumentHint": "Optional: the session to review, and what you expected from it",
    "bucket": "upkeep",
-   "calls": [
-    "memorize",
-    "unslop"
-   ],
+   "calls": [],
    "description": "Hold a retrospective on a session, then report how the skills behaved as an issue on the skills repository. Use when the user asks to review skill use in a session or to report a skill problem.",
    "fits": [
     "improve-skills is periodic maintenance after a session in either development workflow. Run it before clearing the session, or point a new session at the log. memorize handles corrections during the session; this skill handles what the skills themselves got wrong, and improve-environment what the project's environment got wrong. Fixing a reported problem happens in a separate session on this repository, following write-for-agents. guide maps the whole set."
    ],
-   "handovers": [
-    "improve-environment"
-   ],
+   "handovers": [],
    "inputs": [
     "session"
    ],
@@ -1197,7 +1151,7 @@ const DATA = {
    "argumentHint": "",
    "bucket": "shaping",
    "calls": [],
-   "description": "Interview the user in rounds of questions, each with a recommended answer, until a plan, decision, or idea is settled. Use when unresolved choices need shared understanding, when the user wants their thinking stress-tested or asks to be grilled, or when another skill needs decisions from the user.",
+   "description": "Interview the user in rounds of questions, each with a recommended answer, until a plan, decision, or idea is settled. Use when unresolved choices need shared understanding, or when the user wants their thinking stress-tested or asks to be grilled.",
    "fits": [
     "Interview is a reach-for-it-anytime standalone and an interview discipline. Specify, delineate, architect, and engineer carry their own copy of its method for unresolved decisions; graphify uses it to resolve bounded questions in a larger effort; codify uses it to settle code conventions. Guide maps the available flows."
    ],
@@ -1223,21 +1177,10 @@ const DATA = {
   "iterate": {
    "argumentHint": "An idea to build, or an existing project to continue",
    "bucket": "workflow",
-   "calls": [
-    "codify",
-    "delineate",
-    "design-modules",
-    "divide-and-conquer",
-    "document",
-    "implement",
-    "interview",
-    "prioritize",
-    "research",
-    "review-and-refactor"
-   ],
+   "calls": [],
    "description": "Build a living application one verified batch at a time, settling decisions just in time. Use when the user asks to iterate on an idea or continue building an existing project in batches.",
    "fits": [
-    "This is the just-in-time alternative to the planned route; it shares project documents with specify, taskify, and review-and-refactor, and builds every batch through implement. prioritize is its focus-selection branch. guide maps the whole system."
+    "This is the just-in-time alternative to the planned route; it shares project documents with specify, taskify, and review-and-refactor, and builds every batch with its own copy of implement. Its focus-selection branch is a copy of prioritize. guide maps the whole system."
    ],
    "handovers": [],
    "inputs": [
@@ -1262,25 +1205,19 @@ const DATA = {
    "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/workflow/iterate/SKILL.md",
    "summary": [
     "iterate builds a living application one verified batch at a time. It settles only the decisions the current batch needs, implements the batch, checks it, and lets the result decide what comes next. The application evolves in place from its first runnable batch; replacing it is your decision.",
-    "It coordinates other skills rather than replacing them: interview roots its interview in the current batch, prioritize picks a focus when scope is tangled, research answers external facts, implement builds each settled batch (bringing test-first and debug with it), divide-and-conquer takes a batch that splits into independent tasks, after you approve its routing table, and review-and-refactor runs at milestones."
+    "It carries its own copies of the disciplines it needs, so it runs with no other skill installed: the interview method rooted in the current batch, prioritize for picking a focus when scope is tangled, research for external facts, implement for each settled batch (with the test-first rules and the debug loop), divide-and-conquer for a batch that splits into independent tasks, after you approve its routing table, and review-and-refactor at milestones."
    ],
    "tagline": "Develop the living application just in time, maintaining backlog, working state, and root changelog."
   },
   "memorize": {
    "argumentHint": "",
    "bucket": "productivity",
-   "calls": [
-    "document",
-    "walk-through",
-    "write-for-agents"
-   ],
+   "calls": [],
    "description": "File a lesson in the home the next agent will read, and recall saved scripts and lessons before redoing work. Use the moment the user says \"always\", \"never\", \"from now on\" or \"remember\", or corrects how something is done rather than one result; before writing a script or a pipeline longer than one line; and when you rebuild something a second time. Use it even when the harness has its own memory: a project lesson belongs in the project.",
    "fits": [
-    "This is a working habit you or an agent reach for during any task; its result is the filed lesson or the saved script. It routes to write-for-agents, document, and walk-through depending on the lesson. improve-skills runs after a session and files what memorize cannot fix locally: problems in the skills themselves. guide maps the whole system."
+    "This is a working habit you or an agent reach for during any task; its result is the filed lesson or the saved script. It carries its own copies of the steering-file rules from write-for-agents, the project document formats, and the wizard template from walk-through, so it files every kind of lesson without another skill. improve-skills runs after a session and files what memorize cannot fix locally: problems in the skills themselves. guide maps the whole system."
    ],
-   "handovers": [
-    "improve-skills"
-   ],
+   "handovers": [],
    "inputs": [
     "session"
    ],
@@ -1318,9 +1255,7 @@ const DATA = {
     "tooling-report"
    ],
    "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/upkeep/monitor-ai-tooling.md",
-   "requires": [
-    "setup-ai-tooling"
-   ],
+   "requires": [],
    "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/upkeep/monitor-ai-tooling/SKILL.md",
    "summary": [
     "monitor-ai-tooling writes an on-demand report on AI tooling usage, measured output reduction, quality signals, and gaps, built only from measurements that already exist locally.",
@@ -1358,14 +1293,10 @@ const DATA = {
   "prioritize": {
    "argumentHint": "",
    "bucket": "shaping",
-   "calls": [
-    "document",
-    "interview",
-    "research"
-   ],
+   "calls": [],
    "description": "Decompose a large or tangled idea into outcomes, recommend one focus to build next, and keep the rest in the backlog. Use when competing capabilities, unclear scope, or dependencies block choosing the next increment, or when asked to break down an idea or revisit a backlog.",
    "fits": [
-    "This is a shaping step before building, mostly reached from iterate. Use graphify when the question is design, taskify once behavior is agreed, and interview for single decisions; it calls refine and research itself. guide maps the whole system."
+    "This is a shaping step before building. Use graphify when the question is design, taskify once behavior is agreed, and interview for single decisions; it carries its own interview and research steps. guide maps the whole system."
    ],
    "handovers": [],
    "inputs": [
@@ -1385,23 +1316,19 @@ const DATA = {
    "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/shaping/prioritize/SKILL.md",
    "summary": [
     "prioritize decomposes a large or tangled idea into outcomes, recommends one focus to build next, and keeps the rest in the backlog. Its output is direction, a lightweight backlog, and an approved or explicitly pending focus. It edits planning documents only; application code, dependencies, and external trackers belong to other workflows.",
-    "It groups ideas into vertical outcomes such as \"members can book a slot\", not layers such as \"all database work\". Uncertain areas stay coarse, dependencies are marked confirmed or suspected, and a consequential external unknown goes to research. Captured ideas stay at description level: tasks, estimates, and requirements come later."
+    "It groups ideas into vertical outcomes such as \"members can book a slot\", not layers such as \"all database work\". Uncertain areas stay coarse, dependencies are marked confirmed or suspected, and a consequential external unknown gets a bounded research question, run with the skill's own copy of the research steps. Captured ideas stay at description level: tasks, estimates, and requirements come later."
    ],
    "tagline": "Organize candidate outcomes and agree a useful focus without requiring tasks or implementation."
   },
   "prototype": {
    "argumentHint": "",
    "bucket": "shaping",
-   "calls": [
-    "document"
-   ],
+   "calls": [],
    "description": "Build a scoped experimental prototype to answer a user-requested or approved design question about logic, state, or UI. Use when the user asks to try an idea before committing to it, or to see a state model or interface variants.",
    "fits": [
     "This is a standalone experiment and an optional, user-approved aid during specify. interview explores the question; implement builds the agreed result. guide maps the whole system."
    ],
-   "handovers": [
-    "iterate"
-   ],
+   "handovers": [],
    "inputs": [
     "idea"
    ],
@@ -1424,9 +1351,7 @@ const DATA = {
   "publish-message": {
    "argumentHint": "Optional: where to post, and what to say",
    "bucket": "productivity",
-   "calls": [
-    "unslop"
-   ],
+   "calls": [],
    "description": "Publish an established conclusion or review summary to a connected service (code host, tracker, chat, documentation, email) in its conventions. Use when the user asks to post, publish, or send findings to one.",
    "fits": [
     "This is a standalone publication step after review-and-refactor or any other work that produced a conclusion. address-feedback covers replies to feedback you received, and draft-merge-request covers request descriptions. guide maps the whole system."
@@ -1477,12 +1402,10 @@ const DATA = {
   "rebase": {
    "argumentHint": "branch... --onto target [--remote remote]",
    "bucket": "version-control",
-   "calls": [
-    "resolve-merge-conflicts"
-   ],
+   "calls": [],
    "description": "Rebase local branches in place onto one target, resolve conflicts, run checks, then push with force-with-lease on approval. Use when the user asks to rebase branches onto a target.",
    "fits": [
-    "A standalone version-control skill for batches of local branches. It calls resolve-merge-conflicts whenever Git stops on a conflict. work-in-tree and sync-tree cover the other worktree movements. guide maps the wider flow."
+    "A standalone version-control skill for batches of local branches. It carries its own copy of the intent-led resolution in resolve-merge-conflicts and uses it whenever Git stops on a conflict. work-in-tree and sync-tree cover the other worktree movements. guide maps the wider flow."
    ],
    "handovers": [],
    "inputs": [
@@ -1560,11 +1483,7 @@ const DATA = {
   "review-and-refactor": {
    "argumentHint": "",
    "bucket": "workflow",
-   "calls": [
-    "codify",
-    "document",
-    "publish-message"
-   ],
+   "calls": [],
    "description": "Review and refactor changes since a fixed point against repository standards and the originating behavior agreement. Runs independent Standards and Specifications reviews, applies supported refactors, and reuses the reviewers to verify them. Use for the refactor phase after red/green implementation, or when asked to review and refactor a branch, pull request, or work in progress.",
    "fits": [
     "This is the review step after implement or divide-and-conquer, and also a standalone review. test-first handles missing behavior through red/green. guide maps the whole system."
@@ -1597,16 +1516,12 @@ const DATA = {
   "setup-ai-tooling": {
    "argumentHint": "",
    "bucket": "setup",
-   "calls": [
-    "write-for-agents"
-   ],
-   "description": "Set up free AI development tools for a project and its installed agent clients. Use when explicitly asked to install or configure AI tooling, or when workspace setup includes an approved tooling stage.",
+   "calls": [],
+   "description": "Set up free AI development tools for a project and its installed agent clients. Use when explicitly asked to install or configure AI tooling.",
    "fits": [
-    "Run-once setup per project, offered as an optional stage of setup-ai-workspace. monitor-ai-tooling is its periodic follow-up. guide routes the rest."
+    "Run-once setup per project, run on its own request; setup-ai-workspace configures the project records and leaves tooling to it. monitor-ai-tooling is its periodic follow-up. guide routes the rest."
    ],
-   "handovers": [
-    "monitor-ai-tooling"
-   ],
+   "handovers": [],
    "inputs": [],
    "next": [],
    "outputs": [
@@ -1617,25 +1532,17 @@ const DATA = {
    "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/setup/setup-ai-tooling/SKILL.md",
    "summary": [
     "Provisions free AI development tools for one project and the agent clients installed on the machine, then records a measurable baseline. It reuses working integrations instead of reinstalling them, and it leaves an unverified adapter or output filter disabled rather than guessing.",
-    "It runs only inside an explicit tooling request, including a tooling stage you chose during setup-ai-workspace."
+    "It runs only inside an explicit tooling request."
    ],
    "tagline": "Configure and verify selected development tools and their measurement baseline."
   },
   "setup-ai-workspace": {
    "argumentHint": "",
    "bucket": "setup",
-   "calls": [
-    "codify",
-    "document",
-    "memorize",
-    "setup-ai-tooling",
-    "setup-delegation-policy",
-    "setup-git-guardrails",
-    "setup-git-hooks"
-   ],
-   "description": "Configure a repository for AI-assisted work: task tracking, ticket conventions, triage roles, code conventions, optional tooling setups. Use when the user asks to set up or reconfigure the AI workspace.",
+   "calls": [],
+   "description": "Configure a repository for AI-assisted work: task tracking, ticket conventions, triage roles, and agent navigation to the project documents. Use when the user asks to set up or reconfigure the AI workspace.",
    "fits": [
-    "This is run-once setup for specify, taskify, triage, and graphify. Document owns the shared document rules; guide routes the workflow."
+    "This is run-once setup for specify, taskify, triage, and graphify. It carries its own copy of the shared document rules; guide routes the workflow."
    ],
    "handovers": [],
    "inputs": [],
@@ -1648,8 +1555,8 @@ const DATA = {
    "requires": [],
    "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/setup/setup-ai-workspace/SKILL.md",
    "summary": [
-    "Configures one repository's task tracker, ticket-writing convention, and triage-role vocabulary, and offers code conventions and, for several domain contexts, a glossary map. Its output is editable Markdown under .agents/, plus an agent-instruction block. It changes project configuration, not the installed skills. It then offers the other setups, so one run can prepare the whole workspace.",
-    "The tracker choice does not move specification authority. Agreed living behavior, design, and acceptance stay in documentation/capabilities/<capability>/specifications.md. Remote tasks link to or summarize that specification. Local documents can be maintained within scope without publishing remote records."
+    "Configures one repository's task tracker, ticket-writing convention, and triage-role vocabulary, and points agents at the project documents. Its output is editable Markdown under .agents/, plus an agent-instruction block. It changes project configuration, not the installed skills. Code conventions, tooling, hooks, guardrails, and machine-wide settings are out of its scope; it reports a missing conventions file instead of writing one.",
+    "The tracker choice does not move specification authority. Agreed living behavior and acceptance stay in documentation/capabilities/<capability>/specifications.md. Remote tasks link to or summarize that specification. Local documents can be maintained within scope without publishing remote records."
    ],
    "tagline": "Configure shared project documents, task tracking, triage roles, and the optional setups."
   },
@@ -1659,7 +1566,7 @@ const DATA = {
    "calls": [],
    "description": "Install the delegation and model routing rule into the global steering files on this machine. Use when the user asks to set up delegation or model routing.",
    "fits": [
-    "Run-once, machine-wide setup, rerun when POLICY.md changes. It sits beside setup-ai-workspace, which configures one repository and offers this skill when the policy is missing, calling it only after you agree, and setup-ai-tooling, which provisions tools. guide routes the rest."
+    "Run-once, machine-wide setup, rerun when POLICY.md changes. It sits beside setup-ai-workspace, which configures one repository, and setup-ai-tooling, which provisions tools. guide routes the rest."
    ],
    "handovers": [],
    "inputs": [],
@@ -1684,7 +1591,7 @@ const DATA = {
    "calls": [],
    "description": "Set up hooks and permission rules that make coding agents ask before git commands that can lose work or rewrite shared history (pushing to a protected branch, force pushes, reset --hard, clean -f, branch -D, discarding changes) across Claude Code, OpenCode, and Codex CLI. Use when the user wants to guard against destructive git operations by any coding agent.",
    "fits": [
-    "Run-once safety setup per project or per machine, also offered as an optional stage of setup-ai-workspace. setup-git-hooks is the git-level layer that covers agents this cannot intercept. guide routes the rest."
+    "Run-once safety setup per project or per machine, run on its own request. setup-git-hooks is the git-level layer that covers agents this cannot intercept. guide routes the rest."
    ],
    "handovers": [],
    "inputs": [],
@@ -1710,7 +1617,7 @@ const DATA = {
    "calls": [],
    "description": "Set up versioned git hooks via core.hooksPath (no Husky) with lint-staged (Biome, plus Prettier only for languages Biome leaves uncovered and only if the user wants it), plus typecheck and build. Use when user wants to add pre-commit hooks, commit-time formatting/linting/typechecking, or to replace Husky with git's built-in hooks path.",
    "fits": [
-    "Run-once setup per repository, also offered as an optional stage of setup-ai-workspace. setup-git-guardrails pairs with it: its optional pre-push fallback uses this same hooks path. guide routes the rest."
+    "Run-once setup per repository, run on its own request. setup-git-guardrails pairs with it: its optional pre-push fallback uses this same hooks path. guide routes the rest."
    ],
    "handovers": [],
    "inputs": [],
@@ -1772,9 +1679,7 @@ const DATA = {
   "sync-tree": {
    "argumentHint": "",
    "bucket": "version-control",
-   "calls": [
-    "rebase"
-   ],
+   "calls": [],
    "description": "Sync a completed Git worktree branch to its corresponding branch in the original local repository. Use when the user asks to sync, land, or bring worktree work back to the original checkout.",
    "fits": [
     "The return leg of the isolated-worktree route: work-in-tree prepares and works in the checkout, this lands it. guide maps the wider flow."
@@ -1792,30 +1697,28 @@ const DATA = {
    "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/version-control/sync-tree/SKILL.md",
    "summary": [
     "sync-tree transfers the committed work of a worktree branch (or an isolated local clone) to its corresponding branch in the original local repository.",
-    "It moves history only. It makes no code changes, creates no merge commits, and does not publish to an upstream. If the destination has commits the source lacks, it never removes them: it offers to rebase the source branch onto the destination first, through rebase, so the update becomes a fast-forward."
+    "It moves history only. It makes no code changes, creates no merge commits, and does not publish to an upstream. If the destination has commits the source lacks, it never removes them: it offers to rebase the source branch onto the destination first, with its own copy of the rebase procedure, so the update becomes a fast-forward."
    ],
    "tagline": "Transfer committed work to the verified corresponding local branch."
   },
   "taskify": {
    "argumentHint": "",
    "bucket": "workflow",
-   "calls": [
-    "document"
-   ],
+   "calls": [],
    "description": "Decompose approved work into verifiable tasks with explicit blocking dependencies, locally or on an approved tracker. Use when the user asks to break agreed work into tasks, or when specifications need splitting into delivery work.",
    "fits": [
     "Taskify is an optional chain step after specify and before implement or divide-and-conquer. It produces a task graph, not an execution run. Guide maps the alternatives."
    ],
-   "handovers": [
-    "divide-and-conquer",
-    "implement"
-   ],
+   "handovers": [],
    "inputs": [
     "specification",
     "blueprint",
     "requirements"
    ],
-   "next": [],
+   "next": [
+    "implement",
+    "divide-and-conquer"
+   ],
    "outputs": [
     "tasks"
    ],
@@ -1857,13 +1760,10 @@ const DATA = {
   "test-first": {
    "argumentHint": "",
    "bucket": "workflow",
-   "calls": [
-    "design-modules",
-    "document"
-   ],
-   "description": "Build features or fix bugs test-first through the red-green loop of test-driven development (TDD), leaving refactoring to review-and-refactor. Use when the user wants test-first work, mentions TDD or red-green-refactor, or wants integration tests.",
+   "calls": [],
+   "description": "Build features or fix bugs test-first through the red-green loop of test-driven development (TDD), leaving refactoring to a later review. Use when the user wants test-first work, mentions TDD or red-green-refactor, or wants integration tests.",
    "fits": [
-    "This is implementation machinery used by implement and divide-and-conquer. review-and-refactor follows red/green and handles structural refactoring. guide maps the other routes."
+    "This is implementation machinery: implement, divide-and-conquer, iterate, and address-feedback each carry a copy of these rules. review-and-refactor follows red/green and handles structural refactoring. guide maps the other routes."
    ],
    "handovers": [],
    "inputs": [
@@ -1890,14 +1790,10 @@ const DATA = {
   "triage": {
    "argumentHint": "",
    "bucket": "upkeep",
-   "calls": [
-    "delineate",
-    "document",
-    "interview"
-   ],
+   "calls": [],
    "description": "Move tasks and external PRs through triage roles: categorize, verify, refine, and write agent-ready briefs. Use when the user asks to triage, or when a published request needs verification and a maintainer decision.",
    "fits": [
-    "Triage is periodic intake maintenance. Interview resolves unclear requests, while document owns local specifications, backlog, active-work, and changelog upkeep. Guide routes the next step."
+    "Triage is periodic intake maintenance. It carries its own copies of the interview method, the glossary and decision record formats, and the rules for local specifications, backlog, active work, and the changelog. Guide routes the next step."
    ],
    "handovers": [],
    "inputs": [
@@ -1914,9 +1810,7 @@ const DATA = {
     "backlog"
    ],
    "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/upkeep/triage.md",
-   "requires": [
-    "setup-ai-workspace"
-   ],
+   "requires": [],
    "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/upkeep/triage/SKILL.md",
    "summary": [
     "Moves intake tasks through category and state roles, verifies the request against the codebase, and records an actionable next step. Remote tasks and local task bodies follow the same state machine. External pull requests can be included when the tracker configuration enables them.",
@@ -1979,9 +1873,7 @@ const DATA = {
    "fits": [
     "The opening leg of the isolated-worktree route, finished by sync-tree. rebase handles bringing branches onto a new base. guide maps the wider flow."
    ],
-   "handovers": [
-    "sync-tree"
-   ],
+   "handovers": [],
    "inputs": [
     "branches"
    ],

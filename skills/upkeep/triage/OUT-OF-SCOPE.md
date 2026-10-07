@@ -75,7 +75,7 @@ The reason should be substantive: not "we don't want this" but why. Good reasons
 
 The reason should be durable. Avoid referencing temporary circumstances ("we're too busy right now"); those aren't real rejections, they're deferrals.
 
-Candidate priorities and temporary deferrals follow the `document` skill's configured backlog authority. Local tracking stores them in the backlog; remote tracking keeps only the verified backlog name/link there and requires publication approval for remote changes. Pending publication and active paused work stay in local working state-progress.md`. The rejection knowledge base remains separate from both. Call the Skill tool with "document" before updating those records.
+Candidate priorities and temporary deferrals follow the backlog authority in [PROJECT-DOCUMENTS.md](PROJECT-DOCUMENTS.md). Local tracking stores them in the backlog; remote tracking keeps only the verified backlog name/link there and requires publication approval for remote changes. Pending publication and active paused work stay in local working state. The rejection knowledge base remains separate from both. Read [PROJECT-DOCUMENTS.md](PROJECT-DOCUMENTS.md) before updating those records.
 
 ## When to check `documentation/out-of-scope/`
 

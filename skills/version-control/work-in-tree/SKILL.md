@@ -9,8 +9,6 @@ Establish an isolated checkout before editing task files, then continue the
 requested work there. Keep the original checkout and target branch unchanged
 until the user requests a sync.
 
-**Hands over to:** `/sync-tree`.
-
 ## 1. Identify the starting point
 
 Read applicable repository instructions, Git status, branch, HEAD, common Git
@@ -87,6 +85,6 @@ Report a handoff with these verified fields:
 - Base commit and current task commit.
 - Uncommitted task changes, if any, and validation results.
 
-Tell the user to run `/sync-tree` with that destination once the intended work
-is committed. Keep the worktree for review and further work; syncing, upstream
-publication, and worktree removal require separate requests.
+These fields are everything needed to bring the committed work back to the
+target branch later. Keep the worktree for review and further work; syncing,
+upstream publication, and worktree removal require separate requests.

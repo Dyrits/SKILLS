@@ -8,7 +8,7 @@ Its defining constraint is that the agent's reading of the session is only a sta
 
 ## When to reach for it
 
-Type `/improve-skills`, or an agent or another skill can reach for it when the task fits. Run it after a session, optionally naming the session to review and what you expected from it.
+Type `/improve-skills`, or an agent can reach for it when the task fits. Run it after a session, optionally naming the session to review and what you expected from it.
 
 | Situation | Action |
 | --- | --- |
@@ -25,8 +25,8 @@ Type `/improve-skills`, or an agent or another skill can reach for it when the t
 | Finding | Home |
 | --- | --- |
 | A skill problem: a wrong or missing trigger, an unclear or missing step, conflicting skills, a stale route in `guide`, a missing skill | The issue on the skills repository |
-| A lesson about your project: a convention, a command, a review rule | Filed in the project through [memorize](../productivity/memorize.md) |
-| Friction the environment could have prevented: a missing check or guardrail, a long search, an expensive tool, missing information | Handed to [improve-environment](./improve-environment.md) once the issue is settled |
+| A lesson about your project: a convention, a command, a review rule | Filed in the project, in the nearest `AGENTS.md` or the conventions file |
+| Friction the environment could have prevented: a missing check or guardrail, a long search, an expensive tool, missing information | Listed for you once the issue is settled, each with the environment change that would have prevented it |
 | Agent behavior neither a skill nor the environment could have steered | Reported to you, left out of the issue |
 
 What went right goes into the issue too, so a later fix does not break behavior worth keeping.

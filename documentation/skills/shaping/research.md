@@ -8,7 +8,7 @@ It does not answer you in the conversation. The output is a file, written where 
 
 ## When to reach for it
 
-Type `/research`, or an agent or another skill can reach for it when a task turns into reading legwork.
+Type `/research`, or an agent can reach for it when a task turns into reading legwork.
 
 Reach for it when the next step is *finding something out* from outside the working directory (how a third-party API behaves, what a specification actually says, whether a version claim holds), and you'd rather not stall your own thread doing the reading. What you need decides which skill:
 
@@ -60,7 +60,7 @@ There is no stopping criterion in the skill, and this shows up as two complaints
 
 **`/graphify` created research tickets. Do I resolve those myself?**
 
-No. Graphify's charting session starts a subagent that calls `research` for each research task and captures findings on a throwaway `research/<name>` branch with a context pointer from the task. Parallel research tasks are the exception to Graphify's one-decision-task-per-session rule because they are agent-driven. Historical upstream evidence reports a subagent opening a draft pull request from a branch never meant to merge ([issue #576](https://github.com/mattpocock/skills/issues/576)); that report is not a claim about the current fork. Deleting a findings branch can still break the task's context pointer.
+No. Graphify's charting session starts a subagent for each research task, following Graphify's own copy of these research steps, and captures findings on a throwaway `research/<name>` branch with a context pointer from the task. Parallel research tasks are the exception to Graphify's one-decision-task-per-session rule because they are agent-driven. Historical upstream evidence reports a subagent opening a draft pull request from a branch never meant to merge ([issue #576](https://github.com/mattpocock/skills/issues/576)); that report is not a claim about the current fork. Deleting a findings branch can still break the task's context pointer.
 
 ## It's working if
 

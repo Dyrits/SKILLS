@@ -6,7 +6,7 @@ Upstream source: `loop-me`, verified in `skills/in-progress/loop-me/` in the `d8
 
 ## When to reach for it
 
-- **Invocation mode.** Type `/design-workflow`, or an agent or another skill can reach for it when the task fits.
+- **Invocation mode.** Type `/design-workflow`, or an agent can reach for it when the task fits.
 - **Trigger boundary.** Reach for it when a recurring activity needs a design: what fires it, where human checkpoints belong, and what the brief shows you. For a codebase capability, use [specify](../workflow/specify.md); `design-workflow` designs loops you will run again.
 
 ## The loop lens
@@ -29,4 +29,4 @@ No. A workflow is a specification of a loop; whether an agent, a script, or a hu
 
 ## Where it fits
 
-`design-workflow` is a reach-for-it-anytime standalone for recurring operational loops. [interview](../shaping/interview.md) supplies the interview discipline; [specify](../workflow/specify.md) instead records codebase capability behavior. The finished workflow specification is input to the implementer you choose, not permission to start development automatically. [guide](./guide.md) maps the whole set.
+`design-workflow` is a reach-for-it-anytime standalone for recurring operational loops. It carries its own copy of the interview discipline from [interview](../shaping/interview.md); [specify](../workflow/specify.md) instead records codebase capability behavior. The finished workflow specification is input to the implementer you choose, not permission to start development automatically. [guide](./guide.md) maps the whole set.

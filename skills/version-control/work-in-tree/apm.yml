@@ -1,7 +1,3 @@
 name: work-in-tree
 version: 0.2.0
 description: "Create or reuse an isolated Git worktree and carry out the task there, preserving the original checkout."
-dependencies:
-  apm:
-    - git: parent
-      path: skills/version-control/sync-tree

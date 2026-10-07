@@ -8,7 +8,7 @@ It does not teach from what the model already knows. Parametric knowledge is tre
 
 ## When to reach for it
 
-Type `/teach`, or an agent or another skill can reach for it when the task fits.
+Type `/teach`, or an agent can reach for it when the task fits.
 
 Reach for it when the learning is the project: a language, a framework, a codebase you have just joined, yoga, shaders, a certification. It is not the tool for one explanation in passing.
 

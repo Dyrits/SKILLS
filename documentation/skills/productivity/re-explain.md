@@ -6,7 +6,7 @@ Upstream source: `wait-what`, verified in the `d81f3a1` tree. This fork names th
 
 ## When to reach for it
 
-Type `/re-explain`, or an agent or another skill can reach for it when the task fits. You are usually the one who knows when an explanation stopped making sense.
+Type `/re-explain`, or an agent can reach for it when the task fits. You are usually the one who knows when an explanation stopped making sense.
 
 Use it when the agent invents jargon, stacks acronyms, or explains a decision without its premise. For an unresolved decision that needs discussion rather than another explanation, use [interview](../shaping/interview.md).
 

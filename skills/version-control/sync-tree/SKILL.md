@@ -11,8 +11,6 @@ Transfer committed work to its corresponding local branch. Preserve the branch
 name unless the user names a different target. Leave upstream publication,
 new merge commits, and code changes to separate requests.
 
-**Calls:** `rebase`.
-
 This skill works with linked Git worktrees and isolated local clones. The
 `delta-action` metadata also makes it eligible for Delta's Land Changes button;
 the workflow itself uses Git, not application-specific tools.
@@ -76,13 +74,12 @@ checkout of that branch is accounted for.
 - Target absent or an ancestor of source: perform a fast-forward transfer.
 - Diverged histories: each side has commits the other lacks. Show both commit
   IDs and the destination-only commits, then offer the choice:
-  1. **Rebase** (recommended): call the Skill tool with "rebase" for the source
-     branch in its own worktree, onto the target branch (linked worktrees) or
-     the fetched target commit (separate clones), and leave its push step
-     unused. The source's commits replay on top of the target, so no
-     destination commit is lost. Repeat steps 2 and 3 with the new tip: the
-     update is now a fast-forward. If `rebase` stops on a conflict, relay its
-     question and make no update.
+  1. **Rebase** (recommended): rebase the source branch in its own worktree
+     onto the target branch (linked worktrees) or the fetched target commit
+     (separate clones), following [REBASE.md](REBASE.md). The source's commits
+     replay on top of the target, so no destination commit is lost. Repeat
+     steps 2 and 3 with the new tip: the update is now a fast-forward. If the
+     rebase stops on a conflict question, relay it and make no update.
   2. **Replace** the target branch with the source, which drops the
      destination-only commits. Proceed only on explicit approval.
   3. **Stop** and leave both branches as they are.

@@ -1,6 +1,6 @@
 # Working state
 
-Read this when recording agreed work, completing a batch, or resuming. The "document" rules apply. Write only useful state, with pointers to existing evidence. Keep secrets and sensitive data out of these files.
+Read this when recording agreed work, completing a batch, or resuming. The rules in [PROJECT-DOCUMENTS.md](PROJECT-DOCUMENTS.md) apply. Write only useful state, with pointers to existing evidence. Keep secrets and sensitive data out of these files.
 
 ## Current work
 
@@ -15,9 +15,9 @@ Working state is the batch's resumption record. Update it when a batch is agreed
 - The goal's starting revision in a versioned project, plus milestone behavior evidence and review status when that branch applies.
 - The next step and any blocker or running assignment to reconcile before resuming.
 
-Prune finished items once code, tests, or lasting documentation captures them. Intended behavior those cannot express goes into a focused project document. Call the Skill tool with "document" to record a consequential choice as a decision record.
+Prune finished items once code, tests, or lasting documentation captures them. Intended behavior those cannot express goes into a focused project document. Record a consequential choice as a decision record following [DECISION-RECORD-FORMAT.md](DECISION-RECORD-FORMAT.md).
 
-On resumption, compare working state with the actual code and check results, and resolve discrepancies before trusting its status. A `hand-off` can point at this file and add session context.
+On resumption, compare working state with the actual code and check results, and resolve discrepancies before trusting its status. A handoff document can point at this file and add session context.
 
 ## Project-wide history
 

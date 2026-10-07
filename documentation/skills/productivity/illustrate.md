@@ -8,7 +8,7 @@ The fork renamed it to make its visual-explanation purpose clearer; its behaviou
 
 ## When to reach for it
 
-Type `/illustrate`, or an agent or another skill can reach for it when a task needs a visual explanation.
+Type `/illustrate`, or an agent can reach for it when a task needs a visual explanation.
 Use it during a discussion when you need to see the structure, sequence, or difference between options.
 
 | Your question | What you might see |

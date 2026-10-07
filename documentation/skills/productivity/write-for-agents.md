@@ -10,7 +10,7 @@ It was called `writing-great-skills` until v1.1. The rename reflects its wider s
 
 ## When to reach for it
 
-Type `/write-for-agents`, or an agent or another skill can reach for it when you're creating or editing a skill, or modifying `AGENTS.md`.
+Type `/write-for-agents`, or an agent can reach for it when you're creating or editing a skill, or modifying `AGENTS.md`.
 
 Reach for it by hand for other agent-facing documents, specifications, tasks, and unattended prompts. The test is whether an agent reads the text. [specify](../workflow/specify.md) establishes agreed capability behavior; [document](../reference/document.md) owns the project-document model. This reference governs how the instructions read, not what behavior the project should agree to.
 

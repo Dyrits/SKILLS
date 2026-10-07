@@ -4,11 +4,11 @@ Fork-created skill with no upstream equivalent, added in commit `b05ce86` under 
 
 `prioritize` decomposes a large or tangled idea into outcomes, recommends one focus to build next, and keeps the rest in the backlog. Its output is direction, a lightweight backlog, and an approved or explicitly pending focus. It edits planning documents only; application code, dependencies, and external trackers belong to other workflows.
 
-It groups ideas into vertical outcomes such as "members can book a slot", not layers such as "all database work". Uncertain areas stay coarse, dependencies are marked confirmed or suspected, and a consequential external unknown goes to [research](./research.md). Captured ideas stay at description level: tasks, estimates, and requirements come later.
+It groups ideas into vertical outcomes such as "members can book a slot", not layers such as "all database work". Uncertain areas stay coarse, dependencies are marked confirmed or suspected, and a consequential external unknown gets a bounded research question, run with the skill's own copy of the [research](./research.md) steps. Captured ideas stay at description level: tasks, estimates, and requirements come later.
 
 ## When to reach for it
 
-Type `/prioritize`, or an agent or another skill can reach for it when competing capabilities, unclear scope, or dependencies block choosing the next increment. [iterate](../workflow/iterate.md) invokes it that way and continues once you approve the focus. A clear small change skips it.
+Type `/prioritize`, or an agent can reach for it when competing capabilities, unclear scope, or dependencies block choosing the next increment. A clear small change skips it.
 
 Four skills border each other on decomposition.
 
@@ -19,11 +19,11 @@ Four skills border each other on decomposition.
 | Agreed behavior needs splitting into delivery tasks with acceptance criteria | [taskify](../workflow/taskify.md) |
 | One decision or plan needs stress-testing | [interview](../shaping/interview.md) |
 
-Run on its own, it ends by suggesting `/iterate` to build the focus.
+It ends with the approved focus recorded in the backlog and working state; it does not start or suggest the build.
 
 ## The backlog
 
-`documentation/backlog.md` owns grouping, priority, dependencies, and deferrals; `documentation/work-in-progress.md` owns progress on the selected work. Formats come from [document](../reference/document.md).
+`documentation/backlog.md` owns grouping, priority, dependencies, and deferrals; `documentation/work-in-progress.md` owns progress on the selected work. The skill carries its own copy of the rules for these documents.
 
 | Section | Holds |
 | --- | --- |
@@ -56,4 +56,4 @@ It recommends resolving that bounded question first, and names it as a blocker w
 
 ## Where it fits
 
-This is a shaping step before building, mostly reached from [iterate](../workflow/iterate.md). Use [graphify](./graphify.md) when the question is design, [taskify](../workflow/taskify.md) once behavior is agreed, and [interview](../shaping/interview.md) for single decisions; it calls refine and research itself. [guide](../productivity/guide.md) maps the whole system.
+This is a shaping step before building. Use [graphify](./graphify.md) when the question is design, [taskify](../workflow/taskify.md) once behavior is agreed, and [interview](../shaping/interview.md) for single decisions; it carries its own interview and research steps. [guide](../productivity/guide.md) maps the whole system.

@@ -8,7 +8,7 @@ It changes the environment, not the code. The bug the agent shipped stays a bug 
 
 ## When to reach for it
 
-Type `/improve-environment`, or an agent or another skill can reach for it when the task fits: when you ask what would have prevented a mistake, why a session was harder than it should have been, or for an environment retrospective. It edits project files only for candidates you accept.
+Type `/improve-environment`, or an agent can reach for it when the task fits: when you ask what would have prevented a mistake, why a session was harder than it should have been, or for an environment retrospective. It edits project files only for candidates you accept.
 
 | Situation | Action |
 | --- | --- |
@@ -52,7 +52,7 @@ It deletes steering lines that change nothing and moves oversized steering out o
 
 **How does it divide work with `improve-skills` and `memorize`?**
 
-Friction a skill caused goes to [improve-skills](./improve-skills.md), which reports it on this repository; each skill hands the other its findings. Written lessons (a pointer, a code convention, a project convention) are filed through [memorize](../productivity/memorize.md), which owns where they live. `improve-environment` itself builds checks and changes tools and access.
+Friction a skill caused is listed for you to report on this repository, which is what [improve-skills](./improve-skills.md) does. Written lessons (a pointer, a code convention, a project convention) are filed in the project the way [memorize](../productivity/memorize.md) files them; the skill carries its own copy of those rules. `improve-environment` itself builds checks and changes tools and access.
 
 ## It's working if
 

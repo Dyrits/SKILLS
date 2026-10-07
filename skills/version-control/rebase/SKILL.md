@@ -8,8 +8,6 @@ argument-hint: "branch... --onto target [--remote remote]"
 
 Rebase each named local branch onto one target so the branch itself moves. Resolve conflicts by intent, validate every result, report, and push only the branches the user approves.
 
-**Calls:** `resolve-merge-conflicts`.
-
 Accept branches and a target in natural language or as `/rebase fix/a feat/b --onto origin/develop`. `--remote` names the publication remote when a branch has no upstream or an ambiguous one. `--onto` names the target, not Git's three-argument transplant.
 
 ## 1. Establish the batch
@@ -45,7 +43,7 @@ Completion: every ready branch has its pins, lease, backup ref, and record; ever
 
 For a single branch, rebase it yourself by following [BRANCH.md](BRANCH.md).
 
-For several, rebase the ones located in a user checkout yourself and dispatch one subagent per worktree-located branch at the same time, bounded only by resource limits. Give each subagent its worktree path, its record path, the repository instructions, and [BRANCH.md](BRANCH.md), which it reads before acting, plus the `resolve-merge-conflicts` skill. Dispatch plain subagents that work in the assigned worktree: a harness-managed isolated worktree would rebase a copy on another branch instead of the branch itself. Subagents report evidence and leave pushing to you.
+For several, rebase the ones located in a user checkout yourself and dispatch one subagent per worktree-located branch at the same time, bounded only by resource limits. Give each subagent its worktree path, its record path, the repository instructions, and [BRANCH.md](BRANCH.md) with [RESOLVE.md](RESOLVE.md), which it reads before acting. Dispatch plain subagents that work in the assigned worktree: a harness-managed isolated worktree would rebase a copy on another branch instead of the branch itself. Subagents report evidence and leave pushing to you.
 
 Wait for completion notifications. A quiet subagent is unconfirmed, not running; report its last recorded phase.
 

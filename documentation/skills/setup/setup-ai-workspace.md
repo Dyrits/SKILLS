@@ -2,32 +2,28 @@ Upstream skill: `setup-matt-pocock-skills`, adapted here as `setup-ai-workspace`
 
 ## What it does
 
-Configures one repository's task tracker, ticket-writing convention, and triage-role vocabulary, and offers code conventions and, for several domain contexts, a glossary map. Its output is editable Markdown under `.agents/`, plus an agent-instruction block. It changes project configuration, not the installed skills. It then offers the other setups, so one run can prepare the whole workspace.
+Configures one repository's task tracker, ticket-writing convention, and triage-role vocabulary, and points agents at the project documents. Its output is editable Markdown under `.agents/`, plus an agent-instruction block. It changes project configuration, not the installed skills. Code conventions, tooling, hooks, guardrails, and machine-wide settings are out of its scope; it reports a missing conventions file instead of writing one.
 
-The tracker choice does not move specification authority. Agreed living behavior, design, and acceptance stay in `documentation/capabilities/<capability>/specifications.md`. Remote tasks link to or summarize that specification. Local documents can be maintained within scope without publishing remote records.
+The tracker choice does not move specification authority. Agreed living behavior and acceptance stay in `documentation/capabilities/<capability>/specifications.md`. Remote tasks link to or summarize that specification. Local documents can be maintained within scope without publishing remote records.
 
 ## When to reach for it
 
-Run `/setup-ai-workspace` once per repository, or when the tracker or conventions change. An agent or another skill can also reach for it when a workflow finds the workspace unconfigured.
+Run `/setup-ai-workspace` once per repository, or when the tracker or conventions change. An agent can also reach for it when the workspace is unconfigured.
 
 | Situation | Use |
 | --- | --- |
 | Workflow skills guess task locations or role strings | Run setup |
 | The project already has a tracker and templates | Run setup to record the existing conventions |
-| You only need to maintain project documents | Use [document](../reference/document.md) |
-| You also want tooling, commit hooks, Git guardrails, automatic handoff, or the delegation policy | Accept them in the optional setup stage, or name them in the request |
+| You want code conventions written down | [codify](./codify.md) |
+| You want tooling, commit hooks, Git guardrails, or the delegation policy | Run [setup-ai-tooling](./setup-ai-tooling.md), [setup-git-hooks](./setup-git-hooks.md), [setup-git-guardrails](./setup-git-guardrails.md), or [setup-delegation-policy](./setup-delegation-policy.md) on their own |
 
 ## The configuration contract
 
 - `.agents/issue-tracker.md` records local or remote operations, the writing convention, and wayfinding operations.
 - `.agents/triage-roles.md` maps category and intake-state roles, when triage is installed.
-- An `## Agent skills` block points consumers at those files. `document` and `memorize` then add their own pointers to `AGENTS.md`, so project documents and saved scripts are found during long sessions.
+- An `## Agent skills` block points consumers at those files, and one `AGENTS.md` line points at `documentation/` when it exists, so project documents are found during long sessions.
 
-It also offers [codify](../setup/codify.md) when the project has no conventions file, and a glossary map when the repository shows several domain contexts.
-
-## Optional setups
-
-After the configuration is written, setup offers the other setups in one multi-select question, marking which are already in place: [setup-ai-tooling](./setup-ai-tooling.md), [setup-git-hooks](./setup-git-hooks.md), and [setup-git-guardrails](./setup-git-guardrails.md) run inside the session, each asking its own questions. [setup-delegation-policy](./setup-delegation-policy.md) is machine-wide, so setup calls it only after you agree to it.
+When the repository shows several domain contexts, it asks whether the domain has several, and explains where each context's glossary will live once the first term is settled.
 
 Future work uses the shared project-document model. Project requirements constrain all work. A local backlog records candidates and deferrals; with a remote tracker, `documentation/backlog.md` links to the authoritative backlog instead. Work-in-progress remains local for execution, verification, and resumption with either tracker. Feature documents separate optional requirements, living specifications, unresolved proposals, and tasks. Files appear only when useful.
 
@@ -59,4 +55,4 @@ The root `AGENTS.md`. Setup creates it when it does not exist, and updates an ex
 
 ## Where it fits
 
-This is run-once setup for [specify](../workflow/specify.md), [taskify](../workflow/taskify.md), [triage](../upkeep/triage.md), and [graphify](../shaping/graphify.md). [Document](../reference/document.md) owns the shared document rules; [guide](../productivity/guide.md) routes the workflow.
+This is run-once setup for [specify](../workflow/specify.md), [taskify](../workflow/taskify.md), [triage](../upkeep/triage.md), and [graphify](../shaping/graphify.md). It carries its own copy of the shared document rules; [guide](../productivity/guide.md) routes the workflow.

@@ -10,17 +10,17 @@ It chooses a home; it does not invent a new store for each kind of fact.
 | --- | --- |
 | A reusable action | A scriptbook: `.agents/scripts/` for the repository, `~/.agents/scripts/` for any repository |
 | A convention or gotcha agents keep missing | The nearest `AGENTS.md` |
-| A code convention, a term, or a decision | The conventions, the glossary, or an architecture decision record, through [document](../reference/document.md) |
-| Agreements, working state, delivery history | The shared project documents, through [document](../reference/document.md) |
-| A procedure only a human can carry out | A saved wizard, through [walk-through](../productivity/walk-through.md) |
+| A code convention, a term, or a decision | The conventions, the glossary, or an architecture decision record, using the formats the skill carries |
+| Agreements, working state, delivery history | The shared project documents, following the contract the skill carries |
+| A procedure only a human can carry out | A saved wizard, built from the template and steps the skill carries (adapted from [walk-through](../productivity/walk-through.md)) |
 | A personal preference across projects | The harness's own memory, otherwise `~/.agents/memory/` |
-| A defect in a skill itself | No local home: the agent tells you that [improve-skills](../upkeep/improve-skills.md) reports it on this repository |
+| A defect in a skill itself | No local home: the agent names the skill, the step, and what went wrong in its final report, for you to report on this repository |
 
 Facts the environment already states, such as a `package.json` script or `--help` output, stay there. Secrets and one-conversation context are never saved.
 
 ## When to reach for it
 
-Type `/memorize`, or an agent or another skill can reach for it when a task fits: before it writes a script or a shell pipeline longer than one line, when you correct how something is done, state a standing rule ("always", "never", "from now on") or ask it to remember something, and when it rebuilds something a second time. A correction to one result ("make it blue") is just applied: only a correction that would hold for the next task is filed. A plain "remember this" still goes through it, because the harness's own memory is one home among several and a project fact belongs in the project. For writing the instruction file itself, it hands off to [write-for-agents](./write-for-agents.md).
+Type `/memorize`, or an agent can reach for it when a task fits: before it writes a script or a shell pipeline longer than one line, when you correct how something is done, state a standing rule ("always", "never", "from now on") or ask it to remember something, and when it rebuilds something a second time. A correction to one result ("make it blue") is just applied: only a correction that would hold for the next task is filed. A plain "remember this" still goes through it, because the harness's own memory is one home among several and a project fact belongs in the project. For writing the instruction file itself, it hands off to [write-for-agents](./write-for-agents.md).
 
 ## Scriptbooks
 
@@ -52,4 +52,4 @@ No. A lesson lives in exactly one home, and an existing entry is updated or remo
 
 ## Where it fits
 
-This is a working habit you or an agent reach for during any task; its result is the filed lesson or the saved script. It routes to [write-for-agents](./write-for-agents.md), [document](../reference/document.md), and [walk-through](../productivity/walk-through.md) depending on the lesson. [improve-skills](../upkeep/improve-skills.md) runs after a session and files what `memorize` cannot fix locally: problems in the skills themselves. [guide](../productivity/guide.md) maps the whole system.
+This is a working habit you or an agent reach for during any task; its result is the filed lesson or the saved script. It carries its own copies of the steering-file rules from [write-for-agents](./write-for-agents.md), the project document formats, and the wizard template from [walk-through](../productivity/walk-through.md), so it files every kind of lesson without another skill. [improve-skills](../upkeep/improve-skills.md) runs after a session and files what `memorize` cannot fix locally: problems in the skills themselves. [guide](../productivity/guide.md) maps the whole system.

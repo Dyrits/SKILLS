@@ -1,7 +1,3 @@
 name: rebase
 version: 0.2.0
 description: "Rebase local branches in place onto one target, resolve conflicts, run checks, then push with force-with-lease on approval."
-dependencies:
-  apm:
-    - git: parent
-      path: skills/version-control/resolve-merge-conflicts

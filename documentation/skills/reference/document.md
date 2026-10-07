@@ -8,7 +8,7 @@ Project records have distinct jobs and are created only when useful. A small bat
 
 ## When to reach for it
 
-Type `/document`, or an agent or another skill can reach for it when a task fits. Use it for a README, API reference, runbook, architecture document, onboarding guide, project-state upkeep, or to write down a settled term, convention, or decision. [delineate](../workflow/delineate.md) and [codify](../setup/codify.md) call it after settling terms and conventions with you. Use [write-for-agents](../productivity/write-for-agents.md) alongside it for documents that instruct an agent.
+Type `/document`, or an agent can reach for it when a task fits. Use it for a README, API reference, runbook, architecture document, onboarding guide, project-state upkeep, or to write down a settled term, convention, or decision. [delineate](../workflow/delineate.md) and [codify](../setup/codify.md) call it after settling terms and conventions with you. Use [write-for-agents](../productivity/write-for-agents.md) alongside it for documents that instruct an agent.
 
 ## One source for each obligation
 

@@ -27,7 +27,7 @@ Lead with the one-sentence job, then its defining constraint. For example, `spec
 
 ### When to reach for it
 
-State how it is reached and the trigger boundary. Every skill can be run by the user typing `/<name>` or reached by an agent or another skill when the task fits; do not describe a skill as user-only or model-only. Say instead when it fits, and name any approval gate it keeps (for example, publication or writes outside the repository).
+State how it is reached and the trigger boundary. Every skill can be run by the user typing `/<name>` or reached by an agent when the task fits; do not describe a skill as user-only or model-only. Say instead when it fits, and name any approval gate it keeps (for example, publication or writes outside the repository).
 
 Where it is confusable with another skill, explain the distinction and link to that page.
 

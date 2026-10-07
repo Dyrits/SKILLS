@@ -2,7 +2,7 @@
 
 Backlog: <verified Jira backlog or board URL>
 
-The remote backlog owns candidate outcomes, priorities, and deferrals. The local backlog document links to it; working state remains local for execution and resumption. Apply the authority and publication rules supplied by the `document` skill.
+The remote backlog owns candidate outcomes, priorities, and deferrals. The local backlog document links to it; working state remains local for execution and resumption.
 
 Jira is the system of record for published tasks. The capability's specifications in the repository remain the canonical living specification; Jira records link to or summarize it.
 

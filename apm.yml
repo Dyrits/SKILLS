@@ -162,7 +162,7 @@ marketplace:
       description: "Set up free AI development tools for a project and its installed agent clients."
     - name: setup-ai-workspace
       source: ./skills/setup/setup-ai-workspace
-      description: "Configure a repository for AI-assisted work: task tracking, ticket conventions, triage roles, code conventions, optional tooling setups."
+      description: "Configure a repository for AI-assisted work: task tracking, ticket conventions, triage roles, and agent navigation to the project documents."
     - name: setup-delegation-policy
       source: ./skills/setup/setup-delegation-policy
       description: "Install the delegation and model routing rule into the global steering files on this machine."
@@ -252,4 +252,4 @@ marketplace:
       description: "Decompose approved work into verifiable tasks with explicit blocking dependencies, locally or on an approved tracker."
     - name: test-first
       source: ./skills/workflow/test-first
-      description: "Build features or fix bugs test-first through the red-green loop of test-driven development (TDD), leaving refactoring to review-and-refactor."
+      description: "Build features or fix bugs test-first through the red-green loop of test-driven development (TDD), leaving refactoring to a later review."

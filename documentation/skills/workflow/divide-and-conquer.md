@@ -5,14 +5,14 @@ Derived from upstream `implement-spec`, verified at revision `d81f3a1`, and rena
 `divide-and-conquer` builds an authorized task graph or living work batch on one integration branch, in three phases:
 
 - **Divide**: every task is routed to the least expensive model that can do it reliably (Light, Balanced, Heavy, or Frontier), with an effort level and a reason. Tasks too small to be worth a briefing stay in the coordinating session. You approve this routing table before anything is dispatched.
-- **Conquer**: implementer subagents, each at its routed tier, build the ready tasks in parallel, each calling [implement](./implement.md) in its own worktree. A task that fails is retried once at the next tier up, then marked blocked.
-- **Combine**: finished tasks merge into the integration branch, and one [review-and-refactor](./review-and-refactor.md) runs over the whole batch.
+- **Conquer**: implementer subagents, each at its routed tier, build the ready tasks in parallel, each following the skill's bundled copy of [implement](./implement.md) in its own worktree. A task that fails is retried once at the next tier up, then marked blocked.
+- **Combine**: finished tasks merge into the integration branch, and one review over the whole batch follows the skill's bundled copy of [review-and-refactor](./review-and-refactor.md).
 
 It accepts shared specifications or an explicit approved batch in working state. Local task bodies remain authoritative until authorized publication; afterward the remote tracker owns tasks and local files carry title/link pointers.
 
 ## When to reach for it
 
-Type `/divide-and-conquer`, or let an agent or another skill reach for it; [iterate](./iterate.md) does when a batch splits into independent tasks. Use it for agreed work that benefits from parallel implementation. Use [implement](./implement.md) for one piece of work, which is usually cheaper.
+Type `/divide-and-conquer`, or let an agent reach for it. Use it for agreed work that benefits from parallel implementation. Use [implement](./implement.md) for one piece of work, which is usually cheaper.
 
 ## Common questions
 
@@ -48,4 +48,4 @@ It follows the same path without the subagents: built on its own task branch cut
 
 ## Where it fits
 
-This coordinates the implementation stage after [specify](./specify.md) and [taskify](./taskify.md), or for a batch inside [iterate](./iterate.md), then calls [review-and-refactor](./review-and-refactor.md) across the integration branch. [guide](../productivity/guide.md) maps the other routes.
+This coordinates the implementation stage after [specify](./specify.md) and [taskify](./taskify.md), or for a batch inside [iterate](./iterate.md), then reviews the integration branch once with its own copy of [review-and-refactor](./review-and-refactor.md). [guide](../productivity/guide.md) maps the other routes.

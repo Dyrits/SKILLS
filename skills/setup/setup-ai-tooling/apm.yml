@@ -1,9 +1,3 @@
 name: setup-ai-tooling
 version: 0.2.0
 description: "Set up free AI development tools for a project and its installed agent clients."
-dependencies:
-  apm:
-    - git: parent
-      path: skills/upkeep/monitor-ai-tooling
-    - git: parent
-      path: skills/productivity/write-for-agents

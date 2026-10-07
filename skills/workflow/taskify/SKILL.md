@@ -7,13 +7,11 @@ metadata:
 
 # Taskify
 
-Create tracker-neutral tasks that deliver coherent outcomes. A small batch may need no tasks: recommend direct implementation or iterate when decomposition adds no value.
-
-**Calls:** `document`. **Hands over to:** `/divide-and-conquer`, `/implement`.
+Create tracker-neutral tasks that deliver coherent outcomes. A small batch may need no tasks: say so when decomposition adds no value, and leave the batch for direct implementation.
 
 ## Establish the source
 
-Call the Skill tool with "document"; its terms (authorized, obligation, lazy, pointer) and rules apply throughout. Read the selected scope, applicable requirements and specifications, active working state, relevant code, domain vocabulary, and architectural decisions. Fetch the full body and comments of any referenced remote task.
+The project documents and their rules are in [PROJECT-DOCUMENTS.md](PROJECT-DOCUMENTS.md); its terms (authorized, obligation, lazy, pointer) apply throughout. Read the selected scope, applicable requirements and specifications, active working state, relevant code, domain vocabulary, and architectural decisions. Fetch the full body and comments of any referenced remote task.
 
 Read configured tracker and task-writing conventions when present; local drafting works without tracker setup. Ask the user about material missing scope.
 
@@ -38,4 +36,4 @@ Present the proposed outcome breakdown, acceptance, and blocking edges. Ask the 
 
 Save approved drafts at the shared task paths, in dependency order. Once publication is authorized, publish following configured conventions: blockers first so later tasks can reference real identifiers, then verify native dependency and parent links. Each published local draft becomes a pointer. Change a remote parent only when the authorization covers it.
 
-Report saved paths or published links, remaining blockers, and the **frontier** of tasks whose prerequisites are complete. Taskify stops at decomposition and approved publication, not execution. Close by offering the user the next move: to run `/implement` for one task, or to run `/divide-and-conquer` for the whole task graph, which runs independent tasks in parallel.
+Report saved paths or published links, remaining blockers, and the **frontier** of tasks whose prerequisites are complete. Taskify stops at decomposition and approved publication, not execution. The frontier says which tasks can start now, one at a time or in parallel.

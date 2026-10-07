@@ -8,8 +8,6 @@ metadata:
 This is the **refactor** phase of red-green-refactor.
 Implementation establishes the required behavior with passing tests; this skill then checks standards and compliance with specifications and applies supported refactors while preserving behavior.
 
-**Calls:** `codify`, `document`, `publish-message`.
-
 Two independent axes inspect the same starting diff:
 
 - **Standards**: does the code conform to the repository's documented coding standards, and which baseline smells justify a refactor?
@@ -42,7 +40,7 @@ A bad reference or an empty complete diff ends the run before dispatch.
 
 ### 2. Identify the originating behavior agreement
 
-Call the Skill tool with "document"; its terms and its review-evidence rules apply.
+The project documents and their rules are in [PROJECT-DOCUMENTS.md](PROJECT-DOCUMENTS.md); its terms apply.
 Recover the authorized behavior from the caller or user, tasks, specifications and requirements, or a user-approved batch in working state.
 
 When `.agents/issue-tracker.md` exists, fetch relevant task references through its workflow.
@@ -55,7 +53,7 @@ If no behavior agreement is recoverable, ask the user to supply it or explicitly
 
 Find repository instructions about how code should be written, such as the project's conventions file, `CONTRIBUTING.md`, and applicable steering files.
 Read the conventions file first when it exists.
-When it is missing and no other standards document turns up, call the Skill tool with "codify", with the **code** focus, then continue with whatever it produced (the smell baseline alone when declined).
+When it is missing and no other standards document turns up, continue with the smell baseline alone, and report that the repository documents no coding standards.
 Read relevant decision records and the glossary when they constrain the changed code.
 
 On top of whatever the repository documents, the Standards axis always carries the **smell baseline** below: a fixed set of Fowler code smells (_Refactoring_, ch.3) that applies even when a repository documents nothing. Two rules bind it:
@@ -146,7 +144,7 @@ Keep both axes separate rather than choosing one overall verdict.
 Ask whether to publish the final report and where, such as a pull or merge request, a ticket, or a chat thread.
 Publishing requires explicit user authorization.
 
-If the user wants publication, call the Skill tool with "publish-message", passing this report and destination, and requesting inline suggestions if wanted.
+If the user wants publication, publish this report to that destination following [PUBLISH.md](PUBLISH.md), with inline suggestions if wanted.
 The publication preserves finding dispositions and verification limits, checks whether local refactors are present in the destination branch, and validates requested suggestions against its current diff.
 
 ## Why two axes
