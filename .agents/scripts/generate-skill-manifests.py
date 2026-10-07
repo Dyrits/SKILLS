@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-"""Write the APM manifests: one beside every SKILL.md that calls or hands over to another skill of this repository,
-and the root apm.yml that publishes every skill as `<name>@dyrits` through an APM marketplace.
+"""Write the APM manifests: one beside every SKILL.md, and the root apm.yml that depends on every skill and publishes
+each one as `<name>@dyrits` through an APM marketplace.
 
 Every skill it calls through the Skill tool, and every skill it tells the user to run, becomes a sibling dependency
-(`git: parent`), so `apm install` pulls the whole chain. Skills with no references get no manifest, and a manifest
-whose skill lost its references is deleted. The root apm.yml lists each skill as a local marketplace package, and `apm pack`
+(`git: parent`), so `apm install` pulls the whole chain; a skill with no references gets a manifest without
+dependencies. The root apm.yml depends on every skill as a sibling, so installing the repository installs them all, and
+lists each skill as a local marketplace package; `apm pack`
 writes them to marketplace.json at the repository root: APM reads that file first, while Claude Code only reads
 .claude-plugin/marketplace.json, so the skills do not show up there as plugins. A consumer's marketplace ref
 (`apm marketplace add Dyrits/SKILLS#<ref>`) is the ref every skill and dependency installs at; no tag is needed.
@@ -46,10 +47,13 @@ def root_manifest(root, folders, version):
     lines = ["name: dyrits", f"version: {version}", 'description: "Agent skills for real engineering"', "license: MIT",
              "marketplace:", "  owner:", '    name: "Dylan J. Gerrits"', "    url: https://github.com/Dyrits",
              "  outputs:", "    claude: {}", "  claude:", "    output: marketplace.json", "  packages:"]
+    dependencies = ["dependencies:", "  apm:"]
+    for folder in folders.values():
+        dependencies += ["    - git: parent", f"      path: {folder.relative_to(root).as_posix()}"]
     for name, folder in folders.items():
         lines += [f"    - name: {name}", f"      source: ./{folder.relative_to(root).as_posix()}",
                   f"      description: {json.dumps(tagline(folder / 'SKILL.md'))}"]
-    return "\n".join(lines) + "\n"
+    return "\n".join(lines[:4] + dependencies + lines[4:]) + "\n"
 
 
 def manifests(root):
@@ -63,10 +67,9 @@ def manifests(root):
         unknown = references - folders.keys()
         if unknown:
             sys.exit(f"{name} references skills this repository does not ship: {', '.join(sorted(unknown))}")
-        if not references:
-            continue
-        lines = [f"name: {name}", f"version: {version}", f"description: {json.dumps(tagline(folder / 'SKILL.md'))}",
-                 "dependencies:", "  apm:"]
+        lines = [f"name: {name}", f"version: {version}", f"description: {json.dumps(tagline(folder / 'SKILL.md'))}"]
+        if references:
+            lines += ["dependencies:", "  apm:"]
         for dependency in sorted(references):
             lines += ["    - git: parent", f"      path: {folders[dependency].relative_to(root).as_posix()}"]
         wanted[folder / "apm.yml"] = "\n".join(lines) + "\n"

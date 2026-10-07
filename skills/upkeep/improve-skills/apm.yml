@@ -6,6 +6,6 @@ dependencies:
     - git: parent
       path: skills/upkeep/improve-environment
     - git: parent
-      path: skills/reference/memorize
+      path: skills/productivity/memorize
     - git: parent
-      path: skills/reference/unslop
+      path: skills/productivity/unslop

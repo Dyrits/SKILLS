@@ -1,4 +1,4 @@
-Derived from upstream `prototype`, verified at revision `d81f3a1` at `skills/engineering/prototype/SKILL.md`, `LOGIC.md`, and `UI.md`. The [upstream archive guide](../../../.upstream/README.md) explains how source remains available through repository ancestry.
+Derived from upstream `prototype`, verified at revision `d81f3a1` at `skills/engineering/prototype/SKILL.md`, `LOGIC.md`, and `UI.md`.
 
 ## What it does
 
@@ -35,4 +35,4 @@ Keep it as a primary source with a context pointer in the relevant work record. 
 
 ## Where it fits
 
-This is a standalone experiment and an optional, user-approved aid during [specify](../workflow/specify.md). [interview](../reference/interview.md) explores the question; [implement](../workflow/implement.md) builds the agreed result. [guide](../productivity/guide.md) maps the whole system.
+This is a standalone experiment and an optional, user-approved aid during [specify](../workflow/specify.md). [interview](../shaping/interview.md) explores the question; [implement](../workflow/implement.md) builds the agreed result. [guide](../productivity/guide.md) maps the whole system.

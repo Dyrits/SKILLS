@@ -1,0 +1,13 @@
+name: memorize
+version: 0.2.0
+description: "File a lesson in the home the next agent will read, and recall saved scripts and lessons before redoing work."
+dependencies:
+  apm:
+    - git: parent
+      path: skills/reference/document
+    - git: parent
+      path: skills/upkeep/improve-skills
+    - git: parent
+      path: skills/productivity/walk-through
+    - git: parent
+      path: skills/productivity/write-for-agents

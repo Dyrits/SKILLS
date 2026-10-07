@@ -8,7 +8,7 @@ The page helps a reader choose and understand one skill; it does not repeat the 
 
 ## Provenance first
 
-Start with a plain provenance sentence identifying the original upstream skill name or names. Verify them against `.upstream/` artifacts or retained Git history rather than inferring them from today's directory names.
+Start with a plain provenance sentence identifying the original upstream skill name or names. Verify them against the skill's `metadata.forks` or retained Git history rather than inferring them from today's directory names.
 
 - A renamed skill identifies its upstream name and its current name.
 - A combined skill identifies the contributing upstream skills.
@@ -53,7 +53,7 @@ Use checkable signals in the reader's work or trace. A reader should not have to
 
 Identify the role: a chain step, run-once setup, periodic maintenance, or standalone discipline. Link the relevant neighbors with a reason, then link to `../productivity/guide.md`.
 
-The planned development route is `specify → taskify → implement → review-and-refactor`. Just-in-time development uses the `iterate` skill and the same project documents. General `interview` does not force a software specification.
+The planned development route is `delineate → architect` once per system, then `specify → engineer → taskify → implement → review-and-refactor` per capability. Just-in-time development uses the `iterate` skill and the same project documents. General `interview` does not force a software specification.
 
 ## Writing and links
 

@@ -4,9 +4,9 @@ description: "Build a living application one verified batch at a time, settling 
 dependencies:
   apm:
     - git: parent
-      path: skills/reference/codify
+      path: skills/setup/codify
     - git: parent
-      path: skills/reference/delineate
+      path: skills/workflow/delineate
     - git: parent
       path: skills/reference/design-modules
     - git: parent
@@ -16,7 +16,7 @@ dependencies:
     - git: parent
       path: skills/workflow/implement
     - git: parent
-      path: skills/reference/interview
+      path: skills/shaping/interview
     - git: parent
       path: skills/shaping/prioritize
     - git: parent

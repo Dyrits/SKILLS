@@ -4,4 +4,4 @@ description: "Publish an established conclusion or review summary to a connected
 dependencies:
   apm:
     - git: parent
-      path: skills/reference/unslop
+      path: skills/productivity/unslop

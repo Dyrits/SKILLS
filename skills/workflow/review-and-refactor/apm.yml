@@ -4,7 +4,7 @@ description: "Review and refactor changes since a fixed point against repository
 dependencies:
   apm:
     - git: parent
-      path: skills/reference/codify
+      path: skills/setup/codify
     - git: parent
       path: skills/reference/document
     - git: parent

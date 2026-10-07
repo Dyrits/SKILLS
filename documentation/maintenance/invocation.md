@@ -2,7 +2,7 @@
 
 Every `SKILL.md` in this repository is a skill, and every skill is reachable by **both** the human typing its name and the model, including another skill calling it. There is no user-only skill: omit `disable-model-invocation` from the frontmatter and the `policy` block from `agents/openai.yaml`. `scripts/check-skills.py` fails on either.
 
-The `description` is therefore always **model-facing**: a context pointer carrying the trigger branches ("Use when the user wants…, asks for…"), written by the pointer rules in [write-for-agents](../../skills/reference/write-for-agents/SKILL.md). Every description sits in the model's context every turn, so keep it short. For a skill with heavy cost or outward effects (publishing, pushing, long multi-agent runs, machine-wide setup), trigger on the user's explicit request so it does not fire speculatively; its body still asks before any authorized-only action.
+The `description` is therefore always **model-facing**: a context pointer carrying the trigger branches ("Use when the user wants…, asks for…"), written by the pointer rules in [write-for-agents](../../skills/productivity/write-for-agents/SKILL.md). Every description sits in the model's context every turn, so keep it short. For a skill with heavy cost or outward effects (publishing, pushing, long multi-agent runs, machine-wide setup), trigger on the user's explicit request so it does not fire speculatively; its body still asks before any authorized-only action.
 
 Every skill also carries an `agents/openai.yaml` beside its `SKILL.md`, holding Codex UI metadata: `interface.display_name` and `interface.short_description` for the skill picker.
 

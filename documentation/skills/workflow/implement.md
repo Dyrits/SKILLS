@@ -1,4 +1,4 @@
-Derived from upstream `implement`, verified at revision `d81f3a1`. The [archived upstream page](../../../.upstream/snapshots/d81f3a1/files/docs/engineering/implement.md) preserves its provenance.
+Derived from upstream `implement`, verified at revision `d81f3a1`.
 
 ## What it does
 

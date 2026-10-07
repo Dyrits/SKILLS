@@ -1,4 +1,4 @@
-Upstream skill: `wayfinder`, verified in the [archived domain model](../../../.upstream/CONTEXT.md). Renamed `graphify` in this fork to emphasize the decision graph rather than imply a diagram generator.
+Upstream skill: `wayfinder`, verified at revision `d81f3a1`. Renamed `graphify` in this fork to emphasize the decision graph rather than imply a diagram generator.
 
 ## What it does
 
@@ -15,7 +15,7 @@ Run `/graphify`, or let an agent or another skill reach for it when a large unce
 | The idea spans several sessions and the route is unclear | Chart a map |
 | A map already exists | Name the map and optionally the next decision task |
 | The route is clear and implementation needs decomposition | Use [taskify](../workflow/taskify.md) |
-| One conversation can settle the question | Use [interview](../reference/interview.md) |
+| One conversation can settle the question | Use [interview](../shaping/interview.md) |
 
 The tracker configuration must exist. If it is absent, run [setup-ai-workspace](../setup/setup-ai-workspace.md) yourself first.
 

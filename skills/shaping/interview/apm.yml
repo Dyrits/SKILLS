@@ -1,0 +1,3 @@
+name: interview
+version: 0.2.0
+description: "Interview the user in rounds of questions, each with a recommended answer, until a plan, decision, or idea is settled."

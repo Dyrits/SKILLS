@@ -4,7 +4,7 @@ Fork-created skill with no upstream equivalent, added in commit `b05ce86` (see t
 
 `iterate` builds a living application one verified batch at a time. It settles only the decisions the current batch needs, implements the batch, checks it, and lets the result decide what comes next. The application evolves in place from its first runnable batch; replacing it is your decision.
 
-It coordinates other skills rather than replacing them: [interview](../reference/interview.md) roots its interview in the current batch, [prioritize](../shaping/prioritize.md) picks a focus when scope is tangled, [research](../shaping/research.md) answers external facts, [implement](./implement.md) builds each settled batch (bringing [test-first](./test-first.md) and [debug](../upkeep/debug.md) with it), [divide-and-conquer](./divide-and-conquer.md) takes a batch that splits into independent tasks, after you approve its routing table, and [review-and-refactor](./review-and-refactor.md) runs at milestones.
+It coordinates other skills rather than replacing them: [interview](../shaping/interview.md) roots its interview in the current batch, [prioritize](../shaping/prioritize.md) picks a focus when scope is tangled, [research](../shaping/research.md) answers external facts, [implement](./implement.md) builds each settled batch (bringing [test-first](./test-first.md) and [debug](../upkeep/debug.md) with it), [divide-and-conquer](./divide-and-conquer.md) takes a batch that splits into independent tasks, after you approve its routing table, and [review-and-refactor](./review-and-refactor.md) runs at milestones.
 
 ## When to reach for it
 

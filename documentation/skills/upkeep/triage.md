@@ -1,4 +1,4 @@
-Upstream skill: `triage`, verified in the [archived triage page](../../../.upstream/snapshots/d81f3a1/files/docs/engineering/triage.md).
+Upstream skill: `triage`, verified at revision `d81f3a1`.
 
 ## What it does
 
@@ -59,4 +59,4 @@ Triage shows both with their source and date, recommends the one the latest evid
 
 ## Where it fits
 
-Triage is periodic intake maintenance. [Interview](../reference/interview.md) resolves unclear requests, while [document](../reference/document.md) owns local specifications, backlog, active-work, and changelog upkeep. [Guide](../productivity/guide.md) routes the next step.
+Triage is periodic intake maintenance. [Interview](../shaping/interview.md) resolves unclear requests, while [document](../reference/document.md) owns local specifications, backlog, active-work, and changelog upkeep. [Guide](../productivity/guide.md) routes the next step.

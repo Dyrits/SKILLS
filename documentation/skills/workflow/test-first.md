@@ -1,4 +1,4 @@
-Derived from upstream `tdd`, renamed `test-first` in this fork, verified at revision `d81f3a1` at `skills/engineering/tdd/SKILL.md`. The [upstream port record](../../../.upstream/sync/2026-09-30.md) records its maintained counterpart.
+Derived from upstream `tdd`, renamed `test-first` in this fork, verified at revision `d81f3a1` at `skills/engineering/tdd/SKILL.md`.
 
 ## What it does
 

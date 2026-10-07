@@ -16,7 +16,7 @@ Type `/improve-skills`, or an agent or another skill can reach for it when the t
 | The agent followed a skill but the outcome missed what you wanted | Run `/improve-skills` |
 | A session went well and you want to record what to keep | Run `/improve-skills` |
 | The session's friction came from the project, not a skill: a missing check, a long search, missing information | Use [improve-environment](./improve-environment.md) instead |
-| The agent keeps missing a convention of your own project | [memorize](../reference/memorize.md) files it in the project; you can also just tell the agent |
+| The agent keeps missing a convention of your own project | [memorize](../productivity/memorize.md) files it in the project; you can also just tell the agent |
 | Code architecture or module seams need review | Use [improve-codebase-architecture](./improve-codebase-architecture.md) instead |
 | A specific defect needs root-cause diagnosis | Use [debug](./debug.md) instead |
 
@@ -25,7 +25,7 @@ Type `/improve-skills`, or an agent or another skill can reach for it when the t
 | Finding | Home |
 | --- | --- |
 | A skill problem: a wrong or missing trigger, an unclear or missing step, conflicting skills, a stale route in `guide`, a missing skill | The issue on the skills repository |
-| A lesson about your project: a convention, a command, a review rule | Filed in the project through [memorize](../reference/memorize.md) |
+| A lesson about your project: a convention, a command, a review rule | Filed in the project through [memorize](../productivity/memorize.md) |
 | Friction the environment could have prevented: a missing check or guardrail, a long search, an expensive tool, missing information | Handed to [improve-environment](./improve-environment.md) once the issue is settled |
 | Agent behavior neither a skill nor the environment could have steered | Reported to you, left out of the issue |
 
@@ -35,7 +35,7 @@ What went right goes into the issue too, so a later fix does not break behavior 
 
 **What happened to `.agents/feedbacks/`?**
 
-The [iterate](../workflow/iterate.md) workflow used to write correction records there, and nothing read them. Corrections to a project's own conventions now go straight to [memorize](../reference/memorize.md). The folder now holds only approved issues that could not be posted, which `improve-skills` offers to open on its next run with GitHub access.
+The [iterate](../workflow/iterate.md) workflow used to write correction records there, and nothing read them. Corrections to a project's own conventions now go straight to [memorize](../productivity/memorize.md). The folder now holds only approved issues that could not be posted, which `improve-skills` offers to open on its next run with GitHub access.
 
 **Will my project's details end up in a public issue?**
 
@@ -62,4 +62,4 @@ It was split. `improve-skills` reports on the skills themselves, and [improve-en
 
 ## Where it fits
 
-`improve-skills` is periodic maintenance after a session in either development workflow. Run it before clearing the session, or point a new session at the log. [memorize](../reference/memorize.md) handles corrections during the session; this skill handles what the skills themselves got wrong, and [improve-environment](./improve-environment.md) what the project's environment got wrong. Fixing a reported problem happens in a separate session on this repository, following [write-for-agents](../reference/write-for-agents.md). [guide](../productivity/guide.md) maps the whole set.
+`improve-skills` is periodic maintenance after a session in either development workflow. Run it before clearing the session, or point a new session at the log. [memorize](../productivity/memorize.md) handles corrections during the session; this skill handles what the skills themselves got wrong, and [improve-environment](./improve-environment.md) what the project's environment got wrong. Fixing a reported problem happens in a separate session on this repository, following [write-for-agents](../productivity/write-for-agents.md). [guide](../productivity/guide.md) maps the whole set.

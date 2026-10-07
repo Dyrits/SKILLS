@@ -1,0 +1,3 @@
+name: resolve-merge-conflicts
+version: 0.2.0
+description: "Resolve an in-progress git merge or rebase conflict."

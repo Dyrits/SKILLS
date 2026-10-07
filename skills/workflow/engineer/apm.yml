@@ -1,0 +1,3 @@
+name: engineer
+version: 0.2.0
+description: "Design one capability's technical solution before implementation (modules and their interfaces, data model, seams, and where each acceptance test attaches) inside the system's architecture, and write it down without writing production code."

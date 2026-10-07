@@ -4,4 +4,4 @@ description: "Write and maintain project documentation, and own where each share
 dependencies:
   apm:
     - git: parent
-      path: skills/reference/write-for-agents
+      path: skills/productivity/write-for-agents

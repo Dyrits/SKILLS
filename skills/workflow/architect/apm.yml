@@ -1,0 +1,3 @@
+name: architect
+version: 0.2.0
+description: "Decide or assess a system's technical shape (technology stack, parts and their boundaries, data ownership and flows, integrations, deployment) and how it meets the system-wide requirements, weighing alternatives and their tradeoffs."

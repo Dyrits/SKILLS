@@ -4,11 +4,11 @@ description: "Configure a repository for AI-assisted work: task tracking, ticket
 dependencies:
   apm:
     - git: parent
-      path: skills/reference/codify
+      path: skills/setup/codify
     - git: parent
       path: skills/reference/document
     - git: parent
-      path: skills/reference/memorize
+      path: skills/productivity/memorize
     - git: parent
       path: skills/setup/setup-ai-tooling
     - git: parent

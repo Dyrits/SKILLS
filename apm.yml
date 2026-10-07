@@ -2,6 +2,104 @@ name: dyrits
 version: 0.2.0
 description: "Agent skills for real engineering"
 license: MIT
+dependencies:
+  apm:
+    - git: parent
+      path: skills/productivity/classify
+    - git: parent
+      path: skills/productivity/design-workflow
+    - git: parent
+      path: skills/productivity/guide
+    - git: parent
+      path: skills/productivity/hand-off
+    - git: parent
+      path: skills/productivity/illustrate
+    - git: parent
+      path: skills/productivity/memorize
+    - git: parent
+      path: skills/productivity/optimize-process
+    - git: parent
+      path: skills/productivity/publish-message
+    - git: parent
+      path: skills/productivity/re-explain
+    - git: parent
+      path: skills/productivity/teach
+    - git: parent
+      path: skills/productivity/unslop
+    - git: parent
+      path: skills/productivity/walk-through
+    - git: parent
+      path: skills/productivity/write-for-agents
+    - git: parent
+      path: skills/reference/design-modules
+    - git: parent
+      path: skills/reference/document
+    - git: parent
+      path: skills/setup/codify
+    - git: parent
+      path: skills/setup/setup-ai-tooling
+    - git: parent
+      path: skills/setup/setup-ai-workspace
+    - git: parent
+      path: skills/setup/setup-delegation-policy
+    - git: parent
+      path: skills/setup/setup-git-guardrails
+    - git: parent
+      path: skills/setup/setup-git-hooks
+    - git: parent
+      path: skills/shaping/graphify
+    - git: parent
+      path: skills/shaping/interview
+    - git: parent
+      path: skills/shaping/prioritize
+    - git: parent
+      path: skills/shaping/prototype
+    - git: parent
+      path: skills/shaping/research
+    - git: parent
+      path: skills/upkeep/debug
+    - git: parent
+      path: skills/upkeep/improve-codebase-architecture
+    - git: parent
+      path: skills/upkeep/improve-environment
+    - git: parent
+      path: skills/upkeep/improve-skills
+    - git: parent
+      path: skills/upkeep/monitor-ai-tooling
+    - git: parent
+      path: skills/upkeep/triage
+    - git: parent
+      path: skills/version-control/draft-merge-request
+    - git: parent
+      path: skills/version-control/rebase
+    - git: parent
+      path: skills/version-control/resolve-merge-conflicts
+    - git: parent
+      path: skills/version-control/sync-tree
+    - git: parent
+      path: skills/version-control/work-in-tree
+    - git: parent
+      path: skills/workflow/address-feedback
+    - git: parent
+      path: skills/workflow/architect
+    - git: parent
+      path: skills/workflow/delineate
+    - git: parent
+      path: skills/workflow/divide-and-conquer
+    - git: parent
+      path: skills/workflow/engineer
+    - git: parent
+      path: skills/workflow/implement
+    - git: parent
+      path: skills/workflow/iterate
+    - git: parent
+      path: skills/workflow/review-and-refactor
+    - git: parent
+      path: skills/workflow/specify
+    - git: parent
+      path: skills/workflow/taskify
+    - git: parent
+      path: skills/workflow/test-first
 marketplace:
   owner:
     name: "Dylan J. Gerrits"
@@ -11,9 +109,6 @@ marketplace:
   claude:
     output: marketplace.json
   packages:
-    - name: ask-someone-else
-      source: ./skills/productivity/ask-someone-else
-      description: "Turn a decision the user cannot fully answer into a questionnaire for someone else to fill in."
     - name: classify
       source: ./skills/productivity/classify
       description: "Classify text against custom labels with classifier.dev."
@@ -25,10 +120,13 @@ marketplace:
       description: "Choose the next skill, development workflow, or session boundary from the current situation."
     - name: hand-off
       source: ./skills/productivity/hand-off
-      description: "Write the current session's work into a versioned handoff document in .agents/handoffs/ that another agent resumes with take-over."
+      description: "Write the current session's work into a versioned, self-contained handoff document in .agents/handoffs/ and point to it from AGENTS.md, so another session, agent, or person can resume it."
     - name: illustrate
       source: ./skills/productivity/illustrate
       description: "Explain the current topic visually."
+    - name: memorize
+      source: ./skills/productivity/memorize
+      description: "File a lesson in the home the next agent will read, and recall saved scripts and lessons before redoing work."
     - name: optimize-process
       source: ./skills/productivity/optimize-process
       description: "Analyze and improve a recurring work process when the user reports delays, excessive steps, rework, or handoff friction."
@@ -38,39 +136,27 @@ marketplace:
     - name: re-explain
       source: ./skills/productivity/re-explain
       description: "Re-explain what did not land, with the missing context and familiar vocabulary."
-    - name: take-over
-      source: ./skills/productivity/take-over
-      description: "Resume work from a handoff document in .agents/handoffs/ written by hand-off, following the supersedes chain only when questions stay open."
     - name: teach
       source: ./skills/productivity/teach
       description: "Teach the user a skill or concept over multiple sessions in a stateful workspace."
+    - name: unslop
+      source: ./skills/productivity/unslop
+      description: "Cut AI tells from prose that other people will read, in any language."
     - name: walk-through
       source: ./skills/productivity/walk-through
       description: "Generate an interactive bash wizard that walks a human through steps only they can perform."
-    - name: codify
-      source: ./skills/reference/codify
-      description: "Define the project's code conventions by drafting candidate rules from how the code is already written and confirming each with the user and its reason, or audit an existing conventions file."
-    - name: delineate
-      source: ./skills/reference/delineate
-      description: "Settle what the project's words mean by challenging fuzzy or conflicting terms against the glossary, the code, and concrete scenarios, then have the agreed terms written to the glossary."
+    - name: write-for-agents
+      source: ./skills/productivity/write-for-agents
+      description: "Write documents for agents: skills, AGENTS.md, and documents reached by a pointer."
     - name: design-modules
       source: ./skills/reference/design-modules
       description: "Shared vocabulary for designing deep modules."
     - name: document
       source: ./skills/reference/document
       description: "Write and maintain project documentation, and own where each shared project document lives and its format (requirements, specifications, backlog, working state, tasks, changelog, glossary, code conventions, architecture decision records)."
-    - name: interview
-      source: ./skills/reference/interview
-      description: "Interview the user in rounds of questions, each with a recommended answer, until a plan, decision, or idea is settled."
-    - name: memorize
-      source: ./skills/reference/memorize
-      description: "File a lesson in the home the next agent will read, and recall saved scripts and lessons before redoing work."
-    - name: unslop
-      source: ./skills/reference/unslop
-      description: "Cut AI tells from prose that other people will read, in any language."
-    - name: write-for-agents
-      source: ./skills/reference/write-for-agents
-      description: "Write documents for agents: skills, AGENTS.md, and documents reached by a pointer."
+    - name: codify
+      source: ./skills/setup/codify
+      description: "Define the project's code conventions by drafting candidate rules from how the code is already written and confirming each with the user and its reason, or audit an existing conventions file."
     - name: setup-ai-tooling
       source: ./skills/setup/setup-ai-tooling
       description: "Set up free AI development tools for a project and its installed agent clients."
@@ -89,6 +175,9 @@ marketplace:
     - name: graphify
       source: ./skills/shaping/graphify
       description: "Build and work through a shared decision graph for an effort too large for one session."
+    - name: interview
+      source: ./skills/shaping/interview
+      description: "Interview the user in rounds of questions, each with a recommended answer, until a plan, decision, or idea is settled."
     - name: prioritize
       source: ./skills/shaping/prioritize
       description: "Decompose a large or tangled idea into outcomes, recommend one focus to build next, and keep the rest in the backlog."
@@ -134,9 +223,18 @@ marketplace:
     - name: address-feedback
       source: ./skills/workflow/address-feedback
       description: "Assess review feedback from any source (pull or merge request, issue, ticket, document comments, pasted notes), propose dispositions, then implement and reply."
+    - name: architect
+      source: ./skills/workflow/architect
+      description: "Decide or assess a system's technical shape (technology stack, parts and their boundaries, data ownership and flows, integrations, deployment) and how it meets the system-wide requirements, weighing alternatives and their tradeoffs."
+    - name: delineate
+      source: ./skills/workflow/delineate
+      description: "Outline a system functionally (its purpose, actors, domain contexts, capability map, system-wide requirements, and glossary), settling fuzzy or conflicting terms along the way."
     - name: divide-and-conquer
       source: ./skills/workflow/divide-and-conquer
       description: "Implement an authorized task graph in parallel: route each task to the least expensive capable agent, build on one integration branch, then review once."
+    - name: engineer
+      source: ./skills/workflow/engineer
+      description: "Design one capability's technical solution before implementation (modules and their interfaces, data model, seams, and where each acceptance test attaches) inside the system's architecture, and write it down without writing production code."
     - name: implement
       source: ./skills/workflow/implement
       description: "Implement authorized work test-first and report its verification evidence."
@@ -148,7 +246,7 @@ marketplace:
       description: "Review and refactor changes since a fixed point against repository standards and the originating behavior agreement."
     - name: specify
       source: ./skills/workflow/specify
-      description: "Resolve the open decisions in a selected scope and synthesize its living repository specification."
+      description: "Resolve the open decisions about one capability's observable behavior and synthesize its living repository specification: behavior, edge cases, acceptance, and capability requirements."
     - name: taskify
       source: ./skills/workflow/taskify
       description: "Decompose approved work into verifiable tasks with explicit blocking dependencies, locally or on an approved tracker."

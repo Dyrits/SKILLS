@@ -2,7 +2,7 @@ This audit distinguishes skills derived from `mattpocock/skills`, skills adapted
 
 ## What it does
 
-The audit uses retained Git history through fork commit `b05ce86`, the pinned upstream revision `d81f3a183412e71a5b1e84ca21bc1a35eea03a60`, the [archive guide](../../.upstream/README.md), the [content-port record](../../.upstream/sync/2026-09-30.md), and original external source files. Current names and purpose buckets include the concurrent working-tree renames. These are not all committed at the audit baseline.
+The audit uses retained Git history through fork commit `b05ce86`, the pinned upstream revision `d81f3a183412e71a5b1e84ca21bc1a35eea03a60`, the `.upstream/` archive guide and content-port record (removed on 2026-10-08), and original external source files. Current names and purpose buckets include the concurrent working-tree renames. These are not all committed at the audit baseline.
 
 For existing tracked paths, `git log --follow -- <path>` traces renames. For pending renames and bucket moves, the committed predecessor is the starting point. First-add commits, their source text, and contemporaneous handoffs distinguish new content from rewritten imports. An addition in Git's rename detection, or absence from the `d81f3a1` tree, does not by itself prove fork authorship.
 

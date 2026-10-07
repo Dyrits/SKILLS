@@ -1,4 +1,4 @@
-Upstream skill: `setup-matt-pocock-skills`, adapted here as `setup-ai-workspace`. The [archived setup page](../../../.upstream/snapshots/d81f3a1/files/docs/engineering/setup-matt-pocock-skills.md) records its origin.
+Upstream skill: `setup-matt-pocock-skills`, adapted here as `setup-ai-workspace`.
 
 ## What it does
 
@@ -23,7 +23,7 @@ Run `/setup-ai-workspace` once per repository, or when the tracker or convention
 - `.agents/triage-roles.md` maps category and intake-state roles, when triage is installed.
 - An `## Agent skills` block points consumers at those files. `document` and `memorize` then add their own pointers to `AGENTS.md`, so project documents and saved scripts are found during long sessions.
 
-It also offers [codify](../reference/codify.md) when the project has no conventions file, and a glossary map when the repository shows several domain contexts.
+It also offers [codify](../setup/codify.md) when the project has no conventions file, and a glossary map when the repository shows several domain contexts.
 
 ## Optional setups
 

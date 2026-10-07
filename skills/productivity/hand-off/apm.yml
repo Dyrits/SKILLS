@@ -1,0 +1,3 @@
+name: hand-off
+version: 0.2.0
+description: "Write the current session's work into a versioned, self-contained handoff document in .agents/handoffs/ and point to it from AGENTS.md, so another session, agent, or person can resume it."

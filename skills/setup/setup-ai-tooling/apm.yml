@@ -6,4 +6,4 @@ dependencies:
     - git: parent
       path: skills/upkeep/monitor-ai-tooling
     - git: parent
-      path: skills/reference/write-for-agents
+      path: skills/productivity/write-for-agents

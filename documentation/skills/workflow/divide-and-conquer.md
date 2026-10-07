@@ -1,4 +1,4 @@
-Derived from upstream `implement-spec`, verified at revision `d81f3a1`, and renamed in this fork from `implement-all` to `divide-and-conquer` when it gained per-task model routing. The [archived upstream page](../../../.upstream/snapshots/d81f3a1/files/docs/engineering/implement-spec.md) preserves its provenance.
+Derived from upstream `implement-spec`, verified at revision `d81f3a1`, and renamed in this fork from `implement-all` to `divide-and-conquer` when it gained per-task model routing.
 
 ## What it does
 

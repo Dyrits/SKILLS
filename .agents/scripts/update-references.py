@@ -4,7 +4,7 @@
 Usage: python3 .agents/scripts/update-references.py --replace OLD NEW [--replace OLD NEW ...]
            [--search [--exclude PATHSPEC ...] | -- PATH ...] [--format diff|apply-patch] [--apply]
 Example: python3 .agents/scripts/update-references.py --replace '"wizard"' '"walk-through"'
-           --search --exclude .upstream --exclude .agents/handoffs --apply
+           --search --exclude .agents/handoffs --apply
 Needs: Python 3 standard library; Git for --search. Run from the repository root.
 
 Without --apply, files are untouched and the patch goes to stdout: a unified diff that

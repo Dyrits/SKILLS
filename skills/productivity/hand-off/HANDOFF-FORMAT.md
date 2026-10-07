@@ -1,6 +1,6 @@
 # Handoff format
 
-The contract between `hand-off`, which writes handoffs, and `take-over`, which reads them. Both skills carry an identical copy of this file.
+A handoff is self-contained: the next agent resumes from the file alone, found through the pointer in `AGENTS.md`, with no skill installed.
 
 ## Location and name
 
@@ -19,6 +19,8 @@ Every section appears, in this order, under these headings. A section with nothi
 
 Supersedes: `<filename>` | none | none (forked from `<filename>`)
 Workspace: <repository and branch, or directory>
+
+To resume: read this whole file first. Treat every claim in State not marked verified as unverified, and check it against the Sources. Read the superseded handoff only when something here cannot be resolved from this file and its Sources. Confirm what was in flight and what you will do next with the user before starting. Never edit this file: a later state goes into a new handoff.
 
 ## Goal
 
@@ -49,4 +51,15 @@ Paths and URLs of the primary sources: specifications, plans, issues, commits, d
 
 - Reference recorded material by path or URL instead of copying it; write down only what the session added.
 - Replace secrets (keys, tokens, passwords) and personal data with `[redacted]`.
+- Copy the "To resume" paragraph verbatim; it is how a reader with no skill installed knows how to use the file.
 - Name no skills or harness-specific commands for the next agent to call: the next session may run in another harness with other skills installed. Project commands (a test or build command) belong in State or Next like any other fact.
+
+## Pointer
+
+The nearest `AGENTS.md` holds one line per thread in flight, naming the current handoff of that thread:
+
+```markdown
+To resume <topic>, read the [current handoff](.agents/handoffs/<filename>). Handoffs are <shared and committed | local and not committed>.
+```
+
+A new handoff replaces the line naming the handoff it supersedes; a handoff that starts or forks a thread adds a line. When a handoff records its goal as done, remove its thread's line instead.

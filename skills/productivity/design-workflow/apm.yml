@@ -4,4 +4,4 @@ description: "Interview the user into implementable workflow specifications for 
 dependencies:
   apm:
     - git: parent
-      path: skills/reference/interview
+      path: skills/shaping/interview

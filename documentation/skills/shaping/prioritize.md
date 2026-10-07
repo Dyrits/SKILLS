@@ -17,7 +17,7 @@ Four skills border each other on decomposition.
 | The design is undecided and settling it needs research, prototypes, or interviews over several sessions | [graphify](./graphify.md) |
 | What to build is known, but several candidate outcomes compete and the question is which comes first | `prioritize` |
 | Agreed behavior needs splitting into delivery tasks with acceptance criteria | [taskify](../workflow/taskify.md) |
-| One decision or plan needs stress-testing | [interview](../reference/interview.md) |
+| One decision or plan needs stress-testing | [interview](../shaping/interview.md) |
 
 Run on its own, it ends by suggesting `/iterate` to build the focus.
 
@@ -56,4 +56,4 @@ It recommends resolving that bounded question first, and names it as a blocker w
 
 ## Where it fits
 
-This is a shaping step before building, mostly reached from [iterate](../workflow/iterate.md). Use [graphify](./graphify.md) when the question is design, [taskify](../workflow/taskify.md) once behavior is agreed, and [interview](../reference/interview.md) for single decisions; it calls refine and research itself. [guide](../productivity/guide.md) maps the whole system.
+This is a shaping step before building, mostly reached from [iterate](../workflow/iterate.md). Use [graphify](./graphify.md) when the question is design, [taskify](../workflow/taskify.md) once behavior is agreed, and [interview](../shaping/interview.md) for single decisions; it calls refine and research itself. [guide](../productivity/guide.md) maps the whole system.

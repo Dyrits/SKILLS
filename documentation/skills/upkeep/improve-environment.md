@@ -15,7 +15,7 @@ Type `/improve-environment`, or an agent or another skill can reach for it when 
 | The agent searched too long, made a mistake a tool could catch, or lacked information | Run `/improve-environment` |
 | A bug is fixed and you want to know what would have prevented it | Run `/improve-environment` in the same session |
 | A skill fired wrongly, never fired, or misled the agent | Use [improve-skills](./improve-skills.md) instead |
-| You want to record a convention or command during the session | [memorize](../reference/memorize.md) files it directly |
+| You want to record a convention or command during the session | [memorize](../productivity/memorize.md) files it directly |
 | The code's structure needs deepening | Use [improve-codebase-architecture](./improve-codebase-architecture.md) instead |
 
 ## Where the findings land
@@ -52,7 +52,7 @@ It deletes steering lines that change nothing and moves oversized steering out o
 
 **How does it divide work with `improve-skills` and `memorize`?**
 
-Friction a skill caused goes to [improve-skills](./improve-skills.md), which reports it on this repository; each skill hands the other its findings. Written lessons (a pointer, a code convention, a project convention) are filed through [memorize](../reference/memorize.md), which owns where they live. `improve-environment` itself builds checks and changes tools and access.
+Friction a skill caused goes to [improve-skills](./improve-skills.md), which reports it on this repository; each skill hands the other its findings. Written lessons (a pointer, a code convention, a project convention) are filed through [memorize](../productivity/memorize.md), which owns where they live. `improve-environment` itself builds checks and changes tools and access.
 
 ## It's working if
 

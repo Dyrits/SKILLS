@@ -1,4 +1,4 @@
-Derived from upstream `code-review`, verified at revision `d81f3a1`, now `review-and-refactor` in this fork. The [archived upstream page](../../../.upstream/snapshots/d81f3a1/files/docs/engineering/code-review.md) preserves its provenance.
+Derived from upstream `code-review`, verified at revision `d81f3a1`, now `review-and-refactor` in this fork.
 
 ## What it does
 

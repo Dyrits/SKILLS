@@ -13,13 +13,22 @@ metadata:
 
 | Situation | Route |
 | --- | --- |
-| You want explicit planning and execution phases | `/specify → /taskify → /implement → /review-and-refactor`. Skip task decomposition when the selected work is small enough to implement directly. |
+| You want explicit planning and execution phases | Once per system, `/delineate → /architect`; then per capability, `/specify → /engineer → /taskify → /implement → /review-and-refactor`. Skip a step whose result already exists, and task decomposition when the selected work is small enough to implement directly. |
 | You want to discover behavior while building a living application | `/iterate` clarifies, implements, and verifies one useful batch at a time. |
 | You want to clarify a decision without starting development | `/interview`, the general interview discipline. The caller records useful results in the appropriate documents. |
 
 ### Planned development
 
-1. `/specify` reads the current context, resolves only outstanding decisions through `interview`, and writes or updates the selected capability's requirements and specifications. Settled decisions go straight to synthesis.
+Work is described on two levels, each from two sides. Functional comes before technical on each level; no step requires the one before it, but each reads what exists.
+
+| | Functional: what must be true | Technical: how the code makes it true |
+| --- | --- | --- |
+| **System**, once and when it changes | `/delineate`: purpose, actors, contexts, capabilities, system-wide requirements, glossary | `/architect`: stack, parts, data ownership, integrations, deployment, how each requirement is met |
+| **Capability**, each one | `/specify`: observable behavior, edge cases, acceptance, capability requirements | `/engineer`: modules, interfaces, data, seams, where each test attaches |
+
+Every requirement, functional or not, sits in the functional column; the technical skill of the same level answers it. `/codify` sits outside the grid: it sets how code is written and enforced, best once the stack is chosen.
+
+1. `/specify` reads the current context, resolves only outstanding decisions, and writes or updates the selected capability's requirements and specifications. Settled decisions go straight to synthesis. `/engineer` then designs the capability inside the architecture; skip it when the capability is small enough that its design is obvious from the code.
 2. When conversation cannot settle a design question, suggest `/prototype`. The user requests or approves a scoped experiment. Its validated answer and evidence feed the specification; useful code can be integrated after production checks without mandatory rebuilding. `/research` handles consequential unknown external facts.
 3. `/taskify` decomposes selected work into coherent tasks with acceptance criteria and blocking dependencies. Drafts remain local until explicit publication. The word task is tracker-neutral: a remote tracker may call it an issue or ticket.
 4. `/implement` builds an authorized task, specification, or small approved batch. `/divide-and-conquer` instead implements a task graph on one integration branch: it routes each task to the least expensive capable agent, asks the user to approve that routing table, runs the tasks concurrently where dependencies allow, and reviews once.
@@ -40,7 +49,7 @@ Research, test-first work, diagnosis, and milestone reviews remain conditional b
 
 The `document` skill owns the shared project documents and where each lives: requirements, specifications, drafts, tasks, backlog, work-in-progress, the changelog, the glossary, conventions, and decision records. When the user asks what each one holds, read the `document` skill. Both workflows use the same documents, so switching between them keeps agreements and progress; `iterate` writes light changelog records and the planned workflow writes full ones.
 
-The glossary, decision records, and conventions retain their separate roles: domain language, consequential decisions, and project-agnostic code conventions. `/document` owns where each lives and its format; `/delineate` settles the terms, `/codify` the conventions, and `/interview` the decisions that go into them.
+The glossary, decision records, and conventions retain their separate roles: domain language, consequential decisions, and project-agnostic code conventions. `/delineate` settles the terms, `/codify` the conventions, and `/architect` and `/engineer` the decisions they record. The domain outline (`documentation/domain.md`), the architecture (`documentation/architecture.md`), and each capability's design (`design.md` beside its specifications) belong to the skills that write them.
 
 ## On-ramps and open questions
 
@@ -53,7 +62,6 @@ The glossary, decision records, and conventions retain their separate roles: dom
 | One decision or plan needs stress-testing | `/interview` interviews until the frontier is empty. |
 | A recurring work loop needs an implementable design | `/design-workflow`. |
 | An architectural seam is causing friction | `/improve-codebase-architecture`, then explore the selected candidate. |
-| The missing facts are in another person's head | `/ask-someone-else`, then bring the answers into refinement or specification. |
 
 ## Session boundaries
 
@@ -65,11 +73,11 @@ Work the table top to bottom. The first row that fits wins.
 | --- | --- |
 | Continue | The next step needs this context as a primary source, or enough room remains for it to fit. |
 | Clear | Everything in this session is disposable for the next task, and its authoritative sources preserve what it needs. |
-| `/hand-off`, then `/take-over` | Something travels: a new harness, directory, repository, or colleague, or a side task forked mid-phase. It needs session-specific context and source pointers. |
+| `/hand-off` | Something travels: a new harness, directory, repository, or colleague, or a side task forked mid-phase. It needs session-specific context and source pointers. |
 | Subagent | The next task is tightly scoped enough to run without steering (an automated review is the standard case) and this session stays untouched. |
 | Compact | None of the above fit: relevant context, same harness and directory, and you stay in the loop. Pass an instruction naming what the next phase needs; preserve unresolved agreements, running assignments, and recovery pointers first. |
 
-`hand-off` writes a new versioned file in `.agents/handoffs/`; `take-over` reads the latest one and follows earlier pointers only when needed. Live working state does not replace the session handoff, and the handoff should not duplicate all project documents.
+`hand-off` writes a new versioned, self-contained file in `.agents/handoffs/` and points to it from `AGENTS.md`; the file says how to resume from it, following earlier handoffs only when needed. Live working state does not replace the session handoff, and the handoff should not duplicate all project documents.
 
 ## Standalone and supporting skills
 
@@ -83,7 +91,6 @@ Work the table top to bottom. The first row that fits wins.
 | `/illustrate` | Explain with the smallest useful diagram, sketch, or HTML artifact. |
 | `/teach` | Maintain a mission-grounded teaching workspace across sessions. |
 | `/optimize-process` | Improve a recurring process using actual friction and evidence. |
-| `/delineate` | Settle what a fuzzy or disputed domain term means, and add it to the glossary. |
 | `/codify` | Define or audit the project's code conventions. |
 | `/design-modules` | Design deep modules, useful seams, and testable interfaces. |
 | `/document` | Maintain technical documents and shared project documents, including the glossary, conventions, and decision records. |

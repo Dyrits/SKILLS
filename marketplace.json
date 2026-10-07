@@ -6,13 +6,9 @@
   },
   "plugins": [
     {
-      "name": "ask-someone-else",
-      "description": "Turn a decision the user cannot fully answer into a questionnaire for someone else to fill in.",
-      "source": "./skills/productivity/ask-someone-else"
-    },
-    {
       "name": "classify",
       "description": "Classify text against custom labels with classifier.dev.",
+      "version": "0.2.0",
       "source": "./skills/productivity/classify"
     },
     {
@@ -29,17 +25,26 @@
     },
     {
       "name": "hand-off",
-      "description": "Write the current session's work into a versioned handoff document in .agents/handoffs/ that another agent resumes with take-over.",
+      "description": "Write the current session's work into a versioned, self-contained handoff document in .agents/handoffs/ and point to it from AGENTS.md, so another session, agent, or person can resume it.",
+      "version": "0.2.0",
       "source": "./skills/productivity/hand-off"
     },
     {
       "name": "illustrate",
       "description": "Explain the current topic visually.",
+      "version": "0.2.0",
       "source": "./skills/productivity/illustrate"
+    },
+    {
+      "name": "memorize",
+      "description": "File a lesson in the home the next agent will read, and recall saved scripts and lessons before redoing work.",
+      "version": "0.2.0",
+      "source": "./skills/productivity/memorize"
     },
     {
       "name": "optimize-process",
       "description": "Analyze and improve a recurring work process when the user reports delays, excessive steps, rework, or handoff friction.",
+      "version": "0.2.0",
       "source": "./skills/productivity/optimize-process"
     },
     {
@@ -51,38 +56,37 @@
     {
       "name": "re-explain",
       "description": "Re-explain what did not land, with the missing context and familiar vocabulary.",
+      "version": "0.2.0",
       "source": "./skills/productivity/re-explain"
-    },
-    {
-      "name": "take-over",
-      "description": "Resume work from a handoff document in .agents/handoffs/ written by hand-off, following the supersedes chain only when questions stay open.",
-      "source": "./skills/productivity/take-over"
     },
     {
       "name": "teach",
       "description": "Teach the user a skill or concept over multiple sessions in a stateful workspace.",
+      "version": "0.2.0",
       "source": "./skills/productivity/teach"
+    },
+    {
+      "name": "unslop",
+      "description": "Cut AI tells from prose that other people will read, in any language.",
+      "version": "0.2.0",
+      "source": "./skills/productivity/unslop"
     },
     {
       "name": "walk-through",
       "description": "Generate an interactive bash wizard that walks a human through steps only they can perform.",
+      "version": "0.2.0",
       "source": "./skills/productivity/walk-through"
     },
     {
-      "name": "codify",
-      "description": "Define the project's code conventions by drafting candidate rules from how the code is already written and confirming each with the user and its reason, or audit an existing conventions file.",
+      "name": "write-for-agents",
+      "description": "Write documents for agents: skills, AGENTS.md, and documents reached by a pointer.",
       "version": "0.2.0",
-      "source": "./skills/reference/codify"
-    },
-    {
-      "name": "delineate",
-      "description": "Settle what the project's words mean by challenging fuzzy or conflicting terms against the glossary, the code, and concrete scenarios, then have the agreed terms written to the glossary.",
-      "version": "0.2.0",
-      "source": "./skills/reference/delineate"
+      "source": "./skills/productivity/write-for-agents"
     },
     {
       "name": "design-modules",
       "description": "Shared vocabulary for designing deep modules.",
+      "version": "0.2.0",
       "source": "./skills/reference/design-modules"
     },
     {
@@ -92,25 +96,10 @@
       "source": "./skills/reference/document"
     },
     {
-      "name": "interview",
-      "description": "Interview the user in rounds of questions, each with a recommended answer, until a plan, decision, or idea is settled.",
-      "source": "./skills/reference/interview"
-    },
-    {
-      "name": "memorize",
-      "description": "File a lesson in the home the next agent will read, and recall saved scripts and lessons before redoing work.",
+      "name": "codify",
+      "description": "Define the project's code conventions by drafting candidate rules from how the code is already written and confirming each with the user and its reason, or audit an existing conventions file.",
       "version": "0.2.0",
-      "source": "./skills/reference/memorize"
-    },
-    {
-      "name": "unslop",
-      "description": "Cut AI tells from prose that other people will read, in any language.",
-      "source": "./skills/reference/unslop"
-    },
-    {
-      "name": "write-for-agents",
-      "description": "Write documents for agents: skills, AGENTS.md, and documents reached by a pointer.",
-      "source": "./skills/reference/write-for-agents"
+      "source": "./skills/setup/codify"
     },
     {
       "name": "setup-ai-tooling",
@@ -127,16 +116,19 @@
     {
       "name": "setup-delegation-policy",
       "description": "Install the delegation and model routing rule into the global steering files on this machine.",
+      "version": "0.2.0",
       "source": "./skills/setup/setup-delegation-policy"
     },
     {
       "name": "setup-git-guardrails",
       "description": "Set up hooks and permission rules that make coding agents ask before git commands that can lose work or rewrite shared history (pushing to a protected branch, force pushes, reset --hard, clean -f, branch -D, discarding changes) across Claude Code, OpenCode, and Codex CLI.",
+      "version": "0.2.0",
       "source": "./skills/setup/setup-git-guardrails"
     },
     {
       "name": "setup-git-hooks",
       "description": "Set up versioned git hooks via core.hooksPath (no Husky) with lint-staged (Biome, plus Prettier only for languages Biome leaves uncovered and only if the user wants it), plus typecheck and build.",
+      "version": "0.2.0",
       "source": "./skills/setup/setup-git-hooks"
     },
     {
@@ -144,6 +136,12 @@
       "description": "Build and work through a shared decision graph for an effort too large for one session.",
       "version": "0.2.0",
       "source": "./skills/shaping/graphify"
+    },
+    {
+      "name": "interview",
+      "description": "Interview the user in rounds of questions, each with a recommended answer, until a plan, decision, or idea is settled.",
+      "version": "0.2.0",
+      "source": "./skills/shaping/interview"
     },
     {
       "name": "prioritize",
@@ -160,11 +158,13 @@
     {
       "name": "research",
       "description": "Investigate a question against high-trust primary sources and capture the findings as a Markdown file in the repository.",
+      "version": "0.2.0",
       "source": "./skills/shaping/research"
     },
     {
       "name": "debug",
       "description": "Diagnosis loop for hard bugs and performance regressions.",
+      "version": "0.2.0",
       "source": "./skills/upkeep/debug"
     },
     {
@@ -212,6 +212,7 @@
     {
       "name": "resolve-merge-conflicts",
       "description": "Resolve an in-progress git merge or rebase conflict.",
+      "version": "0.2.0",
       "source": "./skills/version-control/resolve-merge-conflicts"
     },
     {
@@ -233,10 +234,28 @@
       "source": "./skills/workflow/address-feedback"
     },
     {
+      "name": "architect",
+      "description": "Decide or assess a system's technical shape (technology stack, parts and their boundaries, data ownership and flows, integrations, deployment) and how it meets the system-wide requirements, weighing alternatives and their tradeoffs.",
+      "version": "0.2.0",
+      "source": "./skills/workflow/architect"
+    },
+    {
+      "name": "delineate",
+      "description": "Outline a system functionally (its purpose, actors, domain contexts, capability map, system-wide requirements, and glossary), settling fuzzy or conflicting terms along the way.",
+      "version": "0.2.0",
+      "source": "./skills/workflow/delineate"
+    },
+    {
       "name": "divide-and-conquer",
       "description": "Implement an authorized task graph in parallel: route each task to the least expensive capable agent, build on one integration branch, then review once.",
       "version": "0.2.0",
       "source": "./skills/workflow/divide-and-conquer"
+    },
+    {
+      "name": "engineer",
+      "description": "Design one capability's technical solution before implementation (modules and their interfaces, data model, seams, and where each acceptance test attaches) inside the system's architecture, and write it down without writing production code.",
+      "version": "0.2.0",
+      "source": "./skills/workflow/engineer"
     },
     {
       "name": "implement",
@@ -258,7 +277,7 @@
     },
     {
       "name": "specify",
-      "description": "Resolve the open decisions in a selected scope and synthesize its living repository specification.",
+      "description": "Resolve the open decisions about one capability's observable behavior and synthesize its living repository specification: behavior, edge cases, acceptance, and capability requirements.",
       "version": "0.2.0",
       "source": "./skills/workflow/specify"
     },

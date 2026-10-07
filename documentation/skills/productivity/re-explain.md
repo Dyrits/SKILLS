@@ -8,7 +8,7 @@ Upstream source: `wait-what`, verified in the `d81f3a1` tree. This fork names th
 
 Type `/re-explain`, or an agent or another skill can reach for it when the task fits. You are usually the one who knows when an explanation stopped making sense.
 
-Use it when the agent invents jargon, stacks acronyms, or explains a decision without its premise. For an unresolved decision that needs discussion rather than another explanation, use [interview](../reference/interview.md).
+Use it when the agent invents jargon, stacks acronyms, or explains a decision without its premise. For an unresolved decision that needs discussion rather than another explanation, use [interview](../shaping/interview.md).
 
 ## Explain again, not just less
 
@@ -39,4 +39,4 @@ No. It follows the language you have been using and asks when the preference is 
 
 ## Where it fits
 
-`re-explain` is a reach-for-it-anytime standalone inside any conversation. [delineate](../reference/delineate.md) prevents vocabulary drift by maintaining the shared language; this skill repairs an explanation after it failed. [illustrate](./illustrate.md) is another option when a visual would make the relationship clearer. [guide](./guide.md) helps you choose the next move.
+`re-explain` is a reach-for-it-anytime standalone inside any conversation. [delineate](../workflow/delineate.md) prevents vocabulary drift by maintaining the shared language; this skill repairs an explanation after it failed. [illustrate](./illustrate.md) is another option when a visual would make the relationship clearer. [guide](./guide.md) helps you choose the next move.

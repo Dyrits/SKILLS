@@ -26,7 +26,7 @@ Remove `document` after redistributing its useful formats and guidance. Do not r
 
 Keep the shared document authority and capability-based organization from earlier records. Each skill carries enough of the relevant artifact contract to use it without a documentation coordinator.
 
-`hand-off` writes a self-contained handoff and updates the current-handoff pointer in `AGENTS.md`. `take-over` discovers and reads that artifact without requiring the producing skill to be installed.
+`hand-off` writes a self-contained handoff and updates the current-handoff pointer in `AGENTS.md`. The handoff itself says how to resume from it, so no reading skill is needed; `take-over` was removed on 2026-10-07 for that reason.
 
 ### Skill boundaries
 

@@ -1,8 +1,8 @@
-Upstream source: `handoff`, verified in the `d81f3a1` tree. This fork adds durable versioned session handoffs.
+Upstream source: `handoff`, verified in the `d81f3a1` tree. This fork adds durable versioned session handoffs, and folded its former reading skill, `take-over`, into the handoff itself.
 
 ## What it does
 
-`hand-off` writes the work of the session you are in into a **handoff document**: one markdown file, written to `.agents/handoffs/` in the workspace as a versioned, timestamped file, that a fresh agent resumes with [take-over](./take-over.md).
+`hand-off` writes the work of the session you are in into a **handoff document**: one markdown file, written to `.agents/handoffs/` in the workspace as a versioned, timestamped file, and points to it from `AGENTS.md`. The file is self-contained: it says how to resume from it, so the next agent needs no skill installed, only the file.
 
 What it buys is **portability**, not compression. That makes the skill narrower than it sounds. You need a file only when the work has to *travel*: to a new harness, a new directory, a colleague, or a side task you want to fork off. If nothing is travelling, you do not need a handoff: staying in the session, `/clear`, a subagent and `/compact` cover the ordinary end-of-phase case, and `/compact` covers it more often than this skill does.
 
@@ -31,7 +31,7 @@ These choices preserve different things. Compaction compresses conversational co
 
 ## What travels, and what doesn't
 
-Every handoff follows one fixed format, `HANDOFF-FORMAT.md`, which ships identical inside both `hand-off` and `take-over`, so the writer and the reader always agree. A header names the handoff it supersedes and the workspace, then six sections follow in a fixed order: Goal, State, Decisions, Next, Open questions, Sources. Each claim in State is marked verified (and how) or assumed, so the next agent knows what it can build on. Secrets are redacted before it's written.
+Every handoff follows one fixed format, `HANDOFF-FORMAT.md`. A header names the handoff it supersedes and the workspace, then a fixed "To resume" paragraph tells the reader how to use the file (read it whole, check unverified claims against the sources, follow earlier handoffs only when needed, confirm before starting, never edit it). Six sections follow in a fixed order: Goal, State, Decisions, Next, Open questions, Sources. Each claim in State is marked verified (and how) or assumed, so the next agent knows what it can build on. Secrets are redacted before it's written.
 
 The format names no skills to call next. The next session may run in another harness with a different skill set, so the handoff describes the work and leaves the tooling to whoever picks it up.
 
@@ -56,19 +56,22 @@ Summaries are secondary sources. Keep pointers to the requirements, specificatio
 It doesn't: the file lives in the workspace, survives reboots, and every handoff is kept, never overwritten, so you have a history of the work's transit documents (each names the one it supersedes). Two caveats. If `.agents/handoffs/` is gitignored it is still local-only: a clone or a colleague's machine won't have it, so commit the directory if the handoff needs to travel that far. And the same durability rule applies to anything the document *points at*: don't leave referenced artifacts in temp.
 
 **How do I actually hand it to the next agent?**
-Open the fresh session and point it at the path: read this file, then continue. Point at the file rather than pasting the summary into a shell command: a summary containing backticks or `$(...)` gets mangled when it's interpolated into `claude "<summary>"`, and the usual failure is silent truncation rather than an error, so the new agent starts with a quietly incomplete brief.
+Usually you don't need to: the line in `AGENTS.md` points the next session at the current handoff of each thread in flight. To be explicit, open the fresh session and point it at the path: read this file, then continue. Point at the file rather than pasting the summary into a shell command: a summary containing backticks or `$(...)` gets mangled when it's interpolated into `claude "<summary>"`, and the usual failure is silent truncation rather than an error, so the new agent starts with a quietly incomplete brief.
 
 **Is this the same as `/branch`, `--fork-session`, or the built-in `/hand-off`?**
 Analogous, not identical, and `/branch` isn't a shipped skill here; `/hand-off` is the canonical name. A fork inherits an exact copy of the context; this skill produces a *targeted* compression aimed at a stated next task, in a file. Where a fork will do (same machine, same harness, same directory), a fork is less work. The file wins the moment the destination is somewhere the fork can't go.
+
+**Why does it write to `AGENTS.md`?**
+So the next session finds the handoff without being told. It keeps one line per thread in flight, replaces that line with each new handoff, and removes it when a handoff records the goal as done. When handoffs are local-only, the line says so, since a clone will not have the file.
 
 **When does something belong in `AGENTS.md` instead?**
 Ask whether it's true next month. `AGENTS.md` is standing context about the project, loaded into every session whether it's relevant or not. A handoff is about one piece of work in flight and is dead once that work lands. Facts that keep getting re-explained are an `AGENTS.md` problem; a half-finished task is a handoff.
 
 **It captures the what, not the why.**
-A repeated criticism, and the reason the format has a Decisions section that carries each decision with its reason. State what the next session is for so the relevant reasoning survives. Confident claims the session never checked, such as "X isn't built" or "Y is done", must be marked assumed; [take-over](./take-over.md) checks those against the sources before building on them.
+A repeated criticism, and the reason the format has a Decisions section that carries each decision with its reason. State what the next session is for so the relevant reasoning survives. Confident claims the session never checked, such as "X isn't built" or "Y is done", must be marked assumed; the "To resume" paragraph tells the next agent to check those against the sources before building on them.
 
 **What about a side task I fork off?**
-It starts its own thread: its supersedes line reads `none (forked from <file>)`, so the original thread's handoff stays the head of its own line. When two threads are live, `take-over` asks which one to resume unless you name it.
+It starts its own thread: its supersedes line reads `none (forked from <file>)`, so the original thread's handoff stays the head of its own line. Each live thread has its own line in `AGENTS.md`, so the next session sees both and asks which one to resume unless you name it.
 
 **Does work-in-progress replace a handoff?**
 
@@ -87,8 +90,9 @@ No. It asks once, and only when the repository does not already answer. A `.giti
 - The fresh agent starts working instead of asking you to re-explain the setup.
 - In the fork case, your original session is still sitting there untouched when you come back to it.
 - Every section of the format is there, and each claim in State says whether it was verified.
+- `AGENTS.md` has exactly one line for this thread, naming the newest handoff.
 - Nothing in it is a key, a token, or a password.
 
 ## Where it fits
 
-`hand-off` is a reach-for-it-anytime standalone between sessions, not a development chain step. [take-over](./take-over.md) consumes its newest brief. An approved [prototype](../shaping/prototype.md) in another session can use a handoff for the question and return evidence, but isolation is not a universal prototype requirement. [guide](./guide.md) helps choose the session boundary.
+`hand-off` is a reach-for-it-anytime standalone between sessions, not a development chain step. An approved [prototype](../shaping/prototype.md) in another session can use a handoff for the question and return evidence, but isolation is not a universal prototype requirement. [guide](./guide.md) helps choose the session boundary.

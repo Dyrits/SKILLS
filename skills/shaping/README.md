@@ -6,3 +6,4 @@ Explore an open question and produce an answer that feeds development.
 - [research](./research/SKILL.md): Investigate primary sources in the background and save cited findings.
 - [prototype](./prototype/SKILL.md): Build a scoped experiment and validate its answer before production integration.
 - [prioritize](./prioritize/SKILL.md): Organize candidate outcomes and agree a useful focus without requiring tasks or implementation.
+- [interview](./interview/SKILL.md): Settle decisions through rounds of questions, each with a recommended answer.

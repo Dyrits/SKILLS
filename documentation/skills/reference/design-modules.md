@@ -17,9 +17,9 @@ Several skills sit close to it. Which one you want depends on what the actual pr
 | The problem | The skill |
 |---|---|
 | The shape of one module: its interface, its seam, its depth | `design-modules` |
-| The *words of the domain*: "account" means three things, two people mean different things by "cancellation" | [delineate](./delineate.md) |
+| The *words of the domain*: "account" means three things, two people mean different things by "cancellation" | [delineate](../workflow/delineate.md) |
 | You don't yet know *which* module to redesign | [improve-codebase-architecture](../upkeep/improve-codebase-architecture.md) (the survey that finds candidates) |
-| You want the design argued with, not just named | [interview](./interview.md) |
+| You want the design argued with, not just named | [interview](../shaping/interview.md) |
 | There's a concrete behaviour to build and you want tests that survive a refactor | [test-first](../workflow/test-first.md) |
 
 ## The vocabulary
@@ -93,4 +93,4 @@ People have proposed exactly those. [Issue #180](https://github.com/mattpocock/s
 
 ## Where it fits
 
-`design-modules` is a **reach-for-it-anytime standalone**, and the vocabulary layer underneath the engineering skills rather than a step in any chain. Its closest neighbour is [delineate](./delineate.md), the parallel reference for the *problem domain*'s words rather than the module's shape. The two are usually wanted together, since naming a deep module well needs both. [improve-codebase-architecture](../upkeep/improve-codebase-architecture.md) is the other: it surveys a codebase for deepening candidates and writes every one of them in this glossary, so it finds the module and this skill is the bench you design it on. When you're unsure which skill or flow fits, [guide](../productivity/guide.md) routes you.
+`design-modules` is a **reach-for-it-anytime standalone**, and the vocabulary layer underneath the engineering skills rather than a step in any chain. Its closest neighbour is [delineate](../workflow/delineate.md), the parallel reference for the *problem domain*'s words rather than the module's shape. The two are usually wanted together, since naming a deep module well needs both. [improve-codebase-architecture](../upkeep/improve-codebase-architecture.md) is the other: it surveys a codebase for deepening candidates and writes every one of them in this glossary, so it finds the module and this skill is the bench you design it on. When you're unsure which skill or flow fits, [guide](../productivity/guide.md) routes you.

@@ -4,12 +4,12 @@ description: "Scan a codebase for deepening opportunities, present them as a vis
 dependencies:
   apm:
     - git: parent
-      path: skills/reference/codify
+      path: skills/setup/codify
     - git: parent
-      path: skills/reference/delineate
+      path: skills/workflow/delineate
     - git: parent
       path: skills/reference/design-modules
     - git: parent
       path: skills/reference/document
     - git: parent
-      path: skills/reference/interview
+      path: skills/shaping/interview

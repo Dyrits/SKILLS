@@ -17,7 +17,7 @@ Reach for it when the learning is the project: a language, a framework, a codeba
 | To learn a topic over weeks, with sessions that accumulate | `teach` |
 | One idea explained inside the session you are already in | Just ask, in that session |
 | The agent's last message re-pitched because it didn't land | [re-explain](./re-explain.md) |
-| To sharpen thinking you already have, rather than acquire new material | [interview](../reference/interview.md) |
+| To sharpen thinking you already have, rather than acquire new material | [interview](../shaping/interview.md) |
 | A background agent to read primary sources and leave you a cited document | [research](../shaping/research.md) |
 | To learn something that came up mid-refinement, without derailing the decision | [hand-off](./hand-off.md) to a teaching workspace, then `teach` there |
 

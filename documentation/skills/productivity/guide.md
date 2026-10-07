@@ -18,10 +18,10 @@ Type `/guide`, or an agent or another skill can reach for it when the task fits.
 | Committed work in a worktree needs to reach its original local branch | [sync-tree](../version-control/sync-tree.md), transfers locally rather than publishing upstream |
 | Local branches need rebasing onto a target | [rebase](../version-control/rebase.md), verifies the result and asks separately before publication |
 | Git has already stopped on conflicts | [resolve-merge-conflicts](../version-control/resolve-merge-conflicts.md), which resolves the current operation rather than starting a batch of rebases |
-| Agents keep rebuilding the same helper or relearning the same lesson | [memorize](../reference/memorize.md), files lessons where the next agent will look and checks there first, including saved scripts |
+| Agents keep rebuilding the same helper or relearning the same lesson | [memorize](../productivity/memorize.md), files lessons where the next agent will look and checks there first, including saved scripts |
 | An idea, and no idea where to start | A choice between planned development, just-in-time development, and clarification without development |
 | Bugs and requests arriving from other people | The [triage](../upkeep/triage.md) on-ramp, and why tickets you generated yourself don't belong on it |
-| Two skills that look interchangeable | [interview](../reference/interview.md) clarifies a decision; [specify](../workflow/specify.md) records agreed capability behavior; [graphify](../shaping/graphify.md) maps a large effort's unresolved decisions |
+| Two skills that look interchangeable | [interview](../shaping/interview.md) clarifies a decision; [specify](../workflow/specify.md) records agreed capability behavior; [graphify](../shaping/graphify.md) maps a large effort's unresolved decisions |
 | A long session and a decision about the context | A session boundary that preserves authoritative work state |
 | An explanation you need to see | [illustrate](../productivity/illustrate.md) for a visual, or [re-explain](../productivity/re-explain.md) for a clearer explanation |
 | A skill you have already picked | Nothing useful. Invoke that skill directly. |
@@ -39,9 +39,9 @@ The useful idea is a **flow**, a path through skills that preserves agreements a
 
 | What you need | Route |
 | --- | --- |
-| Explicit planning and execution | [specify](../workflow/specify.md), [taskify](../workflow/taskify.md), [implement](../workflow/implement.md), then [review-and-refactor](../workflow/review-and-refactor.md). Skip task decomposition when a small approved scope does not need it. |
+| Explicit planning and execution | Once per system, [delineate](../workflow/delineate.md) then [architect](../workflow/architect.md); per capability, [specify](../workflow/specify.md), [engineer](../workflow/engineer.md), [taskify](../workflow/taskify.md), [implement](../workflow/implement.md), then [review-and-refactor](../workflow/review-and-refactor.md). Skip task decomposition when a small approved scope does not need it. |
 | Discover behavior while building a living application | [iterate](../workflow/iterate.md) clarifies, implements, and verifies one useful batch at a time. |
-| Clarify a decision without starting development | [interview](../reference/interview.md). Its caller records useful results in the appropriate documents. |
+| Clarify a decision without starting development | [interview](../shaping/interview.md). Its caller records useful results in the appropriate documents. |
 
 `specify` asks only about unresolved decisions. A user-approved [prototype](../shaping/prototype.md) settles a question conversation cannot; its answer and evidence feed the specification. Useful validated code can be productionized after appropriate checks without a mandatory rebuild. [research](../shaping/research.md) resolves consequential unknown external facts.
 
@@ -66,18 +66,17 @@ For publishing conclusions already reached, [publish-message](../productivity/pu
 | A large effort has too many unresolved decisions | [graphify](../shaping/graphify.md) maps decisions; refinement, research, or approved experiments resolve them. |
 | A recurring operational loop needs an implementable design | [design-workflow](../productivity/design-workflow.md). |
 | An architectural seam causes friction | [improve-codebase-architecture](../upkeep/improve-codebase-architecture.md), then explore one selected candidate. |
-| Another person has the missing answers | [ask-someone-else](../productivity/ask-someone-else.md), then bring the answers into refinement or specification. |
 | An approved task graph needs concurrent implementation | [divide-and-conquer](../workflow/divide-and-conquer.md), instead of individual task sessions. |
 | Behavior needs a red/green check | [test-first](../workflow/test-first.md), at an agreed seam. |
 | A known failure needs diagnosis | [debug](../upkeep/debug.md), starting with a tight reproduction loop. |
 | Learning is a continuing project | [teach](../productivity/teach.md), in a dedicated teaching workspace. |
 | A recurring process has waiting, rework, or handoff friction | [optimize-process](../productivity/optimize-process.md), using evidence from actual cycles. |
-| Domain terms are inconsistent | [delineate](../reference/delineate.md). |
+| Domain terms are inconsistent | [delineate](../workflow/delineate.md). |
 | A module needs a deeper interface or useful seam | [design-modules](../reference/design-modules.md). |
 | Project documents need maintenance | [document](../reference/document.md), preserving their separate responsibilities. |
-| Skills or steering instructions need clearer agent-facing text | [write-for-agents](../reference/write-for-agents.md). |
+| Skills or steering instructions need clearer agent-facing text | [write-for-agents](../productivity/write-for-agents.md). |
 | A manual dashboard, credentials, or cutover step blocks automation | [walk-through](../productivity/walk-through.md). |
-| Writing needs filler and AI patterns removed | [unslop](../reference/unslop.md). |
+| Writing needs filler and AI patterns removed | [unslop](../productivity/unslop.md). |
 
 Setup and outbound skills it also routes to:
 
@@ -94,7 +93,7 @@ At a **session boundary**, keep authoritative work state current before changing
 | --- | --- |
 | Continue | The next step needs this context as a primary source, or enough room remains for it to fit. |
 | Clear | Everything in the session is disposable for the next task, and authoritative sources preserve what it needs. |
-| [hand-off](../productivity/hand-off.md), then [take-over](../productivity/take-over.md) | Something travels: a new harness, directory, repository, or colleague, or a side task forked mid-phase. |
+| [hand-off](../productivity/hand-off.md) | Something travels: a new harness, directory, repository, or colleague, or a side task forked mid-phase. |
 | Subagent | The next task is tightly scoped enough to run without steering, such as an automated review, and this session stays untouched. |
 | Compact | None of the above fit: relevant context, same harness and directory, and you stay in the loop. Pass an instruction naming what the next phase needs. |
 
@@ -104,7 +103,7 @@ Work-in-progress does not replace a session handoff. The handoff supplies contex
 
 **Isn't there just a list of the skills in the right order?**
 
-Planned development has an order, but it is not the only workflow. Use `specify`, optional `taskify`, `implement`, and review when explicit planning helps. Use `iterate` for approved living-code batches. The branches matter: existing agreements may settle the next step, or an experiment may still be needed. The router is maintained by hand, so compare consequential recommendations with the skill itself.
+Planned development has an order, but it is not the only workflow. Use `delineate` and `architect` for the system, then `specify`, optional `engineer` and `taskify`, `implement`, and review per capability, when explicit planning helps. Use `iterate` for approved living-code batches. The branches matter: existing agreements may settle the next step, or an experiment may still be needed. The router is maintained by hand, so compare consequential recommendations with the skill itself.
 
 **It told me half the skills aren't installed.**
 
@@ -128,7 +127,7 @@ That advice is often correct and rarely durable. Someone asked it how to make [i
 
 **It named a skill I don't have, or missed one I do.**
 
-Check the changelog for a rename before assuming a skill is gone. Older planning commands now lead to [specify](../workflow/specify.md) and [taskify](../workflow/taskify.md); the general interview is [interview](../reference/interview.md), and the explanation repair is [re-explain](../productivity/re-explain.md). These are current names, not aliases. Promotion depends on a manifest entry, not a bucket move.
+Check the changelog for a rename before assuming a skill is gone. Older planning commands now lead to [specify](../workflow/specify.md) and [taskify](../workflow/taskify.md); the general interview is [interview](../shaping/interview.md), and the explanation repair is [re-explain](../productivity/re-explain.md). These are current names, not aliases. Promotion depends on a manifest entry, not a bucket move.
 
 **Does choosing just-in-time work discard existing specifications?**
 
@@ -148,6 +147,6 @@ No. They are living agreed behavior and acceptance. Drafts keep unresolved alter
 
 ## Where it fits
 
-`guide` is a standalone router over both development workflows and the supporting skills. It recommends and stops. [specify](../workflow/specify.md) starts planned development; [iterate](../workflow/iterate.md) runs just-in-time batches; [triage](../upkeep/triage.md) verifies work arriving from other people. [improve-skills](../upkeep/improve-skills.md) reviews how the skills behaved in a session and reports problems on this repository; [improve-environment](../upkeep/improve-environment.md) changes the project's environment after a session's friction.
+`guide` is a standalone router over both development workflows and the supporting skills. It recommends and stops. [delineate](../workflow/delineate.md) starts planned development for a new system, [specify](../workflow/specify.md) for a new capability; [iterate](../workflow/iterate.md) runs just-in-time batches; [triage](../upkeep/triage.md) verifies work arriving from other people. [improve-skills](../upkeep/improve-skills.md) reviews how the skills behaved in a session and reports problems on this repository; [improve-environment](../upkeep/improve-environment.md) changes the project's environment after a session's friction.
 
 It is a secondary source over the skills it describes. Where the router and a `SKILL.md` disagree, the `SKILL.md` is right.

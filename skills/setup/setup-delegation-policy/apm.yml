@@ -1,0 +1,3 @@
+name: setup-delegation-policy
+version: 0.2.0
+description: "Install the delegation and model routing rule into the global steering files on this machine."

@@ -1,5 +1,7 @@
 # Maintain this repository as an independently rebranded fork of `mattpocock/skills`
 
+Status: partially superseded on 2026-10-08. The `.upstream/` archives described below were removed; each skill's provenance now lives in its `metadata.forks`, and the README no longer refers to the upstream repository. The rest is retained as history.
+
 Through commit `f85ffd7`, this repository was `mattpocock/skills` (distributed via [AI Hero](https://aihero.dev/skills)). Starting at `f85ffd7`, Dylan J. Gerrits began maintaining `github.com/Dyrits/SKILLS` as an independent fork rather than a tracked branch feeding changes back upstream: renaming the plugin and package identity (`mattpocock-skills` → `dyrits-skills`, marketplace `mattpocock` → `dyrits`), restructuring skills into semantic buckets (`workflow/`, `shaping/`, `upkeep/`, `getting-started/`, `productivity/`, `reference/`, `work-in-progress/`, `deprecated/`), and dropping the AI Hero site as a documentation and publication dependency in favour of `skills.sh` and this repository's own `README.md`.
 
 ## Why

@@ -6,7 +6,7 @@ Skills are organized into bucket folders under `skills/`:
 - `upkeep/`: keep the codebase and issue list healthy; generates work for the flow
 - `version-control/`: branches, merge requests, and their history
 - `productivity/`: human-facing workflows and procedures you run, not part of the delivery flow
-- `reference/`: disciplines that shape how another task is done, called by other skills; they produce no result of their own
+- `reference/`: skills awaiting retirement (`document`, `design-modules`); add nothing new here
 
 Every skill has an entry in `.claude-plugin/plugin.json`'s `skills` array (the Claude Code plugin ships exactly that set), a reference in the top-level `README.md` and in its bucket's `README.md`, and a documentation page. Adding or removing a skill means updating all four. `scripts/check-skills.py` enforces this.
 
@@ -20,9 +20,9 @@ For deferred installer and model-routing work, read [.agents/deferred-tooling.md
 
 For the accepted autonomy and skill-boundary decisions, supersession scope, and unfinished migration, read [architecture decision record 0005](./documentation/architecture-decision-record/0005-make-skills-autonomous.md).
 
-To resume the autonomy migration, read the [current handoff](./.agents/handoffs/2026-10-07-2257-autonomous-skills.md). Handoffs are shared and committed.
+To resume the autonomy migration, read the [current handoff](./.agents/handoffs/2026-10-08-0046-autonomous-skills.md). Handoffs are shared and committed.
 
-Install commands are copied verbatim from [standard installation wording](./documentation/maintenance/standard-installation-wording.md). `.claude-plugin/marketplace.json` makes the repository its own single-plugin marketplace (a fallback the installation wording guide explains, not the documented route). Run `claude plugin validate . --strict` after touching either manifest. Why a Claude plugin but not (yet) a Codex one lives in [architecture decision record 0002](./.upstream/architecture-decision-record/0002-ship-as-a-claude-code-plugin.md), an upstream decision archived under `.upstream/`; this fork's own decisions live in `documentation/architecture-decision-record/`.
+Install commands are copied verbatim from [standard installation wording](./documentation/maintenance/standard-installation-wording.md). `.claude-plugin/marketplace.json` makes the repository its own single-plugin marketplace (a fallback the installation wording guide explains, not the documented route). Run `claude plugin validate . --strict` after touching either manifest. This repository's decisions live in `documentation/architecture-decision-record/`.
 
 Each skill entry in the top-level `README.md` must link the skill name to its `SKILL.md`.
 
@@ -38,7 +38,7 @@ Every `SKILL.md` is reachable by both the human and the model: no `disable-model
 
 To (re)link every skill into the local harness skill directories (`~/.claude/skills`, `~/.agents/skills`), run `scripts/link-skills.sh`. Each entry is a symlink into this repository, so a `git pull` keeps installed skills current; re-run the script after adding, removing, or renaming a skill.
 
-Call the Skill tool with "memorize" the moment the user states a standing rule, asks you to remember something, or corrects how something is done, and when something is rebuilt a second time. Before writing a script or a pipeline longer than one line, read `.agents/scripts/INDEX.md` and reuse or extend a match; save new reusable scripts there following [memorize](./skills/reference/memorize/SCRIPTS.md).
+Call the Skill tool with "memorize" the moment the user states a standing rule, asks you to remember something, or corrects how something is done, and when something is rebuilt a second time. Before writing a script or a pipeline longer than one line, read `.agents/scripts/INDEX.md` and reuse or extend a match; save new reusable scripts there following [memorize](./skills/productivity/memorize/SCRIPTS.md).
 
 ## Writing skills
 
@@ -52,6 +52,6 @@ Skills ship to other repositories, so a skill holds no rule that only this repos
 
 Prefer full words in repository-owned prose and paths when they remain clear: use `repository`, `document` or `documentation`, `specifications`, and `architecture decision record` instead of `repo`, `doc` or `docs`, `spec`, and `ADR`. Use an abbreviation when it is an external name, a literal command or API, a widely established technical term, or when the full term has already been introduced and repetition would reduce readability. Preserve literal URLs and historical quotations.
 
-Name `AGENTS.md` as the steering file in skills, documentation, evaluations, and scripts: current Claude agents read it, so `CLAUDE.md` does not appear. Two things keep their literal `CLAUDE.md`: a home-directory path a skill installs into (`~/.claude/CLAUDE.md`), and historical records (handoffs, `.upstream/`, architecture decision records).
+Name `AGENTS.md` as the steering file in skills, documentation, evaluations, and scripts: current Claude agents read it, so `CLAUDE.md` does not appear. Two things keep their literal `CLAUDE.md`: a home-directory path a skill installs into (`~/.claude/CLAUDE.md`), and historical records (handoffs, architecture decision records).
 
 No em-dashes anywhere in this repository's prose (`SKILL.md` files, documentation, `README.md`, `CHANGELOG.md`, architecture decision records, changesets, code comments). Where a sentence reaches for one, rewrite it instead with a comma, colon, period, parentheses, or a conjunction, whichever the sentence actually wants; never do a blind character substitution.

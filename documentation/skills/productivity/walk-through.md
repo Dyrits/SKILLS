@@ -19,7 +19,7 @@ Reach for it when the next thing blocking you is a trip through a dashboard:
 | A project has to move from state A to state B once | Walks the transition and reports what it could not do |
 | You are about to write those steps into a README | Writes an executable version instead, which can't rot as quietly |
 
-To decide what to build, use [interview](../reference/interview.md); to record agreed capability behavior, use [specify](../workflow/specify.md). A wizard handles manual execution after the procedure is understood.
+To decide what to build, use [interview](../shaping/interview.md); to record agreed capability behavior, use [specify](../workflow/specify.md). A wizard handles manual execution after the procedure is understood.
 
 ## Prerequisites
 

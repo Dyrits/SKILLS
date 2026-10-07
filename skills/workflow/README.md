@@ -2,7 +2,10 @@
 
 The idea-to-ship flow, with shared documents for planned and just-in-time development.
 
-- [specify](./specify/SKILL.md): Resolve outstanding decisions and write or update capability requirements and specifications.
+- [delineate](./delineate/SKILL.md): Outline the system functionally: purpose, actors, contexts, capabilities, system-wide requirements, and glossary.
+- [architect](./architect/SKILL.md): Decide or assess the system's technical shape: stack, parts, data ownership, integrations, and deployment.
+- [specify](./specify/SKILL.md): Resolve outstanding decisions and write or update a capability's observable behavior, acceptance, and requirements.
+- [engineer](./engineer/SKILL.md): Design one capability's modules, interfaces, data, and test seams inside the architecture, without writing production code.
 - [taskify](./taskify/SKILL.md): Decompose work into tasks with coherent outcomes, acceptance criteria, and blocking dependencies.
 - [implement](./implement/SKILL.md): Implement authorized work, validate and review it, and maintain the shared documents.
 - [divide-and-conquer](./divide-and-conquer/SKILL.md): Route each task to the least expensive capable agent, build a task graph in parallel on one integration branch, then review once.

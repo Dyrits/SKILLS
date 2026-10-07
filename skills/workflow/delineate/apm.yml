@@ -1,0 +1,3 @@
+name: delineate
+version: 0.2.0
+description: "Outline a system functionally (its purpose, actors, domain contexts, capability map, system-wide requirements, and glossary), settling fuzzy or conflicting terms along the way."
