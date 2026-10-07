@@ -14,7 +14,7 @@ Take one branch:
 
 ## Gather
 
-Read the functional picture first: the domain outline (`documentation/domain.md`), the requirements (`documentation/requirements.md` and any under `documentation/capabilities/`), and the glossary. Then read the technical state: `documentation/architecture.md`, the decision records in `documentation/architecture-decision-record/`, and, in Assess, the code, dependency manifests, configuration, and deployment files.
+Read the functional picture first: the domain outline (`documentation/outline.md`), the requirements (`documentation/requirements.md` and any under `documentation/capabilities/`), and the glossary. Then read the technical state: `documentation/architecture.md`, the decision records in `documentation/architecture-decision-record/`, and, in Assess, the code, dependency manifests, configuration, and deployment files.
 
 When the functional picture is missing, ask only what the architecture cannot be decided without: what the system is for, who uses it and how many, and what it must guarantee (availability, performance, data location, security, compliance, budget). Also ask what the team knows and must keep running, since skills and operations budget constrain the stack. Record each obligation the user states in the requirements, following [REQUIREMENTS-FORMAT.md](REQUIREMENTS-FORMAT.md), and report that the domain outline is missing.
 

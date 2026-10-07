@@ -236,6 +236,11 @@ const DATA = {
    "label": "Backlog",
    "path": "documentation/backlog.md"
   },
+  "blueprint": {
+   "description": "Modules, interfaces, data, and test seams that deliver one capability inside the architecture.",
+   "label": "Capability blueprint",
+   "path": "documentation/capabilities/<capability>/blueprint.md"
+  },
   "branches": {
    "description": "Branches in the original checkout.",
    "label": "Local branches"
@@ -274,15 +279,10 @@ const DATA = {
    "description": "A machine-wide rule for routing work to the least expensive capable model.",
    "label": "Delegation policy"
   },
-  "design": {
-   "description": "Modules, interfaces, data, and test seams that deliver one capability inside the architecture.",
-   "label": "Capability design",
-   "path": "documentation/capabilities/<capability>/design.md"
-  },
   "domain-outline": {
    "description": "The system's purpose, actors, domain contexts, and capability map.",
    "label": "Domain outline",
-   "path": "documentation/domain.md"
+   "path": "documentation/outline.md"
   },
   "domain-records": {
    "description": "Ubiquitous language and consequential decisions.",
@@ -920,7 +920,7 @@ const DATA = {
     "implement"
    ],
    "outputs": [
-    "design",
+    "blueprint",
     "domain-records"
    ],
    "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/workflow/engineer.md",
@@ -1072,7 +1072,7 @@ const DATA = {
    ],
    "inputs": [
     "specification",
-    "design",
+    "blueprint",
     "tasks",
     "work-in-progress",
     "ready-brief"
@@ -1812,7 +1812,7 @@ const DATA = {
    ],
    "inputs": [
     "specification",
-    "design",
+    "blueprint",
     "requirements"
    ],
    "next": [],

@@ -24,7 +24,7 @@ Type `/delineate`, or an agent can reach for it when a task fits. Reach for it w
 
 | Document | Holds |
 | --- | --- |
-| `documentation/domain.md` | Purpose, actors, contexts and their relationships, the capability map |
+| `documentation/outline.md` | Purpose, actors, contexts and their relationships, the capability map |
 | `documentation/requirements.md` | System-wide obligations, each with its source, and its number and check when measurable |
 | The glossary | Domain terms only. One context keeps `documentation/glossary.md`; several keep one glossary beside each context's code, linked from the domain outline |
 
@@ -62,7 +62,7 @@ No. A domain language you do not understand yourself becomes meaningless once wr
 ## It's working if
 
 - The domain outline names no technology, and every requirement names who imposes it.
-- A newcomer can read `documentation/domain.md` and say what the system is for and which capabilities it has.
+- A newcomer can read `documentation/outline.md` and say what the system is for and which capabilities it has.
 - It stops you mid-sentence to ask which of two things you meant, instead of picking one and moving on.
 - The glossary changes during the conversation, and gets shorter as often as it gets longer.
 - It quotes your code back at you when your code and your sentence disagree.

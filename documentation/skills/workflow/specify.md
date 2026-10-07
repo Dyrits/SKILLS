@@ -32,7 +32,7 @@ No. The repository is the specification's source of truth. Publishing or changin
 No. Choose [taskify](taskify.md) only when decomposition is useful. Small delivery batches can proceed without tasks.
 
 **Where did the design section go?**
-To [engineer](./engineer.md), which writes `design.md` beside the specifications. Agreeing behavior no longer waits on technical choices, and the design can change without reopening the agreement.
+To [engineer](./engineer.md), which writes `blueprint.md` beside the specifications. Agreeing behavior no longer waits on technical choices, and the design can change without reopening the agreement.
 
 **What does it do when it finishes?**
 It reports the canonical paths, covered requirements, agreements, blockers, and validation still needed. It does not start or suggest another skill; the documents it leaves are what the next step reads.
@@ -40,7 +40,7 @@ It reports the canonical paths, covered requirements, agreements, blockers, and 
 ## It's working if
 
 - The agreed behavior and acceptance cover the selected scope and link applicable requirements.
-- The specification names no module, class, or table; technical ideas raised along the way are noted for the design.
+- The specification names no module, class, or table; technical ideas raised along the way are noted for the blueprint.
 - Settled decisions are reused, and missing decisions are visible rather than assumed.
 - You can distinguish unresolved proposals from authorized agreements.
 - The canonical specification is readable in the repository even without tracker access.

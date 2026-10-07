@@ -28,7 +28,7 @@ Settle the draft with the user through the [interview method](INTERVIEW.md), rec
 - **Capabilities**: each lasting area of agreed behavior, one line each.
 - **Requirements**: the system-wide obligations, each with its source. Ask about the kinds users forget: availability, performance, data location and retention, security, compliance, budget, and anything a client or contract imposes.
 
-Formats: [DOMAIN-FORMAT.md](DOMAIN-FORMAT.md) for the outline and [REQUIREMENTS-FORMAT.md](REQUIREMENTS-FORMAT.md) for requirements.
+Formats: [OUTLINE-FORMAT.md](OUTLINE-FORMAT.md) for the outline and [REQUIREMENTS-FORMAT.md](REQUIREMENTS-FORMAT.md) for requirements.
 
 ## Challenge terms
 
@@ -43,7 +43,7 @@ When several terms are open at once, settle them in rounds through the [intervie
 
 ## Write it down
 
-Write each item as soon as it is settled, without batching: the outline to `documentation/domain.md`, requirements to `documentation/requirements.md`, terms to the glossary. Where the project already keeps one of these elsewhere, update it in place. Create a document only when it has content, and a folder with its first document.
+Write each item as soon as it is settled, without batching: the outline to `documentation/outline.md`, requirements to `documentation/requirements.md`, terms to the glossary. Where the project already keeps one of these elsewhere, update it in place. Create a document only when it has content, and a folder with its first document.
 
 To clean up an existing glossary, propose a home for every entry that is not a term: a requirement to the requirements, agreed behavior to its capability's specifications, a technical decision reported to the user. Sharpen the terms that stay. Move nothing without the user's approval.
 

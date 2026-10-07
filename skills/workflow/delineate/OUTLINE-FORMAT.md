@@ -1,6 +1,6 @@
 # Domain outline format
 
-The domain outline, `documentation/domain.md`, says what the system is for in functional terms: its purpose, its actors, its domain contexts, and its capabilities. It names no technology, structure, or design. Requirements live in the requirements document and terms in the glossary; the outline links to them instead of repeating them.
+The domain outline, `documentation/outline.md`, says what the system is for in functional terms: its purpose, its actors, its domain contexts, and its capabilities. It names no technology, structure, or design. Requirements live in the requirements document and terms in the glossary; the outline links to them instead of repeating them.
 
 ## Structure
 

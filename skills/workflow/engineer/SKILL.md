@@ -5,7 +5,7 @@ description: Design one capability's technical solution before implementation (m
 
 # Engineer
 
-Design how one capability is built: its modules and their interfaces, the data it owns, the seams where behavior varies, and the interface each acceptance test drives. Work inside the system's architecture and against the capability's specifications. Write no production code; the result is the design.
+Design how one capability is built: its modules and their interfaces, the data it owns, the seams where behavior varies, and the interface each acceptance test drives. Work inside the system's architecture and against the capability's specifications. Write no production code; the result is the capability's blueprint.
 
 ## Gather
 
@@ -16,7 +16,7 @@ Select one capability and read, when present:
 - the glossary and the code conventions;
 - the code the capability touches, and the modules around it.
 
-When the specifications are missing, ask the user for the behavior and acceptance the design must serve, record those answers under a heading "Assumed behavior" in the design, and report that the capability has no agreed specifications. When the architecture is missing, design from the parts the code already has and report the gap.
+When the specifications are missing, ask the user for the behavior and acceptance the design must serve, record those answers under a heading "Assumed behavior" in the blueprint, and report that the capability has no agreed specifications. When the architecture is missing, design from the parts the code already has and report the gap.
 
 ## Design
 
@@ -29,9 +29,9 @@ Use the vocabulary and principles in [MODULES.md](MODULES.md) throughout. List t
 
 ## Write it down
 
-Write `documentation/capabilities/<capability>/design.md` following [DESIGN-FORMAT.md](DESIGN-FORMAT.md), updating an existing design in place. Record a capability-level decision that is hard to reverse, surprising without context, and the result of a real tradeoff as a decision record, linked from the design. Create the folder with its first document.
+Write `documentation/capabilities/<capability>/blueprint.md` following [BLUEPRINT-FORMAT.md](BLUEPRINT-FORMAT.md), updating an existing blueprint in place. Record a capability-level decision that is hard to reverse, surprising without context, and the result of a real tradeoff as a decision record, linked from the blueprint. Create the folder with its first document.
 
-When you create a design, add one line pointing to it from the capability's specifications when they exist. When you create the project's first design, add one line saying where capability designs live and when to read them to the nearest `AGENTS.md`, and a link to `documentation/capabilities/` where the root `README.md` lists the project's documentation (adding a short Documentation section if there is none). Do the same for the first decision record. Check for an existing line first.
+When you create a blueprint, add one line pointing to it from the capability's specifications when they exist. When you create the project's first blueprint, add one line saying where capability blueprints live and when to read them to the nearest `AGENTS.md`, and a link to `documentation/capabilities/` where the root `README.md` lists the project's documentation (adding a short Documentation section if there is none). Do the same for the first decision record. Check for an existing line first.
 
 With no user to answer (a subagent run), write nothing as agreed: return the decision tree, your recommendations, and any conflict with the architecture.
 

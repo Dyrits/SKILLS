@@ -39,4 +39,4 @@ _Why_: The tracker already uses it.
 
 ## Several contexts
 
-A repository with one context has one glossary at `documentation/glossary.md`. With several, each context keeps its glossary in a `documentation/` folder beside its code, and `documentation/domain.md` lists the contexts and links each glossary. When a term's context is unclear, ask.
+A repository with one context has one glossary at `documentation/glossary.md`. With several, each context keeps its glossary in a `documentation/` folder beside its code, and `documentation/outline.md` lists the contexts and links each glossary. When a term's context is unclear, ask.

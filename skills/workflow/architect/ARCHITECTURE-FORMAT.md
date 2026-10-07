@@ -46,5 +46,5 @@ The architecture document, `documentation/architecture.md`, describes the system
 - **Parts follow the domain.** Each part serves named contexts or capabilities, in glossary terms. A part that serves no context is infrastructure; say what it supports.
 - **Every piece of data has one owning part.** Others reach it through that part, or hold a copy whose source and refresh are stated.
 - **Every system-wide requirement has a row.** An unmet requirement stays visible with its gap until the user relaxes it or the architecture changes.
-- **Leave out module-level design** (classes, interfaces inside a part, a capability's data model); it belongs to each capability's design.
+- **Leave out module-level design** (classes, interfaces inside a part, a capability's data model); it belongs to each capability's blueprint.
 - **Omit empty sections.** A small system may need only the opening paragraph, the stack, and the requirements table.

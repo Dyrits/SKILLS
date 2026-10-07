@@ -1,11 +1,11 @@
-# Design format
+# Blueprint format
 
-A capability's design, `documentation/capabilities/<capability>/design.md`, says how the code delivers that capability's specifications inside the system's architecture. It uses the vocabulary in [MODULES.md](MODULES.md) and the glossary's terms.
+A capability's blueprint, `documentation/capabilities/<capability>/blueprint.md`, says how the code delivers that capability's specifications inside the system's architecture. It uses the vocabulary in [MODULES.md](MODULES.md) and the glossary's terms.
 
 ## Structure
 
 ```md
-# {Capability} design
+# {Capability} blueprint
 
 {One paragraph: the approach, and the architecture parts it lives in.}
 
@@ -48,5 +48,5 @@ A capability's design, `documentation/capabilities/<capability>/design.md`, says
 - **Prefer deep modules**: a small interface over a lot of behavior. Introduce a seam only where something varies (at least two adapters, usually production and test).
 - **Trace every acceptance criterion and requirement** to the module that delivers it. A criterion with no module is a gap; list it under Open.
 - **Leave out code**: no full implementations. A short interface signature or type is fine where it is clearer than prose.
-- **Keep it current**: update the design when the implementation departs from it for a good reason, instead of letting the two drift.
+- **Keep it current**: update the blueprint when the implementation departs from it for a good reason, instead of letting the two drift.
 - **Omit empty sections.** A small capability may need only the approach, its modules, and the acceptance table.

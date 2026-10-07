@@ -9,13 +9,13 @@ metadata:
 
 Turn the selected capability into agreed behavior and acceptance. Interview only where decisions remain unresolved; synthesize directly when current context is settled.
 
-Stay on the observable side: what users and other systems can see and rely on, including an external contract such as a public API or an event others consume. How the code delivers it (modules, internal interfaces, the data model, technology) is out of scope; capture a technical idea the user raises as a note for the capability's design, not as agreed behavior.
+Stay on the observable side: what users and other systems can see and rely on, including an external contract such as a public API or an event others consume. How the code delivers it (modules, internal interfaces, the data model, technology) is out of scope; capture a technical idea the user raises as a note for the capability's blueprint, not as agreed behavior.
 
 The documents and their rules are in [PROJECT-DOCUMENTS.md](PROJECT-DOCUMENTS.md); its terms (authorized, obligation, lazy, pointer) apply throughout, with full changelog records.
 
 ## Gather and reconcile
 
-Inspect the conversation, applicable instructions, the domain outline (`documentation/domain.md`), system-wide and capability requirements, existing specifications, backlog, working state, glossary, and relevant code. Fetch the full body and comments of referenced remote records when they are relevant inputs.
+Inspect the conversation, applicable instructions, the domain outline (`documentation/outline.md`), system-wide and capability requirements, existing specifications, backlog, working state, glossary, and relevant code. Fetch the full body and comments of referenced remote records when they are relevant inputs.
 
 Identify the selected capability and account for every applicable requirement. Reuse existing agreements. A missing blocking decision stays explicit and open until the user settles it.
 
