@@ -11,13 +11,13 @@
         "evals/files/orders-service/src/orders/OrderValidator.ts",
         "evals/files/orders-service/src/orders/OrderRepo.ts",
         "evals/files/orders-service/src/orders/PricingClient.ts",
-        "evals/files/orders-service/GLOSSARY.md",
+        "evals/files/orders-service/documentation/glossary.md",
         "evals/files/orders-service/documentation/architecture-decision-record/0007-keep-pricing-client-separate.md",
-        "evals/files/orders-service/CONVENTIONS.md"
+        "evals/files/orders-service/documentation/conventions.md"
       ],
       "expectations": [
         "The improve-codebase-architecture skill is invoked without the user naming it",
-        "GLOSSARY.md, the architecture decision records in documentation/architecture-decision-record/, and CONVENTIONS.md are read before scanning",
+        "documentation/glossary.md, the architecture decision records in documentation/architecture-decision-record/, and documentation/conventions.md are read before scanning",
         "Because the user named a direction (the order-handling area), the commit-history hot-spot inference is skipped",
         "The architecture vocabulary comes from the design-modules skill (module, interface, depth, seam, adapter, leverage, locality)",
         "A sub-agent is spawned to walk the code, and the deletion test is applied to anything suspected of being shallow",
@@ -38,16 +38,16 @@
         "evals/files/orders-service/src/orders/OrderValidator.ts",
         "evals/files/orders-service/src/orders/OrderRepo.ts",
         "evals/files/orders-service/src/orders/PricingClient.ts",
-        "evals/files/orders-service/GLOSSARY.md",
+        "evals/files/orders-service/documentation/glossary.md",
         "evals/files/orders-service/documentation/architecture-decision-record/0007-keep-pricing-client-separate.md",
-        "evals/files/orders-service/CONVENTIONS.md"
+        "evals/files/orders-service/documentation/conventions.md"
       ],
       "expectations": [
         "The HTML loads Tailwind through its CDN script and Mermaid through its CDN module import, and has no other scripts",
         "Each candidate is rendered as a card with Files, Problem, Solution, Benefits, a side-by-side Before and After diagram, and a recommendation badge of Strong, Worth exploring, or Speculative",
         "At least one diagram is hand-built (divs or SVG) and at least one is Mermaid, instead of every diagram using the same pattern",
         "Benefits are stated in terms of locality and leverage and say how tests would improve, not 'cleaner code' or 'easier to maintain'",
-        "Domain language follows GLOSSARY.md (for example the Order intake module), not names like 'OrderHandler service'",
+        "Domain language follows documentation/glossary.md (for example the Order intake module), not names like 'OrderHandler service'",
         "The words component, service, API, and boundary are not used in place of module, interface, and seam",
         "The report ends with a Top recommendation section naming which candidate to tackle first and why",
         "The agent stops after writing the report and does not begin interviewing"
@@ -63,9 +63,9 @@
         "evals/files/orders-service/src/orders/OrderValidator.ts",
         "evals/files/orders-service/src/orders/OrderRepo.ts",
         "evals/files/orders-service/src/orders/PricingClient.ts",
-        "evals/files/orders-service/GLOSSARY.md",
+        "evals/files/orders-service/documentation/glossary.md",
         "evals/files/orders-service/documentation/architecture-decision-record/0007-keep-pricing-client-separate.md",
-        "evals/files/orders-service/CONVENTIONS.md"
+        "evals/files/orders-service/documentation/conventions.md"
       ],
       "expectations": [
         "The agent reads architecture decision record 0007 before scanning",
@@ -85,9 +85,9 @@
         "evals/files/orders-service/src/orders/OrderValidator.ts",
         "evals/files/orders-service/src/orders/OrderRepo.ts",
         "evals/files/orders-service/src/orders/PricingClient.ts",
-        "evals/files/orders-service/GLOSSARY.md",
+        "evals/files/orders-service/documentation/glossary.md",
         "evals/files/orders-service/documentation/architecture-decision-record/0007-keep-pricing-client-separate.md",
-        "evals/files/orders-service/CONVENTIONS.md",
+        "evals/files/orders-service/documentation/conventions.md",
         "evals/files/orders-service/git-log.txt"
       ],
       "expectations": [
@@ -100,19 +100,19 @@
     {
       "id": 5,
       "kind": "behavior",
-      "prompt": "Use the improve-codebase-architecture skill on the attached orders-service (treat it as the repository root), focused on order intake. There is no CONVENTIONS.md in this project yet.",
-      "expected_output": "The missing conventions document triggers the model-domain Conventions step, with an architecture focus, before scanning.",
+      "prompt": "Use the improve-codebase-architecture skill on the attached orders-service (treat it as the repository root), focused on order intake. There is no documentation/conventions.md in this project yet.",
+      "expected_output": "The missing conventions document triggers the codify skill, with an architecture focus, before scanning.",
       "files": [
         "evals/files/orders-service/src/orders/OrderHandler.ts",
         "evals/files/orders-service/src/orders/OrderValidator.ts",
         "evals/files/orders-service/src/orders/OrderRepo.ts",
         "evals/files/orders-service/src/orders/PricingClient.ts",
-        "evals/files/orders-service/GLOSSARY.md",
+        "evals/files/orders-service/documentation/glossary.md",
         "evals/files/orders-service/documentation/architecture-decision-record/0007-keep-pricing-client-separate.md"
       ],
       "expectations": [
-        "The agent notices CONVENTIONS.md is missing before scanning",
-        "The model-domain skill is called for its Conventions step with the architecture focus before the scan starts",
+        "The agent notices documentation/conventions.md is missing before scanning",
+        "The codify skill is called with the architecture focus before the scan starts",
         "The scan and report follow only after that step is done or declined",
         "No code is changed"
       ]
@@ -121,20 +121,20 @@
       "id": 6,
       "kind": "behavior",
       "prompt": "Use the improve-codebase-architecture skill. The report from an earlier run is attached (treat orders-service as the repository root). I want to explore the first candidate, 'Collapse the Order intake pipeline'. Staff call that moment 'Order Placement', and I would like the deepened module named that, though it is not in the glossary yet.",
-      "expected_output": "The chosen candidate is walked through with refine, the glossary gains the new term inline, and no interface is imposed before the user wants alternatives.",
+      "expected_output": "The chosen candidate is walked through with interview, the glossary gains the new term inline, and no interface is imposed before the user wants alternatives.",
       "files": [
         "evals/files/orders-service/src/orders/OrderHandler.ts",
         "evals/files/orders-service/src/orders/OrderValidator.ts",
         "evals/files/orders-service/src/orders/OrderRepo.ts",
         "evals/files/orders-service/src/orders/PricingClient.ts",
-        "evals/files/orders-service/GLOSSARY.md",
+        "evals/files/orders-service/documentation/glossary.md",
         "evals/files/orders-service/documentation/architecture-decision-record/0007-keep-pricing-client-separate.md",
-        "evals/files/orders-service/CONVENTIONS.md",
+        "evals/files/orders-service/documentation/conventions.md",
         "evals/files/orders-service/documentation/architecture-audit/architecture-audit-20261001-0900.html"
       ],
       "expectations": [
-        "The refine skill is called to walk the decision tree on constraints, dependencies, the shape of the deepened module, what sits behind the seam, and which tests survive",
-        "The term Order Placement is added to GLOSSARY.md during the conversation through model-domain, in the same style as existing entries",
+        "The interview skill is called to walk the decision tree on constraints, dependencies, the shape of the deepened module, what sits behind the seam, and which tests survive",
+        "The term Order Placement is added to documentation/glossary.md during the conversation through delineate, in the same style as existing entries",
         "The existing Order, Quote, and Intake terms are reused and not redefined",
         "Questions are asked in dependency-aware rounds about this one candidate, not about the other candidates",
         "Alternative interfaces are explored through the design-modules skill's design-it-twice pattern only if the user asks for alternatives",
@@ -151,9 +151,9 @@
         "evals/files/orders-service/src/orders/OrderValidator.ts",
         "evals/files/orders-service/src/orders/OrderRepo.ts",
         "evals/files/orders-service/src/orders/PricingClient.ts",
-        "evals/files/orders-service/GLOSSARY.md",
+        "evals/files/orders-service/documentation/glossary.md",
         "evals/files/orders-service/documentation/architecture-decision-record/0007-keep-pricing-client-separate.md",
-        "evals/files/orders-service/CONVENTIONS.md",
+        "evals/files/orders-service/documentation/conventions.md",
         "evals/files/orders-service/documentation/architecture-audit/architecture-audit-20261001-0900.html"
       ],
       "expectations": [
@@ -173,9 +173,9 @@
         "evals/files/orders-service/src/orders/OrderValidator.ts",
         "evals/files/orders-service/src/orders/OrderRepo.ts",
         "evals/files/orders-service/src/orders/PricingClient.ts",
-        "evals/files/orders-service/GLOSSARY.md",
+        "evals/files/orders-service/documentation/glossary.md",
         "evals/files/orders-service/documentation/architecture-decision-record/0007-keep-pricing-client-separate.md",
-        "evals/files/orders-service/CONVENTIONS.md",
+        "evals/files/orders-service/documentation/conventions.md",
         "evals/files/orders-service/documentation/architecture-audit/architecture-audit-20261001-0900.html"
       ],
       "expectations": [

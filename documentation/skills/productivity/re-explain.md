@@ -8,7 +8,7 @@ Upstream source: `wait-what`, verified in the `d81f3a1` tree. This fork names th
 
 Type `/re-explain`, or an agent or another skill can reach for it when the task fits. You are usually the one who knows when an explanation stopped making sense.
 
-Use it when the agent invents jargon, stacks acronyms, or explains a decision without its premise. For an unresolved decision that needs discussion rather than another explanation, use [refine](../reference/refine.md).
+Use it when the agent invents jargon, stacks acronyms, or explains a decision without its premise. For an unresolved decision that needs discussion rather than another explanation, use [interview](../reference/interview.md).
 
 ## Explain again, not just less
 
@@ -20,7 +20,7 @@ The glossary supplies the nouns. ASD-STE100 Simplified Technical English supplie
 
 **Does it work without a glossary?**
 
-Yes. Without `GLOSSARY.md`, or a `GLOSSARY-MAP.md` pointing to the relevant glossary, it uses plain simplified language. You lose the domain-vocabulary guidance, not the explanation.
+Yes. Without a project glossary, or a glossary map pointing to the relevant one, it uses plain simplified language. You lose the domain-vocabulary guidance, not the explanation.
 
 **Where did `/wait-what` go?**
 
@@ -39,4 +39,4 @@ No. It follows the language you have been using and asks when the preference is 
 
 ## Where it fits
 
-`re-explain` is a reach-for-it-anytime standalone inside any conversation. [model-domain](../reference/model-domain.md) prevents vocabulary drift by maintaining the shared language; this skill repairs an explanation after it failed. [illustrate](./illustrate.md) is another option when a visual would make the relationship clearer. [guide](./guide.md) helps you choose the next move.
+`re-explain` is a reach-for-it-anytime standalone inside any conversation. [delineate](../reference/delineate.md) prevents vocabulary drift by maintaining the shared language; this skill repairs an explanation after it failed. [illustrate](./illustrate.md) is another option when a visual would make the relationship clearer. [guide](./guide.md) helps you choose the next move.

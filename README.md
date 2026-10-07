@@ -67,11 +67,14 @@ The [document](./skills/reference/document/SKILL.md) skill owns the [shared proj
 To see what each skill reads and writes and which skills it works with, open the [skills page](./index.html) in a browser: every skill has a small graph.
 
 ```text
-CHANGELOG.md
 documentation/
 ├── requirements.md
 ├── backlog.md
 ├── work-in-progress.md
+├── changelog.md
+├── glossary.md
+├── conventions.md
+├── architecture-decision-record/
 └── capabilities/
     └── <capability>/
         ├── requirements.md
@@ -82,7 +85,7 @@ documentation/
 
 A capability is anything with lasting agreed behavior: a user-facing feature, an integration, an infrastructure area, or a concern such as security. A bugfix or chore is a task under the capability it changes, not a folder of its own. Folder names are kebab-case glossary terms and stay fixed once referenced; see [architecture decision record 0003](./documentation/architecture-decision-record/0003-group-specifications-by-capability.md).
 
-Create files when useful, not as empty scaffolding. Requirements protect obligations and constraints; specifications describe agreed behavior and design; drafts hold unresolved proposals. The backlog does not authorize implementation. Working state records unfinished work and resumption details. Root `CHANGELOG.md` distinguishes agreement changes from validated deliveries.
+Create files when useful, not as empty scaffolding. Requirements protect obligations and constraints; specifications describe agreed behavior and design; drafts hold unresolved proposals. The backlog does not authorize implementation. Working state records unfinished work and resumption details. The changelog distinguishes agreement changes from validated deliveries.
 
 With local tracking, `documentation/backlog.md` contains the candidate backlog. With a remote tracker, it contains only a name and link to the authoritative backlog or board. `documentation/work-in-progress.md` stays local in both cases for active execution, verification, and resumption, without duplicating remote task status.
 
@@ -105,14 +108,14 @@ Not every retained skill comes from that upstream repository. The [primary-sourc
 
 | Upstream skill or split | Current form | Why it differs |
 | --- | --- | --- |
-| `grill-me` wrapper and `grilling` primitive | [refine](./skills/reference/refine/SKILL.md) | One general interview skill is reachable by both people and agents; the duplicate wrapper adds no discipline. |
+| `grill-me` wrapper and `grilling` primitive | [interview](./skills/reference/interview/SKILL.md) | One general interview skill is reachable by both people and agents; the duplicate wrapper adds no discipline. |
 | `grill-with-docs`, then `to-spec` | [specify](./skills/workflow/specify/SKILL.md) | Clarification and recording belong to one selected-scope operation. Already settled context goes straight to synthesis. |
 | `to-tickets` | [taskify](./skills/workflow/taskify/SKILL.md) | Task is a tracker-neutral word for delivery, investigation, enabling, or maintenance work. |
 | `wait-what` | [re-explain](./skills/productivity/re-explain/SKILL.md) | The name describes the requested action while retaining the context-aware explanation discipline. |
 | `wayfinder` | [graphify](./skills/shaping/graphify/SKILL.md) | The name emphasizes the decision graph; tracker labels use the `graphify:` prefix. |
 | `tdd` | [test-first](./skills/workflow/test-first/SKILL.md) | Skill names read as commands; the description keeps the TDD and red-green-refactor triggers. |
 | `codebase-design` | [design-modules](./skills/reference/design-modules/SKILL.md) | The name reads as a command and leads with the skill's subject, deep modules. |
-| `domain-modeling` | [model-domain](./skills/reference/model-domain/SKILL.md) | The name reads as a command; the discipline is unchanged. |
+| `domain-modeling` | [delineate](./skills/reference/delineate/SKILL.md) | Narrowed to settling what terms mean; the glossary and decision record formats moved to [document](./skills/reference/document/SKILL.md), and code conventions to [codify](./skills/reference/codify/SKILL.md). |
 | `wizard` | [walk-through](./skills/productivity/walk-through/SKILL.md) | The name describes the action; the script it produces is still called a wizard. |
 | HumanLayer's `show-me` | [illustrate](./skills/productivity/illustrate/SKILL.md) | The name describes the visual explanation action without changing the external source or delivery discipline. |
 | Separate planning snapshots and iterative working records | Shared project documents | Switching development approaches should not duplicate or discard obligations, agreements, or progress. |
@@ -187,8 +190,9 @@ The manifest is the source of truth for this list; it holds every skill in the r
 
 Disciplines other skills call; each can also be run directly by you or an agent.
 
-- [refine](./skills/reference/refine/SKILL.md): Resolve decisions through recommended questions in dependency-aware rounds.
-- [model-domain](./skills/reference/model-domain/SKILL.md): Maintain domain vocabulary, consequential decisions, and domain-agnostic code conventions.
+- [interview](./skills/reference/interview/SKILL.md): Settle decisions through rounds of questions, each with a recommended answer.
+- [delineate](./skills/reference/delineate/SKILL.md): Settle what the project's words mean, against the glossary, the code, and concrete scenarios.
+- [codify](./skills/reference/codify/SKILL.md): Draft the project's code conventions from how its code is written, confirm each rule and its reason, or audit existing conventions.
 - [design-modules](./skills/reference/design-modules/SKILL.md): Design deep modules with clear interfaces and useful seams.
 - [document](./skills/reference/document/SKILL.md): Maintain technical documentation and shared project-document rules.
 - [write-for-agents](./skills/reference/write-for-agents/SKILL.md): Write predictable agent instructions with clear completion criteria.

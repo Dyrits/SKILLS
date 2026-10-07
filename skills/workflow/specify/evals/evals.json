@@ -15,7 +15,7 @@
         "The specify skill is invoked without the user naming it",
         "The agent calls the document skill and reads the requirements, backlog, draft, and existing specifications before asking anything",
         "Every applicable requirement (at least G1, G2, G3, and R2) is accounted for and none is silently dropped",
-        "The refine skill is called only for decisions still open and necessary for CSV export, not for settled requirements",
+        "The interview skill is called only for decisions still open and necessary for CSV export, not for settled requirements",
         "The Excel, background export, and 30-day retention proposals stay marked as unresolved and are not treated as agreed behavior"
       ]
     },
@@ -30,7 +30,7 @@
         "evals/files/draft.md"
       ],
       "expectations": [
-        "The agent synthesizes directly and does not call the refine skill for questions the user already settled",
+        "The agent synthesizes directly and does not call the interview skill for questions the user already settled",
         "A canonical specification is written in the repository with the problem and outcome, agreed behavior with edge cases, design and interfaces, acceptance and validation, requirement references, dependencies, and exclusions",
         "The specification references G1, G2, G3, and R2 and states which behavior covers each",
         "The out-of-scope items (Excel, background jobs, retention) are listed as exclusions, not as agreed behavior",

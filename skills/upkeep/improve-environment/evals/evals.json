@@ -9,7 +9,7 @@
       "files": [
         "evals/files/ledger-app/session-log.md",
         "evals/files/ledger-app/AGENTS.md",
-        "evals/files/ledger-app/CONVENTIONS.md",
+        "evals/files/ledger-app/documentation/conventions.md",
         "evals/files/ledger-app/package.json",
         "evals/files/ledger-app/.github/workflows/ci.yml",
         "evals/files/ledger-app/eslint.config.js",
@@ -20,7 +20,7 @@
       "expectations": [
         "The improve-environment skill is invoked from the question alone, without the user naming it",
         "Each moment of friction is listed with a pointer into the session (turn numbers) and a one-line account",
-        "The agent reads the environment before proposing anything: AGENTS.md, CONVENTIONS.md, the package scripts, the hooks path or pre-commit configuration, and the CI workflow",
+        "The agent reads the environment before proposing anything: AGENTS.md, documentation/conventions.md, the package scripts, the hooks path or pre-commit configuration, and the CI workflow",
         "The agent states which checks exist, which run automatically, and which are unwired",
         "Every moment ends with a candidate, a skill finding, or a stated reason the environment could not have prevented it",
         "Candidates are presented in order of severity, each tied to its moment in the session",
@@ -31,11 +31,11 @@
       "id": 2,
       "kind": "behavior",
       "prompt": "Use the improve-environment skill on the attached session (treat ledger-app as the repository root). Focus on the two mistakes review missed: the legacy import and the swallowed database error.",
-      "expected_output": "The mechanical mistake becomes a deterministic check, and only the judgement call becomes a CONVENTIONS.md rule.",
+      "expected_output": "The mechanical mistake becomes a deterministic check, and only the judgement call becomes a documentation/conventions.md rule.",
       "files": [
         "evals/files/ledger-app/session-log.md",
         "evals/files/ledger-app/AGENTS.md",
-        "evals/files/ledger-app/CONVENTIONS.md",
+        "evals/files/ledger-app/documentation/conventions.md",
         "evals/files/ledger-app/package.json",
         "evals/files/ledger-app/.github/workflows/ci.yml",
         "evals/files/ledger-app/eslint.config.js",
@@ -45,11 +45,11 @@
       ],
       "expectations": [
         "The legacy import is classified as a mechanical violation and the candidate is a deterministic check (such as a lint rule restricting imports), not another prose line",
-        "The swallowed database error is classified as a judgement call and the candidate is a rule for CONVENTIONS.md",
+        "The swallowed database error is classified as a judgement call and the candidate is a rule for documentation/conventions.md",
         "The reasoning notes that standards belong to the reviewer, which receives only a diff, not to the implementer under context pressure",
         "Neither candidate is added to AGENTS.md",
         "Candidates are accepted by the user before any file changes",
-        "The CONVENTIONS.md rule is written by calling the memorize skill rather than edited ad hoc"
+        "The documentation/conventions.md rule is written by calling the memorize skill rather than edited ad hoc"
       ]
     },
     {
@@ -60,7 +60,7 @@
       "files": [
         "evals/files/ledger-app/session-log.md",
         "evals/files/ledger-app/AGENTS.md",
-        "evals/files/ledger-app/CONVENTIONS.md",
+        "evals/files/ledger-app/documentation/conventions.md",
         "evals/files/ledger-app/package.json",
         "evals/files/ledger-app/.github/workflows/ci.yml",
         "evals/files/ledger-app/eslint.config.js",
@@ -84,7 +84,7 @@
       "files": [
         "evals/files/ledger-app/session-log.md",
         "evals/files/ledger-app/AGENTS.md",
-        "evals/files/ledger-app/CONVENTIONS.md",
+        "evals/files/ledger-app/documentation/conventions.md",
         "evals/files/ledger-app/package.json",
         "evals/files/ledger-app/.github/workflows/ci.yml",
         "evals/files/ledger-app/eslint.config.js",
@@ -95,9 +95,9 @@
       "expectations": [
         "Lines that do not change the agent's behavior (such as 'Write clean, readable code' and 'Think step by step before making changes') are proposed for deletion as no-ops",
         "The mechanical line about never importing from src/legacy is proposed to move into a deterministic check",
-        "The pointer to CONVENTIONS.md is kept",
+        "The pointer to documentation/conventions.md is kept",
         "The edit is made through the write-for-agents skill and only after the user accepts",
-        "Judgement rules that remain are proposed for CONVENTIONS.md rather than left in AGENTS.md"
+        "Judgement rules that remain are proposed for documentation/conventions.md rather than left in AGENTS.md"
       ]
     },
     {
@@ -108,7 +108,7 @@
       "files": [
         "evals/files/ledger-app/session-log.md",
         "evals/files/ledger-app/AGENTS.md",
-        "evals/files/ledger-app/CONVENTIONS.md",
+        "evals/files/ledger-app/documentation/conventions.md",
         "evals/files/ledger-app/package.json",
         "evals/files/ledger-app/.github/workflows/ci.yml",
         "evals/files/ledger-app/eslint.config.js",
@@ -133,7 +133,7 @@
       "files": [
         "evals/files/ledger-app/session-log.md",
         "evals/files/ledger-app/AGENTS.md",
-        "evals/files/ledger-app/CONVENTIONS.md",
+        "evals/files/ledger-app/documentation/conventions.md",
         "evals/files/ledger-app/package.json",
         "evals/files/ledger-app/.github/workflows/ci.yml",
         "evals/files/ledger-app/eslint.config.js",
@@ -156,7 +156,7 @@
       "files": [
         "evals/files/ledger-app/session-log.md",
         "evals/files/ledger-app/AGENTS.md",
-        "evals/files/ledger-app/CONVENTIONS.md",
+        "evals/files/ledger-app/documentation/conventions.md",
         "evals/files/ledger-app/package.json",
         "evals/files/ledger-app/.github/workflows/ci.yml",
         "evals/files/ledger-app/eslint.config.js",
@@ -179,7 +179,7 @@
       "files": [
         "evals/files/ledger-app/session-log.md",
         "evals/files/ledger-app/AGENTS.md",
-        "evals/files/ledger-app/CONVENTIONS.md",
+        "evals/files/ledger-app/documentation/conventions.md",
         "evals/files/ledger-app/package.json",
         "evals/files/ledger-app/.github/workflows/ci.yml",
         "evals/files/ledger-app/eslint.config.js",

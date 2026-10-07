@@ -50,9 +50,6 @@ It supports Codex, OpenCode, and other detected clients through their documented
 
 Only where a comparable task baseline exists. Command-output reduction, task token counts, and provider allowance are reported as different quantities, and personal token savings are marked unavailable otherwise.
 
-**What if a skill it calls or hands over to is not installed?**
-It names the missing skill with its install command, carries out that step from its stated intent, and tells you the step ran without it. When it tells you to run a skill you don't have, it gives the install command with it. The skills involved are listed at the top of its [`SKILL.md`](../../../skills/setup/setup-ai-tooling/SKILL.md).
-
 ## It's working if
 
 - Each configured client passes a functional check, such as a known symbol retrieved through CodeGraph and matched against the file.

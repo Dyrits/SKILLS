@@ -4,8 +4,8 @@ description: "Write the body of a pull request or merge request: a summary visua
 metadata:
   forks: "mattpocock/skills/skills/engineering/pr"
 ---
-**Calls:** `illustrate`. If a called skill is not installed, tell the user its name and install command, `npx skills@latest add Dyrits/SKILLS --skill=<name>`, then carry out that step from its stated intent and report the step as done without the skill.
 
+**Calls:** `illustrate`.
 
 Use this template for the body:
 
@@ -32,7 +32,7 @@ Use this template for the body:
 
 Everything here applies unchanged to a merge request on GitLab.
 
-Skip preambles and keep prose brief. Write it in the language its primary source already uses, the ticket or specification the change came from, with the project's domain terms from `GLOSSARY.md`.
+Skip preambles and keep prose brief. Write it in the language its primary source already uses, the ticket or specification the change came from, with the project's domain terms from its glossary.
 
 ## Summary
 

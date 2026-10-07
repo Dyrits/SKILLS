@@ -9,13 +9,13 @@ metadata:
 
 TDD is the red → green loop. This skill is the reference that makes that loop produce tests worth keeping: what a good test is, where tests go, the anti-patterns, and the rules of the loop. Every section applies on every cycle: consult them before and during the loop, not after.
 
-**Calls:** `design-modules`, `document`. If a called skill is not installed, tell the user its name and install command, `npx skills@latest add Dyrits/SKILLS --skill=<name>`, then carry out that step from its stated intent and report the step as done without the skill. Without `document`, wait until the user installs it or tells you to proceed: this skill's rules use its terms.
+**Calls:** `design-modules`, `document`.
 
 Call the Skill tool with "document" when reading or updating project agreements and work records; its terms (authorized, obligation, lazy, pointer) apply. Derive expected behavior from the authorized agreement and applicable requirements: a task, specifications, or a user-approved batch in working state. Keep unresolved proposals distinct from agreed behavior. An assertion changes only when the agreement changes.
 
-Record unfinished cycles and verification evidence in working state under the shared model. Tests establish only what they exercise; appearance and interaction acceptance may require human judgment. The calling implementation workflow records completed authorized agreements and deliveries in root `CHANGELOG.md` using the shared format.
+Record unfinished cycles and verification evidence in working state under the shared model. Tests establish only what they exercise; appearance and interaction acceptance may require human judgment. The calling implementation workflow records completed authorized agreements and deliveries in the changelog using the shared format.
 
-When exploring the codebase, read `GLOSSARY.md` (if it exists) so test names and interface vocabulary match the project's domain language, and respect ADRs in the area you're touching.
+When exploring the codebase, read the glossary (if it exists) so test names and interface vocabulary match the project's domain language, and respect decision records in the area you're touching.
 
 ## What a good test is
 

@@ -53,9 +53,6 @@ It tries a connected GitHub server, then the `gh` command, then the GitHub API w
 
 It was split. `improve-skills` reports on the skills themselves, and [improve-environment](./improve-environment.md) carries the checks on your own project (steering files, missing guardrails, tool cost) that upstream's `retro` made.
 
-**What if a skill it calls is not installed?**
-It names the missing skill with its install command, carries out that step from its stated intent, and tells you the step ran without it. The skills involved are listed at the top of its [`SKILL.md`](../../../skills/upkeep/improve-skills/SKILL.md).
-
 ## It's working if
 
 - Every finding in the issue points to a moment in the session and was confirmed by you.

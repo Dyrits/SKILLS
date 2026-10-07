@@ -9,9 +9,9 @@ metadata:
 
 Call the Skill tool with "document"; its terms (authorized, obligation, lazy, pointer) and rules apply throughout.
 
-**Calls:** `document`, `draft-merge-request`, `implement`, `review-and-refactor`. If a called skill is not installed, tell the user its name and install command, `npx skills@latest add Dyrits/SKILLS --skill=<name>`, then carry out that step from its stated intent and report the step as done without the skill. Without `document`, wait until the user installs it or tells you to proceed: this skill's rules use its terms. **Hands over to:** `/setup-ai-workspace`. When one is not installed, give the user its install command, `npx skills@latest add Dyrits/SKILLS --skill=<name>`, along with the instruction to run it.
+**Calls:** `document`, `draft-merge-request`, `implement`, `review-and-refactor`. **Hands over to:** `/setup-ai-workspace`.
 
-Identify the authorized behavior and originating agreement for the batch: specifications with tasks, or a user-approved batch in `documentation/work-in-progress.md`. Read the applicable requirements. For remote tracker work, read `.agents/issue-tracker.md` for the configured workflow; if it is missing, tell the user to run `/setup-ai-workspace`. Local-only work runs without tracker setup.
+Identify the authorized behavior and originating agreement for the batch: specifications with tasks, or a user-approved batch in working state. Read the applicable requirements. For remote tracker work, read `.agents/issue-tracker.md` for the configured workflow; if it is missing, tell the user to run `/setup-ai-workspace`. Local-only work runs without tracker setup.
 
 The goal is the entire authorized batch implemented on a single **integration branch**, each task built by the least expensive agent that can do it reliably, with each task's implementation and validation accounted for. The run has three phases: **divide** routes every task, **conquer** builds them in parallel, **combine** merges and reviews once.
 
@@ -55,4 +55,4 @@ Run subagents in the background where possible for maximum concurrency.
 
 11. Clean up disposable implementer worktrees only after confirming their work is integrated and they contain no uncommitted or unmerged changes.
 
-When a coordinating skill called this run, it owns the project records: return the routing, evidence, and blockers to it. Otherwise, throughout, keep `documentation/work-in-progress.md` current with the approved routing, active assignments, unfinished work, evidence, acceptance, and blockers. Verify the integrated batch against its originating agreement, including appearance and interaction acceptance when judgment is needed. Record completed agreements and deliveries in the root `CHANGELOG.md`, and state any blocked or missing verification.
+When a coordinating skill called this run, it owns the project records: return the routing, evidence, and blockers to it. Otherwise, throughout, keep working state current with the approved routing, active assignments, unfinished work, evidence, acceptance, and blockers. Verify the integrated batch against its originating agreement, including appearance and interaction acceptance when judgment is needed. Record completed agreements and deliveries in the changelog, and state any blocked or missing verification.

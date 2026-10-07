@@ -8,7 +8,7 @@ description: "Report AI tooling usage, measured output reduction, quality signal
 Run an on-demand **report** from existing measurements.
 Collection stays deterministic; this skill does not install tools or start recurring model analysis.
 
-**Hands over to:** `/setup-ai-tooling`. When one is not installed, give the user its install command, `npx skills@latest add Dyrits/SKILLS --skill=<name>`, along with the instruction to run it.
+**Hands over to:** `/setup-ai-tooling`.
 
 ## Process
 

@@ -1,0 +1,72 @@
+{
+  "skill_name": "delineate",
+  "evals": [
+    {
+      "id": 1,
+      "kind": "trigger",
+      "prompt": "Support keeps telling me customers cancel just one item out of an order, but our glossary says 'cancellation' is the whole order. Let's sort out the terminology for the shop in evals/files/shop/ before we design the cancellation screen.",
+      "expected_output": "The conflict with the glossary and the code is surfaced, stress-tested with a concrete scenario, and left for the user to resolve; the glossary is not edited yet.",
+      "files": [
+        "evals/files/shop/documentation/glossary.md",
+        "evals/files/shop/src/cancel-order.ts",
+        "evals/files/shop/documentation/architecture-decision-record/0001-single-warehouse-stock.md"
+      ],
+      "expectations": [
+        "The delineate skill is invoked without the user naming it",
+        "The agent reads documentation/glossary.md and quotes its definition of Cancellation back, calling out that it conflicts with what the user said",
+        "The agent cross-checks the code and surfaces that cancelOrder cancels the whole order with no per-item path",
+        "The agent proposes a precise term for the per-item case and asks the user which meaning to keep",
+        "The agent invents a concrete edge-case scenario, such as an order of three items where one has already shipped",
+        "documentation/glossary.md is not edited until the user resolves the term"
+      ]
+    },
+    {
+      "id": 2,
+      "kind": "behavior",
+      "prompt": "Use the delineate skill for the shop in evals/files/shop/. The decision is made: removing one item from an order is called a 'Line cancellation'; 'Cancellation' stays the name for ending a whole Order. Record it.",
+      "expected_output": "The resolved term is written to documentation/glossary.md immediately in the glossary's format, with no implementation detail and no needless decision record.",
+      "files": [
+        "evals/files/shop/documentation/glossary.md",
+        "evals/files/shop/src/cancel-order.ts"
+      ],
+      "expectations": [
+        "The glossary entry is written by calling the document skill",
+        "documentation/glossary.md is updated in the same turn, not deferred",
+        "The new entry for Line cancellation is a one or two sentence definition of what it is, with an _Avoid_ line",
+        "The existing Cancellation entry is kept or sharpened to say it covers a whole Order, and no duplicate entry is added",
+        "The glossary entries contain no implementation detail such as status values, function names, or tables",
+        "No architecture decision record is offered, since naming is easy to reverse",
+        "The agent notices that cancelOrder in the code has no per-item path and tells the user, without writing that into the glossary"
+      ]
+    },
+    {
+      "id": 9,
+      "kind": "behavior",
+      "prompt": "Use the delineate skill. Add these lines to the shop's glossary under Order: 'Orders are retried three times with exponential backoff when the payment provider times out, and the retry count is stored in the retries column.' The project is in evals/files/shop/.",
+      "expected_output": "The glossary stays free of implementation detail; the content is routed to its proper home.",
+      "files": [
+        "evals/files/shop/documentation/glossary.md"
+      ],
+      "expectations": [
+        "The agent does not add the retry and storage behavior to documentation/glossary.md",
+        "The agent explains that the glossary holds terms, not specifications or implementation decisions",
+        "The agent routes the retry behavior to the capability's specifications through the document skill, and the storage detail to code or specifications",
+        "The agent offers a glossary entry only for a term that needs naming, such as the unit being retried"
+      ]
+    },
+    {
+      "id": 11,
+      "kind": "no-trigger",
+      "prompt": "Add a `cancelOrder` function to the shop in evals/files/shop/ that cancels a whole order before it ships, and name things using our glossary terms.",
+      "expected_output": "Reading the glossary for vocabulary is not this skill; the agent implements the change.",
+      "files": [
+        "evals/files/shop/documentation/glossary.md",
+        "evals/files/shop/src/cancel-order.ts"
+      ],
+      "expectations": [
+        "The delineate skill is not invoked, because the agent only reads documentation/glossary.md for vocabulary",
+        "The agent implements the function with implement or test-first and documentation/glossary.md is not edited"
+      ]
+    }
+  ]
+}

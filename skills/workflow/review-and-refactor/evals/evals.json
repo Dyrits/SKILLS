@@ -9,7 +9,7 @@
       "files": [
         "evals/files/discount.patch",
         "evals/files/specification.md",
-        "evals/files/CONVENTIONS.md"
+        "evals/files/documentation/conventions.md"
       ],
       "expectations": [
         "The review-and-refactor skill is invoked without the user naming it",
@@ -22,15 +22,15 @@
     {
       "id": 2,
       "kind": "behavior",
-      "prompt": "Use the review-and-refactor skill on the change in discount.patch (applied on feature/discounts, base main) with specification.md as the agreement and CONVENTIONS.md as the standards. Show me the full report.",
+      "prompt": "Use the review-and-refactor skill on the change in discount.patch (applied on feature/discounts, base main) with specification.md as the agreement and documentation/conventions.md as the standards. Show me the full report.",
       "expected_output": "Separate Standards and Specifications sections with the right findings and dispositions.",
       "files": [
         "evals/files/discount.patch",
         "evals/files/specification.md",
-        "evals/files/CONVENTIONS.md"
+        "evals/files/documentation/conventions.md"
       ],
       "expectations": [
-        "Standards findings cite the CONVENTIONS.md rule for the use of float money arithmetic in total and for the single-letter name d (or flagged as possible Mysterious Name)",
+        "Standards findings cite the documentation/conventions.md rule for the use of float money arithmetic in total and for the single-letter name d (or flagged as possible Mysterious Name)",
         "The repeated if-cascade on the code kind in apply_code, total, and describe is reported as a labelled judgement call such as possible Repeated Switches, with the concrete benefit of the proposed refactor",
         "The unused strategy and hooks parameters are reported as possible Speculative Generality",
         "Specifications findings quote the agreement for the missing 50 percent cap, for codes stacking instead of being replaced, and for the total being expressed in cents (1800, not 18.0)",
@@ -51,11 +51,11 @@
     {
       "id": 4,
       "kind": "behavior",
-      "prompt": "Use the review-and-refactor skill on feature/discounts against main in the scratch repository. I cannot find any specification, task, or notes for it; it was a hallway request. The conventions file is CONVENTIONS.md.",
+      "prompt": "Use the review-and-refactor skill on feature/discounts against main in the scratch repository. I cannot find any specification, task, or notes for it; it was a hallway request. The conventions file is documentation/conventions.md.",
       "expected_output": "The agent does not invent an agreement from the code.",
       "files": [
         "evals/files/discount.patch",
-        "evals/files/CONVENTIONS.md"
+        "evals/files/documentation/conventions.md"
       ],
       "expectations": [
         "The agent asks the user to supply the behavior agreement or to consent explicitly to a Standards-only review",
@@ -71,7 +71,7 @@
       "files": [
         "evals/files/discount.patch",
         "evals/files/specification.md",
-        "evals/files/CONVENTIONS.md"
+        "evals/files/documentation/conventions.md"
       ],
       "expectations": [
         "git status --short is read to separate the requested work from unrelated edits",
@@ -89,7 +89,7 @@
       "files": [
         "evals/files/discount.patch",
         "evals/files/specification.md",
-        "evals/files/CONVENTIONS.md"
+        "evals/files/documentation/conventions.md"
       ],
       "expectations": [
         "The patch from the starting state to the final state and the full final diff against the pinned merge-base are captured",
@@ -107,7 +107,7 @@
       "files": [
         "evals/files/discount.patch",
         "evals/files/specification.md",
-        "evals/files/CONVENTIONS.md"
+        "evals/files/documentation/conventions.md"
       ],
       "expectations": [
         "Both reviews run and the findings are reported by axis",
@@ -123,7 +123,7 @@
       "files": [
         "evals/files/discount.patch",
         "evals/files/specification.md",
-        "evals/files/CONVENTIONS.md"
+        "evals/files/documentation/conventions.md"
       ],
       "expectations": [
         "The agent asks whether to publish the report and where, such as a pull request, a ticket, or a chat thread",

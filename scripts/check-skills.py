@@ -56,21 +56,12 @@ def prerequisites(folder):
 
 
 def calls_block(calls, handovers=frozenset()):
-    """The dependency paragraph a skill carries, since skills install one by one."""
-    install = "`npx skills@latest add Dyrits/SKILLS --skill=<name>`"
+    """The dependency paragraph a skill carries: the names only, since APM installs the dependencies."""
     sentences = []
     if calls:
-        listed = ", ".join(f"`{name}`" for name in sorted(calls))
-        sentences.append(f"**Calls:** {listed}. If a called skill is not installed, tell the user its name and "
-                         f"install command, {install}, then carry out that step from its stated intent and "
-                         "report the step as done without the skill.")
-        if "document" in calls:
-            sentences.append("Without `document`, wait until the user installs it or tells you to proceed: "
-                             "this skill's rules use its terms.")
+        sentences.append("**Calls:** " + ", ".join(f"`{name}`" for name in sorted(calls)) + ".")
     if handovers:
-        listed = ", ".join(f"`/{name}`" for name in sorted(handovers))
-        sentences.append(f"**Hands over to:** {listed}. When one is not installed, give the user its install "
-                         f"command, {install}, along with the instruction to run it.")
+        sentences.append("**Hands over to:** " + ", ".join(f"`/{name}`" for name in sorted(handovers)) + ".")
     return " ".join(sentences)
 
 
@@ -167,11 +158,14 @@ def check(repository):
             r"^\s*allow_implicit_invocation:\s*false\s*$", metadata_path.read_text(), re.MULTILINE
         ):
             errors.append(f"{relative}: skill blocks model invocation.")
-        # Externals are left out: their install command is not this repository's.
+        # Externals are left out: APM does not install them.
         calls, handovers = (found - EXTERNAL_SKILLS for found in skill_references(path.parent))
         # The router names skills as labels for the human to pick from, not as dependencies.
         block = calls_block(calls, handovers) if name != "guide" else ""
         expected = [block] if block else []
+        closing = content.find("\n---", 4)
+        if closing != -1 and re.search(r"^\*\*(?:Calls|Hands over to):\*\*", content[:closing], re.MULTILINE):
+            errors.append(f"{relative}: dependency paragraph sits inside the frontmatter.")
         if re.findall(r"^\*\*(?:Calls|Hands over to):\*\*.*$", content, re.MULTILINE) != expected:
             errors.append(f"{relative}: dependency paragraph should read: {expected[0] if expected else '(none)'}")
         if not re.search(rf"/{re.escape(name)}(?![\w-])", router):
@@ -216,9 +210,10 @@ def check(repository):
 
     # hand-off and take-over each ship a copy of the handoff format they share; keep the two identical.
     formats = [root / f"skills/productivity/{name}/HANDOFF-FORMAT.md" for name in ("hand-off", "take-over")]
-    if not all(path.exists() for path in formats):
+    present = [path.exists() for path in formats]
+    if any(present) and not all(present):
         errors.append("skills/productivity: hand-off and take-over must both carry HANDOFF-FORMAT.md.")
-    elif formats[0].read_bytes() != formats[1].read_bytes():
+    elif all(present) and formats[0].read_bytes() != formats[1].read_bytes():
         errors.append("skills/productivity/take-over/HANDOFF-FORMAT.md: differs from the hand-off copy.")
 
     for relative in plugin_paths - skills.keys():

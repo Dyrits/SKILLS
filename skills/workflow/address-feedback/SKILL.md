@@ -8,7 +8,7 @@ argument-hint: "Feedback source: PR, MR, issue, or ticket reference, a file path
 
 Turn a set of review feedback into an accounted-for set of decisions, approved changes, and replies grounded in the validated result.
 
-**Calls:** `implement`. If a called skill is not installed, tell the user its name and install command, `npx skills@latest add Dyrits/SKILLS --skill=<name>`, then carry out that step from its stated intent and report the step as done without the skill.
+**Calls:** `implement`.
 
 Feedback arrives in one of two kinds of **source**:
 

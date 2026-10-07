@@ -92,18 +92,6 @@
       ]
     },
     {
-      "id": 7,
-      "kind": "behavior",
-      "prompt": "Scratch environment. Use the setup-ai-tooling skill. It is a fresh agent environment where neither the `monitor-ai-tooling` skill nor the `write-for-agents` skill is installed. Finish the CodeGraph setup for this project.",
-      "expected_output": "Missing skills are named with their install command, the step is carried out from its intent, and the user is told what to run later.",
-      "expectations": [
-        "The agent tells the user that write-for-agents is not installed and gives the command `npx skills@latest add Dyrits/SKILLS --skill=write-for-agents`",
-        "When an agent instruction change is needed, it is carried out from the skill's stated intent and reported as done without the skill",
-        "At the end the user is told to run /monitor-ai-tooling and is given `npx skills@latest add Dyrits/SKILLS --skill=monitor-ai-tooling` because it is not installed",
-        "The setup itself still completes and is not blocked by the missing skills"
-      ]
-    },
-    {
       "id": 8,
       "kind": "no-trigger",
       "prompt": "How much has the AI tooling in this project actually saved us this month? Give me the numbers and say how confident they are.",

@@ -15,11 +15,11 @@ metadata:
 | --- | --- |
 | You want explicit planning and execution phases | `/specify → /taskify → /implement → /review-and-refactor`. Skip task decomposition when the selected work is small enough to implement directly. |
 | You want to discover behavior while building a living application | `/iterate` clarifies, implements, and verifies one useful batch at a time. |
-| You want to clarify a decision without starting development | `/refine`, the general interview discipline. The caller records useful results in the appropriate documents. |
+| You want to clarify a decision without starting development | `/interview`, the general interview discipline. The caller records useful results in the appropriate documents. |
 
 ### Planned development
 
-1. `/specify` reads the current context, resolves only outstanding decisions through `refine`, and writes or updates the selected capability's requirements and specifications. Settled decisions go straight to synthesis.
+1. `/specify` reads the current context, resolves only outstanding decisions through `interview`, and writes or updates the selected capability's requirements and specifications. Settled decisions go straight to synthesis.
 2. When conversation cannot settle a design question, suggest `/prototype`. The user requests or approves a scoped experiment. Its validated answer and evidence feed the specification; useful code can be integrated after production checks without mandatory rebuilding. `/research` handles consequential unknown external facts.
 3. `/taskify` decomposes selected work into coherent tasks with acceptance criteria and blocking dependencies. Drafts remain local until explicit publication. The word task is tracker-neutral: a remote tracker may call it an issue or ticket.
 4. `/implement` builds an authorized task, specification, or small approved batch. `/divide-and-conquer` instead implements a task graph on one integration branch: it routes each task to the least expensive capable agent, asks the user to approve that routing table, runs the tasks concurrently where dependencies allow, and reviews once.
@@ -28,7 +28,7 @@ metadata:
 
 ### Just-in-time development
 
-`/iterate` primarily maintains `documentation/backlog.md`, `documentation/work-in-progress.md`, and root `CHANGELOG.md`. It respects existing requirements and specifications but does not generate capability documents or tasks just to run a batch.
+`/iterate` primarily maintains the backlog, working state, and changelog. It respects existing requirements and specifications but does not generate capability documents or tasks just to run a batch.
 
 It builds each batch through `implement`, or through `divide-and-conquer` when a batch splits into independent tasks. It evolves the living application, including alternative implementations when useful. A prototype rebuild is not a prerequisite. Approved interaction or appearance needs user acceptance where judgment matters; routine internal changes use agreed automated checks.
 
@@ -38,9 +38,9 @@ Research, test-first work, diagnosis, and milestone reviews remain conditional b
 
 ## Shared project documents
 
-The `document` skill owns the shared project documents: requirements, specifications, drafts, tasks, backlog, work-in-progress, and the changelog. When the user asks what each one holds, read its `PROJECT-DOCUMENTS.md`. Both workflows use the same documents, so switching between them keeps agreements and progress; `iterate` writes light changelog records and the planned workflow writes full ones.
+The `document` skill owns the shared project documents and where each lives: requirements, specifications, drafts, tasks, backlog, work-in-progress, the changelog, the glossary, conventions, and decision records. When the user asks what each one holds, read the `document` skill. Both workflows use the same documents, so switching between them keeps agreements and progress; `iterate` writes light changelog records and the planned workflow writes full ones.
 
-`GLOSSARY.md`, architecture decision records, and `CONVENTIONS.md` retain their separate roles: domain language, consequential decisions, and domain-agnostic code conventions.
+The glossary, decision records, and conventions retain their separate roles: domain language, consequential decisions, and domain-agnostic code conventions. `/document` owns where each lives and its format; `/delineate` settles the terms, `/codify` the conventions, and `/interview` the decisions that go into them.
 
 ## On-ramps and open questions
 
@@ -50,7 +50,7 @@ The `document` skill owns the shared project documents: requirements, specificat
 | What to build is still undecided, and settling it needs research, prototypes, or interviews across several sessions | `/graphify` builds a decision graph and resolves one decision per session. |
 | What to build is known, but there are several candidate outcomes and the question is which comes first | `/prioritize` groups outcomes and recommends one focus within a session. |
 | Agreed behavior needs splitting into delivery work | `/taskify` produces tasks with acceptance criteria and blockers. |
-| One decision or plan needs stress-testing | `/refine` interviews until the frontier is empty. |
+| One decision or plan needs stress-testing | `/interview` interviews until the frontier is empty. |
 | A recurring work loop needs an implementable design | `/design-workflow`. |
 | An architectural seam is causing friction | `/improve-codebase-architecture`, then explore the selected candidate. |
 | The missing facts are in another person's head | `/ask-someone-else`, then bring the answers into refinement or specification. |
@@ -83,9 +83,10 @@ Work the table top to bottom. The first row that fits wins.
 | `/illustrate` | Explain with the smallest useful diagram, sketch, or HTML artifact. |
 | `/teach` | Maintain a mission-grounded teaching workspace across sessions. |
 | `/optimize-process` | Improve a recurring process using actual friction and evidence. |
-| `/model-domain` | Actively sharpen domain language and record qualifying decisions or code conventions. |
+| `/delineate` | Settle what a fuzzy or disputed domain term means, and add it to the glossary. |
+| `/codify` | Define or audit the project's code conventions. |
 | `/design-modules` | Design deep modules, useful seams, and testable interfaces. |
-| `/document` | Maintain technical documents and shared project artifacts. |
+| `/document` | Maintain technical documents and shared project documents, including the glossary, conventions, and decision records. |
 | `/write-for-agents` | Write skills, steering instructions, and agent references. |
 | `/walk-through` | Generate an interactive script for steps only a human can perform. |
 | `/unslop` | Remove filler and recurring AI writing patterns from prose. |

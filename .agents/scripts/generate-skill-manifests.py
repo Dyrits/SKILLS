@@ -31,8 +31,13 @@ def tagline(skill_file):
     """The first sentence of the SKILL.md description, as the short human-facing apm.yml description."""
     for line in skill_file.read_text().splitlines():
         if line.startswith("description:"):
-            text = json.loads(line.split(":", 1)[1].strip()) if line.split(":", 1)[1].strip()[:1] == '"' \
-                else line.split(":", 1)[1].strip()
+            value = line.split(":", 1)[1].strip()
+            if value[:1] == '"':
+                text = json.loads(value)
+            elif value[:1] == "'":
+                text = value[1:-1].replace("''", "'")
+            else:
+                text = value
             return text.split(". ")[0].rstrip(".") + "."
     return ""
 

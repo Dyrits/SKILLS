@@ -29,7 +29,7 @@
     },
     {
       "name": "hand-off",
-      "description": "Compact the current conversation into a versioned handoff document in .agents/handoffs/ for another agent to pick up.",
+      "description": "Write the current session's work into a versioned handoff document in .agents/handoffs/ that another agent resumes with take-over.",
       "source": "./skills/productivity/hand-off"
     },
     {
@@ -55,7 +55,7 @@
     },
     {
       "name": "take-over",
-      "description": "Resume work from the latest handoff document in .agents/handoffs/, following the supersedes chain only when questions stay open.",
+      "description": "Resume work from a handoff document in .agents/handoffs/ written by hand-off, following the supersedes chain only when questions stay open.",
       "source": "./skills/productivity/take-over"
     },
     {
@@ -69,35 +69,42 @@
       "source": "./skills/productivity/walk-through"
     },
     {
+      "name": "codify",
+      "description": "Define the project's code conventions by drafting candidate rules from how the code is already written and confirming each with the user and its reason, or audit an existing conventions file.",
+      "version": "0.2.0",
+      "source": "./skills/reference/codify"
+    },
+    {
+      "name": "delineate",
+      "description": "Settle what the project's words mean by challenging fuzzy or conflicting terms against the glossary, the code, and concrete scenarios, then have the agreed terms written to the glossary.",
+      "version": "0.2.0",
+      "source": "./skills/reference/delineate"
+    },
+    {
       "name": "design-modules",
       "description": "Shared vocabulary for designing deep modules.",
       "source": "./skills/reference/design-modules"
     },
     {
       "name": "document",
-      "description": "Write and maintain project documentation, including the shared project documents workflows rely on (requirements, specifications, backlog, work-in-progress, tasks, changelog records).",
+      "description": "Write and maintain project documentation, and own where each shared project document lives and its format (requirements, specifications, backlog, working state, tasks, changelog, glossary, code conventions, architecture decision records).",
       "version": "0.2.0",
       "source": "./skills/reference/document"
     },
     {
+      "name": "interview",
+      "description": "Interview the user in rounds of questions, each with a recommended answer, until a plan, decision, or idea is settled.",
+      "source": "./skills/reference/interview"
+    },
+    {
       "name": "memorize",
-      "description": "'File a lesson in the home the next agent will read, and recall saved scripts and lessons before redoing work.",
+      "description": "File a lesson in the home the next agent will read, and recall saved scripts and lessons before redoing work.",
       "version": "0.2.0",
       "source": "./skills/reference/memorize"
     },
     {
-      "name": "model-domain",
-      "description": "Build and sharpen a project's domain model.",
-      "source": "./skills/reference/model-domain"
-    },
-    {
-      "name": "refine",
-      "description": "Refine a plan, decision, or idea through a decision-tree interview.",
-      "source": "./skills/reference/refine"
-    },
-    {
       "name": "unslop",
-      "description": "Cut AI tells from writing in any language.",
+      "description": "Cut AI tells from prose that other people will read, in any language.",
       "source": "./skills/reference/unslop"
     },
     {

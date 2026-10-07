@@ -11,7 +11,7 @@ Create a directory and its `INDEX.md` the first time something is saved there.
 
 ## 1. Look up
 
-Before writing a script or a multi-step shell pipeline, read both `INDEX.md` files when present. An absent index is an empty scriptbook, not a blocker or a reason to create one before saving a reusable script. Also check the project's own task runner (`justfile`, `Makefile`, `package.json` scripts): a command that exists there is the answer, so skip the index for it.
+Before writing a script or a shell pipeline longer than one line, read both `INDEX.md` files when present. An absent index is an empty scriptbook, not a blocker or a reason to create one before saving a reusable script. Also check the project's own task runner (`justfile`, `Makefile`, `package.json` scripts): a command that exists there is the answer, so skip the index for it.
 
 Completion: the action matches an entry or runner command, or both indexes have been read or confirmed absent and the runner has been checked, with no fit.
 
@@ -32,7 +32,7 @@ A script that only makes sense for this one dataset runs inline and is not saved
 
 ## 4. Save and index
 
-Pick the project scriptbook when the script depends on this repository, the global scriptbook otherwise. Write the script as an executable file that opens with a header comment giving what it does, its arguments, and one usage example. Run that example once before indexing.
+Pick the project scriptbook when the script depends on this repository, the global scriptbook otherwise. Write the script as an executable file that opens with a header comment giving what it does, its arguments, and one usage example. Run that example once before indexing, on scratch input or as a dry run when the script changes files or remote state.
 
 Add one line to the matching `INDEX.md`, kept in alphabetical order:
 

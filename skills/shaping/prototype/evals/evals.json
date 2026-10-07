@@ -66,7 +66,7 @@
       "expectations": [
         "The recorded answer names the winning variant, the question, and the reason (toggles reachable without scrolling)",
         "The verdict and evidence are recorded in the feature's draft or specifications and in working state, with remaining acceptance listed",
-        "A CHANGELOG.md record states that the prototype's code still needs production validation",
+        "A documentation/changelog.md record states that the prototype's code still needs production validation",
         "The full set of variants is preserved as a primary source on a throwaway branch with a context pointer in the work record, not left in the main branch",
         "Integrating variant B is treated as needing authorized acceptance and the production checks (tests, error handling, appearance and interaction evidence) before it counts as done",
         "The switcher and experimental labels are removed from the integrated code, and the losing variants are dropped from main",

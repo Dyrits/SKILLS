@@ -79,7 +79,7 @@
       "expectations": [
         "The review-and-refactor skill is called once, on the integration branch, with the pinned starting commit 3f9c1ab, the scope, the originating agreement, and the evidence",
         "Remaining implementation issues and the refactors are committed by a single implementer subagent, not one per task",
-        "documentation/work-in-progress.md and the root CHANGELOG.md are updated with routing, evidence, acceptance, and blockers, and any missing verification is stated",
+        "documentation/work-in-progress.md and documentation/changelog.md are updated with routing, evidence, acceptance, and blockers, and any missing verification is stated",
         "The final report names the tier and model that handled each task, including any escalations",
         "Implementation evidence is reported separately from publication, request readiness, and task closure, which remain pending",
         "Disposable worktrees are removed only after confirming each is fully integrated and has no uncommitted or unmerged changes"
@@ -92,7 +92,7 @@
       "expected_output": "Remote tracker work without tracker configuration sends the user to setup-ai-workspace.",
       "expectations": [
         "The agent looks for .agents/issue-tracker.md and finds it missing",
-        "The agent tells the user to run /setup-ai-workspace, with its install command if the skill is not installed",
+        "The agent tells the user to run /setup-ai-workspace",
         "The agent does not invent tracker conventions or post to a tracker"
       ]
     },

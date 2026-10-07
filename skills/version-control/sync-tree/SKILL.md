@@ -11,7 +11,7 @@ Transfer committed work to its corresponding local branch. Preserve the branch
 name unless the user names a different target. Leave upstream publication,
 new merge commits, and code changes to separate requests.
 
-**Calls:** `rebase`. If a called skill is not installed, tell the user its name and install command, `npx skills@latest add Dyrits/SKILLS --skill=<name>`, then carry out that step from its stated intent and report the step as done without the skill.
+**Calls:** `rebase`.
 
 This skill works with linked Git worktrees and isolated local clones. The
 `delta-action` metadata also makes it eligible for Delta's Land Changes button;

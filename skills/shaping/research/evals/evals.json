@@ -62,10 +62,10 @@
       "id": 5,
       "kind": "no-trigger",
       "prompt": "Help me decide between Postgres and DynamoDB for our order store. Interview me about our access patterns and constraints until we land on a choice.",
-      "expected_output": "A decision made with the user by interview belongs to refine, not to a research file.",
+      "expected_output": "A decision made with the user by interview belongs to interview, not to a research file.",
       "expectations": [
         "The research skill is not invoked and no background agent or research file is created",
-        "The agent uses the refine skill, or names it as the right tool, to interview the user toward a decision"
+        "The agent uses the interview skill, or names it as the right tool, to interview the user toward a decision"
       ]
     },
     {

@@ -7,6 +7,8 @@ skills/<bucket>/<skill-name>/evals/evals.json
 skills/<bucket>/<skill-name>/evals/files/   (only when an eval needs input files)
 ```
 
+Reports from runs worth versioning go in [`documentation/evaluations/`](../evaluations/README.md), in the report format its `README.md` defines.
+
 The format follows the `skill-creator` schema (`skill_name`, `evals[]` with `id`, `prompt`, `expected_output`, `files`, `expectations`), so its runner, grader, and viewer read these files unchanged. One field is added: `kind`.
 
 ```json

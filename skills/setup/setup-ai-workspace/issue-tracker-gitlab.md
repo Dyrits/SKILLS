@@ -2,9 +2,9 @@
 
 Backlog: <verified GitLab backlog or project-board URL>
 
-The remote backlog owns candidate outcomes, priorities, and deferrals. Local `documentation/backlog.md` links to it; `documentation/work-in-progress.md` remains local for execution and resumption. Apply the authority and publication rules supplied by the `document` skill.
+The remote backlog owns candidate outcomes, priorities, and deferrals. The local backlog document links to it; working state remains local for execution and resumption. Apply the authority and publication rules supplied by the `document` skill.
 
-Published tasks for this repository live as GitLab issues. Repository `documentation/capabilities/<capability>/specifications.md` remains the canonical living specification; remote records link to or summarize it. Use the [`glab`](https://gitlab.com/gitlab-org/cli) CLI for remote operations.
+Published tasks for this repository live as GitLab issues. The capability's specifications in the repository remain the canonical living specification; remote records link to or summarize it. Use the [`glab`](https://gitlab.com/gitlab-org/cli) CLI for remote operations.
 
 ## Conventions
 
@@ -38,7 +38,7 @@ Unlike GitHub, GitLab numbers issues and MRs separately, so `#42` is unambiguous
 
 ## When a skill says "publish to the issue tracker"
 
-Create or update a GitLab issue only on an explicit user request. Local document upkeep does not authorize remote writes. When useful, keep a title/link reference under `documentation/capabilities/<capability>/tasks/` instead of copying the published task body.
+Create or update a GitLab issue only on an explicit user request. Local document upkeep does not authorize remote writes. When useful, keep a title/link reference in the capability's task files instead of copying the published task body.
 
 ## When a skill says "fetch the relevant task"
 
@@ -49,7 +49,7 @@ Run `glab issue view <number> --comments`.
 Used by `/graphify`. The map is a single GitLab issue with child issues as decision tasks.
 
 - **Map**: a single issue labelled `graphify:map`, holding the Notes / Decisions-so-far / Fog body. `glab issue create --label graphify:map`. (On GitLab tiers with native epics, an epic may hold the map instead; a labelled issue works everywhere.)
-- **Child task**: an issue carrying `Part of #<map>` at the top of its description and labels `graphify:<type>` (`research`/`prototype`/`refine`/`task`). Once claimed, the task is assigned to the driving developer.
+- **Child task**: an issue carrying `Part of #<map>` at the top of its description and labels `graphify:<type>` (`research`/`prototype`/`interview`/`task`). Once claimed, the task is assigned to the driving developer.
 - **Blocking**: GitLab's **native blocking link**, the canonical, UI-visible representation. Add it with the `/blocked_by #<n>` quick action, posted as a note (`glab issue note <child> --message "/blocked_by #<blocker>"`). Native blocking links are a Premium/Ultimate feature; on the free tier (or where unavailable) fall back to a `Blocked by: #<n>, #<n>` line at the top of the description. A task is unblocked when every blocker is closed.
 - **Frontier query**: `glab issue list -F json` scoped to the map's children, drop any with an open blocker: a native `blocked_by` link to an open issue (`glab api projects/:id/issues/:iid/links`), or an open issue in the `Blocked by` line, or an assignee; first in map order wins.
 - **Claim**: `glab issue update <n> --assignee @me`, the session's first write.

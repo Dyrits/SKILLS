@@ -8,7 +8,7 @@
       "expected_output": "The agent establishes only what the first batch needs and presents approaches for approval before any setup.",
       "expectations": [
         "The iterate skill is invoked without the user naming it",
-        "The agent calls the document skill and notes that the backlog, working state, and CHANGELOG.md are absent",
+        "The agent calls the document skill and notes that the backlog, working state, and documentation/changelog.md are absent",
         "The questions asked are limited to who will use it, where it runs, whether it keeps important data, and the first useful interaction, with at most a few questions at once",
         "A short list of suitable technical approaches is presented, each with an advantage and a cost, and one is recommended",
         "No project files or dependencies are created before the user approves the approach"
@@ -39,11 +39,11 @@
         "evals/files/project/tests/test_tracker.py"
       ],
       "expectations": [
-        "The refine skill is called with its design tree rooted in the current batch (streak counting) only",
+        "The interview skill is called with its design tree rooted in the current batch (streak counting) only",
         "Weekly goals, reminders, and charts are recorded as pending branches and are not interviewed about now",
         "Weekly reminder emails stay in deferred in-scope work and social sharing stays in the ruled-out list, kept apart",
         "The checks for the batch are defined at the observable interface, for example a streak count after a given sequence of check-ins",
-        "The consequential choice that a streak breaks after one missed day is recorded as an Agreement in CHANGELOG.md",
+        "The consequential choice that a streak breaks after one missed day is recorded as an Agreement in documentation/changelog.md",
         "The agreed batch and the pending questions are written to documentation/work-in-progress.md"
       ]
     },
@@ -74,7 +74,7 @@
         "The verification evidence returned is recorded in documentation/work-in-progress.md",
         "The report states what changed, the verification result, and how to run or inspect it",
         "The agent asks the user to accept the runnable result for appearance, as one grouped review, and says it is implemented and checked but not yet accepted",
-        "No Delivery is added to CHANGELOG.md until the user accepts the appearance"
+        "No Delivery is added to documentation/changelog.md until the user accepts the appearance"
       ]
     },
     {

@@ -40,9 +40,6 @@ No. It reuses the repository's setup conventions for ignored configuration and k
 
 Yes. It verifies the original repository through the handoff, shared Git metadata, or a local backlink, rather than treating the current task checkout as the original.
 
-**What if a skill it hands over to is not installed?**
-It gives you the install command along with the instruction to run it. The skills involved are listed at the top of its [`SKILL.md`](../../../skills/version-control/work-in-tree/SKILL.md).
-
 ## It's working if
 
 - `git status` in your original checkout is unchanged and its target branch has not moved.

@@ -22,7 +22,6 @@ Type `/draft-merge-request`, or an agent or another skill can reach for it when 
 
 The summary's job is one visual sized to the single point the change makes.
 The skill calls [illustrate](../productivity/illustrate.md) to choose the shape and render it inline in the request body.
-If `illustrate` is not installed, it uses the formats named in the template to produce the summary itself.
 
 The instruction that does the work is **pick the smallest view that makes the key point clear**. A component tree pruned to the two components that moved beats the same tree drawn in full, because everything else on it is a line the reviewer has to rule out. Using one shape is usual, several happens, and all of them never does.
 
@@ -79,9 +78,6 @@ The screenshot recommendation applies when the change is visual; a statement tha
 
 The body is Markdown, and rendering depends on where you view it.
 Use a call tree, file tree, or shaped diff when your review surface does not render diagrams.
-
-**What if a skill it calls is not installed?**
-It names the missing skill with its install command, carries out that step from its stated intent, and tells you the step ran without it. The skills involved are listed at the top of its [`SKILL.md`](../../../skills/version-control/draft-merge-request/SKILL.md).
 
 ## It's working if
 

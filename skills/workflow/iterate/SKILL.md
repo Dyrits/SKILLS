@@ -8,9 +8,9 @@ argument-hint: "An idea to build, or an existing project to continue"
 
 Coordinate refinement and implementation in one living development workflow. An **increment** is a coherent change validated against agreed behavior. Group related decisions into a **batch**, implement it, and let the result decide what comes next. Settle decisions **just in time**: the ones the current batch needs, and no further. The application evolves in place from its first runnable batch; replacing it is a consequential decision for the user.
 
-Call the Skill tool with "document"; its terms (authorized, obligation, lazy, pointer) and rules apply throughout. This workflow runs on `documentation/backlog.md`, `documentation/work-in-progress.md`, and the root `CHANGELOG.md` with light records, and links existing requirements and specifications where they apply.
+Call the Skill tool with "document"; its terms (authorized, obligation, lazy, pointer) and rules apply throughout. This workflow runs on the backlog, working state, and the changelog with light records, and links existing requirements and specifications where they apply.
 
-**Calls:** `design-modules`, `divide-and-conquer`, `document`, `implement`, `model-domain`, `prioritize`, `refine`, `research`, `review-and-refactor`. If a called skill is not installed, tell the user its name and install command, `npx skills@latest add Dyrits/SKILLS --skill=<name>`, then carry out that step from its stated intent and report the step as done without the skill. Without `document`, wait until the user installs it or tells you to proceed: this skill's rules use its terms.
+**Calls:** `codify`, `delineate`, `design-modules`, `divide-and-conquer`, `document`, `implement`, `interview`, `prioritize`, `research`, `review-and-refactor`.
 
 ## 1. Establish the starting point
 
@@ -22,7 +22,7 @@ For a new project, establish who will use it, where it runs, whether it keeps im
 
 When competing capabilities, unclear scope, or cross-cutting dependencies make choosing a useful batch premature, call the Skill tool with "prioritize" with the known direction, constraints, and document pointers, and tell the user why. Implement once the user approves its recommended focus and material deferrals. A clear small change goes straight on. Return to this branch when priorities or dependencies block the next batch; each new outcome needs its own approval.
 
-Completion: "document" was called, the backlog, working state, and `CHANGELOG.md` were read or noted as absent, and intended use, immediate constraints, and the next decisions are explicit. Unrelated future behavior may remain open.
+Completion: "document" was called, the backlog, working state, and changelog were read or noted as absent, and intended use, immediate constraints, and the next decisions are explicit. Unrelated future behavior may remain open.
 
 ## 2. Agree the technical approach
 
@@ -38,7 +38,7 @@ Completion: an approved approach, or a suitable existing one, with the first bat
 
 ## 3. Settle one batch
 
-Call the Skill tool with "refine", rooting its design tree in the **current batch**: traverse only the decisions needed to implement and verify it, and record later branches as pending. A confirmed batch proceeds while future questions stay pending. Continue the larger interview as increments reveal new questions.
+Call the Skill tool with "interview", rooting its design tree in the **current batch**: traverse only the decisions needed to implement and verify it, and record later branches as pending. A confirmed batch proceeds while future questions stay pending. Continue the larger interview as increments reveal new questions.
 
 Group questions that affect the same behavior or code. Keep exploration, agent recommendations, and user decisions distinct; implement an alternative once the user chooses it. Keep deferred in-scope questions apart from ideas the user ruled out; a ruled-out idea returns only through an explicit scope change.
 
@@ -46,9 +46,9 @@ Summarize the batch's behavior, scope, verification, and choices needing approva
 
 In a versioned project, record the goal's starting revision when its first batch is agreed. When a batch starts an agreed milestone or substantial structural or data-risk work, read [MILESTONE-REVIEW.md](MILESTONE-REVIEW.md) before implementation.
 
-Call the Skill tool with "model-domain" when sharpening domain terms, recording a consequential decision, or establishing code conventions. Call the Skill tool with "design-modules" when a module's interface or testability needs design.
+When a domain term is fuzzy or disputed, call the Skill tool with "delineate". When establishing code conventions, call the Skill tool with "codify". When recording a consequential decision, call the Skill tool with "document". Call the Skill tool with "design-modules" when a module's interface or testability needs design.
 
-Completion: the batch can be implemented and checked without guessing at an open decision, and each consequential choice it settled (costly to reverse, or changing scope) has an Agreement in `CHANGELOG.md`. Record the agreed batch and pending questions using [ARTIFACTS.md](ARTIFACTS.md).
+Completion: the batch can be implemented and checked without guessing at an open decision, and each consequential choice it settled (costly to reverse, or changing scope) has an Agreement in the changelog. Record the agreed batch and pending questions using [ARTIFACTS.md](ARTIFACTS.md).
 
 ## 4. Implement and verify
 
@@ -68,7 +68,7 @@ At an agreed milestone, before delivery, or after substantial structural or data
 
 A review gap in already approved behavior becomes the next batch. Other findings become deferred in-scope work or out-of-scope ideas; a new product choice or change of approach needs approval first. Once validation and any required review are complete, mark the increment complete, prune finished working notes, and return to the next ready decisions. End when the user's current goal is met or they pause, reporting the remaining work.
 
-Completion: acceptance is recorded where needed, each completed increment has a Delivery in `CHANGELOG.md` (created with the first one), working state supports resumption, and the next step or stopping point is clear.
+Completion: acceptance is recorded where needed, each completed increment has a Delivery in the changelog (created with the first one), working state supports resumption, and the next step or stopping point is clear.
 
 ## Approval and cost boundaries
 

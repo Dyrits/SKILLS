@@ -8,7 +8,7 @@
       "expected_output": "A workflow design interview in the current directory as workspace: world first when notes are empty, then dependency-aware rounds, then a workflows/*.md specification.",
       "expectations": [
         "The design-workflow skill is invoked without the user naming it",
-        "The agent calls the refine skill through the Skill tool for the interview discipline",
+        "The agent calls the interview skill through the Skill tool for the interview discipline",
         "Because the workspace has no NOTES.md content, the agent interviews the user about their tools and channels before specifying anything",
         "Questions come in rounds with a recommended answer for each question",
         "No workflows/*.md file is written before the first round of answers"
@@ -50,12 +50,10 @@
     {
       "id": 4,
       "kind": "behavior",
-      "prompt": "Use the design-workflow skill to specify how I process my monthly backup rotation: a script copies the database dump to cold storage on the first of the month and deletes copies older than a year. Assume the refine skill is not installed in this session.",
-      "expected_output": "The missing skill is named with its install command, the step is carried out from its intent, and the report says it ran without the skill. No AI or checkpoint is forced on a script-only loop.",
+      "prompt": "Use the design-workflow skill to specify how I process my monthly backup rotation: a script copies the database dump to cold storage on the first of the month and deletes copies older than a year.",
+      "expected_output": "No AI or checkpoint is forced on a script-only loop.",
       "expectations": [
-        "The agent tells the user that refine is not installed and gives the command npx skills@latest add Dyrits/SKILLS --skill=refine",
-        "The agent still runs the interview from refine's stated intent (rounds of questions with recommended answers) instead of stopping",
-        "The agent reports that the step was carried out without the skill",
+        "The agent still runs the interview through interview (rounds of questions with recommended answers)",
         "The resulting specification uses a schedule trigger and does not add an AI step or a human checkpoint that the answers did not call for",
         "The specification states explicitly that the loop runs autonomously when no checkpoint is needed"
       ]

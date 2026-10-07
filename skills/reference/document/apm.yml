@@ -1,6 +1,6 @@
 name: document
 version: 0.2.0
-description: "Write and maintain project documentation, including the shared project documents workflows rely on (requirements, specifications, backlog, work-in-progress, tasks, changelog records)."
+description: "Write and maintain project documentation, and own where each shared project document lives and its format (requirements, specifications, backlog, working state, tasks, changelog, glossary, code conventions, architecture decision records)."
 dependencies:
   apm:
     - git: parent

@@ -29,7 +29,7 @@
     {
       "id": 2,
       "kind": "trigger",
-      "prompt": "Let's look at task-03 in the tracker. Configuration is issue-tracker.md and triage-roles.md (as they would sit under .agents/), the task is tasks/task-03.md, the code is under codebase/, and the project glossary is GLOSSARY.md.",
+      "prompt": "Let's look at task-03 in the tracker. Configuration is issue-tracker.md and triage-roles.md (as they would sit under .agents/), the task is tasks/task-03.md, the code is under codebase/, and the project glossary is documentation/glossary.md.",
       "expected_output": "The agent gathers context, recommends a category and state with reasoning, waits for direction, and verifies the bug before refining.",
       "files": [
         "evals/files/issue-tracker.md",
@@ -37,7 +37,7 @@
         "evals/files/tasks/task-03.md",
         "evals/files/codebase/reports/export.py",
         "evals/files/codebase/reports/test_export.py",
-        "evals/files/GLOSSARY.md"
+        "evals/files/documentation/glossary.md"
       ],
       "expectations": [
         "The triage skill is invoked from the request alone",
@@ -161,10 +161,10 @@
       "id": 10,
       "kind": "no-trigger",
       "prompt": "I have an idea for a reports scheduling feature but I haven't thought it through. Grill me on it until the decisions are clear.",
-      "expected_output": "An open idea to stress-test belongs to refine, not to intake triage.",
+      "expected_output": "An open idea to stress-test belongs to interview, not to intake triage.",
       "expectations": [
         "The triage skill is not invoked and no tracker role or status is applied",
-        "The agent starts a decision-tree interview with the refine skill, one question at a time"
+        "The agent starts a decision-tree interview with the interview skill, one question at a time"
       ]
     },
     {

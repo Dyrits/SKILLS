@@ -6,6 +6,6 @@ dependencies:
     - git: parent
       path: skills/reference/document
     - git: parent
-      path: skills/reference/refine
+      path: skills/reference/interview
     - git: parent
       path: skills/shaping/research

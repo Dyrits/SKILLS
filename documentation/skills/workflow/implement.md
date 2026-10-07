@@ -4,7 +4,7 @@ Derived from upstream `implement`, verified at revision `d81f3a1`. The [archived
 
 `implement` builds authorized work and commits it on the current branch. Its input is settled intended behavior, not an invitation to redesign the scope. It accepts shared specifications, a task, or an explicit user-approved living work batch.
 
-It uses test-driven development at agreed seams, diagnoses a reported bug through [debug](../upkeep/debug.md) before editing code, and reports its verification evidence. Run on its own, it keeps local documents current, with unfinished acceptance and evidence in `documentation/work-in-progress.md`, and records completed authorized agreements and deliveries in root `CHANGELOG.md` using the format owned by [document](../reference/document.md). Handed one task by a coordinating skill, it returns that evidence instead, so parallel implementers never write the same records.
+It uses test-driven development at agreed seams, diagnoses a reported bug through [debug](../upkeep/debug.md) before editing code, and reports its verification evidence. Run on its own, it keeps local documents current, with unfinished acceptance and evidence in working state, and records completed authorized agreements and deliveries in the changelog using the format owned by [document](../reference/document.md). Handed one task by a coordinating skill, it returns that evidence instead, so parallel implementers never write the same records.
 
 It does not review its own work. The review runs once over the whole batch: [divide-and-conquer](./divide-and-conquer.md) runs it after merging, [iterate](./iterate.md) at its milestones, and a standalone run ends by recommending [review-and-refactor](./review-and-refactor.md).
 
@@ -25,9 +25,6 @@ No. An explicit approved batch in working state can supply the agreement. Global
 **Does passing the test suite mean acceptance is complete?**
 
 Only for the behavior those tests establish. Appearance and interaction may need human judgment. Missing validation remains visible instead of becoming a delivery claim.
-
-**What if a skill it calls or hands over to is not installed?**
-It names the missing skill with its install command, carries out that step from its stated intent, and tells you the step ran without it. Without `document` it waits instead, because its rules use that skill's terms: install it, or tell it to proceed anyway. When it tells you to run a skill you don't have, it gives the install command with it. The skills involved are listed at the top of its [`SKILL.md`](../../../skills/workflow/implement/SKILL.md).
 
 **What if `webapp-testing` is not installed?**
 It ships outside this repository, so the skill cannot assume it. When browser interaction needs verifying and the skill is missing, the agent tells you, verifies the interaction another way (a scripted browser run, for example), and reports the check as could not run if no way is available.

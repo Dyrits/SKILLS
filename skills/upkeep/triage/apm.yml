@@ -4,10 +4,10 @@ description: "Move tasks and external PRs through triage roles: categorize, veri
 dependencies:
   apm:
     - git: parent
+      path: skills/reference/delineate
+    - git: parent
       path: skills/reference/document
     - git: parent
-      path: skills/reference/model-domain
-    - git: parent
-      path: skills/reference/refine
+      path: skills/reference/interview
     - git: parent
       path: skills/setup/setup-ai-workspace

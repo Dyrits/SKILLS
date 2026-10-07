@@ -6,9 +6,9 @@ metadata:
 argument-hint: "A workflow to design, or nothing to go find one"
 ---
 
-Call the Skill tool with "refine" for a stateful interview whose output is **workflow** specifications. Use dependency-aware question rounds with recommended answers, aimed at the vocabulary and goal below. Create and update specifications as decisions are resolved; remove an obsolete specification only when its replacement and useful history are preserved.
+Call the Skill tool with "interview" for a stateful interview whose output is **workflow** specifications. Use dependency-aware question rounds with recommended answers, aimed at the vocabulary and goal below. Create and update specifications as decisions are resolved; remove an obsolete specification only when its replacement and useful history are preserved.
 
-**Calls:** `refine`. If a called skill is not installed, tell the user its name and install command, `npx skills@latest add Dyrits/SKILLS --skill=<name>`, then carry out that step from its stated intent and report the step as done without the skill.
+**Calls:** `interview`.
 
 ## The loop lens
 

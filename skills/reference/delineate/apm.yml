@@ -1,0 +1,9 @@
+name: delineate
+version: 0.2.0
+description: "Settle what the project's words mean by challenging fuzzy or conflicting terms against the glossary, the code, and concrete scenarios, then have the agreed terms written to the glossary."
+dependencies:
+  apm:
+    - git: parent
+      path: skills/reference/document
+    - git: parent
+      path: skills/reference/interview

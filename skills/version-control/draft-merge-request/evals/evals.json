@@ -55,22 +55,6 @@
       ]
     },
     {
-      "id": 4,
-      "kind": "behavior",
-      "prompt": "Use the draft-merge-request skill for change.diff and ticket.md, with before-after.txt as evidence. The illustrate skill is not installed on this machine.",
-      "expected_output": "The agent names the missing skill with its install command, still renders a minimal inline view, and says the step ran without the skill.",
-      "files": [
-        "evals/files/ticket.md",
-        "evals/files/change.diff",
-        "evals/files/before-after.txt"
-      ],
-      "expectations": [
-        "The agent tells the user that illustrate is missing and gives the command 'npx skills@latest add Dyrits/SKILLS --skill=illustrate'",
-        "The Summary is still produced, using the smallest view from the template that makes the key point clear, rendered inline in Markdown",
-        "The agent reports the Summary step as done without the skill rather than stopping or leaving the section empty"
-      ]
-    },
-    {
       "id": 5,
       "kind": "behavior",
       "prompt": "Use the draft-merge-request skill for change.diff and ticket.md. The environment cannot produce screenshots and there is no user interface in this change. The only evidence I have is: 'all 14 tests pass on the branch'.",

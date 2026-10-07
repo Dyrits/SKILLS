@@ -12,8 +12,8 @@
     "skills",
     "tdd",
     "review-and-refactor",
-    "refine",
-    "model-domain",
+    "interview",
+    "delineate",
     "productivity"
   ],
   "skills": [
@@ -35,9 +35,10 @@
     "./skills/productivity/teach",
     "./skills/productivity/re-explain",
     "./skills/reference/design-modules",
-    "./skills/reference/model-domain",
+    "./skills/reference/codify",
+    "./skills/reference/delineate",
     "./skills/reference/document",
-    "./skills/reference/refine",
+    "./skills/reference/interview",
     "./skills/reference/unslop",
     "./skills/productivity/walk-through",
     "./skills/reference/write-for-agents",

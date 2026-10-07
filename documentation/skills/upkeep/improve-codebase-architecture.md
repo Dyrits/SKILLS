@@ -29,9 +29,9 @@ Where it is confusable with siblings:
 
 ## Prerequisites
 
-None to run it. When `CONVENTIONS.md` is missing it asks whether to create one. If you accept, [model-domain](../reference/model-domain.md) interviews you about your architecture conventions and rules first; declining is recorded in `.agents/domain.md` and skips it. It reads `GLOSSARY.md` and any ADRs in `documentation/architecture-decision-record/` if they exist, and speaks in your domain's own nouns when they do: a candidate reads as "deepen the Order intake module," not "refactor the FooBarHandler."
+None to run it. When the conventions file is missing it asks whether to create one. If you accept, [document](../reference/document.md) interviews you about your architecture conventions and rules first; declining is recorded in `.agents/domain.md` and skips it. It reads the glossary and any architecture decision records if they exist, and speaks in your domain's own nouns when they do: a candidate reads as "deepen the Order intake module," not "refactor the FooBarHandler."
 
-The report goes to `documentation/architecture-audit/architecture-audit-<timestamp>.html`, one file per run. Refinement can also sharpen terms in `GLOSSARY.md` and offer an architecture decision record for a consequential rejection. That offer is conditional: rejecting a candidate does not automatically merit a permanent decision record.
+The report goes to `documentation/architecture-audit/architecture-audit-<timestamp>.html`, one file per run. Refinement can also sharpen terms in the glossary and offer an architecture decision record for a consequential rejection. That offer is conditional: rejecting a candidate does not automatically merit a permanent decision record.
 
 ## Depth, and the report that hunts for it
 
@@ -49,7 +49,7 @@ The report ends with a **Top recommendation** (the one it would tackle first), a
 
 ## What happens after you pick one
 
-Picking a candidate starts [refine](../reference/refine.md) over its constraints, seam, surviving tests, and interface. The output is a decision, not a diff. Record agreed behavior through [specify](../workflow/specify.md), then use [taskify](../workflow/taskify.md) when decomposition is useful before [implement](../workflow/implement.md). A small approved living-code batch can instead enter [iterate](../workflow/iterate.md), respecting existing requirements and specifications.
+Picking a candidate starts [interview](../reference/interview.md) over its constraints, seam, surviving tests, and interface. The output is a decision, not a diff. Record agreed behavior through [specify](../workflow/specify.md), then use [taskify](../workflow/taskify.md) when decomposition is useful before [implement](../workflow/implement.md). A small approved living-code batch can instead enter [iterate](../workflow/iterate.md), respecting existing requirements and specifications.
 
 ## Common questions
 
@@ -71,7 +71,7 @@ With the next thing you are building in mind. Where a big build is coming up, po
 
 **Does it work on a large legacy codebase?**
 
-Results vary. Users with out-of-control projects reported limited help, and one report on an eight-year legacy codebase described the model going in circles. Bound the survey to an actively changing area and a concrete source of friction. If domain terms are inconsistent, use [model-domain](../reference/model-domain.md) to establish shared vocabulary before comparing designs.
+Results vary. Users with out-of-control projects reported limited help, and one report on an eight-year legacy codebase described the model going in circles. Bound the survey to an actively changing area and a concrete source of friction. If domain terms are inconsistent, use [delineate](../reference/delineate.md) to establish shared vocabulary before comparing designs.
 
 **How is this different from `/design-modules`?**
 
@@ -89,9 +89,6 @@ Yes. The exploration step says to spawn a sub-agent to walk the codebase and nam
 
 There is no good answer shipped with the skill. The recurring request is for a `TYPESCRIPT.md` giving concrete file and module layouts for the principles, and it does not exist. The skill will tell you where a deepening belongs and what should sit behind the seam; translating that into a package or directory structure is currently on you.
 
-**What if a skill it calls is not installed?**
-It names the missing skill with its install command, carries out that step from its stated intent, and tells you the step ran without it. The skills involved are listed at the top of its [`SKILL.md`](../../../skills/upkeep/improve-codebase-architecture/SKILL.md).
-
 ## It's working if
 
 - The candidates name your domain's concepts, not invented class names: "the Order intake module," not "the FooBarHandler."
@@ -103,4 +100,4 @@ It names the missing skill with its install command, carries out that step from 
 
 ## Where it fits
 
-`improve-codebase-architecture` is periodic maintenance that generates candidate work rather than implementing it. [design-modules](../reference/design-modules.md) supplies depth-and-seam vocabulary; [refine](../reference/refine.md) explores the selected candidate; [model-domain](../reference/model-domain.md) records settled domain meanings and qualifying decisions. Approved work enters planned or just-in-time development without weakening existing obligations. [guide](../productivity/guide.md) maps both workflows.
+`improve-codebase-architecture` is periodic maintenance that generates candidate work rather than implementing it. [design-modules](../reference/design-modules.md) supplies depth-and-seam vocabulary; [interview](../reference/interview.md) explores the selected candidate; [delineate](../reference/delineate.md) settles domain terms, [codify](../reference/codify.md) the conventions, and [document](../reference/document.md) records them and any qualifying decision. Approved work enters planned or just-in-time development without weakening existing obligations. [guide](../productivity/guide.md) maps both workflows.

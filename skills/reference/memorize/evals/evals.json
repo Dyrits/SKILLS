@@ -4,41 +4,53 @@
     {
       "id": 1,
       "kind": "trigger",
-      "prompt": "From now on, always run `npm run lint` before you commit in this project. I've had to remind you three times.",
+      "prompt": "From now on, always run `npm run lint` before you commit in this project, not just before you push. I've had to remind you three times.",
       "expected_output": "The standing rule is filed in the project's instruction file, and the user is told in one line where it went.",
       "expectations": [
         "The memorize skill is invoked without the user naming it",
-        "The rule is written to the nearest AGENTS.md, not only to the harness's personal memory",
-        "An existing entry for the same rule is updated instead of a second one being added",
+        "The rule is written to AGENTS.md, not only to the harness's personal memory",
+        "The existing 'Run `npm run lint` before pushing.' line is updated to cover commits, and AGENTS.md ends with one lint line, not two",
         "The agent reports in one line what was saved and where"
+      ],
+      "files": [
+        "evals/files/AGENTS.md"
       ]
     },
     {
       "id": 2,
       "kind": "trigger",
-      "prompt": "I need to rename 40 image files from `IMG_0001.jpg` style to `2026-trip-001.jpg`. Write whatever shell you need.",
-      "expected_output": "The agent checks the scriptbook indexes and the project's task runner before writing any script.",
+      "prompt": "Rename the files in `photos/` from the `IMG_0001.jpg` style to `2026-trip-001.jpg`. Write whatever shell you need.",
+      "expected_output": "The agent finds `rename-sequential.sh` in the project scriptbook and runs it instead of writing a new script.",
       "expectations": [
         "The memorize skill is invoked before any script or pipeline is written",
-        "Both .agents/scripts/INDEX.md and ~/.agents/scripts/INDEX.md are read when present, and the task runner is checked",
-        "When a matching entry exists it is run, or extended by one parameter, instead of a sibling script being written",
-        "When nothing matches, the new script takes every changing value as an argument and opens with a header comment giving its usage",
-        "The script is run once with its usage example before it is indexed"
+        ".agents/scripts/INDEX.md is read, ~/.agents/scripts/INDEX.md is read or found absent, and the task runner is checked",
+        "The agent runs `.agents/scripts/rename-sequential.sh photos 2026-trip`",
+        "No new script is written and INDEX.md is unchanged",
+        "photos/ ends with 2026-trip-001.jpg, 2026-trip-002.jpg and 2026-trip-003.jpg"
       ],
-      "files": []
+      "files": [
+        "evals/files/.agents/scripts/INDEX.md",
+        "evals/files/.agents/scripts/rename-sequential.sh",
+        "evals/files/photos/IMG_0001.jpg",
+        "evals/files/photos/IMG_0002.jpg",
+        "evals/files/photos/IMG_0003.jpg"
+      ]
     },
     {
       "id": 3,
       "kind": "behavior",
       "prompt": "Use the memorize skill. In this repository the glossary says 'task' but I keep calling them 'tickets' and you keep mixing them up. Settle it: 'task' is the term, and it was chosen because the tracker already uses it.",
-      "expected_output": "The term decision lands in GLOSSARY.md through model-domain, once, with its reason as a _Why_ line.",
+      "expected_output": "The term decision lands in documentation/glossary.md through document, once, with its reason as a _Why_ line.",
       "expectations": [
         "The lesson is stated in one sentence with its reason",
-        "The home chosen is GLOSSARY.md (or an architecture decision record), reached by calling model-domain, not AGENTS.md",
-        "The existing glossary is read first and an existing entry is updated rather than a duplicate added",
-        "The reason is kept as a one-line _Why_ in the glossary entry, with no architecture decision record written for an easily reversed choice",
-        "The lesson exists in exactly one home",
+        "The home chosen is documentation/glossary.md, reached by calling document, not AGENTS.md",
+        "documentation/glossary.md is read first, and the existing Task entry is updated rather than a second Task entry added",
+        "The Task entry names 'ticket' as a term to avoid and keeps the reason as a one-line _Why_",
+        "No architecture decision record is written for an easily reversed choice",
         "The user is told in one line what was saved and where"
+      ],
+      "files": [
+        "evals/files/documentation/glossary.md"
       ]
     },
     {
@@ -56,15 +68,18 @@
     {
       "id": 5,
       "kind": "behavior",
-      "prompt": "Use the memorize skill. This project has a new scriptbook at .agents/scripts/ but AGENTS.md never mentions it. Make sure agents will actually use it. Then run the skill a second time with the same request.",
+      "prompt": "Use the memorize skill. This project has a scriptbook at .agents/scripts/ but AGENTS.md never mentions it. Make sure agents will actually use it. Then run the skill a second time with the same request.",
       "expected_output": "AGENTS.md carries the always-loaded pointer exactly once.",
       "expectations": [
         "AGENTS.md is read first to check for an existing pointer",
-        "The pointer tells agents to read .agents/scripts/INDEX.md before writing a script or multi-step pipeline",
-        "The pointer also tells agents to call memorize on a user correction, a standing rule, or a second rebuild",
+        "The pointer tells agents to read .agents/scripts/INDEX.md before writing a script or a pipeline longer than one line",
+        "The pointer also tells agents to call memorize on a standing rule, a request to remember, a correction to how something is done, or a second rebuild",
         "The second run reads AGENTS.md, finds the pointer, and does not add a second copy"
       ],
-      "files": []
+      "files": [
+        "evals/files/AGENTS.md",
+        "evals/files/.agents/scripts/INDEX.md"
+      ]
     },
     {
       "id": 6,
@@ -107,6 +122,17 @@
         "The lesson is filed before the agent carries on with the install, not at the end of the task",
         "The rule lands in the nearest AGENTS.md, not only in the harness's personal memory",
         "The agent reports in one line what was saved and where"
+      ]
+    },
+    {
+      "id": 10,
+      "kind": "no-trigger",
+      "prompt": "No, not green, make it blue: `<button class=\"button-green\">Send</button>`. Just give me the corrected line.",
+      "expected_output": "The corrected line with a blue class; a change to one result is done, not filed as a lesson.",
+      "expectations": [
+        "The memorize skill is not invoked",
+        "The answer gives the corrected button line",
+        "Nothing is written to AGENTS.md, a scriptbook, the glossary, or any memory file"
       ]
     }
   ]

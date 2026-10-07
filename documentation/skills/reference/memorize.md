@@ -10,7 +10,7 @@ It chooses a home; it does not invent a new store for each kind of fact.
 | --- | --- |
 | A reusable action | A scriptbook: `.agents/scripts/` for the repository, `~/.agents/scripts/` for any repository |
 | A convention or gotcha agents keep missing | The nearest `AGENTS.md` |
-| A code convention, a term, or a decision | `CONVENTIONS.md`, `GLOSSARY.md`, or an architecture decision record, through [model-domain](./model-domain.md) |
+| A code convention, a term, or a decision | The conventions, the glossary, or an architecture decision record, through [document](./document.md) |
 | Agreements, working state, delivery history | The shared project documents, through [document](./document.md) |
 | A procedure only a human can carry out | A saved wizard, through [walk-through](../productivity/walk-through.md) |
 | A personal preference across projects | The harness's own memory, otherwise `~/.agents/memory/` |
@@ -20,13 +20,13 @@ Facts the environment already states, such as a `package.json` script or `--help
 
 ## When to reach for it
 
-Type `/memorize`, or an agent or another skill can reach for it when a task fits: before it writes any script or multi-step shell pipeline, when you correct a behavior, state a standing rule ("always", "never", "from now on") or ask it to remember something, and when it rebuilds something a second time. A plain "remember this" still goes through it, because the harness's own memory is one home among several and a project fact belongs in the project. For writing the instruction file itself, it hands off to [write-for-agents](./write-for-agents.md).
+Type `/memorize`, or an agent or another skill can reach for it when a task fits: before it writes a script or a shell pipeline longer than one line, when you correct how something is done, state a standing rule ("always", "never", "from now on") or ask it to remember something, and when it rebuilds something a second time. A correction to one result ("make it blue") is just applied: only a correction that would hold for the next task is filed. A plain "remember this" still goes through it, because the harness's own memory is one home among several and a project fact belongs in the project. For writing the instruction file itself, it hands off to [write-for-agents](./write-for-agents.md).
 
 ## Scriptbooks
 
 A scriptbook is a directory of scripts plus an `INDEX.md` with one line per script. Before writing a script, the agent reads both indexes and checks the project's task runner. A matching entry is run, or extended with one more parameter, instead of cloned into a sibling.
 
-A script is saved only when it does one action, takes every changing value as an argument, reads credentials from environment variables, and is safe to rerun or says what it changes. Its header carries a usage example that was run once before indexing.
+A script is saved only when it does one action, takes every changing value as an argument, reads credentials from environment variables, and is safe to rerun or says what it changes. Its header carries a usage example that was run once before indexing, on scratch input or as a dry run when the script changes files or remote state.
 
 ## Common questions
 
@@ -36,14 +36,11 @@ It was folded into `memorize` as its script branch. The agent no longer needs a 
 
 **Why does it care about pointers?**
 
-A skill description alone fires unreliably during a long task. The repository evidence is a session that wrote inline Python for bulk edits while a matching saved script existed. So the nearest `AGENTS.md` gets one always-loaded pointer, added once after checking for an existing one: call `memorize` the moment the user corrects you, states a standing rule, or asks you to remember something, or when something is rebuilt a second time, and read the scriptbook index before writing a script. The call comes first in the line and in the turn, because a correction is acted on and forgotten unless it is filed in the turn it arrives. [setup-ai-workspace](../setup/setup-ai-workspace.md) writes that line as part of its agent-instruction block.
+A skill description alone fires unreliably during a long task. The repository evidence is a session that wrote inline Python for bulk edits while a matching saved script existed. So the nearest `AGENTS.md` gets one always-loaded pointer, added once after checking for an existing one: call `memorize` the moment the user states a standing rule, asks you to remember something, or corrects how something is done, or when something is rebuilt a second time, and read the scriptbook index before writing a script or a pipeline longer than one line. The call comes first in the line and in the turn, because a correction is acted on and forgotten unless it is filed in the turn it arrives. [setup-ai-workspace](../setup/setup-ai-workspace.md) writes that line as part of its agent-instruction block.
 
 **Does it duplicate a fact in several homes?**
 
 No. A lesson lives in exactly one home, and an existing entry is updated or removed rather than doubled.
-
-**What if a skill it calls or hands over to is not installed?**
-It names the missing skill with its install command, carries out that step from its stated intent, and tells you the step ran without it. Without `document` it waits instead, because its rules use that skill's terms: install it, or tell it to proceed anyway. When it tells you to run a skill you don't have, it gives the install command with it. The skills involved are listed at the top of its [`SKILL.md`](../../../skills/reference/memorize/SKILL.md).
 
 ## It's working if
 
@@ -55,4 +52,4 @@ It names the missing skill with its install command, carries out that step from 
 
 ## Where it fits
 
-This is a standalone discipline that other skills call; it produces no deliverable of its own. It routes to [write-for-agents](./write-for-agents.md), [model-domain](./model-domain.md), [document](./document.md), and [walk-through](../productivity/walk-through.md) depending on the lesson. [improve-skills](../upkeep/improve-skills.md) runs after a session and files what `memorize` cannot fix locally: problems in the skills themselves. [guide](../productivity/guide.md) maps the whole system.
+This is a standalone discipline that other skills call; it produces no deliverable of its own. It routes to [write-for-agents](./write-for-agents.md), [document](./document.md), and [walk-through](../productivity/walk-through.md) depending on the lesson. [improve-skills](../upkeep/improve-skills.md) runs after a session and files what `memorize` cannot fix locally: problems in the skills themselves. [guide](../productivity/guide.md) maps the whole system.

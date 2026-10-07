@@ -9,7 +9,7 @@ metadata:
 
 Turn the selected scope into agreed behavior, design, and acceptance. Interview only where decisions remain unresolved; synthesize directly when current context is settled.
 
-**Calls:** `document`, `model-domain`, `prototype`, `refine`. If a called skill is not installed, tell the user its name and install command, `npx skills@latest add Dyrits/SKILLS --skill=<name>`, then carry out that step from its stated intent and report the step as done without the skill. Without `document`, wait until the user installs it or tells you to proceed: this skill's rules use its terms. **Hands over to:** `/implement`, `/iterate`, `/taskify`. When one is not installed, give the user its install command, `npx skills@latest add Dyrits/SKILLS --skill=<name>`, along with the instruction to run it.
+**Calls:** `delineate`, `document`, `interview`, `prototype`. **Hands over to:** `/implement`, `/iterate`, `/taskify`.
 
 ## Gather and reconcile
 
@@ -19,7 +19,7 @@ Identify the selected scope and account for every applicable requirement. Reuse 
 
 ## Resolve the frontier
 
-Call the Skill tool with "refine" only for unresolved decisions necessary to complete the selected scope. Call the Skill tool with "model-domain" when actively sharpening terms or recording qualifying architectural decisions; reading existing vocabulary alone does not require it.
+Call the Skill tool with "interview" only for unresolved decisions necessary to complete the selected scope. Call the Skill tool with "delineate" when a term is fuzzy or disputed; reading existing vocabulary alone does not require it. Record a hard-to-reverse decision by calling the Skill tool with "document" for a decision record.
 
 Agree observable acceptance and validation, using existing high-level test seams where practical. Separate checks an agent can perform from any necessary human acceptance.
 

@@ -46,9 +46,6 @@ No. Close it with evidence of the existing implementation. The rejection knowled
 
 Requirements constrain the work. Triage can change an implementation approach within scope, but must surface a conflicting obligation. Remote comments, role changes, and closing follow the explicit triage request or confirmed outcome. General local document upkeep grants no remote publication permission.
 
-**What if a skill it calls or hands over to is not installed?**
-It names the missing skill with its install command, carries out that step from its stated intent, and tells you the step ran without it. Without `document` it waits instead, because its rules use that skill's terms: install it, or tell it to proceed anyway. When it tells you to run a skill you don't have, it gives the install command with it. The skills involved are listed at the top of its [`SKILL.md`](../../../skills/upkeep/triage/SKILL.md).
-
 **What if a task has two conflicting state labels?**
 Triage shows both with their source and date, recommends the one the latest evidence supports (the newest comment, the linked pull request's status), and applies no role until the maintainer picks.
 
@@ -62,4 +59,4 @@ Triage shows both with their source and date, recommends the one the latest evid
 
 ## Where it fits
 
-Triage is periodic intake maintenance. [Refine](../reference/refine.md) resolves unclear requests, while [document](../reference/document.md) owns local specifications, backlog, active-work, and changelog upkeep. [Guide](../productivity/guide.md) routes the next step.
+Triage is periodic intake maintenance. [Interview](../reference/interview.md) resolves unclear requests, while [document](../reference/document.md) owns local specifications, backlog, active-work, and changelog upkeep. [Guide](../productivity/guide.md) routes the next step.

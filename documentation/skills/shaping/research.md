@@ -15,7 +15,7 @@ Reach for it when the next step is *finding something out* from outside the work
 | What you need | Reach for |
 | --- | --- |
 | An external fact a decision is waiting on | `research` |
-| A decision made with you, by interview | [refine](../reference/refine.md) |
+| A decision made with you, by interview | [interview](../reference/interview.md) |
 | Agreed capability behavior that needs a durable local record | [specify](../workflow/specify.md) |
 | To find out whether an approach works in your codebase | [prototype](./prototype.md) |
 | A plan too big to hold in one session | [graphify](./graphify.md) |
@@ -73,4 +73,4 @@ No. Graphify's charting session starts a subagent that calls `research` for each
 
 ## Where it fits
 
-`research` is a reach-for-it-anytime standalone that feeds [refine](../reference/refine.md), [specify](../workflow/specify.md), and [graphify](./graphify.md) with cited facts. [iterate](../workflow/iterate.md) also uses it when an external unknown blocks an approved batch. [guide](../productivity/guide.md) maps the workflows.
+`research` is a reach-for-it-anytime standalone that feeds [interview](../reference/interview.md), [specify](../workflow/specify.md), and [graphify](./graphify.md) with cited facts. [iterate](../workflow/iterate.md) also uses it when an external unknown blocks an approved batch. [guide](../productivity/guide.md) maps the workflows.

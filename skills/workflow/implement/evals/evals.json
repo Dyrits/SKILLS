@@ -59,7 +59,7 @@
       ],
       "expectations": [
         "The work is committed to the current branch",
-        "documentation/work-in-progress.md and the root CHANGELOG.md are not edited by this run",
+        "documentation/work-in-progress.md and documentation/changelog.md are not edited by this run",
         "The report returns evidence, blockers, and resumption pointers to the coordinating run",
         "The report does not tell the user to run /review-and-refactor, because review belongs to the coordinator",
         "The starting commit, scope, originating agreement, and verification evidence are still reported"
@@ -77,7 +77,7 @@
         "The persisted theme preference is covered by a test that passes",
         "The agent states that the appearance of the dark theme (contrast, images, code blocks) could not be verified and needs human judgment",
         "The unfinished acceptance is recorded in documentation/work-in-progress.md with a resumption pointer",
-        "No Delivery for the batch is recorded in CHANGELOG.md while acceptance is unfinished",
+        "No Delivery for the batch is recorded in documentation/changelog.md while acceptance is unfinished",
         "A standalone run ends by telling the user to run /review-and-refactor with the starting commit and scope"
       ]
     },

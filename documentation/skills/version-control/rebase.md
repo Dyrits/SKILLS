@@ -54,9 +54,6 @@ Per-branch records live in a batch directory outside every checkout. Resuming re
 
 Yes. A branch without a remote is marked local only. Missing tracker access is not a failure: commit messages, diffs, and local specifications establish intent, and the skill stops with a precise question when they do not.
 
-**What if a skill it calls is not installed?**
-It names the missing skill with its install command, carries out that step from its stated intent, and tells you the step ran without it. The skills involved are listed at the top of its [`SKILL.md`](../../../skills/version-control/rebase/SKILL.md).
-
 ## It's working if
 
 - You get one report table (branch, start, new tip, conflict decisions, checks, destination, status) before anything is pushed.

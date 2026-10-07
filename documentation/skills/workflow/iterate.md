@@ -4,7 +4,7 @@ Fork-created skill with no upstream equivalent, added in commit `b05ce86` (see t
 
 `iterate` builds a living application one verified batch at a time. It settles only the decisions the current batch needs, implements the batch, checks it, and lets the result decide what comes next. The application evolves in place from its first runnable batch; replacing it is your decision.
 
-It coordinates other skills rather than replacing them: [refine](../reference/refine.md) roots its interview in the current batch, [prioritize](../shaping/prioritize.md) picks a focus when scope is tangled, [research](../shaping/research.md) answers external facts, [implement](./implement.md) builds each settled batch (bringing [test-first](./test-first.md) and [debug](../upkeep/debug.md) with it), [divide-and-conquer](./divide-and-conquer.md) takes a batch that splits into independent tasks, after you approve its routing table, and [review-and-refactor](./review-and-refactor.md) runs at milestones.
+It coordinates other skills rather than replacing them: [interview](../reference/interview.md) roots its interview in the current batch, [prioritize](../shaping/prioritize.md) picks a focus when scope is tangled, [research](../shaping/research.md) answers external facts, [implement](./implement.md) builds each settled batch (bringing [test-first](./test-first.md) and [debug](../upkeep/debug.md) with it), [divide-and-conquer](./divide-and-conquer.md) takes a batch that splits into independent tasks, after you approve its routing table, and [review-and-refactor](./review-and-refactor.md) runs at milestones.
 
 ## When to reach for it
 
@@ -20,7 +20,7 @@ Use the planned route (`specify`, `taskify`, `implement`, `review-and-refactor`)
 | --- | --- |
 | `documentation/backlog.md` | Candidate outcomes, priorities, deferrals, exclusions |
 | `documentation/work-in-progress.md` | Current goal, agreed batch, open questions, evidence, next step |
-| `CHANGELOG.md` | A Delivery when a meaningful increment passes its checks, an Agreement for a consequential decision |
+| Changelog | A Delivery when a meaningful increment passes its checks, an Agreement for a consequential decision |
 
 Existing requirements and specifications are read and respected. [document](../reference/document.md) owns the formats.
 
@@ -42,14 +42,11 @@ No. A clear small change goes straight to a batch. Decomposition through `priori
 
 Yes. Working state is updated when a batch is agreed and after it is implemented or reviewed, so no final handoff is needed. On resumption the agent compares the record with the actual code and check results before trusting it.
 
-**What if a skill it calls is not installed?**
-It names the missing skill with its install command, carries out that step from its stated intent, and tells you the step ran without it. Without `document` it waits instead, because its rules use that skill's terms: install it, or tell it to proceed anyway. The skills involved are listed at the top of its [`SKILL.md`](../../../skills/workflow/iterate/SKILL.md).
-
 ## It's working if
 
 - Each batch ends with a report of what changed, the verification result, and how to run it.
 - `documentation/work-in-progress.md` names the next step and matches the code.
-- `CHANGELOG.md` gains a Delivery for each completed increment and an Agreement for each consequential choice, such as a tool or a direction that is costly to reverse.
+- The changelog gains a Delivery for each completed increment and an Agreement for each consequential choice, such as a tool or a direction that is costly to reverse.
 - A bug you report is reproduced before any fix lands.
 - Unresolved questions stay pending and ruled-out ideas stay apart from deferred ones.
 - You are asked to approve behavior and tradeoffs, not routine implementation choices.

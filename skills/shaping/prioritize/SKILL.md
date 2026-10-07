@@ -9,15 +9,15 @@ Shape a large effort into outcomes pursued one at a time: keep the larger direct
 
 The open question here is which outcome comes first. When the effort instead hinges on design decisions that need research or prototypes over several sessions before anything can be prioritized, tell the user `/graphify` fits better.
 
-Call the Skill tool with "document"; its terms (authorized, obligation, lazy, pointer) and rules apply throughout. This skill works on `documentation/backlog.md`, `documentation/work-in-progress.md`, and the root `CHANGELOG.md`, and links existing requirements and specifications.
+Call the Skill tool with "document"; its terms (authorized, obligation, lazy, pointer) and rules apply throughout. This skill works on the backlog, working state, and the changelog, and links existing requirements and specifications.
 
-**Calls:** `document`, `refine`, `research`. If a called skill is not installed, tell the user its name and install command, `npx skills@latest add Dyrits/SKILLS --skill=<name>`, then carry out that step from its stated intent and report the step as done without the skill. Without `document`, wait until the user installs it or tells you to proceed: this skill's rules use its terms.
+**Calls:** `document`, `interview`, `research`.
 
 ## 1. Recover the direction
 
 Read applicable instructions, relevant code, requirements, specifications, decisions, and the project documents. Reconcile actual progress before reprioritizing existing work. Inspect available facts instead of asking the user to repeat them.
 
-Establish the intended outcome, users, constraints, and exclusions. Call the Skill tool with "refine", rooting its design tree in **choosing the next focus**.
+Establish the intended outcome, users, constraints, and exclusions. Call the Skill tool with "interview", rooting its design tree in **choosing the next focus**.
 
 Completion: outcome, users, constraints, and exclusions are explicit, and every focus-blocking question is identified. Unanswered choices stay pending; detailed future behavior may stay open.
 
@@ -33,7 +33,7 @@ Completion: candidate outcomes, dependencies, and major unknowns are visible, wi
 
 ## 3. Retain the backlog
 
-With a local tracker, keep `documentation/backlog.md` lightweight:
+With a local tracker, keep the backlog lightweight:
 
 - **Direction**: intended outcome, constraints, and pointers to consequential decisions or relevant requirements.
 - **Outcomes**: each with a descriptive heading, intended result, reason it matters, known prerequisites or open questions, and a status.
@@ -49,7 +49,7 @@ Completion: every raised idea is a candidate, approved, deferred, or excluded, w
 
 Recommend the smallest coherent outcome that advances the product and yields useful evidence. Explain its value, prerequisites, what is deferred, and what would change the recommendation. Offer alternatives when a real tradeoff needs the user's judgment. If a prerequisite still blocks, recommend resolving that bounded question first.
 
-The user approves the focus and material deferrals, through an answer or an explicit request. Then record the selected backlog heading or remote pointer, the approval, constraints, and remaining prerequisites in `documentation/work-in-progress.md`, keeping existing progress and open questions. Replacing active work needs the user's explicit confirmation and keeps the replaced work's resumption information. Record the approval as an Agreement when it changes scope or priorities.
+The user approves the focus and material deferrals, through an answer or an explicit request. Then record the selected backlog heading or remote pointer, the approval, constraints, and remaining prerequisites in working state, keeping existing progress and open questions. Replacing active work needs the user's explicit confirmation and keeps the replaced work's resumption information. Record the approval as an Agreement when it changes scope or priorities.
 
 Completion: one focus is approved, or the proposal and its open decision are explicitly pending.
 

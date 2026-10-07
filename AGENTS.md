@@ -10,7 +10,7 @@ Skills are organized into bucket folders under `skills/`:
 
 Every skill has an entry in `.claude-plugin/plugin.json`'s `skills` array (the Claude Code plugin ships exactly that set), a reference in the top-level `README.md` and in its bucket's `README.md`, and a documentation page. Adding or removing a skill means updating all four. `scripts/check-skills.py` enforces this.
 
-The skills page at the root `index.html`, one small graph per skill, is generated: each skill also needs an entry in `scripts/skill-graph/flow.json` (the artifacts it reads and writes, and its usual next skills). Its section, order, and one-liner come from the bucket `README.md`, its text from the documentation page, and its calls and hand-overs from the dependency paragraph. Change `flow.json` or `scripts/skill-graph/template.html`, never `index.html`, then run `python3 scripts/build-skill-graph.py`; `check-skills.py` fails on a missing entry or a stale map.
+The skills page at the root `index.html`, one small graph per skill, is generated: each skill also needs an entry in `scripts/skill-graph/flow.json` (the artifacts it reads and writes, and its usual next skills). Its section, order, and one-liner come from the bucket `README.md`, its text from the documentation page, and its calls and hand-overs from the skill's Skill tool calls and "tell the user to run" lines. Change `flow.json` or `scripts/skill-graph/template.html`, never `index.html`, then run `python3 scripts/build-skill-graph.py`; `check-skills.py` fails on a missing entry or a stale map.
 
 Repository-maintenance guidance lives in `documentation/maintenance/`; `.agents/` holds agent tools, installed skills, and session state.
 
@@ -30,7 +30,7 @@ Every `SKILL.md` is reachable by both the human and the model, so any skill can 
 
 To (re)link every skill into the local harness skill directories (`~/.claude/skills`, `~/.agents/skills`), run `scripts/link-skills.sh`. Each entry is a symlink into this repository, so a `git pull` keeps installed skills current; re-run the script after adding, removing, or renaming a skill.
 
-Call the Skill tool with "memorize" the moment the user corrects you, states a standing rule, or asks you to remember something, and when something is rebuilt a second time. Before writing a script or multi-step pipeline, read `.agents/scripts/INDEX.md` and reuse or extend a match; save new reusable scripts there following [memorize](./skills/reference/memorize/SCRIPTS.md).
+Call the Skill tool with "memorize" the moment the user states a standing rule, asks you to remember something, or corrects how something is done, and when something is rebuilt a second time. Before writing a script or a pipeline longer than one line, read `.agents/scripts/INDEX.md` and reuse or extend a match; save new reusable scripts there following [memorize](./skills/reference/memorize/SCRIPTS.md).
 
 ## Writing skills
 

@@ -28,13 +28,13 @@
       "prompt": "Use the document skill. The project is in evals/files/ledger/. Add the changelog record for this: the download endpoint's header row fix was delivered. Unit and integration tests pass in CI, and Marta (product) accepted it today, 2026-10-05. The task is documentation/capabilities/invoice-export/tasks/01-csv-writer.md. A team of four shares this record.",
       "expected_output": "A full delivery record in the required heading and field order with the next free identifier.",
       "files": [
-        "evals/files/ledger/CHANGELOG.md",
+        "evals/files/ledger/documentation/changelog.md",
         "evals/files/ledger/documentation/capabilities/invoice-export/tasks/01-csv-writer.md",
         "evals/files/ledger/documentation/capabilities/invoice-export/specifications.md"
       ],
       "expectations": [
         "The agent reads PROJECT-DOCUMENTS.md before writing the record",
-        "The record is appended to CHANGELOG.md and earlier records are unchanged",
+        "The record is appended to documentation/changelog.md and earlier records are unchanged",
         "The heading is `## CHG-0008 · 2026-10-05 · <title>`, the next free identifier",
         "Type is Code and Event is Delivery",
         "Scope is a sentence case display label",
@@ -49,14 +49,14 @@
       "prompt": "Use the document skill. Project in evals/files/ledger/. We finished the second change to the invoice export and all tests pass, but Marta has not accepted it yet; she reviews on Thursday. Write the changelog record for the delivery so we don't forget.",
       "expected_output": "No Delivery record is written yet; the work stays in working state until acceptance is given.",
       "files": [
-        "evals/files/ledger/CHANGELOG.md",
+        "evals/files/ledger/documentation/changelog.md",
         "evals/files/ledger/documentation/capabilities/invoice-export/specifications.md"
       ],
       "expectations": [
-        "The agent does not append a Delivery record to CHANGELOG.md while the required human acceptance is pending",
+        "The agent does not append a Delivery record to documentation/changelog.md while the required human acceptance is pending",
         "The agent records the pending acceptance in documentation/work-in-progress.md with its next action (Marta's review on Thursday)",
         "The agent tells the user that the delivery record is written once acceptance is given",
-        "CHANGELOG.md is unchanged"
+        "documentation/changelog.md is unchanged"
       ]
     },
     {
@@ -67,7 +67,7 @@
       "files": [
         "evals/files/ledger/documentation/capabilities/invoice-export/specifications.md",
         "evals/files/ledger/documentation/capabilities/invoice-export/tasks/01-csv-writer.md",
-        "evals/files/ledger/CHANGELOG.md"
+        "evals/files/ledger/documentation/changelog.md"
       ],
       "expectations": [
         "The task is created at documentation/capabilities/invoice-export/tasks/02-<kebab-case-outcome>.md, numbered after 01",
@@ -115,26 +115,36 @@
     {
       "id": 7,
       "kind": "behavior",
-      "prompt": "Use the document skill. This small project has a script that exports invoices. We are adding a --dry-run flag to it today, a one-day change by one person. Set up the project documents we need for this.",
+      "prompt": "Use the document skill. Project in evals/files/small-export/. We are adding a --dry-run flag to export-invoices.sh today, a one-day change by one person. Set up the project documents we need for this.",
       "expected_output": "Only the documents with useful information are created; no empty scaffold is generated.",
       "expectations": [
-        "The agent creates documents lazily, only where they carry useful information",
-        "The agent does not create empty requirements, specifications, draft, or task files as scaffolding",
+        "documentation/requirements.md is read before any document is written",
+        "No empty requirements, specifications, draft, or task files are created as scaffolding, and no capability folder is created for a one-day flag",
         "The batch is tracked with the backlog, work-in-progress, and changelog alone, or fewer",
         "A changelog record for this small batch is light, with Summary, References, and Validation, or absent until a consequential decision or delivery",
-        "Existing applicable requirements and specifications are still read and respected"
+        "The work-in-progress entry or the agent's report notes that the dry run must still write nothing outside ./exports/"
+      ],
+      "files": [
+        "evals/files/small-export/export-invoices.sh",
+        "evals/files/small-export/documentation/requirements.md"
       ]
     },
     {
       "id": 8,
       "kind": "behavior",
-      "prompt": "Use the document skill to write an onboarding guide for the coding agents that work on this project: how to run the tests, where the specifications live, and what needs the user's approval before it is changed.",
+      "prompt": "Use the document skill. Project in evals/files/ledger/. Write an onboarding guide for the coding agents that work on this project: how to run the tests, where the specifications live, and what needs the user's approval before it is changed.",
       "expected_output": "Because the document instructs agents, the agent-writing skill is called as well.",
       "expectations": [
         "The agent names its reader as a coding agent and the task the document supports",
         "The agent calls write-for-agents because the document instructs agents",
-        "The guide links to the specifications and requirements instead of copying their content",
-        "When write-for-agents is not installed, the agent names it with the install command, carries out the step from its intent, and says it did so without the skill"
+        "The guide gives `npm test` from package.json as the test command",
+        "The guide points to documentation/requirements.md and documentation/capabilities/invoice-export/specifications.md by path and does not copy their rules",
+        "The approval section says only the user relaxes an obligation or approves a remote change, without restating the requirements"
+      ],
+      "files": [
+        "evals/files/ledger/package.json",
+        "evals/files/ledger/documentation/requirements.md",
+        "evals/files/ledger/documentation/capabilities/invoice-export/specifications.md"
       ]
     },
     {
@@ -155,6 +165,82 @@
       "expectations": [
         "The document skill is not invoked",
         "The agent uses draft-merge-request, which writes the summary visual, the before and after evidence, and the merge danger"
+      ]
+    },
+    {
+      "id": 11,
+      "kind": "behavior",
+      "prompt": "Use the document skill. Project in evals/files/ledger/. Write down in the project's documents that a credit note is an invoice with a negative total, and that we never call it a refund.",
+      "expected_output": "A domain term goes to the glossary in its format, not into requirements or specifications.",
+      "expectations": [
+        "The term is written to documentation/glossary.md, which is created because none exists",
+        "The entry defines a credit note in one or two sentences, with refund under _Avoid_",
+        "documentation/requirements.md, the specifications, and documentation/changelog.md are left unchanged"
+      ],
+      "files": [
+        "evals/files/ledger/documentation/requirements.md",
+        "evals/files/ledger/documentation/changelog.md"
+      ]
+    },
+    {
+      "id": 12,
+      "kind": "behavior",
+      "prompt": "Use the document skill. We decided the shop's test files use two-space indentation and the `.test.ts` suffix. Should we write that down as an architecture decision record?",
+      "expected_output": "The agent declines the record and says which of the three conditions fails.",
+      "expectations": [
+        "The agent does not create an architecture decision record",
+        "The agent says which test fails, naming that the decision is easy to reverse and not surprising",
+        "The agent says that a tool or a convention is a better home, such as formatter configuration or documentation/conventions.md, rather than a decision record"
+      ]
+    },
+    {
+      "id": 14,
+      "kind": "behavior",
+      "prompt": "Use the document skill and put these in documentation/conventions.md for the shop: (1) functions return a Result instead of throwing, because callers cannot tell thrown errors apart; (2) order totals are always rounded half up to whole cents; (3) never commit without running `npm run lint`; (4) visible text lives in data files in English and Dutch.",
+      "expected_output": "Only the portable rule is written; the others are routed to their owners, and the mixed one is split.",
+      "files": [
+        "evals/files/shop/documentation/glossary.md",
+        "evals/files/shop/src/orders.ts"
+      ],
+      "expectations": [
+        "Rule 1 is written to documentation/conventions.md with its reason",
+        "Rule 2 is not written to documentation/conventions.md and is routed to documentation/requirements.md or the capability's specifications",
+        "Rule 3 is routed to AGENTS.md, or the agent offers to wire it as a hook or CI check",
+        "Rule 4 is split: a portable rule such as no user-facing string literals in rendering code goes to documentation/conventions.md, and the language pair goes to requirements",
+        "The agent tells the user where each rule went"
+      ]
+    },
+    {
+      "id": 18,
+      "kind": "behavior",
+      "prompt": "Use the document skill. Project in evals/files/small-export/, which has an AGENTS.md and a README.md but no documentation/ folder yet. Record in the requirements that exports are kept for seven years, for the finance audit.",
+      "expected_output": "The obligation lands in the requirements; AGENTS.md gains the document pointer once, and the README's documentation section gains one link to documentation/.",
+      "expectations": [
+        "documentation/requirements.md is created holding the seven-year retention obligation and its reason",
+        "AGENTS.md is read first and gains the pointer to project documents under documentation/ exactly once",
+        "Its existing lines are kept unchanged",
+        "The Documentation section of README.md gains exactly one line linking to documentation/, and the rest of README.md is unchanged"
+      ],
+      "files": [
+        "evals/files/small-export/AGENTS.md",
+        "evals/files/small-export/README.md"
+      ]
+    },
+    {
+      "id": 19,
+      "kind": "behavior",
+      "prompt": "Use the document skill. We just agreed that the shop's order history is stored as an append-only event log, with the current state projected from it, instead of mutating order rows. We looked at plain CRUD rows and chose events because the auditors want every state change, and it would be a quarter of work to change later. The project is in evals/files/shop/.",
+      "expected_output": "An architecture decision record is offered because all three conditions hold, and it is written in the project's format with the next number.",
+      "files": [
+        "evals/files/shop/documentation/glossary.md",
+        "evals/files/shop/documentation/architecture-decision-record/0001-single-warehouse-stock.md"
+      ],
+      "expectations": [
+        "The agent states that the decision is hard to reverse, surprising without context, and the result of a real trade-off, and offers a record",
+        "The record is saved in documentation/architecture-decision-record/ as 0002-<slug>.md",
+        "The record is a short paragraph of one to three sentences covering context, the decision, and why",
+        "An optional section such as Considered Options appears only if the rejected alternative is worth remembering",
+        "The record does not restate material from documentation/glossary.md"
       ]
     }
   ]

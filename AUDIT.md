@@ -10,7 +10,21 @@ Date: 2026-10-06. Scope: every skill outside `deprecated/` (47 skills, after the
 - The judgments are a model's reading, not tested behavior. A "low" usefulness rating means a capable agent mostly does this unprompted, not that the skill is wrong.
 - Line numbers refer to the files as of this date.
 
+## Follow-up (2026-10-07)
+
+The findings below stay as written on 2026-10-06; their skill names and line numbers refer to that state. Since then:
+
+- **Design question**: superseded by [architecture decision record 0004](./documentation/architecture-decision-record/0004-skills-know-each-other-only-by-contract.md). Each skill is complete for its own job, calls others for theirs, and knows them only by contract, never restating another skill's rules, formats, or paths.
+- **Priority 1, resolved**: dependency paragraphs list skill names only. The install fallback and the wait for `document` are gone because APM installs dependencies, and `check-skills.py` enforces the wording. The evals that only tested the fallback were removed or trimmed.
+- **Priority 7, in part**: the legacy-folder line in `PROJECT-DOCUMENTS.md` is gone, and the abbreviation for architecture decision record is spelled out in `teach`, `test-first`, `improve-codebase-architecture`, and the decision record format.
+- **Priority 9, in part**: `model-domain` was split. Its glossary and decision record formats moved to `document`, its conventions interview became the new `codify`, and the term discipline was renamed `delineate`. `refine` was renamed `interview`, and both `delineate` and `codify` use it for their questions, which removes the one-question-at-a-time inconsistency. `memorize` stays one skill: the scriptbook is one row of its routing table.
+- **`memorize`**: triggers narrowed to standing rules, corrections to how something is done, and pipelines longer than one line, with a filter for one-off corrections; the personal memory index is read only when the harness has not loaded it; usage examples run on scratch input or as a dry run; evals 1, 2, 3, and 5 have fixtures, and a one-off-correction no-trigger eval was added.
+- **`document`**: owns where every shared document lives and its format, with the changelog, glossary, and conventions moved under `documentation/`; other skills name documents by role. An obligation is defined as imposed from outside the code and outranks a code convention. The undefined `Task` and `Revision` fields were dropped, the record weights name their workflows, a merge renumbers a duplicate `CHG-NNNN`, and evals 7 and 8 have fixtures.
+- **Still open from this pass**: `setup-ai-workspace`'s local tracker template restates `graphify`'s map path; `codify` reads its decline marker from `.agents/domain.md`, a file `setup-ai-workspace` owns; and the APM manifests of `setup-ai-tooling` and `monitor-ai-tooling` depend on each other.
+
 ## Answer to the design question: should skills reference other skills?
+
+_Superseded by architecture decision record 0004; see the follow-up above._
 
 Mostly no. Default to autonomous, and reference another skill only when it earns it.
 

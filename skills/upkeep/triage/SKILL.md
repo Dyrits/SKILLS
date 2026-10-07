@@ -7,9 +7,9 @@ metadata:
 
 # Triage
 
-Move tasks on the configured tracker through a small state machine of intake roles. Triage acts on remote records or local intake task bodies; unresolved proposals in `documentation/capabilities/<capability>/draft.md` have no role.
+Move tasks on the configured tracker through a small state machine of intake roles. Triage acts on remote records or local intake task bodies; unresolved proposals in a capability's draft have no role.
 
-**Calls:** `document`, `model-domain`, `refine`. If a called skill is not installed, tell the user its name and install command, `npx skills@latest add Dyrits/SKILLS --skill=<name>`, then carry out that step from its stated intent and report the step as done without the skill. Without `document`, wait until the user installs it or tells you to proceed: this skill's rules use its terms. **Hands over to:** `/setup-ai-workspace`. When one is not installed, give the user its install command, `npx skills@latest add Dyrits/SKILLS --skill=<name>`, along with the instruction to run it.
+**Calls:** `delineate`, `document`, `interview`. **Hands over to:** `/setup-ai-workspace`.
 
 If the tracker treats external pull requests as a request surface, triage covers them too. A PR is a task with attached code, using the same roles and states, with the differences noted below. Resolve a bare `#42` to an issue or PR through the tracker configuration.
 
@@ -83,10 +83,10 @@ When PRs are in scope, tag entries `[PR]` or `[task]`. Discovery includes extern
 1. **Gather context.** Read body, comments, roles, author, dates, and prior triage notes; for a PR, also read the diff. Explore with the domain glossary and applicable architecture decision records. Search for an existing implementation by domain concept and report where you looked. Read `documentation/out-of-scope/*.md` when present and surface matching prior rejections.
 2. **Recommend.** Present a category and state with reasoning and a relevant codebase summary, including any already-implemented behavior. Wait for direction.
 3. **Verify.** Before refinement, reproduce a bug from the reporter's steps. For a PR, check the diff against its claims and run relevant tests or commands. Report confirmed behavior with its code path, failure, or insufficient detail. Insufficient detail supports an on-hold recommendation.
-4. **Refine if needed.** Call the Skill tool twice, for "refine" and "model-domain". Resolve questions with the human one round at a time. Keep unresolved proposals in `draft.md`, incorporate agreed behavior/design/acceptance into `specifications.md`, and update domain terms and architecture decision records as decisions land.
+4. **Refine if needed.** Call the Skill tool with "interview" to resolve questions with the human. When a term is disputed, call the Skill tool with "delineate". Keep unresolved proposals in the capability's draft, incorporate agreed behavior/design/acceptance into its specifications, and record a hard-to-reverse decision by calling the Skill tool with "document" for a decision record.
 5. **Apply the confirmed outcome:**
    - `ready`: post an [agent brief](AGENT-BRIEF.md). It is the authoritative task-execution contract, linked to canonical specifications and applicable requirements. State any reason the work needs a human.
-   - `on-hold`: post notes naming exactly what the hold waits on. Keep candidate deferrals in the authoritative configured backlog: local bodies for local tracking, approved remote updates for remote tracking. Pending publication and active paused work belong in local `documentation/work-in-progress.md`, not in a competing backlog or copied tracker status.
+   - `on-hold`: post notes naming exactly what the hold waits on. Keep candidate deferrals in the authoritative configured backlog: local bodies for local tracking, approved remote updates for remote tracking. Pending publication and active paused work belong in local working state, not in a competing backlog or copied tracker status.
    - `not-planned`, already implemented: close with a link to the existing implementation. This is not a rejection and does not enter the rejection knowledge base.
    - `not-planned`, rejected bug: explain politely and close.
    - `not-planned`, rejected enhancement: create or update the [out-of-scope record](OUT-OF-SCOPE.md), link it in a comment, then close.

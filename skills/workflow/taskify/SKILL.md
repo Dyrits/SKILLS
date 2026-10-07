@@ -9,7 +9,7 @@ metadata:
 
 Create tracker-neutral tasks that deliver coherent outcomes. A small batch may need no tasks: recommend direct implementation or iterate when decomposition adds no value.
 
-**Calls:** `document`. If a called skill is not installed, tell the user its name and install command, `npx skills@latest add Dyrits/SKILLS --skill=<name>`, then carry out that step from its stated intent and report the step as done without the skill. Without `document`, wait until the user installs it or tells you to proceed: this skill's rules use its terms. **Hands over to:** `/divide-and-conquer`, `/implement`. When one is not installed, give the user its install command, `npx skills@latest add Dyrits/SKILLS --skill=<name>`, along with the instruction to run it.
+**Calls:** `document`. **Hands over to:** `/divide-and-conquer`, `/implement`.
 
 ## Establish the source
 

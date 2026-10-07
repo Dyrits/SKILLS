@@ -57,7 +57,7 @@
       "expectations": [
         "The agent recommends /ask-someone-else because the missing facts are in another person's head",
         "The agent says the answers are brought back into refinement or specification afterwards",
-        "The agent does not recommend refine as the first step, and explains that refine questions the user while the answer is not the user's to give"
+        "The agent does not recommend interview as the first step, and explains that interview questions the user while the answer is not the user's to give"
       ]
     },
     {

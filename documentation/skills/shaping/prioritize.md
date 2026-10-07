@@ -17,7 +17,7 @@ Four skills border each other on decomposition.
 | The design is undecided and settling it needs research, prototypes, or interviews over several sessions | [graphify](./graphify.md) |
 | What to build is known, but several candidate outcomes compete and the question is which comes first | `prioritize` |
 | Agreed behavior needs splitting into delivery tasks with acceptance criteria | [taskify](../workflow/taskify.md) |
-| One decision or plan needs stress-testing | [refine](../reference/refine.md) |
+| One decision or plan needs stress-testing | [interview](../reference/interview.md) |
 
 Run on its own, it ends by suggesting `/iterate` to build the focus.
 
@@ -47,9 +47,6 @@ No. A candidate is neither a requirement nor authorization to implement.
 
 It recommends resolving that bounded question first, and names it as a blocker with its pending question.
 
-**What if a skill it calls is not installed?**
-It names the missing skill with its install command, carries out that step from its stated intent, and tells you the step ran without it. Without `document` it waits instead, because its rules use that skill's terms: install it, or tell it to proceed anyway. The skills involved are listed at the top of its [`SKILL.md`](../../../skills/shaping/prioritize/SKILL.md).
-
 ## It's working if
 
 - You can tell what to pursue now, what waits, and what needs approval without rereading the conversation.
@@ -59,4 +56,4 @@ It names the missing skill with its install command, carries out that step from 
 
 ## Where it fits
 
-This is a shaping step before building, mostly reached from [iterate](../workflow/iterate.md). Use [graphify](./graphify.md) when the question is design, [taskify](../workflow/taskify.md) once behavior is agreed, and [refine](../reference/refine.md) for single decisions; it calls refine and research itself. [guide](../productivity/guide.md) maps the whole system.
+This is a shaping step before building, mostly reached from [iterate](../workflow/iterate.md). Use [graphify](./graphify.md) when the question is design, [taskify](../workflow/taskify.md) once behavior is agreed, and [interview](../reference/interview.md) for single decisions; it calls refine and research itself. [guide](../productivity/guide.md) maps the whole system.

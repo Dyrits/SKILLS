@@ -47,21 +47,24 @@ marketplace:
     - name: walk-through
       source: ./skills/productivity/walk-through
       description: "Generate an interactive bash wizard that walks a human through steps only they can perform."
+    - name: codify
+      source: ./skills/reference/codify
+      description: "Define the project's code conventions by drafting candidate rules from how the code is already written and confirming each with the user and its reason, or audit an existing conventions file."
+    - name: delineate
+      source: ./skills/reference/delineate
+      description: "Settle what the project's words mean by challenging fuzzy or conflicting terms against the glossary, the code, and concrete scenarios, then have the agreed terms written to the glossary."
     - name: design-modules
       source: ./skills/reference/design-modules
       description: "Shared vocabulary for designing deep modules."
     - name: document
       source: ./skills/reference/document
-      description: "Write and maintain project documentation, including the shared project documents workflows rely on (requirements, specifications, backlog, work-in-progress, tasks, changelog records)."
+      description: "Write and maintain project documentation, and own where each shared project document lives and its format (requirements, specifications, backlog, working state, tasks, changelog, glossary, code conventions, architecture decision records)."
+    - name: interview
+      source: ./skills/reference/interview
+      description: "Interview the user in rounds of questions, each with a recommended answer, until a plan, decision, or idea is settled."
     - name: memorize
       source: ./skills/reference/memorize
-      description: "'File a lesson in the home the next agent will read, and recall saved scripts and lessons before redoing work."
-    - name: model-domain
-      source: ./skills/reference/model-domain
-      description: "Build and sharpen a project's domain model."
-    - name: refine
-      source: ./skills/reference/refine
-      description: "Refine a plan, decision, or idea through a decision-tree interview."
+      description: "File a lesson in the home the next agent will read, and recall saved scripts and lessons before redoing work."
     - name: unslop
       source: ./skills/reference/unslop
       description: "Cut AI tells from prose that other people will read, in any language."

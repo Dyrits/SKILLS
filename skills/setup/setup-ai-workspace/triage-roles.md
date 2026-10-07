@@ -5,9 +5,9 @@ The skills speak in two category roles and four state roles. This file maps each
 ## Where a role is written
 
 - **Remote tracker**: as a label on the task (or merge request / pull request).
-- **Local markdown tracker**: as the `Category:` and `Status:` lines near the top of the task body under `documentation/capabilities/<capability>/tasks/`.
+- **Local markdown tracker**: as the `Category:` and `Status:` lines near the top of the local task body.
 
-Unresolved proposals in `documentation/capabilities/<capability>/draft.md` hold no triage role. Roles start when a task enters intake, locally or on the remote tracker. A local title/link reference to a published remote task does not duplicate its remote role state.
+Unresolved proposals in a capability's draft hold no triage role. Roles start when a task enters intake, locally or on the remote tracker. A local title/link reference to a published remote task does not duplicate its remote role state.
 
 ## Category roles
 

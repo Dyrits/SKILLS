@@ -15,7 +15,7 @@ Run `/graphify`, or let an agent or another skill reach for it when a large unce
 | The idea spans several sessions and the route is unclear | Chart a map |
 | A map already exists | Name the map and optionally the next decision task |
 | The route is clear and implementation needs decomposition | Use [taskify](../workflow/taskify.md) |
-| One conversation can settle the question | Use [refine](../reference/refine.md) |
+| One conversation can settle the question | Use [interview](../reference/interview.md) |
 
 The tracker configuration must exist. If it is absent, run [setup-ai-workspace](../setup/setup-ai-workspace.md) yourself first.
 
@@ -43,7 +43,7 @@ An explicit request to chart authorizes the relevant map, child tasks, and block
 
 **Which tracker labels does it use?**
 
-`graphify:map` for the map and `graphify:<type>` (`research`, `prototype`, `refine`, `task`) for its decision tasks. Maps created by the upstream `wayfinder` skill carry `wayfinder:` labels; graphify does not read those.
+`graphify:map` for the map and `graphify:<type>` (`research`, `prototype`, `interview`, `task`) for its decision tasks. Maps created by the upstream `wayfinder` skill carry `wayfinder:` labels; graphify does not read those.
 
 **When should I use prioritize or taskify instead?**
 
@@ -56,9 +56,6 @@ The default output is the decision graph's records and map. At the end, Graphify
 **How does it update specifications?**
 
 Requirements remain constraints, unresolved proposals belong in `draft.md`, and agreed behavior/design/acceptance update `specifications.md`. Decision rationale stays on its task and is linked, not copied.
-
-**What if a skill it calls or hands over to is not installed?**
-It names the missing skill with its install command, carries out that step from its stated intent, and tells you the step ran without it. Without `document` it waits instead, because its rules use that skill's terms: install it, or tell it to proceed anyway. When it tells you to run a skill you don't have, it gives the install command with it. The skills involved are listed at the top of its [`SKILL.md`](../../../skills/shaping/graphify/SKILL.md).
 
 ## It's working if
 

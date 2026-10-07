@@ -7,7 +7,7 @@ argument-hint: "Optional: where to post, and what to say"
 Publish conclusions already established in this conversation to a destination other people read: a pull or merge request, an issue or ticket, a chat channel or thread, a documentation page, an email. Accept findings from any review source; use the established evidence and dispositions as the input.
 Draft the complete publication in the destination's conventions, obtain approval of its exact text and destination, then publish and verify it.
 
-**Calls:** `unslop`. If a called skill is not installed, tell the user its name and install command, `npx skills@latest add Dyrits/SKILLS --skill=<name>`, then carry out that step from its stated intent and report the step as done without the skill.
+**Calls:** `unslop`.
 
 `.agents/issue-tracker.md`, when present, records the verified posting mechanism for the project's tracker and saves re-deriving it. Resolve the destination and posting mechanism directly (steps 1 and 2) when it is missing or does not cover the resolved destination.
 

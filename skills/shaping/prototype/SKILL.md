@@ -9,9 +9,9 @@ metadata:
 
 A prototype is **experimental code that answers a question**. The question decides the shape. Proceed only when the user requests or approves the scoped experiment, including during specify. Living iteration directly evolves the implementation; it does not require a prototype by default.
 
-**Calls:** `document`. If a called skill is not installed, tell the user its name and install command, `npx skills@latest add Dyrits/SKILLS --skill=<name>`, then carry out that step from its stated intent and report the step as done without the skill. Without `document`, wait until the user installs it or tells you to proceed: this skill's rules use its terms. **Hands over to:** `/iterate`. When one is not installed, give the user its install command, `npx skills@latest add Dyrits/SKILLS --skill=<name>`, along with the instruction to run it.
+**Calls:** `document`. **Hands over to:** `/iterate`.
 
-Call the Skill tool with "document" for shared project-document ownership. Record unresolved proposals separately from agreed behavior. Capture the question, verdict, evidence, and remaining acceptance in the feature's draft or specifications as appropriate, and in working state. Record completed agreements in the root `CHANGELOG.md`, stating that the prototype's code still needs production validation.
+Call the Skill tool with "document" for shared project-document ownership. Record unresolved proposals separately from agreed behavior. Capture the question, verdict, evidence, and remaining acceptance in the feature's draft or specifications as appropriate, and in working state. Record completed agreements in the changelog, stating that the prototype's code still needs production validation.
 
 ## Pick a branch
 

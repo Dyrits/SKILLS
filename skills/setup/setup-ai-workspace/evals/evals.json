@@ -4,12 +4,12 @@
     {
       "id": 1,
       "kind": "trigger",
-      "prompt": "Scratch git repository, no real remote access. Set this repository up for AI-assisted work. `git remote -v` shows origin at https://github.com/fernwood-labs/fernwood.git. There is an AGENTS.md with 10 lines of my own instructions. The `document` and `triage` skills are installed. There is no `.agents/` directory and no GLOSSARY.md.",
+      "prompt": "Scratch git repository, no real remote access. Set this repository up for AI-assisted work. `git remote -v` shows origin at https://github.com/fernwood-labs/fernwood.git. There is an AGENTS.md with 10 lines of my own instructions. The `document` and `triage` skills are installed. There is no `.agents/` directory and no documentation/glossary.md.",
       "expected_output": "The agent explores first, calls document, then takes the questions in order with a recommended answer each.",
       "expectations": [
         "The setup-ai-workspace skill is invoked from the request without the user naming it",
         "The document skill is called before document locations are chosen or any configuration is written",
-        "The agent reads git remote information, the root AGENTS.md, .agents/, GLOSSARY.md, and the project documents before proposing anything",
+        "The agent reads git remote information, the root AGENTS.md, .agents/, documentation/glossary.md, and the project documents before proposing anything",
         "The agent summarizes what already exists before asking questions",
         "The first question is the task tracker, asked alone, with GitHub recommended because the remote is GitHub",
         "The questions follow the order tracker, ticket-writing convention, triage roles, domain documentation, one at a time, each with a recommended answer"
@@ -24,7 +24,8 @@
         "The proposed agent-instruction block and configuration contents are shown to the user before any file is written, with a chance to adjust them",
         "AGENTS.md is edited in place, and no other instruction file is created",
         "The existing `## Agent skills` block is updated rather than a second one appended, and the user's surrounding instructions are preserved",
-        "The block contains Task tracker, Triage roles, Domain documentation, Project documents, and Reusable knowledge subsections",
+        "The block contains Task tracker, Triage roles, and Domain documentation subsections",
+        "The document and memorize skills are called and each adds its own pointer to AGENTS.md once, and the agent shows the user the lines they added",
         ".agents/issue-tracker.md is seeded from the GitHub template and the refinement text is appended",
         ".agents/triage-roles.md and .agents/domain.md are written",
         "The GitHub template's external pull request intake flag stays off",
@@ -43,7 +44,7 @@
         ".agents/issue-tracker.md is seeded from the local template, recording documentation/backlog.md as the backlog",
         "The agent records that local task bodies live under documentation/capabilities/<capability>/tasks/",
         "The agent does not claim to read or update any remote service",
-        "When the conventions interview is accepted but no rule is agreed and no CONVENTIONS.md exists, the Conventions line is removed from .agents/domain.md, with no unresolved {present | declined} placeholder left"
+        "When the conventions interview is accepted but no rule is agreed and no documentation/conventions.md exists, the Conventions line is removed from .agents/domain.md, with no unresolved {present | declined} placeholder left"
       ]
     },
     {
@@ -78,14 +79,14 @@
     {
       "id": 6,
       "kind": "behavior",
-      "prompt": "Scratch git repository. Use the setup-ai-workspace skill. It is a monorepo: pnpm-workspace.yaml lists packages/ordering and packages/billing, each with its own package.json. There is no CONVENTIONS.md. Answer the tracker and convention questions with the recommendations. For domain documentation, take the monorepo offer. Then, for CONVENTIONS.md, say yes the first time you ask.",
-      "expected_output": "A multi-context layout is offered on monorepo evidence, and the conventions step goes through model-domain.",
+      "prompt": "Scratch git repository. Use the setup-ai-workspace skill. It is a monorepo: pnpm-workspace.yaml lists packages/ordering and packages/billing, each with its own package.json. There is no documentation/conventions.md. Answer the tracker and convention questions with the recommendations. For domain documentation, take the monorepo offer. Then, for documentation/conventions.md, say yes the first time you ask.",
+      "expected_output": "A multi-context layout is offered on monorepo evidence, and the conventions step goes through document.",
       "expectations": [
-        "The default of one root GLOSSARY.md and documentation/architecture-decision-record/ is applied without asking, and a root GLOSSARY-MAP.md with per-context glossaries is offered because of the monorepo signals",
-        "The agent asks whether to create CONVENTIONS.md through an interview and recommends yes because there is no standards document",
-        "On acceptance, the model-domain skill is called for its Conventions step with the code focus",
+        "The default of one glossary and one decision record folder is applied without asking, and a glossary map with per-context glossaries is offered because of the monorepo signals",
+        "The agent asks whether to create documentation/conventions.md through an interview and recommends yes because there is no standards document",
+        "On acceptance, the codify skill is called with the code focus",
         ".agents/domain.md is written from the domain template with the multi-context file structure and `Conventions: present`",
-        "No glossary or architecture decision record files are created now, since the model-domain skill creates them when terms or decisions are resolved"
+        "No glossary or architecture decision record files are created now, since they are created when terms or decisions are resolved"
       ]
     },
     {
@@ -101,17 +102,6 @@
         "Selected setups run in table order, one Skill call per setup, each to completion before the next",
         "The delegation policy is called only after the user agrees to it, since it is machine-wide",
         "The final report lists the files written, the setups run or skipped, and the workflow skills that consume them"
-      ]
-    },
-    {
-      "id": 8,
-      "kind": "behavior",
-      "prompt": "Scratch git repository, GitHub remote. Use the setup-ai-workspace skill, and take the recommended answers. The `document` skill is NOT installed in this environment. Everything else is.",
-      "expected_output": "The agent stops at the missing document skill and waits instead of guessing its terms.",
-      "expectations": [
-        "The agent tells the user that document is not installed and gives `npx skills@latest add Dyrits/SKILLS --skill=document`",
-        "The agent waits for the user to install it or to say to proceed, and does not choose document locations or write configuration in the meantime",
-        "If the user then says to proceed, the agent continues without the skill and reports that the step ran without it"
       ]
     },
     {

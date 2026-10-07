@@ -21,7 +21,7 @@ Type `/guide`, or an agent or another skill can reach for it when the task fits.
 | Agents keep rebuilding the same helper or relearning the same lesson | [memorize](../reference/memorize.md), files lessons where the next agent will look and checks there first, including saved scripts |
 | An idea, and no idea where to start | A choice between planned development, just-in-time development, and clarification without development |
 | Bugs and requests arriving from other people | The [triage](../upkeep/triage.md) on-ramp, and why tickets you generated yourself don't belong on it |
-| Two skills that look interchangeable | [refine](../reference/refine.md) clarifies a decision; [specify](../workflow/specify.md) records agreed capability behavior; [graphify](../shaping/graphify.md) maps a large effort's unresolved decisions |
+| Two skills that look interchangeable | [interview](../reference/interview.md) clarifies a decision; [specify](../workflow/specify.md) records agreed capability behavior; [graphify](../shaping/graphify.md) maps a large effort's unresolved decisions |
 | A long session and a decision about the context | A session boundary that preserves authoritative work state |
 | An explanation you need to see | [illustrate](../productivity/illustrate.md) for a visual, or [re-explain](../productivity/re-explain.md) for a clearer explanation |
 | A skill you have already picked | Nothing useful. Invoke that skill directly. |
@@ -41,11 +41,11 @@ The useful idea is a **flow**, a path through skills that preserves agreements a
 | --- | --- |
 | Explicit planning and execution | [specify](../workflow/specify.md), [taskify](../workflow/taskify.md), [implement](../workflow/implement.md), then [review-and-refactor](../workflow/review-and-refactor.md). Skip task decomposition when a small approved scope does not need it. |
 | Discover behavior while building a living application | [iterate](../workflow/iterate.md) clarifies, implements, and verifies one useful batch at a time. |
-| Clarify a decision without starting development | [refine](../reference/refine.md). Its caller records useful results in the appropriate documents. |
+| Clarify a decision without starting development | [interview](../reference/interview.md). Its caller records useful results in the appropriate documents. |
 
 `specify` asks only about unresolved decisions. A user-approved [prototype](../shaping/prototype.md) settles a question conversation cannot; its answer and evidence feed the specification. Useful validated code can be productionized after appropriate checks without a mandatory rebuild. [research](../shaping/research.md) resolves consequential unknown external facts.
 
-`iterate` primarily maintains `documentation/backlog.md`, `documentation/work-in-progress.md`, and root `CHANGELOG.md`. A remote backlog is linked rather than copied; working state stays local for execution and resumption. It reads existing requirements and specifications without forcing new capability documents or tasks. When scope or competing outcomes prevent selecting an increment, [prioritize](../shaping/prioritize.md) recommends a bounded focus and asks for approval. One completed outcome does not authorize the next.
+`iterate` primarily maintains the backlog, working state, and changelog. A remote backlog is linked rather than copied; working state stays local for execution and resumption. It reads existing requirements and specifications without forcing new capability documents or tasks. When scope or competing outcomes prevent selecting an increment, [prioritize](../shaping/prioritize.md) recommends a bounded focus and asks for approval. One completed outcome does not authorize the next.
 
 Both workflows share project-owned documents:
 
@@ -72,7 +72,7 @@ For publishing conclusions already reached, [publish-message](../productivity/pu
 | A known failure needs diagnosis | [debug](../upkeep/debug.md), starting with a tight reproduction loop. |
 | Learning is a continuing project | [teach](../productivity/teach.md), in a dedicated teaching workspace. |
 | A recurring process has waiting, rework, or handoff friction | [optimize-process](../productivity/optimize-process.md), using evidence from actual cycles. |
-| Domain terms are inconsistent | [model-domain](../reference/model-domain.md). |
+| Domain terms are inconsistent | [delineate](../reference/delineate.md). |
 | A module needs a deeper interface or useful seam | [design-modules](../reference/design-modules.md). |
 | Project documents need maintenance | [document](../reference/document.md), preserving their separate responsibilities. |
 | Skills or steering instructions need clearer agent-facing text | [write-for-agents](../reference/write-for-agents.md). |
@@ -128,7 +128,7 @@ That advice is often correct and rarely durable. Someone asked it how to make [i
 
 **It named a skill I don't have, or missed one I do.**
 
-Check the changelog for a rename before assuming a skill is gone. Older planning commands now lead to [specify](../workflow/specify.md) and [taskify](../workflow/taskify.md); the general interview is [refine](../reference/refine.md), and the explanation repair is [re-explain](../productivity/re-explain.md). These are current names, not aliases. Promotion depends on a manifest entry, not a bucket move.
+Check the changelog for a rename before assuming a skill is gone. Older planning commands now lead to [specify](../workflow/specify.md) and [taskify](../workflow/taskify.md); the general interview is [interview](../reference/interview.md), and the explanation repair is [re-explain](../productivity/re-explain.md). These are current names, not aliases. Promotion depends on a manifest entry, not a bucket move.
 
 **Does choosing just-in-time work discard existing specifications?**
 

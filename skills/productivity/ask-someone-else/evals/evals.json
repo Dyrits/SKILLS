@@ -69,7 +69,7 @@
       "expected_output": "The answer sits in the user's own head, so the agent runs a decision-tree interview with the user instead of writing a questionnaire for someone else.",
       "expectations": [
         "The ask-someone-else skill is not invoked and no questionnaire file is written",
-        "The agent interviews the user about the queue versus cron decision itself, as refine does"
+        "The agent interviews the user about the queue versus cron decision itself, as interview does"
       ]
     },
     {

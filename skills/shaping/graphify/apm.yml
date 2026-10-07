@@ -4,15 +4,15 @@ description: "Build and work through a shared decision graph for an effort too l
 dependencies:
   apm:
     - git: parent
+      path: skills/reference/delineate
+    - git: parent
       path: skills/reference/document
     - git: parent
       path: skills/productivity/illustrate
     - git: parent
-      path: skills/reference/model-domain
+      path: skills/reference/interview
     - git: parent
       path: skills/shaping/prototype
-    - git: parent
-      path: skills/reference/refine
     - git: parent
       path: skills/shaping/research
     - git: parent

@@ -29,45 +29,45 @@
     {
       "id": 3,
       "kind": "behavior",
-      "prompt": "Use the re-explain skill. The glossary for this project is evals/files/single/GLOSSARY.md. Your last answer was: 'Once the order is on hold, the warehouse will not ship it out; releasing the hold lets the shipping step send the packages.' I do not understand how an order can be stuck.",
+      "prompt": "Use the re-explain skill. The glossary for this project is evals/files/single/documentation/glossary.md. Your last answer was: 'Once the order is on hold, the warehouse will not ship it out; releasing the hold lets the shipping step send the packages.' I do not understand how an order can be stuck.",
       "expected_output": "The explanation uses the glossary terms (dispatch, parcel, hold) in place of the loose words in the earlier answer.",
       "expectations": [
-        "The agent reads evals/files/single/GLOSSARY.md before answering",
+        "The agent reads evals/files/single/documentation/glossary.md before answering",
         "The answer uses 'dispatch' where the earlier answer said ship or send out, and 'parcel' where it said package",
         "The answer uses 'hold' as defined and does not invent a new name for the state",
         "The answer explains why an order can be stopped (the missing premise) and not only rewords the earlier sentence"
       ],
       "files": [
-        "evals/files/single/GLOSSARY.md"
+        "evals/files/single/documentation/glossary.md"
       ]
     },
     {
       "id": 4,
       "kind": "behavior",
-      "prompt": "Use the re-explain skill. This repository has several glossaries, mapped in evals/files/multi/GLOSSARY-MAP.md. Your last answer was: 'After the cut-off the day's parcels are bundled into the carrier list and sent on, and the money lands a couple of days later.' I did not follow any of that.",
+      "prompt": "Use the re-explain skill. This repository has several glossaries, mapped in evals/files/multi/documentation/glossary-map.md. Your last answer was: 'After the cut-off the day's parcels are bundled into the carrier list and sent on, and the money lands a couple of days later.' I did not follow any of that.",
       "expected_output": "The map is followed to the right glossaries, and terms from each (manifest, cut-off, dispatch, settlement) are used in their own meaning.",
       "expectations": [
-        "The agent reads GLOSSARY-MAP.md and follows it to the shipping and billing glossaries",
+        "The agent reads documentation/glossary-map.md and follows it to the shipping and billing glossaries",
         "The answer uses 'manifest' for the carrier list and 'cut-off' with the glossary's meaning",
         "The answer uses 'settlement' from the billing glossary for the money arriving two days later",
         "The answer explains the sequence (cut-off, manifest, dispatch, settlement) so the user sees how the parts relate"
       ],
       "files": [
-        "evals/files/multi/GLOSSARY-MAP.md",
-        "evals/files/multi/billing/GLOSSARY.md",
-        "evals/files/multi/shipping/GLOSSARY.md"
+        "evals/files/multi/documentation/glossary-map.md",
+        "evals/files/multi/billing/documentation/glossary.md",
+        "evals/files/multi/shipping/documentation/glossary.md"
       ]
     },
     {
       "id": 5,
       "kind": "behavior",
-      "prompt": "Use the re-explain skill. I have written to you only in English so far, but earlier I mentioned that I read technical text more easily in Spanish. This project has no GLOSSARY.md. I did not understand your last answer: 'The migration is idempotent, so rerunning it after a partial failure is safe.'",
+      "prompt": "Use the re-explain skill. I have written to you only in English so far, but earlier I mentioned that I read technical text more easily in Spanish. This project has no documentation/glossary.md. I did not understand your last answer: 'The migration is idempotent, so rerunning it after a partial failure is safe.'",
       "expected_output": "The agent asks which language to use before explaining, then (once answered) explains in plain simplified language without a glossary.",
       "expectations": [
         "The agent asks which language the user wants before giving the explanation",
         "The question is short and offers English or Spanish",
         "The agent does not guess a language and explain first",
-        "The agent does not complain about the missing GLOSSARY.md and does not fail because of it"
+        "The agent does not complain about the missing documentation/glossary.md and does not fail because of it"
       ]
     },
     {
@@ -95,11 +95,11 @@
     {
       "id": 8,
       "kind": "no-trigger",
-      "prompt": "In our glossary we call them 'tickets' but the tracker calls them 'tasks'. Settle the term, update GLOSSARY.md, and record why we chose it.",
-      "expected_output": "Sharpening and recording domain vocabulary belongs to model-domain, even though a glossary is involved.",
+      "prompt": "In our glossary we call them 'tickets' but the tracker calls them 'tasks'. Settle the term, update documentation/glossary.md, and record why we chose it.",
+      "expected_output": "Sharpening and recording domain vocabulary belongs to delineate, even though a glossary is involved.",
       "expectations": [
         "The re-explain skill is not invoked",
-        "The agent works on the glossary entry and records the decision with its reason, as model-domain does"
+        "The agent works on the glossary entry and records the decision with its reason, as delineate does"
       ]
     }
   ]

@@ -8,7 +8,7 @@ argument-hint: "Optional: the session to review, and what you expected from it"
 
 The user has asked for a **retrospective** on a session. Together you establish what went right, what went wrong, whether the skills were used correctly or used at all, and whether the outcome is the one expected. The findings about skills become an issue on the skills repository, [Dyrits/SKILLS](https://github.com/Dyrits/SKILLS), where they are fixed in a separate session.
 
-**Calls:** `memorize`, `unslop`. If a called skill is not installed, tell the user its name and install command, `npx skills@latest add Dyrits/SKILLS --skill=<name>`, then carry out that step from its stated intent and report the step as done without the skill. **Hands over to:** `/improve-environment`. When one is not installed, give the user its install command, `npx skills@latest add Dyrits/SKILLS --skill=<name>`, along with the instruction to run it.
+**Calls:** `memorize`, `unslop`. **Hands over to:** `/improve-environment`.
 
 ## Steps
 

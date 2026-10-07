@@ -27,9 +27,6 @@ No. The repository is the specification's source of truth. Publishing or changin
 **Does specify always produce tasks?**
 No. Choose [taskify](taskify.md) only when decomposition is useful. Small delivery batches can proceed without tasks.
 
-**What if a skill it calls is not installed?**
-It names the missing skill with its install command, carries out that step from its stated intent, and tells you the step ran without it. Without `document` it waits instead, because its rules use that skill's terms: install it, or tell it to proceed anyway. The skills involved are listed at the top of its [`SKILL.md`](../../../skills/workflow/specify/SKILL.md).
-
 **What does it offer when it finishes?**
 It reports the canonical paths, covered requirements, agreements, blockers, and validation still needed, then offers the next moves for you to run: `/taskify` for a decomposition, `/implement` for direct delivery, or `/iterate` for a small living-code batch. It does not start any of them.
 
@@ -42,4 +39,4 @@ It reports the canonical paths, covered requirements, agreements, blockers, and 
 
 ## Where it fits
 
-Specify is an optional chain step before [taskify](taskify.md) or [implement](implement.md). It uses [refine](../reference/refine.md) for unresolved choices and [document](../reference/document.md) for shared project records. [Guide](../productivity/guide.md) maps these paths.
+Specify is an optional chain step before [taskify](taskify.md) or [implement](implement.md). It uses [interview](../reference/interview.md) for unresolved choices and [document](../reference/document.md) for shared project records. [Guide](../productivity/guide.md) maps these paths.

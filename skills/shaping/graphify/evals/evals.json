@@ -12,9 +12,9 @@
       "expectations": [
         "The graphify skill is invoked without the user naming it",
         "The agent reads .agents/issue-tracker.md before creating any record",
-        "A named destination is settled with the user through the refine and model-domain skills before the map is created",
+        "A named destination is settled with the user through the interview skill before the map is created",
         "documentation/capabilities/<capability>/map.md is created with Destination, Notes, Decisions so far (empty), Not yet specified, and Out of scope sections",
-        "Each child task under tasks/NN-<slug>.md holds a question to decide, not an implementation slice, and carries a Type line of research, prototype, refine, or task",
+        "Each child task under tasks/NN-<slug>.md holds a question to decide, not an implementation slice, and carries a Type line of research, prototype, interview, or task",
         "Questions that are still too vague (for example payments or waivers) stay under Not yet specified instead of becoming tasks",
         "Blocking lines are added in a second pass, after the child tasks exist",
         "No application code is written",
@@ -51,7 +51,7 @@
         "The map is loaded once at low resolution, without opening every task body up front",
         "The agent picks Cancellation policy: it skips Slot picker layout (already claimed) and Waitlist behaviour (blocked by an unresolved task)",
         "Progress: claimed is set on the Cancellation policy file before any resolution work begins",
-        "Cancellation policy is a refine task, so the agent interviews the human through the refine and model-domain skills and waits for live answers",
+        "Cancellation policy is an interview task, so the agent interviews the human through the interview skill and waits for live answers",
         "The task is not marked resolved and no Answer is written until the human has actually answered",
         "Tasks are referred to by their titles in narration, not by bare numbers or identifiers"
       ]

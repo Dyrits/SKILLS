@@ -6,7 +6,7 @@ A decision-complete route to replacing the Granite Peak Climbing Gym's paper sig
 
 ## Notes
 
-Consult `refine` and `model-domain` for interviews. Execution is not approved: this map produces decisions, not code. Standing preference from the gym manager: members must never need an app install.
+Consult `interview` and `delineate` for interviews. Execution is not approved: this map produces decisions, not code. Standing preference from the gym manager: members must never need an app install.
 
 ## Decisions so far
 

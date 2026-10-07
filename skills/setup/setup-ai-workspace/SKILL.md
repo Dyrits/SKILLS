@@ -9,7 +9,7 @@ metadata:
 
 Configure the repository contracts that `specify`, `taskify`, `triage`, and `graphify` consume. Explore, recommend, confirm, then write inspectable configuration. This skill configures the project, not the installed skills.
 
-**Calls:** `document`, `memorize`, `model-domain`, `setup-ai-tooling`, `setup-delegation-policy`, `setup-git-guardrails`, `setup-git-hooks`. If a called skill is not installed, tell the user its name and install command, `npx skills@latest add Dyrits/SKILLS --skill=<name>`, then carry out that step from its stated intent and report the step as done without the skill. Without `document`, wait until the user installs it or tells you to proceed: this skill's rules use its terms.
+**Calls:** `codify`, `document`, `memorize`, `setup-ai-tooling`, `setup-delegation-policy`, `setup-git-guardrails`, `setup-git-hooks`.
 
 Call the Skill tool with "document" before choosing document locations or writing configuration; its terms (authorized, obligation, lazy, pointer) and rules apply throughout. Generated templates point to that contract instead of copying it.
 
@@ -27,9 +27,8 @@ Read existing configuration and conventions before proposing changes:
 - `git remote -v` and `.git/config`, to identify the host without assuming it is the tracker.
 - Root `AGENTS.md`, including any `## Agent skills` section.
 - `.agents/` and any verified tooling record.
-- Root `CHANGELOG.md`, `documentation/requirements.md`, `documentation/backlog.md`, `documentation/work-in-progress.md`, and relevant capability documentation.
+- The project documents: call the Skill tool with "document" for their layout, then read the requirements, backlog, working state, changelog, glossary or glossary map, conventions, relevant decision records, and relevant capability documents.
 - Task templates, contribution documentation, and available ticket-writing skills.
-- `GLOSSARY.md`, `GLOSSARY-MAP.md`, `CONVENTIONS.md`, and relevant architecture decision records.
 - Monorepo signals such as workspace configuration or independent packages.
 - Whether `triage` is installed, which determines whether role configuration is needed.
 - Which optional setups in section 4 are already present.
@@ -42,10 +41,10 @@ Summarize what already exists. Take the following sections in order, one questio
 
 Ask where tasks live. Recommend GitHub for a GitHub remote, GitLab for a GitLab remote, or local Markdown without a remote. A different tracker is an ordinary override.
 
-- Local Markdown uses `documentation/capabilities/<capability>/tasks/NN-<slug>.md` for task bodies.
+- Local Markdown keeps task bodies in the capability task files.
 - A remote tracker uses its native task records. Local task files, when useful, contain a title and link to the authoritative published task rather than a copied body.
 
-Record the authoritative backlog location with the tracker choice. A local project uses `documentation/backlog.md`; a remote project uses the verified backlog or board URL and keeps only a local link in that file. Working state remains local for either tracker, with execution and resumption details rather than duplicated remote status. Preserve prior backlog history unless a migration is explicitly authorized.
+Record the authoritative backlog location with the tracker choice. A local project uses the backlog document; a remote project uses the verified backlog or board URL and keeps only a local link in the backlog document. Working state remains local for either tracker, with execution and resumption details rather than duplicated remote status. Preserve prior backlog history unless a migration is explicitly authorized.
 
 Record the choice in `.agents/issue-tracker.md`. Preserve this established configuration filename and literal CLI/API `issue` terminology.
 
@@ -76,9 +75,9 @@ Only collect overrides if the user declines. The strings are configurable; the r
 
 ### D. Domain documentation
 
-Default to one root `GLOSSARY.md` and `documentation/architecture-decision-record/` without asking. Offer a root `GLOSSARY-MAP.md` with per-context glossaries only when monorepo signals justify it.
+Default to one glossary and one decision record folder without asking. Offer a glossary map with per-context glossaries only when monorepo signals justify it.
 
-If `CONVENTIONS.md` exists, record `Conventions: present`. Otherwise ask whether to create it through an interview, recommending yes when there is no standards document. On acceptance, call the Skill tool with "model-domain" for its Conventions step, with the **code** focus, then record `Conventions: present` once `CONVENTIONS.md` exists. On refusal, record `Conventions: declined`. When no rule was agreed and the file does not exist, delete the `Conventions:` line from `.agents/domain.md`: the template's own sentence already says the skills offer to create it.
+If the conventions file exists, record `Conventions: present`. Otherwise ask whether to create it through an interview, recommending yes when there is no standards document. On acceptance, call the Skill tool with "codify", with the **code** focus, then record `Conventions: present` once the file exists. On refusal, record `Conventions: declined`. When no rule was agreed and the file does not exist, delete the `Conventions:` line from `.agents/domain.md`: the template's own sentence already says the skills offer to create it.
 
 ## 3. Confirm and write
 
@@ -100,17 +99,11 @@ Edit `AGENTS.md`, creating it when it does not exist. Update an existing `## Age
 ### Domain documentation
 
 <single-context or multi-context summary>. See `.agents/domain.md`.
-
-### Project documents
-
-Call the Skill tool with "document" before creating or updating project documents, to apply the shared authority, requirements, publication, resumption, and changelog rules.
-
-### Reusable knowledge
-
-Call the Skill tool with "memorize" the moment the user corrects you, states a standing rule, or asks you to remember something, and when something is rebuilt a second time. Before writing a script or multi-step pipeline, read `.agents/scripts/INDEX.md` when it exists and reuse or extend a match.
 ```
 
-Omit the triage block and file when triage is not installed. Omit the reusable knowledge block when the instruction file already points at the scriptbook.
+Omit the triage block and file when triage is not installed.
+
+Then call the Skill tool twice, for "document" and "memorize", so each adds its own pointer to `AGENTS.md`, and show the user the lines they added.
 
 Seed `.agents/issue-tracker.md` from the selected template:
 

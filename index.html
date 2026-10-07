@@ -242,7 +242,7 @@ const DATA = {
   "changelog": {
    "description": "Semantic records of authorized agreements and deliveries.",
    "label": "Changelog",
-   "path": "CHANGELOG.md"
+   "path": "documentation/changelog.md"
   },
   "code": {
    "description": "Changes committed on a branch, with their tests.",
@@ -267,7 +267,7 @@ const DATA = {
   "domain-records": {
    "description": "Ubiquitous language, consequential decisions, and domain-agnostic code conventions.",
    "label": "Domain records",
-   "path": "GLOSSARY.md, architecture decision records, CONVENTIONS.md"
+   "path": "documentation/glossary.md, documentation/architecture-decision-record/, documentation/conventions.md"
   },
   "draft-prose": {
    "description": "Writing meant for other people.",
@@ -535,8 +535,9 @@ const DATA = {
    "groups": {},
    "id": "reference",
    "skills": [
-    "refine",
-    "model-domain",
+    "interview",
+    "codify",
+    "delineate",
     "design-modules",
     "document",
     "write-for-agents",
@@ -586,14 +587,14 @@ const DATA = {
    "description": "Turn a decision the user cannot fully answer into a questionnaire for someone else to fill in. Use when an answer sits with another person, or the user wants questions to send or bring to a meeting.",
    "fits": [
     "ask-someone-else is a reach-for-it-anytime standalone. It sits at the boundary of your own knowledge, where the next move is another person rather than another skill, most often mid-flow, when planning has stalled on something that isn't yours to decide.",
-    "Its neighbour is refine: refinement asks you, a questionnaire asks someone else. Feed the answers into refinement or specify when the work is heading for a build. When you're unsure which skill fits, guide routes you."
+    "Its neighbour is interview: refinement asks you, a questionnaire asks someone else. Feed the answers into refinement or specify when the work is heading for a build. When you're unsure which skill fits, guide routes you."
    ],
    "handovers": [],
    "inputs": [
     "idea"
    ],
    "next": [
-    "refine",
+    "interview",
     "specify"
    ],
    "outputs": [
@@ -636,6 +637,35 @@ const DATA = {
    ],
    "tagline": "Classify safe-to-send text with classifier.dev and retain uncertain results for review."
   },
+  "codify": {
+   "argumentHint": "",
+   "bucket": "reference",
+   "calls": [
+    "document",
+    "interview"
+   ],
+   "description": "Define the project's code conventions by drafting candidate rules from how the code is already written and confirming each with the user and its reason, or audit an existing conventions file. Use when the user wants to write down or check how code is written here, or when a review or architecture audit finds no conventions.",
+   "fits": [
+    "codify is a reference that review-and-refactor, improve-codebase-architecture, setup-ai-workspace, and iterate call when conventions are missing or need settling. It uses interview for the questions and document for the file. Guide maps the surrounding flows."
+   ],
+   "handovers": [],
+   "inputs": [
+    "code",
+    "domain-records"
+   ],
+   "next": [],
+   "outputs": [
+    "domain-records"
+   ],
+   "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/reference/codify.md",
+   "requires": [],
+   "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/reference/codify/SKILL.md",
+   "summary": [
+    "codify writes down how code is written in your project, as rules a reviewer can apply to any diff. It drafts each candidate from patterns already in the code (how errors are handled, how tests are named), asks you to confirm it and give its reason, and has the confirmed rules written to the conventions file through document. It can also audit an existing conventions file.",
+    "A convention is portable: copied into another project on the same stack, with an unrelated domain, it still applies. A rule about what the product does is a requirement, and anything a linter or CI job can check belongs in that tool's configuration; codify routes those away instead of writing them down."
+   ],
+   "tagline": "Draft the project's code conventions from how its code is written, confirm each rule and its reason, or audit existing conventions."
+  },
   "debug": {
    "argumentHint": "",
    "bucket": "upkeep",
@@ -666,13 +696,42 @@ const DATA = {
    ],
    "tagline": "Diagnose bugs through a tight reproduction loop and regression evidence."
   },
+  "delineate": {
+   "argumentHint": "",
+   "bucket": "reference",
+   "calls": [
+    "document",
+    "interview"
+   ],
+   "description": "Settle what the project's words mean by challenging fuzzy or conflicting terms against the glossary, the code, and concrete scenarios, then have the agreed terms written to the glossary. Use when a term is ambiguous, disputed, or clashes with the glossary or the code, or when the user wants to build or clean up the glossary.",
+   "fits": [
+    "delineate is a reference used by specify, iterate, graphify, triage, and improve-codebase-architecture when a term is fuzzy or disputed. design-modules supplies vocabulary for module shape rather than the problem domain. It calls document to write the terms it settles. guide routes you when the next move is unclear."
+   ],
+   "handovers": [],
+   "inputs": [
+    "domain-records",
+    "code"
+   ],
+   "next": [],
+   "outputs": [
+    "domain-records"
+   ],
+   "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/reference/delineate.md",
+   "requires": [],
+   "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/reference/delineate/SKILL.md",
+   "summary": [
+    "delineate settles what the project's words mean while you are designing: challenging a term that conflicts with the glossary, forcing a precise word where you used a vague one, and stress-testing a relationship with a concrete scenario until the boundaries are exact.",
+    "It is the active discipline, not the passive one. Reading the glossary to borrow its vocabulary is a one-line habit any skill can do; this skill is for when you are *changing* what a word means. That is what makes it interrupt. It has a resolved term written into the glossary at the moment it is resolved, through document, in the middle of the conversation, rather than producing a tidy glossary at the end, because the batched version is a summary of a session, and the inline version is the session's actual output."
+   ],
+   "tagline": "Settle what the project's words mean, against the glossary, the code, and concrete scenarios."
+  },
   "design-modules": {
    "argumentHint": "",
    "bucket": "reference",
    "calls": [],
    "description": "Shared vocabulary for designing deep modules. Use when the user wants to design or improve a module's interface, decide where a seam goes, make code more testable or AI-navigable, or when another skill needs the deep-module vocabulary.",
    "fits": [
-    "design-modules is a reach-for-it-anytime standalone, and the vocabulary layer underneath the engineering skills rather than a step in any chain. Its closest neighbour is model-domain, the parallel reference for the *problem domain*'s words rather than the module's shape. The two are usually wanted together, since naming a deep module well needs both. improve-codebase-architecture is the other: it surveys a codebase for deepening candidates and writes every one of them in this glossary, so it finds the module and this skill is the bench you design it on. When you're unsure which skill or flow fits, guide routes you."
+    "design-modules is a reach-for-it-anytime standalone, and the vocabulary layer underneath the engineering skills rather than a step in any chain. Its closest neighbour is delineate, the parallel reference for the *problem domain*'s words rather than the module's shape. The two are usually wanted together, since naming a deep module well needs both. improve-codebase-architecture is the other: it surveys a codebase for deepening candidates and writes every one of them in this glossary, so it finds the module and this skill is the bench you design it on. When you're unsure which skill or flow fits, guide routes you."
    ],
    "handovers": [],
    "inputs": [],
@@ -693,11 +752,11 @@ const DATA = {
    "argumentHint": "A workflow to design, or nothing to go find one",
    "bucket": "productivity",
    "calls": [
-    "refine"
+    "interview"
    ],
    "description": "Interview the user into implementable workflow specifications for recurring loops in their work, using the current directory as a stateful workspace. Use when the user wants to design or specify a workflow.",
    "fits": [
-    "design-workflow is a reach-for-it-anytime standalone for recurring operational loops. refine supplies the interview discipline; specify instead records codebase capability behavior. The finished workflow specification is input to the implementer you choose, not permission to start development automatically. guide maps the whole set."
+    "design-workflow is a reach-for-it-anytime standalone for recurring operational loops. interview supplies the interview discipline; specify instead records codebase capability behavior. The finished workflow specification is input to the implementer you choose, not permission to start development automatically. guide maps the whole set."
    ],
    "handovers": [],
    "inputs": [
@@ -758,9 +817,9 @@ const DATA = {
    "calls": [
     "write-for-agents"
    ],
-   "description": "Write and maintain project documentation, including the shared project documents workflows rely on (requirements, specifications, backlog, work-in-progress, tasks, changelog records). Use when documenting a system (README, API reference, runbook, architecture or onboarding document) or when a workflow reads or updates project documents.",
+   "description": "Write and maintain project documentation, and own where each shared project document lives and its format (requirements, specifications, backlog, working state, tasks, changelog, glossary, code conventions, architecture decision records). Use when documenting a system (README, API reference, runbook, onboarding guide), when writing down a settled term, convention, or decision, or when a workflow reads or updates project documents.",
    "fits": [
-    "Document is a reference used by specify, taskify, and delivery workflows. Model-domain owns active terminology and qualifying architectural decisions. Guide maps the surrounding flows."
+    "Document is a reference used by specify, taskify, and delivery workflows. Delineate and codify settle terms and code conventions with you, then call document to write them down; interview settles decisions that document records. Guide maps the surrounding flows."
    ],
    "handovers": [],
    "inputs": [
@@ -768,13 +827,14 @@ const DATA = {
    ],
    "next": [],
    "outputs": [
-    "technical-documents"
+    "technical-documents",
+    "domain-records"
    ],
    "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/reference/document.md",
    "requires": [],
    "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/reference/document/SKILL.md",
    "summary": [
-    "document owns the shared model for project requirements, specifications, backlog, working state, tasks, and semantic changelog records. Workflows call it instead of restating those rules. For any other document (a README, runbook, or API reference) it keeps four habits: write for a named reader and task, follow the repository's formats, check claims against the current system, and link instead of copying.",
+    "document owns every shared project document: where it lives under documentation/ and the shape it takes. That covers requirements, specifications, backlog, working state, tasks, the changelog, the glossary, code conventions, and architecture decision records. Other skills name a document by its role (\"the changelog\", \"the glossary\") and call document instead of restating its rules, so the layout can change in one place (architecture decision record 0004). For any other document (a README, runbook, or API reference) it keeps four habits: write for a named reader and task, follow the repository's formats, check claims against the current system, and link instead of copying.",
     "Project records have distinct jobs and are created only when useful. A small batch can work from backlog, work-in-progress, and the changelog without creating specifications or tasks."
    ],
    "tagline": "Maintain technical documentation and the shared project-document model."
@@ -815,11 +875,11 @@ const DATA = {
    "argumentHint": "",
    "bucket": "shaping",
    "calls": [
+    "delineate",
     "document",
     "illustrate",
-    "model-domain",
+    "interview",
     "prototype",
-    "refine",
     "research"
    ],
    "description": "Build and work through a shared decision graph for an effort too large for one session. Use when the user asks to graphify an effort or to resolve the next decision task on an existing graph.",
@@ -968,7 +1028,7 @@ const DATA = {
    "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/workflow/implement/SKILL.md",
    "summary": [
     "implement builds authorized work and commits it on the current branch. Its input is settled intended behavior, not an invitation to redesign the scope. It accepts shared specifications, a task, or an explicit user-approved living work batch.",
-    "It uses test-driven development at agreed seams, diagnoses a reported bug through debug before editing code, and reports its verification evidence. Run on its own, it keeps local documents current, with unfinished acceptance and evidence in documentation/work-in-progress.md, and records completed authorized agreements and deliveries in root CHANGELOG.md using the format owned by document. Handed one task by a coordinating skill, it returns that evidence instead, so parallel implementers never write the same records.",
+    "It uses test-driven development at agreed seams, diagnoses a reported bug through debug before editing code, and reports its verification evidence. Run on its own, it keeps local documents current, with unfinished acceptance and evidence in working state, and records completed authorized agreements and deliveries in the changelog using the format owned by document. Handed one task by a coordinating skill, it returns that evidence instead, so parallel implementers never write the same records.",
     "It does not review its own work. The review runs once over the whole batch: divide-and-conquer runs it after merging, iterate at its milestones, and a standalone run ends by recommending review-and-refactor."
    ],
    "tagline": "Implement authorized work, validate and review it, and maintain the shared documents."
@@ -977,13 +1037,15 @@ const DATA = {
    "argumentHint": "",
    "bucket": "upkeep",
    "calls": [
+    "codify",
+    "delineate",
     "design-modules",
-    "model-domain",
-    "refine"
+    "document",
+    "interview"
    ],
    "description": "Scan a codebase for deepening opportunities, present them as a visual HTML report, then interview through the chosen one. Use when the user wants architecture improvements or refactoring candidates found.",
    "fits": [
-    "improve-codebase-architecture is periodic maintenance that generates candidate work rather than implementing it. design-modules supplies depth-and-seam vocabulary; refine explores the selected candidate; model-domain records settled domain meanings and qualifying decisions. Approved work enters planned or just-in-time development without weakening existing obligations. guide maps both workflows."
+    "improve-codebase-architecture is periodic maintenance that generates candidate work rather than implementing it. design-modules supplies depth-and-seam vocabulary; interview explores the selected candidate; delineate settles domain terms, codify the conventions, and document records them and any qualifying decision. Approved work enters planned or just-in-time development without weakening existing obligations. guide maps both workflows."
    ],
    "handovers": [],
    "inputs": [
@@ -1034,7 +1096,7 @@ const DATA = {
    "requires": [],
    "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/upkeep/improve-environment/SKILL.md",
    "summary": [
-    "improve-environment looks back over a session, finds each moment of friction (a long search, a mistake, a retry, an expensive tool call, missing information), and changes the project's environment so the next run avoids it. The environment is everything around the code that shapes how an agent works: checks, hooks, CI, steering files, CONVENTIONS.md, tools, and access.",
+    "improve-environment looks back over a session, finds each moment of friction (a long search, a mistake, a retry, an expensive tool call, missing information), and changes the project's environment so the next run avoids it. The environment is everything around the code that shapes how an agent works: checks, hooks, CI, steering files, the conventions file, tools, and access.",
     "It changes the environment, not the code. The bug the agent shipped stays a bug for debug; this skill asks what about the repository let it happen, and proposes the check, pointer, or rule that stops it next time. Nothing changes until you accept a candidate."
    ],
    "tagline": "Trace a session's friction to the project's environment and apply the agreed checks, pointers, and steering changes."
@@ -1069,17 +1131,45 @@ const DATA = {
    ],
    "tagline": "Review a session's skill use with your agent and report it as an issue on the skills repository."
   },
+  "interview": {
+   "argumentHint": "",
+   "bucket": "reference",
+   "calls": [],
+   "description": "Interview the user in rounds of questions, each with a recommended answer, until a plan, decision, or idea is settled. Use when unresolved choices need shared understanding, when the user wants their thinking stress-tested or asks to be grilled, or when another skill needs decisions from the user.",
+   "fits": [
+    "Interview is a reach-for-it-anytime standalone and an interview discipline. Specify calls it for unresolved software decisions; graphify uses it to resolve bounded questions in a larger effort; delineate and codify use it to settle terms and code conventions. Guide maps the available flows."
+   ],
+   "handovers": [],
+   "inputs": [
+    "idea"
+   ],
+   "next": [
+    "specify"
+   ],
+   "outputs": [
+    "decisions"
+   ],
+   "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/reference/interview.md",
+   "requires": [],
+   "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/reference/interview/SKILL.md",
+   "summary": [
+    "interview interviews you about unresolved choices in a plan, decision, or idea. It asks a round of independent questions, recommends answers, and waits for your decisions before asking dependent questions.",
+    "It is a general interview discipline, not a software-document generator. The caller decides where to record agreements."
+   ],
+   "tagline": "Settle decisions through rounds of questions, each with a recommended answer."
+  },
   "iterate": {
    "argumentHint": "An idea to build, or an existing project to continue",
    "bucket": "workflow",
    "calls": [
+    "codify",
+    "delineate",
     "design-modules",
     "divide-and-conquer",
     "document",
     "implement",
-    "model-domain",
+    "interview",
     "prioritize",
-    "refine",
     "research",
     "review-and-refactor"
    ],
@@ -1110,7 +1200,7 @@ const DATA = {
    "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/workflow/iterate/SKILL.md",
    "summary": [
     "iterate builds a living application one verified batch at a time. It settles only the decisions the current batch needs, implements the batch, checks it, and lets the result decide what comes next. The application evolves in place from its first runnable batch; replacing it is your decision.",
-    "It coordinates other skills rather than replacing them: refine roots its interview in the current batch, prioritize picks a focus when scope is tangled, research answers external facts, implement builds each settled batch (bringing test-first and debug with it), divide-and-conquer takes a batch that splits into independent tasks, after you approve its routing table, and review-and-refactor runs at milestones."
+    "It coordinates other skills rather than replacing them: interview roots its interview in the current batch, prioritize picks a focus when scope is tangled, research answers external facts, implement builds each settled batch (bringing test-first and debug with it), divide-and-conquer takes a batch that splits into independent tasks, after you approve its routing table, and review-and-refactor runs at milestones."
    ],
    "tagline": "Develop the living application just in time, maintaining backlog, working state, and root changelog."
   },
@@ -1119,13 +1209,12 @@ const DATA = {
    "bucket": "reference",
    "calls": [
     "document",
-    "model-domain",
     "walk-through",
     "write-for-agents"
    ],
-   "description": "File a lesson in the home the next agent will read, and recall saved scripts and lessons before redoing work. Use the moment the user corrects you, says \"always\", \"never\", \"from now on\" or \"remember\", or explains how it should be done next time; before writing any script or multi-step shell pipeline; and when you rebuild something a second time. Use it even when the harness has its own memory: a project lesson belongs in the project.",
+   "description": "File a lesson in the home the next agent will read, and recall saved scripts and lessons before redoing work. Use the moment the user says \"always\", \"never\", \"from now on\" or \"remember\", or corrects how something is done rather than one result; before writing a script or a pipeline longer than one line; and when you rebuild something a second time. Use it even when the harness has its own memory: a project lesson belongs in the project.",
    "fits": [
-    "This is a standalone discipline that other skills call; it produces no deliverable of its own. It routes to write-for-agents, model-domain, document, and walk-through depending on the lesson. improve-skills runs after a session and files what memorize cannot fix locally: problems in the skills themselves. guide maps the whole system."
+    "This is a standalone discipline that other skills call; it produces no deliverable of its own. It routes to write-for-agents, document, and walk-through depending on the lesson. improve-skills runs after a session and files what memorize cannot fix locally: problems in the skills themselves. guide maps the whole system."
    ],
    "handovers": [
     "improve-skills"
@@ -1148,31 +1237,6 @@ const DATA = {
     "Facts the environment already states, such as a package.json script or --help output, stay there. Secrets and one-conversation context are never saved."
    ],
    "tagline": "File lessons where the next agent will look, and recall them before redoing work, including saved scripts."
-  },
-  "model-domain": {
-   "argumentHint": "",
-   "bucket": "reference",
-   "calls": [],
-   "description": "Build and sharpen a project's domain model. Use when discussing codebase terminology, writing or editing a GLOSSARY.md, recording or editing an architecture decision record, or creating a CONVENTIONS.md of domain-agnostic code conventions.",
-   "fits": [
-    "model-domain is a reference used by specify, graphify, and triage when domain meaning needs sharpening. design-modules supplies vocabulary for module shape rather than the problem domain. document keeps the resulting terms, decisions, constraints, and agreed behavior in their separate records. guide routes you when the next move is unclear."
-   ],
-   "handovers": [],
-   "inputs": [
-    "domain-records"
-   ],
-   "next": [],
-   "outputs": [
-    "domain-records"
-   ],
-   "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/reference/model-domain.md",
-   "requires": [],
-   "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/reference/model-domain/SKILL.md",
-   "summary": [
-    "model-domain builds and sharpens a project's ubiquitous language while you are designing: challenging a term that conflicts with the glossary, forcing a precise word where you used a vague one, and stress-testing a relationship with a concrete scenario until the boundaries are exact.",
-    "It is the active discipline, not the passive one. Reading GLOSSARY.md to borrow its vocabulary is a one-line habit any skill can do; this skill is for when you are *changing* the model. That is what makes it interrupt. It writes a resolved term into GLOSSARY.md at the moment it is resolved, in the middle of the conversation, rather than producing a tidy glossary at the end, because the batched version is a summary of a session, and the inline version is the session's actual output."
-   ],
-   "tagline": "Sharpen vocabulary and record qualifying decisions and domain-agnostic code conventions."
   },
   "monitor-ai-tooling": {
    "argumentHint": "",
@@ -1233,12 +1297,12 @@ const DATA = {
    "bucket": "shaping",
    "calls": [
     "document",
-    "refine",
+    "interview",
     "research"
    ],
    "description": "Decompose a large or tangled idea into outcomes, recommend one focus to build next, and keep the rest in the backlog. Use when competing capabilities, unclear scope, or dependencies block choosing the next increment, or when asked to break down an idea or revisit a backlog.",
    "fits": [
-    "This is a shaping step before building, mostly reached from iterate. Use graphify when the question is design, taskify once behavior is agreed, and refine for single decisions; it calls refine and research itself. guide maps the whole system."
+    "This is a shaping step before building, mostly reached from iterate. Use graphify when the question is design, taskify once behavior is agreed, and interview for single decisions; it calls refine and research itself. guide maps the whole system."
    ],
    "handovers": [],
    "inputs": [
@@ -1270,7 +1334,7 @@ const DATA = {
    ],
    "description": "Build a scoped experimental prototype to answer a user-requested or approved design question about logic, state, or UI. Use when the user asks to try an idea before committing to it, or to see a state model or interface variants.",
    "fits": [
-    "This is a standalone experiment and an optional, user-approved aid during specify. refine explores the question; implement builds the agreed result. guide maps the whole system."
+    "This is a standalone experiment and an optional, user-approved aid during specify. interview explores the question; implement builds the agreed result. guide maps the whole system."
    ],
    "handovers": [
     "iterate"
@@ -1328,7 +1392,7 @@ const DATA = {
    "calls": [],
    "description": "Re-explain what did not land, with the missing context and familiar vocabulary. Use when the user says they did not understand, asks to explain again, or finds the last answer too dense.",
    "fits": [
-    "re-explain is a reach-for-it-anytime standalone inside any conversation. model-domain prevents vocabulary drift by maintaining the shared language; this skill repairs an explanation after it failed. illustrate is another option when a visual would make the relationship clearer. guide helps you choose the next move."
+    "re-explain is a reach-for-it-anytime standalone inside any conversation. delineate prevents vocabulary drift by maintaining the shared language; this skill repairs an explanation after it failed. illustrate is another option when a visual would make the relationship clearer. guide helps you choose the next move."
    ],
    "handovers": [],
    "inputs": [
@@ -1345,7 +1409,7 @@ const DATA = {
    "summary": [
     "re-explain asks the agent to explain again when you stopped following. It adds the missing premise, uses your project's vocabulary, and answers in the language you have been using. It repairs understanding rather than shortening the message until important context disappears."
    ],
-   "tagline": "Fire this the moment a message does not land. The agent explains it again with missing context, in your language, using your GLOSSARY.md vocabulary."
+   "tagline": "Fire this the moment a message does not land. The agent explains it again with missing context, in your language, using your glossary's vocabulary."
   },
   "rebase": {
    "argumentHint": "branch... --onto target [--remote remote]",
@@ -1374,47 +1438,20 @@ const DATA = {
    ],
    "tagline": "Rebase local branches with recovery records, checks, and separately approved publication."
   },
-  "refine": {
-   "argumentHint": "",
-   "bucket": "reference",
-   "calls": [],
-   "description": "Refine a plan, decision, or idea through a decision-tree interview. Use when unresolved choices need shared understanding, the user wants to stress-test their thinking, or asks to be grilled.",
-   "fits": [
-    "Refine is a reach-for-it-anytime standalone and an interview discipline. Specify calls it for unresolved software decisions; graphify uses it to resolve bounded questions in a larger effort. Guide maps the available flows."
-   ],
-   "handovers": [],
-   "inputs": [
-    "idea"
-   ],
-   "next": [
-    "specify"
-   ],
-   "outputs": [
-    "decisions"
-   ],
-   "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/reference/refine.md",
-   "requires": [],
-   "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/reference/refine/SKILL.md",
-   "summary": [
-    "refine interviews you about unresolved choices in a plan, decision, or idea. It asks a round of independent questions, recommends answers, and waits for your decisions before asking dependent questions.",
-    "It is a general interview discipline, not a software-document generator. The caller decides where to record agreements."
-   ],
-   "tagline": "Resolve decisions through questions asked in dependency-aware rounds."
-  },
   "research": {
    "argumentHint": "",
    "bucket": "shaping",
    "calls": [],
    "description": "Investigate a question against high-trust primary sources and capture the findings as a Markdown file in the repository. Use when the user wants a topic researched, documentation or API facts gathered, or reading legwork delegated to a background agent.",
    "fits": [
-    "research is a reach-for-it-anytime standalone that feeds refine, specify, and graphify with cited facts. iterate also uses it when an external unknown blocks an approved batch. guide maps the workflows."
+    "research is a reach-for-it-anytime standalone that feeds interview, specify, and graphify with cited facts. iterate also uses it when an external unknown blocks an approved batch. guide maps the workflows."
    ],
    "handovers": [],
    "inputs": [
     "idea"
    ],
    "next": [
-    "refine",
+    "interview",
     "specify",
     "graphify"
    ],
@@ -1461,8 +1498,8 @@ const DATA = {
    "argumentHint": "",
    "bucket": "workflow",
    "calls": [
+    "codify",
     "document",
-    "model-domain",
     "publish-message"
    ],
    "description": "Review and refactor changes since a fixed point against repository standards and the originating behavior agreement. Runs independent Standards and Specifications reviews, applies supported refactors, and reuses the reviewers to verify them. Use for the refactor phase after red/green implementation, or when asked to review and refactor a branch, pull request, or work in progress.",
@@ -1524,9 +1561,9 @@ const DATA = {
    "argumentHint": "",
    "bucket": "setup",
    "calls": [
+    "codify",
     "document",
     "memorize",
-    "model-domain",
     "setup-ai-tooling",
     "setup-delegation-policy",
     "setup-git-guardrails",
@@ -1630,14 +1667,14 @@ const DATA = {
    "argumentHint": "",
    "bucket": "workflow",
    "calls": [
+    "delineate",
     "document",
-    "model-domain",
-    "prototype",
-    "refine"
+    "interview",
+    "prototype"
    ],
    "description": "Resolve the open decisions in a selected scope and synthesize its living repository specification. Use when the user asks to specify a capability, or when requirements have outstanding decisions before implementation.",
    "fits": [
-    "Specify is an optional chain step before taskify or implement. It uses refine for unresolved choices and document for shared project records. Guide maps these paths."
+    "Specify is an optional chain step before taskify or implement. It uses interview for unresolved choices and document for shared project records. Guide maps these paths."
    ],
    "handovers": [
     "implement",
@@ -1813,13 +1850,13 @@ const DATA = {
    "argumentHint": "",
    "bucket": "upkeep",
    "calls": [
+    "delineate",
     "document",
-    "model-domain",
-    "refine"
+    "interview"
    ],
    "description": "Move tasks and external PRs through triage roles: categorize, verify, refine, and write agent-ready briefs. Use when the user asks to triage, or when a published request needs verification and a maintainer decision.",
    "fits": [
-    "Triage is periodic intake maintenance. Refine resolves unclear requests, while document owns local specifications, backlog, active-work, and changelog upkeep. Guide routes the next step."
+    "Triage is periodic intake maintenance. Interview resolves unclear requests, while document owns local specifications, backlog, active-work, and changelog upkeep. Guide routes the next step."
    ],
    "handovers": [],
    "inputs": [

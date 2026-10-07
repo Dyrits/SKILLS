@@ -9,7 +9,7 @@ metadata:
 
 A loose idea has arrived, too big for one agent session, and wrapped in fog. Chart a shared decision graph toward a named **destination** and work its **decision tasks** one at a time. These are questions whose resolution is a decision, not implementation slices. The graph consists of task records and blocking relationships; a rendered diagram is an optional view, not the graph itself.
 
-**Calls:** `document`, `illustrate`, `model-domain`, `prototype`, `refine`, `research`. If a called skill is not installed, tell the user its name and install command, `npx skills@latest add Dyrits/SKILLS --skill=<name>`, then carry out that step from its stated intent and report the step as done without the skill. Without `document`, wait until the user installs it or tells you to proceed: this skill's rules use its terms. **Hands over to:** `/setup-ai-workspace`. When one is not installed, give the user its install command, `npx skills@latest add Dyrits/SKILLS --skill=<name>`, along with the instruction to run it.
+**Calls:** `delineate`, `document`, `illustrate`, `interview`, `prototype`, `research`. **Hands over to:** `/setup-ai-workspace`.
 
 The destination might be a specification to hand off, a decision to settle before planning, or an in-place migration. It shapes every task. This workflow fits engineering and other domains with the same decision structure.
 
@@ -19,9 +19,9 @@ Call the Skill tool with "document"; its terms (authorized, obligation, lazy, po
 
 Read `.agents/issue-tracker.md` for map storage, parent-child relationships, blocking, claims, and frontier queries. If it is missing, tell the user to run `/setup-ai-workspace` and stop.
 
-- A local map lives at `documentation/capabilities/<capability>/map.md`; its decision tasks live at `documentation/capabilities/<capability>/tasks/NN-<slug>.md`.
+- A local map lives at `documentation/capabilities/<capability>/map.md`; its decision tasks are capability task files.
 - A remote map and its children use native tracker records and relationships.
-- `documentation/capabilities/<capability>/specifications.md` holds the agreed living behavior, design, and acceptance; `draft.md` holds open proposals. The map indexes decisions and each task keeps its rationale.
+- The capability's specifications hold the agreed living behavior, design, and acceptance; its draft holds open proposals. The map indexes decisions and each task keeps its rationale.
 
 An explicit request to chart a map authorizes creating the map, its decision tasks, and their blocking relationships on the configured tracker. A request to work through the map authorizes claiming, resolving, and closing its tasks and updating the map. Ask before any remote change outside the named effort.
 
@@ -73,7 +73,7 @@ Each child holds a question sized for one 100K-token agent session:
 <the decision or investigation this task resolves>
 ```
 
-Record the type using a native `graphify:<type>` label or the configured local `Type:` line. Types are `research`, `prototype`, `refine`, and `task`.
+Record the type using a native `graphify:<type>` label or the configured local `Type:` line. Types are `research`, `prototype`, `interview`, and `task`.
 
 Claim the task before work, using the tracker assignee or local `Progress: claimed`. An open, unassigned remote task or unresolved, unclaimed local task is unclaimed.
 
@@ -87,7 +87,7 @@ Each task is **HITL**, human in the loop, or **AFK**, agent-driven. A HITL task 
 
 - **Research, AFK.** Surface an external fact a decision depends on. A subagent calls the Skill tool with "research" and links the findings.
 - **Prototype, HITL.** Raise discussion fidelity with a cheap artifact to react to. Call the Skill tool with "prototype"; link the artifact as an asset.
-- **Refine, HITL.** Resolve a decision through conversation. Call the Skill tool twice, for "refine" and "model-domain".
+- **Interview, HITL.** Resolve a decision through conversation. Call the Skill tool with "interview". When a term is disputed, call the Skill tool with "delineate".
 - **Task, HITL or AFK.** Perform a prerequisite action that unblocks a decision, such as obtaining service access or moving data so its shape can be examined. The agent works alone where possible; otherwise it gives the human a precise checklist. The answer records what was done and resulting facts. Record credential locations, never secret values.
 
 ## Fog of war
@@ -115,7 +115,7 @@ Resolve no more than one decision task per session, except parallel research tas
 
 The user supplies a loose idea.
 
-1. **Name the destination.** Call the Skill tool twice, for "refine" and "model-domain", to settle the destination and its scope.
+1. **Name the destination.** Call the Skill tool with "interview" to settle the destination and its scope.
 2. **Map the frontier.** Refine breadth-first across the space instead of going deep on one question. If there is no fog and the journey fits one session, stop and ask how the user wants to proceed.
 3. **Create the map.** Fill Destination and Notes, leave Decisions-so-far empty, and sketch fog under Not yet specified. Use the configured local or remote operation.
 4. **Create sharp decision tasks.** Create children first, then wire blocking in a second pass once identities exist. Keep everything still vague in the fog.
@@ -128,7 +128,7 @@ The user supplies a map URL, identifier, or local path. Naming a decision task i
 
 1. Load the map, relevant requirements, and canonical specification without loading every task body.
 2. Use the named task, or choose the first frontier task in map order. Claim it before work.
-3. Resolve it. Fetch related task bodies only as needed. Call the Skill tool for skills named in Notes. If unsure, call the Skill tool twice, for "refine" and "model-domain".
+3. Resolve it. Fetch related task bodies only as needed. Call the Skill tool for skills named in Notes. If unsure, call the Skill tool with "interview".
 4. Record the answer, rationale, and evidence as a resolution comment or the configured local answer. Close or resolve the task, then append a titled context pointer to Decisions-so-far. Update agreed living specifications and remove settled proposals from the draft without copying whole task bodies.
 5. Create newly sharp tasks and wire their blockers. Clear graduated fog. Close tasks beyond the destination and record them under Out of scope. Update invalidated tasks; ask before deleting historical remote records.
 6. Update working state and the changelog. Offer the optional visual delivery below, then stop after this decision, leaving the next frontier visible.

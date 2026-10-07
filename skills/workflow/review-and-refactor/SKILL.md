@@ -8,7 +8,7 @@ metadata:
 This is the **refactor** phase of red-green-refactor.
 Implementation establishes the required behavior with passing tests; this skill then checks standards and compliance with specifications and applies supported refactors while preserving behavior.
 
-**Calls:** `document`, `model-domain`, `publish-message`. If a called skill is not installed, tell the user its name and install command, `npx skills@latest add Dyrits/SKILLS --skill=<name>`, then carry out that step from its stated intent and report the step as done without the skill. Without `document`, wait until the user installs it or tells you to proceed: this skill's rules use its terms.
+**Calls:** `codify`, `document`, `publish-message`.
 
 Two independent axes inspect the same starting diff:
 
@@ -43,20 +43,20 @@ A bad reference or an empty complete diff ends the run before dispatch.
 ### 2. Identify the originating behavior agreement
 
 Call the Skill tool with "document"; its terms and its review-evidence rules apply.
-Recover the authorized behavior from the caller or user, tasks, specifications and requirements, or a user-approved batch in `documentation/work-in-progress.md`.
+Recover the authorized behavior from the caller or user, tasks, specifications and requirements, or a user-approved batch in working state.
 
 When `.agents/issue-tracker.md` exists, fetch relevant task references through its workflow.
 
-Freeze copies or revisions of the originating agreement and the verification evidence alongside the starting diff for both reviewers. Distinguish agreed behavior from unresolved proposals in `draft.md` and unapproved backlog candidates. Do not infer the agreement solely from the implementation under review.
+Freeze copies or revisions of the originating agreement and the verification evidence alongside the starting diff for both reviewers. Distinguish agreed behavior from unresolved proposals in a capability's draft and unapproved backlog candidates. Do not infer the agreement solely from the implementation under review.
 
 If no behavior agreement is recoverable, ask the user to supply it or explicitly consent to Standards alone. Only after that consent skip the Specifications reviewer and report "no specifications available".
 
 ### 3. Identify the standards sources
 
-Find repository instructions about how code should be written, such as `CONVENTIONS.md`, `CONTRIBUTING.md`, and applicable steering files.
-Read `CONVENTIONS.md` first when it exists.
-When it is missing and no other standards document turns up, call the Skill tool with "model-domain" for its Conventions step, with the **code** focus, then continue with whatever it produced (the smell baseline alone when declined).
-Read relevant architecture decisions and `GLOSSARY.md` when they constrain the changed code.
+Find repository instructions about how code should be written, such as the project's conventions file, `CONTRIBUTING.md`, and applicable steering files.
+Read the conventions file first when it exists.
+When it is missing and no other standards document turns up, call the Skill tool with "codify", with the **code** focus, then continue with whatever it produced (the smell baseline alone when declined).
+Read relevant decision records and the glossary when they constrain the changed code.
 
 On top of whatever the repository documents, the Standards axis always carries the **smell baseline** below: a fixed set of Fowler code smells (_Refactoring_, ch.3) that applies even when a repository documents nothing. Two rules bind it:
 
@@ -136,7 +136,7 @@ Distinguish verified refactors from outstanding implementation requirements, rej
 Include the checks run and their results, and say that edits remain uncommitted.
 With no specifications, state "no specifications available" in that axis.
 
-Update working state with open findings, evidence, blockers, and resumption pointers. Record completed agreements and deliveries in the root `CHANGELOG.md`; a Delivery needs the agreed checks, beyond this report.
+Update working state with open findings, evidence, blockers, and resumption pointers. Record completed agreements and deliveries in the changelog; a Delivery needs the agreed checks, beyond this report.
 
 End with findings resolved and still open per axis, and the worst remaining issue within each axis.
 Keep both axes separate rather than choosing one overall verdict.

@@ -13,7 +13,7 @@ Finding the next step across the whole set.
 Understanding built or repaired in conversation.
 
 - **[ask-someone-else](./ask-someone-else/SKILL.md)**: Turn a decision you can't answer alone into a Markdown questionnaire for the one person who can (filled in async, or together over a meeting).
-- **[re-explain](./re-explain/SKILL.md)**: Fire this the moment a message does not land. The agent explains it again with missing context, in your language, using your `GLOSSARY.md` vocabulary.
+- **[re-explain](./re-explain/SKILL.md)**: Fire this the moment a message does not land. The agent explains it again with missing context, in your language, using your glossary's vocabulary.
 - **[illustrate](./illustrate/SKILL.md)**: Explain the current topic with the smallest useful diagram, code sketch, or focused HTML artifact.
 
 ## Transport

@@ -4,16 +4,16 @@ description: "Resolve the open decisions in a selected scope and synthesize its 
 dependencies:
   apm:
     - git: parent
+      path: skills/reference/delineate
+    - git: parent
       path: skills/reference/document
     - git: parent
       path: skills/workflow/implement
     - git: parent
+      path: skills/reference/interview
+    - git: parent
       path: skills/workflow/iterate
     - git: parent
-      path: skills/reference/model-domain
-    - git: parent
       path: skills/shaping/prototype
-    - git: parent
-      path: skills/reference/refine
     - git: parent
       path: skills/workflow/taskify
