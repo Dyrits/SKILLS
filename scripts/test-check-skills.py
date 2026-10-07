@@ -28,7 +28,7 @@ class LayoutChecks(unittest.TestCase):
     def setUp(self):
         self.temporary = tempfile.TemporaryDirectory(dir=os.environ.get("DELTA_SCRATCH_DIR"))
         self.addCleanup(self.temporary.cleanup)
-        self.root = Path(self.temporary.name)
+        self.root = Path(self.temporary.name).resolve()
         self.write(".claude-plugin/plugin.json", json.dumps(
             {"skills": ["./skills/reference/example", "./skills/productivity/guide"]}))
         self.write("README.md", "## Plugin skills\n[example](skills/reference/example/SKILL.md)\n"
