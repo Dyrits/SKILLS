@@ -97,6 +97,8 @@ During specification work, a [prototype](./skills/shaping/prototype/SKILL.md) is
 
 This repository forked from [Matt Pocock's skills](https://aihero.dev/skills) at a known commit and diverges deliberately. The upstream website does not document this fork's behavior. See [architecture decision record 0001](./documentation/architecture-decision-record/0001-maintain-as-an-independent-fork.md) and the [upstream archive index](./.upstream/README.md).
 
+The accepted move to autonomous skills and revised skill boundaries is recorded in [architecture decision record 0005](./documentation/architecture-decision-record/0005-make-skills-autonomous.md); the migration is not yet complete.
+
 Not every retained skill comes from that upstream repository. The [primary-source provenance audit](./documentation/research/2026-10-03-retained-skill-provenance.md) traces the 47 skills retained on that date: 29 Matt-derived, three other external adaptations, and 15 created in this fork. [improve-environment](./skills/upkeep/improve-environment/SKILL.md), added later, ports upstream `retro`. Original names and sources are identified on skill pages. Removed upstream skills remain absent; the archive is evidence, not an install inventory.
 
 - Tasks can be local Markdown or native remote issues.

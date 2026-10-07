@@ -1,7 +1,0 @@
-{
-  "model": "example-provider/large-model",
-  "agent": {
-    "explore": { "model": "example-provider/large-model" },
-    "general": { "model": "example-provider/large-model" }
-  }
-}

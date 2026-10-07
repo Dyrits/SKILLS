@@ -1,8 +1,0 @@
---- a/src/reports/summary.ts
-+++ b/src/reports/summary.ts
-@@ -1,4 +1,4 @@
--import { money } from "../money";
-+import { formatMoney as money } from "../legacy/format";
- 
- export function summaryLine(label: string, cents: number): string {
-   return `${label};${money(cents)}`;

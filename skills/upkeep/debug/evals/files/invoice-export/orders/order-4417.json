@@ -1,9 +1,0 @@
-{
-  "order_id": 4417,
-  "displayed_total_cents": 2809,
-  "lines": [
-    {"sku": "chalk-bag", "price_cents": 1005, "quantity": 1, "discount_percent": 10},
-    {"sku": "chalk-bag-xl", "price_cents": 1005, "quantity": 1, "discount_percent": 10},
-    {"sku": "gym-towel", "price_cents": 500, "quantity": 2, "discount_percent": 0}
-  ]
-}

@@ -34,7 +34,7 @@ def skill_references(folder):
     """Other skills a skill folder calls through the Skill tool, and those it tells the user to run."""
     calls, handovers = set(), set()
     for path in folder.rglob("*"):
-        if path.suffix not in SCANNED_SUFFIXES or not path.is_file() or "evals" in path.relative_to(folder).parts[:1]:
+        if path.suffix not in SCANNED_SUFFIXES or not path.is_file():
             continue
         text = path.read_text()
         for call in CALL_PATTERN.finditer(text):
@@ -48,7 +48,7 @@ def prerequisites(folder):
     """The handovers a skill folder makes only when something it needs is missing, so they run before it, not after."""
     found = set()
     for path in folder.rglob("*"):
-        if path.suffix not in SCANNED_SUFFIXES or not path.is_file() or "evals" in path.relative_to(folder).parts[:1]:
+        if path.suffix not in SCANNED_SUFFIXES or not path.is_file():
             continue
         for match in PREREQUISITE_PATTERN.finditer(path.read_text()):
             found.add(match.group(1))
@@ -63,47 +63,6 @@ def calls_block(calls, handovers=frozenset()):
     if handovers:
         sentences.append("**Hands over to:** " + ", ".join(f"`/{name}`" for name in sorted(handovers)) + ".")
     return " ".join(sentences)
-
-
-EVALUATION_KINDS = ("trigger", "behavior", "no-trigger")
-
-
-def evaluation_errors(root, relative, path):
-    """Problems in a skill's evals/evals.json, or a missing file, as readable lines."""
-    name = relative.name
-    if not path.exists():
-        return [f"{relative}: missing evals/evals.json."]
-    label = path.relative_to(root)
-    try:
-        document = json.loads(path.read_text())
-    except json.JSONDecodeError as problem:
-        return [f"{label}: invalid JSON ({problem})."]
-    errors = []
-    if document.get("skill_name") != name:
-        errors.append(f"{label}: skill_name should be {name}.")
-    evals = document.get("evals")
-    if not isinstance(evals, list):
-        return errors + [f"{label}: evals should be a list."]
-    ids = [item.get("id") for item in evals]
-    if len(set(ids)) != len(ids) or not all(isinstance(identifier, int) for identifier in ids):
-        errors.append(f"{label}: ids should be unique integers.")
-    kinds = {item.get("kind") for item in evals}
-    if len(evals) < 3 or not set(EVALUATION_KINDS) <= kinds:
-        errors.append(f"{label}: needs at least three evals covering {', '.join(EVALUATION_KINDS)}.")
-    for item in evals:
-        where = f"{label}: eval {item.get('id')}"
-        if item.get("kind") not in EVALUATION_KINDS:
-            errors.append(f"{where} has an unknown kind.")
-        if not str(item.get("prompt", "")).strip() or not str(item.get("expected_output", "")).strip():
-            errors.append(f"{where} needs a prompt and an expected_output.")
-        expectations = item.get("expectations")
-        if not isinstance(expectations, list) or len(expectations) < 2 or not all(
-                isinstance(line, str) and line.strip() for line in expectations):
-            errors.append(f"{where} needs at least two non-empty expectations.")
-        for file in item.get("files", []):
-            if not (path.parent.parent / file).exists():
-                errors.append(f"{where} lists a missing file {file}.")
-    return errors
 
 
 def frontmatter_error(content):
@@ -182,7 +141,6 @@ def check(repository):
             errors.append(f"{relative}: missing from the plugin manifest.")
         if str(relative) + "/SKILL.md" not in listing:
             errors.append(f"{relative}: missing top-level README entry.")
-        errors.extend(evaluation_errors(root, relative, root / relative / "evals/evals.json"))
         page = root / "documentation/skills" / relative.relative_to("skills")
         page = page.with_suffix(".md")
         expected_pages.add(page)
@@ -226,7 +184,7 @@ def check(repository):
 
     markdown = [root / "README.md", root / "AGENTS.md"]
     markdown += list((root / ".agents").glob("*.md"))
-    markdown += [path for path in (root / "skills").rglob("*.md") if "evals" not in path.relative_to(root / "skills").parts[2:3]]
+    markdown += list((root / "skills").rglob("*.md"))
     markdown += sorted(actual_pages)
     callable_names = {relative.name for relative in skills}
     callable_names |= EXTERNAL_SKILLS

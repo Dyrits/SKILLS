@@ -1,5 +1,7 @@
 # Skills know each other only by contract
 
+Status: superseded by [0005: Make skills autonomous](./0005-make-skills-autonomous.md). The original rationale below is retained as history.
+
 Each skill is complete for its own job, calls others for theirs, and knows them only by contract: a skill may name another skill and the outcome it expects from it, never that skill's rules, formats, or paths. The test is whether a skill's internals can be rewritten without editing any other skill.
 
 Knowledge of another skill's internals had leaked across the collection. Root paths such as `CHANGELOG.md`, `GLOSSARY.md`, and `CONVENTIONS.md` were named in dozens of skill files, `document` was about to carry a table of files `model-domain` owned, and `memorize`'s `AGENTS.md` pointer was copied word for word into `setup-ai-workspace`. Each copy drifted silently and turned a one-skill change into a sweep. This supersedes the looser answer of the 2026-10-06 skills audit ("default to autonomous").

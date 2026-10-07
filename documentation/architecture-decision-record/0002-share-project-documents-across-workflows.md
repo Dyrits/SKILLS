@@ -1,5 +1,7 @@
 # Share project documents across development workflows
 
+Status: partially superseded by [0005: Make skills autonomous](./0005-make-skills-autonomous.md), which replaces central documentation-skill ownership with skill-local artifact instructions. Shared project-document authority remains in effect.
+
 Planned development and just-in-time iteration use one project-owned document model. The former interviewing, specification-snapshot, refinement-draft, and iterative-state conventions could give the same behavior multiple competing homes and made changing workflows require translating context. We keep the different development pacing but share document authority, with the format owned by the `documentation` skill.
 
 Global and feature requirements record constraints. Repository specifications record evolving agreed behavior and design; unresolved proposals remain drafts. Local tasks contain their bodies, while published remote tasks leave local references to their authoritative tracker records. The project backlog records candidates rather than authorization, working state records unfinished execution and resumption, and root `CHANGELOG.md` distinguishes authorized agreements from validated deliveries.

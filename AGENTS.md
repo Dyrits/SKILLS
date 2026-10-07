@@ -14,6 +14,14 @@ The skills page at the root `index.html`, one small graph per skill, is generate
 
 Repository-maintenance guidance lives in `documentation/maintenance/`; `.agents/` holds agent tools, installed skills, and session state.
 
+`documentation/` serves humans and agents. `.agents/` and `AGENTS.md` serve agents only; `README.md` serves primarily humans. When creating shared documentation, add a concise discovery line to both `AGENTS.md` and the appropriate `README.md`. Keep agent-only records discoverable from `AGENTS.md` without adding their internal details to the human README.
+
+For deferred installer and model-routing work, read [.agents/deferred-tooling.md](./.agents/deferred-tooling.md).
+
+For the accepted autonomy and skill-boundary decisions, supersession scope, and unfinished migration, read [architecture decision record 0005](./documentation/architecture-decision-record/0005-make-skills-autonomous.md).
+
+To resume the autonomy migration, read the [current handoff](./.agents/handoffs/2026-10-07-2257-autonomous-skills.md). Handoffs are shared and committed.
+
 Install commands are copied verbatim from [standard installation wording](./documentation/maintenance/standard-installation-wording.md). `.claude-plugin/marketplace.json` makes the repository its own single-plugin marketplace (a fallback the installation wording guide explains, not the documented route). Run `claude plugin validate . --strict` after touching either manifest. Why a Claude plugin but not (yet) a Codex one lives in [architecture decision record 0002](./.upstream/architecture-decision-record/0002-ship-as-a-claude-code-plugin.md), an upstream decision archived under `.upstream/`; this fork's own decisions live in `documentation/architecture-decision-record/`.
 
 Each skill entry in the top-level `README.md` must link the skill name to its `SKILL.md`.
@@ -22,9 +30,9 @@ Each bucket folder has a `README.md` that lists every skill in the bucket with a
 
 Every skill has a human-facing documentation page at `documentation/skills/<bucket>/<skill-name>.md` (the documentation tree mirrors the bucket folders under `skills/`, two levels deep; skills sit flat inside buckets). When you add, rename, or change the behaviour of a skill, create or re-sync its documentation page following [documentation/maintenance/writing-documentation.md](./documentation/maintenance/writing-documentation.md). A finished page carries four sections: **What it does**, **When to reach for it**, **Common questions**, and **It's working if**. Each page starts with verified upstream skill names or an explicit fork-specific provenance note. `writing-documentation.md` holds the template, the section order, and where to hunt for the questions.
 
-Every skill has evaluations at `skills/<bucket>/<skill-name>/evals/evals.json`, in the format [documentation/maintenance/writing-evaluations.md](./documentation/maintenance/writing-evaluations.md) defines (at least three evals: `trigger`, `behavior`, `no-trigger`). When you add a skill or change what it does, add or update its evals; `scripts/check-skills.py` checks their shape.
+Per-skill evaluations are paused. Do not create or require `evals/` directories for repository-owned skills. Installed third-party evaluation tooling and historical reports are retained.
 
-Every `SKILL.md` is reachable by both the human and the model, so any skill can call any other: no `disable-model-invocation`, no `policy.allow_implicit_invocation: false`, and a model-facing description. See [documentation/maintenance/invocation.md](./documentation/maintenance/invocation.md).
+Every `SKILL.md` is reachable by both the human and the model: no `disable-model-invocation`, no `policy.allow_implicit_invocation: false`, and a model-facing description. Each skill must complete its advertised task when installed alone, with its own required references and artifact-writing instructions. Bundle local reference copies where necessary. Do not require another skill or suggest another skill as a next step. Connect workflows through discoverable project artifacts instead.
 
 [`guide`](./skills/productivity/guide/SKILL.md) is the router that maps every skill and how they relate. The same trigger that re-syncs a documentation page applies to it: whenever you add, rename, remove, or change how a skill fits the flows, re-read `guide`'s `SKILL.md` and update it so the map stays accurate: a new skill it never mentions, or a stale one it still routes to, is a router that lies.
 
@@ -35,6 +43,8 @@ Call the Skill tool with "memorize" the moment the user states a standing rule, 
 ## Writing skills
 
 Before writing or editing a `SKILL.md` or its description, read the [skill authoring best practices](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices), alongside `write-for-agents`.
+
+Before creating a reusable script, check existing project automation, installed commands, and maintained external tools or libraries. Reuse a suitable implementation; write a small adapter or new script only for an unmet need, considering compatibility, maintenance, licensing, and security.
 
 Skills ship to other repositories, so a skill holds no rule that only this repository follows. This repository's writing rules live in this file; where a skill's rule could clash with a project's own, the skill defers to that project's steering file or style guide.
 

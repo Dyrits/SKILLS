@@ -1,1 +1,0 @@
-30 3 * * * /opt/harbor/bin/export.sh >> /var/log/harbor-export.log 2>&1

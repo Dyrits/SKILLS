@@ -51,16 +51,6 @@ class LayoutChecks(unittest.TestCase):
                    "## When to reach for it\nA trigger.\n\n## Common questions\nA question.\n\n"
                    "## It's working if\nA signal.\n\n## Where it fits\nA role.\n")
 
-        for bucket, name in (("reference", "example"), ("productivity", "guide")):
-            self.write(f"skills/{bucket}/{name}/evals/evals.json", json.dumps(self.evaluations(name)))
-
-    @staticmethod
-    def evaluations(name):
-        return {"skill_name": name, "evals": [
-            {"id": number, "kind": kind, "prompt": "A request.", "expected_output": "A result.",
-             "expectations": ["One observable.", "Another observable."]}
-            for number, kind in enumerate(("trigger", "behavior", "no-trigger"), 1)]}
-
     def write(self, relative, content):
         path = self.root / relative
         path.parent.mkdir(parents=True, exist_ok=True)
@@ -86,28 +76,9 @@ class LayoutChecks(unittest.TestCase):
                    "---\nname: example\ndisable-model-invocation: true\n---\nAn example skill.\n")
         self.assertIn("skill blocks model invocation", self.result()[1])
 
-    def test_missing_evaluations(self):
-        (self.root / "skills/reference/example/evals/evals.json").unlink()
-        self.assertIn("missing evals/evals.json", self.result()[1])
-
-    def test_evaluations_need_every_kind(self):
-        document = self.evaluations("example")
-        document["evals"][2]["kind"] = "trigger"
-        self.write("skills/reference/example/evals/evals.json", json.dumps(document))
-        self.assertIn("covering trigger, behavior, no-trigger", self.result()[1])
-
-    def test_evaluations_name_must_match(self):
-        self.write("skills/reference/example/evals/evals.json", json.dumps(self.evaluations("other")))
-        self.assertIn("skill_name should be example", self.result()[1])
-
-    def test_evaluation_needs_expectations_and_files(self):
-        document = self.evaluations("example")
-        document["evals"][0]["expectations"] = ["Only one."]
-        document["evals"][1]["files"] = ["evals/files/absent.txt"]
-        self.write("skills/reference/example/evals/evals.json", json.dumps(document))
-        output = self.result()[1]
-        self.assertIn("eval 1 needs at least two", output)
-        self.assertIn("missing file evals/files/absent.txt", output)
+    def test_evaluations_are_not_required(self):
+        self.assertFalse(any((self.root / "skills").rglob("evals")))
+        self.assertFalse(self.result()[0])
 
     def test_broken_relative_link(self):
         self.write("AGENTS.md", "[missing](missing.md)\n")
@@ -139,7 +110,6 @@ class LayoutChecks(unittest.TestCase):
             listing.write("[old](skills/deprecated/old/SKILL.md)\n")
         self.write("documentation/skills/deprecated/old.md",
                    (self.root / "documentation/skills/reference/example.md").read_text())
-        self.write("skills/deprecated/old/evals/evals.json", json.dumps(self.evaluations("old")))
 
     def test_deprecated_bucket_obeys_uniform_requirements(self):
         self.add_skill_in_deprecated_bucket()
@@ -150,13 +120,11 @@ class LayoutChecks(unittest.TestCase):
         self.assertIn("skills/deprecated/old: missing from the plugin manifest", output)
         self.assertIn("skills/deprecated/old: missing human-facing documentation page", output)
 
-    def test_deprecated_bucket_requires_evaluations_and_dependencies(self):
+    def test_deprecated_bucket_requires_dependencies(self):
         self.add_skill_in_deprecated_bucket()
-        (self.root / "skills/deprecated/old/evals/evals.json").unlink()
         self.write("skills/deprecated/old/SKILL.md",
                    '---\nname: old\n---\nCall the Skill tool with "example".\n')
         output = self.result()[1]
-        self.assertIn("skills/deprecated/old: missing evals/evals.json", output)
         self.assertIn("skills/deprecated/old: dependency paragraph should read: **Calls:** `example`.", output)
 
     def test_retired_operative_call(self):
