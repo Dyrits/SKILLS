@@ -1,7 +1,28 @@
 # Handoff: invoice export kickoff
 
-Supersedes: none.
+Supersedes: none
+Workspace: invoice-service, branch `main`
 
-The team agreed to build an invoice export. Nothing is implemented yet.
+## Goal
 
-Next: write the CSV writer.
+Build the invoice export agreed with the team.
+
+## State
+
+Nothing is implemented yet.
+
+## Decisions
+
+None.
+
+## Next
+
+1. Write the CSV writer.
+
+## Open questions
+
+None.
+
+## Sources
+
+None.

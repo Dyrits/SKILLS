@@ -2,13 +2,13 @@ Upstream source: `handoff`, verified in the `d81f3a1` tree. This fork adds durab
 
 ## What it does
 
-`hand-off` compacts the conversation you are in into a **handoff document**: one markdown file, written to `.agents/handoffs/` in the workspace as a versioned, timestamped file, that a fresh agent can read to pick the work up.
+`hand-off` writes the work of the session you are in into a **handoff document**: one markdown file, written to `.agents/handoffs/` in the workspace as a versioned, timestamped file, that a fresh agent resumes with [take-over](./take-over.md).
 
 What it buys is **portability**, not compression. That makes the skill narrower than it sounds. You need a file only when the work has to *travel*: to a new harness, a new directory, a colleague, or a side task you want to fork off. If nothing is travelling, you do not need a handoff: staying in the session, `/clear`, a subagent and `/compact` cover the ordinary end-of-phase case, and `/compact` covers it more often than this skill does.
 
 ## When to reach for it
 
-You usually invoke this by typing `/hand-off`. Pass a note about what the next session is for, and the document is written for it. An agent or another skill can also reach for it when you ask for a handoff in plain words, or when a compaction gate you installed blocks until a fresh handoff exists.
+You usually invoke this by typing `/hand-off`. Pass a note about what the next session is for, and the document is written for it. An agent or another skill can also reach for it when you ask in plain words for a write-up another session can pick up.
 
 Four situations are the whole trigger when you choose:
 
@@ -31,7 +31,9 @@ These choices preserve different things. Compaction compresses conversational co
 
 ## What travels, and what doesn't
 
-The document carries the live thread (what's in flight, why, and what's next) plus a **suggested skills** section naming useful skills, each checked against the skills installed in the session so a renamed or removed skill does not slip through. The next agent can call any suggested skill. Secrets are redacted before it's written.
+Every handoff follows one fixed format, `HANDOFF-FORMAT.md`, which ships identical inside both `hand-off` and `take-over`, so the writer and the reader always agree. A header names the handoff it supersedes and the workspace, then six sections follow in a fixed order: Goal, State, Decisions, Next, Open questions, Sources. Each claim in State is marked verified (and how) or assumed, so the next agent knows what it can build on. Secrets are redacted before it's written.
+
+The format names no skills to call next. The next session may run in another harness with a different skill set, so the handoff describes the work and leaves the tooling to whoever picks it up.
 
 What it deliberately does not carry is anything already written down. Specifications, plans, ADRs, issues, commits and diffs are referenced by path or URL, never copied. That keeps the file small, and it keeps the settled detail in one place instead of two that drift.
 
@@ -63,14 +65,17 @@ Analogous, not identical, and `/branch` isn't a shipped skill here; `/hand-off` 
 Ask whether it's true next month. `AGENTS.md` is standing context about the project, loaded into every session whether it's relevant or not. A handoff is about one piece of work in flight and is dead once that work lands. Facts that keep getting re-explained are an `AGENTS.md` problem; a half-finished task is a handoff.
 
 **It captures the what, not the why.**
-A repeated criticism. State what the next session is for so relevant reasoning survives. Watch for confident claims the session never verified, such as "X isn't built" or "Y is done". [take-over](./take-over.md) flags assumptions and resolves source pointers, but review before handing over still matters.
+A repeated criticism, and the reason the format has a Decisions section that carries each decision with its reason. State what the next session is for so the relevant reasoning survives. Confident claims the session never checked, such as "X isn't built" or "Y is done", must be marked assumed; [take-over](./take-over.md) checks those against the sources before building on them.
+
+**What about a side task I fork off?**
+It starts its own thread: its supersedes line reads `none (forked from <file>)`, so the original thread's handoff stays the head of its own line. When two threads are live, `take-over` asks which one to resume unless you name it.
 
 **Does work-in-progress replace a handoff?**
 
 No. `documentation/work-in-progress.md` owns unfinished current work, blockers, and recovery state. The handoff carries session-specific reasoning and pointers for another agent. Keep them consistent without copying the same task history into both.
 
 **Why is it a skill rather than a slash command?**
-Both work; they suit different situations. As a skill it ships and updates through the same install path as everything else here, which is what makes it shareable. Agents can reach it, so a compaction gate can get a handoff without you; typing `/hand-off` works the same as before.
+Both work; they suit different situations. As a skill it ships and updates through the same install path as everything else here, which is what makes it shareable. Agents can reach it when you ask in plain words; typing `/hand-off` works the same as before.
 
 **Will it ask me about git every time?**
 No. It asks once, and only when the repository does not already answer. A `.gitignore` entry for `.agents/handoffs/` means local-only history, tracked earlier handoffs mean shared history, and an `AGENTS.md` note settles it either way; the skill follows whichever it finds.
@@ -81,7 +86,7 @@ No. It asks once, and only when the repository does not already answer. A `.giti
 - You can read it cold, without the original session open, and know what to do next.
 - The fresh agent starts working instead of asking you to re-explain the setup.
 - In the fork case, your original session is still sitting there untouched when you come back to it.
-- The suggested-skills section names the skill you'd have reached for yourself, and every name in it exists.
+- Every section of the format is there, and each claim in State says whether it was verified.
 - Nothing in it is a key, a token, or a password.
 
 ## Where it fits

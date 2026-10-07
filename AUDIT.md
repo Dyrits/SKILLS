@@ -404,6 +404,7 @@ Rule of thumb:
 - Coupling: `take-over` consumes its output (the format contract is split across two skills).
 - Evals: good; eval 5 now tests a dead feature.
 - Verdict: fix. Remove the gate clause everywhere, define required sections (state, decisions, what's next, open questions, suggested skills, supersedes).
+- Status (2026-10-07): addressed together with `take-over`, so the line numbers above no longer match. Both skills now ship an identical `HANDOFF-FORMAT.md` (location, threads, a fixed template, rules) that `scripts/check-skills.py` keeps identical. The gate clause is gone everywhere, the description says "Write" instead of "Compact", and the abbreviation is spelled out. Changed from the verdict: suggested skills are dropped rather than required, so a handoff works in any harness. Kept on purpose: the one-time local-or-shared question. A merge into a single `relay` skill was considered and rejected: the two run in different sessions, and guessing the direction is less reliable than two explicit names.
 
 ### illustrate
 
@@ -444,6 +445,7 @@ Rule of thumb:
 - Coupling: `hand-off` hard (it consumes that format), with a fallback only for an empty directory.
 - Evals: strong.
 - Verdict: fix. Reorder steps 2 and 4, define the fork case, align section names with `hand-off`.
+- Status (2026-10-07): addressed with `hand-off` (see its status line). Claims marked assumed or unmarked are checked against the Sources before the brief; separate threads (a fork or unrelated work) are named and the user picks one, unless a path or topic is passed; the skill-name step is gone with the suggested skills. Kept on purpose: the step order, now explicit that step 3 checks what step 2 noted.
 
 ### teach
 

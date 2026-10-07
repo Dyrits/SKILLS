@@ -25,7 +25,7 @@ marketplace:
       description: "Choose the next skill, development workflow, or session boundary from the current situation."
     - name: hand-off
       source: ./skills/productivity/hand-off
-      description: "Compact the current conversation into a versioned handoff document in .agents/handoffs/ for another agent to pick up."
+      description: "Write the current session's work into a versioned handoff document in .agents/handoffs/ that another agent resumes with take-over."
     - name: illustrate
       source: ./skills/productivity/illustrate
       description: "Explain the current topic visually."
@@ -40,7 +40,7 @@ marketplace:
       description: "Re-explain what did not land, with the missing context and familiar vocabulary."
     - name: take-over
       source: ./skills/productivity/take-over
-      description: "Resume work from the latest handoff document in .agents/handoffs/, following the supersedes chain only when questions stay open."
+      description: "Resume work from a handoff document in .agents/handoffs/ written by hand-off, following the supersedes chain only when questions stay open."
     - name: teach
       source: ./skills/productivity/teach
       description: "Teach the user a skill or concept over multiple sessions in a stateful workspace."
@@ -64,7 +64,7 @@ marketplace:
       description: "Refine a plan, decision, or idea through a decision-tree interview."
     - name: unslop
       source: ./skills/reference/unslop
-      description: "Cut AI tells from writing in any language."
+      description: "Cut AI tells from prose that other people will read, in any language."
     - name: write-for-agents
       source: ./skills/reference/write-for-agents
       description: "Write documents for agents: skills, AGENTS.md, and documents reached by a pointer."

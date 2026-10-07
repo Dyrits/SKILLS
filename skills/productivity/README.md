@@ -20,8 +20,8 @@ Understanding built or repaired in conversation.
 
 Work moving across session boundaries.
 
-- **[take-over](./take-over/SKILL.md)**: Resume work from the latest handoff in `.agents/handoffs/`, following the supersedes chain deeper only when needed.
-- **[hand-off](./hand-off/SKILL.md)**: Compact the current conversation into a versioned handoff document in `.agents/handoffs/`. The agent also reaches it on its own when a compaction gate asks for a fresh handoff.
+- **[take-over](./take-over/SKILL.md)**: Resume work from a handoff in `.agents/handoffs/`, following the supersedes chain deeper only when needed.
+- **[hand-off](./hand-off/SKILL.md)**: Write the current session's work into a versioned handoff document in `.agents/handoffs/`, in the format `take-over` reads.
 
 ## Procedures
 

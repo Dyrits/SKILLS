@@ -888,7 +888,7 @@ const DATA = {
    "argumentHint": "What will the next session be used for?",
    "bucket": "productivity",
    "calls": [],
-   "description": "Compact the current conversation into a versioned handoff document in .agents/handoffs/ for another agent to pick up. Use when the user asks for a handoff, at a phase boundary they name, or when a compaction gate blocks until a fresh handoff exists.",
+   "description": "Write the current session's work into a versioned handoff document in .agents/handoffs/ that another agent resumes with take-over. Use when the user asks for a handoff, or to write up where the work stands for another session, agent, or person.",
    "fits": [
     "hand-off is a reach-for-it-anytime standalone between sessions, not a development chain step. take-over consumes its newest brief. An approved prototype in another session can use a handoff for the question and return evidence, but isolation is not a universal prototype requirement. guide helps choose the session boundary."
    ],
@@ -906,10 +906,10 @@ const DATA = {
    "requires": [],
    "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/productivity/hand-off/SKILL.md",
    "summary": [
-    "hand-off compacts the conversation you are in into a handoff document: one markdown file, written to .agents/handoffs/ in the workspace as a versioned, timestamped file, that a fresh agent can read to pick the work up.",
+    "hand-off writes the work of the session you are in into a handoff document: one markdown file, written to .agents/handoffs/ in the workspace as a versioned, timestamped file, that a fresh agent resumes with take-over.",
     "What it buys is portability, not compression. That makes the skill narrower than it sounds. You need a file only when the work has to *travel*: to a new harness, a new directory, a colleague, or a side task you want to fork off. If nothing is travelling, you do not need a handoff: staying in the session, /clear, a subagent and /compact cover the ordinary end-of-phase case, and /compact covers it more often than this skill does."
    ],
-   "tagline": "Compact the current conversation into a versioned handoff document in .agents/handoffs/. The agent also reaches it on its own when a compaction gate asks for a fresh handoff."
+   "tagline": "Write the current session's work into a versioned handoff document in .agents/handoffs/, in the format take-over reads."
   },
   "illustrate": {
    "argumentHint": "",
@@ -1698,10 +1698,10 @@ const DATA = {
    "tagline": "Transfer committed work to the verified corresponding local branch."
   },
   "take-over": {
-   "argumentHint": "Optional: a note on what this session will focus on",
+   "argumentHint": "Optional: a handoff path, or what this session will focus on",
    "bucket": "productivity",
    "calls": [],
-   "description": "Resume work from the latest handoff document in .agents/handoffs/, following the supersedes chain only when questions stay open. Use when the user asks to take over, resume, or continue from a handoff.",
+   "description": "Resume work from a handoff document in .agents/handoffs/ written by hand-off, following the supersedes chain only when questions stay open. Use when the user asks to take over, resume, or continue from a handoff.",
    "fits": [
     "take-over is a reach-for-it-anytime standalone paired with hand-off between sessions. It restores session-specific context while project documents remain authoritative for requirements, agreements, and unfinished work. guide helps you choose whether to continue, clear, hand off, or compact; use this skill after the handoff."
    ],
@@ -1715,9 +1715,9 @@ const DATA = {
    "requires": [],
    "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/productivity/take-over/SKILL.md",
    "summary": [
-    "take-over is the other half of hand-off. It resumes work from the newest document in .agents/handoffs/, reading history lazily: it follows the supersedes chain only when the newest handoff leaves a question unresolved. It resolves source pointers and flags assumptions before confirming the brief."
+    "take-over is the other half of hand-off. It resumes work from a document in .agents/handoffs/, written in the handoff format both skills ship identically, reading history lazily: it follows the supersedes chain only when the newest handoff leaves a question unresolved. It resolves source pointers and flags assumptions before confirming the brief."
    ],
-   "tagline": "Resume work from the latest handoff in .agents/handoffs/, following the supersedes chain deeper only when needed."
+   "tagline": "Resume work from a handoff in .agents/handoffs/, following the supersedes chain deeper only when needed."
   },
   "taskify": {
    "argumentHint": "",

@@ -2,21 +2,23 @@ Fork-specific companion to `hand-off`, first added as `takeover` in commit `f85f
 
 ## What it does
 
-`take-over` is the other half of [hand-off](./hand-off.md). It resumes work from the newest document in `.agents/handoffs/`, reading history lazily: it follows the `supersedes` chain only when the newest handoff leaves a question unresolved. It resolves source pointers and flags assumptions before confirming the brief.
+`take-over` is the other half of [hand-off](./hand-off.md). It resumes work from a document in `.agents/handoffs/`, written in the handoff format both skills ship identically, reading history lazily: it follows the `supersedes` chain only when the newest handoff leaves a question unresolved. It resolves source pointers and flags assumptions before confirming the brief.
 
 ## When to reach for it
 
-Type `/take-over`, or an agent or another skill can reach for it when the task fits. Reach for it at the start of a session continuing handed-off work. It finds the newest file itself. For writing a handoff rather than consuming one, use [hand-off](./hand-off.md).
+Type `/take-over`, or an agent or another skill can reach for it when the task fits. Reach for it at the start of a session continuing handed-off work. It finds the newest file itself, or takes a path or a topic you pass. For writing a handoff rather than consuming one, use [hand-off](./hand-off.md).
 
 ## The loop it runs
 
-Find the newest handoff by filename sort (the `YYYY-MM-DD-HHMM-<slug>.md` names sort chronologically), read it fully, and resolve the artifacts it points at by path or URL. Check current names before using suggested skills. Confirm the brief in two or three sentences before starting work, so stale context is caught before implementation.
+Find the newest handoff by filename sort (the `YYYY-MM-DD-HHMM-<slug>.md` names sort chronologically), read it fully, and resolve its Sources by path or URL. Every claim marked assumed, or not marked at all, is checked against those sources before anything builds on it. Confirm the brief in two or three sentences before starting work, so stale context is caught before implementation.
 
 The chain rule is the skill's leading idea: **newest first, deeper only on demand**. A handoff that can't be understood without its predecessor was a badly written handoff; the skill treats that as a recoverable defect rather than a reason to read everything.
 
 ## Common questions
 
 **The newest handoff references a file that no longer exists.** Follow `supersedes` to the previous handoff for the context of what that file was, but resolve the gap against the primary sources (git log, the issue tracker) rather than the summary. The handoff is a secondary source; the repository is the truth.
+
+**Two handoffs were written side by side.** When the newest handoff does not supersede the one before it (a forked side task, or unrelated work), both threads may be live. The skill names both and asks which one to resume; pass a topic or a path to skip the question.
 
 **There are no handoffs in `.agents/handoffs/`.** The skill says so and asks for a path or a fresh brief rather than guessing. An empty directory means either the work was never handed off or the handoff was written elsewhere.
 
@@ -25,7 +27,7 @@ The chain rule is the skill's leading idea: **newest first, deeper only on deman
 - The fresh agent starts working instead of asking you to re-explain the setup.
 - It read one handoff file, not five, to get there.
 - Its two-sentence brief back to you matches what you thought you handed off.
-- It used suggested skills by their current names and left any step only a human can perform to the human.
+- It raised every claim the handoff marked assumed that the sources did not confirm.
 
 ## Where it fits
 

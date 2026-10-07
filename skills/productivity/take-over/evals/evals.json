@@ -37,8 +37,8 @@
         "The newest handoff is read first and in full",
         "The agent reads the 2026-09-24 handoff because the newest one relies on a retry decision whose reasoning is not stated there",
         "The agent does not read the 2026-09-12 kickoff handoff, since nothing the newest one says depends on it",
-        "The agent finds that documentation/capabilities/invoice-export/notifications.md does not exist and says so, instead of inventing its content from the handoff summary",
-        "The agent checks the primary sources it has (the code in src/export/notify.ts, git history) for the missing document, and asks the user for it when they do not resolve it",
+        "The agent finds that documentation/capabilities/invoice-export/notifications.md, listed under Sources, does not exist and says so, instead of inventing its content from the handoff summary",
+        "The agent treats the notify.ts claim marked assumed as unverified and checks it against the code",
         "The brief confirmed back to the user mentions the missing specification as an open gap"
       ]
     },
@@ -54,7 +54,7 @@
       "expectations": [
         "The agent reads the newest handoff before acting on the focus",
         "The brief confirmed to the user treats the encoding bug as this session's focus, not pagination",
-        "The agent tells the user that the handoff's what-is-next (the next-page query and the Link header) differs from the stated focus",
+        "The agent tells the user that the handoff's Next (the next-page query and the Link header) differs from the stated focus",
         "The agent does not silently continue the pagination work",
         "The brief is two or three sentences and is given before any work starts"
       ]
@@ -70,7 +70,7 @@
       ],
       "expectations": [
         "The agent resolves the specifications file the handoff references",
-        "The agent notices that the handoff says legacy_ref is unused while the specifications say it is required by the finance import",
+        "The agent notices that the handoff's State says legacy_ref is unused, an unmarked and therefore unverified claim, while the specifications say it is required by the finance import",
         "The agent flags that claim to the user as unverified or wrong, in the brief, before starting work",
         "The agent does not continue building on the dropped legacy_ref column without raising it"
       ]
@@ -104,6 +104,36 @@
       "expectations": [
         "The take-over skill is not invoked and .agents/handoffs/ is not read",
         "The agent uses resolve-merge-conflicts, which resolves the conflicts by intent and finishes the operation"
+      ]
+    },
+    {
+      "id": 8,
+      "kind": "behavior",
+      "prompt": "Use the take-over skill. Project in evals/files/parallel/.",
+      "expected_output": "Two parallel threads exist (the newest is a fork), so the agent names both and asks which to resume.",
+      "files": [
+        "evals/files/parallel/.agents/handoffs/2026-10-02-1000-invoice-export-pagination.md",
+        "evals/files/parallel/.agents/handoffs/2026-10-02-1130-currency-rounding.md"
+      ],
+      "expectations": [
+        "The agent reads the newest handoff, 2026-10-02-1130-currency-rounding.md, and sees it is forked from the pagination handoff rather than superseding it",
+        "The agent names both the currency rounding and the pagination threads in its brief",
+        "The agent asks which thread to resume and starts no work before the answer"
+      ]
+    },
+    {
+      "id": 9,
+      "kind": "behavior",
+      "prompt": "Use the take-over skill on the pagination thread. Project in evals/files/parallel/.",
+      "expected_output": "The topic in the arguments selects the pagination handoff even though it is not the newest.",
+      "files": [
+        "evals/files/parallel/.agents/handoffs/2026-10-02-1000-invoice-export-pagination.md",
+        "evals/files/parallel/.agents/handoffs/2026-10-02-1130-currency-rounding.md"
+      ],
+      "expectations": [
+        "The agent selects 2026-10-02-1000-invoice-export-pagination.md because its slug matches the named topic",
+        "The agent does not ask which thread to resume",
+        "The brief describes the next-page query as the next step"
       ]
     }
   ]

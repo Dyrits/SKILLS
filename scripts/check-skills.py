@@ -214,6 +214,13 @@ def check(repository):
         if tier_line.findall(policy.read_text()) != tier_line.findall(routing.read_text()):
             errors.append("skills/workflow/divide-and-conquer/ROUTING.md: tiers differ from the delegation policy.")
 
+    # hand-off and take-over each ship a copy of the handoff format they share; keep the two identical.
+    formats = [root / f"skills/productivity/{name}/HANDOFF-FORMAT.md" for name in ("hand-off", "take-over")]
+    if not all(path.exists() for path in formats):
+        errors.append("skills/productivity: hand-off and take-over must both carry HANDOFF-FORMAT.md.")
+    elif formats[0].read_bytes() != formats[1].read_bytes():
+        errors.append("skills/productivity/take-over/HANDOFF-FORMAT.md: differs from the hand-off copy.")
+
     for relative in plugin_paths - skills.keys():
         errors.append(f"{relative}: manifest target does not exist.")
     actual_pages = set((root / "documentation/skills").glob("*/*.md"))

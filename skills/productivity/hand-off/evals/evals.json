@@ -5,13 +5,15 @@
       "id": 1,
       "kind": "trigger",
       "prompt": "I am switching to a different agent in another directory tomorrow. Please write up where we are so it can pick the work up. Summary of this session: we are migrating the billing importer to read the new CSV layout. The parser for the new layout is half written (header detection works, row validation does not). The agreed behaviour is in documentation/specifications/billing-import.md. We decided to reject rows with a missing currency code instead of defaulting to euros. Next step: row validation, then tests.",
-      "expected_output": "A new versioned handoff file in .agents/handoffs/ that points at the specification instead of copying it, and a printed path.",
+      "expected_output": "A new versioned handoff file in .agents/handoffs/ that follows the handoff format, points at the specification instead of copying it, and a printed path.",
       "expectations": [
         "The hand-off skill is invoked without the user naming it",
         "A new file is written under .agents/handoffs/ named YYYY-MM-DD-HHMM-<short-slug>.md with a dash-case slug",
-        "The full path of the file is printed, and the user is told to paste it into the next session's first message",
-        "The reject-missing-currency decision and the next step (row validation, then tests) appear in the document",
-        "The specification is referenced by its path and its content is not copied into the handoff"
+        "The document has the Goal, State, Decisions, Next, Open questions and Sources sections, in that order, after a Supersedes line and a Workspace line",
+        "The reject-missing-currency decision is under Decisions with its place of record, and Next lists row validation, then tests",
+        "The half-written parser state is marked verified (with how) or assumed",
+        "The specification is listed under Sources by its path and its content is not copied into the handoff",
+        "The full path of the file is printed, and the user is told to start the next session with it"
       ]
     },
     {
@@ -21,9 +23,9 @@
       "expected_output": "A new file that supersedes the earlier one, never overwriting it, with the gitignore question asked once.",
       "expectations": [
         "A new file is created and the existing 2026-09-28-1015-billing-import.md is left unchanged",
-        "A supersedes line near the top of the new document points at 2026-09-28-1015-billing-import.md",
+        "The Supersedes line of the new document names 2026-09-28-1015-billing-import.md",
         "The agent asks once whether the handoffs directory should be gitignored (local history) or committed (shared history)",
-        "The document has a suggested skills section",
+        "Every section of the handoff format is present, with None. for a section that has nothing to say",
         "The agent prints the full path when done"
       ],
       "files": [
@@ -45,25 +47,25 @@
     {
       "id": 4,
       "kind": "behavior",
-      "prompt": "/hand-off The next session will only do exploratory quality checks on the importer. Context: the previous agent had planned to use a skill called /qa-runner (it is not installed in this session) and also the implement and debug skills, which are installed. Write the handoff.",
-      "expected_output": "The handoff is tailored to the stated next focus and its suggested skills list contains only installed skills.",
+      "prompt": "/hand-off The next session will only do exploratory quality checks on the importer, probably in Codex. The previous agent had planned to use a skill called /qa-runner and the implement and debug skills. The importer's tests run with `npm test`.",
+      "expected_output": "The handoff is tailored to quality checks and names no skills for the next agent, so it works in any harness.",
       "expectations": [
-        "The document is tailored to quality checks as the next session's focus",
-        "The suggested skills section includes skills that exist in this session (such as debug or implement)",
-        "qa-runner is dropped or replaced by an installed skill, and the agent says so",
-        "Each suggested skill is described with how the next agent invokes it (through the Skill tool)"
+        "Goal and Next are written for exploratory quality checks as the next session's focus",
+        "The document has no suggested skills section and names none of qa-runner, implement or debug as something to call",
+        "The project command npm test may appear as a fact in State or Next",
+        "The document follows the handoff format's sections in order"
       ]
     },
     {
       "id": 5,
       "kind": "behavior",
-      "prompt": "The compaction gate just blocked with: 'Compaction blocked: write a fresh handoff to .agents/handoffs/ first.' An older handoff from this same session already exists as .agents/handoffs/2026-10-05-0900-importer.md, but work has continued since (we added dead-letter handling). Unblock it.",
-      "expected_output": "A new handoff reflecting the later work is written, without overwriting the older one, so the gate sees a fresh file.",
+      "prompt": "We're mid-way through the importer and I found an unrelated rounding bug in the totals. I'll keep working here; write a handoff so a second agent can chase the rounding bug in parallel. The current thread's handoff is .agents/handoffs/2026-10-05-0900-importer.md.",
+      "expected_output": "A forked thread: a new handoff that does not supersede the importer handoff but names it as its fork origin.",
       "expectations": [
-        "The hand-off skill is invoked, reached by the agent on its own because of the gate",
-        "A new file with a later timestamp is written under .agents/handoffs/",
-        "The existing 2026-10-05-0900-importer.md is not overwritten or edited in place",
-        "The new document carries a supersedes line pointing at the earlier file and includes the dead-letter work done since"
+        "A new file with a later timestamp and a rounding-related slug is written under .agents/handoffs/",
+        "The Supersedes line reads none (forked from `2026-10-05-0900-importer.md`)",
+        "The existing 2026-10-05-0900-importer.md is not overwritten or edited",
+        "Goal and Next describe the rounding bug, not the importer work"
       ]
     },
     {
