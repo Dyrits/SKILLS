@@ -36,6 +36,8 @@ Call the Skill tool with "memorize" the moment the user corrects you, states a s
 
 Before writing or editing a `SKILL.md` or its description, read the [skill authoring best practices](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices), alongside `write-for-agents`.
 
+Skills ship to other repositories, so a skill holds no rule that only this repository follows. This repository's writing rules live in this file; where a skill's rule could clash with a project's own, the skill defers to that project's steering file or style guide.
+
 ## Language and naming
 
 Prefer full words in repository-owned prose and paths when they remain clear: use `repository`, `document` or `documentation`, `specifications`, and `architecture decision record` instead of `repo`, `doc` or `docs`, `spec`, and `ADR`. Use an abbreviation when it is an external name, a literal command or API, a widely established technical term, or when the full term has already been introduced and repetition would reduce readability. Preserve literal URLs and historical quotations.

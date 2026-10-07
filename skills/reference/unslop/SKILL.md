@@ -1,6 +1,6 @@
 ---
 name: unslop
-description: Cut AI tells from writing in any language. Use before showing the user copy meant for others (captions, interface text, messages), before a final report, and before writing prose into a repository.
+description: Cut AI tells from prose that other people will read, in any language. Use before a draft for others is shown or published (messages, posts, captions, interface text, announcements, documentation), or when the user asks to clean up a draft.
 metadata:
   forks: "cursor/plugins/pstack/skills/unslop"
 ---
@@ -12,8 +12,8 @@ Edit text to remove AI patterns.
 ## Process
 
 1. Scan for the patterns below.
-2. Rewrite in the text's language. Preserve meaning, intended tone, and that language's usual punctuation. Apply the patterns by meaning rather than translating the English examples literally.
-3. Self-audit: "What makes this obviously AI generated?" Fix remaining tells.
+2. Rewrite in the text's language. Preserve meaning, intended tone, and that language's usual punctuation. Apply the patterns by meaning rather than translating the English examples literally. Where the project's steering file or style guide sets a writing rule, follow it over a pattern here.
+3. Reread the revision once and ask: "What still makes this read as AI-generated?" Fix what you find, then stop.
 
 ## Patterns to detect and fix
 
@@ -25,7 +25,7 @@ Edit text to remove AI patterns.
 ### Language
 
 - **AI vocabulary.** Additionally, crucial, delve, enduring, enhance, fostering, garner, interplay, intricate, landscape (abstract), pivotal, showcase, tapestry (abstract), testament, underscore, vibrant. Replace with plain words.
-- **Fancy ways to say "is".** "serves as", "stands as", "boasts", "features". Just say "is" or "has".
+- **Fancy ways to say "is".** "serves as", "stands as", "boasts", "features" (as a verb). Just say "is" or "has".
 - **"Not just X, but Y."** State the point directly instead.
 - **Rule of three.** Forcing ideas into groups of three. Use the natural number.
 - **Synonym cycling.** Protagonist, main character, central figure, hero all in one paragraph. Pick one, repeat it.
@@ -33,7 +33,7 @@ Edit text to remove AI patterns.
 
 ### Style
 
-- **Em dash overuse.** Avoid em dashes entirely. Use periods or commas only (no parentheses, no en dashes, no hyphen-as-dash substitutes). If a thought needs separation, end the sentence or use a comma.
+- **Em dashes.** Remove them. Rewrite each sentence with the punctuation it actually wants: a period, a comma, a colon before a list or example, parentheses for an aside, or a conjunction. An en dash or a spaced hyphen in its place is the same tell.
 - **Colon overuse.** Colons are fine before a list or example. Not as mid-sentence connectors. "If you're coming from traditional automation: instead of registering event handlers, you describe conditions" adds nothing with the colon. Rewrite to let the point stand on its own without comparison framing. "Describing when the scheduler should fire works best as plain English." Same meaning, no crutch punctuation.
 - **Boldface overuse.** Don't bold every proper noun or acronym.
 - **Inline-header lists.** The tell is a bold label and colon that restates the line: "**Performance:** Performance improved...". Convert those to prose. A bold lead-in that ends in a period, names the item, and is followed by genuinely new detail ("**Schema in TypeScript.** Tables live in one file.") is fine, not a tell.

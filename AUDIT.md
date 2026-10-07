@@ -510,6 +510,7 @@ Rule of thumb:
 - Coupling: none.
 - Evals: strong, possibly the best-built set of the seven.
 - Verdict: trim. Cut the no-op patterns, reconcile the punctuation rules with `AGENTS.md`, narrow the trigger to text meant for others.
+- Status (2026-10-07): partly addressed, so the line numbers above no longer match. Done: the trigger covers only prose other people will read, the em dash rule allows the punctuation the sentence wants (parentheses and colons included) and the skill stays universal by deferring to a project's own writing rules, the self-audit is one pass, and "features" is marked as the verb. Kept on purpose: the chatbot, sycophancy, hedging, and filler patterns (cheap, and weaker models still produce them) and the explicit calls in `publish-message` and `improve-skills`. Still open: the metaphorical "surface" in `design-modules` and `triage`.
 
 ### write-for-agents
 

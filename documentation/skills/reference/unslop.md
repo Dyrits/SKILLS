@@ -2,11 +2,11 @@ Source: Cursor's pstack `unslop` skill, adopted in commit `6585eba`. This fork e
 
 ## What it does
 
-`/unslop` edits writing in any language to remove patterns that make it sound AI-generated. It preserves the meaning and intended tone, then checks the revision for patterns that remain.
+`/unslop` edits writing in any language to remove patterns that make it sound AI-generated. It preserves the meaning and intended tone, then rereads the revision once for patterns that remain.
 
 ## When to reach for it
 
-Type `/unslop`, or the agent reaches for it at three moments: before showing you copy meant for others (captions, interface text, messages), before a final report, and before writing prose into a repository. It applies to drafts that already seem polished too.
+Type `/unslop`, or the agent reaches for it before it shows or publishes a draft that other people will read: a message, a post, a caption, interface text, an announcement, or documentation. It applies to drafts that already seem polished too. It does not run on the agent's ordinary replies to you.
 
 ## The editing pass
 
@@ -16,6 +16,9 @@ The skill checks content, wording, style, filler, and vague claims. It replaces 
 
 **Does it change the point I am making?**
 It should preserve the point and the intended tone. Review any revision that changes a technical claim or removes a useful distinction.
+
+**Does it override my project's style rules?**
+No. Where your steering file or style guide sets a writing rule (for example, which punctuation replaces an em dash), the skill follows that rule over its own pattern.
 
 **Does it work outside English?**
 Yes. The examples in the skill are English, but the editing pass follows the source language and applies each pattern by meaning rather than translating the examples.

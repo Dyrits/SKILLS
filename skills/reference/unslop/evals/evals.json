@@ -16,13 +16,13 @@
     {
       "id": 2,
       "kind": "trigger",
-      "prompt": "You just fixed an off-by-one error in the pagination helper of a scratch project: the last page used to come back as an empty list, and now it returns the remaining items. The test suite passes (42 tests, 0 failures). Write the final report for me.",
-      "expected_output": "A short final report of concrete facts, edited for tells before it is shown.",
+      "prompt": "You just fixed an off-by-one error in the pagination helper of a scratch project: the last page used to come back as an empty list, and now it returns the remaining items. The test suite passes (42 tests, 0 failures). Draft a short message I can post in the team channel to tell the other developers.",
+      "expected_output": "A short team message of concrete facts, edited for tells before it is shown.",
       "expectations": [
-        "The unslop skill is invoked before the final report is shown",
-        "The report states the concrete change (the last page returned an empty list, now it returns the remaining items) and the test result (42 passed)",
-        "The report has no sycophantic or chatbot closers ('Great question', 'I hope this helps', 'Let me know if')",
-        "The report has no em dashes and no vague superlatives such as 'robust' or 'seamless'"
+        "The unslop skill is invoked before the message is shown",
+        "The message states the concrete change (the last page returned an empty list, now it returns the remaining items) and the test result (42 passed)",
+        "The message has no chatbot phrases or hype ('Exciting news', 'I hope this helps', 'Let me know if')",
+        "The message has no em dashes and no vague superlatives such as 'robust' or 'seamless'"
       ]
     },
     {
