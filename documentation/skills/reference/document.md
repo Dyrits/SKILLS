@@ -29,7 +29,7 @@ Three documents hold the project's language and judgment, each to its own bar:
 | | Glossary | Decision record | Conventions |
 | --- | --- | --- | --- |
 | Holds | What a domain term **is**, in one or two sentences, with rejected synonyms under `_Avoid_` | One hard-to-reverse decision: context, choice, reason | How code is written here, as rules a reviewer applies to any diff |
-| Bar to write | A vague term became canonical | **All three**: hard to reverse, surprising without context, the result of a real trade-off | Portable: it would still hold if the product changed entirely |
+| Bar to write | A vague term became canonical | **All three**: hard to reverse, surprising without context, the result of a real trade-off | Project-agnostic: it would still hold if the product changed entirely |
 | Never holds | Implementation details, specifications, general programming concepts | A diary of every choice made in a session | Product behavior, domain terms, anything a tool can check |
 
 A requirement and a convention answer different questions. A requirement says what the product must do and comes from outside the code; a convention says how code is written and is the team's own choice. When they seem to clash, the requirement wins and the convention shapes how it is met.

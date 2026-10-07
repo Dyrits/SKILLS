@@ -2,7 +2,7 @@ Upstream skill: `setup-matt-pocock-skills`, adapted here as `setup-ai-workspace`
 
 ## What it does
 
-Configures one repository's task tracker, ticket-writing convention, triage-role vocabulary, and domain documentation. Its output is editable Markdown under `.agents/`, plus an agent-instruction block. It changes project configuration, not the installed skills. It then offers the other setups, so one run can prepare the whole workspace.
+Configures one repository's task tracker, ticket-writing convention, and triage-role vocabulary, and offers code conventions and, for several domain contexts, a glossary map. Its output is editable Markdown under `.agents/`, plus an agent-instruction block. It changes project configuration, not the installed skills. It then offers the other setups, so one run can prepare the whole workspace.
 
 The tracker choice does not move specification authority. Agreed living behavior, design, and acceptance stay in `documentation/capabilities/<capability>/specifications.md`. Remote tasks link to or summarize that specification. Local documents can be maintained within scope without publishing remote records.
 
@@ -21,8 +21,9 @@ Run `/setup-ai-workspace` once per repository, or when the tracker or convention
 
 - `.agents/issue-tracker.md` records local or remote operations, the writing convention, and wayfinding operations.
 - `.agents/triage-roles.md` maps category and intake-state roles, when triage is installed.
-- `.agents/domain.md` records glossary and architecture-decision conventions.
-- An `## Agent skills` block points consumers at those files, the shared documentation rules, and the scriptbook, so saved scripts and `memorize` are found during long sessions.
+- An `## Agent skills` block points consumers at those files. `document` and `memorize` then add their own pointers to `AGENTS.md`, so project documents and saved scripts are found during long sessions.
+
+It also offers [codify](../reference/codify.md) when the project has no conventions file, and a glossary map when the repository shows several domain contexts.
 
 ## Optional setups
 

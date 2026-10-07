@@ -30,7 +30,7 @@ None. The skill writes nothing itself: settled terms go through [document](./doc
 
 The move that makes the skill click: when you state how something works, it checks the code and surfaces the contradiction. *"Your code cancels entire Orders, but you just said partial cancellation is possible, which is right?"* The language and the code are made to agree, out loud, before either is changed.
 
-The limit is worth knowing. It cross-references **code** and the committed glossary and decision records, and nothing else. It does not search your issue tracker, so a naming collision that was argued out and deliberately settled in a closed issue months ago gets surfaced as if it were new. There is [an open request](https://github.com/mattpocock/skills/issues/717) to fix this; until then, the workaround is to put the instruction in your own `.agents/domain.md`, which the skills already read.
+The limit is worth knowing. It cross-references **code** and the committed glossary and decision records, and nothing else. It does not search your issue tracker, so a naming collision that was argued out and deliberately settled in a closed issue months ago gets surfaced as if it were new. There is [an open request](https://github.com/mattpocock/skills/issues/717) to fix this; until then, the workaround is to put the instruction in your own `AGENTS.md`, which every agent reads.
 
 ## Common questions
 

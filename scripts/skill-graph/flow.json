@@ -8,7 +8,8 @@
     "backlog": {"label": "Backlog", "path": "documentation/backlog.md", "description": "Candidate outcomes and deferrals not yet in progress."},
     "work-in-progress": {"label": "Work in progress", "path": "documentation/work-in-progress.md", "description": "The approved current batch, unfinished acceptance, and evidence."},
     "changelog": {"label": "Changelog", "path": "documentation/changelog.md", "description": "Semantic records of authorized agreements and deliveries."},
-    "domain-records": {"label": "Domain records", "path": "documentation/glossary.md, documentation/architecture-decision-record/, documentation/conventions.md", "description": "Ubiquitous language, consequential decisions, and domain-agnostic code conventions."},
+    "domain-records": {"label": "Domain records", "path": "documentation/glossary.md, documentation/architecture-decision-record/", "description": "Ubiquitous language and consequential decisions."},
+    "conventions": {"label": "Conventions", "path": "documentation/conventions.md", "description": "Project-agnostic code conventions a reviewer applies to any diff."},
     "research-note": {"label": "Research note", "description": "A cited Markdown file answering a question from primary sources."},
     "prototype-verdict": {"label": "Prototype verdict", "description": "An isolated experiment and the evidence it produced for one design question."},
     "decision-graph": {"label": "Decision graph", "description": "A map of blocking questions toward a named destination, one decision per session."},
@@ -68,7 +69,7 @@
     "implement": {"inputs": ["specification", "tasks", "work-in-progress", "ready-brief"], "outputs": ["code", "verification", "work-in-progress", "changelog"], "next": []},
     "test-first": {"inputs": ["specification", "tasks", "work-in-progress"], "outputs": ["code", "verification"], "next": ["review-and-refactor"]},
     "divide-and-conquer": {"inputs": ["tasks", "specification", "work-in-progress", "delegation-policy"], "outputs": ["code", "verification", "review-findings"], "next": []},
-    "review-and-refactor": {"inputs": ["code", "specification", "tasks", "work-in-progress"], "outputs": ["review-findings", "code"], "next": ["draft-merge-request", "test-first"]},
+    "review-and-refactor": {"inputs": ["code", "specification", "tasks", "work-in-progress", "conventions"], "outputs": ["review-findings", "code"], "next": ["draft-merge-request", "test-first"]},
     "address-feedback": {"inputs": ["feedback", "code"], "outputs": ["code", "verification", "published-message"], "next": ["implement"]},
     "iterate": {"inputs": ["idea", "backlog", "work-in-progress", "requirements", "specification"], "outputs": ["code", "backlog", "work-in-progress", "changelog"], "next": ["debug", "test-first"]},
 
@@ -80,7 +81,7 @@
 
     "triage": {"inputs": ["intake", "workspace-config"], "outputs": ["ready-brief", "backlog"], "next": ["implement", "specify", "debug"]},
     "debug": {"inputs": ["bug"], "outputs": ["code", "verification"], "next": ["improve-environment", "improve-codebase-architecture"]},
-    "improve-codebase-architecture": {"inputs": ["code"], "outputs": ["architecture-report", "decisions"], "next": ["specify", "iterate"]},
+    "improve-codebase-architecture": {"inputs": ["code", "conventions"], "outputs": ["architecture-report", "decisions"], "next": ["specify", "iterate"]},
     "improve-environment": {"inputs": ["session"], "outputs": ["environment-changes", "memory"], "next": []},
     "improve-skills": {"inputs": ["session"], "outputs": ["skill-issue"], "next": []},
     "monitor-ai-tooling": {"inputs": ["tooling-config"], "outputs": ["tooling-report"], "next": []},
@@ -98,11 +99,11 @@
     "walk-through": {"inputs": [], "outputs": ["wizard"], "next": []},
 
     "interview": {"inputs": ["idea"], "outputs": ["decisions"], "next": ["specify"]},
-    "document": {"inputs": ["code"], "outputs": ["technical-documents", "domain-records"], "next": []},
+    "document": {"inputs": ["code"], "outputs": ["technical-documents", "domain-records", "conventions"], "next": []},
     "delineate": {"inputs": ["domain-records", "code"], "outputs": ["domain-records"], "next": []},
-    "codify": {"inputs": ["code", "domain-records"], "outputs": ["domain-records"], "next": []},
+    "codify": {"inputs": ["code"], "outputs": ["conventions"], "next": []},
     "design-modules": {"inputs": [], "outputs": [], "next": ["improve-codebase-architecture"]},
-    "memorize": {"inputs": ["session"], "outputs": ["memory", "domain-records", "agent-instructions"], "next": []},
+    "memorize": {"inputs": ["session"], "outputs": ["memory", "domain-records", "conventions", "agent-instructions"], "next": []},
     "write-for-agents": {"inputs": ["agent-instructions"], "outputs": ["agent-instructions"], "next": []},
     "unslop": {"inputs": ["draft-prose"], "outputs": ["polished-prose"], "next": []}
   }

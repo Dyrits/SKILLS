@@ -120,7 +120,7 @@
     },
     {
       "name": "setup-ai-workspace",
-      "description": "Configure a repository for AI-assisted work: task tracking, ticket conventions, triage roles, domain documentation, optional tooling setups.",
+      "description": "Configure a repository for AI-assisted work: task tracking, ticket conventions, triage roles, code conventions, optional tooling setups.",
       "version": "0.2.0",
       "source": "./skills/setup/setup-ai-workspace"
     },

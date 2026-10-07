@@ -1,3 +1,3 @@
 interface:
   display_name: "Codify"
-  short_description: "Draft and confirm portable code conventions"
+  short_description: "Draft and confirm project-agnostic code conventions"

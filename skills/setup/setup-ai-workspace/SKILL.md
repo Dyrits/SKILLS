@@ -1,6 +1,6 @@
 ---
 name: setup-ai-workspace
-description: "Configure a repository for AI-assisted work: task tracking, ticket conventions, triage roles, domain documentation, optional tooling setups. Use when the user asks to set up or reconfigure the AI workspace."
+description: "Configure a repository for AI-assisted work: task tracking, ticket conventions, triage roles, code conventions, optional tooling setups. Use when the user asks to set up or reconfigure the AI workspace."
 metadata:
   forks: "mattpocock/skills/skills/engineering/setup-matt-pocock-skills"
 ---
@@ -18,7 +18,7 @@ Four decisions belong here:
 - The task tracker, local Markdown or a remote service.
 - The ticket-writing convention, the built-in `taskify` format or an established project template or skill.
 - The strings used for the two category and four intake-state roles.
-- The domain documentation layout and consumer rules.
+- Whether the domain needs several contexts, and whether to create code conventions now.
 
 ## 1. Explore
 
@@ -75,9 +75,9 @@ Only collect overrides if the user declines. The strings are configurable; the r
 
 ### D. Domain documentation
 
-Default to one glossary and one decision record folder without asking. Offer a glossary map with per-context glossaries only when monorepo signals justify it.
+A single-context repository needs nothing now: its glossary and decision records are created when the first term or decision is settled. When monorepo signals suggest several domain contexts, offer a glossary map with per-context glossaries; on acceptance, call the Skill tool with "document" to create the map.
 
-If the conventions file exists, record `Conventions: present`. Otherwise ask whether to create it through an interview, recommending yes when there is no standards document. On acceptance, call the Skill tool with "codify", with the **code** focus, then record `Conventions: present` once the file exists. On refusal, record `Conventions: declined`. When no rule was agreed and the file does not exist, delete the `Conventions:` line from `.agents/domain.md`: the template's own sentence already says the skills offer to create it.
+If the conventions file is missing, ask whether to create it through an interview, recommending yes when there is no standards document. On acceptance, call the Skill tool with "codify", with the **code** focus.
 
 ## 3. Confirm and write
 
@@ -95,10 +95,6 @@ Edit `AGENTS.md`, creating it when it does not exist. Update an existing `## Age
 ### Triage roles
 
 <one-line role-vocabulary summary>. See `.agents/triage-roles.md`.
-
-### Domain documentation
-
-<single-context or multi-context summary>. See `.agents/domain.md`.
 ```
 
 Omit the triage block and file when triage is not installed.
@@ -114,7 +110,7 @@ Seed `.agents/issue-tracker.md` from the selected template:
 
 For another tracker, use the same sections with the user's verified access and conventions. Append [refinement.md](refinement.md), which delegates the shared document contract instead of installing a separate drafting tree.
 
-Write [domain.md](domain.md), and [triage-roles.md](triage-roles.md) when applicable. Create only configuration needed now, not empty capability trees or speculative documents.
+Write [triage-roles.md](triage-roles.md) when applicable. Create only configuration needed now, not empty capability trees or speculative documents.
 
 ## 4. Optional setup
 

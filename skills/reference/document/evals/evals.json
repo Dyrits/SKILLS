@@ -197,7 +197,7 @@
       "id": 14,
       "kind": "behavior",
       "prompt": "Use the document skill and put these in documentation/conventions.md for the shop: (1) functions return a Result instead of throwing, because callers cannot tell thrown errors apart; (2) order totals are always rounded half up to whole cents; (3) never commit without running `npm run lint`; (4) visible text lives in data files in English and Dutch.",
-      "expected_output": "Only the portable rule is written; the others are routed to their owners, and the mixed one is split.",
+      "expected_output": "Only the project-agnostic rule is written; the others are routed to their owners, and the mixed one is split.",
       "files": [
         "evals/files/shop/documentation/glossary.md",
         "evals/files/shop/src/orders.ts"
@@ -206,7 +206,7 @@
         "Rule 1 is written to documentation/conventions.md with its reason",
         "Rule 2 is not written to documentation/conventions.md and is routed to documentation/requirements.md or the capability's specifications",
         "Rule 3 is routed to AGENTS.md, or the agent offers to wire it as a hook or CI check",
-        "Rule 4 is split: a portable rule such as no user-facing string literals in rendering code goes to documentation/conventions.md, and the language pair goes to requirements",
+        "Rule 4 is split: a project-agnostic rule such as no user-facing string literals in rendering code goes to documentation/conventions.md, and the language pair goes to requirements",
         "The agent tells the user where each rule went"
       ]
     },

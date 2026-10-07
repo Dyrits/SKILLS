@@ -24,12 +24,12 @@ Shared project documents live under `documentation/`. This skill owns where each
 | Draft | `documentation/capabilities/<capability>/draft.md` | Unresolved proposals only | [PROJECT-DOCUMENTS.md](PROJECT-DOCUMENTS.md) |
 | Task | `documentation/capabilities/<capability>/tasks/NN-<slug>.md` | Local task body, or a pointer to its published remote task | [PROJECT-DOCUMENTS.md](PROJECT-DOCUMENTS.md) |
 | Glossary | `documentation/glossary.md` | Domain terms | [GLOSSARY-FORMAT.md](GLOSSARY-FORMAT.md) |
-| Conventions | `documentation/conventions.md` | Portable code conventions no tool enforces | [CONVENTIONS-FORMAT.md](CONVENTIONS-FORMAT.md) |
+| Conventions | `documentation/conventions.md` | Project-agnostic code conventions no tool enforces | [CONVENTIONS-FORMAT.md](CONVENTIONS-FORMAT.md) |
 | Decision record | `documentation/architecture-decision-record/NNNN-<slug>.md` | Hard-to-reverse decisions and their reasons | [ARCHITECTURE-DECISION-RECORD-FORMAT.md](ARCHITECTURE-DECISION-RECORD-FORMAT.md) |
 
 A repository with several domain contexts lists them in `documentation/glossary-map.md`. Each context then keeps its own `documentation/` folder beside its code, holding its glossary and its decision records; the root folder keeps the map and the system-wide documents. When the topic's context is unclear, ask.
 
-Read the format file before writing a document, and create each document lazily: only when it carries useful information. A folder is created with its first document, never ahead of it. The project-document roles share the terms in PROJECT-DOCUMENTS.md (authorized, obligation, lazy, pointer); read it whenever a workflow reads or updates them.
+Read the format file before writing or checking a document, and create each document lazily: only when it carries useful information. A folder is created with its first document, never ahead of it. The project-document roles share the terms in PROJECT-DOCUMENTS.md (authorized, obligation, lazy, pointer); read it whenever a workflow reads or updates them.
 
 Completion: every document written sits at its layout path and follows its format file.
 
@@ -48,6 +48,6 @@ For a document that instructs agents, call the Skill tool with "write-for-agents
 
 When you create `documentation/`, or find the nearest `AGENTS.md` without this pointer, add it there once, checking for an existing one first:
 
-> Project documents (requirements, specifications, working state, changelog, glossary, conventions, decision records) live under `documentation/`. Call the Skill tool with "document" before creating, moving, or restructuring one.
+> Project documents (requirements, specifications, working state, changelog, glossary, conventions, decision records) live under `documentation/`. Use the glossary's terms and respect the decision records. Call the Skill tool with "document" before creating, moving, or restructuring one.
 
 When you create `documentation/` and the root `README.md` already has a section listing the project's documentation, add one line there linking to `documentation/`. Leave a `README.md` without such a section unchanged.

@@ -1,6 +1,6 @@
 name: setup-ai-workspace
 version: 0.2.0
-description: "Configure a repository for AI-assisted work: task tracking, ticket conventions, triage roles, domain documentation, optional tooling setups."
+description: "Configure a repository for AI-assisted work: task tracking, ticket conventions, triage roles, code conventions, optional tooling setups."
 dependencies:
   apm:
     - git: parent

@@ -24,10 +24,10 @@
         "The proposed agent-instruction block and configuration contents are shown to the user before any file is written, with a chance to adjust them",
         "AGENTS.md is edited in place, and no other instruction file is created",
         "The existing `## Agent skills` block is updated rather than a second one appended, and the user's surrounding instructions are preserved",
-        "The block contains Task tracker, Triage roles, and Domain documentation subsections",
+        "The block contains Task tracker and Triage roles subsections",
         "The document and memorize skills are called and each adds its own pointer to AGENTS.md once, and the agent shows the user the lines they added",
         ".agents/issue-tracker.md is seeded from the GitHub template and the refinement text is appended",
-        ".agents/triage-roles.md and .agents/domain.md are written",
+        ".agents/triage-roles.md is written, and no .agents/domain.md is created",
         "The GitHub template's external pull request intake flag stays off",
         "No empty capability trees or speculative documents are created"
       ]
@@ -44,7 +44,7 @@
         ".agents/issue-tracker.md is seeded from the local template, recording documentation/backlog.md as the backlog",
         "The agent records that local task bodies live under documentation/capabilities/<capability>/tasks/",
         "The agent does not claim to read or update any remote service",
-        "When the conventions interview is accepted but no rule is agreed and no documentation/conventions.md exists, the Conventions line is removed from .agents/domain.md, with no unresolved {present | declined} placeholder left"
+        "When the conventions interview is declined, no conventions file is created and the decline is not recorded anywhere"
       ]
     },
     {
@@ -80,12 +80,13 @@
       "id": 6,
       "kind": "behavior",
       "prompt": "Scratch git repository. Use the setup-ai-workspace skill. It is a monorepo: pnpm-workspace.yaml lists packages/ordering and packages/billing, each with its own package.json. There is no documentation/conventions.md. Answer the tracker and convention questions with the recommendations. For domain documentation, take the monorepo offer. Then, for documentation/conventions.md, say yes the first time you ask.",
-      "expected_output": "A multi-context layout is offered on monorepo evidence, and the conventions step goes through document.",
+      "expected_output": "A glossary map is offered on monorepo evidence, and the conventions step goes through codify.",
       "expectations": [
-        "The default of one glossary and one decision record folder is applied without asking, and a glossary map with per-context glossaries is offered because of the monorepo signals",
+        "A glossary map with per-context glossaries is offered because of the monorepo signals",
+        "On acceptance, the document skill is called and documentation/glossary-map.md lists the ordering and billing contexts",
         "The agent asks whether to create documentation/conventions.md through an interview and recommends yes because there is no standards document",
         "On acceptance, the codify skill is called with the code focus",
-        ".agents/domain.md is written from the domain template with the multi-context file structure and `Conventions: present`",
+        "No .agents/domain.md is created",
         "No glossary or architecture decision record files are created now, since they are created when terms or decisions are resolved"
       ]
     },

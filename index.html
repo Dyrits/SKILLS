@@ -252,6 +252,11 @@ const DATA = {
    "description": "An in-progress merge or rebase stopped on conflicting hunks.",
    "label": "Merge conflict"
   },
+  "conventions": {
+   "description": "Project-agnostic code conventions a reviewer applies to any diff.",
+   "label": "Conventions",
+   "path": "documentation/conventions.md"
+  },
   "decision-graph": {
    "description": "A map of blocking questions toward a named destination, one decision per session.",
    "label": "Decision graph"
@@ -265,9 +270,9 @@ const DATA = {
    "label": "Delegation policy"
   },
   "domain-records": {
-   "description": "Ubiquitous language, consequential decisions, and domain-agnostic code conventions.",
+   "description": "Ubiquitous language and consequential decisions.",
    "label": "Domain records",
-   "path": "documentation/glossary.md, documentation/architecture-decision-record/, documentation/conventions.md"
+   "path": "documentation/glossary.md, documentation/architecture-decision-record/"
   },
   "draft-prose": {
    "description": "Writing meant for other people.",
@@ -650,19 +655,18 @@ const DATA = {
    ],
    "handovers": [],
    "inputs": [
-    "code",
-    "domain-records"
+    "code"
    ],
    "next": [],
    "outputs": [
-    "domain-records"
+    "conventions"
    ],
    "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/reference/codify.md",
    "requires": [],
    "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/reference/codify/SKILL.md",
    "summary": [
     "codify writes down how code is written in your project, as rules a reviewer can apply to any diff. It drafts each candidate from patterns already in the code (how errors are handled, how tests are named), asks you to confirm it and give its reason, and has the confirmed rules written to the conventions file through document. It can also audit an existing conventions file.",
-    "A convention is portable: copied into another project on the same stack, with an unrelated domain, it still applies. A rule about what the product does is a requirement, and anything a linter or CI job can check belongs in that tool's configuration; codify routes those away instead of writing them down."
+    "A convention is project-agnostic: it applies to this project but could be transposed to another one on the same stack, because it is not tied to the product or its domain. A rule about what the product does is a requirement, and anything a linter or CI job can check belongs in that tool's configuration; codify routes those away instead of writing them down."
    ],
    "tagline": "Draft the project's code conventions from how its code is written, confirm each rule and its reason, or audit existing conventions."
   },
@@ -828,7 +832,8 @@ const DATA = {
    "next": [],
    "outputs": [
     "technical-documents",
-    "domain-records"
+    "domain-records",
+    "conventions"
    ],
    "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/reference/document.md",
    "requires": [],
@@ -1049,7 +1054,8 @@ const DATA = {
    ],
    "handovers": [],
    "inputs": [
-    "code"
+    "code",
+    "conventions"
    ],
    "next": [
     "specify",
@@ -1226,6 +1232,7 @@ const DATA = {
    "outputs": [
     "memory",
     "domain-records",
+    "conventions",
     "agent-instructions"
    ],
    "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/reference/memorize.md",
@@ -1511,7 +1518,8 @@ const DATA = {
     "code",
     "specification",
     "tasks",
-    "work-in-progress"
+    "work-in-progress",
+    "conventions"
    ],
    "next": [
     "draft-merge-request",
@@ -1569,7 +1577,7 @@ const DATA = {
     "setup-git-guardrails",
     "setup-git-hooks"
    ],
-   "description": "Configure a repository for AI-assisted work: task tracking, ticket conventions, triage roles, domain documentation, optional tooling setups. Use when the user asks to set up or reconfigure the AI workspace.",
+   "description": "Configure a repository for AI-assisted work: task tracking, ticket conventions, triage roles, code conventions, optional tooling setups. Use when the user asks to set up or reconfigure the AI workspace.",
    "fits": [
     "This is run-once setup for specify, taskify, triage, and graphify. Document owns the shared document rules; guide routes the workflow."
    ],
@@ -1584,7 +1592,7 @@ const DATA = {
    "requires": [],
    "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/setup/setup-ai-workspace/SKILL.md",
    "summary": [
-    "Configures one repository's task tracker, ticket-writing convention, triage-role vocabulary, and domain documentation. Its output is editable Markdown under .agents/, plus an agent-instruction block. It changes project configuration, not the installed skills. It then offers the other setups, so one run can prepare the whole workspace.",
+    "Configures one repository's task tracker, ticket-writing convention, and triage-role vocabulary, and offers code conventions and, for several domain contexts, a glossary map. Its output is editable Markdown under .agents/, plus an agent-instruction block. It changes project configuration, not the installed skills. It then offers the other setups, so one run can prepare the whole workspace.",
     "The tracker choice does not move specification authority. Agreed living behavior, design, and acceptance stay in documentation/capabilities/<capability>/specifications.md. Remote tasks link to or summarize that specification. Local documents can be maintained within scope without publishing remote records."
    ],
    "tagline": "Configure shared project documents, task tracking, triage roles, and the optional setups."

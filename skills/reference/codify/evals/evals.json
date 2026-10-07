@@ -27,7 +27,6 @@
         "evals/files/shop/documentation/glossary.md"
       ],
       "expectations": [
-        "The agent checks .agents/domain.md for a recorded decline before starting, and continues when none is recorded",
         "The agent calls the interview skill and asks about the code topics in rounds, beginning with naming",
         "Each question carries a recommended answer drawn from a pattern in the code, such as errors returned as a Result in orders.ts",
         "The agent points out that cancelOrder throws an Error while orders.ts returns Result values, and asks which style is the rule",
@@ -47,36 +46,38 @@
       "expectations": [
         "The agent applies the copy test to the whole file (would every rule hold in another project on the same stack)",
         "The refund rule is flagged as product behavior and a move to requirements is proposed",
-        "The visible-text rule is flagged as mixed and split into a portable rule and a language requirement",
+        "The visible-text rule is flagged as mixed and split into a project-agnostic rule and a language requirement",
         "The lint rule is flagged as agent workflow and a move to AGENTS.md or a lint hook is proposed",
-        "The typed-results and one-behaviour-per-test rules are confirmed as portable",
+        "The typed-results and one-behaviour-per-test rules are confirmed as project-agnostic",
         "The file is not changed and nothing is moved until the user approves"
       ]
     },
     {
       "id": 4,
       "kind": "behavior",
-      "prompt": "A review skill asked you to set up documentation/conventions.md for the project in evals/files/declined/ with a code focus. Use the codify skill for this step.",
-      "expected_output": "A recorded decline is respected: the agent returns to the caller without asking again.",
+      "prompt": "A review skill found no conventions for the project in evals/files/shop/ and raised them with a code focus. Use the codify skill for this step. When it asks whether to create them, answer: not now.",
+      "expected_output": "The offer is made, the no is respected, and nothing is recorded, so a later run asks again.",
       "files": [
-        "evals/files/declined/.agents/domain.md"
+        "evals/files/shop/src/orders.ts"
       ],
       "expectations": [
-        "The agent reads .agents/domain.md and finds Conventions: declined",
-        "The agent does not ask the user whether to create documentation/conventions.md",
-        "The agent returns to the caller and says the conventions step was skipped because it was declined earlier",
-        "No documentation/conventions.md is created"
+        "The agent asks once whether to create the conventions now",
+        "After the no, the agent returns to the caller without starting the interview",
+        "No documentation/conventions.md is created and nothing under .agents/ is written to record the decline"
       ]
     },
     {
       "id": 5,
       "kind": "behavior",
-      "prompt": "Use the codify skill. Create a documentation/conventions.md for this project. A previous run recorded Conventions: declined in .agents/domain.md.",
-      "expected_output": "The direct request overrides the recorded decline and goes to the interview without an offer.",
+      "prompt": "You are running as a subagent of a code review, with no user available to answer questions. The review found no conventions for the project in evals/files/shop/. Use the codify skill for this step with a code focus.",
+      "expected_output": "With no one to ask, the agent returns at once and tells the caller the conventions are missing.",
       "expectations": [
-        "The agent does not ask whether to create documentation/conventions.md, since the user asked for it",
-        "The agent starts the code-convention interview through the interview skill, each question with a recommended answer",
-        "A previous decline does not stop the request"
+        "The agent does not ask a question or wait for an answer",
+        "The agent returns to the caller and says the conventions are missing",
+        "No documentation/conventions.md is created"
+      ],
+      "files": [
+        "evals/files/shop/src/orders.ts"
       ]
     },
     {

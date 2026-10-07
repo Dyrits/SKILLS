@@ -40,7 +40,7 @@ Research, test-first work, diagnosis, and milestone reviews remain conditional b
 
 The `document` skill owns the shared project documents and where each lives: requirements, specifications, drafts, tasks, backlog, work-in-progress, the changelog, the glossary, conventions, and decision records. When the user asks what each one holds, read the `document` skill. Both workflows use the same documents, so switching between them keeps agreements and progress; `iterate` writes light changelog records and the planned workflow writes full ones.
 
-The glossary, decision records, and conventions retain their separate roles: domain language, consequential decisions, and domain-agnostic code conventions. `/document` owns where each lives and its format; `/delineate` settles the terms, `/codify` the conventions, and `/interview` the decisions that go into them.
+The glossary, decision records, and conventions retain their separate roles: domain language, consequential decisions, and project-agnostic code conventions. `/document` owns where each lives and its format; `/delineate` settles the terms, `/codify` the conventions, and `/interview` the decisions that go into them.
 
 ## On-ramps and open questions
 

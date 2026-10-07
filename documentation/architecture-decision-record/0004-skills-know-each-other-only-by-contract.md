@@ -15,7 +15,7 @@ Knowledge of another skill's internals had leaked across the collection. Root pa
 ## Considered options
 
 - **Fully autonomous skills**: each skill restates what it needs. No dependencies, but every shared protocol (the changelog format, the interview discipline) is copied and drifts.
-- **`model-domain` owns the glossary, conventions, and decision record formats**: the previous split. It fused three unrelated jobs into one skill (conventions are domain-agnostic) and forced `document` to know another skill's files.
+- **`model-domain` owns the glossary, conventions, and decision record formats**: the previous split. It fused three unrelated jobs into one skill (conventions are project-agnostic, tied to no domain) and forced `document` to know another skill's files.
 - **Retiring `model-domain` into `interview`**: a term is a decision about a word, so `interview` could settle it. Rejected because terms and conventions each have their own trigger and callers, and the checks against the glossary and the code are not something a general interview does.
 - **A full documentation map in each project's `AGENTS.md`**: every skill could look up paths without a call, but the map costs context on every turn and every project's copy goes stale when the layout changes. A one-line pointer to `document` gives the same protection.
 
