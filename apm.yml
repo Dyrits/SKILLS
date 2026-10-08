@@ -23,6 +23,8 @@ dependencies:
     - git: parent
       path: skills/productivity/re-explain
     - git: parent
+      path: skills/productivity/swarm
+    - git: parent
       path: skills/productivity/teach
     - git: parent
       path: skills/productivity/unslop
@@ -132,6 +134,9 @@ marketplace:
     - name: re-explain
       source: ./skills/productivity/re-explain
       description: "Re-explain what did not land, with the missing context and familiar vocabulary."
+    - name: swarm
+      source: ./skills/productivity/swarm
+      description: "Divide one task into independent pieces and run them in parallel on fast, low-cost subagents the user selects, then merge and spot-check their reports."
     - name: teach
       source: ./skills/productivity/teach
       description: "Teach the user a skill or concept over multiple sessions in a stateful workspace."

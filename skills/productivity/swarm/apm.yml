@@ -1,0 +1,3 @@
+name: swarm
+version: 0.2.0
+description: "Divide one task into independent pieces and run them in parallel on fast, low-cost subagents the user selects, then merge and spot-check their reports."
