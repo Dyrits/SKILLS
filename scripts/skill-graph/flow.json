@@ -40,7 +40,6 @@
     "agent-instructions": {"label": "Agent instructions", "path": "SKILL.md, AGENTS.md", "description": "Documents an agent reads: skills, steering files, prompts."},
     "draft-prose": {"label": "Draft prose", "description": "Writing meant for other people."},
     "polished-prose": {"label": "Polished prose", "description": "The same writing without filler and AI tells."},
-    "technical-documents": {"label": "Technical documents", "description": "README, API reference, runbook, architecture, or onboarding documents."},
     "workflow-specification": {"label": "Workflow specification", "path": "workflows/*.md", "description": "A recurring loop specified so an implementer needs no questions."},
     "process-recommendation": {"label": "Process recommendation", "description": "A mapped process, its delays, and a sequence to try next cycle."},
     "visual": {"label": "Visual explanation", "description": "The smallest diagram, sketch, or HTML artifact that answers the question."},
@@ -96,9 +95,7 @@
     "teach": {"inputs": ["idea"], "outputs": ["teaching-workspace"], "next": []},
     "walk-through": {"inputs": [], "outputs": ["wizard"], "next": []},
     "interview": {"inputs": ["idea"], "outputs": ["decisions"], "next": ["specify"]},
-    "document": {"inputs": ["code"], "outputs": ["technical-documents", "domain-records", "conventions"], "next": []},
     "codify": {"inputs": ["code"], "outputs": ["conventions"], "next": []},
-    "design-modules": {"inputs": [], "outputs": [], "next": ["improve-codebase-architecture"]},
     "memorize": {"inputs": ["session"], "outputs": ["memory", "domain-records", "conventions", "agent-instructions"], "next": []},
     "write-for-agents": {"inputs": ["agent-instructions"], "outputs": ["agent-instructions"], "next": []},
     "unslop": {"inputs": ["draft-prose"], "outputs": ["polished-prose"], "next": []}

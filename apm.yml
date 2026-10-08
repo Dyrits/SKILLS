@@ -31,10 +31,6 @@ dependencies:
     - git: parent
       path: skills/productivity/write-for-agents
     - git: parent
-      path: skills/reference/design-modules
-    - git: parent
-      path: skills/reference/document
-    - git: parent
       path: skills/setup/codify
     - git: parent
       path: skills/setup/setup-ai-tooling
@@ -148,12 +144,6 @@ marketplace:
     - name: write-for-agents
       source: ./skills/productivity/write-for-agents
       description: "Write documents for agents: skills, AGENTS.md, and documents reached by a pointer."
-    - name: design-modules
-      source: ./skills/reference/design-modules
-      description: "Shared vocabulary for designing deep modules."
-    - name: document
-      source: ./skills/reference/document
-      description: "Write and maintain project documentation, and own where each shared project document lives and its format (requirements, specifications, backlog, working state, tasks, changelog, glossary, code conventions, architecture decision records)."
     - name: codify
       source: ./skills/setup/codify
       description: "Define the project's code conventions by drafting candidate rules from how the code is already written and confirming each with the user and its reason, or audit an existing conventions file."

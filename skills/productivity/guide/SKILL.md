@@ -92,8 +92,6 @@ Work the table top to bottom. The first row that fits wins.
 | `/teach` | Maintain a mission-grounded teaching workspace across sessions. |
 | `/optimize-process` | Improve a recurring process using actual friction and evidence. |
 | `/codify` | Define or audit the project's code conventions. |
-| `/design-modules` | Design deep modules, useful seams, and testable interfaces. |
-| `/document` | Maintain technical documents and shared project documents, including the glossary, conventions, and decision records. |
 | `/write-for-agents` | Write skills, steering instructions, and agent references. |
 | `/walk-through` | Generate an interactive script for steps only a human can perform. |
 | `/unslop` | Remove filler and recurring AI writing patterns from prose. |

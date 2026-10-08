@@ -6,7 +6,6 @@ Skills are organized into bucket folders under `skills/`:
 - `upkeep/`: keep the codebase and issue list healthy; generates work for the flow
 - `version-control/`: branches, merge requests, and their history
 - `productivity/`: human-facing workflows and procedures you run, not part of the delivery flow
-- `reference/`: skills awaiting retirement (`document`, `design-modules`); add nothing new here
 
 Every skill has an entry in `.claude-plugin/plugin.json`'s `skills` array (the Claude Code plugin ships exactly that set), a reference in the top-level `README.md` and in its bucket's `README.md`, and a documentation page. Adding or removing a skill means updating all four. `scripts/check-skills.py` enforces this.
 

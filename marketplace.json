@@ -84,18 +84,6 @@
       "source": "./skills/productivity/write-for-agents"
     },
     {
-      "name": "design-modules",
-      "description": "Shared vocabulary for designing deep modules.",
-      "version": "0.2.0",
-      "source": "./skills/reference/design-modules"
-    },
-    {
-      "name": "document",
-      "description": "Write and maintain project documentation, and own where each shared project document lives and its format (requirements, specifications, backlog, working state, tasks, changelog, glossary, code conventions, architecture decision records).",
-      "version": "0.2.0",
-      "source": "./skills/reference/document"
-    },
-    {
       "name": "codify",
       "description": "Define the project's code conventions by drafting candidate rules from how the code is already written and confirming each with the user and its reason, or audit an existing conventions file.",
       "version": "0.2.0",

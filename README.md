@@ -14,7 +14,7 @@ These skills are small, editable, and composable. Use explicit planning phases o
 npx skills@latest add Dyrits/SKILLS
 ```
 
-Pick the skills you want, and which coding agents to install them on. **The installer lets you choose which skills to take: make sure `setup-ai-workspace` and `document` are among them, since most workflows rely on `document`.**
+Pick the skills you want, and which coding agents to install them on. **The installer lets you choose which skills to take: install `setup-ai-workspace` first.**
 
 Run `/setup-ai-workspace` once per repository to configure local or remote task tracking, task-writing conventions, triage roles, domain documentation, and the optional setups (tooling, commit hooks, Git guardrails, automatic handoff, delegation policy).
 
@@ -35,7 +35,7 @@ apm install Dyrits/SKILLS --global
 
 APM selects the target agent clients from its configuration or auto-detection. Add `--target claude,codex` to select them explicitly. If existing skills cause conflicts, add `--force` only when you intend to replace them. It permits overwriting locally authored files and also bypasses blocking security findings.
 
-Install `setup-ai-workspace` first; `document` arrives with any skill that needs it.
+Install `setup-ai-workspace` first.
 
 ### Updating installed skills
 
@@ -62,7 +62,7 @@ Review the update plan and confirm it. For project installations, run `apm updat
 | Planned development | Once per system, `delineate → architect`; then per capability, `specify → engineer → taskify → implement → review-and-refactor`. Skip any step whose result already exists or that small work does not need. |
 | Just-in-time development | [iterate](./skills/workflow/iterate/SKILL.md) clarifies, builds, and validates the next useful increment. |
 
-The [document](./skills/reference/document/SKILL.md) skill owns the [shared project-document rules](./skills/reference/document/PROJECT-DOCUMENTS.md).
+Each skill carries the project-document rules it needs and finds a document through the project's `AGENTS.md`.
 
 To see what each skill reads and writes and which skills it works with, open the [skills page](./index.html) in a browser: every skill has a small graph.
 
@@ -169,10 +169,3 @@ The manifest is the source of truth for this list; it holds every skill in the r
 - [write-for-agents](./skills/productivity/write-for-agents/SKILL.md): Write predictable agent instructions with clear completion criteria.
 - [unslop](./skills/productivity/unslop/SKILL.md): Remove filler and recurring AI writing patterns.
 - [memorize](./skills/productivity/memorize/SKILL.md): File lessons where the next agent will look, and reuse saved scripts before writing new ones.
-
-### Reference
-
-Skills awaiting retirement: their remaining callers still use them, and each is removed once those callers carry what they need ([0005](./documentation/architecture-decision-record/0005-make-skills-autonomous.md), [0006](./documentation/architecture-decision-record/0006-describe-systems-and-capabilities-functionally-and-technically.md)).
-
-- [design-modules](./skills/reference/design-modules/SKILL.md): Design deep modules with clear interfaces and useful seams.
-- [document](./skills/reference/document/SKILL.md): Maintain technical documentation and shared project-document rules.

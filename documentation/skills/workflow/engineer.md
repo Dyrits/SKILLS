@@ -1,4 +1,4 @@
-Fork-specific skill, added by [architecture decision record 0006](../../architecture-decision-record/0006-describe-systems-and-capabilities-functionally-and-technically.md). Its module vocabulary and its deepening and design-it-twice references are copied from [design-modules](../reference/design-modules.md), which forks upstream `codebase-design`.
+Fork-specific skill, added by [architecture decision record 0006](../../architecture-decision-record/0006-describe-systems-and-capabilities-functionally-and-technically.md). Its module vocabulary and its deepening and design-it-twice references derive from upstream `codebase-design`, which this fork once shipped as `design-modules`.
 
 ## What it does
 

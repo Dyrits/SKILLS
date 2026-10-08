@@ -12,7 +12,7 @@ It was called `writing-great-skills` until v1.1. The rename reflects its wider s
 
 Type `/write-for-agents`, or an agent can reach for it when you're creating or editing a skill, or modifying `AGENTS.md`.
 
-Reach for it by hand for other agent-facing documents, specifications, tasks, and unattended prompts. The test is whether an agent reads the text. [specify](../workflow/specify.md) establishes agreed capability behavior; [document](../reference/document.md) owns the project-document model. This reference governs how the instructions read, not what behavior the project should agree to.
+Reach for it by hand for other agent-facing documents, specifications, tasks, and unattended prompts. The test is whether an agent reads the text. [specify](../workflow/specify.md) establishes agreed capability behavior; each skill carries the project-document rules it needs. This reference governs how the instructions read, not what behavior the project should agree to.
 
 ## The two loads
 
@@ -67,7 +67,7 @@ The common route (do the work once, then have the agent write it up as a skill) 
 
 **Should every batch create requirements, specifications, and tasks?**
 
-No. [document](../reference/document.md) owns the shared project-document rules. Existing requirements and agreed specifications still apply, but a small living-code batch can use backlog, work-in-progress, and the root changelog without creating new capability documents. Write instructions that preserve obligations while creating records only when useful; clarity is not a reason to duplicate the same agreement in several files.
+No. Existing requirements and agreed specifications still apply, but a small living-code batch can use backlog, work-in-progress, and the root changelog without creating new capability documents. Write instructions that preserve obligations while creating records only when useful; clarity is not a reason to duplicate the same agreement in several files.
 
 **English isn't my first language. Do I lose the leading-word advantage?**
 The technique does not require English. Use familiar, consistently defined terms in the document's language, and keep the explicit instruction if a shorter term would lose meaning.
@@ -81,4 +81,4 @@ The technique does not require English. Use familiar, consistently defined terms
 
 ## Where it fits
 
-This is a standalone reference used within authoring tasks, not another delivery stage. [memorize](./memorize.md) loads it before filing a lesson in a steering file; [document](../reference/document.md) owns shared project-document responsibilities. Requested skill evaluations use the external `skill-creator` workflow. When you're unsure which skill or flow fits a task, [guide](../productivity/guide.md) helps choose.
+This is a standalone reference used within authoring tasks, not another delivery stage. [memorize](./memorize.md) loads it before filing a lesson in a steering file. Requested skill evaluations use the external `skill-creator` workflow. When you're unsure which skill or flow fits a task, [guide](../productivity/guide.md) helps choose.

@@ -72,8 +72,6 @@ For publishing conclusions already reached, [publish-message](../productivity/pu
 | Learning is a continuing project | [teach](../productivity/teach.md), in a dedicated teaching workspace. |
 | A recurring process has waiting, rework, or handoff friction | [optimize-process](../productivity/optimize-process.md), using evidence from actual cycles. |
 | Domain terms are inconsistent | [delineate](../workflow/delineate.md). |
-| A module needs a deeper interface or useful seam | [design-modules](../reference/design-modules.md). |
-| Project documents need maintenance | [document](../reference/document.md), preserving their separate responsibilities. |
 | Skills or steering instructions need clearer agent-facing text | [write-for-agents](../productivity/write-for-agents.md). |
 | A manual dashboard, credentials, or cutover step blocks automation | [walk-through](../productivity/walk-through.md). |
 | Writing needs filler and AI patterns removed | [unslop](../productivity/unslop.md). |
