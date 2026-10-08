@@ -23,7 +23,7 @@ This command is _informed_ by the project's domain model and built on a shared d
 - If the user named a direction (a module, a subsystem, a pain point), take it, and skip the inference below.
 - Otherwise, walk back a good stretch of the commit history (`git log --oneline`) to find the codebase's hot spots, the files and areas that keep coming up, and let those paths pull your attention first. If the changes are scattered with no clear hot spot, widen the net.
 
-Read the project's glossary and any decision records in the area you're touching first, along with the conventions file when it exists.
+Read the project's glossary, the decision records in the area you're touching, and the conventions file first, when `AGENTS.md` points to them.
 When it is missing, scan without project conventions and say so in the report.
 
 Then spawn a sub-agent to walk the codebase. Don't follow rigid heuristics; explore organically and note where you experience friction:
@@ -38,7 +38,7 @@ Apply the **deletion test** to anything you suspect is shallow: would deleting i
 
 ### 2. Present candidates as an HTML report
 
-Write a self-contained HTML file to `documentation/architecture-audit/` in the repository (create the directory lazily if missing), filename `architecture-audit-<timestamp>.html` so each run gets a fresh file and history accumulates. Open it for the user (`xdg-open <path>` on Linux, `open <path>` on macOS, `start <path>` on Windows) and tell them the path relative to the repository root.
+Write a self-contained HTML file to `documentation/architecture-audit/` in the repository (create the directory lazily if missing, and when you create it, add one line to the nearest `AGENTS.md` saying it holds architecture audit reports), filename `architecture-audit-<timestamp>.html` so each run gets a fresh file and history accumulates. Open it for the user (`xdg-open <path>` on Linux, `open <path>` on macOS, `start <path>` on Windows) and tell them the path relative to the repository root.
 
 The report uses **Tailwind via CDN** for layout and styling, and **Mermaid via CDN** for diagrams where a graph/flow/sequence reliably communicates the structure. Mix Mermaid with hand-crafted CSS/SVG visuals: use Mermaid when relationships are graph-shaped (call graphs, dependencies, sequences), and hand-built divs/SVG when you want something more editorial (mass diagrams, cross-sections, collapse animations). Each candidate gets a **before/after visualisation**. Be visual.
 

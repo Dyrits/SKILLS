@@ -15,9 +15,9 @@ The destination might be a specification to hand off, a decision to settle befor
 
 The project documents and their rules are in [PROJECT-DOCUMENTS.md](PROJECT-DOCUMENTS.md); its terms (authorized, obligation, lazy, pointer) apply throughout, and requirements constrain the destination and every decision.
 
-Read `.agents/issue-tracker.md` for map storage, parent-child relationships, blocking, claims, and frontier queries. If it is missing, tell the user that charting needs the tracker configured (where the map and its tasks live, and how blocking is recorded), then stop.
+Read the task tracker configuration that `AGENTS.md` points to for map storage, parent-child relationships, blocking, claims, and frontier queries. If it points to none, tell the user that charting needs the tracker configured (where the map and its tasks live, and how blocking is recorded), then stop.
 
-- A local map lives at `documentation/capabilities/<capability>/map.md`; its decision tasks are capability task files.
+- A local map lives where the tracker configuration says; its decision tasks are capability task files.
 - A remote map and its children use native tracker records and relationships.
 - The capability's specifications hold the agreed living behavior, design, and acceptance; its draft holds open proposals. The map indexes decisions and each task keeps its rationale.
 
@@ -103,7 +103,7 @@ Work beyond the destination belongs in **Out of scope**, not fog. It returns onl
 
 If an existing task turns out to be outside this effort, close it and add a gist, reason, and link under **Out of scope**. Keep it out of **Decisions so far**, which records the route taken.
 
-Record a candidate deferred to another effort in the backlog, following the backlog authority in [PROJECT-DOCUMENTS.md](PROJECT-DOCUMENTS.md). Out of scope here marks this effort's boundary; triage's `documentation/out-of-scope/` knowledge base records project-wide rejections of enhancement requests.
+Record a candidate deferred to another effort in the backlog, following the backlog authority in [PROJECT-DOCUMENTS.md](PROJECT-DOCUMENTS.md). Out of scope here marks this effort's boundary; a project's records of rejected enhancement requests, when it keeps them, cover project-wide rejections.
 
 ## Invocation
 

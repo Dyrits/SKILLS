@@ -13,7 +13,7 @@ When reading or updating project agreements and work records, follow [PROJECT-DO
 
 Record unfinished cycles and verification evidence in working state under the shared model. Tests establish only what they exercise; appearance and interaction acceptance may require human judgment. The calling implementation workflow records completed authorized agreements and deliveries in the changelog using the shared format.
 
-When exploring the codebase, read the glossary (if it exists) so test names and interface vocabulary match the project's domain language, and respect decision records in the area you're touching.
+When exploring the codebase, read the glossary and the decision records `AGENTS.md` points to, so test names and interface vocabulary match the project's domain language, and respect the decision records in the area you're touching.
 
 ## What a good test is
 

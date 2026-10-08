@@ -6,7 +6,7 @@ Use this branch at an agreed milestone, before delivery, or after substantial st
 
 Name the capability and paths under review. Supply the starting revision and the agreed behavior, including accepted changes, open choices, and constraints. Capture that agreement before pruning working notes, so the reviewer reads intent from records instead of reconstructing it from the implementation.
 
-Use existing requirements, specifications, test cases, working notes, architecture decision records, and recorded approvals as evidence, with pointers to them. Write a short milestone behavior record under `documentation/` only when those sources cannot recover the agreement.
+Use existing requirements, specifications, test cases, working notes, architecture decision records, and recorded approvals as evidence, with pointers to them. Write a short milestone behavior record under `documentation/` only when those sources cannot recover the agreement, and add its `AGENTS.md` line as [PROJECT-DOCUMENTS.md](PROJECT-DOCUMENTS.md) describes.
 
 In a versioned project, the goal's starting revision recorded before its first batch is the baseline for a later delivery review; record a narrower one when a milestone's first batch is agreed. Pass the chosen fixed point to the review. Restrict the review to this project's paths and owned changes, including new files, and leave unrelated workspace edits alone.
 

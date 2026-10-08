@@ -7,7 +7,7 @@ argument-hint: "Optional: where to post, and what to say"
 Publish conclusions already established in this conversation to a destination other people read: a pull or merge request, an issue or ticket, a chat channel or thread, a documentation page, an email. Accept findings from any review source; use the established evidence and dispositions as the input.
 Draft the complete publication in the destination's conventions, obtain approval of its exact text and destination, then publish and verify it.
 
-`.agents/issue-tracker.md`, when present, records the verified posting mechanism for the project's tracker and saves re-deriving it. Resolve the destination and posting mechanism directly (steps 1 and 2) when it is missing or does not cover the resolved destination.
+The task tracker configuration, when `AGENTS.md` points to one, records the verified posting mechanism for the project's tracker and saves re-deriving it. Resolve the destination and posting mechanism directly (steps 1 and 2) when there is none or it does not cover the resolved destination.
 
 ## Process
 
@@ -21,7 +21,7 @@ Done when the service, the exact destination, its surrounding context, and its a
 
 ### 2. Resolve how to post
 
-If `.agents/issue-tracker.md` covers the destination, use the mechanism it records. A file that names a different tool than the destination's service (a GitHub tracker file for a Slack channel) does not cover it; resolve this destination as if the file were missing. Otherwise prefer a connected MCP tool or connector for the service (a GitHub, GitLab, Jira, Linear, Slack, Confluence, Notion, or mail server, for example), then the service's CLI (`gh`, `glab`, and similar), then its documented API with credentials already configured.
+If the task tracker configuration covers the destination, use the mechanism it records. A configuration that names a different tool than the destination's service (a GitHub tracker for a Slack channel) does not cover it; resolve this destination as if there were none. Otherwise prefer a connected MCP tool or connector for the service (a GitHub, GitLab, Jira, Linear, Slack, Confluence, Notion, or mail server, for example), then the service's CLI (`gh`, `glab`, and similar), then its documented API with credentials already configured.
 
 Ask the user how to post only when nothing resolves unambiguously: several tools could apply and it is unclear which reaches the destination, or none can. When no mechanism can reach it, step 5 hands the approved text to the user instead.
 

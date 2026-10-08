@@ -16,7 +16,7 @@ Take one branch:
 
 ## Gather
 
-Read what exists before asking anything: `README.md`, `AGENTS.md`, the domain outline, the requirements, the glossary, existing capability specifications under `documentation/capabilities/`, and the code's entry points and domain types. Draft every section of the outline from that evidence, marking each claim as stated by a document or inferred from the code.
+Read what exists before asking anything: `README.md`, `AGENTS.md`, and the documents `AGENTS.md` names (the domain outline, the requirements, the glossary, existing capability specifications), and the code's entry points and domain types. A kind of document `AGENTS.md` does not name does not exist yet. Draft every section of the outline from that evidence, marking each claim as stated by a document or inferred from the code.
 
 ## Outline
 
@@ -43,7 +43,7 @@ When several terms are open at once, settle them in rounds through the [intervie
 
 ## Write it down
 
-Write each item as soon as it is settled, without batching: the outline to `documentation/outline.md`, requirements to `documentation/requirements.md`, terms to the glossary. Where the project already keeps one of these elsewhere, update it in place. Create a document only when it has content, and a folder with its first document.
+Write each item as soon as it is settled, without batching: the outline, the requirements, and terms to the glossary, each in the document `AGENTS.md` names, updated in place. When `AGENTS.md` names none, create the outline at `documentation/outline.md`, and the requirements and glossary where their formats say. Create a document only when it has content, and a folder with its first document.
 
 To clean up an existing glossary, propose a home for every entry that is not a term: a requirement to the requirements, agreed behavior to its capability's specifications, a technical decision reported to the user. Sharpen the terms that stay. Move nothing without the user's approval.
 

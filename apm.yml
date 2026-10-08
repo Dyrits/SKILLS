@@ -162,7 +162,7 @@ marketplace:
       description: "Set up free AI development tools for a project and its installed agent clients."
     - name: setup-ai-workspace
       source: ./skills/setup/setup-ai-workspace
-      description: "Configure a repository for AI-assisted work: task tracking, ticket conventions, triage roles, and agent navigation to the project documents."
+      description: "Configure a repository for AI-assisted work: task tracking, ticket conventions, and triage roles."
     - name: setup-delegation-policy
       source: ./skills/setup/setup-delegation-policy
       description: "Install the delegation and model routing rule into the global steering files on this machine."

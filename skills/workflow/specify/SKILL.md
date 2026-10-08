@@ -15,7 +15,7 @@ The documents and their rules are in [PROJECT-DOCUMENTS.md](PROJECT-DOCUMENTS.md
 
 ## Gather and reconcile
 
-Inspect the conversation, applicable instructions, the domain outline (`documentation/outline.md`), system-wide and capability requirements, existing specifications, backlog, working state, glossary, and relevant code. Fetch the full body and comments of referenced remote records when they are relevant inputs.
+Find the project's documents through `AGENTS.md`, as [PROJECT-DOCUMENTS.md](PROJECT-DOCUMENTS.md) describes. Inspect the conversation, applicable instructions, the domain outline, system-wide and capability requirements, existing specifications, backlog, working state, glossary, and relevant code. Fetch the full body and comments of referenced remote records when they are relevant inputs.
 
 Identify the selected capability and account for every applicable requirement. Reuse existing agreements. A missing blocking decision stays explicit and open until the user settles it.
 
@@ -33,13 +33,13 @@ When building something would settle a question better than discussion (an inter
 
 Record newly established obligations in the capability's requirements, or the system-wide requirements when they bind more than this capability, following [REQUIREMENTS-FORMAT.md](REQUIREMENTS-FORMAT.md), and point to them from the specification.
 
-Write or update `documentation/capabilities/<capability>/specifications.md`. Include the problem and intended outcome, agreed behavior and relevant edge cases, external contracts, acceptance and validation, requirement references, dependencies on other capabilities, and explicit exclusions. Complete this scope without demanding an exhaustive specification for future product work.
+Write or update the capability's specifications. Include the problem and intended outcome, agreed behavior and relevant edge cases, external contracts, acceptance and validation, requirement references, dependencies on other capabilities, and explicit exclusions. Complete this scope without demanding an exhaustive specification for future product work.
 
 Use the glossary's terms. Unresolved proposals belong in the draft, not among agreed behavior.
 
 Record authorized agreements in the changelog, and keep the backlog and working state current. When the specifications are new and the domain outline lists capabilities, add this capability's line there or link its specifications from it.
 
-When you create the project's first capability specifications, add one line saying where capability specifications live and when to read them to the nearest `AGENTS.md`, and a link to `documentation/capabilities/` where the root `README.md` lists the project's documentation (adding a short Documentation section if there is none). Do the same for any other document you create, such as the changelog or backlog. Check for an existing line first.
+When you create a document (the project's first capability specifications, the changelog, the backlog), add its `AGENTS.md` line and `README.md` link as [PROJECT-DOCUMENTS.md](PROJECT-DOCUMENTS.md) describes; one line covers all capability specifications.
 
 With no user to answer (a subagent run), write nothing as agreed: return the draft and the open decisions, each with its recommendation.
 

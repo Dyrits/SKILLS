@@ -40,7 +40,7 @@ A bad reference or an empty complete diff ends the run before dispatch.
 The project documents and their rules are in [PROJECT-DOCUMENTS.md](PROJECT-DOCUMENTS.md); its terms apply.
 Recover the authorized behavior from the caller or user, tasks, specifications and requirements, or a user-approved batch in working state.
 
-When `.agents/issue-tracker.md` exists, fetch relevant task references through its workflow.
+When `AGENTS.md` points to a task tracker configuration, fetch relevant task references through its workflow.
 
 Freeze copies or revisions of the originating agreement and the verification evidence alongside the starting diff for both reviewers. Distinguish agreed behavior from unresolved proposals in a capability's draft and unapproved backlog candidates. Do not infer the agreement solely from the implementation under review.
 
@@ -48,7 +48,7 @@ If no behavior agreement is recoverable, ask the user to supply it or explicitly
 
 ### 3. Identify the standards sources
 
-Find repository instructions about how code should be written, such as the project's conventions file, `CONTRIBUTING.md`, and applicable steering files.
+Find repository instructions about how code should be written: the conventions file and other standards documents `AGENTS.md` points to, `CONTRIBUTING.md`, and applicable steering files.
 Read the conventions file first when it exists.
 When it is missing and no other standards document turns up, continue with the smell baseline alone, and report that the repository documents no coding standards.
 Read relevant decision records and the glossary when they constrain the changed code.

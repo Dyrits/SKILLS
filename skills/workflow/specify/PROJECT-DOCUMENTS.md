@@ -1,14 +1,25 @@
 # Project documents
 
-The shared project documents a specification works with, and the rules for each. Use the project's existing documents in place when it keeps them elsewhere.
+The kinds of shared project documents this skill reads and updates, and the rules for each.
 
-| Document | Path |
-| --- | --- |
-| Backlog | `documentation/backlog.md` |
-| Working state | `documentation/work-in-progress.md` |
-| Changelog | `documentation/changelog.md` |
-| Capability specifications | `documentation/capabilities/<capability>/specifications.md` |
-| Draft | `documentation/capabilities/<capability>/draft.md`, unresolved proposals only |
+## Finding them
+
+The project's `AGENTS.md` names its documents and where they live; read it to find each kind below, and use the document it names, wherever that is. A kind it does not name does not exist yet: a step that only reads it treats it as absent. A step that must write it creates it at the default location below, lazily (only when it carries useful information, and a folder with its first document), then adds one line to the nearest `AGENTS.md` saying what the document holds, where it lives, and when to read it, and links it where the root `README.md` lists the project's documentation (adding a short Documentation section if there is none). Check for an existing line first, and keep one line per kind of document, not one per file.
+
+| Kind | Holds | Default location when created |
+| --- | --- | --- |
+| Requirements | Global obligations | `documentation/requirements.md` |
+| Backlog | Candidate outcomes and deferrals, or a pointer to the remote backlog | `documentation/backlog.md` |
+| Working state | Active unfinished work and resumption state | `documentation/work-in-progress.md` |
+| Changelog | Authorized agreements and verified deliveries | `documentation/changelog.md` |
+| Capability requirements | Optional additional obligations for one capability | `documentation/capabilities/<capability>/requirements.md` |
+| Capability specifications | Agreed observable behavior and acceptance | `documentation/capabilities/<capability>/specifications.md` |
+| Capability blueprint | How the code delivers the specifications | `documentation/capabilities/<capability>/blueprint.md` |
+| Draft | Unresolved proposals only | `documentation/capabilities/<capability>/draft.md` |
+| Task | A local task body, or a pointer to its published remote task | `documentation/capabilities/<capability>/tasks/NN-<slug>.md` |
+| Glossary | Domain terms | `documentation/glossary.md` |
+| Conventions | Code conventions no tool enforces | `documentation/conventions.md` |
+| Decision records | Hard-to-reverse decisions and their reasons | `documentation/architecture-decision-record/NNNN-<slug>.md` |
 
 ## Terms
 
@@ -33,13 +44,13 @@ A **capability** is anything with lasting agreed behavior: a user-facing feature
 
 ## Backlog authority
 
-Read `.agents/issue-tracker.md` when present to find the configured tracker. With a local tracker, `documentation/backlog.md` holds candidate outcomes, priorities, dependencies, and deferrals. With a remote tracker, its backlog or board holds them, and `documentation/backlog.md` holds only its name and verified link.
+Read the task tracker configuration when `AGENTS.md` points to one. With a local tracker, the backlog holds candidate outcomes, priorities, dependencies, and deferrals. With a remote tracker, its backlog or board holds them, and the local backlog holds only its name and verified link.
 
 Read the remote backlog when selecting or reprioritizing work. When it cannot be read, say so, ask for the records the decision needs, and continue authorized work whose agreement is recoverable locally.
 
 ## Working state and tasks
 
-`documentation/work-in-progress.md` stays local with either tracker. It holds the selected scope, current agreements, running assignments, verification, acceptance, blockers, next actions, and pending publication, with pointers to remote records for their status. Prune an item once code, tests, or a durable record captures it; delivery history belongs in the changelog.
+Working state stays local with either tracker. It holds the selected scope, current agreements, running assignments, verification, acceptance, blockers, next actions, and pending publication, with pointers to remote records for their status. Prune an item once code, tests, or a durable record captures it; delivery history belongs in the changelog.
 
 Tasks are optional for small batches. A task owns a coherent outcome, checkable acceptance criteria, and explicit blockers; a missing prerequisite is a blocker. Before publication a task is a local draft. After authorized publication the remote task is authoritative and the local file becomes a pointer with its title.
 

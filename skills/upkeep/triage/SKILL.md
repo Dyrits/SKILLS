@@ -15,7 +15,7 @@ If the tracker treats external pull requests as a request surface, triage covers
 
 The project documents and their rules are in [PROJECT-DOCUMENTS.md](PROJECT-DOCUMENTS.md); read it before updating project documents. Its terms (authorized, obligation, lazy, pointer) apply throughout. Read the relevant requirements, specifications, working state, and backlog when present.
 
-Read `.agents/issue-tracker.md` and `.agents/triage-roles.md`. If either is missing, tell the user which file is missing and that triage needs the tracker and its intake roles configured, then stop.
+Read the task tracker configuration and the triage roles that `AGENTS.md` points to. If it points to neither or only one, tell the user which is missing and that triage needs the tracker and its intake roles configured, then stop.
 
 "Comment", "apply a role", and "close" resolve through the tracker configuration:
 
@@ -78,7 +78,7 @@ When PRs are in scope, tag entries `[PR]` or `[task]`. Discovery includes extern
 
 ## Triage a task or PR
 
-1. **Gather context.** Read body, comments, roles, author, dates, and prior triage notes; for a PR, also read the diff. Explore with the domain glossary and applicable architecture decision records. Search for an existing implementation by domain concept and report where you looked. Read `documentation/out-of-scope/*.md` when present and surface matching prior rejections.
+1. **Gather context.** Read body, comments, roles, author, dates, and prior triage notes; for a PR, also read the diff. Explore with the domain glossary and applicable architecture decision records that `AGENTS.md` points to. Search for an existing implementation by domain concept and report where you looked. Read `documentation/out-of-scope/*.md` when present and surface matching prior rejections.
 2. **Recommend.** Present a category and state with reasoning and a relevant codebase summary, including any already-implemented behavior. Wait for direction.
 3. **Verify.** Before refinement, reproduce a bug from the reporter's steps. For a PR, check the diff against its claims and run relevant tests or commands. Report confirmed behavior with its code path, failure, or insufficient detail. Insufficient detail supports an on-hold recommendation.
 4. **Refine if needed.** Resolve questions with the human following the [interview method](INTERVIEW.md). When a term is fuzzy, disputed, or clashes with the glossary or the code, name the conflict, test it with a concrete scenario, recommend a canonical term, and once the human agrees, write it to the glossary following [GLOSSARY-FORMAT.md](GLOSSARY-FORMAT.md). Keep unresolved proposals in the capability's draft, incorporate agreed behavior and acceptance into its specifications, and record a hard-to-reverse decision following [DECISION-RECORD-FORMAT.md](DECISION-RECORD-FORMAT.md).

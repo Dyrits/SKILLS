@@ -22,11 +22,13 @@ Type `/architect`, or an agent can reach for it when a task fits:
 
 ## What it writes
 
-| Document | Holds |
+| Document (default location) | Holds |
 | --- | --- |
 | `documentation/architecture.md` | The shape as it stands: stack, parts, flows, integrations, deployment, and a table mapping each requirement to how it is met |
 | Architecture decision records | Each choice that is hard to reverse, surprising without context, and a real tradeoff |
 | `documentation/requirements.md` | Only obligations you state while it asks, when no requirements exist yet |
+
+Paths are defaults: the skill first uses the document `AGENTS.md` names, and creates one at the default only when there is none, adding its line to `AGENTS.md`.
 
 ## Common questions
 

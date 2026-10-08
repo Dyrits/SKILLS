@@ -9,7 +9,7 @@ metadata:
 
 The project documents and their rules are in [PROJECT-DOCUMENTS.md](PROJECT-DOCUMENTS.md); its terms (authorized, obligation, lazy, pointer) apply throughout.
 
-Identify the authorized behavior and originating agreement for the batch: specifications with tasks, or a user-approved batch in working state. Read the applicable requirements. For remote tracker work, read `.agents/issue-tracker.md` for the configured workflow; if it is missing, ask the user how the remote tasks are read and updated, and keep remote updates pending until they answer. Local-only work runs without tracker setup.
+Identify the authorized behavior and originating agreement for the batch: specifications with tasks, or a user-approved batch in working state. Read the applicable requirements. For remote tracker work, read the task tracker configuration that `AGENTS.md` points to for the configured workflow; if `AGENTS.md` points to none, ask the user how the remote tasks are read and updated, and keep remote updates pending until they answer. Local-only work runs without tracker setup.
 
 The goal is the entire authorized batch implemented on a single **integration branch**, each task built by the least expensive agent that can do it reliably, with each task's implementation and validation accounted for. The run has three phases: **divide** routes every task, **conquer** builds them in parallel, **combine** merges and reviews once.
 

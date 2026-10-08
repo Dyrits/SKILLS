@@ -50,8 +50,8 @@ The useful idea is a **flow**, a path through skills that preserves agreements a
 Both workflows share project-owned documents:
 
 - Requirements hold global and optional additional capability constraints.
-- `documentation/capabilities/<capability>/specifications.md` holds living agreed behavior and acceptance. `draft.md` holds unresolved proposals only.
-- `documentation/capabilities/<capability>/tasks/` holds local task bodies. After explicit remote publication, a local task becomes a title and link to the authoritative remote task. Specifications stay canonical locally.
+- A capability's specifications hold living agreed behavior and acceptance; its draft holds unresolved proposals only.
+- A capability's task files hold local task bodies. After explicit remote publication, a local task becomes a title and link to the authoritative remote task. Specifications stay canonical locally.
 - Backlog holds candidates and deferrals, not authorization. Work-in-progress holds unfinished current work and recovery state.
 - The single root changelog records meaningful agreements and verified deliveries. Types are `Documentation`, `Code`, or `Configuration`; events are `Agreement` or `Delivery`. The planned workflow writes full records; `iterate` writes light ones with the same heading and vocabulary.
 

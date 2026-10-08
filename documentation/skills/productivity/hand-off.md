@@ -75,7 +75,7 @@ It starts its own thread: its supersedes line reads `none (forked from <file>)`,
 
 **Does work-in-progress replace a handoff?**
 
-No. `documentation/work-in-progress.md` owns unfinished current work, blockers, and recovery state. The handoff carries session-specific reasoning and pointers for another agent. Keep them consistent without copying the same task history into both.
+No. The project's working state owns unfinished current work, blockers, and recovery state. The handoff carries session-specific reasoning and pointers for another agent. Keep them consistent without copying the same task history into both.
 
 **Why is it a skill rather than a slash command?**
 Both work; they suit different situations. As a skill it ships and updates through the same install path as everything else here, which is what makes it shareable. Agents can reach it when you ask in plain words; typing `/hand-off` works the same as before.

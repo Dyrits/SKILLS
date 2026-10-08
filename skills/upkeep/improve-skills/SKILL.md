@@ -68,7 +68,7 @@ Show the repository, the title, the labels if any, and the exact body. Wait for 
 
 Open the issue through any route that can write issues on `Dyrits/SKILLS`, trying every available one before giving up; credentials already configured include the one git's credential helper stores for `https://github.com`, used without printing it. Read the issue back and report its URL.
 
-When no option reaches GitHub, save the approved issue as a feedback record in `.agents/feedbacks/YYYY-MM-DD-<slug>.md`: the title as its heading, then the body. Put it in the skills checkout this skill was loaded from when it is one, otherwise in the current workspace. Tell the user where it is and which options failed.
+When no option reaches GitHub, save the approved issue as a feedback record in `.agents/feedbacks/YYYY-MM-DD-<slug>.md`: the title as its heading, then the body. Put it in the skills checkout this skill was loaded from when it is one, otherwise in the current workspace. When you create `.agents/feedbacks/`, add one line to that workspace's `AGENTS.md` saying unposted skill feedback waits there. Tell the user where it is and which options failed.
 
 On every run where GitHub is reachable, also check both locations for pending feedback records, offer to open each as an issue under the same approval, and delete each record once its issue is live.
 

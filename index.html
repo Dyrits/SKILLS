@@ -1540,7 +1540,7 @@ const DATA = {
    "argumentHint": "",
    "bucket": "setup",
    "calls": [],
-   "description": "Configure a repository for AI-assisted work: task tracking, ticket conventions, triage roles, and agent navigation to the project documents. Use when the user asks to set up or reconfigure the AI workspace.",
+   "description": "Configure a repository for AI-assisted work: task tracking, ticket conventions, and triage roles. Use when the user asks to set up or reconfigure the AI workspace.",
    "fits": [
     "This is run-once setup for specify, taskify, triage, and graphify. It carries its own copy of the shared document rules; guide routes the workflow."
    ],
@@ -1555,8 +1555,8 @@ const DATA = {
    "requires": [],
    "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/setup/setup-ai-workspace/SKILL.md",
    "summary": [
-    "Configures one repository's task tracker, ticket-writing convention, and triage-role vocabulary, and points agents at the project documents. Its output is editable Markdown under .agents/, plus an agent-instruction block. It changes project configuration, not the installed skills. Code conventions, tooling, hooks, guardrails, and machine-wide settings are out of its scope; it reports a missing conventions file instead of writing one.",
-    "The tracker choice does not move specification authority. Agreed living behavior and acceptance stay in documentation/capabilities/<capability>/specifications.md. Remote tasks link to or summarize that specification. Local documents can be maintained within scope without publishing remote records."
+    "Configures one repository's task tracker, ticket-writing convention, and triage-role vocabulary. Its output is editable Markdown under .agents/, plus an agent-instruction block. It changes project configuration, not the installed skills. Code conventions, tooling, hooks, guardrails, and machine-wide settings are out of its scope; it reports a missing conventions file instead of writing one.",
+    "The tracker choice does not move specification authority. Agreed living behavior and acceptance stay in the capability's specifications in the repository. Remote tasks link to or summarize that specification. Local documents can be maintained within scope without publishing remote records."
    ],
    "tagline": "Configure shared project documents, task tracking, triage roles, and the optional setups."
   },
@@ -1814,7 +1814,7 @@ const DATA = {
    "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/upkeep/triage/SKILL.md",
    "summary": [
     "Moves intake tasks through category and state roles, verifies the request against the codebase, and records an actionable next step. Remote tasks and local task bodies follow the same state machine. External pull requests can be included when the tracker configuration enables them.",
-    "The ready brief is the authoritative task-execution contract. It links to the repository's canonical living specification and applicable requirements rather than replacing them. A rejected enhancement leaves durable reasoning in documentation/out-of-scope/; a temporary deferral belongs in the project backlog."
+    "The ready brief is the authoritative task-execution contract. It links to the repository's canonical living specification and applicable requirements rather than replacing them. A rejected enhancement leaves durable reasoning in documentation/out-of-scope/, which triage announces in AGENTS.md when it creates it; a temporary deferral belongs in the project backlog."
    ],
    "tagline": "Verify and classify requests, recording briefs, holds, or rejection decisions."
   },

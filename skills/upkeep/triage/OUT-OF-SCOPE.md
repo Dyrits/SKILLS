@@ -102,7 +102,7 @@ The flow:
 1. Maintainer decides a feature request is out of scope
 2. Check if a matching `documentation/out-of-scope/` file already exists
 3. If yes: append the new task to the "Prior requests" list
-4. If no: create a new file with the concept name, decision, reason, and first prior request
+4. If no: create a new file with the concept name, decision, reason, and first prior request. When this creates the `documentation/out-of-scope/` folder, add one line to the nearest `AGENTS.md` saying it holds rejected enhancement requests and is read during triage
 5. Post a comment on the task explaining the decision and linking the `documentation/out-of-scope/` file
 6. Close the task with the `not-planned` role
 

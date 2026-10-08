@@ -1,6 +1,6 @@
 # Architecture decision record format
 
-Decision records live in `documentation/architecture-decision-record/` (a context's own `documentation/` folder in a multi-context repository) and use sequential numbering: `0001-slug.md`, `0002-slug.md`, and so on. Create the folder with its first record.
+Find existing decision records through `AGENTS.md` and continue their numbering. When none exist, create them in `documentation/architecture-decision-record/` (a context's own `documentation/` folder in a multi-context repository), numbered `0001-slug.md`, `0002-slug.md`, and so on: create the folder with its first record, and add one line for the decision records to the nearest `AGENTS.md`.
 
 ## Template
 

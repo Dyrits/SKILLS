@@ -1,6 +1,6 @@
 # Architecture format
 
-The architecture document, `documentation/architecture.md`, describes the system's technical shape as it stands, or as agreed when nothing is built yet: the parts it runs as, what each owns, how they talk, where they run, and how each system-wide requirement is met. Reasons for hard-to-reverse choices live in decision records; this document links them instead of repeating them.
+The architecture document (created at `documentation/architecture.md` unless `AGENTS.md` names one elsewhere) describes the system's technical shape as it stands, or as agreed when nothing is built yet: the parts it runs as, what each owns, how they talk, where they run, and how each system-wide requirement is met. Reasons for hard-to-reverse choices live in decision records; this document links them instead of repeating them.
 
 ## Structure
 
@@ -37,7 +37,7 @@ The architecture document, `documentation/architecture.md`, describes the system
 
 ## Decisions
 
-- [{NNNN: title}](architecture-decision-record/NNNN-slug.md)
+- [{NNNN: title}]({path to the record})
 ```
 
 ## Rules

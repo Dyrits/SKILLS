@@ -1,6 +1,6 @@
 ---
 name: setup-ai-workspace
-description: "Configure a repository for AI-assisted work: task tracking, ticket conventions, triage roles, and agent navigation to the project documents. Use when the user asks to set up or reconfigure the AI workspace."
+description: "Configure a repository for AI-assisted work: task tracking, ticket conventions, and triage roles. Use when the user asks to set up or reconfigure the AI workspace."
 metadata:
   forks: "mattpocock/skills/skills/engineering/setup-matt-pocock-skills"
 ---
@@ -25,7 +25,7 @@ Read existing configuration and conventions before proposing changes:
 - `git remote -v` and `.git/config`, to identify the host without assuming it is the tracker.
 - Root `AGENTS.md`, including any `## Agent skills` section.
 - `.agents/` and any verified tooling record.
-- The project documents, at the paths in [PROJECT-DOCUMENTS.md](PROJECT-DOCUMENTS.md): the requirements, backlog, working state, changelog, outline, glossary, conventions, relevant decision records, and relevant capability documents.
+- The project documents `AGENTS.md` names, as [PROJECT-DOCUMENTS.md](PROJECT-DOCUMENTS.md) describes: the requirements, backlog, working state, changelog, outline, glossary, conventions, relevant decision records, and relevant capability documents.
 - Task templates, contribution documentation, and available ticket-writing skills.
 - Monorepo signals such as workspace configuration or independent packages.
 - Whether `triage` is installed, which determines whether role configuration is needed.
@@ -72,7 +72,7 @@ Only collect overrides if the user declines. The strings are configurable; the r
 
 ### D. Domain documentation
 
-A single-context repository needs nothing now: its glossary and decision records are created when the first term or decision is settled. When monorepo signals suggest several domain contexts, ask whether the domain has several. On yes, each context keeps its glossary and decision records in a `documentation/` folder beside its code, and the system outline (`documentation/outline.md`) lists the contexts and links each glossary; create those when the first term is settled, not now, and say so in the report.
+A single-context repository needs nothing now: its glossary and decision records are created when the first term or decision is settled. When monorepo signals suggest several domain contexts, ask whether the domain has several. On yes, each context keeps its glossary and decision records in a `documentation/` folder beside its code, and the system outline lists the contexts and links each glossary; create those when the first term is settled, not now, and say so in the report.
 
 If the conventions file is missing, say so in the report; writing conventions is separate work.
 
@@ -96,11 +96,7 @@ Edit `AGENTS.md`, creating it when it does not exist. Update an existing `## Age
 
 Omit the triage block and file when triage is not installed.
 
-When `documentation/` exists and the nearest `AGENTS.md` has no line pointing to it, add one, following [AGENT-INSTRUCTIONS.md](AGENT-INSTRUCTIONS.md):
-
-> Project documents (requirements, specifications, working state, changelog, glossary, conventions, decision records) live under `documentation/`. Use the glossary's terms and respect the decision records.
-
-Show the user every line added to `AGENTS.md`.
+Write the block following [AGENT-INSTRUCTIONS.md](AGENT-INSTRUCTIONS.md), and show the user every line added to `AGENTS.md`. Lines for the project documents are added by whichever skill creates each one, not here.
 
 Seed `.agents/issue-tracker.md` from the selected template:
 

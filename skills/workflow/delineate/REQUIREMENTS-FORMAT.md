@@ -12,7 +12,7 @@ A requirement outranks any technical choice or convention: when they conflict, s
 
 ## Where
 
-System-wide requirements live in `documentation/requirements.md`. Requirements that bind one capability only live in `documentation/capabilities/<capability>/requirements.md` and add to the system-wide ones. When the project already keeps its requirements elsewhere, write there.
+Find the requirements through `AGENTS.md`, and write there. When none exist, create the system-wide requirements at `documentation/requirements.md`, and requirements that bind one capability only at `documentation/capabilities/<capability>/requirements.md`, where they add to the system-wide ones; then add one line for the requirements to the nearest `AGENTS.md`.
 
 ## Structure
 

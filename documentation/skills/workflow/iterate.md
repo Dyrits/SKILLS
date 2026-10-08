@@ -16,11 +16,13 @@ Use the planned route (`specify`, `taskify`, `implement`, `review-and-refactor`)
 
 `iterate` keeps light records and does not generate capability documents or tasks just to run a batch.
 
-| Document | Holds |
+| Document (default location) | Holds |
 | --- | --- |
 | `documentation/backlog.md` | Candidate outcomes, priorities, deferrals, exclusions |
 | `documentation/work-in-progress.md` | Current goal, agreed batch, open questions, evidence, next step |
 | Changelog | A Delivery when a meaningful increment passes its checks, an Agreement for a consequential decision |
+
+Paths are defaults: the skill first uses the document `AGENTS.md` names, and creates one at the default only when there is none, adding its line to `AGENTS.md`.
 
 Existing requirements and specifications are read and respected. The skill carries the formats it writes.
 
@@ -45,7 +47,7 @@ Yes. Working state is updated when a batch is agreed and after it is implemented
 ## It's working if
 
 - Each batch ends with a report of what changed, the verification result, and how to run it.
-- `documentation/work-in-progress.md` names the next step and matches the code.
+- Working state names the next step and matches the code.
 - The changelog gains a Delivery for each completed increment and an Agreement for each consequential choice, such as a tool or a direction that is costly to reverse.
 - A bug you report is reproduced before any fix lands.
 - Unresolved questions stay pending and ruled-out ideas stay apart from deferred ones.

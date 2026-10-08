@@ -24,7 +24,7 @@ Completion: each moment has a pointer into the session and a one-line account of
 
 ### 2. Read the environment
 
-Read what the agent had to work with: the repository's and the user's global `AGENTS.md`, the project's conventions file, its own check commands (build-tool scripts such as `lint`, `check`, `typecheck`, `test`), its hooks path or pre-commit configuration, and its CI workflows.
+Read what the agent had to work with: the repository's and the user's global `AGENTS.md`, the conventions file it points to, its own check commands (build-tool scripts such as `lint`, `check`, `typecheck`, `test`), its hooks path or pre-commit configuration, and its CI workflows.
 
 Completion: you know which checks exist, which of them run automatically before a commit or in CI, and which exist but are unwired or broken.
 

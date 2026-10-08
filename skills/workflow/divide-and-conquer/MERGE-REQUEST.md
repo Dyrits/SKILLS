@@ -27,7 +27,7 @@ Use this template for the body:
 
 Everything here applies unchanged to a merge request on GitLab.
 
-Skip preambles and keep prose brief. Write it in the language its primary source already uses, the ticket or specification the change came from, with the project's domain terms from its glossary.
+Skip preambles and keep prose brief. Write it in the language its primary source already uses, the ticket or specification the change came from, with the project's domain terms from the glossary `AGENTS.md` points to.
 
 ## Summary
 

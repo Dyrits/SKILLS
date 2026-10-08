@@ -5,7 +5,7 @@ Adapted from the `memorize` skill. A project lesson is a convention, command, ru
 | Lesson | Home | How |
 | --- | --- | --- |
 | A project convention, command, gotcha, or navigation pointer agents keep missing | The nearest `AGENTS.md` at the boundary where it applies | Follow [AGENT-INSTRUCTIONS.md](AGENT-INSTRUCTIONS.md) |
-| A code convention no tool enforces | The project's conventions file (`documentation/conventions.md` unless the project keeps it elsewhere) | Follow [CONVENTIONS-FORMAT.md](CONVENTIONS-FORMAT.md) |
+| A code convention no tool enforces | The conventions file `AGENTS.md` names; when there is none, create it at `documentation/conventions.md` and add its `AGENTS.md` line | Follow [CONVENTIONS-FORMAT.md](CONVENTIONS-FORMAT.md) |
 
 The environment is a home too: a `package.json` script, a configuration file, or `--help` output already states its fact. Leave those facts there.
 

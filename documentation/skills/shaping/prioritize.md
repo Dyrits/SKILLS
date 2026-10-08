@@ -23,7 +23,7 @@ It ends with the approved focus recorded in the backlog and working state; it do
 
 ## The backlog
 
-`documentation/backlog.md` owns grouping, priority, dependencies, and deferrals; `documentation/work-in-progress.md` owns progress on the selected work. The skill carries its own copy of the rules for these documents.
+The backlog owns grouping, priority, dependencies, and deferrals; working state owns progress on the selected work. Both are found through `AGENTS.md`. The skill carries its own copy of the rules for these documents.
 
 | Section | Holds |
 | --- | --- |

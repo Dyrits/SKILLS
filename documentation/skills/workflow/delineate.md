@@ -22,11 +22,13 @@ Type `/delineate`, or an agent can reach for it when a task fits. Reach for it w
 
 ## What it writes
 
-| Document | Holds |
+| Document (default location) | Holds |
 | --- | --- |
 | `documentation/outline.md` | Purpose, actors, contexts and their relationships, the capability map |
 | `documentation/requirements.md` | System-wide obligations, each with its source, and its number and check when measurable |
-| The glossary | Domain terms only. One context keeps `documentation/glossary.md`; several keep one glossary beside each context's code, linked from the domain outline |
+| The glossary | Domain terms only. One context keeps one glossary (`documentation/glossary.md` by default); several keep one glossary beside each context's code, linked from the domain outline |
+
+Paths are defaults: the skill first uses the document `AGENTS.md` names, and creates one at the default only when there is none, adding its line to `AGENTS.md`.
 
 Every requirement goes here, functional or not: an uptime target is imposed from outside the code just as a business rule is. [architect](./architect.md) then says how the system meets it. The capability map lists what the system does or is agreed to do; priorities and candidates stay in the backlog.
 
@@ -62,7 +64,7 @@ No. A domain language you do not understand yourself becomes meaningless once wr
 ## It's working if
 
 - The domain outline names no technology, and every requirement names who imposes it.
-- A newcomer can read `documentation/outline.md` and say what the system is for and which capabilities it has.
+- A newcomer can read the domain outline and say what the system is for and which capabilities it has.
 - It stops you mid-sentence to ask which of two things you meant, instead of picking one and moving on.
 - The glossary changes during the conversation, and gets shorter as often as it gets longer.
 - It quotes your code back at you when your code and your sentence disagree.

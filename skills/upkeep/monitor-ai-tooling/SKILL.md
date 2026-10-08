@@ -12,7 +12,7 @@ Collection stays deterministic; this skill does not install tools or start recur
 
 ### 1. Establish the evidence
 
-Read `.agents/ai-tooling.md` if present, the requested project and period, and the available local measurement sources.
+Read the project's AI tooling record when `AGENTS.md` points to one, the requested project and period, and the available local measurement sources.
 Use configured tool analytics, saved verification results, or an export from the user's existing monitor.
 Inspect source schemas and installed help before choosing read-only export commands; preserve source files and redact credentials or unrelated session content from the report.
 For RTK, inspect `gain` and supported history/export options without changing counters or configuration.
@@ -34,7 +34,7 @@ Done when every calculated result can be traced to compatible observations and e
 
 ### 3. Write the report
 
-Write a dated report under `.agents/tooling/reports/`, or the user's requested local destination, following [REPORT.md](REPORT.md).
+Write a dated report under `.agents/tooling/reports/`, or the user's requested local destination, following [REPORT.md](REPORT.md). When you create the reports folder, add one line to the nearest `AGENTS.md` saying what it holds and when to read it.
 Include source references and machine-readable supporting observations when the source provides them.
 Separate actual provider usage, command-output reduction, estimated tokens, task comparisons, and published benchmarks.
 Keep Token Monitor independent; an integration change is a separate setup task.

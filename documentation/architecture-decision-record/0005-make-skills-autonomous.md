@@ -24,7 +24,7 @@ Remove `document` after redistributing its useful formats and guidance. Do not r
 
 `documentation/` serves humans and agents. `.agents/` and `AGENTS.md` serve agents only; `README.md` primarily serves humans. New shared documentation receives a concise discovery line in both `AGENTS.md` and the appropriate `README.md`. Agent-only records receive an `AGENTS.md` pointer without exposing their internal details in the human README.
 
-Keep the shared document authority and capability-based organization from earlier records. Each skill carries enough of the relevant artifact contract to use it without a documentation coordinator.
+Keep the shared document authority and capability-based organization from earlier records. Each skill carries enough of the relevant artifact contract to use it without a documentation coordinator. A skill finds the documents it reads through the project's `AGENTS.md`, naming the kind it needs (requirements, glossary, decision records) rather than a path another skill chose; a kind `AGENTS.md` does not name does not exist yet. A skill that creates a document uses its own default location only when `AGENTS.md` names none, and adds the document's line to `AGENTS.md`. (Added 2026-10-08 at the user's request.)
 
 `hand-off` writes a self-contained handoff and updates the current-handoff pointer in `AGENTS.md`. The handoff itself says how to resume from it, so no reading skill is needed; `take-over` was removed on 2026-10-07 for that reason.
 

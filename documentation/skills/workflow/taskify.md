@@ -22,7 +22,7 @@ Wide mechanical refactors can use expand-contract instead: introduce the compati
 Ask it to merge them, or skip taskify. Tasks should reduce coordination costs, not turn every edit into administration.
 
 **Where do local tasks go?**
-New local task bodies live under `documentation/capabilities/<capability>/tasks/`. After approved remote publication, the local file becomes a title and link to the authoritative remote task. Existing histories are preserved.
+New local task bodies live in the capability's task files, where `AGENTS.md` or the tracker configuration says, by default under `documentation/capabilities/<capability>/tasks/`. After approved remote publication, the local file becomes a title and link to the authoritative remote task. Existing histories are preserved.
 
 **Does a published task replace the repository specification?**
 No. The task points to applicable requirements and specifications; the agreed specification remains canonical in the repository.

@@ -4,7 +4,7 @@ Upstream skill: `triage`, verified at revision `d81f3a1`.
 
 Moves intake tasks through category and state roles, verifies the request against the codebase, and records an actionable next step. Remote tasks and local task bodies follow the same state machine. External pull requests can be included when the tracker configuration enables them.
 
-The **ready brief** is the authoritative task-execution contract. It links to the repository's canonical living specification and applicable requirements rather than replacing them. A rejected enhancement leaves durable reasoning in `documentation/out-of-scope/`; a temporary deferral belongs in the project backlog.
+The **ready brief** is the authoritative task-execution contract. It links to the repository's canonical living specification and applicable requirements rather than replacing them. A rejected enhancement leaves durable reasoning in `documentation/out-of-scope/`, which triage announces in `AGENTS.md` when it creates it; a temporary deferral belongs in the project backlog.
 
 ## When to reach for it
 

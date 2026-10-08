@@ -21,7 +21,7 @@ The tracker configuration must exist; [setup-ai-workspace](../setup/setup-ai-wor
 
 ## The frontier and the fog
 
-The frontier consists of unresolved, unblocked, unclaimed child tasks. Claims and blocking use native tracker relationships where available. A local map uses `documentation/capabilities/<capability>/map.md` and `tasks/NN-slug.md`, with progress and blocker metadata in the task bodies.
+The frontier consists of unresolved, unblocked, unclaimed child tasks. Claims and blocking use native tracker relationships where available. A local map and its tasks live where the tracker configuration says (by default `map.md` and `tasks/NN-slug.md` in the capability's folder), with progress and blocker metadata in the task bodies.
 
 The fog is in-scope work whose question is not precise enough yet. A sharp question becomes a task even when blocked. Work beyond the destination goes under Out of scope, not in the fog.
 
@@ -35,7 +35,7 @@ No. A decision task asks what must be settled before implementation. The prerequ
 
 **Where does the map live?**
 
-On the configured tracker. Local maps live in the folder of the capability they will become and can be referenced from `documentation/backlog.md`. Remote maps retain native parent-child and blocking relationships. With a remote tracker, that backlog document contains only the tracker name and link; priorities and deferrals are authoritative remotely. Unpublished work stays in local execution context pending authorization. Only a local tracker keeps candidate bodies in the local backlog. Optional local references to published remote tasks contain titles and links rather than copied bodies.
+On the configured tracker. Local maps live in the folder of the capability they will become and can be referenced from the backlog. Remote maps retain native parent-child and blocking relationships. With a remote tracker, that backlog document contains only the tracker name and link; priorities and deferrals are authoritative remotely. Unpublished work stays in local execution context pending authorization. Only a local tracker keeps candidate bodies in the local backlog. Optional local references to published remote tasks contain titles and links rather than copied bodies.
 
 **Does charting authorize publishing a remote map?**
 
