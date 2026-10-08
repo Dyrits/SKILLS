@@ -1,3 +1,0 @@
-interface:
-  display_name: "Classify"
-  short_description: "Classify text against your own labels"

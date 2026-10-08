@@ -165,7 +165,6 @@ The manifest is the source of truth for this list; it holds every skill in the r
 - [illustrate](./skills/productivity/illustrate/SKILL.md): Explain a topic with the smallest useful visual.
 - [optimize-process](./skills/productivity/optimize-process/SKILL.md): Improve a recurring process using observed friction.
 - [walk-through](./skills/productivity/walk-through/SKILL.md): Generate a guided script for steps only a human can perform.
-- [classify](./skills/productivity/classify/SKILL.md): Classify safe-to-send text with classifier.dev and retain uncertain results.
 - [write-for-agents](./skills/productivity/write-for-agents/SKILL.md): Write predictable agent instructions with clear completion criteria.
 - [unslop](./skills/productivity/unslop/SKILL.md): Remove filler and recurring AI writing patterns.
 - [memorize](./skills/productivity/memorize/SKILL.md): File lessons where the next agent will look, and reuse saved scripts before writing new ones.

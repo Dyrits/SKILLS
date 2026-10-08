@@ -47,6 +47,8 @@ Before writing or editing a `SKILL.md` or its description, read the [skill autho
 
 Before creating a reusable script, check existing project automation, installed commands, and maintained external tools or libraries. Reuse a suitable implementation; write a small adapter or new script only for an unmet need, considering compatibility, maintenance, licensing, and security.
 
+Do not ship a skill whose only job is a judgement the agent can already make itself, such as sorting text already in context. Keep a skill that supplies a capability, state, or external action the agent lacks; otherwise delete it, or make the behaviour automatic through a mechanism.
+
 Skills ship to other repositories, so a skill holds no rule that only this repository follows. This repository's writing rules live in this file; where a skill's rule could clash with a project's own, the skill defers to that project's steering file or style guide.
 
 ## Language and naming

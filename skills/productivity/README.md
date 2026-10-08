@@ -40,7 +40,6 @@ One task fanned out across agents.
 Results leaving the session for other people or services.
 
 - **[publish-message](./publish-message/SKILL.md)**: Publish established conclusions to any connected service, adapted to its conventions, after approval of exact text and destination.
-- **[classify](./classify/SKILL.md)**: Classify safe-to-send text with classifier.dev and retain uncertain results for review.
 
 ## Ungrouped
 

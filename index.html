@@ -323,14 +323,6 @@ const DATA = {
    "description": "Issues, tickets, bug reports, and external pull requests from other people.",
    "label": "Incoming requests"
   },
-  "items": {
-   "description": "Many pieces of text to triage, filter, bucket, or route.",
-   "label": "Unsorted items"
-  },
-  "labeled-items": {
-   "description": "Text sorted against your own labels before anyone reads it.",
-   "label": "Labeled items"
-  },
   "memory": {
    "description": "Reusable scripts, conventions, and preferences filed where the next agent looks.",
    "label": "Saved lessons",
@@ -521,7 +513,6 @@ const DATA = {
   {
    "blurb": "Human-facing workflows you run, not about code. Skills sit flat in this folder; the groupings below are reading order, not directories.",
    "groups": {
-    "classify": "Outbound",
     "design-workflow": "Procedures",
     "guide": "Navigation",
     "hand-off": "Transport",
@@ -547,7 +538,6 @@ const DATA = {
     "walk-through",
     "swarm",
     "publish-message",
-    "classify",
     "teach",
     "write-for-agents",
     "unslop",
@@ -622,34 +612,6 @@ const DATA = {
     "It works in two branches. Design decides the shape of a system that is not built yet. Assess describes an existing system as the code shows it, tests it against the requirements, and recommends changes only where a requirement or a stated problem calls for one. Concluding that the architecture should stay as it is counts as a result."
    ],
    "tagline": "Decide or assess the system's technical shape: stack, parts, data ownership, integrations, and deployment."
-  },
-  "classify": {
-   "argumentHint": "<text> [option, option, option]",
-   "bucket": "productivity",
-   "calls": [],
-   "description": "Classify text against custom labels with classifier.dev. Use to triage, filter, bucket, or route many items before reading them, or when the user requests an API verdict.",
-   "fits": [
-    "A standalone productivity discipline for sorting before reading. research and triage are places where many items arrive and pre-sorting may help. guide maps the wider flow."
-   ],
-   "handovers": [],
-   "inputs": [
-    "items"
-   ],
-   "next": [
-    "triage",
-    "research"
-   ],
-   "outputs": [
-    "labeled-items"
-   ],
-   "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/productivity/classify.md",
-   "requires": [],
-   "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/productivity/classify/SKILL.md",
-   "summary": [
-    "classify sorts text against labels you choose, using the classifier.dev API, so many items can be triaged, filtered, bucketed, or routed before any of them is read.",
-    "Its defining constraint is that the text leaves your machine for a third-party service. It sends only text you would paste into a public form; otherwise it classifies locally against the same labels and marks the verdict as its own judgement."
-   ],
-   "tagline": "Classify safe-to-send text with classifier.dev and retain uncertain results for review."
   },
   "codify": {
    "argumentHint": "",

@@ -53,7 +53,6 @@
     "./skills/setup/setup-delegation-policy",
     "./skills/setup/setup-git-guardrails",
     "./skills/setup/setup-git-hooks",
-    "./skills/productivity/classify",
     "./skills/productivity/publish-message",
     "./skills/productivity/memorize",
     "./skills/productivity/swarm",

@@ -6,12 +6,6 @@
   },
   "plugins": [
     {
-      "name": "classify",
-      "description": "Classify text against custom labels with classifier.dev.",
-      "version": "0.2.0",
-      "source": "./skills/productivity/classify"
-    },
-    {
       "name": "design-workflow",
       "description": "Interview the user into implementable workflow specifications for recurring loops in their work, using the current directory as a stateful workspace.",
       "version": "0.2.0",

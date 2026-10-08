@@ -5,8 +5,6 @@ license: MIT
 dependencies:
   apm:
     - git: parent
-      path: skills/productivity/classify
-    - git: parent
       path: skills/productivity/design-workflow
     - git: parent
       path: skills/productivity/guide
@@ -107,9 +105,6 @@ marketplace:
   claude:
     output: marketplace.json
   packages:
-    - name: classify
-      source: ./skills/productivity/classify
-      description: "Classify text against custom labels with classifier.dev."
     - name: design-workflow
       source: ./skills/productivity/design-workflow
       description: "Interview the user into implementable workflow specifications for recurring loops in their work, using the current directory as a stateful workspace."

@@ -77,12 +77,11 @@ For publishing conclusions already reached, [publish-message](../productivity/pu
 | A manual dashboard, credentials, or cutover step blocks automation | [walk-through](../productivity/walk-through.md). |
 | Writing needs filler and AI patterns removed | [unslop](../productivity/unslop.md). |
 
-Setup and outbound skills it also routes to:
+Setup skills it also routes to:
 
 - [setup-delegation-policy](../setup/setup-delegation-policy.md) configures machine-wide delegation and model tiers.
 - [setup-git-hooks](../setup/setup-git-hooks.md) configures versioned commit checks.
 - [setup-git-guardrails](../setup/setup-git-guardrails.md) asks before destructive Git operations at supported enforcement points.
-- [classify](../productivity/classify.md) sends approved safe-to-send text to a third-party classifier and retains uncertain results.
 
 ## The phase boundary
 
