@@ -28,7 +28,7 @@ Type `/architect`, or an agent can reach for it when a task fits:
 | Architecture decision records | Each choice that is hard to reverse, surprising without context, and a real tradeoff |
 | `documentation/requirements.md` | Only obligations you state while it asks, when no requirements exist yet |
 
-Paths are defaults: the skill first uses the document `AGENTS.md` names. When there is none, it adopts an existing home of that kind in your project, creates one at the default only when nothing matches, never overwrites an existing file, and adds its line to `AGENTS.md`.
+Paths are defaults: the skill first uses the document `AGENTS.md` names. When there is none, it adopts an existing home of that kind in your project, creates one at the default only when nothing matches, never overwrites an existing file, matches the naming and style of the documents it finds, and adds its line to `AGENTS.md`.
 
 ## Common questions
 

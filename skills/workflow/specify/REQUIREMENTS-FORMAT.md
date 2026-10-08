@@ -12,7 +12,7 @@ A requirement outranks any technical choice or convention: when they conflict, s
 
 ## Where
 
-Find the requirements through `AGENTS.md`, and write there. When it names none, look for an existing home of that kind in the repository first (judging by content, not a folder name alone, and asking when the match is unclear), and use the default only when nothing matches. Never overwrite: adopt a file already at the target and add to it in its own style. Then add one line for it to the nearest `AGENTS.md` and tell the user. The defaults are `documentation/requirements.md` for system-wide requirements, and `documentation/capabilities/<capability>/requirements.md` for requirements that bind one capability only, which add to the system-wide ones.
+Find the requirements through `AGENTS.md`, and write there. When it names none, look for an existing home of that kind in the repository first (judging by content, not a folder name alone, and asking when the match is unclear), and use the default only when nothing matches. Never overwrite: adopt a file already at the target and add to it in its own style, and give new files and entries in an adopted home the neighbouring documents' naming, numbering, and template. Then add one line for it to the nearest `AGENTS.md` and tell the user. The defaults are `documentation/requirements.md` for system-wide requirements, and `documentation/capabilities/<capability>/requirements.md` for requirements that bind one capability only, which add to the system-wide ones.
 
 ## Structure
 

@@ -12,7 +12,7 @@ A step that must write a kind `AGENTS.md` does not name creates it lazily: only 
 
 1. **Look for an existing home.** Search the repository for documents of that kind already in place, such as `docs/`, `doc/`, `adr/`, or `docs/adr/`. Judge by content, not by folder name alone: a `docs/` folder holding a website or generated reference is no home for decision records. Use a single clear match; with several candidates or an unclear one, ask the user.
 2. **Fall back to the default location** in the table below only when nothing matches.
-3. **Never overwrite.** When a file already sits at the chosen path, adopt it as the document: keep its content and add to it in its own structure and style. Ask before restructuring one that does not follow the format.
+3. **Never overwrite.** When a file already sits at the chosen path, adopt it as the document: keep its content and add to it in its own structure and style. New files and entries in an adopted home follow the neighbouring documents' naming, numbering, and template; this skill's formats apply only to what it creates from scratch. Ask before restructuring one that does not follow the format.
 4. **Announce it.** Add one line to the nearest `AGENTS.md` saying what the document holds, where it lives, and when to read it, and link it where the root `README.md` lists the project's documentation (adding a short Documentation section if there is none). Check for an existing line first, and keep one line per kind of document, not one per file. Tell the user what was adopted or created, and where.
 
 | Kind | Holds | Default location |
