@@ -1,77 +1,55 @@
 ---
 name: setup-delegation-policy
-description: "Install the delegation and model routing rule into the global steering files on this machine. Use when the user asks to set up delegation or model routing."
+description: "Install, reconfigure, or remove the delegation and model routing rule, and the tier agents it needs, for each agent harness on this machine. Use when the user asks to set up, change, or remove delegation or model routing."
 ---
 
-# Setup Delegation Policy
+# Setup delegation policy
 
-Delegation pays off when it happens at the **top** of a unit of work, before any reasoning has bent the decision. A skill cannot hold that ground: it fires only when something reminds the agent to reach for it, and by then the reasoning has already started. A standing rule in an always-loaded steering file is carried on every turn instead, which is the whole point of installing it rather than invoking it.
+Delegation pays off when it happens at the **top** of a unit of work, before any reasoning has bent the decision. A skill cannot hold that ground: it fires only when something reminds the agent to reach for it, and by then the reasoning has already started. A standing rule in an always-loaded steering file is carried on every turn instead, which is why the rule is installed rather than invoked.
 
-[POLICY.md](POLICY.md) is that rule, written in tiers with model names only as examples, so it holds on any harness.
+[POLICY.md](POLICY.md) is that rule, written in tiers with model names only as examples, so it holds on any harness. The entire file is the payload, copied verbatim starting at its `## Delegation and model routing` heading.
+
+No harness is assumed. For each one, find its steering file, its delegation mechanism, and its models from its own documentation and tools, because locations and schemas change between releases.
 
 ## Steps
 
-### 1. Read the policy
+### 1. Choose the harnesses and the action
 
-Read [POLICY.md](POLICY.md) in full. The entire file is the payload: it is copied verbatim, starting at its `## Delegation and model routing` heading.
+Run `python3 -I scripts/detect-harnesses.py` (add `--json` for structured output). It lists the candidates found on disk, with no harness named in advance: each line gives the directory, the command on the path, the steering files, whether they already carry the delegation section (`policy=`), and the tier agents present. Directories holding only installed skills come back as one `skills-only` line. Add the harness you are running in if it is missing, show the user the list, and ask them to confirm it and add any harness it missed.
 
-### 2. Install it into every global steering file present
+For each harness, report its state from the script and ask what to do, with a recommendation:
 
-Check each of these and note which exist:
+- **Configure** when nothing is installed.
+- **Reconfigure** when something is, to re-sync the rule and rebind the tiers.
+- **Remove** to delete what this skill installed.
+- **Skip**.
 
-- `~/.claude/CLAUDE.md` (Claude Code)
-- `~/.config/opencode/AGENTS.md` (OpenCode)
-- `~/.codex/AGENTS.md` (Codex CLI)
-- `~/.zcode/AGENTS.md` (ZCode)
-- `~/.gemini/GEMINI.md` (Gemini CLI)
+Completion: every confirmed harness has an action.
 
-Each harness reads its own file, and a file that exists but is empty still counts as present. OpenCode reads `~/.claude/CLAUDE.md` as a fallback, but only while it has no `AGENTS.md` of its own, so installing to both is what keeps it covered when that file appears later. ZCode is documented as not reading `CLAUDE.md` at runtime at all, so it has no fallback to rely on.
+### 2. Configure or reconfigure each harness
 
-For each one that exists, install the policy:
+1. **Steering file.** Find the harness's global steering file, the always-loaded instructions it reads on every turn. A file that exists but is empty still counts. With no section headed `## Delegation and model routing`, append the payload after a blank line. With one, replace it in place, from its heading up to the next `##` heading or the end of the file, so re-syncing never leaves two copies. When the harness has no global steering file, ask whether to create it.
+2. **Tier binding.** Inspect the harness's delegation tool. A per-call model override needs no tier files: the rule has the agent pass the tier's model at the call. A harness that binds the model to a named agent needs one agent per tier, because a tier with no agent named after it is a tier the rule cannot reach. Follow [TIER-AGENTS.md](TIER-AGENTS.md) to offer the user the models the harness actually has, and write the files. A harness with no delegation tool at all keeps the split-the-work half of the rule and has no routing.
 
-- No `## Delegation and model routing` section yet: append the file's contents, separated by a blank line.
-- A section with that heading already there: replace it in place, from its heading up to the next `##` heading or end of file. Re-syncing must never leave two copies.
+Completion: each harness carries exactly one section identical to `POLICY.md`, and each tier it can bind has an agent or a per-call override.
 
-Where a harness the user works in has no global steering file at all, say so and ask whether to create it rather than creating it unasked.
+### 3. Remove each harness
 
-Report one line per file: written, re-synced, or absent.
+Delete the `## Delegation and model routing` section from its steering file, from its heading up to the next `##` heading or the end of the file, and leave the rest untouched. Then ask separately about the tier agent files, naming them. They are inert once the rule is gone, and a user who is re-syncing rather than leaving will want them kept.
 
-### 3. Give each binding harness an agent per tier
+### 4. Verify
 
-Inspect the delegation tool available in each harness. A tool such as Codex's `spawn_agent` can take a per-call model override, so use its current model list and no tier agent files. A harness with no delegation tool can still follow the policy's decision about where work belongs, but it cannot spawn a subagent in that session.
+- [ ] Each steering file written to has exactly one `## Delegation and model routing` heading (`grep -c` it), and none where the action was Remove.
+- [ ] The installed section is identical to `POLICY.md`: extract it from each file and diff it against the source. A section that merely exists may be a stale copy.
+- [ ] Each file still reads as the document it was: the section landed as a section, not inside a fenced block or mid-sentence.
+- [ ] Where tier agents were written, the checks in [TIER-AGENTS.md](TIER-AGENTS.md) pass.
 
-Some harnesses bind a model per named agent instead of taking a model on the delegation call, and there the tier **is** the agent: a tier with no agent named after it is a tier the policy cannot reach. OpenCode, ZCode and Gemini CLI use tier agent files. Claude Code uses its per-call model override.
+### 5. Report
 
-For each such harness present, follow [TIER-AGENTS.md](TIER-AGENTS.md) and write one agent file per tier. Only OpenCode's ladder is chosen live, by reading the catalogue and asking: it carries several providers and rotates. ZCode's and Gemini's are pre-defined there, so writing them is the whole job.
-
-### 4. Report how the tiers bind on this machine
-
-The policy tells the agent to find its own lever at runtime, so do not restate it. Report instead what the policy cannot know, the configuration as it stands today:
-
-- Which delegation tool each harness exposes in this session, and whether it takes a per-call model override. For Codex, report the available spawn tool and model choices, or state that this session exposes no spawn tool.
-- Which model each tier resolved to, and what that tier costs per million tokens.
-- Which available versions were checked for each chosen model family, applying `POLICY.md`'s model-version rule.
-- Any tier a harness cannot carry, named, with what its ceiling is instead.
-- What `agent.*.model` in `~/.config/opencode/opencode.json` binds the built-in agents to: which of them share one model, whether a read-only agent such as `explore` sits above Light, and whether the default primary agent `build` is bound at all or left on the top-level `model`.
-- Where there is no delegation tool at all, that the routing half of the policy is inert and the split-the-work half still applies.
-
-The tier agents from step 3, and any model aliases they depend on, are this skill's to write. Everything else in that configuration is the user's, so report it and leave it.
-
-### 5. Verify
-
-- [ ] Each steering file written to carries exactly one `## Delegation and model routing` heading (`grep -c` it).
-- [ ] The installed section is identical to `POLICY.md`: extract it from each file, from the heading to the next `##` or end of file, and diff it against the source. A section that merely exists may be a stale copy.
-- [ ] Each of those files still reads as the document it was: the policy landed as a section, not inside a fenced block or mid-sentence.
-- [ ] Where step 3 ran, its own checks pass.
-
-## Removing it
-
-When the user asks to uninstall, delete the `## Delegation and model routing` section from each of the files in step 2, from its heading up to the next `##` heading or end of file, and leave the rest of each file untouched. Verify with the same `grep -c`, expecting zero.
-
-Ask separately about the tier agent files step 3 wrote for OpenCode, ZCode, and Gemini CLI, naming the files. They are inert once the rule is gone, and a user who is re-syncing rather than leaving will want them kept.
+Per harness, what was written, re-synced, removed, or skipped, and what the policy cannot know: how each tier binds (per-call override or named agent), the model each tier resolved to and its price when published, the checked versions of each chosen model family under `POLICY.md`'s model-version rule, any tier the harness cannot carry and the ceiling it has instead, and the harness's own bindings for its built-in agents. Those built-in bindings, and every other setting in the harness, are the user's: report them and leave them.
 
 ## Notes
 
-- Nothing here needs a restart. Steering files are read per turn.
-- `POLICY.md` is the single source of truth. Editing the rule means editing that file and re-running this skill, rather than hand-patching the installed copies.
-- Repository-scoped `AGENTS.md` files are deliberately untouched: this is a rule about how the agent works, not about any one codebase.
+- Steering files are read per turn, so nothing needs a restart.
+- `POLICY.md` is the single source of truth. To change the rule, edit that file and run this skill again, rather than patching installed copies.
+- Repository-scoped steering files stay untouched: this is a rule about how the agent works, not about any one codebase.

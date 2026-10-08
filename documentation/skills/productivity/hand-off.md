@@ -35,7 +35,7 @@ Every handoff follows one fixed format, `HANDOFF-FORMAT.md`. A header names the 
 
 The format names no skills to call next. The next session may run in another harness with a different skill set, so the handoff describes the work and leaves the tooling to whoever picks it up.
 
-What it deliberately does not carry is anything already written down. Specifications, plans, ADRs, issues, commits and diffs are referenced by path or URL, never copied. That keeps the file small, and it keeps the settled detail in one place instead of two that drift.
+What it deliberately does not carry is anything already written down. Specifications, plans, architecture decision records, issues, commits and diffs are referenced by path or URL, never copied. That keeps the file small, and it keeps the settled detail in one place instead of two that drift.
 
 ## Common questions
 

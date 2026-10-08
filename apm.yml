@@ -155,10 +155,10 @@ marketplace:
       description: "Configure a repository for AI-assisted work: task tracking, ticket conventions, and triage roles."
     - name: setup-delegation-policy
       source: ./skills/setup/setup-delegation-policy
-      description: "Install the delegation and model routing rule into the global steering files on this machine."
+      description: "Install, reconfigure, or remove the delegation and model routing rule, and the tier agents it needs, for each agent harness on this machine."
     - name: setup-git-guardrails
       source: ./skills/setup/setup-git-guardrails
-      description: "Set up hooks and permission rules that make coding agents ask before git commands that can lose work or rewrite shared history (pushing to a protected branch, force pushes, reset --hard, clean -f, branch -D, discarding changes) across Claude Code, OpenCode, and Codex CLI."
+      description: "Set up git guardrails that make coding agents ask or stop before commands that lose work or rewrite shared history, at a guard level the user picks, for whichever agent harnesses they use."
     - name: setup-git-hooks
       source: ./skills/setup/setup-git-hooks
       description: "Set up versioned git hooks via core.hooksPath (no Husky) with lint-staged (Biome, plus Prettier only for languages Biome leaves uncovered and only if the user wants it), plus typecheck and build."

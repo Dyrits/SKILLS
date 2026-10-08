@@ -14,7 +14,9 @@
     "check-skill-manifests": "python3 .agents/scripts/generate-skill-manifests.py --check",
     "build-skill-graph": "python3 scripts/build-skill-graph.py",
     "test-skills-check": "python3 scripts/test-check-skills.py",
-    "test-scriptbook-helpers": "python3 scripts/test-scriptbook-helpers.py"
+    "test-scriptbook-helpers": "python3 scripts/test-scriptbook-helpers.py",
+    "test-guard-git": "python3 -I scripts/test-guard-git.py",
+    "test-detect-harnesses": "python3 -I scripts/test-detect-harnesses.py"
   },
   "devDependencies": {},
   "packageManager": "npm@10.9.4"

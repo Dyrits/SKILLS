@@ -2,110 +2,65 @@
 
 One agent per tier, each file named for the tier it serves: `light`, `balanced`, `heavy`, `frontier`. The name is the whole routing mechanism, so it has to be the policy's word and nothing near it.
 
-Run this once per model-per-agent harness present, skipping any whose agent directory does not exist. For a harness not in the table, inspect its delegation tool first. A per-call model override needs no tier agent files.
+Run this once per harness that binds a model to a named agent. A harness with a per-call model override needs none of it.
 
 ## Contents
 
-- Where each harness keeps them
-- Pre-defined ladders
+- Learn the harness's agent format
+- Choose the models
 - When a harness has fewer rungs than the policy
-- Choosing OpenCode's ladder
-- Writing the agents
+- Write the agents
 - Verify
 - Bodies
 
-## Where each harness keeps them
+## Learn the harness's agent format
 
-| | OpenCode | ZCode | Gemini CLI |
-| --- | --- | --- | --- |
-| Agent directory | `~/.config/opencode/agents/` | `~/.zcode/agents/` | `~/.gemini/agents/` |
-| Required fields | `description`, `mode: subagent`, `model` | `name`, `description`, `model` | `name`, `description`, `model` |
-| Field dialect | lower_snake | camelCase, case-sensitive | lower_snake |
-| What `model` names | `provider/model-id` | a model id | a config alias |
-| Choosing the model | **ask**, per the catalogue steps | pre-defined below | pre-defined below |
+Read the harness's current documentation for subagents. Settle four facts before writing anything:
 
-Traps, each of which fails silently rather than loudly:
+- The directory the agent files live in, and whether it has a project scope as well as a global one.
+- The required fields, and the field dialect (casing is sometimes case-sensitive).
+- What the `model` field takes: a provider-qualified id, a bare model id, or an alias defined in the harness's settings.
+- How reasoning effort is set, when the harness has that control. A harness that offers one model at several reasoning levels can use the levels as its ladder.
 
-- **OpenCode**: `opencode.json`'s `agent.*.model` binds the built-ins (`build` and `plan` primary, `general` and `explore` subagents). That file is the user's. Report it, change nothing in it.
-- **ZCode**: `thoughtLevel` needs an explicit `model` beside it or it is dropped. No project-level subagents yet, so global is the only scope.
-- **Gemini CLI**: an unrecognised `thinkingLevel` is dropped rather than rejected, and the allowed set grows between releases. Confirm the installed bundle knows the level before relying on it.
+Some mistakes fail silently rather than loudly: a field dropped because a companion field is missing, an unrecognised reasoning level ignored, a model id that resolves to nothing until a spawn fails mid-task. The verify checks below exist for these.
 
-## Pre-defined ladders
+## Choose the models
 
-Confirm each id against the harness's live catalogue before writing it, applying `POLICY.md`'s model-version rule to every tier binding. Installed bindings and caches can identify the family in use, but the live catalogue determines which versions are available.
+The user chooses from models the harness actually has, so the choice starts from its live catalogue.
 
-**ZCode**, the GLM family under the user's coding plan, at zero marginal cost. Escalates by model, then by reasoning level:
+### 1. Read the catalogue
 
-| Tier | `model` | `thoughtLevel` |
-| --- | --- | --- |
-| light | `glm-5.3-flash` | default |
-| balanced | `glm-5.3` | `high` |
-| heavy | `glm-5.3` | `max` |
+Use the harness's model-listing command or documented list as the authority on what is bindable and which providers are signed in. Take prices per million tokens and context windows from the provider's published data or the harness's own listing, and say so when a price is unavailable. Rank by input price. A vendor's own ladder (flash, plus, max, pro) hints at capability but never sets the ranking.
 
-**Gemini CLI**, Gemini 3.8 Flash (`gemini-3.8-flash`) at three thinking levels, so the levels are the ladder and the model stays fixed:
-
-| Tier | `model` | `thinkingLevel` |
-| --- | --- | --- |
-| light | `gemini-3.8-flash` | `LOW` |
-| balanced | `gemini-3.8-flash` | `MEDIUM` |
-| heavy | `gemini-3.8-flash` | `HIGH` |
-
-Those aliases go in `~/.gemini/settings.json` under `modelConfigs.customAliases`, which merge over the built-ins:
-
-```json
-{
-  "modelConfigs": {
-    "customAliases": {
-      "light": {
-        "extends": "chat-base-3",
-        "modelConfig": {
-          "model": "gemini-3.8-flash",
-          "generateContentConfig": { "thinkingConfig": { "thinkingLevel": "LOW" } }
-        }
-      }
-    }
-  }
-}
-```
-
-Neither harness carries a Frontier rung: nothing in the GLM family sits above Heavy, the Flash generation has no Pro sibling, and `MINIMAL` is rejected outright.
-
-## When a harness has fewer rungs than the policy
-
-Write the tiers it can carry and no filler. Two tiers on one binding is a distinction that does not exist, and the orchestrator spends the more expensive name believing it escalated. Name the missing tier and the real ceiling in the report, so escalation stops somewhere the user knows about.
-
-## Choosing OpenCode's ladder
-
-### 1. Read the live catalogue
-
-- `opencode models` is the authority on what is bindable and which providers are authenticated.
-- `https://models.dev/api.json` carries the economics: `<provider>.models.<id>.cost.input` and `.cost.output` per million tokens, `.limit.context` for the window.
-
-Rank by input price. A vendor's own ladder (flash, plus, max, pro) hints at capability but never sets the ranking.
-
-Pull out the models costing nothing, `cost.input` and `cost.output` both zero, and tell the two kinds apart, because they fail differently:
+Pull out the models costing nothing, and tell the two kinds apart, because they fail differently:
 
 - **Subscription-covered**: a flat-rate plan the user already pays for, reporting zero marginal cost. Stable, and the strongest candidate for any tier it can carry.
 - **Free-listed**: given away for now, often marked in the id. Rotates without warning, and the agent bound to it then fails at spawn rather than at setup.
 
 Where a subscription covers the whole ladder, keeping every tier inside it is the cheapest correct answer available.
 
-### 2. Offer the user a model per tier
+### 2. Offer a model per tier
 
-One `AskUserQuestion` call, one question per tier, each option carrying the model id and its price in and out. Recommend first:
+Ask one round, one question per tier, each option carrying the model id and its price in and out when known. Recommend first:
 
 - **Light**: the cheapest model that still writes correct code.
 - **Balanced**: clearly under Heavy, code-tuned where the catalogue offers it. The workhorse, so its price is the one that compounds.
 - **Heavy**: strong general reasoning near the top of the catalogue.
 - **Frontier**: the most capable available, chosen on capability alone.
 
-Offer a zero-cost model wherever it is credible, labelled with its kind: recommend a subscription-covered one outright, and state the rotation risk on a free-listed one so the user takes that trade knowingly.
+Offer a zero-cost model wherever it is credible, labelled with its kind: recommend a subscription-covered one outright, and state the rotation risk on a free-listed one so the user takes that trade knowingly. Keep the tiers monotonic in price. A subscription covering several tiers is the exception: there capability ascends instead, and the bindings still have to differ.
 
-Keep the tiers monotonic in price. A subscription covering several tiers is the exception: there capability ascends instead, and the bindings still have to differ.
+Apply `POLICY.md`'s model-version rule to every binding. Installed bindings and caches can show the family in use, but the live catalogue says which versions are available.
 
-## Writing the agents
+Where the user keeps an existing binding, keep it, and report whether it still resolves.
 
-One file per tier, in that harness's directory and dialect:
+## When a harness has fewer rungs than the policy
+
+Write the tiers it can carry and no filler. Two tiers on one binding is a distinction that does not exist, and the orchestrator spends the more expensive name believing it escalated. Name the missing tier and the real ceiling in the report, so escalation stops somewhere the user knows about.
+
+## Write the agents
+
+One file per tier, in the harness's directory and dialect:
 
 ```markdown
 ---
@@ -118,15 +73,15 @@ model: <model id, or the alias carrying the reasoning level>
 
 The `description` is what the orchestrator reads when choosing a subagent, which makes it a context pointer rather than documentation: lead with the kind of work, and name genuinely distinct cases rather than synonyms for one.
 
-Where a tier file exists, rewrite its model line and leave the body. Where one survives under an older name (`fast` for Light, `general` for Balanced), rename it onto the tier: two files serving one tier gives the orchestrator a coin to flip.
+Where a tier file exists, rewrite its model line and leave the body.
 
 ## Verify
 
-- Each directory holds the tiers that harness can carry, and no legacy duplicate.
-- Every model value resolves: a raw id appears verbatim in the harness's model list, an alias in the settings defining it. A typo binds the agent to nothing and surfaces only when a spawn fails mid-task.
+- The directory holds the tiers the harness can carry, one file each.
+- Every model value resolves: a raw id appears verbatim in the harness's model list, an alias in the settings defining it.
 - Every binding satisfies `POLICY.md`'s model-version rule against the live catalogue.
 - The tiers ascend in capability, and in price wherever the models are metered.
-- Any tier left on a free-listed model is named as such in the report, since re-running this skill is what re-checks it.
+- Any tier left on a free-listed model is named as such in the report, since running this skill again is what re-checks it.
 
 ## Bodies
 

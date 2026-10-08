@@ -2,52 +2,62 @@ Upstream skill: `git-guardrails-claude-code`, adapted here as `setup-git-guardra
 
 ## What it does
 
-Puts a confirmation in front of git commands that can lose work or rewrite shared history, so you approve each one instead of the agent running it unchecked:
+Puts a human decision in front of git commands that can lose work or rewrite shared history, so you approve each one instead of the agent running it unchecked. It does not assume an agent: a bundled script, `detect-harnesses.py`, lists the harnesses it finds on disk, and the skill asks which of them you use and wires each one by the strongest mechanism that harness documents.
 
-- `git push` to a protected branch (`main`, `master`, the remote's default branch, and any you add), a plain force push, and pushes that delete or mirror remote branches.
-- `git reset --hard`, `git clean -f`, `git branch -D`, `git checkout .` or `-- <paths>`, and `git restore` on the working tree.
+It asks four things in one round: the guard level, the scope (this project or every project), the harnesses, and the protected branches.
 
-Routine work passes without a prompt: commits, pushes to feature branches, `--force-with-lease` to a feature branch, dry runs, and `git restore --staged`. The Claude Code script checks only the command being run, so `grep "git push"` or a commit message that mentions a push is not caught.
+| Level | Guards |
+| --- | --- |
+| 1. Shared history | Pushes to a protected branch (`main`, `master`, the remote's default branch, and any you add), plain force pushes, pushes that delete or mirror, `--no-verify` on a push |
+| 2. Local work | Level 1, plus `reset --hard`, `clean -f`, `branch -D`, `checkout` or `switch` that discards changes, `restore` on the working tree, `stash drop` and `clear`, `worktree remove --force`, `reflog expire`, `gc --prune` |
+| 3. Strict | Level 2, plus every push, `rebase`, any `reset`, `commit --amend`, any branch or tag deletion, `filter-branch` |
 
-Upstream covered Claude Code only and denied outright. This fork extends it to OpenCode and Codex CLI, and asks instead of denying.
+Routine work passes at levels 1 and 2: commits, pushes to feature branches, `--force-with-lease` to a feature branch, dry runs, and `git restore --staged`. The command guard reads the command being run, across chains, `sudo`, `xargs`, `command`, `bash -c`, `$(...)`, and `git -C`, so `echo "git push"` or a commit message that mentions a push is not caught.
+
+Upstream covered Claude Code only and denied outright. This fork asks instead of denying, and no longer names the harnesses it supports.
 
 ## When to reach for it
 
-Type `/setup-git-guardrails`, or an agent can reach for it when you want to guard against destructive git operations by any coding agent. It asks whether to install for this project or globally, for which agents, and which branches to protect.
+Type `/setup-git-guardrails`, or an agent can reach for it when you want to guard against destructive git operations by coding agents.
 
-## What each agent gets
+## The two layers
 
-| Agent | Mechanism |
-| --- | --- |
-| Claude Code | A `PreToolUse` hook on Bash running [confirm-dangerous-git.sh](../../../skills/setup/setup-git-guardrails/scripts/confirm-dangerous-git.sh), which answers `ask` with the reason |
-| OpenCode | `permission.bash` glob rules in `opencode.json` set to `ask`, with `allow` exceptions after them (the last matching rule wins). Globs cannot read the current branch, so every non-dry-run push asks |
-| Codex CLI | No per-command rules exist. The skill offers a versioned `pre-push` hook and remote branch protection, and says plainly that Codex cannot be guarded at the configuration level |
+| Layer | What it is | What it covers |
+| --- | --- | --- |
+| Portable | A git `pre-push` hook installed in the repository's hooks directory | Pushes by any agent or person: protected branches and remote deletions, and at level 3 any non-fast-forward. Git has no hook for local commands |
+| Agent | [guard-git.py](../../../skills/setup/setup-git-guardrails/scripts/guard-git.py), wired into the harness | Every command in the guard table, through a pre-command hook when the harness has one, through permission rules when it has those, and not at all when it has neither |
+
+[EXAMPLES.md](../../../skills/setup/setup-git-guardrails/EXAMPLES.md) shows one hookup of each mechanism.
 
 ## Common questions
 
 **What happens when the agent tries a guarded command?**
 
-You get the normal permission prompt with the reason (for example "This pushes to the protected branch `main`"). Approve it and the command runs; refuse and the agent is told.
+With a hook that can ask, you get the harness's permission prompt with the reason (for example "This pushes to the protected branch `main`"). With a blocking hook, the command is stopped and the agent is told why.
 
 **What about non-interactive sessions?**
 
-Nobody can answer the prompt there, so expect the guarded command to be refused.
+Nobody can answer a prompt there, so expect the guarded command to be refused.
 
-**Can I change what is guarded?**
+**What if my harness has no hooks or rules?**
 
-Yes. The skill asks which branches to protect and about further customization. Keep the script's checks and OpenCode's rules in sync.
+The portable layer still guards pushes, and the skill tells you which level 2 and 3 commands stay unguarded.
 
-**Why is Codex handled differently?**
+**Is this a sandbox?**
 
-It has no hook runner and no per-command rules. A git-level `pre-push` hook (see [setup-git-hooks](./setup-git-hooks.md)) and protected remote branches apply no matter which agent pushes.
+No. It reads command text, so aliases, scripts that run git, and `eval` get past it. It catches mistakes. Branch protection on the remote is the only hard stop.
+
+**Can I change the level later?**
+
+Run the skill again with new answers. Files are overwritten in place and settings entries replaced, not duplicated.
 
 ## It's working if
 
-- Piping a sample `git push origin main` command into the script prints JSON with `"permissionDecision": "ask"`, and piping `echo "git push origin main"` prints nothing.
+- Piping `git push origin main` into the guard exits 2 with a reason, and piping `echo "git push origin main"` exits 0 silently.
 - Pushing a feature branch goes through without a prompt.
-- OpenCode prompts before a `git push origin main` in a session, or its configuration parses with the rules listed.
+- Each harness you chose prompts or blocks on a guarded command in a fresh session, or the report says it could not be checked.
 - Your existing hooks and permission rules are still present.
 
 ## Where it fits
 
-Run-once safety setup per project or per machine, run on its own request. [setup-git-hooks](./setup-git-hooks.md) is the git-level layer that covers agents this cannot intercept. [guide](../productivity/guide.md) routes the rest.
+Run-once safety setup per project or per machine, run on its own request. [setup-git-hooks](./setup-git-hooks.md) manages the same hooks directory, so the two coexist. [guide](../productivity/guide.md) routes the rest.

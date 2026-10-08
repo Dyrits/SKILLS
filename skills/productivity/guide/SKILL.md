@@ -97,9 +97,9 @@ Work the table top to bottom. The first row that fits wins.
 | `/unslop` | Remove filler and recurring AI writing patterns from prose. |
 | `/setup-ai-tooling` | Configure verified tool integrations, measurements, and recovery methods. |
 | `/monitor-ai-tooling` | Report actual usage, quality, gaps, and evidence-supported benefits. |
-| `/setup-delegation-policy` | Install machine-wide delegation and model-tier policy. |
+| `/setup-delegation-policy` | Install, reconfigure, or remove the delegation and model-tier policy per harness. |
 | `/setup-git-hooks` | Configure versioned commit checks. |
-| `/setup-git-guardrails` | Ask before destructive Git operations at supported enforcement layers. |
+| `/setup-git-guardrails` | Ask before destructive Git operations, at a guard level the user picks, for any harness. |
 | `/address-feedback` | Assess review feedback from any source, implement approved changes, and deliver approved replies. |
 | `/publish-message` | Publish established findings to any connected service after approval of exact text and destination. |
 | `/work-in-tree` | Create or reuse an isolated task checkout. |

@@ -1466,7 +1466,7 @@ const DATA = {
    "argumentHint": "",
    "bucket": "setup",
    "calls": [],
-   "description": "Install the delegation and model routing rule into the global steering files on this machine. Use when the user asks to set up delegation or model routing.",
+   "description": "Install, reconfigure, or remove the delegation and model routing rule, and the tier agents it needs, for each agent harness on this machine. Use when the user asks to set up, change, or remove delegation or model routing.",
    "fits": [
     "Run-once, machine-wide setup, rerun when POLICY.md changes. It sits beside setup-ai-workspace, which configures one repository, and setup-ai-tooling, which provisions tools. guide routes the rest."
    ],
@@ -1482,18 +1482,19 @@ const DATA = {
    "requires": [],
    "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/setup/setup-delegation-policy/SKILL.md",
    "summary": [
-    "Installs one standing rule, \"Delegation and model routing\", into the global steering files on this machine, and gives harnesses that bind a model per agent one agent per tier. The rule tells an agent to decide at the top of a unit of work whether to do it here, hand it to one subagent, split it, or have a second agent review, and to pick the least expensive model that can do the bounded task reliably.",
-    "It is installed rather than invoked because a skill fires only after reasoning has begun, and by then the decision has bent toward the plan already forming. A rule in an always-loaded file is carried every turn."
+    "Installs one standing rule, \"Delegation and model routing\", into the global steering file of each agent harness on this machine, and gives harnesses that bind a model per agent one agent per tier. The rule tells an agent to decide at the top of a unit of work whether to do it here, hand it to one subagent, split it, or have a second agent review, and to pick the least expensive model that can do the bounded task reliably.",
+    "It is installed rather than invoked because a skill fires only after reasoning has begun, and by then the decision has bent toward the plan already forming. A rule in an always-loaded file is carried every turn.",
+    "No harness is built in. A bundled script, detect-harnesses.py, lists the harnesses it finds on disk (directories holding a steering file or agents, with the command on the path and whether the policy is already installed), with no harness named in advance. The skill asks you to confirm the list, and then asks per harness whether to configure, reconfigure, remove, or skip. It reads each harness's own documentation for its steering file, its agent format, and its model list."
    ],
-   "tagline": "Configure machine-wide delegation and model-tier rules."
+   "tagline": "Install, reconfigure, or remove the delegation and model-tier rule for each agent harness you use."
   },
   "setup-git-guardrails": {
    "argumentHint": "",
    "bucket": "setup",
    "calls": [],
-   "description": "Set up hooks and permission rules that make coding agents ask before git commands that can lose work or rewrite shared history (pushing to a protected branch, force pushes, reset --hard, clean -f, branch -D, discarding changes) across Claude Code, OpenCode, and Codex CLI. Use when the user wants to guard against destructive git operations by any coding agent.",
+   "description": "Set up git guardrails that make coding agents ask or stop before commands that lose work or rewrite shared history, at a guard level the user picks, for whichever agent harnesses they use. Use when the user wants to guard against destructive git operations by coding agents.",
    "fits": [
-    "Run-once safety setup per project or per machine, run on its own request. setup-git-hooks is the git-level layer that covers agents this cannot intercept. guide routes the rest."
+    "Run-once safety setup per project or per machine, run on its own request. setup-git-hooks manages the same hooks directory, so the two coexist. guide routes the rest."
    ],
    "handovers": [],
    "inputs": [],
@@ -1507,11 +1508,12 @@ const DATA = {
    "requires": [],
    "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/setup/setup-git-guardrails/SKILL.md",
    "summary": [
-    "Puts a confirmation in front of git commands that can lose work or rewrite shared history, so you approve each one instead of the agent running it unchecked:",
-    "Routine work passes without a prompt: commits, pushes to feature branches, --force-with-lease to a feature branch, dry runs, and git restore --staged. The Claude Code script checks only the command being run, so grep \"git push\" or a commit message that mentions a push is not caught.",
-    "Upstream covered Claude Code only and denied outright. This fork extends it to OpenCode and Codex CLI, and asks instead of denying."
+    "Puts a human decision in front of git commands that can lose work or rewrite shared history, so you approve each one instead of the agent running it unchecked. It does not assume an agent: a bundled script, detect-harnesses.py, lists the harnesses it finds on disk, and the skill asks which of them you use and wires each one by the strongest mechanism that harness documents.",
+    "It asks four things in one round: the guard level, the scope (this project or every project), the harnesses, and the protected branches.",
+    "Routine work passes at levels 1 and 2: commits, pushes to feature branches, --force-with-lease to a feature branch, dry runs, and git restore --staged. The command guard reads the command being run, across chains, sudo, xargs, command, bash -c, $(...), and git -C, so echo \"git push\" or a commit message that mentions a push is not caught.",
+    "Upstream covered Claude Code only and denied outright. This fork asks instead of denying, and no longer names the harnesses it supports."
    ],
-   "tagline": "Ask before destructive Git commands with client permissions and hooks."
+   "tagline": "Ask before destructive Git commands, at a guard level you pick, for any agent harness."
   },
   "setup-git-hooks": {
    "argumentHint": "",
