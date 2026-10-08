@@ -39,4 +39,4 @@ _Why_: The tracker already uses it.
 
 ## Several contexts
 
-Find the glossary, or each context's glossary, through `AGENTS.md`. When none exists, a repository with one context creates it at `documentation/glossary.md`; with several, each context keeps its glossary in a `documentation/` folder beside its code. When you create the first glossary, add one line for the glossaries to the nearest `AGENTS.md`. When a term's context is unclear, ask.
+Find the glossary, or each context's glossary, through `AGENTS.md`. When it names none, look for an existing home of that kind in the repository first (judging by content, not a folder name alone, and asking when the match is unclear), and use the default only when nothing matches. Never overwrite: adopt a file already at the target and add to it in its own style. Then add one line for it to the nearest `AGENTS.md` and tell the user. The default for one context is `documentation/glossary.md`; with several, each context keeps its glossary in a `documentation/` folder beside its code, and one `AGENTS.md` line covers them all. When a term's context is unclear, ask.

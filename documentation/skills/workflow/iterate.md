@@ -22,7 +22,7 @@ Use the planned route (`specify`, `taskify`, `implement`, `review-and-refactor`)
 | `documentation/work-in-progress.md` | Current goal, agreed batch, open questions, evidence, next step |
 | Changelog | A Delivery when a meaningful increment passes its checks, an Agreement for a consequential decision |
 
-Paths are defaults: the skill first uses the document `AGENTS.md` names, and creates one at the default only when there is none, adding its line to `AGENTS.md`.
+Paths are defaults: the skill first uses the document `AGENTS.md` names. When there is none, it adopts an existing home of that kind in your project, creates one at the default only when nothing matches, never overwrites an existing file, and adds its line to `AGENTS.md`.
 
 Existing requirements and specifications are read and respected. The skill carries the formats it writes.
 

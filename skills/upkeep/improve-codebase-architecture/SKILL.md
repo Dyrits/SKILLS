@@ -23,7 +23,7 @@ This command is _informed_ by the project's domain model and built on a shared d
 - If the user named a direction (a module, a subsystem, a pain point), take it, and skip the inference below.
 - Otherwise, walk back a good stretch of the commit history (`git log --oneline`) to find the codebase's hot spots, the files and areas that keep coming up, and let those paths pull your attention first. If the changes are scattered with no clear hot spot, widen the net.
 
-Read the project's glossary, the decision records in the area you're touching, and the conventions file first, when `AGENTS.md` points to them.
+Read the project's glossary, the decision records in the area you're touching, and the conventions file first, when `AGENTS.md` points to them; mention a likely one it does not name in the report instead of using it.
 When it is missing, scan without project conventions and say so in the report.
 
 Then spawn a sub-agent to walk the codebase. Don't follow rigid heuristics; explore organically and note where you experience friction:

@@ -2,7 +2,7 @@
 
 Adapted from the `debug` skill: a discipline for hard bugs. Skip phases only when explicitly justified.
 
-When exploring the codebase, read the glossary and the architecture decision records in the area you're touching, when `AGENTS.md` points to them, to get a clear mental model of the relevant modules.
+When exploring the codebase, read the glossary and the architecture decision records in the area you're touching, when `AGENTS.md` points to them, to get a clear mental model of the relevant modules. Mention a likely one it does not name in your report instead of using it.
 
 ## Redact
 

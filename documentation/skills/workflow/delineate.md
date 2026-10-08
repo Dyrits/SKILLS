@@ -28,7 +28,7 @@ Type `/delineate`, or an agent can reach for it when a task fits. Reach for it w
 | `documentation/requirements.md` | System-wide obligations, each with its source, and its number and check when measurable |
 | The glossary | Domain terms only. One context keeps one glossary (`documentation/glossary.md` by default); several keep one glossary beside each context's code, linked from the domain outline |
 
-Paths are defaults: the skill first uses the document `AGENTS.md` names, and creates one at the default only when there is none, adding its line to `AGENTS.md`.
+Paths are defaults: the skill first uses the document `AGENTS.md` names. When there is none, it adopts an existing home of that kind in your project, creates one at the default only when nothing matches, never overwrites an existing file, and adds its line to `AGENTS.md`.
 
 Every requirement goes here, functional or not: an uptime target is imposed from outside the code just as a business rule is. [architect](./architect.md) then says how the system meets it. The capability map lists what the system does or is agreed to do; priorities and candidates stay in the backlog.
 

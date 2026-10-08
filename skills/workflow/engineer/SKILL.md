@@ -9,7 +9,7 @@ Design how one capability is built: its modules and their interfaces, the data i
 
 ## Gather
 
-Select one capability. Find the project's documents through its `AGENTS.md`, which names each one and where it lives; a kind it does not name does not exist yet. Read, when present:
+Select one capability. Find the project's documents through its `AGENTS.md`, which names each one and where it lives; a kind it does not name does not exist yet. When you notice a likely document `AGENTS.md` does not name, mention it in your report instead of using it. Read, when present:
 
 - the capability's specifications and capability requirements;
 - the system-wide requirements, the architecture document, and the decision records;
@@ -29,7 +29,7 @@ Use the vocabulary and principles in [MODULES.md](MODULES.md) throughout. List t
 
 ## Write it down
 
-Write the capability's blueprint following [BLUEPRINT-FORMAT.md](BLUEPRINT-FORMAT.md), updating an existing one in place, or creating it at the format's default location when `AGENTS.md` says nothing about blueprints. Record a capability-level decision that is hard to reverse, surprising without context, and the result of a real tradeoff as a decision record, linked from the blueprint. Create the folder with its first document.
+Write the capability's blueprint following [BLUEPRINT-FORMAT.md](BLUEPRINT-FORMAT.md), updating an existing one in place. When `AGENTS.md` says nothing about blueprints, first look for an existing home of that kind in the repository (judging by content, not a folder name alone, and asking when the match is unclear), and use the default only when nothing matches; never overwrite, but adopt a file already at the target and add to it in its own style. The default is in the format. Record a capability-level decision that is hard to reverse, surprising without context, and the result of a real tradeoff as a decision record, linked from the blueprint. Create the folder with its first document.
 
 When you create a blueprint, add one line pointing to it from the capability's specifications when they exist. When you create the project's first blueprint, add one line saying where capability blueprints live and when to read them to the nearest `AGENTS.md`, and a link to where they live where the root `README.md` lists the project's documentation (adding a short Documentation section if there is none). Do the same for the first decision record. Check for an existing line first.
 

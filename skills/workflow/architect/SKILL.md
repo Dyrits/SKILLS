@@ -14,7 +14,7 @@ Take one branch:
 
 ## Gather
 
-Find the project's documents through its `AGENTS.md`, which names each one and where it lives; a kind it does not name does not exist yet. Read the functional picture first: the system outline, the system-wide and capability requirements, and the glossary. Then read the technical state: the architecture document, the decision records, and, in Assess, the code, dependency manifests, configuration, and deployment files.
+Find the project's documents through its `AGENTS.md`, which names each one and where it lives; a kind it does not name does not exist yet. When you notice a likely document `AGENTS.md` does not name, mention it in your report instead of using it. Read the functional picture first: the system outline, the system-wide and capability requirements, and the glossary. Then read the technical state: the architecture document, the decision records, and, in Assess, the code, dependency manifests, configuration, and deployment files.
 
 When the functional picture is missing, ask only what the architecture cannot be decided without: what the system is for, who uses it and how many, and what it must guarantee (availability, performance, data location, security, compliance, budget). Also ask what the team knows and must keep running, since skills and operations budget constrain the stack. Record each obligation the user states in the requirements, following [REQUIREMENTS-FORMAT.md](REQUIREMENTS-FORMAT.md), and report that the domain outline is missing.
 
@@ -28,7 +28,7 @@ Settle the tree with the user through the [interview method](INTERVIEW.md). Requ
 
 ## Write it down
 
-Write the architecture document following [ARCHITECTURE-FORMAT.md](ARCHITECTURE-FORMAT.md), updating an existing one in place, or creating it at `documentation/architecture.md` when `AGENTS.md` names none. Record each decision that is hard to reverse, surprising without context, and the result of a real tradeoff as a decision record following [DECISION-RECORD-FORMAT.md](DECISION-RECORD-FORMAT.md). A decision that replaces an earlier record marks that record as superseded.
+Write the architecture document following [ARCHITECTURE-FORMAT.md](ARCHITECTURE-FORMAT.md), updating the one `AGENTS.md` names in place. When it names none, first look for an existing home of that kind in the repository (judging by content, not a folder name alone, and asking when the match is unclear), and use the default only when nothing matches; never overwrite, but adopt a file already at the target and add to it in its own style. The default is `documentation/architecture.md`. Record each decision that is hard to reverse, surprising without context, and the result of a real tradeoff as a decision record following [DECISION-RECORD-FORMAT.md](DECISION-RECORD-FORMAT.md). A decision that replaces an earlier record marks that record as superseded.
 
 When you create a document (the architecture, the first decision record, the requirements), add one line naming it and when to read it to the nearest `AGENTS.md`, and a link to it where the root `README.md` lists the project's documentation (adding a short Documentation section if there is none). Check for an existing line first.
 

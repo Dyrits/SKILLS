@@ -1,6 +1,6 @@
 # Blueprint format
 
-A capability's blueprint (created at `documentation/capabilities/<capability>/blueprint.md` unless `AGENTS.md` says blueprints live elsewhere) says how the code delivers that capability's specifications inside the system's architecture. It uses the vocabulary in [MODULES.md](MODULES.md) and the glossary's terms.
+A capability's blueprint (by default at `documentation/capabilities/<capability>/blueprint.md`; `AGENTS.md` says where blueprints actually live) says how the code delivers that capability's specifications inside the system's architecture. It uses the vocabulary in [MODULES.md](MODULES.md) and the glossary's terms.
 
 ## Structure
 

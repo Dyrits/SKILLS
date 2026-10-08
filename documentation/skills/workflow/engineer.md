@@ -26,7 +26,7 @@ Type `/engineer`, or an agent can reach for it when a task fits. The description
 | `documentation/capabilities/<capability>/blueprint.md` | The approach, modules and interfaces, data, seams, and tables tracing acceptance criteria and requirements to modules |
 | Architecture decision records | A capability-level choice that clears the bar, or a proposed change to the architecture |
 
-Paths are defaults: the skill first uses the document `AGENTS.md` names, and creates one at the default only when there is none, adding its line to `AGENTS.md`.
+Paths are defaults: the skill first uses the document `AGENTS.md` names. When there is none, it adopts an existing home of that kind in your project, creates one at the default only when nothing matches, never overwrites an existing file, and adds its line to `AGENTS.md`.
 
 ## Deep modules
 

@@ -4,9 +4,18 @@ The kinds of shared project documents this skill reads and updates, and the rule
 
 ## Finding them
 
-The project's `AGENTS.md` names its documents and where they live; read it to find each kind below, and use the document it names, wherever that is. A kind it does not name does not exist yet: a step that only reads it treats it as absent. A step that must write it creates it at the default location below, lazily (only when it carries useful information, and a folder with its first document), then adds one line to the nearest `AGENTS.md` saying what the document holds, where it lives, and when to read it, and links it where the root `README.md` lists the project's documentation (adding a short Documentation section if there is none). Check for an existing line first, and keep one line per kind of document, not one per file.
+The project's `AGENTS.md` names its documents and where they live; read it to find each kind below, and use the document it names, wherever that is. A kind it does not name does not exist yet for reading: a step that only reads it treats it as absent and does not search for it. When such a step notices a likely document anyway (a `docs/adr/` folder of decision records, say), it mentions it in its report, without using it, so the missing `AGENTS.md` line can be added.
 
-| Kind | Holds | Default location when created |
+## Creating one
+
+A step that must write a kind `AGENTS.md` does not name creates it lazily: only when it carries useful information, and a folder with its first document.
+
+1. **Look for an existing home.** Search the repository for documents of that kind already in place, such as `docs/`, `doc/`, `adr/`, or `docs/adr/`. Judge by content, not by folder name alone: a `docs/` folder holding a website or generated reference is no home for decision records. Use a single clear match; with several candidates or an unclear one, ask the user.
+2. **Fall back to the default location** in the table below only when nothing matches.
+3. **Never overwrite.** When a file already sits at the chosen path, adopt it as the document: keep its content and add to it in its own structure and style. Ask before restructuring one that does not follow the format.
+4. **Announce it.** Add one line to the nearest `AGENTS.md` saying what the document holds, where it lives, and when to read it, and link it where the root `README.md` lists the project's documentation (adding a short Documentation section if there is none). Check for an existing line first, and keep one line per kind of document, not one per file. Tell the user what was adopted or created, and where.
+
+| Kind | Holds | Default location |
 | --- | --- | --- |
 | Requirements | Global obligations | `documentation/requirements.md` |
 | Backlog | Candidate outcomes and deferrals, or a pointer to the remote backlog | `documentation/backlog.md` |
