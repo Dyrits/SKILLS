@@ -67,6 +67,7 @@ For publishing conclusions already reached, [publish-message](../productivity/pu
 | A recurring operational loop needs an implementable design | [design-workflow](../productivity/design-workflow.md). |
 | An architectural seam causes friction | [improve-codebase-architecture](../upkeep/improve-codebase-architecture.md), then explore one selected candidate. |
 | An approved task graph needs concurrent implementation | [divide-and-conquer](../workflow/divide-and-conquer.md), instead of individual task sessions. |
+| Independent pieces of one task can run on cheap agents in parallel | [swarm](../productivity/swarm.md), with agents you select. |
 | Behavior needs a red/green check | [test-first](../workflow/test-first.md), at an agreed seam. |
 | A known failure needs diagnosis | [debug](../upkeep/debug.md), starting with a tight reproduction loop. |
 | Learning is a continuing project | [teach](../productivity/teach.md), in a dedicated teaching workspace. |

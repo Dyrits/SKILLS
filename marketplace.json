@@ -60,6 +60,12 @@
       "source": "./skills/productivity/re-explain"
     },
     {
+      "name": "swarm",
+      "description": "Divide one task into independent pieces and run them in parallel on fast, low-cost subagents the user selects, then merge and spot-check their reports.",
+      "version": "0.2.0",
+      "source": "./skills/productivity/swarm"
+    },
+    {
       "name": "teach",
       "description": "Teach the user a skill or concept over multiple sessions in a stateful workspace.",
       "version": "0.2.0",
@@ -97,7 +103,7 @@
     },
     {
       "name": "setup-ai-workspace",
-      "description": "Configure a repository for AI-assisted work: task tracking, ticket conventions, triage roles, code conventions, optional tooling setups.",
+      "description": "Configure a repository for AI-assisted work: task tracking, ticket conventions, and triage roles.",
       "version": "0.2.0",
       "source": "./skills/setup/setup-ai-workspace"
     },
@@ -277,7 +283,7 @@
     },
     {
       "name": "test-first",
-      "description": "Build features or fix bugs test-first through the red-green loop of test-driven development (TDD), leaving refactoring to review-and-refactor.",
+      "description": "Build features or fix bugs test-first through the red-green loop of test-driven development (TDD), leaving refactoring to a later review.",
       "version": "0.2.0",
       "source": "./skills/workflow/test-first"
     }

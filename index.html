@@ -391,6 +391,10 @@ const DATA = {
    "label": "Specification",
    "path": "documentation/capabilities/<capability>/specifications.md"
   },
+  "swarm-report": {
+   "description": "The merged reports of parallel workers, each result marked verified or unverified.",
+   "label": "Swarm report"
+  },
   "tasks": {
    "description": "Verifiable tasks with acceptance criteria and blocking dependencies.",
    "label": "Task graph",
@@ -526,6 +530,7 @@ const DATA = {
     "optimize-process": "Procedures",
     "publish-message": "Outbound",
     "re-explain": "Sharpening",
+    "swarm": "Parallel work",
     "teach": "Other",
     "unslop": "Other",
     "walk-through": "Procedures",
@@ -540,6 +545,7 @@ const DATA = {
     "design-workflow",
     "optimize-process",
     "walk-through",
+    "swarm",
     "publish-message",
     "classify",
     "teach",
@@ -1609,6 +1615,31 @@ const DATA = {
     "The specification stays canonical in the repository. A remote issue can link to or summarize it, but does not become another specification."
    ],
    "tagline": "Resolve outstanding decisions and write or update a capability's observable behavior, acceptance, and requirements."
+  },
+  "swarm": {
+   "argumentHint": "",
+   "bucket": "productivity",
+   "calls": [],
+   "description": "Divide one task into independent pieces and run them in parallel on fast, low-cost subagents the user selects, then merge and spot-check their reports. Use when the user asks for a swarm or to fan work out across many cheap agents: sweeping, auditing, summarising, or applying independent changes across many items.",
+   "fits": [
+    "A standalone discipline you can reach for at any point in a session, not a step of the delivery flow. divide-and-conquer covers dependent implementation work. guide maps the other routes."
+   ],
+   "handovers": [],
+   "inputs": [
+    "idea"
+   ],
+   "next": [],
+   "outputs": [
+    "swarm-report"
+   ],
+   "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/productivity/swarm.md",
+   "requires": [],
+   "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/productivity/swarm/SKILL.md",
+   "summary": [
+    "swarm divides one task into independent pieces and runs them in parallel on fast, low-cost subagents that you select, then merges their reports and spot-checks them. The pieces can be different tasks, and they can read or edit: a sweep across many files, a batch of unrelated small fixes, bulk summaries, an audit.",
+    "Its defining constraint is that nothing depends on anything else. There is no task graph, no branch, no worktree, and no review phase. A piece that edits owns a set of files, and no file has two owners. A piece that needs another piece's result waits for a second wave, a fresh swarm that starts from the first one's reports."
+   ],
+   "tagline": "Divide a task into independent pieces and run them in parallel on fast, low-cost agents you select, then merge and spot-check the reports."
   },
   "sync-tree": {
    "argumentHint": "",

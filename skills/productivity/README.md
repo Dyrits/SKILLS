@@ -29,6 +29,12 @@ Recurring routines and one-off procedures, designed, improved, or walked through
 - **[optimize-process](./optimize-process/SKILL.md)**: Map and improve a recurring process, including agent work and human review in practical impact estimates.
 - **[walk-through](./walk-through/SKILL.md)**: Generate a guided script (a wizard) for steps only a human can perform.
 
+## Parallel work
+
+One task fanned out across agents.
+
+- **[swarm](./swarm/SKILL.md)**: Divide a task into independent pieces and run them in parallel on fast, low-cost agents you select, then merge and spot-check the reports.
+
 ## Outbound
 
 Results leaving the session for other people or services.

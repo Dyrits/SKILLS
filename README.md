@@ -169,3 +169,4 @@ The manifest is the source of truth for this list; it holds every skill in the r
 - [write-for-agents](./skills/productivity/write-for-agents/SKILL.md): Write predictable agent instructions with clear completion criteria.
 - [unslop](./skills/productivity/unslop/SKILL.md): Remove filler and recurring AI writing patterns.
 - [memorize](./skills/productivity/memorize/SKILL.md): File lessons where the next agent will look, and reuse saved scripts before writing new ones.
+- [swarm](./skills/productivity/swarm/SKILL.md): Fan independent pieces of a task out to fast, low-cost agents you select, then merge and spot-check their reports.

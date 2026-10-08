@@ -25,9 +25,11 @@ Suggest the cheapest tier that does each piece reliably; when the "Delegation an
 
 - **Light** (Haiku, Luna): small, deterministic, well-scoped, verifiable pieces. The default suggestion.
 - **Balanced** (Sonnet, Terra): pieces that need judgment or touch several files.
-- Anything above Balanced is a sign the piece is not swarm-sized: keep it here or split it.
+- A piece that needs more than Balanced is not swarm-sized. Keep it here or split it.
 
-Show a table: piece, inputs, owned files (edits only), suggested agent and model. Below it, state the worker count and that each reloads its own context, so cost grows with the count; quote measured costs only. The user selects the agents and may amend the pieces. Wait for that answer, except when the request already names the agents or model: read-only pieces then dispatch at once, and edit pieces still wait for a yes on the piece list.
+Show a table: piece, inputs, owned files (edits only), suggested agent and model. Below it, state the worker count and that each reloads its own context, so cost grows with the count; quote measured costs only. The user selects the agents and may amend the pieces. Wait for that answer.
+
+When the request already names the agents or model, read-only pieces dispatch at once. Edit pieces still wait for a yes on the piece list.
 
 Completion: the user selected an agent for every piece, or the request named them.
 
@@ -51,7 +53,7 @@ When a piece needs another's result, run a second wave through steps 1 to 3. If 
 
 ## 5. Verify
 
-- Edits: confirm every changed file belongs to its piece's owner, then run the project's checks once over the whole result.
+- Edits: compare each worker's changed files with the files its piece owns, then run the project's checks once over the whole result.
 - Read-only: check at least one claim from each report against its source, more where reports disagree or surprise you.
 
 Completion: every result is labelled verified or unverified.

@@ -27,6 +27,7 @@
     "bug": {"label": "Bug or regression", "description": "Something broken, throwing, failing, or slow."},
     "architecture-report": {"label": "Architecture report", "path": "documentation/architecture-audit/", "description": "An HTML report of deepening candidates that passed the deletion test."},
     "session": {"label": "Session", "description": "The conversation and its log: what was tried, what failed, what was learned."},
+    "swarm-report": {"label": "Swarm report", "description": "The merged reports of parallel workers, each result marked verified or unverified."},
     "handoff": {"label": "Handoff", "path": ".agents/handoffs/", "description": "A versioned brief a fresh agent reads to pick the work up."},
     "memory": {"label": "Saved lessons", "path": ".agents/scripts/, AGENTS.md, harness memory", "description": "Reusable scripts, conventions, and preferences filed where the next agent looks."},
     "environment-changes": {"label": "Environment changes", "description": "Checks, guardrails, navigation pointers, steering files, tools, and access."},
@@ -98,6 +99,7 @@
     "codify": {"inputs": ["code"], "outputs": ["conventions"], "next": []},
     "memorize": {"inputs": ["session"], "outputs": ["memory", "domain-records", "conventions", "agent-instructions"], "next": []},
     "write-for-agents": {"inputs": ["agent-instructions"], "outputs": ["agent-instructions"], "next": []},
-    "unslop": {"inputs": ["draft-prose"], "outputs": ["polished-prose"], "next": []}
+    "unslop": {"inputs": ["draft-prose"], "outputs": ["polished-prose"], "next": []},
+    "swarm": {"inputs": ["idea"], "outputs": ["swarm-report"], "next": []}
   }
 }

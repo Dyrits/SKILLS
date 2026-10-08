@@ -106,6 +106,7 @@ Work the table top to bottom. The first row that fits wins.
 | `/sync-tree` | Transfer committed work to its verified corresponding local branch. |
 | `/rebase` | Rebase branches with recovery state, intent checks, and separately approved publication. |
 | `/classify` | Classify safe-to-send text with a third-party API; retain uncertain results. |
+| `/swarm` | Fan independent pieces of a task out to fast, low-cost agents you select, then merge and spot-check their reports. Dependent tasks on one integration branch go to `/divide-and-conquer`. |
 | `/memorize` | File lessons where the next agent will look, and reuse saved scripts before writing new ones. |
 
 ## Setup
