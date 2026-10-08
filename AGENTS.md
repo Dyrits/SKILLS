@@ -20,7 +20,7 @@ For deferred installer and model-routing work, read [.agents/deferred-tooling.md
 
 For the accepted autonomy and skill-boundary decisions, supersession scope, and unfinished migration, read [architecture decision record 0005](./documentation/architecture-decision-record/0005-make-skills-autonomous.md).
 
-To resume the autonomy migration, read the [current handoff](./.agents/handoffs/2026-10-08-0843-autonomous-skills.md). Handoffs are shared and committed.
+To resume the autonomy migration, read the [current handoff](./.agents/handoffs/2026-10-08-1102-autonomous-skills.md). Handoffs are shared and committed.
 
 Install commands are copied verbatim from [standard installation wording](./documentation/maintenance/standard-installation-wording.md). `.claude-plugin/marketplace.json` makes the repository its own single-plugin marketplace (a fallback the installation wording guide explains, not the documented route). Run `claude plugin validate . --strict` after touching either manifest. This repository's decisions live in `documentation/architecture-decision-record/`.
 
