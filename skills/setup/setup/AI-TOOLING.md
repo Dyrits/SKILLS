@@ -10,7 +10,7 @@ Install and wire free AI development tools for the project and the agent clients
 
 ## Catalogue
 
-Verified 2026-10-10 against each tool's official page, except where a row says otherwise. Install output goes through the quiet commands.
+Verified: 2026-10-10, against each tool's official page, except where a row says otherwise. Install output goes through the quiet commands.
 
 | Tool | Present when | Install | Wire into agents | Check |
 | --- | --- | --- | --- | --- |

@@ -27,9 +27,9 @@ Type `/setup`, or an agent can reach for it when you ask to set up or reconfigur
 
 ## Code checks without extra dependencies
 
-The hook calls the tools the repository already has. Biome checks staged files itself; oxlint, oxfmt, and Ruff receive the staged file list from Git. lint-staged is gone. The hook checks and never rewrites, so a partly staged file is never changed behind your back.
+The hook calls the tools the repository already has. The catalogue has one file per language (JavaScript and TypeScript, Python, Go, Rust), and the agent reads only those for the languages it found. Biome checks staged files itself; oxlint, oxfmt, Ruff, and gofmt receive the staged file list from Git. lint-staged is gone. Another language gets its toolchain's own formatter and linter, looked up in its documentation. The hook checks and never rewrites, so a partly staged file is never changed behind your back.
 
-When the repository runs on ESLint or Prettier, the skill offers a move to Biome or to oxlint and oxfmt through their migration commands, shows what the move would drop, and keeps your tools if you decline. For TypeScript it uses an existing `typecheck` script first, then `bun check` on a Bun project, then `tsc --noEmit`.
+When the repository runs on older tooling, the skill offers a move and keeps your tools if you decline: ESLint or Prettier to Biome or to oxlint and oxfmt through their migration commands, Black, isort, or Flake8 to Ruff. It shows what the move would drop. For TypeScript it uses an existing `typecheck` script first, then `bun check` on a Bun project, then `tsc --noEmit`; Go and Rust typecheck as they lint.
 
 Your conventions feed the configuration. The skill reads the conventions document `AGENTS.md` names, or a contribution or style guide and `.editorconfig`, and carries their tool rules (indentation, quotes, line width, lint rules) into the tool configuration. It asks when a documented rule and an existing configuration disagree.
 
@@ -45,7 +45,7 @@ The agent can still set it up by reading its documentation, at the token cost th
 
 **How does the catalogue stay current?**
 
-Each entry carries the date it was last verified. Refreshing it is maintenance in this repository, not research during your setup.
+Each catalogue file carries the date it was last verified, and this repository's checks warn once a date is six months old. Refreshing it is maintenance here, not research during your setup.
 
 **Will it replace my Husky or lefthook setup?**
 

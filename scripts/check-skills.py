@@ -5,6 +5,7 @@ Usage: python3 scripts/check-skills.py [repository]
 Needs: Python 3 standard library. Reads files only.
 """
 
+import datetime
 import importlib.util
 import json
 import re
@@ -16,6 +17,8 @@ from urllib.parse import unquote
 # Skills called by name that ship outside this repository.
 EXTERNAL_SKILLS = {"skill-creator", "webapp-testing"}
 
+VERIFIED_PATTERN = re.compile(r"^Verified: (\d{4}-\d{2}-\d{2})", re.MULTILINE)
+STALE_AFTER_DAYS = 183
 # "Call the Skill tool with "a"" or "Call the Skill tool twice, for "a" and "b"": names quoted, escaped, or in backticks.
 CALL_PATTERN = re.compile(r'Skill tool(?: twice,)? (?:with|for) ((?:\\?["`][\w-]+\\?["`](?:,? (?:and |or )?)?)+)',
                           re.IGNORECASE)
@@ -198,6 +201,17 @@ def check(repository):
                 if name not in callable_names:
                     errors.append(f"{path.relative_to(root)}: operative call to unknown skill {name}.")
 
+    # A dated catalogue ("Verified: YYYY-MM-DD") goes stale as tools release. A stale date is a maintenance
+    # prompt, not a broken repository, so it warns without failing. Six months is about how often the catalogued
+    # tools ship a major release or a new default.
+    warnings = []
+    today = datetime.date.today()
+    for path in markdown:
+        for match in VERIFIED_PATTERN.finditer(path.read_text()):
+            age = (today - datetime.date.fromisoformat(match.group(1))).days
+            if age > STALE_AFTER_DAYS:
+                warnings.append(f"{path.relative_to(root)}: verified {match.group(1)}, {age} days ago; recheck its commands.")
+
     # The skill map at index.html is generated; keep it covering every skill and current.
     if (root / "scripts/skill-graph/flow.json").exists():
         spec = importlib.util.spec_from_file_location("build_skill_graph", Path(__file__).with_name("build-skill-graph.py"))
@@ -208,6 +222,8 @@ def check(repository):
         if not problems and (not (root / "index.html").exists() or (root / "index.html").read_text() != html):
             errors.append("index.html: stale skill map; run python3 scripts/build-skill-graph.py.")
 
+    for warning in warnings:
+        print(f"WARNING: {warning}")
     for error in errors:
         print(f"ERROR: {error}")
     print(f"Checked {len(skills)} skills, {len(plugin_paths)} plugin paths, "

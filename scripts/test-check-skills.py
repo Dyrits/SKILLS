@@ -6,6 +6,7 @@ Needs: Python 3 standard library. Uses temporary files only.
 """
 
 import contextlib
+import datetime
 import importlib.util
 import io
 import json
@@ -79,6 +80,17 @@ class LayoutChecks(unittest.TestCase):
     def test_evaluations_are_not_required(self):
         self.assertFalse(any((self.root / "skills").rglob("evals")))
         self.assertFalse(self.result()[0])
+
+    def test_stale_catalogue_warns_without_failing(self):
+        self.write("skills/reference/example/CATALOGUE.md", "# Catalogue\n\nVerified: 2000-01-01.\n")
+        failed, output = self.result()
+        self.assertFalse(failed)
+        self.assertIn("WARNING: skills/reference/example/CATALOGUE.md: verified 2000-01-01", output)
+
+    def test_fresh_catalogue_is_silent(self):
+        self.write("skills/reference/example/CATALOGUE.md",
+                   f"# Catalogue\n\nVerified: {datetime.date.today().isoformat()}.\n")
+        self.assertNotIn("WARNING", self.result()[1])
 
     def test_broken_relative_link(self):
         self.write("AGENTS.md", "[missing](missing.md)\n")
