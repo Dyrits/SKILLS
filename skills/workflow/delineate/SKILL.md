@@ -20,7 +20,7 @@ Read what exists before asking anything: `README.md`, `AGENTS.md`, and the docum
 
 ## Outline
 
-Settle the draft with the user through the [interview method](references/INTERVIEW.md), recommending an answer from the evidence for each question:
+Settle the draft with the user through the [interview method](references/interview.md), recommending an answer from the evidence for each question:
 
 - **Purpose**: the problem, who has it, what success looks like.
 - **Actors**: the people and external systems that use the system or that it relies on.
@@ -28,7 +28,7 @@ Settle the draft with the user through the [interview method](references/INTERVI
 - **Capabilities**: each lasting area of agreed behavior, one line each.
 - **Requirements**: the system-wide obligations, each with its source. Ask about the kinds users forget: availability, performance, data location and retention, security, compliance, budget, and anything a client or contract imposes.
 
-Formats: [OUTLINE-FORMAT.md](references/OUTLINE-FORMAT.md) for the outline and [REQUIREMENTS-FORMAT.md](references/REQUIREMENTS-FORMAT.md) for requirements.
+Formats: [outline-format.md](references/outline-format.md) for the outline and [requirements-format.md](references/requirements-format.md) for requirements.
 
 ## Challenge terms
 
@@ -39,7 +39,7 @@ Raise each of these the moment it shows up, before carrying on:
 - **Against the code**: the code disagrees with the stated meaning. "Your code cancels entire Orders, but you just said partial cancellation is possible. Which is right?"
 - **Against a concrete scenario**: invent an edge case that forces a boundary. "An order of three items where one has already shipped: is that a cancellation?"
 
-When several terms are open at once, settle them in rounds through the [interview method](references/INTERVIEW.md), recommending a canonical term for each and the synonyms to avoid. Glossary format: [GLOSSARY-FORMAT.md](references/GLOSSARY-FORMAT.md).
+When several terms are open at once, settle them in rounds through the [interview method](references/interview.md), recommending a canonical term for each and the synonyms to avoid. Glossary format: [glossary-format.md](references/glossary-format.md).
 
 ## Write it down
 

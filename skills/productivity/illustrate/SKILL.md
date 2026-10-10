@@ -23,7 +23,7 @@ Keep only the calls, files, props, states, and boundaries needed to answer the c
 | Component interaction or data flow | Mermaid sequence or flow diagram |
 | What changes in an existing shape | `diff` sketch of the component tree, file tree, call tree, or pseudocode |
 | Mostly new code, context needed to show ownership or order, or a copyable target | Whole block in the appropriate code language |
-| Visual layout, state comparison, or a concept too dense for an inline diagram | One focused HTML artifact; read [HTML.md](references/HTML.md) for this branch |
+| Visual layout, state comparison, or a concept too dense for an inline diagram | One focused HTML artifact; read [html.md](references/html.md) for this branch |
 
 Use `text` fences for structural sketches whose annotations are not executable code:
 

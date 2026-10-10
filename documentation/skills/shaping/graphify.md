@@ -17,7 +17,7 @@ Run `/graphify`, or let an agent or another skill reach for it when a large unce
 | The route is clear and implementation needs decomposition | Use [taskify](../workflow/taskify.md) |
 | One conversation can settle the question | Use [interview](../shaping/interview.md) |
 
-The tracker configuration must exist; [setup](../setup/setup.md) writes it. If it is absent, Graphify says so and stops.
+The tracker configuration must exist; [setup](../getting-started/setup.md) writes it. If it is absent, Graphify says so and stops.
 
 ## The frontier and the fog
 

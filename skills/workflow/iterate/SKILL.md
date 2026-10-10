@@ -8,7 +8,7 @@ argument-hint: "An idea to build, or an existing project to continue"
 
 Coordinate refinement and implementation in one living development workflow. An **increment** is a coherent change validated against agreed behavior. Group related decisions into a **batch**, implement it, and let the result decide what comes next. Settle decisions **just in time**: the ones the current batch needs, and no further. The application evolves in place from its first runnable batch; replacing it is a consequential decision for the user.
 
-The project documents and their rules are in [PROJECT-DOCUMENTS.md](references/PROJECT-DOCUMENTS.md); its terms (authorized, obligation, lazy, pointer) apply throughout. This workflow runs on the backlog, working state, and the changelog with light records, and links existing requirements and specifications where they apply.
+The project documents and their rules are in [project-documents.md](references/project-documents.md); its terms (authorized, obligation, lazy, pointer) apply throughout. This workflow runs on the backlog, working state, and the changelog with light records, and links existing requirements and specifications where they apply.
 
 ## 1. Establish the starting point
 
@@ -18,15 +18,15 @@ When working state names an approved focus, resume it with its constraints and p
 
 For a new project, establish who will use it, where it runs, whether it keeps important data, and the first useful interaction. Ask only what choosing an approach and the first batch requires. For an existing project, keep its current approach and recover the pending batch.
 
-When competing capabilities, unclear scope, or cross-cutting dependencies make choosing a useful batch premature, choose a focus first following [PRIORITIZE.md](references/PRIORITIZE.md), with the known direction, constraints, and document pointers, and tell the user why. Implement once the user approves its recommended focus and material deferrals. A clear small change goes straight on. Return to this branch when priorities or dependencies block the next batch; each new outcome needs its own approval.
+When competing capabilities, unclear scope, or cross-cutting dependencies make choosing a useful batch premature, choose a focus first following [prioritize.md](references/prioritize.md), with the known direction, constraints, and document pointers, and tell the user why. Implement once the user approves its recommended focus and material deferrals. A clear small change goes straight on. Return to this branch when priorities or dependencies block the next batch; each new outcome needs its own approval.
 
-Completion: [PROJECT-DOCUMENTS.md](references/PROJECT-DOCUMENTS.md) was read, the backlog, working state, and changelog were read or noted as absent, and intended use, immediate constraints, and the next decisions are explicit. Unrelated future behavior may remain open.
+Completion: [project-documents.md](references/project-documents.md) was read, the backlog, working state, and changelog were read or noted as absent, and intended use, immediate constraints, and the next decisions are explicit. Unrelated future behavior may remain open.
 
 ## 2. Agree the technical approach
 
 For a new project, present a short list of suitable approaches, each with its advantage and cost, and recommend one. Select for explicit structure, early meaningful error detection, visible failure handling, testing support, documentation access, setup effort, and maintenance cost; popularity is supporting evidence only. Drop approaches whose weak checking or hidden failures would undermine the agreed verification.
 
-When a consequential choice depends on external facts (framework capabilities, diagnostics, setup requirements), research the specific question and constraints following [RESEARCH.md](references/RESEARCH.md). Continue independent work meanwhile; decide dependent choices once its cited findings arrive.
+When a consequential choice depends on external facts (framework capabilities, diagnostics, setup requirements), research the specific question and constraints following [research.md](references/research.md). Continue independent work meanwhile; decide dependent choices once its cited findings arrive.
 
 Get approval of the approach and its consequences before setup. Make the first batch a small useful interaction that demonstrates the approach and its executable checks, started by one command in the project's natural tooling.
 
@@ -36,33 +36,33 @@ Completion: an approved approach, or a suitable existing one, with the first bat
 
 ## 3. Settle one batch
 
-Follow the [interview method](references/INTERVIEW.md), rooting its design tree in the **current batch**: traverse only the decisions needed to implement and verify it, and record later branches as pending. A confirmed batch proceeds while future questions stay pending. Continue the larger interview as increments reveal new questions.
+Follow the [interview method](references/interview.md), rooting its design tree in the **current batch**: traverse only the decisions needed to implement and verify it, and record later branches as pending. A confirmed batch proceeds while future questions stay pending. Continue the larger interview as increments reveal new questions.
 
 Group questions that affect the same behavior or code. Keep exploration, agent recommendations, and user decisions distinct; implement an alternative once the user chooses it. Keep deferred in-scope questions apart from ideas the user ruled out; a ruled-out idea returns only through an explicit scope change.
 
 Summarize the batch's behavior, scope, verification, and choices needing approval. A direct, unambiguous request confirms scope; otherwise ask. Define checks at the observable interface, including persistence or failure behavior when relevant, and plan user review where appearance or interaction needs judgment.
 
-In a versioned project, record the goal's starting revision when its first batch is agreed. When a batch starts an agreed milestone or substantial structural or data-risk work, read [MILESTONE-REVIEW.md](references/MILESTONE-REVIEW.md) before implementation.
+In a versioned project, record the goal's starting revision when its first batch is agreed. When a batch starts an agreed milestone or substantial structural or data-risk work, read [milestone-review.md](references/milestone-review.md) before implementation.
 
-When a domain term is fuzzy or disputed, name the conflict, test it with a concrete scenario, recommend a canonical term, and once the user agrees, write it to the glossary following [GLOSSARY-FORMAT.md](references/GLOSSARY-FORMAT.md). When the user settles a code convention, record it with its reason following [CONVENTIONS-FORMAT.md](references/CONVENTIONS-FORMAT.md). Record a consequential decision following [DECISION-RECORD-FORMAT.md](references/DECISION-RECORD-FORMAT.md). When a module's interface or testability needs design, use the vocabulary in [MODULES.md](references/MODULES.md).
+When a domain term is fuzzy or disputed, name the conflict, test it with a concrete scenario, recommend a canonical term, and once the user agrees, write it to the glossary following [glossary-format.md](references/glossary-format.md). When the user settles a code convention, record it with its reason following [conventions-format.md](references/conventions-format.md). Record a consequential decision following [decision-record-format.md](references/decision-record-format.md). When a module's interface or testability needs design, use the vocabulary in [modules.md](references/modules.md).
 
-Completion: the batch can be implemented and checked without guessing at an open decision, and each consequential choice it settled (costly to reverse, or changing scope) has an Agreement in the changelog. Record the agreed batch and pending questions using [ARTIFACTS.md](references/ARTIFACTS.md).
+Completion: the batch can be implemented and checked without guessing at an open decision, and each consequential choice it settled (costly to reverse, or changing scope) has an Agreement in the changelog. Record the agreed batch and pending questions using [artifacts.md](references/artifacts.md).
 
 ## 4. Implement and verify
 
-Implement the settled batch following [IMPLEMENT.md](references/IMPLEMENT.md), with the batch recorded in working state as its agreement and the test interfaces agreed in step 3; this workflow owns the project records. Record the evidence through [ARTIFACTS.md](references/ARTIFACTS.md).
+Implement the settled batch following [implement.md](references/implement.md), with the batch recorded in working state as its agreement and the test interfaces agreed in step 3; this workflow owns the project records. Record the evidence through [artifacts.md](references/artifacts.md).
 
-When the batch splits into several independent tasks that each justify a fresh context, implement them in parallel following [DIVIDE-AND-CONQUER.md](references/DIVIDE-AND-CONQUER.md) instead; the user's approval of its routing table is the go-ahead. A batch that fits one session stays in this session, which is usually cheaper. When feedback changes a running assignment, update or stop it, then check the returned work against the revised agreement. Continue independent questions while work runs; hold dependent ones until the result arrives.
+When the batch splits into several independent tasks that each justify a fresh context, implement them in parallel following [divide-and-conquer.md](references/divide-and-conquer.md) instead; the user's approval of its routing table is the go-ahead. A batch that fits one session stays in this session, which is usually cheaper. When feedback changes a running assignment, update or stop it, then check the returned work against the revised agreement. Continue independent questions while work runs; hold dependent ones until the result arrives.
 
 Run relevant checks and exercise the result the way it will be used. A passing build is evidence of correctness; intended behavior and appearance need their own checks or user review. For new or changed setup, document and run the startup command and early-error checks.
 
-Completion: the batch is implemented, its verification evidence is recorded, and failed or missing checks are stated. Blocked setup is reported as incomplete. Update progress through [ARTIFACTS.md](references/ARTIFACTS.md).
+Completion: the batch is implemented, its verification evidence is recorded, and failed or missing checks are stated. Blocked setup is reported as incomplete. Update progress through [artifacts.md](references/artifacts.md).
 
 ## 5. Validate and continue
 
 Report what changed, the verification result, and how to run or inspect it. The agreed checks validate routine internal changes. For appearance, interaction, or open preferences, ask the user to accept the runnable result, grouping related changes into one review. Keep "implemented and checked" distinct from "accepted by the user".
 
-At an agreed milestone, before delivery, or after substantial structural or data-risk changes, read [MILESTONE-REVIEW.md](references/MILESTONE-REVIEW.md) and review the related increments together.
+At an agreed milestone, before delivery, or after substantial structural or data-risk changes, read [milestone-review.md](references/milestone-review.md) and review the related increments together.
 
 A review gap in already approved behavior becomes the next batch. Other findings become deferred in-scope work or out-of-scope ideas; a new product choice or change of approach needs approval first. Once validation and any required review are complete, mark the increment complete, prune finished working notes, and return to the next ready decisions. End when the user's current goal is met or they pause, reporting the remaining work.
 

@@ -23,7 +23,7 @@ Done when every source has a provenance, unit, period, scope, and project attrib
 
 ### 2. Compare compatible observations
 
-Use [MEASUREMENT.md](references/MEASUREMENT.md) for units, comparisons, and savings claims.
+Use [measurement.md](references/measurement.md) for units, comparisons, and savings claims.
 Compare counters only across the same source, scope, schema, and counter lifetime.
 Account for resets, tool upgrades, missing periods, and overlapping clients before calculating deltas.
 Report global measurements as global when project attribution is unavailable.
@@ -34,7 +34,7 @@ Done when every calculated result can be traced to compatible observations and e
 
 ### 3. Write the report
 
-Write a dated report under `.agents/tooling/reports/`, or the user's requested local destination, following [REPORT.md](references/REPORT.md). When you create the reports folder, add one line to the nearest `AGENTS.md` saying what it holds and when to read it.
+Write a dated report under `.agents/tooling/reports/`, or the user's requested local destination, following [report.md](references/report.md). When you create the reports folder, add one line to the nearest `AGENTS.md` saying what it holds and when to read it.
 Include source references and machine-readable supporting observations when the source provides them.
 Separate actual provider usage, command-output reduction, estimated tokens, task comparisons, and published benchmarks.
 Keep Token Monitor independent; an integration change is a separate setup task.

@@ -41,9 +41,9 @@ Completion: every ready branch has its pins, lease, backup ref, and record; ever
 
 ## 3. Rebase
 
-For a single branch, rebase it yourself by following [BRANCH.md](references/BRANCH.md).
+For a single branch, rebase it yourself by following [branch.md](references/branch.md).
 
-For several, rebase the ones located in a user checkout yourself and dispatch one subagent per worktree-located branch at the same time, bounded only by resource limits. Give each subagent its worktree path, its record path, the repository instructions, and [BRANCH.md](references/BRANCH.md) with [RESOLVE.md](references/RESOLVE.md), which it reads before acting. Dispatch plain subagents that work in the assigned worktree: a harness-managed isolated worktree would rebase a copy on another branch instead of the branch itself. Subagents report evidence and leave pushing to you.
+For several, rebase the ones located in a user checkout yourself and dispatch one subagent per worktree-located branch at the same time, bounded only by resource limits. Give each subagent its worktree path, its record path, the repository instructions, and [branch.md](references/branch.md) with [resolve.md](references/resolve.md), which it reads before acting. Dispatch plain subagents that work in the assigned worktree: a harness-managed isolated worktree would rebase a copy on another branch instead of the branch itself. Subagents report evidence and leave pushing to you.
 
 Wait for completion notifications. A quiet subagent is unconfirmed, not running; report its last recorded phase.
 
@@ -80,4 +80,4 @@ Remove each worktree this skill created once its branch is done, with `git workt
 
 Completion: every branch in the batch appears in a final table with its observed state, and the user knows where the backup refs and records are.
 
-If execution was interrupted, read [RESUME.md](references/RESUME.md) before touching any branch.
+If execution was interrupted, read [resume.md](references/resume.md) before touching any branch.

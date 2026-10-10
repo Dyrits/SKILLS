@@ -26,7 +26,7 @@ Type `/swarm`, or ask an agent to fan work out across many cheap agents. The age
 ## Common questions
 
 **Which models does it use?**
-The ones your delegation tool offers, starting from the Light tier and moving to Balanced only for pieces that need judgment. You make the final pick. When the delegation and model routing rule from [setup-delegation-policy](../setup/setup-delegation-policy.md) is installed, it governs the tiers.
+The ones your delegation tool offers, starting from the Light tier and moving to Balanced only for pieces that need judgment. You make the final pick. When the delegation and model routing rule from [setup-delegation-policy](../getting-started/setup-delegation-policy.md) is installed, it governs the tiers.
 
 **What happens when a worker fails?**
 The skill never escalates on its own, since that would spend more than you approved. It reports the failure and asks: rerun on a stronger agent, redo it in your session, or drop it.

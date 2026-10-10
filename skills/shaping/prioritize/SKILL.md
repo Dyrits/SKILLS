@@ -9,13 +9,13 @@ Shape a large effort into outcomes pursued one at a time: keep the larger direct
 
 The open question here is which outcome comes first. When the effort instead hinges on design decisions that need research or prototypes over several sessions before anything can be prioritized, say so and stop: those decisions come before choosing a focus.
 
-The project documents and their rules are in [PROJECT-DOCUMENTS.md](references/PROJECT-DOCUMENTS.md); its terms (authorized, obligation, lazy, pointer) apply throughout. This skill works on the backlog, working state, and the changelog, and links existing requirements and specifications.
+The project documents and their rules are in [project-documents.md](references/project-documents.md); its terms (authorized, obligation, lazy, pointer) apply throughout. This skill works on the backlog, working state, and the changelog, and links existing requirements and specifications.
 
 ## 1. Recover the direction
 
 Read applicable instructions, relevant code, requirements, specifications, decisions, and the project documents. Reconcile actual progress before reprioritizing existing work. Inspect available facts instead of asking the user to repeat them.
 
-Establish the intended outcome, users, constraints, and exclusions. Follow the [interview method](references/INTERVIEW.md), rooting its design tree in **choosing the next focus**.
+Establish the intended outcome, users, constraints, and exclusions. Follow the [interview method](references/interview.md), rooting its design tree in **choosing the next focus**.
 
 Completion: outcome, users, constraints, and exclusions are explicit, and every focus-blocking question is identified. Unanswered choices stay pending; detailed future behavior may stay open.
 
@@ -25,7 +25,7 @@ Group related ideas into recognizable user or project outcomes: vertical results
 
 Identify prerequisites that could invalidate early work: shared data needs, access rules, feasibility of a critical integration, or constraints affecting several outcomes. Mark each dependency as confirmed or suspected, and investigate the ones that affect choosing the focus.
 
-For a consequential external unknown, research a bounded question following [RESEARCH.md](references/RESEARCH.md). Continue independent shaping meanwhile, and decide dependent priorities once the evidence arrives. An unknown that stays unresolved remains a named blocker with its pending question.
+For a consequential external unknown, research a bounded question following [research.md](references/research.md). Continue independent shaping meanwhile, and decide dependent priorities once the evidence arrives. An unknown that stays unresolved remains a named blocker with its pending question.
 
 Completion: candidate outcomes, dependencies, and major unknowns are visible, with cycles and unresolved shared prerequisites stated.
 

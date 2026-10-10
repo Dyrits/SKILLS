@@ -7,7 +7,7 @@ metadata:
 
 Reference for writing any document an agent consumes: a skill, an `AGENTS.md`, a document reached by a pointer. The packaging differs; the writing principles aim for a predictable process across runs rather than identical output.
 
-Before creating or editing a skill or its description, read [Anthropic's skill authoring best practices](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices) for the current authoring and frontmatter guidance, and [`SKILL-MECHANICS.md`](references/SKILL-MECHANICS.md) for this collection's invocation conventions, splitting, and router skills. If the official page cannot be accessed, report that limitation rather than claiming to have checked its current requirements.
+Before creating or editing a skill or its description, read [Anthropic's skill authoring best practices](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices) for the current authoring and frontmatter guidance, and [`skill-mechanics.md`](references/skill-mechanics.md) for this collection's invocation conventions, splitting, and router skills. If the official page cannot be accessed, report that limitation rather than claiming to have checked its current requirements.
 
 ## Context pointers
 
@@ -58,7 +58,7 @@ The strongest criteria are both checkable and exhaustive.
 Splitting one document into two spends one of the two loads, so split only when the cut earns it:
 
 - **By sequence**: split when observed runs skip required work despite clear completion criteria. Give each phase the information it needs, and confirm on the next runs that the split helped.
-- **By invocation**, skill-specific: see [`SKILL-MECHANICS.md`](references/SKILL-MECHANICS.md).
+- **By invocation**, skill-specific: see [`skill-mechanics.md`](references/skill-mechanics.md).
 
 ## Leading words
 

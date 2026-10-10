@@ -6,6 +6,18 @@
   },
   "plugins": [
     {
+      "name": "setup",
+      "description": "Set up a repository, or an empty project, for AI-assisted work: task tracking and triage roles, commit-time formatting, linting and typechecking, guards that make agents ask before destructive Git commands, and AI development tools.",
+      "version": "0.2.0",
+      "source": "./skills/getting-started/setup"
+    },
+    {
+      "name": "setup-delegation-policy",
+      "description": "Install, reconfigure, or remove the delegation and model routing rule, and the tier agents it needs, for each agent harness on this machine.",
+      "version": "0.2.0",
+      "source": "./skills/getting-started/setup-delegation-policy"
+    },
+    {
       "name": "design-workflow",
       "description": "Interview the user into implementable workflow specifications for recurring loops in their work, using the current directory as a stateful workspace.",
       "version": "0.2.0",
@@ -78,42 +90,6 @@
       "source": "./skills/productivity/write-for-agents"
     },
     {
-      "name": "codify",
-      "description": "Define the project's code conventions by drafting candidate rules from how the code is already written and confirming each with the user and its reason, or audit an existing conventions file.",
-      "version": "0.2.0",
-      "source": "./skills/setup/codify"
-    },
-    {
-      "name": "setup-ai-tooling",
-      "description": "Set up free AI development tools for a project and its installed agent clients.",
-      "version": "0.2.0",
-      "source": "./skills/setup/setup-ai-tooling"
-    },
-    {
-      "name": "setup-ai-workspace",
-      "description": "Configure a repository for AI-assisted work: task tracking, ticket conventions, and triage roles.",
-      "version": "0.2.0",
-      "source": "./skills/setup/setup-ai-workspace"
-    },
-    {
-      "name": "setup-delegation-policy",
-      "description": "Install the delegation and model routing rule into the global steering files on this machine.",
-      "version": "0.2.0",
-      "source": "./skills/setup/setup-delegation-policy"
-    },
-    {
-      "name": "setup-git-guardrails",
-      "description": "Set up hooks and permission rules that make coding agents ask before git commands that can lose work or rewrite shared history (pushing to a protected branch, force pushes, reset --hard, clean -f, branch -D, discarding changes) across Claude Code, OpenCode, and Codex CLI.",
-      "version": "0.2.0",
-      "source": "./skills/setup/setup-git-guardrails"
-    },
-    {
-      "name": "setup-git-hooks",
-      "description": "Set up versioned git hooks via core.hooksPath (no Husky) with lint-staged (Biome, plus Prettier only for languages Biome leaves uncovered and only if the user wants it), plus typecheck and build.",
-      "version": "0.2.0",
-      "source": "./skills/setup/setup-git-hooks"
-    },
-    {
       "name": "graphify",
       "description": "Build and work through a shared decision graph for an effort too large for one session.",
       "version": "0.2.0",
@@ -142,6 +118,12 @@
       "description": "Investigate a question against high-trust primary sources and capture the findings as a Markdown file in the repository.",
       "version": "0.2.0",
       "source": "./skills/shaping/research"
+    },
+    {
+      "name": "codify",
+      "description": "Define the project's code conventions by drafting candidate rules from how the code is already written and confirming each with the user and its reason, or audit an existing conventions file.",
+      "version": "0.2.0",
+      "source": "./skills/upkeep/codify"
     },
     {
       "name": "debug",

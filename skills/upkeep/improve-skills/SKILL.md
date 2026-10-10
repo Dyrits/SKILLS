@@ -39,7 +39,7 @@ Completion: the user has confirmed or corrected every finding, and the outcome q
 Give each finding one home:
 
 - **A skill finding**: a trigger that fired wrongly or never fired, an ambiguous or missing step, conflicting skills, a missing skill. These go into the issue.
-- **A project lesson**: a convention, command, or rule of the project the session ran in. File it in the project following [LESSONS.md](references/LESSONS.md).
+- **A project lesson**: a convention, command, or rule of the project the session ran in. File it in the project following [lessons.md](references/lessons.md).
 - **An environment finding**: friction a check, guardrail, navigation pointer, steering-file cut, tool, or access change would have prevented, including a mechanical violation a lint rule could catch. Once the issue is settled, list these findings for the user, each with its moment in the session and the environment change that would have prevented it.
 - **Agent behavior neither a skill nor the environment could have steered**: report it to the user and leave it out of the issue.
 
@@ -58,7 +58,7 @@ Write one issue for the retrospective in English, in GitHub Markdown:
 - **What went right**.
 - **What went wrong**: one subsection per skill finding, with the evidence, the confirmed observation, the hypothesis, and a proposed correction when the evidence supports one.
 
-The repository is public. Leave out private paths, code, client and colleague names, secrets, and anything else the user's project would not publish; describe it generically instead. Then remove AI language patterns from the draft following [UNSLOP.md](references/UNSLOP.md).
+The repository is public. Leave out private paths, code, client and colleague names, secrets, and anything else the user's project would not publish; describe it generically instead. Then remove AI language patterns from the draft following [unslop.md](references/unslop.md).
 
 Completion: every skill finding from step 3 appears in the draft, and nothing in it identifies the private project.
 

@@ -11,7 +11,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-SCRIPT = Path(__file__).resolve().parent.parent / "skills/setup/setup/scripts/inspect-project.py"
+SCRIPT = Path(__file__).resolve().parent.parent / "skills/getting-started/setup/scripts/inspect-project.py"
 
 
 def inspect(directory):

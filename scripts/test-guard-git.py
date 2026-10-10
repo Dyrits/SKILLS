@@ -12,7 +12,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-SCRIPTS = Path(__file__).resolve().parent.parent / "skills/setup/setup/scripts"
+SCRIPTS = Path(__file__).resolve().parent.parent / "skills/getting-started/setup/scripts"
 GUARD = SCRIPTS / "guard-git.py"
 PRE_PUSH = SCRIPTS / "pre-push"
 

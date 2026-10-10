@@ -1,6 +1,6 @@
 Skills are organized into bucket folders under `skills/`:
 
-- `setup/`: set up once per repository or machine
+- `getting-started/`: set up once per repository or machine
 - `workflow/`: the idea-to-ship spine, in order
 - `shaping/`: explore an open question and produce a decision or answer that feeds the flow
 - `upkeep/`: keep the codebase and issue list healthy; generates work for the flow
@@ -23,11 +23,11 @@ To resume the autonomy migration, read the [current handoff](./.agents/handoffs/
 
 To resume the swarm skill, read the [current handoff](./.agents/handoffs/2026-10-08-1116-swarm-skill.md). Handoffs are shared and committed.
 
-To resume the setup skill, the skill folder and bucket structure, and the audit follow-up, read the [current handoff](./.agents/handoffs/2026-10-10-0949-setup-skill-and-layout.md). Handoffs are shared and committed.
+To resume the setup skill follow-up and the audit priorities, read the [current handoff](./.agents/handoffs/2026-10-10-1253-setup-skill-and-layout.md). Handoffs are shared and committed.
 
 Install commands are copied verbatim from [standard installation wording](./documentation/maintenance/standard-installation-wording.md). `.claude-plugin/marketplace.json` makes the repository its own single-plugin marketplace (a fallback the installation wording guide explains, not the documented route). Run `claude plugin validate . --strict` after touching either manifest. This repository's decisions live in `documentation/architecture-decision-record/`.
 
-A skill folder holds `SKILL.md`, `apm.yml`, and `agents/`; its support files follow the [Agent Skills specification](https://agentskills.io/specification) layout: `scripts/` for code the agent runs, `references/` for documents it reads (UPPERCASE names, such as `references/PROJECT-DOCUMENTS.md`), and `assets/` for templates and payloads copied elsewhere (kebab-case names, such as `assets/issue-tracker-github.md`). `scripts/check-skills.py` enforces it.
+A skill folder holds `SKILL.md`, `apm.yml`, and `agents/`; its support files follow the [Agent Skills specification](https://agentskills.io/specification) layout: `scripts/` for code the agent runs, `references/` for documents it reads, and `assets/` for templates and payloads copied elsewhere. Support file names are lowercase kebab-case (`references/project-documents.md`, `assets/issue-tracker-github.md`). `scripts/check-skills.py` enforces it.
 
 Each skill entry in the top-level `README.md` must link the skill name to its `SKILL.md`.
 
@@ -43,7 +43,7 @@ Every `SKILL.md` is reachable by both the human and the model: no `disable-model
 
 To (re)link every skill into the local harness skill directories (`~/.claude/skills`, `~/.agents/skills`), run `scripts/link-skills.sh`. Each entry is a symlink into this repository, so a `git pull` keeps installed skills current; re-run the script after adding, removing, or renaming a skill.
 
-Call the Skill tool with "memorize" the moment the user states a standing rule, asks you to remember something, or corrects how something is done, and when something is rebuilt a second time. Before writing a script or a pipeline longer than one line, read `.agents/scripts/INDEX.md` and reuse or extend a match; save new reusable scripts there following [memorize](skills/productivity/memorize/references/SCRIPTS.md).
+Call the Skill tool with "memorize" the moment the user states a standing rule, asks you to remember something, or corrects how something is done, and when something is rebuilt a second time. Before writing a script or a pipeline longer than one line, read `.agents/scripts/INDEX.md` and reuse or extend a match; save new reusable scripts there following [memorize](skills/productivity/memorize/references/scripts.md).
 
 ## Writing skills
 

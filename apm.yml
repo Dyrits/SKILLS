@@ -5,6 +5,10 @@ license: MIT
 dependencies:
   apm:
     - git: parent
+      path: skills/getting-started/setup
+    - git: parent
+      path: skills/getting-started/setup-delegation-policy
+    - git: parent
       path: skills/productivity/design-workflow
     - git: parent
       path: skills/productivity/hand-off
@@ -28,10 +32,6 @@ dependencies:
       path: skills/productivity/walk-through
     - git: parent
       path: skills/productivity/write-for-agents
-    - git: parent
-      path: skills/setup/setup
-    - git: parent
-      path: skills/setup/setup-delegation-policy
     - git: parent
       path: skills/shaping/graphify
     - git: parent
@@ -97,6 +97,12 @@ marketplace:
   claude:
     output: marketplace.json
   packages:
+    - name: setup
+      source: ./skills/getting-started/setup
+      description: "Set up a repository, or an empty project, for AI-assisted work: task tracking and triage roles, commit-time formatting, linting and typechecking, guards that make agents ask before destructive Git commands, and AI development tools."
+    - name: setup-delegation-policy
+      source: ./skills/getting-started/setup-delegation-policy
+      description: "Install, reconfigure, or remove the delegation and model routing rule, and the tier agents it needs, for each agent harness on this machine."
     - name: design-workflow
       source: ./skills/productivity/design-workflow
       description: "Interview the user into implementable workflow specifications for recurring loops in their work, using the current directory as a stateful workspace."
@@ -133,12 +139,6 @@ marketplace:
     - name: write-for-agents
       source: ./skills/productivity/write-for-agents
       description: "Write documents for agents: skills, AGENTS.md, and documents reached by a pointer."
-    - name: setup
-      source: ./skills/setup/setup
-      description: "Set up a repository, or an empty project, for AI-assisted work: task tracking and triage roles, commit-time formatting, linting and typechecking, guards that make agents ask before destructive Git commands, and AI development tools."
-    - name: setup-delegation-policy
-      source: ./skills/setup/setup-delegation-policy
-      description: "Install, reconfigure, or remove the delegation and model routing rule, and the tier agents it needs, for each agent harness on this machine."
     - name: graphify
       source: ./skills/shaping/graphify
       description: "Build and work through a shared decision graph for an effort too large for one session."

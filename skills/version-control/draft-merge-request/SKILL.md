@@ -36,7 +36,7 @@ Skip preambles and keep prose brief. Write it in the language its primary source
 
 Why the change exists comes from its primary source. The diff decides which **shape** shows it, never what it was for.
 
-Choose and render the Summary visual following [SUMMARY-VISUAL.md](references/SUMMARY-VISUAL.md), using the primary source for intent and the diff for structure.
+Choose and render the Summary visual following [summary-visual.md](references/summary-visual.md), using the primary source for intent and the diff for structure.
 Render it inline in Markdown, so it shows in the pull or merge request body.
 
 ## Evidence

@@ -31,7 +31,7 @@ These choices preserve different things. Compaction compresses conversational co
 
 ## What travels, and what doesn't
 
-Every handoff follows one fixed format, `HANDOFF-FORMAT.md`. A header names the handoff it supersedes and the workspace, then a fixed "To resume" paragraph tells the reader how to use the file (read it whole, check unverified claims against the sources, follow earlier handoffs only when needed, confirm before starting, never edit it). Six sections follow in a fixed order: Goal, State, Decisions, Next, Open questions, Sources. Each claim in State is marked verified (and how) or assumed, so the next agent knows what it can build on. Secrets are redacted before it's written.
+Every handoff follows one fixed format, `handoff-format.md`. A header names the handoff it supersedes and the workspace, then a fixed "To resume" paragraph tells the reader how to use the file (read it whole, check unverified claims against the sources, follow earlier handoffs only when needed, confirm before starting, never edit it). Six sections follow in a fixed order: Goal, State, Decisions, Next, Open questions, Sources. Each claim in State is marked verified (and how) or assumed, so the next agent knows what it can build on. Secrets are redacted before it's written.
 
 The format names no skills to call next. The next session may run in another harness with a different skill set, so the handoff describes the work and leaves the tooling to whoever picks it up.
 

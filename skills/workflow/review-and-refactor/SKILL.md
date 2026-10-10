@@ -40,7 +40,7 @@ A bad reference or an empty complete diff ends the run before dispatch.
 
 ### 2. Identify the originating behavior agreement
 
-The project documents and their rules are in [PROJECT-DOCUMENTS.md](references/PROJECT-DOCUMENTS.md); its terms apply.
+The project documents and their rules are in [project-documents.md](references/project-documents.md); its terms apply.
 Recover the authorized behavior from the caller or user, tasks, specifications and requirements, or a user-approved batch in working state.
 
 When `AGENTS.md` points to a task tracker configuration, fetch relevant task references through its workflow.
@@ -144,7 +144,7 @@ Keep both axes separate rather than choosing one overall verdict.
 Ask whether to publish the final report and where, such as a pull or merge request, a ticket, or a chat thread.
 Publishing requires explicit user authorization.
 
-If the user wants publication, publish this report to that destination following [PUBLISH.md](references/PUBLISH.md), with inline suggestions if wanted.
+If the user wants publication, publish this report to that destination following [publish.md](references/publish.md), with inline suggestions if wanted.
 The publication preserves finding dispositions and verification limits, checks whether local refactors are present in the destination branch, and validates requested suggestions against its current diff.
 
 ## Why two axes

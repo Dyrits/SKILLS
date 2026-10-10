@@ -19,7 +19,7 @@
     --accent: #c2410c;
     --mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
     --sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-    --setup: #2563eb;
+    --getting-started: #2563eb;
     --workflow: #c2410c;
     --shaping: #7c3aed;
     --upkeep: #be123c;
@@ -31,7 +31,7 @@
     :root {
       --bg: #0e0f11; --surface: #15171a; --sunken: #111215; --line: #24272c; --line-strong: #353a41;
       --text: #ebe9e4; --muted: #a29d93; --faint: #6d6960; --accent: #f08a4b;
-      --setup: #7aa7ff; --workflow: #f08a4b; --shaping: #b794f6; --upkeep: #f47c8f;
+      --getting-started: #7aa7ff; --workflow: #f08a4b; --shaping: #b794f6; --upkeep: #f47c8f;
       --version-control: #6fcf8f; --productivity: #5cc8bd; --reference: #b8b2a7;
     }
   }
@@ -436,12 +436,12 @@ const DATA = {
   {
    "blurb": "Set up once per repository or machine.",
    "groups": {},
-   "id": "setup",
+   "id": "getting-started",
    "skills": [
     "setup",
     "setup-delegation-policy"
    ],
-   "title": "Setup"
+   "title": "Getting started"
   },
   {
    "blurb": "The idea-to-ship flow, with shared documents for planned and just-in-time development.",
@@ -1373,7 +1373,7 @@ const DATA = {
   },
   "setup": {
    "argumentHint": "",
-   "bucket": "setup",
+   "bucket": "getting-started",
    "calls": [],
    "description": "Set up a repository, or an empty project, for AI-assisted work: task tracking and triage roles, commit-time formatting, linting and typechecking, guards that make agents ask before destructive Git commands, and AI development tools. Use when the user asks to set up or reconfigure a repository, or any one of those areas, such as pre-commit hooks, Git guardrails, or AI tooling.",
    "fits": [
@@ -1392,9 +1392,9 @@ const DATA = {
     "git-guardrails",
     "tooling-config"
    ],
-   "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/setup/setup.md",
+   "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/getting-started/setup.md",
    "requires": [],
-   "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/setup/setup/SKILL.md",
+   "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/getting-started/setup/SKILL.md",
    "summary": [
     "Configures one repository, or an empty project, for AI-assisted work. A bundled script first reports what is already set up, then the skill offers four areas with their state and sets up the ones you pick:",
     "The tools install themselves. The skill carries a dated catalogue listing, for each tool, how to detect it, its non-interactive install command, and one check that it works. The agent runs those commands with their output sent to a log, reads only the end of the log, and opens documentation only when a listed command fails. Upstream, each area was its own skill and each run re-read the tools' documentation; the merge exists to cut that cost."
@@ -1403,7 +1403,7 @@ const DATA = {
   },
   "setup-delegation-policy": {
    "argumentHint": "",
-   "bucket": "setup",
+   "bucket": "getting-started",
    "calls": [],
    "description": "Install, reconfigure, or remove the delegation and model routing rule, and the tier agents it needs, for each agent harness on this machine. Use when the user asks to set up, change, or remove delegation or model routing.",
    "fits": [
@@ -1417,9 +1417,9 @@ const DATA = {
    "outputs": [
     "delegation-policy"
    ],
-   "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/setup/setup-delegation-policy.md",
+   "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/getting-started/setup-delegation-policy.md",
    "requires": [],
-   "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/setup/setup-delegation-policy/SKILL.md",
+   "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/getting-started/setup-delegation-policy/SKILL.md",
    "summary": [
     "Installs one standing rule, \"Delegation and model routing\", into the global steering file of each agent harness on this machine, and gives harnesses that bind a model per agent one agent per tier. The rule tells an agent to decide at the top of a unit of work whether to do it here, hand it to one subagent, split it, or have a second agent review, and to pick the least expensive model that can do the bounded task reliably.",
     "It is installed rather than invoked because a skill fires only after reasoning has begun, and by then the decision has bent toward the plan already forming. A rule in an always-loaded file is carried every turn.",

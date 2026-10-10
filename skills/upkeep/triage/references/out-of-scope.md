@@ -1,0 +1,115 @@
+# Out-of-Scope Knowledge Base
+
+The `documentation/out-of-scope/` directory in a repository stores persistent records of rejected feature requests. It serves two purposes:
+
+1. **Institutional memory**: why a feature was rejected, so the reasoning isn't lost when the task is closed
+2. **Deduplication**: when a new task matches a prior rejection, surface the previous decision
+
+## Contents
+
+- Directory structure
+- File format
+- When to check `documentation/out-of-scope/`
+- When to write to `documentation/out-of-scope/`
+- Updating or removing out-of-scope files
+
+## Directory structure
+
+```
+documentation/out-of-scope/
+├── dark-mode.md
+├── plugin-system.md
+└── graphql-api.md
+```
+
+One file per concept, not per task. Multiple tasks requesting the same thing are grouped under one file.
+
+## File format
+
+The file should be written in a relaxed, readable style, more like a short design document than a database entry. Use paragraphs, code samples, and examples to make the reasoning clear and useful to someone encountering it for the first time.
+
+```markdown
+# Dark Mode
+
+This project does not support dark mode or user-facing theming.
+
+## Why this is out of scope
+
+The rendering pipeline assumes a single color palette defined in
+`ThemeConfig`. Supporting multiple themes would require:
+
+- A theme context provider wrapping the entire component tree
+- Per-component theme-aware style resolution
+- A persistence layer for user theme preferences
+
+This is a significant architectural change that doesn't align with the
+project's focus on content authoring. Theming is a concern for downstream
+consumers who embed or redistribute the output.
+
+```ts
+// The current ThemeConfig interface is not designed for runtime switching:
+interface ThemeConfig {
+  colors: ColorPalette; // single palette, resolved at build time
+  fonts: FontStack;
+}
+```
+
+## Prior requests
+
+- #42: "Add dark mode support"
+- #87: "Night theme for accessibility"
+- #134: "Dark theme option"
+```
+
+### Naming the file
+
+Use a short, descriptive kebab-case name for the concept: `dark-mode.md`, `plugin-system.md`, `graphql-api.md`. The name should be recognizable enough that someone browsing the directory understands what was rejected without opening the file.
+
+### Writing the reason
+
+The reason should be substantive: not "we don't want this" but why. Good reasons reference:
+
+- Project scope or philosophy ("This project focuses on X; theming is a downstream concern")
+- Technical constraints ("Supporting this would require Y, which conflicts with our Z architecture")
+- Strategic decisions ("We chose to use A instead of B because...")
+
+The reason should be durable. Avoid referencing temporary circumstances ("we're too busy right now"); those aren't real rejections, they're deferrals.
+
+Candidate priorities and temporary deferrals follow the backlog authority in [project-documents.md](project-documents.md). Local tracking stores them in the backlog; remote tracking keeps only the verified backlog name/link there and requires publication approval for remote changes. Pending publication and active paused work stay in local working state. The rejection knowledge base remains separate from both. Read [project-documents.md](project-documents.md) before updating those records.
+
+## When to check `documentation/out-of-scope/`
+
+During triage's Gather context step, read files in `documentation/out-of-scope/` when present. When evaluating a new task:
+
+- Check if the request matches an existing out-of-scope concept
+- Matching is by concept similarity, not keyword: "night theme" matches `dark-mode.md`
+- If there's a match, surface it to the maintainer: "This is similar to `documentation/out-of-scope/dark-mode.md`. We rejected this before because [reason]. Do you still feel the same way?"
+
+The maintainer may:
+
+- **Confirm**: add the new task to the existing file's "Prior requests" list, then close it
+- **Reconsider**: update or remove the out-of-scope record, and continue normal triage
+- **Disagree**: the tasks are related but distinct, so continue normal triage
+
+## When to write to `documentation/out-of-scope/`
+
+Only when an enhancement, not a bug, is rejected as `not-planned`. This applies to enhancement PRs as it does to tasks: record the rejected request so it does not return as fresh code.
+
+Do **not** write here when something is closed as `not-planned` because it's **already implemented**. That's a built feature, not a rejected one; recording it would poison the dedup checks with false rejections. Instead, the closing comment points to where the feature already lives.
+
+The flow:
+
+1. Maintainer decides a feature request is out of scope
+2. Check if a matching `documentation/out-of-scope/` file already exists
+3. If yes: append the new task to the "Prior requests" list
+4. If no: create a new file with the concept name, decision, reason, and first prior request. When this creates the `documentation/out-of-scope/` folder, add one line to the nearest `AGENTS.md` saying it holds rejected enhancement requests and is read during triage
+5. Post a comment on the task explaining the decision and linking the `documentation/out-of-scope/` file
+6. Close the task with the `not-planned` role
+
+## Updating or removing out-of-scope files
+
+If the maintainer changes their mind about a previously rejected concept:
+
+- Delete the `documentation/out-of-scope/` file
+- Historical tasks remain closed unless reopening is explicitly requested
+- The new task that triggered reconsideration proceeds through normal triage

@@ -11,7 +11,7 @@ Surface architectural friction and propose **deepening opportunities**: refactor
 
 This command is _informed_ by the project's domain model and built on a shared design vocabulary:
 
-- [MODULES.md](references/MODULES.md) holds the architecture vocabulary (**module**, **interface**, **depth**, **seam**, **adapter**, **leverage**, **locality**) and its principles (the deletion test, "the interface is the test surface", "one adapter = hypothetical seam, two = real"). Use these terms exactly in every suggestion, and don't drift into "component," "service," "API," or "boundary."
+- [modules.md](references/modules.md) holds the architecture vocabulary (**module**, **interface**, **depth**, **seam**, **adapter**, **leverage**, **locality**) and its principles (the deletion test, "the interface is the test surface", "one adapter = hypothetical seam, two = real"). Use these terms exactly in every suggestion, and don't drift into "component," "service," "API," or "boundary."
 - The domain language in the glossary gives names to good seams; decision records record decisions this command should not re-litigate.
 
 ## Process
@@ -53,21 +53,21 @@ For each candidate, render a card with:
 
 End the report with a **Top recommendation** section: which candidate you'd tackle first and why.
 
-**Use the glossary's vocabulary for the domain, and the [MODULES.md](references/MODULES.md) vocabulary for the architecture.** If the glossary defines "Order," talk about "the Order intake module," not "the FooBarHandler," and not "the Order service."
+**Use the glossary's vocabulary for the domain, and the [modules.md](references/modules.md) vocabulary for the architecture.** If the glossary defines "Order," talk about "the Order intake module," not "the FooBarHandler," and not "the Order service."
 
 **Decision record conflicts**: if a candidate contradicts an existing decision record, only surface it when the friction is real enough to warrant revisiting the record. Mark it clearly in the card (e.g. a warning callout: _"contradicts decision record 0007, but worth reopening because…"_). Don't list every theoretical refactor a record forbids.
 
-See [HTML-REPORT.md](references/HTML-REPORT.md) for the full HTML scaffold, diagram patterns, and styling guidance.
+See [html-report.md](references/html-report.md) for the full HTML scaffold, diagram patterns, and styling guidance.
 
 Do NOT propose interfaces yet. After the file is written, ask the user: "Which of these would you like to explore?"
 
 ### 3. Refinement loop
 
-Once the user picks a candidate, walk the decision tree with them following the [interview method](references/INTERVIEW.md): constraints, dependencies, the shape of the deepened module, what sits behind the seam, what tests survive.
+Once the user picks a candidate, walk the decision tree with them following the [interview method](references/interview.md): constraints, dependencies, the shape of the deepened module, what sits behind the seam, what tests survive.
 
 Side effects happen inline as decisions crystallize:
 
-- **Naming a deepened module after a concept not in the glossary, or a term turns out fuzzy?** Settle it right there: name the conflict, test it with a concrete scenario, recommend a canonical term, and once the user agrees, write it to the glossary following [GLOSSARY-FORMAT.md](references/GLOSSARY-FORMAT.md).
-- **User rejects the candidate with a load-bearing reason?** Offer a decision record, framed as: _"Want me to record this as a decision record so future architecture reviews don't re-suggest it?"_ On yes, write it following [DECISION-RECORD-FORMAT.md](references/DECISION-RECORD-FORMAT.md). Only offer when the reason would actually be needed by a future explorer to avoid re-suggesting the same thing; skip ephemeral reasons ("not worth it right now") and self-evident ones.
-- **Want to explore alternative interfaces for the deepened module?** Use the parallel sub-agent pattern in [DESIGN-IT-TWICE.md](references/DESIGN-IT-TWICE.md).
-- **Deepening a cluster given its dependencies?** Follow [DEEPENING.md](references/DEEPENING.md) for dependency categories, seam discipline, and testing.
+- **Naming a deepened module after a concept not in the glossary, or a term turns out fuzzy?** Settle it right there: name the conflict, test it with a concrete scenario, recommend a canonical term, and once the user agrees, write it to the glossary following [glossary-format.md](references/glossary-format.md).
+- **User rejects the candidate with a load-bearing reason?** Offer a decision record, framed as: _"Want me to record this as a decision record so future architecture reviews don't re-suggest it?"_ On yes, write it following [decision-record-format.md](references/decision-record-format.md). Only offer when the reason would actually be needed by a future explorer to avoid re-suggesting the same thing; skip ephemeral reasons ("not worth it right now") and self-evident ones.
+- **Want to explore alternative interfaces for the deepened module?** Use the parallel sub-agent pattern in [design-it-twice.md](references/design-it-twice.md).
+- **Deepening a cluster given its dependencies?** Follow [deepening.md](references/deepening.md) for dependency categories, seam discipline, and testing.

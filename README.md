@@ -107,10 +107,10 @@ The decisions behind the skills are recorded in [architecture decision records](
 
 The manifest is the source of truth for this list; it holds every skill in the repository. Every skill can be run by you or reached by an agent, and a skill can call any other skill.
 
-### Setup
+### Getting started
 
-- [setup](./skills/setup/setup/SKILL.md): Configure a repository or an empty project: task tracking, triage roles, commit-time checks, Git guardrails, and AI tooling.
-- [setup-delegation-policy](./skills/setup/setup-delegation-policy/SKILL.md): Install, reconfigure, or remove the delegation and model-tier rule for each agent harness you use.
+- [setup](./skills/getting-started/setup/SKILL.md): Configure a repository or an empty project: task tracking, triage roles, commit-time checks, Git guardrails, and AI tooling.
+- [setup-delegation-policy](./skills/getting-started/setup-delegation-policy/SKILL.md): Install, reconfigure, or remove the delegation and model-tier rule for each agent harness you use.
 
 ### Workflow
 

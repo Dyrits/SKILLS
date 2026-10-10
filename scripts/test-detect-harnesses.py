@@ -12,7 +12,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-SKILLS = Path(__file__).resolve().parent.parent / "skills/setup"
+SKILLS = Path(__file__).resolve().parent.parent / "skills/getting-started"
 COPIES = [SKILLS / "setup-delegation-policy/scripts/detect-harnesses.py",
           SKILLS / "setup/scripts/detect-harnesses.py"]
 

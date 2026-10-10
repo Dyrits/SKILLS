@@ -96,4 +96,4 @@ No. It reads the repository, shows the ordered stage list with the values each p
 
 ## Where it fits
 
-`walk-through` is a reach-for-it-anytime standalone for the steps only a human can perform. [setup](../setup/setup.md) configures a repository; a wizard handles other manual setup. [implement](../workflow/implement.md) may expose a credentials or cutover step that needs one.
+`walk-through` is a reach-for-it-anytime standalone for the steps only a human can perform. [setup](../getting-started/setup.md) configures a repository; a wizard handles other manual setup. [implement](../workflow/implement.md) may expose a credentials or cutover step that needs one.
