@@ -35,4 +35,4 @@ No. Bound the session to the selected question. A long interview may mean that s
 
 ## Where it fits
 
-Interview is a reach-for-it-anytime standalone and an interview discipline. [Specify](../workflow/specify.md), [delineate](../workflow/delineate.md), [architect](../workflow/architect.md), and [engineer](../workflow/engineer.md) carry their own copy of its method for unresolved decisions; [graphify](../shaping/graphify.md) uses it to resolve bounded questions in a larger effort; [codify](../setup/codify.md) uses it to settle code conventions.
+Interview is a reach-for-it-anytime standalone and an interview discipline. [Specify](../workflow/specify.md), [delineate](../workflow/delineate.md), [architect](../workflow/architect.md), and [engineer](../workflow/engineer.md) carry their own copy of its method for unresolved decisions; [graphify](../shaping/graphify.md) uses it to resolve bounded questions in a larger effort; [codify](../upkeep/codify.md) uses it to settle code conventions.

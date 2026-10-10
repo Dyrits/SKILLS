@@ -183,7 +183,7 @@
     <h2>Install the skills</h2>
     <p>skills.sh copies editable skill files into your project across supported agent clients.</p>
     <div class="command"><code>npx skills@latest add Dyrits/SKILLS</code><button class="copy" data-copy="npx skills@latest add Dyrits/SKILLS">Copy</button></div>
-    <p class="note">Pick the skills you want, and which coding agents to install them on. <strong>The installer lets you choose which skills to take: make sure <code>setup-ai-workspace</code> and <code>document</code> are among them, since most workflows rely on <code>document</code>.</strong></p>
+    <p class="note">Pick the skills you want, and which coding agents to install them on. <strong>The installer lets you choose which skills to take: install <code>setup</code> first.</strong></p>
   </div>
 
   <div class="skills-head" id="skills">
@@ -438,12 +438,8 @@ const DATA = {
    "groups": {},
    "id": "setup",
    "skills": [
-    "setup-ai-workspace",
-    "setup-delegation-policy",
-    "setup-ai-tooling",
-    "setup-git-hooks",
-    "setup-git-guardrails",
-    "codify"
+    "setup",
+    "setup-delegation-policy"
    ],
    "title": "Setup"
   },
@@ -489,7 +485,8 @@ const DATA = {
     "improve-skills",
     "improve-environment",
     "monitor-ai-tooling",
-    "debug"
+    "debug",
+    "codify"
    ],
    "title": "Upkeep"
   },
@@ -609,11 +606,11 @@ const DATA = {
   },
   "codify": {
    "argumentHint": "",
-   "bucket": "setup",
+   "bucket": "upkeep",
    "calls": [],
    "description": "Define the project's code conventions by drafting candidate rules from how the code is already written and confirming each with the user and its reason, or audit an existing conventions file. Use when the user wants to write down or check how code is written here, or when a review or architecture audit finds no conventions.",
    "fits": [
-    "codify is setup you run once per repository, best after architect has chosen the stack, and again when conventions need checking. Reviews and audits read the conventions file it writes and report when it is missing. It carries its own copies of the interview method and of the formats for the conventions file and the other homes it routes rules to."
+    "codify is maintenance: run it once a repository has code, best after architect has chosen the stack, and again when conventions need checking. setup reads the conventions it writes and carries their tool rules into the formatter and linter configuration. Reviews and audits read the conventions file it writes and report when it is missing. It carries its own copies of the interview method and of the formats for the conventions file and the other homes it routes rules to."
    ],
    "handovers": [],
    "inputs": [
@@ -623,9 +620,9 @@ const DATA = {
    "outputs": [
     "conventions"
    ],
-   "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/setup/codify.md",
+   "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/upkeep/codify.md",
    "requires": [],
-   "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/setup/codify/SKILL.md",
+   "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/upkeep/codify/SKILL.md",
    "summary": [
     "codify writes down how code is written in your project, as rules a reviewer can apply to any diff. It drafts each candidate from patterns already in the code (how errors are handled, how tests are named), asks you to confirm it and give its reason, and writes the confirmed rules to the conventions file, routing anything that is not a convention to its proper home. It can also audit an existing conventions file.",
     "A convention is project-agnostic: it applies to this project but could be transposed to another one on the same stack, because it is not tied to the product or its domain. A rule about what the product does is a requirement, and anything a linter or CI job can check belongs in that tool's configuration; codify routes those away instead of writing them down."
@@ -963,7 +960,7 @@ const DATA = {
    "calls": [],
    "description": "Hold a retrospective on a session's friction, then change the project's environment so the next run avoids it: checks, guardrails, navigation pointers, steering files, tool and information access. Use when the user asks what would have prevented a mistake, why a session was hard, or for an environment retrospective.",
    "fits": [
-    "improve-environment is periodic maintenance after a session in either development workflow, most useful after one that felt harder than it should have. Run it before clearing the session, or point a new session at the log. It follows debug when you want to know what would have prevented the bug, sits beside improve-skills for problems in the skills themselves, and hands a repository with no guardrail to setup-git-hooks."
+    "improve-environment is periodic maintenance after a session in either development workflow, most useful after one that felt harder than it should have. Run it before clearing the session, or point a new session at the log. It follows debug when you want to know what would have prevented the bug, sits beside improve-skills for problems in the skills themselves, and hands a repository with no guardrail to setup."
    ],
    "handovers": [],
    "inputs": [
@@ -1105,7 +1102,7 @@ const DATA = {
    "calls": [],
    "description": "Report AI tooling usage, measured output reduction, quality signals, and gaps from existing local measurements. Use when the user asks how the AI tooling is performing or what it saves.",
    "fits": [
-    "Periodic maintenance after setup-ai-tooling: setup configures the tools, this checks whether they pay off. improve-skills is the neighbor for the skills themselves."
+    "Periodic maintenance after setup: setup configures the tools, this checks whether they pay off. improve-skills is the neighbor for the skills themselves."
    ],
    "handovers": [],
    "inputs": [
@@ -1374,52 +1371,35 @@ const DATA = {
    ],
    "tagline": "Review Standards and Specifications independently, apply supported refactors, and verify them."
   },
-  "setup-ai-tooling": {
+  "setup": {
    "argumentHint": "",
    "bucket": "setup",
    "calls": [],
-   "description": "Set up free AI development tools for a project and its installed agent clients. Use when explicitly asked to install or configure AI tooling.",
+   "description": "Set up a repository, or an empty project, for AI-assisted work: task tracking and triage roles, commit-time formatting, linting and typechecking, guards that make agents ask before destructive Git commands, and AI development tools. Use when the user asks to set up or reconfigure a repository, or any one of those areas, such as pre-commit hooks, Git guardrails, or AI tooling.",
    "fits": [
-    "Run-once setup per project, run on its own request; setup-ai-workspace configures the project records and leaves tooling to it. monitor-ai-tooling is its periodic follow-up."
+    "Run-once setup per repository, run again when the tracker, the tools, or the guard level change. specify, taskify, triage, and graphify read the workspace configuration it writes; monitor-ai-tooling reads the tooling baseline. It carries its own copies of the shared document rules."
    ],
    "handovers": [],
-   "inputs": [],
-   "next": [],
-   "outputs": [
-    "tooling-config"
+   "inputs": [
+    "conventions",
+    "code"
    ],
-   "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/setup/setup-ai-tooling.md",
-   "requires": [],
-   "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/setup/setup-ai-tooling/SKILL.md",
-   "summary": [
-    "Provisions free AI development tools for one project and the agent clients installed on the machine, then records a measurable baseline. It reuses working integrations instead of reinstalling them, and it leaves an unverified adapter or output filter disabled rather than guessing.",
-    "It runs only inside an explicit tooling request."
-   ],
-   "tagline": "Configure and verify selected development tools and their measurement baseline."
-  },
-  "setup-ai-workspace": {
-   "argumentHint": "",
-   "bucket": "setup",
-   "calls": [],
-   "description": "Configure a repository for AI-assisted work: task tracking, ticket conventions, and triage roles. Use when the user asks to set up or reconfigure the AI workspace.",
-   "fits": [
-    "This is run-once setup for specify, taskify, triage, and graphify. It carries its own copy of the shared document rules."
-   ],
-   "handovers": [],
-   "inputs": [],
    "next": [],
    "outputs": [
     "workspace-config",
-    "domain-records"
+    "domain-records",
+    "git-hooks",
+    "git-guardrails",
+    "tooling-config"
    ],
-   "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/setup/setup-ai-workspace.md",
+   "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/setup/setup.md",
    "requires": [],
-   "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/setup/setup-ai-workspace/SKILL.md",
+   "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/setup/setup/SKILL.md",
    "summary": [
-    "Configures one repository's task tracker, ticket-writing convention, and triage-role vocabulary. Its output is editable Markdown under .agents/, plus an agent-instruction block. It changes project configuration, not the installed skills. Code conventions, tooling, hooks, guardrails, and machine-wide settings are out of its scope; it reports a missing conventions file instead of writing one.",
-    "The tracker choice does not move specification authority. Agreed living behavior and acceptance stay in the capability's specifications in the repository. Remote tasks link to or summarize that specification. Local documents can be maintained within scope without publishing remote records."
+    "Configures one repository, or an empty project, for AI-assisted work. A bundled script first reports what is already set up, then the skill offers four areas with their state and sets up the ones you pick:",
+    "The tools install themselves. The skill carries a dated catalogue listing, for each tool, how to detect it, its non-interactive install command, and one check that it works. The agent runs those commands with their output sent to a log, reads only the end of the log, and opens documentation only when a listed command fails. Upstream, each area was its own skill and each run re-read the tools' documentation; the merge exists to cut that cost."
    ],
-   "tagline": "Configure shared project documents, task tracking, triage roles, and the optional setups."
+   "tagline": "Configure a repository or an empty project: task tracking, triage roles, commit-time checks, Git guardrails, and AI tooling."
   },
   "setup-delegation-policy": {
    "argumentHint": "",
@@ -1427,7 +1407,7 @@ const DATA = {
    "calls": [],
    "description": "Install, reconfigure, or remove the delegation and model routing rule, and the tier agents it needs, for each agent harness on this machine. Use when the user asks to set up, change, or remove delegation or model routing.",
    "fits": [
-    "Run-once, machine-wide setup, rerun when POLICY.md changes. It sits beside setup-ai-workspace, which configures one repository, and setup-ai-tooling, which provisions tools."
+    "Run-once, machine-wide setup, rerun when POLICY.md changes. It sits beside setup, which configures one repository and provisions its tools."
    ],
    "handovers": [],
    "inputs": [],
@@ -1446,56 +1426,6 @@ const DATA = {
     "No harness is built in. A bundled script, detect-harnesses.py, lists the harnesses it finds on disk (directories holding a steering file or agents, with the command on the path and whether the policy is already installed), with no harness named in advance. The skill asks you to confirm the list, and then asks per harness whether to configure, reconfigure, remove, or skip. It reads each harness's own documentation for its steering file, its agent format, and its model list."
    ],
    "tagline": "Install, reconfigure, or remove the delegation and model-tier rule for each agent harness you use."
-  },
-  "setup-git-guardrails": {
-   "argumentHint": "",
-   "bucket": "setup",
-   "calls": [],
-   "description": "Set up git guardrails that make coding agents ask or stop before commands that lose work or rewrite shared history, at a guard level the user picks, for whichever agent harnesses they use. Use when the user wants to guard against destructive git operations by coding agents.",
-   "fits": [
-    "Run-once safety setup per project or per machine, run on its own request. setup-git-hooks manages the same hooks directory, so the two coexist."
-   ],
-   "handovers": [],
-   "inputs": [],
-   "next": [
-    "setup-git-hooks"
-   ],
-   "outputs": [
-    "git-guardrails"
-   ],
-   "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/setup/setup-git-guardrails.md",
-   "requires": [],
-   "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/setup/setup-git-guardrails/SKILL.md",
-   "summary": [
-    "Puts a human decision in front of git commands that can lose work or rewrite shared history, so you approve each one instead of the agent running it unchecked. It does not assume an agent: a bundled script, detect-harnesses.py, lists the harnesses it finds on disk, and the skill asks which of them you use and wires each one by the strongest mechanism that harness documents.",
-    "It asks four things in one round: the guard level, the scope (this project or every project), the harnesses, and the protected branches.",
-    "Routine work passes at levels 1 and 2: commits, pushes to feature branches, --force-with-lease to a feature branch, dry runs, and git restore --staged. The command guard reads the command being run, across chains, sudo, xargs, command, bash -c, $(...), and git -C, so echo \"git push\" or a commit message that mentions a push is not caught.",
-    "Upstream covered Claude Code only and denied outright. This fork asks instead of denying, and no longer names the harnesses it supports."
-   ],
-   "tagline": "Ask before destructive Git commands, at a guard level you pick, for any agent harness."
-  },
-  "setup-git-hooks": {
-   "argumentHint": "",
-   "bucket": "setup",
-   "calls": [],
-   "description": "Set up versioned git hooks via core.hooksPath (no Husky) with lint-staged (Biome, plus Prettier only for languages Biome leaves uncovered and only if the user wants it), plus typecheck and build. Use when user wants to add pre-commit hooks, commit-time formatting/linting/typechecking, or to replace Husky with git's built-in hooks path.",
-   "fits": [
-    "Run-once setup per repository, run on its own request. setup-git-guardrails pairs with it: its optional pre-push fallback uses this same hooks path."
-   ],
-   "handovers": [],
-   "inputs": [],
-   "next": [],
-   "outputs": [
-    "git-hooks"
-   ],
-   "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/setup/setup-git-hooks.md",
-   "requires": [],
-   "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/setup/setup-git-hooks/SKILL.md",
-   "summary": [
-    "Sets up versioned git hooks through core.hooksPath pointing at a committed .githooks/ directory, with no Husky. The pre-commit hook runs lint-staged on staged files, then the project's typecheck and build scripts.",
-    "lint-staged assigns Biome to the languages it supports, including those it covers only once enabled, and keeps any formatter the project already uses. Prettier is offered only for the languages left over, and you can decline it. Each glob gets exactly one tool. Husky only copies runners into .git/hooks/, which core.hooksPath does with no dependency; a prepare script sets the config on every install so teammates are covered on clone."
-   ],
-   "tagline": "Configure versioned commit hooks with formatting, linting, typechecking, and builds."
   },
   "specify": {
    "argumentHint": "",
@@ -1736,7 +1666,7 @@ const DATA = {
    "calls": [],
    "description": "Generate an interactive bash wizard that walks a human through steps only they can perform. Use when provisioning infrastructure, setting up credentials or CI secrets, walking an unfamiliar third-party dashboard, or running a one-off migration or cutover. Don't invoke this for steps the agent can perform itself.",
    "fits": [
-    "walk-through is a reach-for-it-anytime standalone for the steps only a human can perform. setup-ai-workspace configures this skill set; a wizard handles other manual setup. implement may expose a credentials or cutover step that needs one."
+    "walk-through is a reach-for-it-anytime standalone for the steps only a human can perform. setup configures a repository; a wizard handles other manual setup. implement may expose a credentials or cutover step that needs one."
    ],
    "handovers": [],
    "inputs": [],

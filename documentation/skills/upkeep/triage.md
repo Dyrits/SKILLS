@@ -17,7 +17,7 @@ Run `/triage`, or let an agent or another skill reach for it when requests need 
 | You have decided its next state | Request the state change |
 | You need actionable work to assign | Ask what is ready |
 
-Triage needs the tracker and role mappings that [setup-ai-workspace](../setup/setup-ai-workspace.md) writes. When they are absent, triage says which file is missing and stops.
+Triage needs the tracker and role mappings that [setup](../setup/setup.md) writes. When they are absent, triage says which file is missing and stops.
 
 ## The intake machine
 

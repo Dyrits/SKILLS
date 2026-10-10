@@ -17,7 +17,7 @@ Type `/architect`, or an agent can reach for it when a task fits:
 | A new requirement (a partner's latency budget, data residency) puts the structure in question | `architect`, assess branch |
 | What the system is for, or its requirements, are unclear | [delineate](./delineate.md) |
 | One capability's modules and interfaces | [engineer](./engineer.md) |
-| How code is written and checked | [codify](../setup/codify.md) |
+| How code is written and checked | [codify](../upkeep/codify.md) |
 | Deepening shallow modules in an existing codebase | [improve-codebase-architecture](../upkeep/improve-codebase-architecture.md) |
 
 ## What it writes
@@ -54,4 +54,4 @@ That skill looks for shallow modules inside the code and proposes deepening them
 
 ## Where it fits
 
-`architect` is the technical half of the system level, usually after [delineate](./delineate.md) and before [codify](../setup/codify.md), since conventions depend on the stack. [engineer](./engineer.md) designs each capability inside the shape it sets.
+`architect` is the technical half of the system level, usually after [delineate](./delineate.md) and before [codify](../upkeep/codify.md), since conventions depend on the stack. [engineer](./engineer.md) designs each capability inside the shape it sets.

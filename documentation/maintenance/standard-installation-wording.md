@@ -10,7 +10,7 @@ The first documented route is [skills.sh](https://skills.sh/Dyrits/SKILLS), whic
 npx skills@latest add Dyrits/SKILLS
 ```
 
-Pick the skills you want, and which coding agents to install them on. **The installer lets you choose which skills to take: install `setup-ai-workspace` first.**
+Pick the skills you want, and which coding agents to install them on. **The installer lets you choose which skills to take: install `setup` first.**
 
 </canonical-block>
 

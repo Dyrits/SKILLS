@@ -29,17 +29,9 @@ dependencies:
     - git: parent
       path: skills/productivity/write-for-agents
     - git: parent
-      path: skills/setup/codify
-    - git: parent
-      path: skills/setup/setup-ai-tooling
-    - git: parent
-      path: skills/setup/setup-ai-workspace
+      path: skills/setup/setup
     - git: parent
       path: skills/setup/setup-delegation-policy
-    - git: parent
-      path: skills/setup/setup-git-guardrails
-    - git: parent
-      path: skills/setup/setup-git-hooks
     - git: parent
       path: skills/shaping/graphify
     - git: parent
@@ -50,6 +42,8 @@ dependencies:
       path: skills/shaping/prototype
     - git: parent
       path: skills/shaping/research
+    - git: parent
+      path: skills/upkeep/codify
     - git: parent
       path: skills/upkeep/debug
     - git: parent
@@ -139,24 +133,12 @@ marketplace:
     - name: write-for-agents
       source: ./skills/productivity/write-for-agents
       description: "Write documents for agents: skills, AGENTS.md, and documents reached by a pointer."
-    - name: codify
-      source: ./skills/setup/codify
-      description: "Define the project's code conventions by drafting candidate rules from how the code is already written and confirming each with the user and its reason, or audit an existing conventions file."
-    - name: setup-ai-tooling
-      source: ./skills/setup/setup-ai-tooling
-      description: "Set up free AI development tools for a project and its installed agent clients."
-    - name: setup-ai-workspace
-      source: ./skills/setup/setup-ai-workspace
-      description: "Configure a repository for AI-assisted work: task tracking, ticket conventions, and triage roles."
+    - name: setup
+      source: ./skills/setup/setup
+      description: "Set up a repository, or an empty project, for AI-assisted work: task tracking and triage roles, commit-time formatting, linting and typechecking, guards that make agents ask before destructive Git commands, and AI development tools."
     - name: setup-delegation-policy
       source: ./skills/setup/setup-delegation-policy
       description: "Install, reconfigure, or remove the delegation and model routing rule, and the tier agents it needs, for each agent harness on this machine."
-    - name: setup-git-guardrails
-      source: ./skills/setup/setup-git-guardrails
-      description: "Set up git guardrails that make coding agents ask or stop before commands that lose work or rewrite shared history, at a guard level the user picks, for whichever agent harnesses they use."
-    - name: setup-git-hooks
-      source: ./skills/setup/setup-git-hooks
-      description: "Set up versioned git hooks via core.hooksPath (no Husky) with lint-staged (Biome, plus Prettier only for languages Biome leaves uncovered and only if the user wants it), plus typecheck and build."
     - name: graphify
       source: ./skills/shaping/graphify
       description: "Build and work through a shared decision graph for an effort too large for one session."
@@ -172,6 +154,9 @@ marketplace:
     - name: research
       source: ./skills/shaping/research
       description: "Investigate a question against high-trust primary sources and capture the findings as a Markdown file in the repository."
+    - name: codify
+      source: ./skills/upkeep/codify
+      description: "Define the project's code conventions by drafting candidate rules from how the code is already written and confirming each with the user and its reason, or audit an existing conventions file."
     - name: debug
       source: ./skills/upkeep/debug
       description: "Diagnosis loop for hard bugs and performance regressions."

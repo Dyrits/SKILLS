@@ -8,3 +8,4 @@ Keep the codebase and request list healthy.
 - [improve-environment](./improve-environment/SKILL.md): Trace a session's friction to the project's environment and apply the agreed checks, pointers, and steering changes.
 - [monitor-ai-tooling](./monitor-ai-tooling/SKILL.md): Produce a dated report separating observed tool benefits, estimates, and quality gaps.
 - [debug](./debug/SKILL.md): Diagnose bugs through a tight reproduction loop and regression evidence.
+- [codify](./codify/SKILL.md): Draft the project's code conventions from how its code is written, confirm each rule and its reason, or audit existing conventions.

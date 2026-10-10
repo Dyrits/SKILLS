@@ -14,7 +14,7 @@ from pathlib import Path
 
 SKILLS = Path(__file__).resolve().parent.parent / "skills/setup"
 COPIES = [SKILLS / "setup-delegation-policy/scripts/detect-harnesses.py",
-          SKILLS / "setup-git-guardrails/scripts/detect-harnesses.py"]
+          SKILLS / "setup/scripts/detect-harnesses.py"]
 
 
 class Detector(unittest.TestCase):

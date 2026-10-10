@@ -13,7 +13,7 @@ Type `/monitor-ai-tooling`, optionally naming a project and period. An agent or 
 | Your situation | Skill |
 | --- | --- |
 | Find out whether the configured tools are used and helping | This one |
-| Install or change the tools, hooks, or measurement setup | [setup-ai-tooling](../setup/setup-ai-tooling.md) |
+| Install or change the tools, hooks, or measurement setup | [setup](../setup/setup.md) |
 | Report how the skills behaved in a session | [improve-skills](improve-skills.md) |
 
 ## Prerequisites
@@ -57,4 +57,4 @@ It prefers local collection with no network requests and no additional model cal
 
 ## Where it fits
 
-Periodic maintenance after [setup-ai-tooling](../setup/setup-ai-tooling.md): setup configures the tools, this checks whether they pay off. [improve-skills](improve-skills.md) is the neighbor for the skills themselves.
+Periodic maintenance after [setup](../setup/setup.md): setup configures the tools, this checks whether they pay off. [improve-skills](improve-skills.md) is the neighbor for the skills themselves.

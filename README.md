@@ -14,9 +14,9 @@ These skills are small, editable, and composable. Use explicit planning phases o
 npx skills@latest add Dyrits/SKILLS
 ```
 
-Pick the skills you want, and which coding agents to install them on. **The installer lets you choose which skills to take: install `setup-ai-workspace` first.**
+Pick the skills you want, and which coding agents to install them on. **The installer lets you choose which skills to take: install `setup` first.**
 
-Run `/setup-ai-workspace` once per repository to configure local or remote task tracking, task-writing conventions, triage roles, domain documentation, and the optional setups (tooling, commit hooks, Git guardrails, automatic handoff, delegation policy).
+Run `/setup` once per repository, or in an empty project, to configure local or remote task tracking, task-writing conventions, triage roles, commit-time checks, Git guardrails, and AI tooling. It asks which of these you want.
 
 Specifications stay authoritative in the repository. Draft remote tasks remain local until you explicitly publish them; their local files then link to the authoritative tracker records. Agents maintain local documentation autonomously within the authorized scope.
 
@@ -35,7 +35,7 @@ apm install Dyrits/SKILLS --global
 
 APM selects the target agent clients from its configuration or auto-detection. Add `--target claude,codex` to select them explicitly. If existing skills cause conflicts, add `--force` only when you intend to replace them. It permits overwriting locally authored files and also bypasses blocking security findings.
 
-Install `setup-ai-workspace` first.
+Install `setup` first.
 
 ### Updating installed skills
 
@@ -100,6 +100,7 @@ The decisions behind the skills are recorded in [architecture decision records](
 - Both workflows use one set of project-owned documents ([0002](./documentation/architecture-decision-record/0002-share-project-documents-across-workflows.md)), with specifications grouped by capability ([0003](./documentation/architecture-decision-record/0003-group-specifications-by-capability.md)).
 - Every skill completes its task when installed alone, and skills connect through project artifacts rather than calls ([0005](./documentation/architecture-decision-record/0005-make-skills-autonomous.md)); the migration is not yet complete.
 - The system and each capability are described functionally and technically, by `delineate`, `architect`, `specify`, and `engineer` ([0006](./documentation/architecture-decision-record/0006-describe-systems-and-capabilities-functionally-and-technically.md)).
+- One `setup` skill configures a repository, installing tools through their own command-line installers from a dated catalogue ([0007](./documentation/architecture-decision-record/0007-merge-project-setup-into-one-skill.md)).
 - Tasks can be local Markdown or native remote issues, and skills are grouped by purpose. Every skill ships in the plugin.
 
 ## Plugin skills
@@ -108,12 +109,8 @@ The manifest is the source of truth for this list; it holds every skill in the r
 
 ### Setup
 
-- [setup-ai-workspace](./skills/setup/setup-ai-workspace/SKILL.md): Configure project documents, task tracking, triage roles, and the optional setups.
+- [setup](./skills/setup/setup/SKILL.md): Configure a repository or an empty project: task tracking, triage roles, commit-time checks, Git guardrails, and AI tooling.
 - [setup-delegation-policy](./skills/setup/setup-delegation-policy/SKILL.md): Install, reconfigure, or remove the delegation and model-tier rule for each agent harness you use.
-- [setup-ai-tooling](./skills/setup/setup-ai-tooling/SKILL.md): Configure and verify selected development tools and their measurement baseline.
-- [setup-git-hooks](./skills/setup/setup-git-hooks/SKILL.md): Configure versioned commit hooks with formatting, linting, typechecking, and builds.
-- [setup-git-guardrails](./skills/setup/setup-git-guardrails/SKILL.md): Ask before destructive Git commands, at a guard level you pick, for any agent harness.
-- [codify](./skills/setup/codify/SKILL.md): Draft the project's code conventions from how its code is written, confirm each rule and its reason, or audit existing conventions.
 
 ### Workflow
 
@@ -145,6 +142,7 @@ The manifest is the source of truth for this list; it holds every skill in the r
 - [improve-environment](./skills/upkeep/improve-environment/SKILL.md): Trace a session's friction to the project's environment and fix it there.
 - [monitor-ai-tooling](./skills/upkeep/monitor-ai-tooling/SKILL.md): Report observed tool benefits, estimates, and quality gaps.
 - [debug](./skills/upkeep/debug/SKILL.md): Build a tight reproduction loop, diagnose the cause, and verify the fix.
+- [codify](./skills/upkeep/codify/SKILL.md): Draft the project's code conventions from how its code is written, confirm each rule and its reason, or audit existing conventions.
 
 ### Version control
 

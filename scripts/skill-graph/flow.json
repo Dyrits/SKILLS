@@ -51,11 +51,8 @@
     "conflict": {"label": "Merge conflict", "description": "An in-progress merge or rebase stopped on conflicting hunks."}
   },
   "skills": {
-    "setup-ai-workspace": {"inputs": [], "outputs": ["workspace-config", "domain-records"], "next": []},
-    "setup-ai-tooling": {"inputs": [], "outputs": ["tooling-config"], "next": []},
+    "setup": {"inputs": ["conventions", "code"], "outputs": ["workspace-config", "domain-records", "git-hooks", "git-guardrails", "tooling-config"], "next": []},
     "setup-delegation-policy": {"inputs": [], "outputs": ["delegation-policy"], "next": ["divide-and-conquer"]},
-    "setup-git-guardrails": {"inputs": [], "outputs": ["git-guardrails"], "next": ["setup-git-hooks"]},
-    "setup-git-hooks": {"inputs": [], "outputs": ["git-hooks"], "next": []},
     "graphify": {"inputs": ["idea"], "outputs": ["decision-graph", "decisions"], "next": ["specify", "taskify"]},
     "prioritize": {"inputs": ["idea", "backlog"], "outputs": ["backlog", "work-in-progress"], "next": ["iterate", "taskify"]},
     "research": {"inputs": ["idea"], "outputs": ["research-note"], "next": ["interview", "specify", "graphify"]},

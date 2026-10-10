@@ -1,11 +1,4 @@
----
-name: setup-git-guardrails
-description: "Set up git guardrails that make coding agents ask or stop before commands that lose work or rewrite shared history, at a guard level the user picks, for whichever agent harnesses they use. Use when the user wants to guard against destructive git operations by coding agents."
-metadata:
-  forks: "mattpocock/skills/skills/misc/git-guardrails-claude-code"
----
-
-# Setup git guardrails
+# Git guardrails
 
 Puts a human decision in front of destructive git commands, so the human approves each one instead of the agent running it unchecked. Routine work (commits, pushes to feature branches, dry runs) passes. The setup is agent-agnostic: two layers, and no harness is assumed.
 
@@ -51,7 +44,7 @@ For each harness, read its current documentation for command interception, becau
 2. **Permission rules with command patterns.** Translate the guard table into ask rules. Patterns cannot see the branch or a chain, so rules ask on every non-dry-run push.
 3. **Neither.** The portable layer alone. Tell the user which levels 2 and 3 commands stay unguarded.
 
-[EXAMPLES.md](EXAMPLES.md) shows one hookup of each of the first two. Merge into the harness's existing settings and keep every entry already there.
+[GUARDRAIL-WIRING.md](GUARDRAIL-WIRING.md) shows one hookup of each of the first two. Merge into the harness's existing settings and keep every entry already there.
 
 Completion: each harness has its mechanism recorded (1, 2, or 3) and its settings file still parses.
 
@@ -69,11 +62,11 @@ Then check each harness's wiring through the harness itself where it allows (a g
 
 ### 5. Report
 
-One line per layer and harness: the level, the mechanism, what was verified and what was only written, and what stays unguarded.
+For the report, one line per layer and harness: the level, the mechanism, what was verified and what was only written, and what stays unguarded.
 
 ## Changing or removing it
 
-Re-run the steps with the new answers: the files are overwritten in place and the settings entries replaced, never duplicated. To remove, name the hook, the copied script, and each settings entry, then delete them with the user's agreement.
+Run this area again with the new answers: the files are overwritten in place and the settings entries replaced, never duplicated. To remove, name the hook, the copied script, and each settings entry, then delete them with the user's agreement.
 
 ## Limits to tell the user
 

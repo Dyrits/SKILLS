@@ -1,4 +1,4 @@
-Upstream source: `domain-modeling`, verified in the `d81f3a1` tree. This fork named it `model-domain`, narrowed it to settling terms as `delineate`, then widened it into the system's functional outline ([architecture decision record 0006](../../architecture-decision-record/0006-describe-systems-and-capabilities-functionally-and-technically.md)). Decision records moved to [architect](./architect.md) and [engineer](./engineer.md), and code conventions to [codify](../setup/codify.md).
+Upstream source: `domain-modeling`, verified in the `d81f3a1` tree. This fork named it `model-domain`, narrowed it to settling terms as `delineate`, then widened it into the system's functional outline ([architecture decision record 0006](../../architecture-decision-record/0006-describe-systems-and-capabilities-functionally-and-technically.md)). Decision records moved to [architect](./architect.md) and [engineer](./engineer.md), and code conventions to [codify](../upkeep/codify.md).
 
 ## What it does
 

@@ -1,17 +1,10 @@
----
-name: setup-ai-workspace
-description: "Configure a repository for AI-assisted work: task tracking, ticket conventions, and triage roles. Use when the user asks to set up or reconfigure the AI workspace."
-metadata:
-  forks: "mattpocock/skills/skills/engineering/setup-matt-pocock-skills"
----
+# Workspace
 
-# Setup AI workspace
-
-Configure the repository contracts that planning and intake workflows read: the task tracker, the ticket-writing convention, and the triage roles. Explore, recommend, confirm, then write inspectable configuration. This skill configures the project, not the installed skills; code conventions, tooling, hooks, and machine-wide settings are out of its scope.
+Configure the repository contracts that planning and intake workflows read: the task tracker, the ticket-writing convention, and the triage roles. Explore, recommend, confirm, then write inspectable configuration. This area configures the project, not the installed skills.
 
 The project documents and their rules are in [PROJECT-DOCUMENTS.md](PROJECT-DOCUMENTS.md); read it before choosing document locations or writing configuration. Its terms (authorized, obligation, lazy, pointer) apply throughout.
 
-Four decisions belong here:
+Four decisions belong to this area:
 
 - The task tracker, local Markdown or a remote service.
 - The ticket-writing convention, the built-in `taskify` format or an established project template or skill.
@@ -20,17 +13,15 @@ Four decisions belong here:
 
 ## 1. Explore
 
-Read existing configuration and conventions before proposing changes:
+The inspection already gave the remotes, the `AGENTS.md` pointers, and the setup records. Read, in addition:
 
-- `git remote -v` and `.git/config`, to identify the host without assuming it is the tracker.
-- Root `AGENTS.md`, including any `## Agent skills` section.
-- `.agents/` and any verified tooling record.
+- Root `AGENTS.md`, including any `## Agent skills` section, and the existing `.agents/issue-tracker.md` and `.agents/triage-roles.md`.
 - The project documents `AGENTS.md` names, as [PROJECT-DOCUMENTS.md](PROJECT-DOCUMENTS.md) describes: the requirements, backlog, working state, changelog, outline, glossary, conventions, relevant decision records, and relevant capability documents.
 - Task templates, contribution documentation, and available ticket-writing skills.
 - Monorepo signals such as workspace configuration or independent packages.
 - Whether `triage` is installed, which determines whether role configuration is needed.
 
-## 2. Present findings and ask
+## 2. Ask
 
 Summarize what already exists. Take the following sections in order, one question at a time, recommending an answer the user can accept briefly.
 
@@ -111,4 +102,4 @@ Write [triage-roles.md](triage-roles.md) when applicable. Create only configurat
 
 ## 4. Done
 
-Report the files written, what each configures, and any gap found during exploration, such as a missing conventions file. The user can edit `.agents/*.md` directly later. Confirm that future work uses the shared document tree, existing history remains in place, and installed skill files were not changed.
+Completion: the files are written and shown to the user. For the report: the files written, what each configures, and any gap found during exploration, such as a missing conventions file. The user can edit `.agents/*.md` directly later. Existing history remains in place, and installed skill files are not changed.

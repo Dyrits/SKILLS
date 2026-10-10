@@ -1,0 +1,3 @@
+interface:
+  display_name: "Setup"
+  short_description: "Set up task tracking, code checks, Git guardrails, and AI tooling for a repository"

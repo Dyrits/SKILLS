@@ -1,3 +1,0 @@
-interface:
-  display_name: "Git Guardrails"
-  short_description: "Ask before destructive git commands, at a guard level you pick, for any agent"

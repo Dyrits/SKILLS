@@ -36,7 +36,7 @@ It was folded into `memorize` as its script branch. The agent no longer needs a 
 
 **Why does it care about pointers?**
 
-A skill description alone fires unreliably during a long task. The repository evidence is a session that wrote inline Python for bulk edits while a matching saved script existed. So the nearest `AGENTS.md` gets one always-loaded pointer, added once after checking for an existing one: call `memorize` the moment the user states a standing rule, asks you to remember something, or corrects how something is done, or when something is rebuilt a second time, and read the scriptbook index before writing a script or a pipeline longer than one line. The call comes first in the line and in the turn, because a correction is acted on and forgotten unless it is filed in the turn it arrives. [setup-ai-workspace](../setup/setup-ai-workspace.md) writes that line as part of its agent-instruction block.
+A skill description alone fires unreliably during a long task. The repository evidence is a session that wrote inline Python for bulk edits while a matching saved script existed. So the nearest `AGENTS.md` gets one always-loaded pointer, added once after checking for an existing one: call `memorize` the moment the user states a standing rule, asks you to remember something, or corrects how something is done, or when something is rebuilt a second time, and read the scriptbook index before writing a script or a pipeline longer than one line. The call comes first in the line and in the turn, because a correction is acted on and forgotten unless it is filed in the turn it arrives. `memorize` adds that line itself the first time it finds the pointer missing.
 
 **Does it duplicate a fact in several homes?**
 

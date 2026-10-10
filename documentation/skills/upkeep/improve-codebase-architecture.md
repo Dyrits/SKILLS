@@ -29,7 +29,7 @@ Where it is confusable with siblings:
 
 ## Prerequisites
 
-None to run it. When the conventions file is missing, the audit runs without it and says so in the report; [codify](../setup/codify.md) is where conventions get written. It reads the glossary and any architecture decision records if they exist, and speaks in your domain's own nouns when they do: a candidate reads as "deepen the Order intake module," not "refactor the FooBarHandler."
+None to run it. When the conventions file is missing, the audit runs without it and says so in the report; [codify](./codify.md) is where conventions get written. It reads the glossary and any architecture decision records if they exist, and speaks in your domain's own nouns when they do: a candidate reads as "deepen the Order intake module," not "refactor the FooBarHandler."
 
 The report goes to `documentation/architecture-audit/architecture-audit-<timestamp>.html`, one file per run. Refinement can also sharpen terms in the glossary and offer an architecture decision record for a consequential rejection. That offer is conditional: rejecting a candidate does not automatically merit a permanent decision record.
 
@@ -100,4 +100,4 @@ There is no good answer shipped with the skill. The recurring request is for a `
 
 ## Where it fits
 
-`improve-codebase-architecture` is periodic maintenance that generates candidate work rather than implementing it. It carries its own copies of the depth-and-seam vocabulary, the [interview](../shaping/interview.md) method, and the glossary and decision record formats. [delineate](../workflow/delineate.md) and [codify](../setup/codify.md) own the full glossary and the conventions. Approved work enters planned or just-in-time development without weakening existing obligations.
+`improve-codebase-architecture` is periodic maintenance that generates candidate work rather than implementing it. It carries its own copies of the depth-and-seam vocabulary, the [interview](../shaping/interview.md) method, and the glossary and decision record formats. [delineate](../workflow/delineate.md) and [codify](./codify.md) own the full glossary and the conventions. Approved work enters planned or just-in-time development without weakening existing obligations.

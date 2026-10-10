@@ -53,4 +53,4 @@ Choose Remove for the harness. The section is removed from its steering file and
 
 ## Where it fits
 
-Run-once, machine-wide setup, rerun when `POLICY.md` changes. It sits beside [setup-ai-workspace](./setup-ai-workspace.md), which configures one repository, and [setup-ai-tooling](./setup-ai-tooling.md), which provisions tools.
+Run-once, machine-wide setup, rerun when `POLICY.md` changes. It sits beside [setup](./setup.md), which configures one repository and provisions its tools.

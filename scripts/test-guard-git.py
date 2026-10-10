@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Exercise the setup-git-guardrails command guard and its pre-push hook against a scratch repository.
+"""Exercise the setup skill's Git command guard and its pre-push hook against a scratch repository.
 
 Usage: python3 scripts/test-guard-git.py
 Needs: Python 3 standard library and git. Uses temporary directories only.
@@ -12,7 +12,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-SCRIPTS = Path(__file__).resolve().parent.parent / "skills/setup/setup-git-guardrails/scripts"
+SCRIPTS = Path(__file__).resolve().parent.parent / "skills/setup/setup/scripts"
 GUARD = SCRIPTS / "guard-git.py"
 PRE_PUSH = SCRIPTS / "pre-push"
 

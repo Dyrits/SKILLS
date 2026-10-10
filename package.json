@@ -16,7 +16,8 @@
     "test-skills-check": "python3 scripts/test-check-skills.py",
     "test-scriptbook-helpers": "python3 scripts/test-scriptbook-helpers.py",
     "test-guard-git": "python3 -I scripts/test-guard-git.py",
-    "test-detect-harnesses": "python3 -I scripts/test-detect-harnesses.py"
+    "test-detect-harnesses": "python3 -I scripts/test-detect-harnesses.py",
+    "test-inspect-project": "python3 -I scripts/test-inspect-project.py"
   },
   "devDependencies": {},
   "packageManager": "npm@10.9.4"
