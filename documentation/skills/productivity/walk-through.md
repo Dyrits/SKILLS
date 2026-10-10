@@ -96,4 +96,4 @@ No. It reads the repository, shows the ordered stage list with the values each p
 
 ## Where it fits
 
-`walk-through` is a reach-for-it-anytime standalone for the steps only a human can perform. [setup-ai-workspace](../setup/setup-ai-workspace.md) configures this skill set; a wizard handles other manual setup. [implement](../workflow/implement.md) may expose a credentials or cutover step that needs one. [guide](./guide.md) routes you when the next move is unclear.
+`walk-through` is a reach-for-it-anytime standalone for the steps only a human can perform. [setup-ai-workspace](../setup/setup-ai-workspace.md) configures this skill set; a wizard handles other manual setup. [implement](../workflow/implement.md) may expose a credentials or cutover step that needs one.

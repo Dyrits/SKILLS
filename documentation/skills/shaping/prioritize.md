@@ -56,4 +56,4 @@ It recommends resolving that bounded question first, and names it as a blocker w
 
 ## Where it fits
 
-This is a shaping step before building. Use [graphify](./graphify.md) when the question is design, [taskify](../workflow/taskify.md) once behavior is agreed, and [interview](../shaping/interview.md) for single decisions; it carries its own interview and research steps. [guide](../productivity/guide.md) maps the whole system.
+This is a shaping step before building. Use [graphify](./graphify.md) when the question is design, [taskify](../workflow/taskify.md) once behavior is agreed, and [interview](../shaping/interview.md) for single decisions; it carries its own interview and research steps.

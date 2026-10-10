@@ -7,8 +7,6 @@ dependencies:
     - git: parent
       path: skills/productivity/design-workflow
     - git: parent
-      path: skills/productivity/guide
-    - git: parent
       path: skills/productivity/hand-off
     - git: parent
       path: skills/productivity/illustrate
@@ -108,9 +106,6 @@ marketplace:
     - name: design-workflow
       source: ./skills/productivity/design-workflow
       description: "Interview the user into implementable workflow specifications for recurring loops in their work, using the current directory as a stateful workspace."
-    - name: guide
-      source: ./skills/productivity/guide
-      description: "Choose the next skill, development workflow, or session boundary from the current situation."
     - name: hand-off
       source: ./skills/productivity/hand-off
       description: "Write the current session's work into a versioned, self-contained handoff document in .agents/handoffs/ and point to it from AGENTS.md, so another session, agent, or person can resume it."

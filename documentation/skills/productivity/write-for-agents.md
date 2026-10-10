@@ -81,4 +81,4 @@ The technique does not require English. Use familiar, consistently defined terms
 
 ## Where it fits
 
-This is a standalone reference used within authoring tasks, not another delivery stage. [memorize](./memorize.md) loads it before filing a lesson in a steering file. Requested skill evaluations use the external `skill-creator` workflow. When you're unsure which skill or flow fits a task, [guide](../productivity/guide.md) helps choose.
+This is a standalone reference used within authoring tasks, not another delivery stage. [memorize](./memorize.md) loads it before filing a lesson in a steering file. Requested skill evaluations use the external `skill-creator` workflow.

@@ -48,4 +48,4 @@ It follows the same path without the subagents: built on its own task branch cut
 
 ## Where it fits
 
-This coordinates the implementation stage after [specify](./specify.md) and [taskify](./taskify.md), or for a batch inside [iterate](./iterate.md), then reviews the integration branch once with its own copy of [review-and-refactor](./review-and-refactor.md). [guide](../productivity/guide.md) maps the other routes.
+This coordinates the implementation stage after [specify](./specify.md) and [taskify](./taskify.md), or for a batch inside [iterate](./iterate.md), then reviews the integration branch once with its own copy of [review-and-refactor](./review-and-refactor.md).

@@ -67,4 +67,4 @@ Requirements remain constraints, unresolved proposals belong in `draft.md`, and 
 
 ## Where it fits
 
-Graphify is a shaping workflow for multi-session uncertainty. It carries its own copies of the project document rules and of the research, prototype, interview, and illustrate steps its tasks use. The route it leaves is what [specify](../workflow/specify.md) or [taskify](../workflow/taskify.md) reads next. [Guide](../productivity/guide.md) routes the surrounding flow.
+Graphify is a shaping workflow for multi-session uncertainty. It carries its own copies of the project document rules and of the research, prototype, interview, and illustrate steps its tasks use. The route it leaves is what [specify](../workflow/specify.md) or [taskify](../workflow/taskify.md) reads next.

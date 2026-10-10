@@ -14,7 +14,7 @@ When several skills need the same reference (the interview method, the project d
 
 The exception is a skill that ships outside this repository (`EXTERNAL_SKILLS` in `scripts/check-skills.py`, such as `webapp-testing` and `skill-creator`): a step may call it through the Skill tool, and says what to do when it is not installed. `scripts/check-skills.py` still derives a **Calls** or **Hands over to** paragraph from any other Skill tool call or "tell the user to run `/name`" line in a skill's folder, so a new one shows up as a missing dependency paragraph. The fix is to bundle the material, not to add the paragraph.
 
-Router prose that names skills for a human to pick from (`guide`, bucket `README.md`s, documentation pages) isn't invoking anything, so it keeps `/skill`-style names as plain labels.
+Prose that names skills for a human to pick from (bucket `README.md`s, documentation pages) isn't invoking anything, so it keeps `/skill`-style names as plain labels.
 
 ## Passive vs active domain work
 

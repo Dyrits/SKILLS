@@ -35,4 +35,4 @@ Keep it as a primary source with a context pointer in the relevant work record. 
 
 ## Where it fits
 
-This is a standalone experiment and an optional, user-approved aid during [specify](../workflow/specify.md). [interview](../shaping/interview.md) explores the question; [implement](../workflow/implement.md) builds the agreed result. [guide](../productivity/guide.md) maps the whole system.
+This is a standalone experiment and an optional, user-approved aid during [specify](../workflow/specify.md). [interview](../shaping/interview.md) explores the question; [implement](../workflow/implement.md) builds the agreed result.

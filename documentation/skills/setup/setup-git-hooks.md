@@ -54,4 +54,4 @@ The skill suggests lefthook as the next step up, for parallel steps or per-glob 
 
 ## Where it fits
 
-Run-once setup per repository, run on its own request. [setup-git-guardrails](./setup-git-guardrails.md) pairs with it: its optional `pre-push` fallback uses this same hooks path. [guide](../productivity/guide.md) routes the rest.
+Run-once setup per repository, run on its own request. [setup-git-guardrails](./setup-git-guardrails.md) pairs with it: its optional `pre-push` fallback uses this same hooks path.

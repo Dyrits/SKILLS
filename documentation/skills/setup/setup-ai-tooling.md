@@ -59,4 +59,4 @@ Only where a comparable task baseline exists. Command-output reduction, task tok
 
 ## Where it fits
 
-Run-once setup per project, run on its own request; [setup-ai-workspace](./setup-ai-workspace.md) configures the project records and leaves tooling to it. [monitor-ai-tooling](../upkeep/monitor-ai-tooling.md) is its periodic follow-up. [guide](../productivity/guide.md) routes the rest.
+Run-once setup per project, run on its own request; [setup-ai-workspace](./setup-ai-workspace.md) configures the project records and leaves tooling to it. [monitor-ai-tooling](../upkeep/monitor-ai-tooling.md) is its periodic follow-up.

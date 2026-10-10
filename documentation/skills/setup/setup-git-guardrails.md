@@ -60,4 +60,4 @@ Run the skill again with new answers. Files are overwritten in place and setting
 
 ## Where it fits
 
-Run-once safety setup per project or per machine, run on its own request. [setup-git-hooks](./setup-git-hooks.md) manages the same hooks directory, so the two coexist. [guide](../productivity/guide.md) routes the rest.
+Run-once safety setup per project or per machine, run on its own request. [setup-git-hooks](./setup-git-hooks.md) manages the same hooks directory, so the two coexist.

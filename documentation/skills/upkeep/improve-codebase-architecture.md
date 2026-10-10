@@ -100,4 +100,4 @@ There is no good answer shipped with the skill. The recurring request is for a `
 
 ## Where it fits
 
-`improve-codebase-architecture` is periodic maintenance that generates candidate work rather than implementing it. It carries its own copies of the depth-and-seam vocabulary, the [interview](../shaping/interview.md) method, and the glossary and decision record formats. [delineate](../workflow/delineate.md) and [codify](../setup/codify.md) own the full glossary and the conventions. Approved work enters planned or just-in-time development without weakening existing obligations. [guide](../productivity/guide.md) maps both workflows.
+`improve-codebase-architecture` is periodic maintenance that generates candidate work rather than implementing it. It carries its own copies of the depth-and-seam vocabulary, the [interview](../shaping/interview.md) method, and the glossary and decision record formats. [delineate](../workflow/delineate.md) and [codify](../setup/codify.md) own the full glossary and the conventions. Approved work enters planned or just-in-time development without weakening existing obligations.

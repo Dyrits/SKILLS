@@ -1,7 +1,0 @@
-name: guide
-version: 0.2.0
-description: "Choose the next skill, development workflow, or session boundary from the current situation."
-dependencies:
-  apm:
-    - git: parent
-      path: skills/setup/setup-ai-workspace

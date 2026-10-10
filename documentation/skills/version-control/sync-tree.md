@@ -65,4 +65,4 @@ That the destination ref equals the source commit after the update. Existing tes
 
 ## Where it fits
 
-The return leg of the isolated-worktree route: [work-in-tree](work-in-tree.md) prepares and works in the checkout, this lands it. [guide](../productivity/guide.md) maps the wider flow.
+The return leg of the isolated-worktree route: [work-in-tree](work-in-tree.md) prepares and works in the checkout, this lands it.

@@ -19,7 +19,7 @@ Four situations are the whole trigger when you choose:
 | Sending the work to a colleague | They need something they can read |
 | Forking a side task found mid-phase | You keep working; a second agent takes the fork |
 
-Staying in the same workspace does not automatically call for compaction. Continue when context remains useful; clear only when authoritative sources preserve the next task; compact when you need the same session with less conversation. [guide](./guide.md) helps choose the boundary.
+Staying in the same workspace does not automatically call for compaction. Continue when context remains useful; clear only when authoritative sources preserve the next task; compact when you need the same session with less conversation.
 
 ## Branching is the use people skip
 
@@ -95,4 +95,4 @@ No. It asks once, and only when the repository does not already answer. A `.giti
 
 ## Where it fits
 
-`hand-off` is a reach-for-it-anytime standalone between sessions, not a development chain step. An approved [prototype](../shaping/prototype.md) in another session can use a handoff for the question and return evidence, but isolation is not a universal prototype requirement. [guide](./guide.md) helps choose the session boundary.
+`hand-off` is a reach-for-it-anytime standalone between sessions, not a development chain step. An approved [prototype](../shaping/prototype.md) in another session can use a handoff for the question and return evidence, but isolation is not a universal prototype requirement.

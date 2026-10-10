@@ -55,4 +55,4 @@ Yes. Working state is updated when a batch is agreed and after it is implemented
 
 ## Where it fits
 
-This is the just-in-time alternative to the planned route; it shares project documents with [specify](./specify.md), [taskify](./taskify.md), and [review-and-refactor](./review-and-refactor.md), and builds every batch with its own copy of [implement](./implement.md). Its focus-selection branch is a copy of [prioritize](../shaping/prioritize.md). [guide](../productivity/guide.md) maps the whole system.
+This is the just-in-time alternative to the planned route; it shares project documents with [specify](./specify.md), [taskify](./taskify.md), and [review-and-refactor](./review-and-refactor.md), and builds every batch with its own copy of [implement](./implement.md). Its focus-selection branch is a copy of [prioritize](../shaping/prioritize.md).

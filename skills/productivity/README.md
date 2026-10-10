@@ -2,12 +2,6 @@
 
 Human-facing workflows you run, not about code. Skills sit flat in this folder; the groupings below are reading order, not directories.
 
-## Navigation
-
-Finding the next step across the whole set.
-
-- **[guide](./guide/SKILL.md)**: Choose the next skill, development workflow, or session boundary from the current situation.
-
 ## Sharpening
 
 Understanding built or repaired in conversation.

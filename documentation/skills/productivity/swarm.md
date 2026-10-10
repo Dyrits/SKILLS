@@ -49,4 +49,4 @@ It checks that edits stayed within their owners and runs the project's checks on
 
 ## Where it fits
 
-A standalone discipline you can reach for at any point in a session, not a step of the delivery flow. [divide-and-conquer](../workflow/divide-and-conquer.md) covers dependent implementation work. [guide](./guide.md) maps the other routes.
+A standalone discipline you can reach for at any point in a session, not a step of the delivery flow. [divide-and-conquer](../workflow/divide-and-conquer.md) covers dependent implementation work.

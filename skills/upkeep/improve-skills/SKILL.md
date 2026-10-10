@@ -38,7 +38,7 @@ Completion: the user has confirmed or corrected every finding, and the outcome q
 
 Give each finding one home:
 
-- **A skill finding**: a trigger that fired wrongly or never fired, an ambiguous or missing step, conflicting skills, a stale route in `guide`, a missing skill. These go into the issue.
+- **A skill finding**: a trigger that fired wrongly or never fired, an ambiguous or missing step, conflicting skills, a missing skill. These go into the issue.
 - **A project lesson**: a convention, command, or rule of the project the session ran in. File it in the project following [LESSONS.md](LESSONS.md).
 - **An environment finding**: friction a check, guardrail, navigation pointer, steering-file cut, tool, or access change would have prevented, including a mechanical violation a lint rule could catch. Once the issue is settled, list these findings for the user, each with its moment in the session and the environment change that would have prevented it.
 - **Agent behavior neither a skill nor the environment could have steered**: report it to the user and leave it out of the issue.

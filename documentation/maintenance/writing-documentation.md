@@ -2,7 +2,7 @@
 
 Every skill has a human-facing page at `documentation/skills/<bucket>/<name>.md`.
 
-Create or re-sync the page when a skill is added, renamed, moved, or behaviorally changed. Remove stale pages after renames or removals. Update active cross-links, bucket listings, the top-level README, and the `guide` router together. Historical upstream archives and handoffs remain unchanged.
+Create or re-sync the page when a skill is added, renamed, moved, or behaviorally changed. Remove stale pages after renames or removals. Update active cross-links, bucket listings, and the top-level README together. Historical upstream archives and handoffs remain unchanged.
 
 The page helps a reader choose and understand one skill; it does not repeat the agent's runbook. There is no H1. Installation commands live only in the top-level README, copied from [standard installation wording](./standard-installation-wording.md).
 
@@ -51,7 +51,7 @@ Use checkable signals in the reader's work or trace. A reader should not have to
 
 ### Where it fits
 
-Identify the role: a chain step, run-once setup, periodic maintenance, or standalone discipline. Link the relevant neighbors with a reason, then link to `../productivity/guide.md`.
+Identify the role: a chain step, run-once setup, periodic maintenance, or standalone discipline. Link the relevant neighbors with a reason.
 
 The planned development route is `delineate → architect` once per system, then `specify → engineer → taskify → implement → review-and-refactor` per capability. Just-in-time development uses the `iterate` skill and the same project documents. General `interview` does not force a software specification.
 

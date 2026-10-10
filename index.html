@@ -352,10 +352,6 @@ const DATA = {
    "description": "The agent-ready execution contract triage writes for a verified request.",
    "label": "Ready brief"
   },
-  "recommendation": {
-   "description": "The skill or sequence that fits, and where the human decisions sit.",
-   "label": "Next move"
-  },
   "requirements": {
    "description": "System-wide and capability obligations imposed from outside the code, each with its source.",
    "label": "Requirements",
@@ -514,7 +510,6 @@ const DATA = {
    "blurb": "Human-facing workflows you run, not about code. Skills sit flat in this folder; the groupings below are reading order, not directories.",
    "groups": {
     "design-workflow": "Procedures",
-    "guide": "Navigation",
     "hand-off": "Transport",
     "illustrate": "Sharpening",
     "memorize": "Other",
@@ -529,7 +524,6 @@ const DATA = {
    },
    "id": "productivity",
    "skills": [
-    "guide",
     "re-explain",
     "illustrate",
     "hand-off",
@@ -554,7 +548,7 @@ const DATA = {
    "calls": [],
    "description": "Assess review feedback from any source (pull or merge request, issue, ticket, document comments, pasted notes), propose dispositions, then implement and reply. Use when the user shares feedback to address or asks to handle review comments.",
    "fits": [
-    "This is a workflow step that follows a review of your work and loops back through implementation: implement and test-first style validation apply to the changes. Replies are drafted in the spirit of publish-message, which handles posting conclusions to any service. guide maps the whole system."
+    "This is a workflow step that follows a review of your work and loops back through implementation: implement and test-first style validation apply to the changes. Replies are drafted in the spirit of publish-message, which handles posting conclusions to any service."
    ],
    "handovers": [],
    "inputs": [
@@ -585,7 +579,7 @@ const DATA = {
    "calls": [],
    "description": "Decide or assess a system's technical shape (technology stack, parts and their boundaries, data ownership and flows, integrations, deployment) and how it meets the system-wide requirements, weighing alternatives and their tradeoffs. Use when choosing a stack or high-level architecture, when the user asks whether an existing system's architecture fits, or when a requirement or new capability puts the system's structure in question.",
    "fits": [
-    "architect is the technical half of the system level, usually after delineate and before codify, since conventions depend on the stack. engineer designs each capability inside the shape it sets. guide maps the whole flow."
+    "architect is the technical half of the system level, usually after delineate and before codify, since conventions depend on the stack. engineer designs each capability inside the shape it sets."
    ],
    "handovers": [],
    "inputs": [
@@ -619,7 +613,7 @@ const DATA = {
    "calls": [],
    "description": "Define the project's code conventions by drafting candidate rules from how the code is already written and confirming each with the user and its reason, or audit an existing conventions file. Use when the user wants to write down or check how code is written here, or when a review or architecture audit finds no conventions.",
    "fits": [
-    "codify is setup you run once per repository, best after architect has chosen the stack, and again when conventions need checking. Reviews and audits read the conventions file it writes and report when it is missing. It carries its own copies of the interview method and of the formats for the conventions file and the other homes it routes rules to. Guide maps the surrounding flows."
+    "codify is setup you run once per repository, best after architect has chosen the stack, and again when conventions need checking. Reviews and audits read the conventions file it writes and report when it is missing. It carries its own copies of the interview method and of the formats for the conventions file and the other homes it routes rules to."
    ],
    "handovers": [],
    "inputs": [
@@ -644,7 +638,7 @@ const DATA = {
    "calls": [],
    "description": "Diagnosis loop for hard bugs and performance regressions. Use when the user says \"diagnose\"/\"debug this\", or reports something broken/throwing/failing/slow.",
    "fits": [
-    "debug is a reach-for-it-anytime standalone. You drop into it when something is broken and drop out when the fix and its regression test are in; it holds no state and needs no prior setup. guide routes \"Something's broken\" here, and implement calls it before editing code for a reported bug, so a fix follows a reproduced cause.",
+    "debug is a reach-for-it-anytime standalone. You drop into it when something is broken and drop out when the fix and its regression test are in; it holds no state and needs no prior setup. implement calls it before editing code for a reported bug, so a fix follows a reproduced cause.",
     "Three neighbours matter. improve-environment comes after it: once the fix is in, run it in the same session to ask what would have prevented the bug, when there is more information than at the start. improve-codebase-architecture is the follow-up when the real finding is that the code has no seam to lock the bug down; debug records that finding but never starts the follow-up itself, so you choose it after the fix is in, when there is more information. triage sits upstream of it for bugs that arrive as raw reports from other people, and does a shallower version of the same first two phases."
    ],
    "handovers": [],
@@ -674,7 +668,7 @@ const DATA = {
    "calls": [],
    "description": "Outline a system functionally (its purpose, actors, domain contexts, capability map, system-wide requirements, and glossary), settling fuzzy or conflicting terms along the way. Use when starting or reshaping a system's functional picture, when the user wants a domain outline, system requirements, or a glossary built or cleaned up, or when a term is ambiguous, disputed, or clashes with the glossary or the code.",
    "fits": [
-    "delineate is the functional half of the system level, usually run before architect and revisited when the business changes. specify and engineer work one capability at a time on the same model. guide maps the whole flow."
+    "delineate is the functional half of the system level, usually run before architect and revisited when the business changes. specify and engineer work one capability at a time on the same model."
    ],
    "handovers": [],
    "inputs": [
@@ -708,7 +702,7 @@ const DATA = {
    "calls": [],
    "description": "Interview the user into implementable workflow specifications for recurring loops in their work, using the current directory as a stateful workspace. Use when the user wants to design or specify a workflow.",
    "fits": [
-    "design-workflow is a reach-for-it-anytime standalone for recurring operational loops. It carries its own copy of the interview discipline from interview; specify instead records codebase capability behavior. The finished workflow specification is input to the implementer you choose, not permission to start development automatically. guide maps the whole set."
+    "design-workflow is a reach-for-it-anytime standalone for recurring operational loops. It carries its own copy of the interview discipline from interview; specify instead records codebase capability behavior. The finished workflow specification is input to the implementer you choose, not permission to start development automatically."
    ],
    "handovers": [],
    "inputs": [
@@ -732,7 +726,7 @@ const DATA = {
    "calls": [],
    "description": "Implement an authorized task graph in parallel: route each task to the least expensive capable agent, build on one integration branch, then review once. Use when the user asks to implement a whole task graph or a batch of independent tasks.",
    "fits": [
-    "This coordinates the implementation stage after specify and taskify, or for a batch inside iterate, then reviews the integration branch once with its own copy of review-and-refactor. guide maps the other routes."
+    "This coordinates the implementation stage after specify and taskify, or for a batch inside iterate, then reviews the integration branch once with its own copy of review-and-refactor."
    ],
    "handovers": [],
    "inputs": [
@@ -762,7 +756,7 @@ const DATA = {
    "calls": [],
    "description": "Write the body of a pull request or merge request: a summary visual, before/after evidence, and the merge danger. Use when opening one, when writing or rewriting its description, or when a reviewer needs to see what a change does without reading the diff.",
    "fits": [
-    "draft-merge-request is a chain step after review-and-refactor, and a standalone format reference when rewriting a description. Its evidence must reflect agreed checks, actual results, and any pending human acceptance rather than declaring delivery prematurely. address-feedback continues when reviewers reply. improve-skills reviews how the skills behaved in the session, and guide maps both development workflows."
+    "draft-merge-request is a chain step after review-and-refactor, and a standalone format reference when rewriting a description. Its evidence must reflect agreed checks, actual results, and any pending human acceptance rather than declaring delivery prematurely. address-feedback continues when reviewers reply. improve-skills reviews how the skills behaved in the session."
    ],
    "handovers": [],
    "inputs": [
@@ -792,7 +786,7 @@ const DATA = {
    "calls": [],
    "description": "Design one capability's technical solution before implementation (modules and their interfaces, data model, seams, and where each acceptance test attaches) inside the system's architecture, and write it down without writing production code. Use when the user asks how a specified capability should be built, to design a feature's modules, interfaces, or data model, or to make a capability's code more testable before building it.",
    "fits": [
-    "engineer is the technical half of the capability level, after specify and before taskify or implement. architect sets the shape it works inside. guide maps the whole flow."
+    "engineer is the technical half of the capability level, after specify and before taskify or implement. architect sets the shape it works inside."
    ],
    "handovers": [],
    "inputs": [
@@ -826,7 +820,7 @@ const DATA = {
    "calls": [],
    "description": "Build and work through a shared decision graph for an effort too large for one session. Use when the user asks to graphify an effort or to resolve the next decision task on an existing graph.",
    "fits": [
-    "Graphify is a shaping workflow for multi-session uncertainty. It carries its own copies of the project document rules and of the research, prototype, interview, and illustrate steps its tasks use. The route it leaves is what specify or taskify reads next. Guide routes the surrounding flow."
+    "Graphify is a shaping workflow for multi-session uncertainty. It carries its own copies of the project document rules and of the research, prototype, interview, and illustrate steps its tasks use. The route it leaves is what specify or taskify reads next."
    ],
    "handovers": [],
    "inputs": [
@@ -849,48 +843,13 @@ const DATA = {
    ],
    "tagline": "Map a large uncertain effort and resolve decision tasks one at a time."
   },
-  "guide": {
-   "argumentHint": "",
-   "bucket": "productivity",
-   "calls": [],
-   "description": "Choose the next skill, development workflow, or session boundary from the current situation. Use when the user asks which skill or workflow to use next, or when a flow stalls and the next move is unclear.",
-   "fits": [
-    "guide is a standalone router over both development workflows and the supporting skills. It recommends and stops. delineate starts planned development for a new system, specify for a new capability; iterate runs just-in-time batches; triage verifies work arriving from other people. improve-skills reviews how the skills behaved in a session and reports problems on this repository; improve-environment changes the project's environment after a session's friction.",
-    "It is a secondary source over the skills it describes. Where the router and a SKILL.md disagree, the SKILL.md is right."
-   ],
-   "handovers": [
-    "setup-ai-workspace"
-   ],
-   "inputs": [
-    "idea",
-    "session"
-   ],
-   "next": [
-    "specify",
-    "iterate",
-    "triage",
-    "graphify",
-    "prioritize"
-   ],
-   "outputs": [
-    "recommendation"
-   ],
-   "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/productivity/guide.md",
-   "requires": [],
-   "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/productivity/guide/SKILL.md",
-   "summary": [
-    "guide is the router over the skills in this repository. You describe the situation you are in (an idea you cannot start, a pile of incoming bug reports, a session that has run long), and it names the skill or the sequence of skills that fits, plus where the human decisions in that sequence sit.",
-    "It recommends and stops. It reads the relevant skill before making a consequential claim about its behavior, but does not start the recommended work. It is a maintained map of this repository's skills, not a scan of everything you have installed."
-   ],
-   "tagline": "Choose the next skill, development workflow, or session boundary from the current situation."
-  },
   "hand-off": {
    "argumentHint": "What will the next session be used for?",
    "bucket": "productivity",
    "calls": [],
    "description": "Write the current session's work into a versioned, self-contained handoff document in .agents/handoffs/ and point to it from AGENTS.md, so another session, agent, or person can resume it. Use when the user asks for a handoff, or to write up where the work stands for another session, agent, or person.",
    "fits": [
-    "hand-off is a reach-for-it-anytime standalone between sessions, not a development chain step. An approved prototype in another session can use a handoff for the question and return evidence, but isolation is not a universal prototype requirement. guide helps choose the session boundary."
+    "hand-off is a reach-for-it-anytime standalone between sessions, not a development chain step. An approved prototype in another session can use a handoff for the question and return evidence, but isolation is not a universal prototype requirement."
    ],
    "handovers": [],
    "inputs": [
@@ -916,7 +875,7 @@ const DATA = {
    "calls": [],
    "description": "Explain the current topic visually. Use when the user asks to see how something works, compare states or options, or understand code structure or flow.",
    "fits": [
-    "illustrate is a reach-for-it-anytime standalone for understanding a topic visually. draft-merge-request also uses it to shape the summary visual in a request body. guide helps you choose where to go next."
+    "illustrate is a reach-for-it-anytime standalone for understanding a topic visually. draft-merge-request also uses it to shape the summary visual in a request body."
    ],
    "handovers": [],
    "inputs": [
@@ -940,7 +899,7 @@ const DATA = {
    "calls": [],
    "description": "Implement authorized work test-first and report its verification evidence. Use when the user asks to build agreed specifications, a task, or an approved work batch, or when a coordinator hands an implementer one task.",
    "fits": [
-    "This is the implementation chain step after taskify, following specify, and before review-and-refactor. iterate carries the same discipline for every batch. divide-and-conquer coordinates parallel work; guide maps the whole system."
+    "This is the implementation chain step after taskify, following specify, and before review-and-refactor. iterate carries the same discipline for every batch. divide-and-conquer coordinates parallel work."
    ],
    "handovers": [],
    "inputs": [
@@ -973,7 +932,7 @@ const DATA = {
    "calls": [],
    "description": "Scan a codebase for deepening opportunities, present them as a visual HTML report, then interview through the chosen one. Use when the user wants architecture improvements or refactoring candidates found.",
    "fits": [
-    "improve-codebase-architecture is periodic maintenance that generates candidate work rather than implementing it. It carries its own copies of the depth-and-seam vocabulary, the interview method, and the glossary and decision record formats. delineate and codify own the full glossary and the conventions. Approved work enters planned or just-in-time development without weakening existing obligations. guide maps both workflows."
+    "improve-codebase-architecture is periodic maintenance that generates candidate work rather than implementing it. It carries its own copies of the depth-and-seam vocabulary, the interview method, and the glossary and decision record formats. delineate and codify own the full glossary and the conventions. Approved work enters planned or just-in-time development without weakening existing obligations."
    ],
    "handovers": [],
    "inputs": [
@@ -1004,7 +963,7 @@ const DATA = {
    "calls": [],
    "description": "Hold a retrospective on a session's friction, then change the project's environment so the next run avoids it: checks, guardrails, navigation pointers, steering files, tool and information access. Use when the user asks what would have prevented a mistake, why a session was hard, or for an environment retrospective.",
    "fits": [
-    "improve-environment is periodic maintenance after a session in either development workflow, most useful after one that felt harder than it should have. Run it before clearing the session, or point a new session at the log. It follows debug when you want to know what would have prevented the bug, sits beside improve-skills for problems in the skills themselves, and hands a repository with no guardrail to setup-git-hooks. guide maps the whole set."
+    "improve-environment is periodic maintenance after a session in either development workflow, most useful after one that felt harder than it should have. Run it before clearing the session, or point a new session at the log. It follows debug when you want to know what would have prevented the bug, sits beside improve-skills for problems in the skills themselves, and hands a repository with no guardrail to setup-git-hooks."
    ],
    "handovers": [],
    "inputs": [
@@ -1030,7 +989,7 @@ const DATA = {
    "calls": [],
    "description": "Hold a retrospective on a session, then report how the skills behaved as an issue on the skills repository. Use when the user asks to review skill use in a session or to report a skill problem.",
    "fits": [
-    "improve-skills is periodic maintenance after a session in either development workflow. Run it before clearing the session, or point a new session at the log. memorize handles corrections during the session; this skill handles what the skills themselves got wrong, and improve-environment what the project's environment got wrong. Fixing a reported problem happens in a separate session on this repository, following write-for-agents. guide maps the whole set."
+    "improve-skills is periodic maintenance after a session in either development workflow. Run it before clearing the session, or point a new session at the log. memorize handles corrections during the session; this skill handles what the skills themselves got wrong, and improve-environment what the project's environment got wrong. Fixing a reported problem happens in a separate session on this repository, following write-for-agents."
    ],
    "handovers": [],
    "inputs": [
@@ -1055,7 +1014,7 @@ const DATA = {
    "calls": [],
    "description": "Interview the user in rounds of questions, each with a recommended answer, until a plan, decision, or idea is settled. Use when unresolved choices need shared understanding, or when the user wants their thinking stress-tested or asks to be grilled.",
    "fits": [
-    "Interview is a reach-for-it-anytime standalone and an interview discipline. Specify, delineate, architect, and engineer carry their own copy of its method for unresolved decisions; graphify uses it to resolve bounded questions in a larger effort; codify uses it to settle code conventions. Guide maps the available flows."
+    "Interview is a reach-for-it-anytime standalone and an interview discipline. Specify, delineate, architect, and engineer carry their own copy of its method for unresolved decisions; graphify uses it to resolve bounded questions in a larger effort; codify uses it to settle code conventions."
    ],
    "handovers": [],
    "inputs": [
@@ -1082,7 +1041,7 @@ const DATA = {
    "calls": [],
    "description": "Build a living application one verified batch at a time, settling decisions just in time. Use when the user asks to iterate on an idea or continue building an existing project in batches.",
    "fits": [
-    "This is the just-in-time alternative to the planned route; it shares project documents with specify, taskify, and review-and-refactor, and builds every batch with its own copy of implement. Its focus-selection branch is a copy of prioritize. guide maps the whole system."
+    "This is the just-in-time alternative to the planned route; it shares project documents with specify, taskify, and review-and-refactor, and builds every batch with its own copy of implement. Its focus-selection branch is a copy of prioritize."
    ],
    "handovers": [],
    "inputs": [
@@ -1117,7 +1076,7 @@ const DATA = {
    "calls": [],
    "description": "File a lesson in the home the next agent will read, and recall saved scripts and lessons before redoing work. Use the moment the user says \"always\", \"never\", \"from now on\" or \"remember\", or corrects how something is done rather than one result; before writing a script or a pipeline longer than one line; and when you rebuild something a second time. Use it even when the harness has its own memory: a project lesson belongs in the project.",
    "fits": [
-    "This is a working habit you or an agent reach for during any task; its result is the filed lesson or the saved script. It carries its own copies of the steering-file rules from write-for-agents, the project document formats, and the wizard template from walk-through, so it files every kind of lesson without another skill. improve-skills runs after a session and files what memorize cannot fix locally: problems in the skills themselves. guide maps the whole system."
+    "This is a working habit you or an agent reach for during any task; its result is the filed lesson or the saved script. It carries its own copies of the steering-file rules from write-for-agents, the project document formats, and the wizard template from walk-through, so it files every kind of lesson without another skill. improve-skills runs after a session and files what memorize cannot fix locally: problems in the skills themselves."
    ],
    "handovers": [],
    "inputs": [
@@ -1146,7 +1105,7 @@ const DATA = {
    "calls": [],
    "description": "Report AI tooling usage, measured output reduction, quality signals, and gaps from existing local measurements. Use when the user asks how the AI tooling is performing or what it saves.",
    "fits": [
-    "Periodic maintenance after setup-ai-tooling: setup configures the tools, this checks whether they pay off. improve-skills is the neighbor for the skills themselves. guide maps the wider flow."
+    "Periodic maintenance after setup-ai-tooling: setup configures the tools, this checks whether they pay off. improve-skills is the neighbor for the skills themselves."
    ],
    "handovers": [],
    "inputs": [
@@ -1171,7 +1130,7 @@ const DATA = {
    "calls": [],
    "description": "Analyze and improve a recurring work process when the user reports delays, excessive steps, rework, or handoff friction. Map the current flow, recommend changes, and estimate practical impact for humans and agents.",
    "fits": [
-    "optimize-process is a standalone productivity skill. A recommendation that calls for a software change can enter planned development at specify, or a small approved living-code batch through iterate. guide maps the rest of the skills."
+    "optimize-process is a standalone productivity skill. A recommendation that calls for a software change can enter planned development at specify, or a small approved living-code batch through iterate."
    ],
    "handovers": [],
    "inputs": [
@@ -1198,7 +1157,7 @@ const DATA = {
    "calls": [],
    "description": "Decompose a large or tangled idea into outcomes, recommend one focus to build next, and keep the rest in the backlog. Use when competing capabilities, unclear scope, or dependencies block choosing the next increment, or when asked to break down an idea or revisit a backlog.",
    "fits": [
-    "This is a shaping step before building. Use graphify when the question is design, taskify once behavior is agreed, and interview for single decisions; it carries its own interview and research steps. guide maps the whole system."
+    "This is a shaping step before building. Use graphify when the question is design, taskify once behavior is agreed, and interview for single decisions; it carries its own interview and research steps."
    ],
    "handovers": [],
    "inputs": [
@@ -1228,7 +1187,7 @@ const DATA = {
    "calls": [],
    "description": "Build a scoped experimental prototype to answer a user-requested or approved design question about logic, state, or UI. Use when the user asks to try an idea before committing to it, or to see a state model or interface variants.",
    "fits": [
-    "This is a standalone experiment and an optional, user-approved aid during specify. interview explores the question; implement builds the agreed result. guide maps the whole system."
+    "This is a standalone experiment and an optional, user-approved aid during specify. interview explores the question; implement builds the agreed result."
    ],
    "handovers": [],
    "inputs": [
@@ -1256,7 +1215,7 @@ const DATA = {
    "calls": [],
    "description": "Publish an established conclusion or review summary to a connected service (code host, tracker, chat, documentation, email) in its conventions. Use when the user asks to post, publish, or send findings to one.",
    "fits": [
-    "This is a standalone publication step after review-and-refactor or any other work that produced a conclusion. address-feedback covers replies to feedback you received, and draft-merge-request covers request descriptions. guide maps the whole system."
+    "This is a standalone publication step after review-and-refactor or any other work that produced a conclusion. address-feedback covers replies to feedback you received, and draft-merge-request covers request descriptions."
    ],
    "handovers": [],
    "inputs": [
@@ -1282,7 +1241,7 @@ const DATA = {
    "calls": [],
    "description": "Re-explain what did not land, with the missing context and familiar vocabulary. Use when the user says they did not understand, asks to explain again, or finds the last answer too dense.",
    "fits": [
-    "re-explain is a reach-for-it-anytime standalone inside any conversation. delineate prevents vocabulary drift by maintaining the shared language; this skill repairs an explanation after it failed. illustrate is another option when a visual would make the relationship clearer. guide helps you choose the next move."
+    "re-explain is a reach-for-it-anytime standalone inside any conversation. delineate prevents vocabulary drift by maintaining the shared language; this skill repairs an explanation after it failed. illustrate is another option when a visual would make the relationship clearer."
    ],
    "handovers": [],
    "inputs": [
@@ -1307,7 +1266,7 @@ const DATA = {
    "calls": [],
    "description": "Rebase local branches in place onto one target, resolve conflicts, run checks, then push with force-with-lease on approval. Use when the user asks to rebase branches onto a target.",
    "fits": [
-    "A standalone version-control skill for batches of local branches. It carries its own copy of the intent-led resolution in resolve-merge-conflicts and uses it whenever Git stops on a conflict. work-in-tree and sync-tree cover the other worktree movements. guide maps the wider flow."
+    "A standalone version-control skill for batches of local branches. It carries its own copy of the intent-led resolution in resolve-merge-conflicts and uses it whenever Git stops on a conflict. work-in-tree and sync-tree cover the other worktree movements."
    ],
    "handovers": [],
    "inputs": [
@@ -1332,7 +1291,7 @@ const DATA = {
    "calls": [],
    "description": "Investigate a question against high-trust primary sources and capture the findings as a Markdown file in the repository. Use when the user wants a topic researched, documentation or API facts gathered, or reading legwork delegated to a background agent.",
    "fits": [
-    "research is a reach-for-it-anytime standalone that feeds interview, specify, and graphify with cited facts. iterate also uses it when an external unknown blocks an approved batch. guide maps the workflows."
+    "research is a reach-for-it-anytime standalone that feeds interview, specify, and graphify with cited facts. iterate also uses it when an external unknown blocks an approved batch."
    ],
    "handovers": [],
    "inputs": [
@@ -1361,7 +1320,7 @@ const DATA = {
    "calls": [],
    "description": "Resolve an in-progress git merge or rebase conflict. Use when a merge, rebase, cherry-pick, or pull stops on conflict markers or unmerged paths.",
    "fits": [
-    "A reach-for-it-anytime standalone for an already authorized merge or rebase. rebase uses it when an operation stops on conflicts. debug takes over when a textually resolved merge still misbehaves. guide maps the wider flow."
+    "A reach-for-it-anytime standalone for an already authorized merge or rebase. rebase uses it when an operation stops on conflicts. debug takes over when a textually resolved merge still misbehaves."
    ],
    "handovers": [],
    "inputs": [
@@ -1388,7 +1347,7 @@ const DATA = {
    "calls": [],
    "description": "Review and refactor changes since a fixed point against repository standards and the originating behavior agreement. Runs independent Standards and Specifications reviews, applies supported refactors, and reuses the reviewers to verify them. Use for the refactor phase after red/green implementation, or when asked to review and refactor a branch, pull request, or work in progress.",
    "fits": [
-    "This is the review step after implement or divide-and-conquer, and also a standalone review. test-first handles missing behavior through red/green. guide maps the whole system."
+    "This is the review step after implement or divide-and-conquer, and also a standalone review. test-first handles missing behavior through red/green."
    ],
    "handovers": [],
    "inputs": [
@@ -1421,7 +1380,7 @@ const DATA = {
    "calls": [],
    "description": "Set up free AI development tools for a project and its installed agent clients. Use when explicitly asked to install or configure AI tooling.",
    "fits": [
-    "Run-once setup per project, run on its own request; setup-ai-workspace configures the project records and leaves tooling to it. monitor-ai-tooling is its periodic follow-up. guide routes the rest."
+    "Run-once setup per project, run on its own request; setup-ai-workspace configures the project records and leaves tooling to it. monitor-ai-tooling is its periodic follow-up."
    ],
    "handovers": [],
    "inputs": [],
@@ -1444,7 +1403,7 @@ const DATA = {
    "calls": [],
    "description": "Configure a repository for AI-assisted work: task tracking, ticket conventions, and triage roles. Use when the user asks to set up or reconfigure the AI workspace.",
    "fits": [
-    "This is run-once setup for specify, taskify, triage, and graphify. It carries its own copy of the shared document rules; guide routes the workflow."
+    "This is run-once setup for specify, taskify, triage, and graphify. It carries its own copy of the shared document rules."
    ],
    "handovers": [],
    "inputs": [],
@@ -1468,7 +1427,7 @@ const DATA = {
    "calls": [],
    "description": "Install, reconfigure, or remove the delegation and model routing rule, and the tier agents it needs, for each agent harness on this machine. Use when the user asks to set up, change, or remove delegation or model routing.",
    "fits": [
-    "Run-once, machine-wide setup, rerun when POLICY.md changes. It sits beside setup-ai-workspace, which configures one repository, and setup-ai-tooling, which provisions tools. guide routes the rest."
+    "Run-once, machine-wide setup, rerun when POLICY.md changes. It sits beside setup-ai-workspace, which configures one repository, and setup-ai-tooling, which provisions tools."
    ],
    "handovers": [],
    "inputs": [],
@@ -1494,7 +1453,7 @@ const DATA = {
    "calls": [],
    "description": "Set up git guardrails that make coding agents ask or stop before commands that lose work or rewrite shared history, at a guard level the user picks, for whichever agent harnesses they use. Use when the user wants to guard against destructive git operations by coding agents.",
    "fits": [
-    "Run-once safety setup per project or per machine, run on its own request. setup-git-hooks manages the same hooks directory, so the two coexist. guide routes the rest."
+    "Run-once safety setup per project or per machine, run on its own request. setup-git-hooks manages the same hooks directory, so the two coexist."
    ],
    "handovers": [],
    "inputs": [],
@@ -1521,7 +1480,7 @@ const DATA = {
    "calls": [],
    "description": "Set up versioned git hooks via core.hooksPath (no Husky) with lint-staged (Biome, plus Prettier only for languages Biome leaves uncovered and only if the user wants it), plus typecheck and build. Use when user wants to add pre-commit hooks, commit-time formatting/linting/typechecking, or to replace Husky with git's built-in hooks path.",
    "fits": [
-    "Run-once setup per repository, run on its own request. setup-git-guardrails pairs with it: its optional pre-push fallback uses this same hooks path. guide routes the rest."
+    "Run-once setup per repository, run on its own request. setup-git-guardrails pairs with it: its optional pre-push fallback uses this same hooks path."
    ],
    "handovers": [],
    "inputs": [],
@@ -1544,7 +1503,7 @@ const DATA = {
    "calls": [],
    "description": "Resolve the open decisions about one capability's observable behavior and synthesize its living repository specification: behavior, edge cases, acceptance, and capability requirements. Use when the user asks to specify a capability or feature, or when requirements have outstanding decisions before implementation.",
    "fits": [
-    "Specify is the functional half of the capability level, usually followed by engineer, then taskify or implement. It reads the system-level documents delineate and architect write when they exist. Guide maps these paths."
+    "Specify is the functional half of the capability level, usually followed by engineer, then taskify or implement. It reads the system-level documents delineate and architect write when they exist."
    ],
    "handovers": [],
    "inputs": [
@@ -1586,7 +1545,7 @@ const DATA = {
    "calls": [],
    "description": "Divide one task into independent pieces and run them in parallel on fast, low-cost subagents the user selects, then merge and spot-check their reports. Use when the user asks for a swarm or to fan work out across many cheap agents: sweeping, auditing, summarising, or applying independent changes across many items.",
    "fits": [
-    "A standalone discipline you can reach for at any point in a session, not a step of the delivery flow. divide-and-conquer covers dependent implementation work. guide maps the other routes."
+    "A standalone discipline you can reach for at any point in a session, not a step of the delivery flow. divide-and-conquer covers dependent implementation work."
    ],
    "handovers": [],
    "inputs": [
@@ -1611,7 +1570,7 @@ const DATA = {
    "calls": [],
    "description": "Sync a completed Git worktree branch to its corresponding branch in the original local repository. Use when the user asks to sync, land, or bring worktree work back to the original checkout.",
    "fits": [
-    "The return leg of the isolated-worktree route: work-in-tree prepares and works in the checkout, this lands it. guide maps the wider flow."
+    "The return leg of the isolated-worktree route: work-in-tree prepares and works in the checkout, this lands it."
    ],
    "handovers": [],
    "inputs": [
@@ -1636,7 +1595,7 @@ const DATA = {
    "calls": [],
    "description": "Decompose approved work into verifiable tasks with explicit blocking dependencies, locally or on an approved tracker. Use when the user asks to break agreed work into tasks, or when specifications need splitting into delivery work.",
    "fits": [
-    "Taskify is an optional chain step after specify and before implement or divide-and-conquer. It produces a task graph, not an execution run. Guide maps the alternatives."
+    "Taskify is an optional chain step after specify and before implement or divide-and-conquer. It produces a task graph, not an execution run."
    ],
    "handovers": [],
    "inputs": [
@@ -1667,7 +1626,7 @@ const DATA = {
    "description": "Teach the user a skill or concept over multiple sessions in a stateful workspace. Use when the user asks to be taught or to learn a topic, or to continue a teaching workspace.",
    "fits": [
     "teach is a reach-for-it-anytime standalone. It is not a step in a build chain and shares no artifacts with the engineering flow; it owns its directory and lives there for as long as the topic lasts.",
-    "Its nearest neighbour is hand-off. When refinement exposes something you need to learn, hand off to a teaching workspace, use /teach there, then return to the unresolved decision. research is the alternative when you want a cited document rather than lessons and retention. guide routes you over the whole set."
+    "Its nearest neighbour is hand-off. When refinement exposes something you need to learn, hand off to a teaching workspace, use /teach there, then return to the unresolved decision. research is the alternative when you want a cited document rather than lessons and retention."
    ],
    "handovers": [],
    "inputs": [
@@ -1692,7 +1651,7 @@ const DATA = {
    "calls": [],
    "description": "Build features or fix bugs test-first through the red-green loop of test-driven development (TDD), leaving refactoring to a later review. Use when the user wants test-first work, mentions TDD or red-green-refactor, or wants integration tests.",
    "fits": [
-    "This is implementation machinery: implement, divide-and-conquer, iterate, and address-feedback each carry a copy of these rules. review-and-refactor follows red/green and handles structural refactoring. guide maps the other routes."
+    "This is implementation machinery: implement, divide-and-conquer, iterate, and address-feedback each carry a copy of these rules. review-and-refactor follows red/green and handles structural refactoring."
    ],
    "handovers": [],
    "inputs": [
@@ -1722,7 +1681,7 @@ const DATA = {
    "calls": [],
    "description": "Move tasks and external PRs through triage roles: categorize, verify, refine, and write agent-ready briefs. Use when the user asks to triage, or when a published request needs verification and a maintainer decision.",
    "fits": [
-    "Triage is periodic intake maintenance. It carries its own copies of the interview method, the glossary and decision record formats, and the rules for local specifications, backlog, active work, and the changelog. Guide routes the next step."
+    "Triage is periodic intake maintenance. It carries its own copies of the interview method, the glossary and decision record formats, and the rules for local specifications, backlog, active work, and the changelog."
    ],
    "handovers": [],
    "inputs": [
@@ -1753,7 +1712,7 @@ const DATA = {
    "calls": [],
    "description": "Cut AI tells from prose that other people will read, in any language. Use before a draft for others is shown or published (messages, posts, captions, interface text, announcements, documentation), or when the user asks to clean up a draft.",
    "fits": [
-    "This is a standalone editing pass for any draft. Write for agents guides the structure of instructions agents read; /unslop edits the prose itself. Guide maps the full skill set."
+    "This is a standalone editing pass for any draft. Write for agents guides the structure of instructions agents read; /unslop edits the prose itself."
    ],
    "handovers": [],
    "inputs": [
@@ -1777,7 +1736,7 @@ const DATA = {
    "calls": [],
    "description": "Generate an interactive bash wizard that walks a human through steps only they can perform. Use when provisioning infrastructure, setting up credentials or CI secrets, walking an unfamiliar third-party dashboard, or running a one-off migration or cutover. Don't invoke this for steps the agent can perform itself.",
    "fits": [
-    "walk-through is a reach-for-it-anytime standalone for the steps only a human can perform. setup-ai-workspace configures this skill set; a wizard handles other manual setup. implement may expose a credentials or cutover step that needs one. guide routes you when the next move is unclear."
+    "walk-through is a reach-for-it-anytime standalone for the steps only a human can perform. setup-ai-workspace configures this skill set; a wizard handles other manual setup. implement may expose a credentials or cutover step that needs one."
    ],
    "handovers": [],
    "inputs": [],
@@ -1800,7 +1759,7 @@ const DATA = {
    "calls": [],
    "description": "Create or reuse an isolated Git worktree and carry out the task there, preserving the original checkout. Use when the user asks to work in a worktree, or when a task must not touch the current checkout.",
    "fits": [
-    "The opening leg of the isolated-worktree route, finished by sync-tree. rebase handles bringing branches onto a new base. guide maps the wider flow."
+    "The opening leg of the isolated-worktree route, finished by sync-tree. rebase handles bringing branches onto a new base."
    ],
    "handovers": [],
    "inputs": [
@@ -1825,7 +1784,7 @@ const DATA = {
    "calls": [],
    "description": "Write documents for agents: skills, AGENTS.md, and documents reached by a pointer. Use when creating or editing skills, or modifying AGENTS.md.",
    "fits": [
-    "This is a standalone reference used within authoring tasks, not another delivery stage. memorize loads it before filing a lesson in a steering file. Requested skill evaluations use the external skill-creator workflow. When you're unsure which skill or flow fits a task, guide helps choose."
+    "This is a standalone reference used within authoring tasks, not another delivery stage. memorize loads it before filing a lesson in a steering file. Requested skill evaluations use the external skill-creator workflow."
    ],
    "handovers": [],
    "inputs": [

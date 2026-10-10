@@ -56,4 +56,4 @@ No. Skip it when the design is obvious from the existing code. It pays off when 
 
 ## Where it fits
 
-`engineer` is the technical half of the capability level, after [specify](./specify.md) and before [taskify](./taskify.md) or [implement](./implement.md). [architect](./architect.md) sets the shape it works inside. [guide](../productivity/guide.md) maps the whole flow.
+`engineer` is the technical half of the capability level, after [specify](./specify.md) and before [taskify](./taskify.md) or [implement](./implement.md). [architect](./architect.md) sets the shape it works inside.

@@ -30,15 +30,15 @@ class LayoutChecks(unittest.TestCase):
         self.addCleanup(self.temporary.cleanup)
         self.root = Path(self.temporary.name).resolve()
         self.write(".claude-plugin/plugin.json", json.dumps(
-            {"skills": ["./skills/reference/example", "./skills/productivity/guide"]}))
+            {"skills": ["./skills/reference/example", "./skills/productivity/helper"]}))
         self.write("README.md", "## Plugin skills\n[example](skills/reference/example/SKILL.md)\n"
-                   "[guide](skills/productivity/guide/SKILL.md)\n")
+                   "[helper](skills/productivity/helper/SKILL.md)\n")
         self.write("AGENTS.md", "Repository instructions.\n")
-        self.write("skills/productivity/guide/SKILL.md",
-                   "---\nname: guide\n---\nRoute to /example and /guide.\n")
-        self.write("skills/productivity/guide/agents/openai.yaml",
-                   "interface:\n  display_name: Router\n")
-        self.write("skills/productivity/README.md", "[router](./guide/SKILL.md)\n")
+        self.write("skills/productivity/helper/SKILL.md",
+                   "---\nname: helper\n---\nAn example helper skill.\n")
+        self.write("skills/productivity/helper/agents/openai.yaml",
+                   "interface:\n  display_name: Helper\n")
+        self.write("skills/productivity/README.md", "[helper](./helper/SKILL.md)\n")
         self.write("skills/reference/example/SKILL.md", "---\nname: example\n---\nAn example skill.\n")
         self.write("skills/reference/example/agents/openai.yaml", "interface:\n  display_name: Example\n")
         self.write("skills/reference/README.md", "[example](./example/SKILL.md)\n")
@@ -46,8 +46,8 @@ class LayoutChecks(unittest.TestCase):
                    "Upstream skill: `example`.\n\n## What it does\nOne job.\n\n"
                    "## When to reach for it\nA trigger.\n\n## Common questions\nA question.\n\n"
                    "## It's working if\nA signal.\n\n## Where it fits\nA role.\n")
-        self.write("documentation/skills/productivity/guide.md",
-                   "Fork-specific router.\n\n## What it does\nRoutes.\n\n"
+        self.write("documentation/skills/productivity/helper.md",
+                   "Fork-specific helper.\n\n## What it does\nHelps.\n\n"
                    "## When to reach for it\nA trigger.\n\n## Common questions\nA question.\n\n"
                    "## It's working if\nA signal.\n\n## Where it fits\nA role.\n")
 
@@ -94,7 +94,7 @@ class LayoutChecks(unittest.TestCase):
         self.assertIn("orphan documentation page", self.result()[1])
 
     def test_skill_missing_from_manifest(self):
-        self.write(".claude-plugin/plugin.json", '{"skills": ["./skills/productivity/guide"]}')
+        self.write(".claude-plugin/plugin.json", '{"skills": ["./skills/productivity/helper"]}')
         (self.root / "documentation/skills/reference/example.md").unlink()
         self.assertIn("missing from the plugin manifest", self.result()[1])
 
@@ -102,10 +102,10 @@ class LayoutChecks(unittest.TestCase):
         self.write("skills/deprecated/old/SKILL.md", "---\nname: old\n---\nAn ordinary skill.\n")
         self.write("skills/deprecated/old/agents/openai.yaml", "interface:\n  display_name: Old\n")
         self.write("skills/deprecated/README.md", "[old](./old/SKILL.md)\n")
-        self.write("skills/productivity/guide/SKILL.md",
-                   "---\nname: guide\n---\nRoute to /example, /guide, and /old.\n")
+        self.write("skills/productivity/helper/SKILL.md",
+                   "---\nname: helper\n---\nA helper skill.\n")
         self.write(".claude-plugin/plugin.json", json.dumps({"skills": [
-            "./skills/reference/example", "./skills/productivity/guide", "./skills/deprecated/old"]}))
+            "./skills/reference/example", "./skills/productivity/helper", "./skills/deprecated/old"]}))
         with (self.root / "README.md").open("a") as listing:
             listing.write("[old](skills/deprecated/old/SKILL.md)\n")
         self.write("documentation/skills/deprecated/old.md",
@@ -114,7 +114,7 @@ class LayoutChecks(unittest.TestCase):
     def test_deprecated_bucket_obeys_uniform_requirements(self):
         self.add_skill_in_deprecated_bucket()
         self.assertEqual(self.result()[0], False)
-        self.write(".claude-plugin/plugin.json", '{"skills": ["./skills/productivity/guide", "./skills/reference/example"]}')
+        self.write(".claude-plugin/plugin.json", '{"skills": ["./skills/productivity/helper", "./skills/reference/example"]}')
         (self.root / "documentation/skills/deprecated/old.md").unlink()
         output = self.result()[1]
         self.assertIn("skills/deprecated/old: missing from the plugin manifest", output)
@@ -156,7 +156,7 @@ class LayoutChecks(unittest.TestCase):
         subprocess.run(["bash", str(self.root / "scripts/link-skills.sh")],
                        env={**os.environ, "HOME": str(home)}, check=True, capture_output=True, text=True)
         for harness in (".claude", ".agents"):
-            for bucket, name in (("reference", "example"), ("productivity", "guide"), ("deprecated", "old")):
+            for bucket, name in (("reference", "example"), ("productivity", "helper"), ("deprecated", "old")):
                 target = home / harness / "skills" / name
                 self.assertTrue(target.is_symlink())
                 self.assertEqual(target.resolve(), self.root / "skills" / bucket / name)
@@ -178,10 +178,10 @@ class LayoutChecks(unittest.TestCase):
         self.assertIn("tiers differ", self.result()[1])
 
     def test_calling_skill_needs_dependency_paragraph(self):
-        body = '---\nname: example\n---\nCall the Skill tool with "guide".\n'
+        body = '---\nname: example\n---\nCall the Skill tool with "helper".\n'
         self.write("skills/reference/example/SKILL.md", body)
-        self.assertIn("dependency paragraph should read: **Calls:** `guide`.", self.result()[1])
-        self.write("skills/reference/example/SKILL.md", body + "\n**Calls:** `guide`.\n")
+        self.assertIn("dependency paragraph should read: **Calls:** `helper`.", self.result()[1])
+        self.write("skills/reference/example/SKILL.md", body + "\n**Calls:** `helper`.\n")
         self.assertEqual(self.result()[0], False)
 
     def test_dependency_paragraph_skips_external_skills(self):
@@ -198,55 +198,50 @@ class LayoutChecks(unittest.TestCase):
 
     def test_dependency_paragraph_inside_frontmatter(self):
         self.write("skills/reference/example/SKILL.md",
-                   '---\nname: example\n**Calls:** `guide`.\n---\nCall the Skill tool with "guide".\n')
+                   '---\nname: example\n**Calls:** `helper`.\n---\nCall the Skill tool with "helper".\n')
         self.assertIn("dependency paragraph sits inside the frontmatter", self.result()[1])
 
     def test_stale_dependency_paragraph(self):
-        self.write("skills/reference/example/SKILL.md", "---\nname: example\n---\n**Calls:** `guide`.\n")
+        self.write("skills/reference/example/SKILL.md", "---\nname: example\n---\n**Calls:** `helper`.\n")
         self.assertIn("dependency paragraph should read: (none)", self.result()[1])
 
     def test_dependency_paragraph_carries_no_install_instructions(self):
-        body = '---\nname: example\n---\nCall the Skill tool with "guide".\n\n**Calls:** `guide`.'
+        body = '---\nname: example\n---\nCall the Skill tool with "helper".\n\n**Calls:** `helper`.'
         self.write("skills/reference/example/SKILL.md", body + " If a called skill is not installed, install it.\n")
-        self.assertIn("dependency paragraph should read: **Calls:** `guide`.", self.result()[1])
-        self.assertNotIn("install", checker.calls_block({"document"}, {"guide"}))
+        self.assertIn("dependency paragraph should read: **Calls:** `helper`.", self.result()[1])
+        self.assertNotIn("install", checker.calls_block({"document"}, {"helper"}))
 
     def test_backtick_and_script_calls_count(self):
         folder = self.root / "skills/reference/example"
         self.write("skills/reference/example/SKILL.md",
-                   "---\nname: example\n---\nCall the Skill tool with `guide`.\n")
-        self.assertEqual(checker.skill_references(folder)[0], {"guide"})
+                   "---\nname: example\n---\nCall the Skill tool with `helper`.\n")
+        self.assertEqual(checker.skill_references(folder)[0], {"helper"})
         self.write("skills/reference/example/SKILL.md", "---\nname: example\n---\nAn example skill.\n")
-        self.write("skills/reference/example/scripts/gate.sh", 'echo "Call the Skill tool with \\"guide\\"."\n')
-        self.assertEqual(checker.skill_references(folder)[0], {"guide"})
+        self.write("skills/reference/example/scripts/gate.sh", 'echo "Call the Skill tool with \\"helper\\"."\n')
+        self.assertEqual(checker.skill_references(folder)[0], {"helper"})
 
     def test_handover_needs_dependency_paragraph(self):
-        body = "---\nname: example\n---\nTell the user to run `/guide`.\n"
+        body = "---\nname: example\n---\nTell the user to run `/helper`.\n"
         self.write("skills/reference/example/SKILL.md", body)
-        self.assertIn("should read: **Hands over to:** `/guide`.", self.result()[1])
-        self.write("skills/reference/example/SKILL.md", body + "\n**Hands over to:** `/guide`.\n")
+        self.assertIn("should read: **Hands over to:** `/helper`.", self.result()[1])
+        self.write("skills/reference/example/SKILL.md", body + "\n**Hands over to:** `/helper`.\n")
         self.assertEqual(self.result()[0], False)
 
     def test_handover_for_missing_setup_is_a_prerequisite(self):
         self.write("skills/reference/example/SKILL.md", "---\nname: example\n---\n"
-                   "If it is missing, tell the user to run `/guide` and stop. Tell the user to run `/other`.\n")
-        self.assertEqual(checker.prerequisites(self.root / "skills/reference/example"), {"guide"})
-
-    def test_router_carries_no_dependency_paragraph(self):
-        self.write("skills/productivity/guide/SKILL.md",
-                   "---\nname: guide\n---\nRoute to /example and /guide. Tell the user to run `/example`.\n")
-        self.assertEqual(self.result()[0], False)
+                   "If it is missing, tell the user to run `/helper` and stop. Tell the user to run `/other`.\n")
+        self.assertEqual(checker.prerequisites(self.root / "skills/reference/example"), {"helper"})
 
     def test_missing_where_it_fits(self):
         path = self.root / "documentation/skills/reference/example.md"
         path.write_text(path.read_text().replace("## Where it fits\nA role.\n", ""))
         self.assertIn("required sections missing", self.result()[1])
 
-    def write_skill_map(self, skills=("example", "guide")):
+    def write_skill_map(self, skills=("example", "helper")):
         self.write("scripts/skill-graph/flow.json", json.dumps({
             "artifacts": {"note": {"label": "Note", "description": "A note."}},
             "skills": {name: {"inputs": [], "outputs": ["note"], "next": []} for name in skills}}))
-        self.write("skills/productivity/README.md", "# Productivity\n\nWorkflows.\n\n- [guide](./guide/SKILL.md): Route.\n")
+        self.write("skills/productivity/README.md", "# Productivity\n\nWorkflows.\n\n- [helper](./helper/SKILL.md): Route.\n")
         self.write("skills/reference/README.md", "# Reference\n\nDisciplines.\n\n- [example](./example/SKILL.md): Example.\n")
         self.write("scripts/skill-graph/template.html", "<script>const DATA = /*SKILL_GRAPH_DATA*/null;</script>\n")
         with contextlib.redirect_stdout(io.StringIO()):
@@ -259,7 +254,7 @@ class LayoutChecks(unittest.TestCase):
     def test_skill_map_includes_deprecated_bucket(self):
         self.add_skill_in_deprecated_bucket()
         self.write("skills/deprecated/README.md", "# Other\n\nSkills.\n\n- [old](./old/SKILL.md): Ordinary.\n")
-        self.write_skill_map(skills=("example", "guide", "old"))
+        self.write_skill_map(skills=("example", "helper", "old"))
         self.assertEqual(self.result()[0], False)
         self.write_skill_map()
         self.assertIn("no entry for skill old", self.result()[1])
@@ -275,7 +270,7 @@ class LayoutChecks(unittest.TestCase):
         self.assertIn("no one-line entry for example", self.result()[1])
 
     def test_skill_missing_from_map(self):
-        self.write_skill_map(skills=("guide",))
+        self.write_skill_map(skills=("helper",))
         self.assertIn("no entry for skill example", self.result()[1])
 
 

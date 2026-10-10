@@ -55,4 +55,4 @@ The root `AGENTS.md`. Setup creates it when it does not exist, and updates an ex
 
 ## Where it fits
 
-This is run-once setup for [specify](../workflow/specify.md), [taskify](../workflow/taskify.md), [triage](../upkeep/triage.md), and [graphify](../shaping/graphify.md). It carries its own copy of the shared document rules; [guide](../productivity/guide.md) routes the workflow.
+This is run-once setup for [specify](../workflow/specify.md), [taskify](../workflow/taskify.md), [triage](../upkeep/triage.md), and [graphify](../shaping/graphify.md). It carries its own copy of the shared document rules.

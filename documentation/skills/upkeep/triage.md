@@ -59,4 +59,4 @@ Triage shows both with their source and date, recommends the one the latest evid
 
 ## Where it fits
 
-Triage is periodic intake maintenance. It carries its own copies of the [interview](../shaping/interview.md) method, the glossary and decision record formats, and the rules for local specifications, backlog, active work, and the changelog. [Guide](../productivity/guide.md) routes the next step.
+Triage is periodic intake maintenance. It carries its own copies of the [interview](../shaping/interview.md) method, the glossary and decision record formats, and the rules for local specifications, backlog, active work, and the changelog.

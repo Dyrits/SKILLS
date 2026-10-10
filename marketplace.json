@@ -12,12 +12,6 @@
       "source": "./skills/productivity/design-workflow"
     },
     {
-      "name": "guide",
-      "description": "Choose the next skill, development workflow, or session boundary from the current situation.",
-      "version": "0.2.0",
-      "source": "./skills/productivity/guide"
-    },
-    {
       "name": "hand-off",
       "description": "Write the current session's work into a versioned, self-contained handoff document in .agents/handoffs/ and point to it from AGENTS.md, so another session, agent, or person can resume it.",
       "version": "0.2.0",

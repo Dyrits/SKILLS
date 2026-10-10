@@ -88,7 +88,6 @@ def check(repository):
 
     skill_files = sorted((root / "skills").glob("*/*/SKILL.md"))
     skills = {path.parent.relative_to(root): path for path in skill_files}
-    router = (root / "skills/productivity/guide/SKILL.md").read_text()
     top = (root / "README.md").read_text()
     listing = top.split("## Plugin skills", 1)[-1]
     required_sections = (
@@ -119,16 +118,13 @@ def check(repository):
             errors.append(f"{relative}: skill blocks model invocation.")
         # Externals are left out: APM does not install them.
         calls, handovers = (found - EXTERNAL_SKILLS for found in skill_references(path.parent))
-        # The router names skills as labels for the human to pick from, not as dependencies.
-        block = calls_block(calls, handovers) if name != "guide" else ""
+        block = calls_block(calls, handovers)
         expected = [block] if block else []
         closing = content.find("\n---", 4)
         if closing != -1 and re.search(r"^\*\*(?:Calls|Hands over to):\*\*", content[:closing], re.MULTILINE):
             errors.append(f"{relative}: dependency paragraph sits inside the frontmatter.")
         if re.findall(r"^\*\*(?:Calls|Hands over to):\*\*.*$", content, re.MULTILINE) != expected:
             errors.append(f"{relative}: dependency paragraph should read: {expected[0] if expected else '(none)'}")
-        if not re.search(rf"/{re.escape(name)}(?![\w-])", router):
-            errors.append(f"{relative}: router does not name /{name}.")
         bucket_readme = path.parent.parent / "README.md"
         if not bucket_readme.exists():
             errors.append(f"{relative}: missing bucket README.")

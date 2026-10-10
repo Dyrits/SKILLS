@@ -61,4 +61,4 @@ For changes to repository code it follows its own copy of the [implement](./impl
 
 ## Where it fits
 
-This is a workflow step that follows a review of your work and loops back through implementation: [implement](./implement.md) and [test-first](./test-first.md) style validation apply to the changes. Replies are drafted in the spirit of [publish-message](../productivity/publish-message.md), which handles posting conclusions to any service. [guide](../productivity/guide.md) maps the whole system.
+This is a workflow step that follows a review of your work and loops back through implementation: [implement](./implement.md) and [test-first](./test-first.md) style validation apply to the changes. Replies are drafted in the spirit of [publish-message](../productivity/publish-message.md), which handles posting conclusions to any service.

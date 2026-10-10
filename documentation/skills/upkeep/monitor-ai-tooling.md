@@ -57,4 +57,4 @@ It prefers local collection with no network requests and no additional model cal
 
 ## Where it fits
 
-Periodic maintenance after [setup-ai-tooling](../setup/setup-ai-tooling.md): setup configures the tools, this checks whether they pay off. [improve-skills](improve-skills.md) is the neighbor for the skills themselves. [guide](../productivity/guide.md) maps the wider flow.
+Periodic maintenance after [setup-ai-tooling](../setup/setup-ai-tooling.md): setup configures the tools, this checks whether they pay off. [improve-skills](improve-skills.md) is the neighbor for the skills themselves.

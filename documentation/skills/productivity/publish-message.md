@@ -57,4 +57,4 @@ The destination. A tracker file only covers the service it names, so a GitHub tr
 
 ## Where it fits
 
-This is a standalone publication step after [review-and-refactor](../workflow/review-and-refactor.md) or any other work that produced a conclusion. [address-feedback](../workflow/address-feedback.md) covers replies to feedback you received, and [draft-merge-request](../version-control/draft-merge-request.md) covers request descriptions. [guide](./guide.md) maps the whole system.
+This is a standalone publication step after [review-and-refactor](../workflow/review-and-refactor.md) or any other work that produced a conclusion. [address-feedback](../workflow/address-feedback.md) covers replies to feedback you received, and [draft-merge-request](../version-control/draft-merge-request.md) covers request descriptions.

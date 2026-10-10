@@ -156,7 +156,6 @@ The manifest is the source of truth for this list; it holds every skill in the r
 
 ### Productivity
 
-- [guide](./skills/productivity/guide/SKILL.md): Choose the next skill, workflow, or session boundary.
 - [re-explain](./skills/productivity/re-explain/SKILL.md): Re-explain a message with the missing context.
 - [teach](./skills/productivity/teach/SKILL.md): Maintain a stateful teaching workspace.
 - [design-workflow](./skills/productivity/design-workflow/SKILL.md): Turn recurring work loops into implementable workflow specifications.

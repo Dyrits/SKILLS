@@ -48,11 +48,9 @@
     "wizard": {"label": "Wizard script", "description": "An interactive bash script a human runs for steps only they can do."},
     "branches": {"label": "Local branches", "description": "Branches in the original checkout."},
     "worktree-branch": {"label": "Worktree branch", "description": "A task branch in an isolated worktree, leaving the original checkout untouched."},
-    "conflict": {"label": "Merge conflict", "description": "An in-progress merge or rebase stopped on conflicting hunks."},
-    "recommendation": {"label": "Next move", "description": "The skill or sequence that fits, and where the human decisions sit."}
+    "conflict": {"label": "Merge conflict", "description": "An in-progress merge or rebase stopped on conflicting hunks."}
   },
   "skills": {
-    "guide": {"inputs": ["idea", "session"], "outputs": ["recommendation"], "next": ["specify", "iterate", "triage", "graphify", "prioritize"]},
     "setup-ai-workspace": {"inputs": [], "outputs": ["workspace-config", "domain-records"], "next": []},
     "setup-ai-tooling": {"inputs": [], "outputs": ["tooling-config"], "next": []},
     "setup-delegation-policy": {"inputs": [], "outputs": ["delegation-policy"], "next": ["divide-and-conquer"]},

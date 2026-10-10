@@ -43,4 +43,4 @@ Nothing is recorded, so the next time conventions come up it asks again. A revie
 
 ## Where it fits
 
-`codify` is setup you run once per repository, best after [architect](../workflow/architect.md) has chosen the stack, and again when conventions need checking. Reviews and audits read the conventions file it writes and report when it is missing. It carries its own copies of the [interview](../shaping/interview.md) method and of the formats for the conventions file and the other homes it routes rules to. [Guide](../productivity/guide.md) maps the surrounding flows.
+`codify` is setup you run once per repository, best after [architect](../workflow/architect.md) has chosen the stack, and again when conventions need checking. Reviews and audits read the conventions file it writes and report when it is missing. It carries its own copies of the [interview](../shaping/interview.md) method and of the formats for the conventions file and the other homes it routes rules to.

@@ -24,7 +24,7 @@ Type `/improve-skills`, or an agent can reach for it when the task fits. Run it 
 
 | Finding | Home |
 | --- | --- |
-| A skill problem: a wrong or missing trigger, an unclear or missing step, conflicting skills, a stale route in `guide`, a missing skill | The issue on the skills repository |
+| A skill problem: a wrong or missing trigger, an unclear or missing step, conflicting skills, a missing skill | The issue on the skills repository |
 | A lesson about your project: a convention, a command, a review rule | Filed in the project, in the nearest `AGENTS.md` or the conventions file |
 | Friction the environment could have prevented: a missing check or guardrail, a long search, an expensive tool, missing information | Listed for you once the issue is settled, each with the environment change that would have prevented it |
 | Agent behavior neither a skill nor the environment could have steered | Reported to you, left out of the issue |
@@ -62,4 +62,4 @@ It was split. `improve-skills` reports on the skills themselves, and [improve-en
 
 ## Where it fits
 
-`improve-skills` is periodic maintenance after a session in either development workflow. Run it before clearing the session, or point a new session at the log. [memorize](../productivity/memorize.md) handles corrections during the session; this skill handles what the skills themselves got wrong, and [improve-environment](./improve-environment.md) what the project's environment got wrong. Fixing a reported problem happens in a separate session on this repository, following [write-for-agents](../productivity/write-for-agents.md). [guide](../productivity/guide.md) maps the whole set.
+`improve-skills` is periodic maintenance after a session in either development workflow. Run it before clearing the session, or point a new session at the log. [memorize](../productivity/memorize.md) handles corrections during the session; this skill handles what the skills themselves got wrong, and [improve-environment](./improve-environment.md) what the project's environment got wrong. Fixing a reported problem happens in a separate session on this repository, following [write-for-agents](../productivity/write-for-agents.md).

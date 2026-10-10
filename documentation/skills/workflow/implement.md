@@ -37,4 +37,4 @@ It ships outside this repository, so the skill cannot assume it. When browser in
 
 ## Where it fits
 
-This is the implementation chain step after [taskify](./taskify.md), following [specify](./specify.md), and before [review-and-refactor](./review-and-refactor.md). [iterate](./iterate.md) carries the same discipline for every batch. [divide-and-conquer](./divide-and-conquer.md) coordinates parallel work; [guide](../productivity/guide.md) maps the whole system.
+This is the implementation chain step after [taskify](./taskify.md), following [specify](./specify.md), and before [review-and-refactor](./review-and-refactor.md). [iterate](./iterate.md) carries the same discipline for every batch. [divide-and-conquer](./divide-and-conquer.md) coordinates parallel work.

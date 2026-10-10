@@ -63,4 +63,4 @@ Friction a skill caused is listed for you to report on this repository, which is
 
 ## Where it fits
 
-`improve-environment` is periodic maintenance after a session in either development workflow, most useful after one that felt harder than it should have. Run it before clearing the session, or point a new session at the log. It follows [debug](./debug.md) when you want to know what would have prevented the bug, sits beside [improve-skills](./improve-skills.md) for problems in the skills themselves, and hands a repository with no guardrail to [setup-git-hooks](../setup/setup-git-hooks.md). [guide](../productivity/guide.md) maps the whole set.
+`improve-environment` is periodic maintenance after a session in either development workflow, most useful after one that felt harder than it should have. Run it before clearing the session, or point a new session at the log. It follows [debug](./debug.md) when you want to know what would have prevented the bug, sits beside [improve-skills](./improve-skills.md) for problems in the skills themselves, and hands a repository with no guardrail to [setup-git-hooks](../setup/setup-git-hooks.md).

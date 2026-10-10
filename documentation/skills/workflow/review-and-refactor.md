@@ -32,4 +32,4 @@ Not reliably. Smells are judgment calls. This run ends after supported changes a
 
 ## Where it fits
 
-This is the review step after [implement](./implement.md) or [divide-and-conquer](./divide-and-conquer.md), and also a standalone review. [test-first](./test-first.md) handles missing behavior through red/green. [guide](../productivity/guide.md) maps the whole system.
+This is the review step after [implement](./implement.md) or [divide-and-conquer](./divide-and-conquer.md), and also a standalone review. [test-first](./test-first.md) handles missing behavior through red/green.

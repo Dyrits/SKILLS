@@ -48,4 +48,4 @@ It reports the canonical paths, covered requirements, agreements, blockers, and 
 
 ## Where it fits
 
-Specify is the functional half of the capability level, usually followed by [engineer](./engineer.md), then [taskify](taskify.md) or [implement](implement.md). It reads the system-level documents [delineate](./delineate.md) and [architect](./architect.md) write when they exist. [Guide](../productivity/guide.md) maps these paths.
+Specify is the functional half of the capability level, usually followed by [engineer](./engineer.md), then [taskify](taskify.md) or [implement](implement.md). It reads the system-level documents [delineate](./delineate.md) and [architect](./architect.md) write when they exist.

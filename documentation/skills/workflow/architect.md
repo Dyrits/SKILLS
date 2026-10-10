@@ -54,4 +54,4 @@ That skill looks for shallow modules inside the code and proposes deepening them
 
 ## Where it fits
 
-`architect` is the technical half of the system level, usually after [delineate](./delineate.md) and before [codify](../setup/codify.md), since conventions depend on the stack. [engineer](./engineer.md) designs each capability inside the shape it sets. [guide](../productivity/guide.md) maps the whole flow.
+`architect` is the technical half of the system level, usually after [delineate](./delineate.md) and before [codify](../setup/codify.md), since conventions depend on the stack. [engineer](./engineer.md) designs each capability inside the shape it sets.

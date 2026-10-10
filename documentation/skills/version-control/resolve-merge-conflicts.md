@@ -50,4 +50,4 @@ Aborting throws away the resolution work and returns you to the same conflict, u
 
 ## Where it fits
 
-A reach-for-it-anytime standalone for an already authorized merge or rebase. [rebase](../version-control/rebase.md) uses it when an operation stops on conflicts. [debug](../upkeep/debug.md) takes over when a textually resolved merge still misbehaves. [guide](../productivity/guide.md) maps the wider flow.
+A reach-for-it-anytime standalone for an already authorized merge or rebase. [rebase](../version-control/rebase.md) uses it when an operation stops on conflicts. [debug](../upkeep/debug.md) takes over when a textually resolved merge still misbehaves.

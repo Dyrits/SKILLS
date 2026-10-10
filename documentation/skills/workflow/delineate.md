@@ -72,4 +72,4 @@ No. A domain language you do not understand yourself becomes meaningless once wr
 
 ## Where it fits
 
-`delineate` is the functional half of the system level, usually run before [architect](./architect.md) and revisited when the business changes. [specify](./specify.md) and [engineer](./engineer.md) work one capability at a time on the same model. [guide](../productivity/guide.md) maps the whole flow.
+`delineate` is the functional half of the system level, usually run before [architect](./architect.md) and revisited when the business changes. [specify](./specify.md) and [engineer](./engineer.md) work one capability at a time on the same model.
