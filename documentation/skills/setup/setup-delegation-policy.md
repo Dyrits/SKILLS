@@ -20,7 +20,7 @@ Type `/setup-delegation-policy`, or an agent can reach for it. Because it edits 
 | Tier agent files | Written only for harnesses where the agent carries the model, using models you pick from that harness's own list. A harness with a per-call model override needs none |
 | Repository `AGENTS.md` | Untouched: this is a rule about how the agent works, not about one codebase |
 
-The source of truth is [POLICY.md](../../../skills/setup/setup-delegation-policy/POLICY.md); [TIER-AGENTS.md](../../../skills/setup/setup-delegation-policy/TIER-AGENTS.md) holds the procedure for tier agents. To change the rule, edit `POLICY.md` and rerun the skill instead of patching installed copies.
+The source of truth is [policy.md](../../../skills/setup/setup-delegation-policy/assets/policy.md); [TIER-AGENTS.md](../../../skills/setup/setup-delegation-policy/references/TIER-AGENTS.md) holds the procedure for tier agents. To change the rule, edit `assets/policy.md` and rerun the skill instead of patching installed copies.
 
 ## Common questions
 
@@ -34,7 +34,7 @@ You do. For a harness that binds a model per agent, the skill reads the harness'
 
 **How do I keep the installed copies current?**
 
-Rerun it and choose Reconfigure. It replaces the section from its heading to the next `##` heading, and verifies each installed section against `POLICY.md` with a diff.
+Rerun it and choose Reconfigure. It replaces the section from its heading to the next `##` heading, and verifies each installed section against `assets/policy.md` with a diff.
 
 **Does it pin model versions?**
 
@@ -47,10 +47,10 @@ Choose Remove for the harness. The section is removed from its steering file and
 ## It's working if
 
 - Each steering file you wrote to has exactly one `## Delegation and model routing` heading.
-- The installed section is identical to `POLICY.md`.
+- The installed section is identical to `assets/policy.md`.
 - The report says, per harness, how each tier binds and which model each tier resolved to.
 - Agents state the tier and resolved model when they dispatch work.
 
 ## Where it fits
 
-Run-once, machine-wide setup, rerun when `POLICY.md` changes. It sits beside [setup](./setup.md), which configures one repository and provisions its tools.
+Run-once, machine-wide setup, rerun when `assets/policy.md` changes. It sits beside [setup](./setup.md), which configures one repository and provisions its tools.

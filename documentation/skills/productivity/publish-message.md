@@ -29,7 +29,7 @@ The agent adapts each of these to the destination.
 
 ## Inline suggestions
 
-On a GitHub or GitLab request, a small unambiguous fix confined to one hunk can be posted as an executable inline suggestion. Everything else, including judgment calls and changes spanning hunks, stays in the summary. The agent validates each suggestion against the current diff, rechecks that the head revision has not moved before posting, and submits a neutral comment review, never an Approve or Request changes verdict. The rules are in [inline-suggestions.md](../../../skills/productivity/publish-message/inline-suggestions.md).
+On a GitHub or GitLab request, a small unambiguous fix confined to one hunk can be posted as an executable inline suggestion. Everything else, including judgment calls and changes spanning hunks, stays in the summary. The agent validates each suggestion against the current diff, rechecks that the head revision has not moved before posting, and submits a neutral comment review, never an Approve or Request changes verdict. The rules are in [inline-suggestions.md](../../../skills/productivity/publish-message/references/INLINE-SUGGESTIONS.md).
 
 ## Common questions
 

@@ -13,7 +13,7 @@ If the tracker treats external pull requests as a request surface, triage covers
 
 ## Document and tracker contract
 
-The project documents and their rules are in [PROJECT-DOCUMENTS.md](PROJECT-DOCUMENTS.md); read it before updating project documents. Its terms (authorized, obligation, lazy, pointer) apply throughout. Read the relevant requirements, specifications, working state, and backlog when present.
+The project documents and their rules are in [PROJECT-DOCUMENTS.md](references/PROJECT-DOCUMENTS.md); read it before updating project documents. Its terms (authorized, obligation, lazy, pointer) apply throughout. Read the relevant requirements, specifications, working state, and backlog when present.
 
 Read the task tracker configuration and the triage roles that `AGENTS.md` points to. If it points to neither or only one, tell the user which is missing and that triage needs the tracker and its intake roles configured, then stop.
 
@@ -22,7 +22,7 @@ Read the task tracker configuration and the triage roles that `AGENTS.md` points
 - Remote operations use the platform's actual commands and labels. A local title/link reference to a published remote task does not duplicate remote role state.
 - Local task bodies use `Category:` and `Status:` near the top. Comments append under `## Comments`. Rejection closes intake with `Status: not-planned`. Delivery progress, blockers, and acceptance evidence can be recorded in the body separately from intake state.
 
-Remote comments, role changes, and closing need authorization from the maintainer's explicit triage request or confirmed outcome. A generic local document edit grants no remote publication authority. Maintain specifications, active work, and the changelog locally within scope. Candidate deferrals follow the backlog authority in [PROJECT-DOCUMENTS.md](PROJECT-DOCUMENTS.md); do not create a local queue beside a remote backlog.
+Remote comments, role changes, and closing need authorization from the maintainer's explicit triage request or confirmed outcome. A generic local document edit grants no remote publication authority. Maintain specifications, active work, and the changelog locally within scope. Candidate deferrals follow the backlog authority in [PROJECT-DOCUMENTS.md](references/PROJECT-DOCUMENTS.md); do not create a local queue beside a remote backlog.
 
 Every comment or new task posted during triage starts with:
 
@@ -32,8 +32,8 @@ Every comment or new task posted during triage starts with:
 
 ## Reference documents
 
-- [AGENT-BRIEF.md](AGENT-BRIEF.md): durable ready briefs.
-- [OUT-OF-SCOPE.md](OUT-OF-SCOPE.md): the rejected-enhancement knowledge base.
+- [AGENT-BRIEF.md](references/AGENT-BRIEF.md): durable ready briefs.
+- [OUT-OF-SCOPE.md](references/OUT-OF-SCOPE.md): the rejected-enhancement knowledge base.
 
 ## Roles
 
@@ -81,15 +81,15 @@ When PRs are in scope, tag entries `[PR]` or `[task]`. Discovery includes extern
 1. **Gather context.** Read body, comments, roles, author, dates, and prior triage notes; for a PR, also read the diff. Explore with the domain glossary and applicable architecture decision records that `AGENTS.md` points to. Search for an existing implementation by domain concept and report where you looked. Read `documentation/out-of-scope/*.md` when present and surface matching prior rejections.
 2. **Recommend.** Present a category and state with reasoning and a relevant codebase summary, including any already-implemented behavior. Wait for direction.
 3. **Verify.** Before refinement, reproduce a bug from the reporter's steps. For a PR, check the diff against its claims and run relevant tests or commands. Report confirmed behavior with its code path, failure, or insufficient detail. Insufficient detail supports an on-hold recommendation.
-4. **Refine if needed.** Resolve questions with the human following the [interview method](INTERVIEW.md). When a term is fuzzy, disputed, or clashes with the glossary or the code, name the conflict, test it with a concrete scenario, recommend a canonical term, and once the human agrees, write it to the glossary following [GLOSSARY-FORMAT.md](GLOSSARY-FORMAT.md). Keep unresolved proposals in the capability's draft, incorporate agreed behavior and acceptance into its specifications, and record a hard-to-reverse decision following [DECISION-RECORD-FORMAT.md](DECISION-RECORD-FORMAT.md).
+4. **Refine if needed.** Resolve questions with the human following the [interview method](references/INTERVIEW.md). When a term is fuzzy, disputed, or clashes with the glossary or the code, name the conflict, test it with a concrete scenario, recommend a canonical term, and once the human agrees, write it to the glossary following [GLOSSARY-FORMAT.md](references/GLOSSARY-FORMAT.md). Keep unresolved proposals in the capability's draft, incorporate agreed behavior and acceptance into its specifications, and record a hard-to-reverse decision following [DECISION-RECORD-FORMAT.md](references/DECISION-RECORD-FORMAT.md).
 5. **Apply the confirmed outcome:**
-   - `ready`: post an [agent brief](AGENT-BRIEF.md). It is the authoritative task-execution contract, linked to canonical specifications and applicable requirements. State any reason the work needs a human.
+   - `ready`: post an [agent brief](references/AGENT-BRIEF.md). It is the authoritative task-execution contract, linked to canonical specifications and applicable requirements. State any reason the work needs a human.
    - `on-hold`: post notes naming exactly what the hold waits on. Keep candidate deferrals in the authoritative configured backlog: local bodies for local tracking, approved remote updates for remote tracking. Pending publication and active paused work belong in local working state, not in a competing backlog or copied tracker status.
    - `not-planned`, already implemented: close with a link to the existing implementation. This is not a rejection and does not enter the rejection knowledge base.
    - `not-planned`, rejected bug: explain politely and close.
-   - `not-planned`, rejected enhancement: create or update the [out-of-scope record](OUT-OF-SCOPE.md), link it in a comment, then close.
+   - `not-planned`, rejected enhancement: create or update the [out-of-scope record](references/OUT-OF-SCOPE.md), link it in a comment, then close.
    - `to-evaluate`: apply the role and optionally record partial progress.
-6. Update relevant local context and the root changelog following [PROJECT-DOCUMENTS.md](PROJECT-DOCUMENTS.md). Report the outcome and any next action.
+6. Update relevant local context and the root changelog following [PROJECT-DOCUMENTS.md](references/PROJECT-DOCUMENTS.md). Report the outcome and any next action.
 
 ## Quick state override
 

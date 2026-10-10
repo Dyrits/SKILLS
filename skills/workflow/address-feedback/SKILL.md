@@ -59,7 +59,7 @@ Done when the user has approved a concrete disposition and action for every subs
 
 ### 4. Implement and validate
 
-Implement only the approved changes, preserving unrelated work. For changes to repository code, follow [IMPLEMENT.md](IMPLEMENT.md), with the approved plan as the user-approved batch. For other subjects, validate in proportion to the change. If implementation shows an approved disposition is wrong or needs materially broader work, stop that item, explain the evidence, and return it to the plan gate.
+Implement only the approved changes, preserving unrelated work. For changes to repository code, follow [IMPLEMENT.md](references/IMPLEMENT.md), with the approved plan as the user-approved batch. For other subjects, validate in proportion to the change. If implementation shows an approved disposition is wrong or needs materially broader work, stop that item, explain the evidence, and return it to the plan gate.
 
 Review the result against every approved disposition. A passing test suite does not account for a unit by itself; connect each one to the changed subject, existing evidence, or a stated decision.
 

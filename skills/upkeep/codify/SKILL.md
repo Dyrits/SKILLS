@@ -15,17 +15,17 @@ When it came up during other work (a review or an audit that found no convention
 
 ## Interview
 
-Pick a focus: **code** (review, setup) or **architecture** (audit); default to **code**. Follow the [interview method](INTERVIEW.md), asking about the focus's topics in rounds, each question with a recommended answer drawn from what the code already does consistently. Skip a topic the user has no rule for.
+Pick a focus: **code** (review, setup) or **architecture** (audit); default to **code**. Follow the [interview method](references/INTERVIEW.md), asking about the focus's topics in rounds, each question with a recommended answer drawn from what the code already does consistently. Skip a topic the user has no rule for.
 
 - **Code**: naming (files, functions, booleans, abbreviations); function and file size, and when to extract; types (strictness, `any` or its equivalent, nullability); error handling (throw or return, where errors are caught, what gets logged); state and side effects (mutation, purity, where input and output happen); comments and documentation; tests (what gets one, naming, fakes versus mocks, one behaviour per test); dependencies (when a new library is acceptable); what reviewers repeatedly flag.
 - **Architecture**: layering and dependency direction, module layout, where seams belong, what must never be coupled, testing approach per layer.
 
-Draft candidates from **patterns in how the code is written** (naming, error style, test shape), never from what the product does. When the code is inconsistent, show both patterns and ask which is the rule. Keep each candidate only once the user confirms it and gives its reason in their own words: a rule without a reason is the first to be misapplied. Write each confirmed rule to the conventions file following [CONVENTIONS-FORMAT.md](CONVENTIONS-FORMAT.md), or route it to the home its What belongs table names, and tell the user where each went. The paths and creation rules for those homes are in [PROJECT-DOCUMENTS.md](PROJECT-DOCUMENTS.md); write a requirement following [REQUIREMENTS-FORMAT.md](REQUIREMENTS-FORMAT.md), a decision record following [DECISION-RECORD-FORMAT.md](DECISION-RECORD-FORMAT.md), a term following [GLOSSARY-FORMAT.md](GLOSSARY-FORMAT.md), and an `AGENTS.md` line following [AGENT-INSTRUCTIONS.md](AGENT-INSTRUCTIONS.md).
+Draft candidates from **patterns in how the code is written** (naming, error style, test shape), never from what the product does. When the code is inconsistent, show both patterns and ask which is the rule. Keep each candidate only once the user confirms it and gives its reason in their own words: a rule without a reason is the first to be misapplied. Write each confirmed rule to the conventions file following [CONVENTIONS-FORMAT.md](references/CONVENTIONS-FORMAT.md), or route it to the home its What belongs table names, and tell the user where each went. The paths and creation rules for those homes are in [PROJECT-DOCUMENTS.md](references/PROJECT-DOCUMENTS.md); write a requirement following [REQUIREMENTS-FORMAT.md](references/REQUIREMENTS-FORMAT.md), a decision record following [DECISION-RECORD-FORMAT.md](references/DECISION-RECORD-FORMAT.md), a term following [GLOSSARY-FORMAT.md](references/GLOSSARY-FORMAT.md), and an `AGENTS.md` line following [AGENT-INSTRUCTIONS.md](references/AGENT-INSTRUCTIONS.md).
 
 Completion: every topic in the focus has been asked about once, and every confirmed rule is either written with its reason or routed, with the user told where it went.
 
 ## Audit
 
-When asked to check existing conventions, check the conventions file as [CONVENTIONS-FORMAT.md](CONVENTIONS-FORMAT.md) describes under Checking an existing file, then present each proposed move to the user. Move nothing without the user's approval.
+When asked to check existing conventions, check the conventions file as [CONVENTIONS-FORMAT.md](references/CONVENTIONS-FORMAT.md) describes under Checking an existing file, then present each proposed move to the user. Move nothing without the user's approval.
 
 Completion: the user has seen every proposed move and approved or declined each.

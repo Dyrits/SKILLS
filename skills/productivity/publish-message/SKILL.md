@@ -34,7 +34,7 @@ When condensing a review, account for every finding and preserve its disposition
 Before describing a verified local change as completed in the destination branch, check that the destination contains it.
 Otherwise describe it as a local change awaiting publication, or state that its destination status is unverified.
 
-When the publication includes inline suggestions on a GitHub or GitLab request, read [inline-suggestions.md](inline-suggestions.md) for finding placement, diff validation, and submission handling.
+When the publication includes inline suggestions on a GitHub or GitLab request, read [inline-suggestions.md](references/INLINE-SUGGESTIONS.md) for finding placement, diff validation, and submission handling.
 Otherwise draft a single message.
 
 Fit the message to the medium:
@@ -52,7 +52,7 @@ Write in the language already used at the destination, not necessarily the langu
 - Full words over contracted ones ("repository" not "repo", "configuration" not "config", "documentation" not "docs"), and the plain term over an acronym on first mention ("the null check" not "NPE", "the identifier" not "UUID") unless it is what the codebase itself calls it. The reader may not share the writer's technical background, and a shortened form is one more thing they might not parse.
 - Keep only the context and reasoning the reader needs to understand or act on each point.
 
-Remove AI language patterns from the message and any inline comments following [UNSLOP.md](UNSLOP.md), without changing their meaning or tone.
+Remove AI language patterns from the message and any inline comments following [UNSLOP.md](references/UNSLOP.md), without changing their meaning or tone.
 Done when every item is an exact, destination-specific draft in the destination's format and every included finding has a clear disposition.
 
 ### 4. Approve the complete publication
@@ -66,7 +66,7 @@ Done when the exact set and destination are approved.
 ### 5. Publish and verify
 
 For a single message, publish the approved text through the mechanism from step 2, then read it back from the destination and check its text and placement. When the service cannot be read back, report that verification limit.
-For a publication with inline suggestions, follow the submission handling in [inline-suggestions.md](inline-suggestions.md).
+For a publication with inline suggestions, follow the submission handling in [inline-suggestions.md](references/INLINE-SUGGESTIONS.md).
 When no mechanism reaches the destination, give the user the approved text in its final format, ready to paste.
 Report the published URLs or references, including any partial result.
 Done when every approved item is live at its approved destination with text matching the approved draft (or is in the user's hands with that limit stated), and any stated suggestion count matches the items actually posted.

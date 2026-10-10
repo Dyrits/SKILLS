@@ -1,0 +1,10 @@
+# Wizard
+
+Adapted from the `walk-through` skill. A **wizard** is a bash script that walks a human, step by step, through a manual procedure only they can perform: it opens each URL, says exactly what to click and copy, captures the values, writes them where they belong (`.env`, GitHub secrets), confirms at every stage, and shows how many stages are left.
+
+[template.sh](../assets/template.sh) already provides stage-by-stage progress, confirmation gates, cross-platform URL opening, hidden secret entry, idempotent `.env` upserts, `gh secret`/`gh variable` writes, and a closing summary. Only scope the procedure and author its stages; never hand-edit the library above the `STAGES` marker.
+
+1. **Scope the procedure.** Read the repository first (`.env`, `.env.example`, `README`, framework configuration, `.github/workflows/*` for every `secrets.*` / `vars.*` reference). Show the user the ordered stages and the values each produces, and wait for them to confirm the list. Done when every captured value has a known source, destination (`.env`, a GitHub secret, both, or nowhere), and secrecy.
+2. **Map each stage's journey**: the URL to open, what to do there, where a value is shown, which variable it fills. Where you do not know the current interface or command, ask or check the documentation; never invent steps.
+3. **Author the wizard.** Copy `assets/template.sh` to the target path and replace the example stage with one `stage` per step, in dependency order, using the helpers `stage`, `say`/`step`, `open_url`, `ask`/`ask_secret`, `write_env`, `set_secret`/`set_var`, `pause`/`confirm`. Set `TOTAL_STAGES`. Open the URL before asking for its value, use `ask_secret` for anything secret, and `confirm` before any irreversible action.
+4. **Verify.** Run `bash -n` and `shellcheck` when available, then `chmod +x`. Do not run it end to end yourself; trace it statically so every value lands where step 1 said and every `set_secret` name matches a `secrets.*` reference in CI. A wizard worth repeating is committed and linked from the README, so the next person runs the script.

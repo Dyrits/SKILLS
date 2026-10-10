@@ -43,7 +43,7 @@ For each captured value, scoping settles where it lands:
 
 ## The template already solves the UX
 
-The [template](../../../skills/productivity/walk-through/template.sh) supplies progress, confirmation gates, cross-platform URL opening including WSL, hidden entry for secrets, idempotent `.env` upserts, `gh secret` / `gh variable` writes, and a closing summary of skipped actions. Its fixed library stays unchanged; the agent scopes the procedure and authors its stages.
+The [template](../../../skills/productivity/walk-through/assets/template.sh) supplies progress, confirmation gates, cross-platform URL opening including WSL, hidden entry for secrets, idempotent `.env` upserts, `gh secret` / `gh variable` writes, and a closing summary of skipped actions. Its fixed library stays unchanged; the agent scopes the procedure and authors its stages.
 
 The agent that writes a wizard never runs it end to end, because it opens browsers and waits for human input. It verifies statically instead: `bash -n`, `shellcheck` where available, and a trace that every value lands where scoping said it would, with every `set_secret` name matching a real `secrets.*` reference in CI. Set your expectations accordingly: the first run is yours, and that run is the test.
 

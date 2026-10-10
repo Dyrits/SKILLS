@@ -6,7 +6,7 @@ metadata:
 argument-hint: "A workflow to design, or nothing to go find one"
 ---
 
-Run a stateful interview whose output is **workflow** specifications, following the [interview method](INTERVIEW.md): dependency-aware question rounds with recommended answers, aimed at the vocabulary and goal below. Create and update specifications as decisions are resolved; remove an obsolete specification only when its replacement and useful history are preserved.
+Run a stateful interview whose output is **workflow** specifications, following the [interview method](references/INTERVIEW.md): dependency-aware question rounds with recommended answers, aimed at the vocabulary and goal below. Create and update specifications as decisions are resolved; remove an obsolete specification only when its replacement and useful history are preserved.
 
 ## The loop lens
 

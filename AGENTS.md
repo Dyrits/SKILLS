@@ -29,6 +29,8 @@ To resume the removal of the guide skill, read the [current handoff](./.agents/h
 
 Install commands are copied verbatim from [standard installation wording](./documentation/maintenance/standard-installation-wording.md). `.claude-plugin/marketplace.json` makes the repository its own single-plugin marketplace (a fallback the installation wording guide explains, not the documented route). Run `claude plugin validate . --strict` after touching either manifest. This repository's decisions live in `documentation/architecture-decision-record/`.
 
+A skill folder holds `SKILL.md`, `apm.yml`, and `agents/`; its support files follow the [Agent Skills specification](https://agentskills.io/specification) layout: `scripts/` for code the agent runs, `references/` for documents it reads (UPPERCASE names, such as `references/PROJECT-DOCUMENTS.md`), and `assets/` for templates and payloads copied elsewhere (kebab-case names, such as `assets/issue-tracker-github.md`). `scripts/check-skills.py` enforces it.
+
 Each skill entry in the top-level `README.md` must link the skill name to its `SKILL.md`.
 
 Each bucket folder has a `README.md` that lists every skill in the bucket with a one-line description, with the skill name linked to its `SKILL.md`.
@@ -43,7 +45,7 @@ Every `SKILL.md` is reachable by both the human and the model: no `disable-model
 
 To (re)link every skill into the local harness skill directories (`~/.claude/skills`, `~/.agents/skills`), run `scripts/link-skills.sh`. Each entry is a symlink into this repository, so a `git pull` keeps installed skills current; re-run the script after adding, removing, or renaming a skill.
 
-Call the Skill tool with "memorize" the moment the user states a standing rule, asks you to remember something, or corrects how something is done, and when something is rebuilt a second time. Before writing a script or a pipeline longer than one line, read `.agents/scripts/INDEX.md` and reuse or extend a match; save new reusable scripts there following [memorize](./skills/productivity/memorize/SCRIPTS.md).
+Call the Skill tool with "memorize" the moment the user states a standing rule, asks you to remember something, or corrects how something is done, and when something is rebuilt a second time. Before writing a script or a pipeline longer than one line, read `.agents/scripts/INDEX.md` and reuse or extend a match; save new reusable scripts there following [memorize](skills/productivity/memorize/references/SCRIPTS.md).
 
 ## Writing skills
 

@@ -6,7 +6,7 @@ Upstream source: `writing-for-agents`, verified in the `d81f3a1` tree, now `writ
 
 It keeps requirements and approval boundaries intact while removing duplication, clarifying references, and making completion criteria checkable. This fork replaces the unconditional search for shorter wording with a conditional test: change text when there is an identifiable improvement, and leave it alone when there is not.
 
-It was called `writing-great-skills` until v1.1. The rename reflects its wider scope. For skill-authoring work, it requires reading [Anthropic's skill authoring best practices](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices) and the bundled [skill mechanics reference](../../../skills/productivity/write-for-agents/SKILL-MECHANICS.md). The official page owns current frontmatter requirements; the local reference covers invocation conventions, splitting, and routers without copying those requirements.
+It was called `writing-great-skills` until v1.1. The rename reflects its wider scope. For skill-authoring work, it requires reading [Anthropic's skill authoring best practices](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices) and the bundled [skill mechanics reference](../../../skills/productivity/write-for-agents/references/SKILL-MECHANICS.md). The official page owns current frontmatter requirements; the local reference covers invocation conventions, splitting, and routers without copying those requirements.
 
 ## When to reach for it
 

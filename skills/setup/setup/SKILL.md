@@ -11,10 +11,10 @@ Inspect the repository, offer the areas below with their current state, and set 
 
 | Area | Sets up | Reference |
 | --- | --- | --- |
-| Workspace | Task tracker, ticket-writing convention, triage roles, domain contexts | [WORKSPACE.md](WORKSPACE.md) |
-| Code checks | Formatter, linter, and typecheck run by a committed pre-commit hook; moves off older tooling on request | [CODE-CHECKS.md](CODE-CHECKS.md), plus the catalogue of each language found: [JavaScript and TypeScript](CHECKS-JAVASCRIPT.md), [Python](CHECKS-PYTHON.md), [Go](CHECKS-GO.md), [Rust](CHECKS-RUST.md) |
-| Git guardrails | A human decision before Git commands that lose work or rewrite shared history, for each agent harness | [GUARDRAILS.md](GUARDRAILS.md) |
-| AI tooling | Code index, documentation lookup, structural search, browser and tracker clients, and a measurement baseline | [AI-TOOLING.md](AI-TOOLING.md) |
+| Workspace | Task tracker, ticket-writing convention, triage roles, domain contexts | [WORKSPACE.md](references/WORKSPACE.md) |
+| Code checks | Formatter, linter, and typecheck run by a committed pre-commit hook; moves off older tooling on request | [CODE-CHECKS.md](references/CODE-CHECKS.md), plus the catalogue of each language found: [JavaScript and TypeScript](references/CHECKS-JAVASCRIPT.md), [Python](references/CHECKS-PYTHON.md), [Go](references/CHECKS-GO.md), [Rust](references/CHECKS-RUST.md) |
+| Git guardrails | A human decision before Git commands that lose work or rewrite shared history, for each agent harness | [GUARDRAILS.md](references/GUARDRAILS.md) |
+| AI tooling | Code index, documentation lookup, structural search, browser and tracker clients, and a measurement baseline | [AI-TOOLING.md](references/AI-TOOLING.md) |
 
 Read an area's reference only once it is picked.
 

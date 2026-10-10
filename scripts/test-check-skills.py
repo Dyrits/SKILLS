@@ -82,15 +82,30 @@ class LayoutChecks(unittest.TestCase):
         self.assertFalse(self.result()[0])
 
     def test_stale_catalogue_warns_without_failing(self):
-        self.write("skills/reference/example/CATALOGUE.md", "# Catalogue\n\nVerified: 2000-01-01.\n")
+        self.write("skills/reference/example/references/CATALOGUE.md", "# Catalogue\n\nVerified: 2000-01-01.\n")
         failed, output = self.result()
         self.assertFalse(failed)
-        self.assertIn("WARNING: skills/reference/example/CATALOGUE.md: verified 2000-01-01", output)
+        self.assertIn("WARNING: skills/reference/example/references/CATALOGUE.md: verified 2000-01-01", output)
 
     def test_fresh_catalogue_is_silent(self):
-        self.write("skills/reference/example/CATALOGUE.md",
+        self.write("skills/reference/example/references/CATALOGUE.md",
                    f"# Catalogue\n\nVerified: {datetime.date.today().isoformat()}.\n")
         self.assertNotIn("WARNING", self.result()[1])
+
+    def test_support_file_outside_layout_folders(self):
+        self.write("skills/reference/example/GUIDE.md", "# Guide\n")
+        self.assertIn("skills/reference/example/GUIDE.md: move it into scripts/, references/, or assets/.", self.result()[1])
+
+    def test_reference_and_asset_names(self):
+        self.write("skills/reference/example/references/guide.md", "# Guide\n")
+        self.write("skills/reference/example/assets/Template.md", "# Template\n")
+        self.write("skills/reference/example/references/GOOD-GUIDE.md", "# Guide\n")
+        self.write("skills/reference/example/assets/good-template.sh", "#!/bin/sh\n")
+        output = self.result()[1]
+        self.assertIn("references/guide.md: reference names are UPPERCASE", output)
+        self.assertIn("assets/Template.md: asset names are kebab-case", output)
+        self.assertNotIn("GOOD-GUIDE.md", output)
+        self.assertNotIn("good-template.sh", output)
 
     def test_broken_relative_link(self):
         self.write("AGENTS.md", "[missing](missing.md)\n")
@@ -183,10 +198,10 @@ class LayoutChecks(unittest.TestCase):
         self.assertEqual(self.result()[0], False)
 
     def test_routing_tiers_follow_policy(self):
-        self.write("skills/setup/setup-delegation-policy/POLICY.md", "| Light | Haiku | Luna |\n")
-        self.write("skills/workflow/divide-and-conquer/ROUTING.md", "| Light | Haiku | Luna |\n")
+        self.write("skills/setup/setup-delegation-policy/assets/policy.md", "| Light | Haiku | Luna |\n")
+        self.write("skills/workflow/divide-and-conquer/references/ROUTING.md", "| Light | Haiku | Luna |\n")
         self.assertNotIn("tiers differ", self.result()[1])
-        self.write("skills/workflow/divide-and-conquer/ROUTING.md", "| Light | Sonnet | Luna |\n")
+        self.write("skills/workflow/divide-and-conquer/references/ROUTING.md", "| Light | Sonnet | Luna |\n")
         self.assertIn("tiers differ", self.result()[1])
 
     def test_calling_skill_needs_dependency_paragraph(self):

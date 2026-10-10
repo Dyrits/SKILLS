@@ -1,4 +1,4 @@
-Fork-created skill with no upstream equivalent. It absorbed the earlier `scriptbook` skill, added in commit `4456e95`; its steps now live in [SCRIPTS.md](../../../skills/productivity/memorize/SCRIPTS.md) (see the [provenance audit](../../research/2026-10-03-retained-skill-provenance.md)).
+Fork-created skill with no upstream equivalent. It absorbed the earlier `scriptbook` skill, added in commit `4456e95`; its steps now live in [SCRIPTS.md](../../../skills/productivity/memorize/references/SCRIPTS.md) (see the [provenance audit](../../research/2026-10-03-retained-skill-provenance.md)).
 
 ## What it does
 

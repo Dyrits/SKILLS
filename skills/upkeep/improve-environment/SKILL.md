@@ -59,8 +59,8 @@ Completion: the user has accepted or declined every candidate.
 Apply each accepted candidate in its home:
 
 - **A check or hook**: build it, run it against the current code to confirm it passes, and against the session's mistake when it can be reproduced to confirm it fails. When the repository has no hook mechanism at all, add one with the candidate: a versioned hooks directory that git's `core.hooksPath` points to.
-- **A navigation pointer, a code convention, or a project convention**: file it following [LESSONS.md](LESSONS.md), which says where written lessons live.
-- **A steering file edit or deletion**: follow [AGENT-INSTRUCTIONS.md](AGENT-INSTRUCTIONS.md).
+- **A navigation pointer, a code convention, or a project convention**: file it following [LESSONS.md](references/LESSONS.md), which says where written lessons live.
+- **A steering file edit or deletion**: follow [AGENT-INSTRUCTIONS.md](references/AGENT-INSTRUCTIONS.md).
 - **A tool or access change**: make it when it sits in the repository; otherwise give the user the exact change to make.
 
 When skill findings were set aside, list them for the user (the skill, the step, and what went wrong), so they can be reported to the skills repository.

@@ -76,7 +76,7 @@ checkout of that branch is accounted for.
   IDs and the destination-only commits, then offer the choice:
   1. **Rebase** (recommended): rebase the source branch in its own worktree
      onto the target branch (linked worktrees) or the fetched target commit
-     (separate clones), following [REBASE.md](REBASE.md). The source's commits
+     (separate clones), following [REBASE.md](references/REBASE.md). The source's commits
      replay on top of the target, so no destination commit is lost. Repeat
      steps 2 and 3 with the new tip: the update is now a fast-forward. If the
      rebase stops on a conflict question, relay it and make no update.

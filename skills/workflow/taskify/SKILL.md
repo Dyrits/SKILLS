@@ -11,7 +11,7 @@ Create tracker-neutral tasks that deliver coherent outcomes. A small batch may n
 
 ## Establish the source
 
-The project documents and their rules are in [PROJECT-DOCUMENTS.md](PROJECT-DOCUMENTS.md); its terms (authorized, obligation, lazy, pointer) apply throughout. Read the selected scope, applicable requirements and specifications, active working state, relevant code, domain vocabulary, and architectural decisions. Fetch the full body and comments of any referenced remote task.
+The project documents and their rules are in [PROJECT-DOCUMENTS.md](references/PROJECT-DOCUMENTS.md); its terms (authorized, obligation, lazy, pointer) apply throughout. Read the selected scope, applicable requirements and specifications, active working state, relevant code, domain vocabulary, and architectural decisions. Fetch the full body and comments of any referenced remote task.
 
 Read configured tracker and task-writing conventions when present; local drafting works without tracker setup. Ask the user about material missing scope.
 

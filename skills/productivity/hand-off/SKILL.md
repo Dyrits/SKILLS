@@ -6,7 +6,7 @@ metadata:
 argument-hint: "What will the next session be used for?"
 ---
 
-Write a handoff document so a fresh agent, in any harness and with no skill installed, can continue the work. Read [HANDOFF-FORMAT.md](HANDOFF-FORMAT.md) first and follow it exactly.
+Write a handoff document so a fresh agent, in any harness and with no skill installed, can continue the work. Read [HANDOFF-FORMAT.md](references/HANDOFF-FORMAT.md) first and follow it exactly.
 
 ## Steps
 

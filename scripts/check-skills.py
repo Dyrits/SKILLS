@@ -17,6 +17,9 @@ from urllib.parse import unquote
 # Skills called by name that ship outside this repository.
 EXTERNAL_SKILLS = {"skill-creator", "webapp-testing"}
 
+SKILL_ENTRIES = {"SKILL.md", "apm.yml", "agents", "scripts", "references", "assets", "evals"}
+REFERENCE_NAME = re.compile(r"^[A-Z0-9]+(?:-[A-Z0-9]+)*\.md$")
+ASSET_NAME = re.compile(r"^[a-z0-9]+(?:[-.][a-z0-9]+)*$")
 VERIFIED_PATTERN = re.compile(r"^Verified: (\d{4}-\d{2}-\d{2})", re.MULTILINE)
 STALE_AFTER_DAYS = 183
 # "Call the Skill tool with "a"" or "Call the Skill tool twice, for "a" and "b"": names quoted, escaped, or in backticks.
@@ -156,14 +159,28 @@ def check(repository):
         if not re.match(r"(Upstream|Source|Provenance|Fork-|Derived from upstream)", first):
             errors.append(f"{page.relative_to(root)}: missing top provenance note.")
 
-    # ROUTING.md carries a fallback copy of the policy's tiers; keep the two identical.
-    policy = root / "skills/setup/setup-delegation-policy/POLICY.md"
-    routing = root / "skills/workflow/divide-and-conquer/ROUTING.md"
+    # references/ROUTING.md carries a fallback copy of the policy's tiers; keep the two identical.
+    policy = root / "skills/setup/setup-delegation-policy/assets/policy.md"
+    routing = root / "skills/workflow/divide-and-conquer/references/ROUTING.md"
     if policy.exists() and routing.exists():
         tier_line = re.compile(r"^(?:- \*\*(?:Light|Balanced|Heavy|Frontier)\*\*|\| (?:Tier|Light|Balanced|Heavy|Frontier) ).*$",
                                re.MULTILINE)
         if tier_line.findall(policy.read_text()) != tier_line.findall(routing.read_text()):
-            errors.append("skills/workflow/divide-and-conquer/ROUTING.md: tiers differ from the delegation policy.")
+            errors.append("skills/workflow/divide-and-conquer/references/ROUTING.md: tiers differ from the delegation policy.")
+
+    # Skill layout follows the Agent Skills specification: support files sit in scripts/ (executed), references/
+    # (read, UPPERCASE names), or assets/ (templates and payloads copied elsewhere, kebab-case names).
+    for relative in skills:
+        folder = root / relative
+        for entry in folder.iterdir():
+            if entry.name not in SKILL_ENTRIES:
+                errors.append(f"{entry.relative_to(root)}: move it into scripts/, references/, or assets/.")
+        for entry in (folder / "references").glob("*"):
+            if not REFERENCE_NAME.match(entry.name):
+                errors.append(f"{entry.relative_to(root)}: reference names are UPPERCASE, such as GUIDE-NAME.md.")
+        for entry in (folder / "assets").glob("*"):
+            if not ASSET_NAME.match(entry.name):
+                errors.append(f"{entry.relative_to(root)}: asset names are kebab-case, such as asset-name.md.")
 
     for relative in plugin_paths - skills.keys():
         errors.append(f"{relative}: manifest target does not exist.")

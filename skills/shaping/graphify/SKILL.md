@@ -13,7 +13,7 @@ The destination might be a specification to hand off, a decision to settle befor
 
 ## Document and tracker contract
 
-The project documents and their rules are in [PROJECT-DOCUMENTS.md](PROJECT-DOCUMENTS.md); its terms (authorized, obligation, lazy, pointer) apply throughout, and requirements constrain the destination and every decision.
+The project documents and their rules are in [PROJECT-DOCUMENTS.md](references/PROJECT-DOCUMENTS.md); its terms (authorized, obligation, lazy, pointer) apply throughout, and requirements constrain the destination and every decision.
 
 Read the task tracker configuration that `AGENTS.md` points to for map storage, parent-child relationships, blocking, claims, and frontier queries. If it points to none, tell the user that charting needs the tracker configured (where the map and its tasks live, and how blocking is recorded), then stop.
 
@@ -83,9 +83,9 @@ Record the answer, rationale, and supporting evidence on resolution rather than 
 
 Each task is **HITL**, human in the loop, or **AFK**, agent-driven. A HITL task resolves only through live exchange with a human who speaks for themselves.
 
-- **Research, AFK.** Surface an external fact a decision depends on. A subagent researches it following [RESEARCH.md](RESEARCH.md) and links the findings.
-- **Prototype, HITL.** Raise discussion fidelity with a cheap artifact to react to. Build it following [PROTOTYPE.md](PROTOTYPE.md); link the artifact as an asset.
-- **Interview, HITL.** Resolve a decision through conversation, following the [interview method](INTERVIEW.md). When a term is fuzzy or disputed, name the conflict, test it with a concrete scenario, recommend a canonical term, and once the user agrees, write it to the glossary following [GLOSSARY-FORMAT.md](GLOSSARY-FORMAT.md).
+- **Research, AFK.** Surface an external fact a decision depends on. A subagent researches it following [RESEARCH.md](references/RESEARCH.md) and links the findings.
+- **Prototype, HITL.** Raise discussion fidelity with a cheap artifact to react to. Build it following [PROTOTYPE.md](references/PROTOTYPE.md); link the artifact as an asset.
+- **Interview, HITL.** Resolve a decision through conversation, following the [interview method](references/INTERVIEW.md). When a term is fuzzy or disputed, name the conflict, test it with a concrete scenario, recommend a canonical term, and once the user agrees, write it to the glossary following [GLOSSARY-FORMAT.md](references/GLOSSARY-FORMAT.md).
 - **Task, HITL or AFK.** Perform a prerequisite action that unblocks a decision, such as obtaining service access or moving data so its shape can be examined. The agent works alone where possible; otherwise it gives the human a precise checklist. The answer records what was done and resulting facts. Record credential locations, never secret values.
 
 ## Fog of war
@@ -103,7 +103,7 @@ Work beyond the destination belongs in **Out of scope**, not fog. It returns onl
 
 If an existing task turns out to be outside this effort, close it and add a gist, reason, and link under **Out of scope**. Keep it out of **Decisions so far**, which records the route taken.
 
-Record a candidate deferred to another effort in the backlog, following the backlog authority in [PROJECT-DOCUMENTS.md](PROJECT-DOCUMENTS.md). Out of scope here marks this effort's boundary; a project's records of rejected enhancement requests, when it keeps them, cover project-wide rejections.
+Record a candidate deferred to another effort in the backlog, following the backlog authority in [PROJECT-DOCUMENTS.md](references/PROJECT-DOCUMENTS.md). Out of scope here marks this effort's boundary; a project's records of rejected enhancement requests, when it keeps them, cover project-wide rejections.
 
 ## Invocation
 
@@ -113,11 +113,11 @@ Resolve no more than one decision task per session, except parallel research tas
 
 The user supplies a loose idea.
 
-1. **Name the destination.** Settle the destination and its scope following the [interview method](INTERVIEW.md).
+1. **Name the destination.** Settle the destination and its scope following the [interview method](references/INTERVIEW.md).
 2. **Map the frontier.** Refine breadth-first across the space instead of going deep on one question. If there is no fog and the journey fits one session, stop and ask how the user wants to proceed.
 3. **Create the map.** Fill Destination and Notes, leave Decisions-so-far empty, and sketch fog under Not yet specified. Use the configured local or remote operation.
 4. **Create sharp decision tasks.** Create children first, then wire blocking in a second pass once identities exist. Keep everything still vague in the fog.
-5. **Start research subagents.** For each research task, start a subagent that follows [RESEARCH.md](RESEARCH.md). Capture findings on a throwaway `research/<name>` branch with a context pointer from the task.
+5. **Start research subagents.** For each research task, start a subagent that follows [RESEARCH.md](references/RESEARCH.md). Capture findings on a throwaway `research/<name>` branch with a context pointer from the task.
 6. **Finish.** Charting fills one session; resolving decisions starts in the next. Update the backlog pointer and working state where useful. Offer the optional visual delivery below, then stop.
 
 ### Work through the map
@@ -126,7 +126,7 @@ The user supplies a map URL, identifier, or local path. Naming a decision task i
 
 1. Load the map, relevant requirements, and canonical specification without loading every task body.
 2. Use the named task, or choose the first frontier task in map order. Claim it before work.
-3. Resolve it. Fetch related task bodies only as needed. Use the skills or tools the Notes name. If unsure, follow the [interview method](INTERVIEW.md).
+3. Resolve it. Fetch related task bodies only as needed. Use the skills or tools the Notes name. If unsure, follow the [interview method](references/INTERVIEW.md).
 4. Record the answer, rationale, and evidence as a resolution comment or the configured local answer. Close or resolve the task, then append a titled context pointer to Decisions-so-far. Update agreed living specifications and remove settled proposals from the draft without copying whole task bodies.
 5. Create newly sharp tasks and wire their blockers. Clear graduated fog. Close tasks beyond the destination and record them under Out of scope. Update invalidated tasks; ask before deleting historical remote records.
 6. Update working state and the changelog. Offer the optional visual delivery below, then stop after this decision, leaving the next frontier visible.
@@ -135,6 +135,6 @@ Expect other sessions to update the map concurrently. Re-read relevant claim and
 
 ### Optional visual delivery
 
-At the end of either path, ask once whether the user wants a visual representation of the decision graph. If they already requested one, proceed without asking again. If they accept or already requested it, draw it following [ILLUSTRATE.md](ILLUSTRATE.md).
+At the end of either path, ask once whether the user wants a visual representation of the decision graph. If they already requested one, proceed without asking again. If they accept or already requested it, draw it following [ILLUSTRATE.md](references/ILLUSTRATE.md).
 
 Supply actual task titles, recorded dependencies, resolution state, and evidence pointers from the authoritative graph. Show unresolved, not-yet-sharp questions separately from task nodes. Draw only recorded edges. The visual is a derived explanation; the tracker stays the source of truth. Choose the smallest useful inline or HTML view.
