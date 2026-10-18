@@ -70,7 +70,7 @@ The upstream's comparison page agrees with this reading. It says combining packs
 | `code-simplification` | Covered | Overlaps the harness `simplify` skill and the smell baseline in `review-and-refactor`. |
 | `security-and-hardening` | Not here | The harness has `security-review`. Nothing in this repository handles user input. |
 | `performance-optimization` | Not here | No runtime. |
-| `git-workflow-and-versioning` | Covered | `rebase`, `work-in-tree`, `sync-tree`, `draft-merge-request`, `setup-git-guardrails`. One conflict noted below. |
+| `git-workflow-and-versioning` | Covered | `rebase`, `work-in-tree`, `sync-tree`, `setup-git-guardrails`. One conflict noted below. |
 | `ci-cd-and-automation` | Port | The idea, not the skill: this repository has no automated gate (recommendation 3). |
 | `deprecation-and-migration` | Not here | About retiring software APIs. Skill removal is already enforced by `check-skills.py`, and your standing rule is that skills carry no migration logic. |
 | `documentation-and-adrs` | Covered | `document` and `model-domain`. |
