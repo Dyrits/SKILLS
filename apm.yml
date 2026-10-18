@@ -117,7 +117,7 @@ marketplace:
       description: "File a lesson in the home the next agent will read, and recall saved scripts and lessons before redoing work."
     - name: optimize-process
       source: ./skills/productivity/optimize-process
-      description: "Analyze and improve a recurring work process when the user reports delays, excessive steps, rework, or handoff friction."
+      description: "Estimate what a change to a recurring work process would save, counting agent runtime, human attention, and waiting separately, without invented figures."
     - name: publish-message
       source: ./skills/productivity/publish-message
       description: "Publish an established conclusion or review summary to a connected service (code host, tracker, chat, documentation, email) in its conventions."

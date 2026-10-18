@@ -77,7 +77,21 @@ and the original checkout's files and target ref remain unchanged.
 
 ## 4. Leave the return route
 
-Report a handoff with these verified fields:
+Record the return destination in the task checkout's own Git directory, so it
+outlives this conversation without entering the history. Write
+`"$(git -C <worktree-path> rev-parse --absolute-git-dir)/return-destination"`
+with one verified `key=value` per line:
+
+```text
+repository=<absolute path of the original checkout>
+branch=<target branch>
+base=<base commit>
+task-branch=<task branch>
+```
+
+For a linked worktree this directory is private to the worktree and goes away
+with it. When the file already exists, update it rather than writing a second.
+Then report a handoff with these verified fields:
 
 - Task checkout path and branch.
 - Original repository or checkout path.
@@ -86,5 +100,6 @@ Report a handoff with these verified fields:
 - Uncommitted task changes, if any, and validation results.
 
 These fields are everything needed to bring the committed work back to the
-target branch later. Keep the worktree for review and further work; syncing,
+target branch later; the `return-destination` file keeps the first four for a
+later session. Keep the worktree for review and further work; syncing,
 upstream publication, and worktree removal require separate requests.

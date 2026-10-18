@@ -34,8 +34,12 @@ named `local` is a candidate, not proof of identity. Use filesystem destinations
 only; leave network remotes untouched. Resolve a backlink's push URL to a
 verified local path; stop for multiple or uncertain push destinations.
 
-Use the explicit target, or the target recorded when the worktree was created
-(in the invocation or the session's handoff), verifying it against live Git state. Otherwise default to the source branch's name only when it
+Use the explicit target, or the target recorded when the worktree was created:
+the `return-destination` file in the source's Git directory
+(`"$(git rev-parse --absolute-git-dir)/return-destination"`, `key=value` lines
+for `repository`, `branch`, `base`, and `task-branch`), or the invocation or the
+session's handoff. Treat the record as a candidate and verify each field against
+live Git state; an explicit target from the user wins over it. Otherwise default to the source branch's name only when it
 identifies the corresponding branch unambiguously. If a temporary branch needs
 to land on a different branch, or multiple destinations are plausible, ask for
 the target repository and branch. Respect the harness's workspace permissions:

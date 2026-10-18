@@ -162,7 +162,7 @@ The manifest is the source of truth for this list; it holds every skill in the r
 - [publish-message](./skills/productivity/publish-message/SKILL.md): Publish established conclusions to any connected service after approval of exact text and destination.
 - [hand-off](./skills/productivity/hand-off/SKILL.md): Save a versioned handoff with pointers to authoritative artifacts.
 - [illustrate](./skills/productivity/illustrate/SKILL.md): Explain a topic with the smallest useful visual.
-- [optimize-process](./skills/productivity/optimize-process/SKILL.md): Improve a recurring process using observed friction.
+- [optimize-process](./skills/productivity/optimize-process/SKILL.md): Estimate what a change to a recurring process would save, without invented figures.
 - [walk-through](./skills/productivity/walk-through/SKILL.md): Generate a guided script for steps only a human can perform.
 - [write-for-agents](./skills/productivity/write-for-agents/SKILL.md): Write predictable agent instructions with clear completion criteria.
 - [unslop](./skills/productivity/unslop/SKILL.md): Remove filler and recurring AI writing patterns.

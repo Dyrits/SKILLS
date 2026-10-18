@@ -1096,7 +1096,7 @@ const DATA = {
    "argumentHint": "",
    "bucket": "productivity",
    "calls": [],
-   "description": "Analyze and improve a recurring work process when the user reports delays, excessive steps, rework, or handoff friction. Map the current flow, recommend changes, and estimate practical impact for humans and agents.",
+   "description": "Estimate what a change to a recurring work process would save, counting agent runtime, human attention, and waiting separately, without invented figures. Use when the user asks how much a process change would save, or wants a recurring process streamlined with its impact estimated.",
    "fits": [
     "optimize-process is a standalone productivity skill. A recommendation that calls for a software change can enter planned development at specify, or a small approved living-code batch through iterate."
    ],
@@ -1115,9 +1115,9 @@ const DATA = {
    "requires": [],
    "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/productivity/optimize-process/SKILL.md",
    "summary": [
-    "optimize-process maps a recurring process, finds the work and waiting that slow it down, and recommends a sequence to try on the next cycle. Its impact comparison accounts for work an agent can complete in hours or minutes, plus the human time needed to set it up, make decisions, and review the result."
+    "optimize-process estimates what a change to a recurring process would save. It traces one cycle before and after the change (proposing one when you have none yet), then compares them with agent runtime, human attention, and waiting kept apart, and suggests a small trial to check the estimate. Its estimate counts work an agent can complete in hours or minutes, plus the human time needed to set it up, make decisions, and review the result."
    ],
-   "tagline": "Map and improve a recurring process, including agent work and human review in practical impact estimates."
+   "tagline": "Estimate what a change to a recurring process would save, counting agent runtime, human attention, and waiting separately."
   },
   "prioritize": {
    "argumentHint": "",

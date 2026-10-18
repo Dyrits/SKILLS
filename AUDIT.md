@@ -6,6 +6,16 @@ Method: four read-only reviewers (one per group of buckets) each read every `SKI
 
 Criteria: usefulness (does it supply a capability, state, or action the agent lacks), description (model-facing, specific, no trigger collisions), standalone (no skill calls, no next-skill hand-offs, artifacts found through `AGENTS.md`), portability (no rule only this repository follows), correctness, writing rules, safety, and consistency of manifest, documentation page, and README.
 
+## Status
+
+Updated 2026-10-18. Priorities 1 to 6 and the smaller defects were fixed in commit `0b019dd` (the `apm.yml` item was no defect). The user then decided:
+
+- `optimize-process` stays, trimmed to its impact-estimating rules; `re-explain` stays as it is.
+- `improve-skills` and `improve-environment` stay separate: different audiences and triggers, and the drift check now guards their shared files.
+- `work-in-tree` and `sync-tree` stay separate; `work-in-tree` now records the return destination in the worktree's Git directory, and `sync-tree` reads it.
+
+Still open: trimming `illustrate` and `unslop`, the `iterate` router question, `research`, the generic "Trim" verdicts, and the three differently named copies of the conflict procedure.
+
 ## Verdicts
 
 | Skill | Bucket | Usefulness | Verdict |

@@ -20,7 +20,7 @@ Work moving across session boundaries.
 Recurring routines and one-off procedures, designed, improved, or walked through.
 
 - **[design-workflow](./design-workflow/SKILL.md)**: Turn recurring work loops into implementable workflow specifications.
-- **[optimize-process](./optimize-process/SKILL.md)**: Map and improve a recurring process, including agent work and human review in practical impact estimates.
+- **[optimize-process](./optimize-process/SKILL.md)**: Estimate what a change to a recurring process would save, counting agent runtime, human attention, and waiting separately.
 - **[walk-through](./walk-through/SKILL.md)**: Generate a guided script (a wizard) for steps only a human can perform.
 
 ## Parallel work

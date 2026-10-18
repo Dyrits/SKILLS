@@ -2,11 +2,11 @@ Fork-specific skill, added in commit `26542d8` to improve recurring human and ag
 
 ## What it does
 
-`optimize-process` maps a recurring process, finds the work and waiting that slow it down, and recommends a sequence to try on the next cycle. Its impact comparison accounts for work an agent can complete in hours or minutes, plus the human time needed to set it up, make decisions, and review the result.
+`optimize-process` estimates what a change to a recurring process would save. It traces one cycle before and after the change (proposing one when you have none yet), then compares them with agent runtime, human attention, and waiting kept apart, and suggests a small trial to check the estimate. Its estimate counts work an agent can complete in hours or minutes, plus the human time needed to set it up, make decisions, and review the result.
 
 ## When to reach for it
 
-Type `/optimize-process`, or an agent can reach for it when you describe a recurring workflow with delays, rework, or too many handoffs. It suits a process you can trace from a trigger to a finished result. For a specific broken behavior in software, use [debug](../upkeep/debug.md). For a change to one codebase's module structure, use [improve-codebase-architecture](../upkeep/improve-codebase-architecture.md).
+Type `/optimize-process`, or an agent can reach for it when you ask what a process change would save, or want a recurring workflow streamlined with its impact estimated. It suits a process you can trace from a trigger to a finished result. For a specific broken behavior in software, use [debug](../upkeep/debug.md). For a change to one codebase's module structure, use [improve-codebase-architecture](../upkeep/improve-codebase-architecture.md).
 
 ## Time in the loop
 
@@ -19,6 +19,10 @@ When timing data is absent, the skill names the likely direction of change and t
 **Do I need detailed metrics before using it?**
 
 No. One recent cycle and its steps are enough to start. The skill marks uncertain parts and only uses numbers when their assumptions are defensible.
+
+**Why is it mostly about estimates?**
+
+An agent can already map a process and suggest improvements unaided. What it gets wrong without guidance is the impact: invented percentages, and agent work priced as if a human did it over weeks. The skill keeps only the rules that prevent that.
 
 **Will it remove approvals or reviews?**
 

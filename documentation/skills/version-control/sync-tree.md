@@ -35,6 +35,10 @@ Updates compare against the exact target commit read directly from the destinati
 
 It stops. A target checkout with staged, unstaged, or untracked changes, or an unfinished operation, is never modified.
 
+**How does it know where the work goes in a new session?**
+
+It reads the `return-destination` file that [work-in-tree](work-in-tree.md) leaves in the worktree's Git directory, then checks every field against live Git state before using it. A target you name yourself wins over the file. Without the file, it works the destination out from Git and asks when that is ambiguous.
+
 **What if the histories diverged?**
 
 The target branch moved on while you worked. `sync-tree` shows both tips and offers three moves: rebase the source branch onto the target and then fast-forward (recommended, no commit is lost), replace the target branch (only on explicit approval, because the destination-only commits are dropped), or stop. A conflict during the rebase is relayed to you as a question, and nothing is updated until it is answered.
