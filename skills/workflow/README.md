@@ -11,5 +11,6 @@ The idea-to-ship flow, with shared documents for planned and just-in-time develo
 - [divide-and-conquer](./divide-and-conquer/SKILL.md): Route each task to the least expensive capable agent, build a task graph in parallel on one integration branch, then review once.
 - [test-first](./test-first/SKILL.md): Establish behavior through red/green, one vertical slice at a time.
 - [review-and-refactor](./review-and-refactor/SKILL.md): Review Standards and Specifications independently, apply supported refactors, and verify them.
+- [verify](./verify/SKILL.md): Prove the work behaves as intended by any available means, each check shown able to fail, in a reproducible proof.
 - [iterate](./iterate/SKILL.md): Develop the living application just in time, maintaining backlog, working state, and root changelog.
 - [address-feedback](./address-feedback/SKILL.md): Assess review feedback from any source, implement approved changes, and deliver approved replies.

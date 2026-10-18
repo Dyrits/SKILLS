@@ -328,10 +328,6 @@ const DATA = {
    "label": "Saved lessons",
    "path": ".agents/scripts/, AGENTS.md, harness memory"
   },
-  "merge-request-body": {
-   "description": "Summary visual, before and after evidence, and merge danger.",
-   "label": "Merge request body"
-  },
   "polished-prose": {
    "description": "The same writing without filler and AI tells.",
    "label": "Polished prose"
@@ -339,6 +335,11 @@ const DATA = {
   "process-recommendation": {
    "description": "A mapped process, its delays, and a sequence to try next cycle.",
    "label": "Process recommendation"
+  },
+  "proof": {
+   "description": "Per-claim evidence that the work behaves as intended, each check shown able to fail and independently reproduced.",
+   "label": "Proof",
+   "path": "documentation/verification/"
   },
   "prototype-verdict": {
    "description": "An isolated experiment and the evidence it produced for one design question.",
@@ -457,6 +458,7 @@ const DATA = {
     "divide-and-conquer",
     "test-first",
     "review-and-refactor",
+    "verify",
     "iterate",
     "address-feedback"
    ],
@@ -498,7 +500,6 @@ const DATA = {
     "work-in-tree",
     "sync-tree",
     "rebase",
-    "draft-merge-request",
     "resolve-merge-conflicts"
    ],
    "title": "Version control"
@@ -747,36 +748,6 @@ const DATA = {
    ],
    "tagline": "Route each task to the least expensive capable agent, build a task graph in parallel on one integration branch, then review once."
   },
-  "draft-merge-request": {
-   "argumentHint": "",
-   "bucket": "version-control",
-   "calls": [],
-   "description": "Write the body of a pull request or merge request: a summary visual, before/after evidence, and the merge danger. Use when opening one, when writing or rewriting its description, or when a reviewer needs to see what a change does without reading the diff.",
-   "fits": [
-    "draft-merge-request is a chain step after review-and-refactor, and a standalone format reference when rewriting a description. Its evidence must reflect agreed checks, actual results, and any pending human acceptance rather than declaring delivery prematurely. address-feedback continues when reviewers reply. improve-skills reviews how the skills behaved in the session."
-   ],
-   "handovers": [],
-   "inputs": [
-    "code",
-    "specification",
-    "tasks",
-    "verification"
-   ],
-   "next": [
-    "address-feedback"
-   ],
-   "outputs": [
-    "merge-request-body"
-   ],
-   "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/version-control/draft-merge-request.md",
-   "requires": [],
-   "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/version-control/draft-merge-request/SKILL.md",
-   "summary": [
-    "draft-merge-request writes the body of a pull request, or a merge request on GitLab, in a fixed three-part shape: a summary visual, evidence as a before/after pair, and the merge danger. It is a format reference, not a workflow: it does not open the request, push the branch, or review anything.",
-    "It explains the reviewer's missing information rather than narrating the diff. The reason for a change comes from its authoritative agreement: a task, living specification, applicable requirements, or approved working-state scope. The diff determines which visual shows the change; it does not establish that every obligation was met."
-   ],
-   "tagline": "Write a request body with a summary visual, before/after evidence, and merge danger."
-  },
   "engineer": {
    "argumentHint": "",
    "bucket": "workflow",
@@ -872,7 +843,7 @@ const DATA = {
    "calls": [],
    "description": "Explain the current topic visually. Use when the user asks to see how something works, compare states or options, or understand code structure or flow.",
    "fits": [
-    "illustrate is a reach-for-it-anytime standalone for understanding a topic visually. draft-merge-request also uses it to shape the summary visual in a request body."
+    "illustrate is a reach-for-it-anytime standalone for understanding a topic visually."
    ],
    "handovers": [],
    "inputs": [
@@ -1212,7 +1183,7 @@ const DATA = {
    "calls": [],
    "description": "Publish an established conclusion or review summary to a connected service (code host, tracker, chat, documentation, email) in its conventions. Use when the user asks to post, publish, or send findings to one.",
    "fits": [
-    "This is a standalone publication step after review-and-refactor or any other work that produced a conclusion. address-feedback covers replies to feedback you received, and draft-merge-request covers request descriptions."
+    "This is a standalone publication step after review-and-refactor or any other work that produced a conclusion. address-feedback covers replies to feedback you received."
    ],
    "handovers": [],
    "inputs": [
@@ -1355,7 +1326,7 @@ const DATA = {
     "conventions"
    ],
    "next": [
-    "draft-merge-request",
+    "verify",
     "test-first"
    ],
    "outputs": [
@@ -1659,6 +1630,36 @@ const DATA = {
     "/unslop edits writing in any language to remove patterns that make it sound AI-generated. It preserves the meaning and intended tone, then rereads the revision once for patterns that remain."
    ],
    "tagline": "Edit prose to remove filler and recurring AI writing patterns."
+  },
+  "verify": {
+   "argumentHint": "",
+   "bucket": "workflow",
+   "calls": [],
+   "description": "Prove that implemented work behaves as intended, by any means available (the running application, tests, browser, API, or command-line checks), and record a reproducible proof in the repository. Use when the user asks to verify or prove that a change works, or wants evidence before merging or shipping.",
+   "fits": [
+    "A standalone check after implement, iterate, or review-and-refactor, whenever you need evidence that the result works rather than a report that tests passed."
+   ],
+   "handovers": [],
+   "inputs": [
+    "code",
+    "specification",
+    "tasks",
+    "work-in-progress",
+    "verification"
+   ],
+   "next": [],
+   "outputs": [
+    "proof"
+   ],
+   "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/workflow/verify.md",
+   "requires": [],
+   "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/workflow/verify/SKILL.md",
+   "summary": [
+    "verify proves that implemented work behaves as intended and leaves the proof in the repository. It turns the work into claims, one observable behavior each, and gathers evidence for every claim by whatever means the environment offers: driving the running application, sending real requests, running commands, or writing a test when nothing else reaches the behavior.",
+    "Its defining constraint is that a passing check is not enough. Each check must also be shown able to fail, either by running it against the starting commit or by deliberately breaking the code it covers. A fresh agent that never saw the implementation then reruns the proof from the file alone. A claim that skips either step stays unproven.",
+    "It observes and never fixes. A failed claim is reported, not repaired."
+   ],
+   "tagline": "Prove the work behaves as intended by any available means, each check shown able to fail, in a reproducible proof."
   },
   "walk-through": {
    "argumentHint": "",

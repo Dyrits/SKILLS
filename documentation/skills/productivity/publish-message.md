@@ -8,7 +8,7 @@ Nothing is posted without that approval, and any revision brings the changed set
 
 ## When to reach for it
 
-Type `/publish-message`, optionally with where to post and what to say; an agent or another skill can also reach for it, but it always waits for approval of the exact text and destination. Use it after you have reached findings or a decision and want them shared. To answer someone else's feedback point by point, use [address-feedback](../workflow/address-feedback.md). To write a pull request description, use [draft-merge-request](../version-control/draft-merge-request.md).
+Type `/publish-message`, optionally with where to post and what to say; an agent or another skill can also reach for it, but it always waits for approval of the exact text and destination. Use it after you have reached findings or a decision and want them shared. To answer someone else's feedback point by point, use [address-feedback](../workflow/address-feedback.md).
 
 ## Prerequisites
 
@@ -57,4 +57,4 @@ The destination. A tracker file only covers the service it names, so a GitHub tr
 
 ## Where it fits
 
-This is a standalone publication step after [review-and-refactor](../workflow/review-and-refactor.md) or any other work that produced a conclusion. [address-feedback](../workflow/address-feedback.md) covers replies to feedback you received, and [draft-merge-request](../version-control/draft-merge-request.md) covers request descriptions.
+This is a standalone publication step after [review-and-refactor](../workflow/review-and-refactor.md) or any other work that produced a conclusion. [address-feedback](../workflow/address-feedback.md) covers replies to feedback you received.

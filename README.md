@@ -123,6 +123,7 @@ The manifest is the source of truth for this list; it holds every skill in the r
 - [divide-and-conquer](./skills/workflow/divide-and-conquer/SKILL.md): Route each task to the least expensive capable agent, build a task graph in parallel on one integration branch, then review once.
 - [test-first](./skills/workflow/test-first/SKILL.md): Establish behavior through red/green, one vertical slice at a time.
 - [review-and-refactor](./skills/workflow/review-and-refactor/SKILL.md): Independently review Standards and Specifications, refactor, and verify.
+- [verify](./skills/workflow/verify/SKILL.md): Prove the work behaves as intended by any available means, each check shown able to fail, in a reproducible proof.
 - [iterate](./skills/workflow/iterate/SKILL.md): Develop the living application just in time, maintaining backlog, working state, and root changelog.
 - [address-feedback](./skills/workflow/address-feedback/SKILL.md): Assess review feedback from any source, implement approved changes, and deliver approved replies.
 
@@ -149,7 +150,6 @@ The manifest is the source of truth for this list; it holds every skill in the r
 - [work-in-tree](./skills/version-control/work-in-tree/SKILL.md): Carry out work in an isolated checkout with a verified return destination.
 - [sync-tree](./skills/version-control/sync-tree/SKILL.md): Transfer committed work to the verified corresponding local branch.
 - [rebase](./skills/version-control/rebase/SKILL.md): Rebase local branches with recovery records, checks, and separately approved publication.
-- [draft-merge-request](./skills/version-control/draft-merge-request/SKILL.md): Write a request body with a summary visual, before/after evidence, and merge danger.
 - [resolve-merge-conflicts](./skills/version-control/resolve-merge-conflicts/SKILL.md): Resolve conflicts by intent and finish the operation.
 
 ### Productivity

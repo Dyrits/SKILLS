@@ -1,6 +1,6 @@
 # Pull or merge request body
 
-Adapted from the `draft-merge-request` skill.
+Adapted from the upstream `pr` skill.
 
 Use this template for the body:
 

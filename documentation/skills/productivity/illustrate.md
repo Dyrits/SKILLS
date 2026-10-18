@@ -42,5 +42,4 @@ The agent opens the file when its tools support that and gives you a file link.
 ## Where it fits
 
 `illustrate` is a reach-for-it-anytime standalone for understanding a topic visually.
-[draft-merge-request](../version-control/draft-merge-request.md) also uses it to shape the summary visual in a request body.
 

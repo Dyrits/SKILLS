@@ -14,7 +14,6 @@ Type `/rebase fix/a feat/b --onto origin/develop`, or describe the branches and 
 | --- | --- |
 | Bring several local branches up to date with a target, then publish them | This one |
 | A merge or rebase you started yourself has stopped on conflicts | [resolve-merge-conflicts](resolve-merge-conflicts.md) |
-| The branch is ready and needs a description | [draft-merge-request](draft-merge-request.md) |
 
 `--onto` names the target branch, not Git's three-argument transplant. `--remote` names the publication remote when a branch has no upstream or an ambiguous one.
 

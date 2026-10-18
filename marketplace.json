@@ -162,12 +162,6 @@
       "source": "./skills/upkeep/triage"
     },
     {
-      "name": "draft-merge-request",
-      "description": "Write the body of a pull request or merge request: a summary visual, before/after evidence, and the merge danger.",
-      "version": "0.2.0",
-      "source": "./skills/version-control/draft-merge-request"
-    },
-    {
       "name": "rebase",
       "description": "Rebase local branches in place onto one target, resolve conflicts, run checks, then push with force-with-lease on approval.",
       "version": "0.2.0",
@@ -256,6 +250,12 @@
       "description": "Build features or fix bugs test-first through the red-green loop of test-driven development (TDD), leaving refactoring to a later review.",
       "version": "0.2.0",
       "source": "./skills/workflow/test-first"
+    },
+    {
+      "name": "verify",
+      "description": "Prove that implemented work behaves as intended, by any means available, and record a reproducible proof in the repository.",
+      "version": "0.2.0",
+      "source": "./skills/workflow/verify"
     }
   ]
 }

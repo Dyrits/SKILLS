@@ -27,7 +27,6 @@
     "./skills/workflow/engineer",
     "./skills/workflow/taskify",
     "./skills/workflow/test-first",
-    "./skills/version-control/draft-merge-request",
     "./skills/getting-started/setup",
     "./skills/productivity/hand-off",
     "./skills/productivity/optimize-process",
@@ -58,6 +57,7 @@
     "./skills/version-control/sync-tree",
     "./skills/version-control/work-in-tree",
     "./skills/workflow/address-feedback",
-    "./skills/workflow/iterate"
+    "./skills/workflow/iterate",
+    "./skills/workflow/verify"
   ]
 }
