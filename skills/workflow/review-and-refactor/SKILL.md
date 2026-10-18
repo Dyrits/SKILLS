@@ -1,9 +1,11 @@
 ---
 name: review-and-refactor
-description: "Review and refactor changes since a fixed point against repository standards and the originating behavior agreement. Runs independent Standards and Specifications reviews, applies supported refactors, and reuses the reviewers to verify them. Use for the refactor phase after red/green implementation, or when asked to review and refactor a branch, pull request, or work in progress."
+description: "Review and refactor changes since a fixed point against repository standards and the originating behavior agreement. Runs independent Standards and Specifications reviews, applies supported refactors, and reuses the reviewers to verify them. Use for the refactor phase after red/green implementation, or when the user asks to review a branch, pull request, or work in progress against its behavior agreement and refactor it."
 metadata:
   forks: "mattpocock/skills/skills/engineering/code-review"
 ---
+
+# Review and refactor
 
 This is the **refactor** phase of red-green-refactor.
 Implementation establishes the required behavior with passing tests; this skill then checks standards and compliance with specifications and applies supported refactors while preserving behavior.

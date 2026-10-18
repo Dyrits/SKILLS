@@ -14,7 +14,7 @@ Use it when the agent invents jargon, stacks acronyms, or explains a decision wi
 
 "Be concise" can produce clipped sentences that are shorter and harder to understand. **Re-explain** asks for the context you need as well as simpler wording. What lost you may span several paragraphs, so the skill lets the agent go back far enough to restore the premise.
 
-The glossary supplies the nouns. ASD-STE100 Simplified Technical English supplies the register when the answer is in English. Other languages keep the same plain-technical intent in their own idiom.
+The glossary supplies the nouns. Short, plain sentences supply the register; when you or the project's steering file name a controlled language, such as ASD-STE100 Simplified Technical English, the answer follows it. Other languages keep the same plain-technical intent in their own idiom.
 
 ## Common questions
 

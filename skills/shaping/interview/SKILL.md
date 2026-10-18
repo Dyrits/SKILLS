@@ -1,6 +1,6 @@
 ---
 name: interview
-description: Interview the user in rounds of questions, each with a recommended answer, until a plan, decision, or idea is settled. Use when unresolved choices need shared understanding, or when the user wants their thinking stress-tested or asks to be grilled.
+description: Interview the user in rounds of questions, each with a recommended answer, until a plan, decision, or idea is settled. Use when the user asks to be interviewed or grilled, or wants a plan or idea stress-tested before acting on it.
 metadata:
   forks: "mattpocock/skills/skills/productivity/grilling mattpocock/skills/skills/productivity/grill-me"
 ---

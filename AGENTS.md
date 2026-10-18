@@ -11,6 +11,8 @@ Every skill has an entry in `.claude-plugin/plugin.json`'s `skills` array (the C
 
 The skills page at the root `index.html`, one small graph per skill, is generated: each skill also needs an entry in `scripts/skill-graph/flow.json` (the artifacts it reads and writes, and its usual next skills). Its section, order, and one-liner come from the bucket `README.md`, its text from the documentation page, and its calls and hand-overs from the skill's Skill tool calls and "tell the user to run" lines. Change `flow.json` or `scripts/skill-graph/template.html`, never `index.html`, then run `python3 scripts/build-skill-graph.py`; `check-skills.py` fails on a missing entry or a stale map.
 
+Verification proofs (claims, the checks that prove them, and how to rerun them) live in `documentation/verification/`; read one before changing the behavior it proves.
+
 Repository-maintenance guidance lives in `documentation/maintenance/`; `.agents/` holds agent tools, installed skills, and session state.
 
 `documentation/` serves humans and agents. `.agents/` and `AGENTS.md` serve agents only; `README.md` serves primarily humans. When creating shared documentation, add a concise discovery line to both `AGENTS.md` and the appropriate `README.md`. Keep agent-only records discoverable from `AGENTS.md` without adding their internal details to the human README.
@@ -23,7 +25,7 @@ To resume the autonomy migration, read the [current handoff](./.agents/handoffs/
 
 To resume the swarm skill, read the [current handoff](./.agents/handoffs/2026-10-08-1116-swarm-skill.md). Handoffs are shared and committed.
 
-To resume the skill collection upkeep (the `verify` skill, the fresh audit, and the setup follow-ups), read the [current handoff](./.agents/handoffs/2026-10-18-1130-verify-skill-and-fresh-audit.md). Handoffs are shared and committed.
+To resume the skill collection upkeep (the audit fixes, the decisions they left open, and the setup follow-ups), read the [current handoff](./.agents/handoffs/2026-10-18-1144-audit-fixes.md). Handoffs are shared and committed.
 
 Install commands are copied verbatim from [standard installation wording](./documentation/maintenance/standard-installation-wording.md). `.claude-plugin/marketplace.json` makes the repository its own single-plugin marketplace (a fallback the installation wording guide explains, not the documented route). Run `claude plugin validate . --strict` after touching either manifest. This repository's decisions live in `documentation/architecture-decision-record/`.
 

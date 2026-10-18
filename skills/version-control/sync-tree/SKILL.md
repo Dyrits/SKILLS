@@ -11,9 +11,8 @@ Transfer committed work to its corresponding local branch. Preserve the branch
 name unless the user names a different target. Leave upstream publication,
 new merge commits, and code changes to separate requests.
 
-This skill works with linked Git worktrees and isolated local clones. The
-`delta-action` metadata also makes it eligible for Delta's Land Changes button;
-the workflow itself uses Git, not application-specific tools.
+This skill works with linked Git worktrees and isolated local clones, using Git
+alone.
 
 ## 1. Identify the source and target
 
@@ -35,8 +34,8 @@ named `local` is a candidate, not proof of identity. Use filesystem destinations
 only; leave network remotes untouched. Resolve a backlink's push URL to a
 verified local path; stop for multiple or uncertain push destinations.
 
-Use the explicit target or the handoff from `work-in-tree`, verifying it against
-live Git state. Otherwise default to the source branch's name only when it
+Use the explicit target, or the target recorded when the worktree was created
+(in the invocation or the session's handoff), verifying it against live Git state. Otherwise default to the source branch's name only when it
 identifies the corresponding branch unambiguously. If a temporary branch needs
 to land on a different branch, or multiple destinations are plausible, ask for
 the target repository and branch. Respect the harness's workspace permissions:
@@ -122,7 +121,7 @@ and the next move the user can take:
 | Source has uncommitted changes, is detached, or has an unfinished operation | Commit or finish in the source worktree, then rerun |
 | Target checkout has changes or an unfinished operation | Commit or stash there (the user's own work), or land on a different target branch, then rerun |
 | A replacement needs the target branch unchecked out | The user switches that checkout to another branch, then rerun |
-| Rebase conflict that needs the user's decision | Answer the relayed question; `rebase` resumes from that commit |
+| Rebase conflict that needs the user's decision | Answer the relayed question; the rebase in [rebase.md](references/rebase.md) resumes from that commit |
 | Git rejects the update, or the target moved meanwhile | Inspect again from step 2 with the new commits; the diverged choice above applies |
 
 Completion: the update succeeded or stopped with a specific reason and a next

@@ -1,3 +1,3 @@
 name: verify
 version: 0.2.0
-description: "Prove that implemented work behaves as intended, by any means available, and record a reproducible proof in the repository."
+description: "Prove that implemented work behaves as intended, by any means available (the running application, tests, browser, API, or command-line checks), and record a reproducible proof in the repository."

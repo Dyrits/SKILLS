@@ -16,7 +16,7 @@ Local task bodies live in the capability's task files, and its specifications ar
 
 ## Ticket writing convention
 
-- **Source:** Built-in `taskify`
+- **Source:** Default task format
 - **Applies to:** Local task bodies
 - **Rules:** Use the built-in task template unless the user selects another configured convention for the run.
 
@@ -30,10 +30,10 @@ Read the referenced task body.
 
 ## Wayfinding operations
 
-Used by `/graphify`. The map is a file with one child file per decision task, not an implementation plan.
+For a decision graph (a map of open decisions worked through over several sessions). The map is a file with one child file per decision task, not an implementation plan.
 
 - **Map**: `documentation/capabilities/<capability>/map.md` (the Notes / Decisions-so-far / Fog body). Reference it from the backlog when it represents a candidate effort.
-- **Child task**: a capability task file, with the question in the body. A `Type:` line records the task type (`research`/`prototype`/`interview`/`task`); a `Progress:` line records `claimed`/`resolved`. `Progress:` is graphify's own line, kept separate from the `Status:` triage role.
+- **Child task**: a capability task file, with the question in the body. A `Type:` line records the task type (`research`/`prototype`/`interview`/`task`); a `Progress:` line records `claimed`/`resolved`. `Progress:` is the decision graph's own line, kept separate from the `Status:` triage role.
 - **Blocking**: a `Blocked by: NN, NN` line near the top. A task is unblocked when every file it lists is `Progress: resolved`.
 - **Frontier**: scan the capability's task files for files that are unresolved, unblocked, and carry no `Progress: claimed`; first by number wins.
 - **Claim**: set `Progress: claimed` and save before any work.

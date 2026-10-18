@@ -103,6 +103,8 @@ The decisions behind the skills are recorded in [architecture decision records](
 - One `setup` skill configures a repository, installing tools through their own command-line installers from a dated catalogue ([0007](./documentation/architecture-decision-record/0007-merge-project-setup-into-one-skill.md)).
 - Tasks can be local Markdown or native remote issues, and skills are grouped by purpose. Every skill ships in the plugin.
 
+Proofs that changes to this repository work, with the commands to rerun them, are in [documentation/verification](./documentation/verification/).
+
 ## Plugin skills
 
 The manifest is the source of truth for this list; it holds every skill in the repository. Every skill can be run by you or reached by an agent, and a skill can call any other skill.

@@ -20,13 +20,13 @@ Infer the repository from `git remote -v`; `glab` does this automatically when r
 
 ## Ticket writing convention
 
-- **Source:** Built-in `taskify`
+- **Source:** Default task format
 - **Applies to:** Local task bodies and published tasks
 - **Rules:** Use the built-in task template unless the user selects another configured convention for the run.
 
 ## Merge requests as a triage surface
 
-**MRs as a request surface: no.** _(Set to `yes` if this repository treats external merge requests as feature requests; `/triage` reads this flag.)_
+**MRs as a request surface: no.** _(Set to `yes` if this repository treats external merge requests as feature requests; intake triage reads this flag.)_
 
 When set to `yes`, MRs run through the same labels and states as issues, using the `glab mr` equivalents:
 
@@ -46,7 +46,7 @@ Run `glab issue view <number> --comments`.
 
 ## Wayfinding operations
 
-Used by `/graphify`. The map is a single GitLab issue with child issues as decision tasks.
+For a decision graph (a map of open decisions worked through over several sessions). The map is a single GitLab issue with child issues as decision tasks.
 
 - **Map**: a single issue labelled `graphify:map`, holding the Notes / Decisions-so-far / Fog body. `glab issue create --label graphify:map`. (On GitLab tiers with native epics, an epic may hold the map instead; a labelled issue works everywhere.)
 - **Child task**: an issue carrying `Part of #<map>` at the top of its description and labels `graphify:<type>` (`research`/`prototype`/`interview`/`task`). Once claimed, the task is assigned to the driving developer.

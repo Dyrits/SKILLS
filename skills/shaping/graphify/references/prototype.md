@@ -2,7 +2,7 @@
 
 Adapted from the `prototype` skill.
 
-A prototype is **experimental code that answers a question**. The question decides the shape. Proceed only when the user requests or approves the scoped experiment, including during specify. Living iteration directly evolves the implementation; it does not require a prototype by default.
+A prototype is **experimental code that answers a question**. The question decides the shape. Proceed only when the user requests or approves the scoped experiment, including while settling specifications. Living iteration directly evolves the implementation; it does not require a prototype by default.
 
 The shared project documents and their rules are in [project-documents.md](project-documents.md). Record unresolved proposals separately from agreed behavior. Capture the question, verdict, evidence, and remaining acceptance in the feature's draft or specifications as appropriate, and in working state. Record completed agreements in the changelog, stating that the prototype's code still needs production validation.
 

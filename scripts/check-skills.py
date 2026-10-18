@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Check skill layout, invocation metadata, dependency paragraphs, documentation, local links, and the skill map.
+"""Check skill layout, invocation metadata, dependency paragraphs, bundled copies, documentation, local links, and the skill map.
 
 Usage: python3 scripts/check-skills.py [repository]
 Needs: Python 3 standard library. Reads files only.
@@ -179,6 +179,24 @@ def check(repository):
                 if not SUPPORT_NAME.match(entry.name):
                     errors.append(f"{entry.relative_to(root)}: support file names are lowercase kebab-case, "
                                   f"such as file-name.md.")
+
+    # Skills bundle local copies of shared support files so each runs installed alone. A copy keeps its
+    # original's file name, so every support file sharing a name across skills must stay byte-identical;
+    # a deliberate variant takes its own name.
+    copies = {}
+    for relative in skills:
+        for kind in ("scripts", "references", "assets"):
+            for entry in sorted((root / relative / kind).glob("*")):
+                if entry.is_file():
+                    copies.setdefault(f"{kind}/{entry.name}", []).append(entry)
+    for name, paths in sorted(copies.items()):
+        versions = {}
+        for path in paths:
+            versions.setdefault(path.read_bytes(), []).append(path.relative_to(root))
+        if len(versions) > 1:
+            groups = sorted(versions.values(), key=len, reverse=True)
+            listed = "; ".join(", ".join(str(path) for path in group) for group in groups)
+            errors.append(f"{name}: bundled copies differ ({listed}). Sync them, or rename the variant.")
 
     for relative in plugin_paths - skills.keys():
         errors.append(f"{relative}: manifest target does not exist.")

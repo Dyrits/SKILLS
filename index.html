@@ -493,7 +493,7 @@ const DATA = {
    "title": "Upkeep"
   },
   {
-   "blurb": "Branches, merge requests, and their history.",
+   "blurb": "Branches, worktrees, and their history.",
    "groups": {},
    "id": "version-control",
    "skills": [
@@ -544,7 +544,7 @@ const DATA = {
    "argumentHint": "Feedback source: PR, MR, issue, or ticket reference, a file path, or pasted text",
    "bucket": "workflow",
    "calls": [],
-   "description": "Assess review feedback from any source (pull or merge request, issue, ticket, document comments, pasted notes), propose dispositions, then implement and reply. Use when the user shares feedback to address or asks to handle review comments.",
+   "description": "Assess review feedback from any source (pull or merge request, issue, ticket, document comments, pasted notes), propose dispositions, then implement and reply. Use when the user shares review feedback to work through, or asks to handle and answer review comments.",
    "fits": [
     "This is a workflow step that follows a review of your work and loops back through implementation: implement and test-first style validation apply to the changes. Replies are drafted in the spirit of publish-message, which handles posting conclusions to any service."
    ],
@@ -634,9 +634,9 @@ const DATA = {
    "argumentHint": "",
    "bucket": "upkeep",
    "calls": [],
-   "description": "Diagnosis loop for hard bugs and performance regressions. Use when the user says \"diagnose\"/\"debug this\", or reports something broken/throwing/failing/slow.",
+   "description": "Diagnosis loop for hard bugs and performance regressions. Use when the user says \\\"diagnose\\\" or \\\"debug this\\\", or reports an error, wrong result, or slowdown whose cause is unknown.",
    "fits": [
-    "debug is a reach-for-it-anytime standalone. You drop into it when something is broken and drop out when the fix and its regression test are in; it holds no state and needs no prior setup. implement calls it before editing code for a reported bug, so a fix follows a reproduced cause.",
+    "debug is a reach-for-it-anytime standalone. You drop into it when something is broken and drop out when the fix and its regression test are in; it holds no state and needs no prior setup. implement carries its own copy of this discipline and applies it before editing code for a reported bug, so a fix follows a reproduced cause.",
     "Three neighbours matter. improve-environment comes after it: once the fix is in, run it in the same session to ask what would have prevented the bug, when there is more information than at the start. improve-codebase-architecture is the follow-up when the real finding is that the code has no seam to lock the bug down; debug records that finding but never starts the follow-up itself, so you choose it after the fix is in, when there is more information. triage sits upstream of it for bugs that arrive as raw reports from other people, and does a shallower version of the same first two phases."
    ],
    "handovers": [],
@@ -752,7 +752,7 @@ const DATA = {
    "argumentHint": "",
    "bucket": "workflow",
    "calls": [],
-   "description": "Design one capability's technical solution before implementation (modules and their interfaces, data model, seams, and where each acceptance test attaches) inside the system's architecture, and write it down without writing production code. Use when the user asks how a specified capability should be built, to design a feature's modules, interfaces, or data model, or to make a capability's code more testable before building it.",
+   "description": "Design one capability's technical solution before implementation (modules and their interfaces, data model, seams, and where each acceptance test attaches) inside the system's architecture, and write it down without writing production code. Use when the user asks how a specified capability should be built, or to design a feature's modules, interfaces, data model, or test seams before it is built.",
    "fits": [
     "engineer is the technical half of the capability level, after specify and before taskify or implement. architect sets the shape it works inside."
    ],
@@ -898,7 +898,7 @@ const DATA = {
    "argumentHint": "",
    "bucket": "upkeep",
    "calls": [],
-   "description": "Scan a codebase for deepening opportunities, present them as a visual HTML report, then interview through the chosen one. Use when the user wants architecture improvements or refactoring candidates found.",
+   "description": "Scan a codebase for deepening opportunities, present them as a visual HTML report, then interview through the chosen one. Use when the user wants existing code scanned for architecture improvements or refactoring candidates.",
    "fits": [
     "improve-codebase-architecture is periodic maintenance that generates candidate work rather than implementing it. It carries its own copies of the depth-and-seam vocabulary, the interview method, and the glossary and decision record formats. delineate and codify own the full glossary and the conventions. Approved work enters planned or just-in-time development without weakening existing obligations."
    ],
@@ -971,7 +971,7 @@ const DATA = {
    "requires": [],
    "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/upkeep/improve-skills/SKILL.md",
    "summary": [
-    "improve-skills holds a retrospective on a session with you, then opens an issue on Dyrits/SKILLS describing how the skills behaved. Together you establish four things: what went right, what went wrong, whether the skills were used correctly or used at all, and whether the outcome is the one you expected.",
+    "improve-skills holds a retrospective on a session with you, then opens an issue on the skills repository (the remote of the checkout the skills came from, Dyrits/SKILLS by default) describing how the skills behaved. Together you establish four things: what went right, what went wrong, whether the skills were used correctly or used at all, and whether the outcome is the one you expected.",
     "Its defining constraint is that the agent's reading of the session is only a starting point. Every finding is put to you, confirmed or corrected, and kept apart from suspected causes before anything is written. Nothing is published until you approve the exact issue text."
    ],
    "tagline": "Review a session's skill use with your agent and report it as an issue on the skills repository."
@@ -980,7 +980,7 @@ const DATA = {
    "argumentHint": "",
    "bucket": "shaping",
    "calls": [],
-   "description": "Interview the user in rounds of questions, each with a recommended answer, until a plan, decision, or idea is settled. Use when unresolved choices need shared understanding, or when the user wants their thinking stress-tested or asks to be grilled.",
+   "description": "Interview the user in rounds of questions, each with a recommended answer, until a plan, decision, or idea is settled. Use when the user asks to be interviewed or grilled, or wants a plan or idea stress-tested before acting on it.",
    "fits": [
     "Interview is a reach-for-it-anytime standalone and an interview discipline. Specify, delineate, architect, and engineer carry their own copy of its method for unresolved decisions; graphify uses it to resolve bounded questions in a larger effort; codify uses it to settle code conventions."
    ],
@@ -1123,7 +1123,7 @@ const DATA = {
    "argumentHint": "",
    "bucket": "shaping",
    "calls": [],
-   "description": "Decompose a large or tangled idea into outcomes, recommend one focus to build next, and keep the rest in the backlog. Use when competing capabilities, unclear scope, or dependencies block choosing the next increment, or when asked to break down an idea or revisit a backlog.",
+   "description": "Decompose a large or tangled idea into outcomes, recommend one focus to build next, and keep the rest in the backlog. Use when competing capabilities, unclear scope, or dependencies block choosing the next increment, or when the user asks which outcome to build first or to revisit a backlog.",
    "fits": [
     "This is a shaping step before building. Use graphify when the question is design, taskify once behavior is agreed, and interview for single decisions; it carries its own interview and research steps."
    ],
@@ -1181,7 +1181,7 @@ const DATA = {
    "argumentHint": "Optional: where to post, and what to say",
    "bucket": "productivity",
    "calls": [],
-   "description": "Publish an established conclusion or review summary to a connected service (code host, tracker, chat, documentation, email) in its conventions. Use when the user asks to post, publish, or send findings to one.",
+   "description": "Publish an established conclusion or review summary to a connected service (code host, tracker, chat, documentation, email) in its conventions. Use when the user asks to post, publish, or send settled findings to one.",
    "fits": [
     "This is a standalone publication step after review-and-refactor or any other work that produced a conclusion. address-feedback covers replies to feedback you received."
    ],
@@ -1304,7 +1304,7 @@ const DATA = {
    "requires": [],
    "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/version-control/resolve-merge-conflicts/SKILL.md",
    "summary": [
-    "resolve-merge-conflicts works through an in-progress git merge or rebase, hunk by hunk, then runs the project's own checks and finishes the operation: a commit for a merge, git rebase --continue for a rebase.",
+    "resolve-merge-conflicts works through an in-progress git merge, rebase, or cherry-pick, hunk by hunk, then runs the project's own checks and finishes the operation: a commit for a merge, git rebase --continue for a rebase, git cherry-pick --continue for a cherry-pick.",
     "It refuses to treat a conflict as a text problem. Before touching a hunk it traces each side back to its primary source (the commit message, the PR, the original issue), so it is choosing between two intents rather than between two blocks of text, and it preserves both wherever they are compatible. Where they genuinely are not, it picks the side matching the merge's stated goal and names the trade-off. It invents no new behaviour to paper over a clash. When intent stays uncertain after the primary sources, or the choice is a product decision, it stops, asks you one precise question, and leaves the operation in progress. It never runs --abort on its own."
    ],
    "tagline": "Resolve conflicts by intent and finish the operation."
@@ -1313,7 +1313,7 @@ const DATA = {
    "argumentHint": "",
    "bucket": "workflow",
    "calls": [],
-   "description": "Review and refactor changes since a fixed point against repository standards and the originating behavior agreement. Runs independent Standards and Specifications reviews, applies supported refactors, and reuses the reviewers to verify them. Use for the refactor phase after red/green implementation, or when asked to review and refactor a branch, pull request, or work in progress.",
+   "description": "Review and refactor changes since a fixed point against repository standards and the originating behavior agreement. Runs independent Standards and Specifications reviews, applies supported refactors, and reuses the reviewers to verify them. Use for the refactor phase after red/green implementation, or when the user asks to review a branch, pull request, or work in progress against its behavior agreement and refactor it.",
    "fits": [
     "This is the review step after implement or divide-and-conquer, and also a standalone review. test-first handles missing behavior through red/green."
    ],

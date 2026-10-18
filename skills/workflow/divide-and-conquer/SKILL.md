@@ -17,7 +17,7 @@ The tasks form a **task graph** with blocking relationships, not a list of imple
 
 Communicate primarily through **context pointers** to the originating agreement, tasks, research notes, and previous commits. Do not duplicate information already available through those pointers.
 
-Run subagents in the background where possible for maximum concurrency.
+Run subagents in the background where possible for maximum concurrency. Without a tool that dispatches subagents, routing keeps every task here: build the frontier tasks one at a time in this session, following the kept-task path in step 7, and do the merges and final fixes here too.
 
 ## Divide
 
@@ -47,7 +47,7 @@ Run subagents in the background where possible for maximum concurrency.
 
 ## Combine
 
-9. Once the authorized batch is implemented, review and refactor the integration branch following [review.md](references/review.md), with the pinned starting commit as the fixed point, and the scope, originating agreement, and evidence. Fix remaining implementation issues and commit the refactors in a single implementer subagent.
+9. Once the authorized batch is implemented, review and refactor the integration branch following [review.md](references/review.md), with the pinned starting commit as the fixed point, and the scope, originating agreement, and evidence. Fix remaining implementation issues and commit the refactors in a single implementer subagent, or here when no subagent is available.
 
 10. Record validated local completion. Mark a remote draft ready or resolve remote tasks once those transitions are authorized; ask about the others or leave them pending in working state. Report implementation evidence separately from request readiness, task closure, and other publication state, and name the tier and model that handled each task, including escalations.
 

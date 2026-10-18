@@ -15,9 +15,9 @@ The destination might be a specification to hand off, a decision to settle befor
 
 The project documents and their rules are in [project-documents.md](references/project-documents.md); its terms (authorized, obligation, lazy, pointer) apply throughout, and requirements constrain the destination and every decision.
 
-Read the task tracker configuration that `AGENTS.md` points to for map storage, parent-child relationships, blocking, claims, and frontier queries. If it points to none, tell the user that charting needs the tracker configured (where the map and its tasks live, and how blocking is recorded), then stop.
+Read the task tracker configuration that `AGENTS.md` points to for map storage, parent-child relationships, blocking, claims, and frontier queries. If it points to none, keep the graph local following [local-graph.md](references/local-graph.md), and tell the user so.
 
-- A local map lives where the tracker configuration says; its decision tasks are capability task files.
+- A local map lives where the tracker configuration says, or as [local-graph.md](references/local-graph.md) sets out without one; its decision tasks are capability task files.
 - A remote map and its children use native tracker records and relationships.
 - The capability's specifications hold the agreed living behavior, design, and acceptance; its draft holds open proposals. The map indexes decisions and each task keeps its rationale.
 
@@ -27,7 +27,7 @@ An explicit request to chart a map authorizes creating the map, its decision tas
 
 Each decision task resolves a question. The map is done when the route is clear and no decision remains before implementation. If you feel pulled to build the destination, hand off instead. An effort may explicitly include execution in its **Notes**; absent that, produce decisions, not deliverables.
 
-The `task` type below is a prerequisite action needed to make a decision; the map stays a decision graph. Once the route is clear, `taskify` splits the agreed behavior into delivery tasks. When the decisions are already settled and the open question is only which outcome to build first, `prioritize` fits better.
+The `task` type below is a prerequisite action needed to make a decision; the map stays a decision graph. Once the route is clear, the agreed behavior is split into delivery tasks as separate work. When the decisions are already settled and the open question is only which outcome to build first, a decision graph is the wrong tool: say so and choose the outcome with the user directly.
 
 ## Refer by name
 

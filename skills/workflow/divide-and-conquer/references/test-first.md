@@ -12,11 +12,11 @@ See [tests.md](tests.md) for examples and [mocking.md](mocking.md) for mocking g
 
 A **seam** is the public boundary you test at: the interface where you observe behavior without reaching inside. Tests live at seams, never against internals.
 
-**Test only at pre-agreed seams.** Before writing any test, write down the seams under test and confirm them with the user. No test is written at an unconfirmed seam. You can't test everything, so agreeing the seams up front is how testing effort lands on the critical paths and complex logic instead of every edge case.
+**Test only at pre-agreed seams.** You can't test everything, so agreeing the seams up front is how testing effort lands on the critical paths and complex logic instead of every edge case. Seams are agreed when the capability's blueprint (found through `AGENTS.md`) lists them with the interface each acceptance test drives, or when the task or approved batch names them. Otherwise, before writing any test, write down the seams under test and confirm them with the user: "What's the public interface, and which seams should we test?"
 
-Ask: "What's the public interface, and which seams should we test?"
+With no user to answer (a subagent or a non-interactive run), take the public interfaces the acceptance criteria exercise as the seams, record them as **assumed seams** in your report (and in working state when you own it), and proceed. No test is written at a seam that is neither agreed nor recorded as assumed.
 
-When the shape of that interface is itself in question (how deep the module is, where the seam belongs, what the interface should expose), settle it with the user before writing tests: an implementation run builds at agreed seams, it does not redesign them.
+When the shape of that interface is itself in question (how deep the module is, where the seam belongs, what the interface should expose), settle it with the user before writing tests (with no user to answer, report it as a blocker): an implementation run builds at agreed seams, it does not redesign them.
 
 ## Anti-patterns
 

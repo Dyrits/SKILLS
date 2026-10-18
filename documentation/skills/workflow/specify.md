@@ -18,7 +18,7 @@ Specify accounts for applicable global and capability requirements and completes
 
 A disputed term is settled on the spot and written to the glossary; system-wide outlining is [delineate](./delineate.md)'s job.
 
-When a question needs a prototype, it proposes that separate exploration and keeps the question open until its evidence is in. Useful validated prototype code can later be integrated after production validation; there is no mandatory discard-and-rebuild step.
+When a question needs a prototype, it proposes a small experiment scoped as its own piece of work and keeps the question open until its evidence is in.
 
 ## Common questions
 
@@ -40,7 +40,7 @@ It reports the canonical paths, covered requirements, agreements, blockers, and 
 ## It's working if
 
 - The agreed behavior and acceptance cover the selected scope and link applicable requirements.
-- The specification names no module, class, or table; technical ideas raised along the way are noted for the blueprint.
+- The specification names no module, class, or table; technical ideas raised along the way are kept under "Technical notes" in the capability's draft, where whoever designs it can find them.
 - Settled decisions are reused, and missing decisions are visible rather than assumed.
 - You can distinguish unresolved proposals from authorized agreements.
 - The canonical specification is readable in the repository even without tracker access.

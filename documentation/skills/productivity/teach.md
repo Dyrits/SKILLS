@@ -35,9 +35,10 @@ What accumulates in that directory:
 | `reference/*.html` | Compressed cheat-sheets, algorithms, glossaries: the documents you actually return to |
 | `learning-records/*.md` | Structured records of what you have demonstrably learned, used to decide what to teach next |
 | `assets/*` | Reusable components, starting with a shared stylesheet, so the lessons look like one course |
+| `GLOSSARY.md` | The topic's terms, each defined as you come to understand it |
 | `NOTES.md` | Your stated teaching preferences |
 
-Two honest notes on that list. A glossary suits most topics, but the skill ships a `glossary-format.md` that `SKILL.md` no longer links to, so you will only get one if you ask ([issue #559](https://github.com/mattpocock/skills/issues/559)). And the workspace is not always created where you expect, so see the first question below before you build a long course on top of it.
+Two honest notes on that list. Upstream ships a glossary format its `SKILL.md` no longer links to ([issue #559](https://github.com/mattpocock/skills/issues/559)); this fork lists `GLOSSARY.md` and links the format, so the agent keeps one as you learn. And the workspace is not always created where you expect, so see the first question below before you build a long course on top of it.
 
 ## Storage strength, not fluency
 
@@ -58,7 +59,7 @@ Lessons are built from **components** in `assets/`: stylesheets, quiz widgets, s
 ## Common questions
 
 **Where does it put the files?**
-In the directory you start it in. The upstream skill used `./` for two different roots, which could land your course in the skill's own folder ([#377](https://github.com/mattpocock/skills/issues/377)). This fork's `SKILL.md` says every workspace path is relative to the current directory and never to the skill folder, and only the `*-FORMAT.md` files are read from beside it. Check where the first lesson landed anyway, and name the directory when you start.
+In the directory you start it in. The upstream skill used `./` for two different roots, which could land your course in the skill's own folder ([#377](https://github.com/mattpocock/skills/issues/377)). This fork's `SKILL.md` says every workspace path is relative to the current directory and never to the skill folder, and only the `references/*-format.md` files are read from the skill's folder. Check where the first lesson landed anyway, and name the directory when you start.
 
 **Do I stay in one session, or start a new one per lesson?**
 All three approaches work: staying in the same session, re-invoking `/teach` in a new session, or opening a new session in the same folder. Each lesson is its own invocation. The folder is the continuity, not the conversation. Common practice is to open a fresh session in the workspace and say `/teach next lesson for <topic>`.

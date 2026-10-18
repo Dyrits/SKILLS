@@ -20,6 +20,10 @@ Yes. Scoped tracked changes and relevant untracked snapshots enter the frozen st
 
 It asks you for the agreement or explicit consent to Standards alone. It does not invent requirements from the code.
 
+**Does it post the report anywhere?**
+
+Only if you ask. At the end it offers to publish the final report to a destination you name, such as a pull or merge request, a ticket, or a chat thread, optionally with inline suggestions. It shows the exact text and destination and waits for your approval before posting.
+
 **Will repeated review eventually produce no suggestions?**
 
 Not reliably. Smells are judgment calls. This run ends after supported changes are verified or blocked, rather than looping through fresh subjective suggestions.

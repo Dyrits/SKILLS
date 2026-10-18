@@ -9,7 +9,7 @@ metadata:
 
 Turn the selected capability into agreed behavior and acceptance. Interview only where decisions remain unresolved; synthesize directly when current context is settled.
 
-Stay on the observable side: what users and other systems can see and rely on, including an external contract such as a public API or an event others consume. How the code delivers it (modules, internal interfaces, the data model, technology) is out of scope; capture a technical idea the user raises as a note for the capability's blueprint, not as agreed behavior.
+Stay on the observable side: what users and other systems can see and rely on, including an external contract such as a public API or an event others consume. How the code delivers it (modules, internal interfaces, the data model, technology) is out of scope; record a technical idea the user raises under a "Technical notes" heading in the capability's draft, not as agreed behavior.
 
 The documents and their rules are in [project-documents.md](references/project-documents.md); its terms (authorized, obligation, lazy, pointer) apply throughout, with full changelog records.
 
@@ -27,7 +27,7 @@ When a term is fuzzy, disputed, or clashes with the glossary or the code, raise 
 
 Agree observable acceptance and validation. Separate checks an agent can perform from any necessary human acceptance.
 
-When building something would settle a question better than discussion (an interaction to try, a feasibility doubt), say so and propose a separately scoped prototype; keep the question open until its evidence is in. Useful validated prototype code may later be productionized; exploratory success alone does not establish production readiness.
+When building something would settle a question better than discussion (an interaction to try, a feasibility doubt), say so and propose a small experiment, scoped and approved as its own piece of work; keep the question open until its evidence is in. Exploratory success alone does not establish production readiness.
 
 ## Synthesize and maintain
 

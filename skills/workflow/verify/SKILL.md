@@ -48,9 +48,9 @@ Appearance and feel need a human eye: capture screenshots or a recording and mar
 A check that would pass on broken code proves nothing. For each claim, show at least one of:
 
 - **Before and after**: run the check against the starting commit in a separate worktree (`git worktree add`), see it fail for the expected reason, then see it pass on the end state.
-- **Mutation**: break the code the check covers (invert a condition, drop the call, return a constant), see the check fail, then restore it.
+- **Mutation**: in a separate worktree of the end state (`git worktree add`, with uncommitted changes applied there), break the code the check covers (invert a condition, drop the call, return a constant) and see the check fail. Never mutate the user's checkout.
 
-Restore every mutation, then confirm `git status` and `git diff` match the state before it. A claim whose check could not be shown to fail stays **unproven**, whatever the check printed.
+Afterwards confirm the user's checkout still matches its state before verification (`git status` and `git diff`). A claim whose check could not be shown to fail stays **unproven**, whatever the check printed.
 
 ## 4. Check for regressions
 
@@ -68,6 +68,6 @@ Give the proof file alone to a fresh-context subagent that has not seen the impl
 
 ## 7. Clean up and report
 
-Stop the processes you started and remove the worktrees you added. Leave the proof and any new tests or scripts uncommitted.
+Stop the processes you started and remove the worktrees you added. Leave the proof and any new tests or scripts uncommitted: the user commits them with the work, or asks you to.
 
 Report the overall verdict, the count of claims per verdict, the proof's path, each claim that is not proven and why, and the new files left uncommitted.

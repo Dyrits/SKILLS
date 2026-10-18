@@ -55,7 +55,7 @@ Send them the file, or open it for them. They'll click through the walkthroughs 
 
 ### 5. Capture the answer and the prototype
 
-Once the prototype has answered its question, capture the answer and experiment as [prototype.md](prototype.md) describes. The validated reducer, machine, or functions may enter the real module after authorized acceptance and production checks, without a mandatory rebuild. Preserve the experimental HTML shell separately as a re-runnable primary source.
+Once the prototype has answered its question, capture the answer and experiment as the capture step that sent you here describes. The validated reducer, machine, or functions may enter the real module after authorized acceptance and production checks, without a mandatory rebuild. Preserve the experimental HTML shell separately as a re-runnable primary source.
 
 ## Anti-patterns
 

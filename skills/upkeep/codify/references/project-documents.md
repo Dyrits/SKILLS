@@ -33,7 +33,7 @@ A step that must write a kind `AGENTS.md` does not name creates it lazily: only 
 ## Terms
 
 - **Authorized**: the user approved the scope. A remote change (publication, update, priority change, or closure) also needs approval of its destination. Only the user authorizes: backlog entries, recommendations, tracker configuration, and passing builds are evidence, not approval.
-- **Obligation**: a requirement, as defined in the requirements format.
+- **Obligation**: a requirement, imposed on the product from outside the code (by users, legal, operations, a client, or a budget) and binding whatever the implementation.
 - **Lazy**: create a document when it carries useful information. A small batch can run on backlog, work-in-progress, and the changelog alone.
 - **Pointer**: a link to the authoritative record, used in place of a copy.
 

@@ -19,7 +19,7 @@ Done when the service, the exact destination, its surrounding context, and its a
 
 ### 2. Resolve how to post
 
-If the task tracker configuration covers the destination, use the mechanism it records. A configuration that names a different tool than the destination's service (a GitHub tracker for a Slack channel) does not cover it; resolve this destination as if there were none. Otherwise prefer a connected MCP tool or connector for the service (a GitHub, GitLab, Jira, Linear, Slack, Confluence, Notion, or mail server, for example), then the service's CLI (`gh`, `glab`, and similar), then its documented API with credentials already configured.
+If the task tracker configuration covers the destination, use the mechanism it records. A configuration that names a different tool than the destination's service (a GitHub tracker for a Slack channel) does not cover it; resolve this destination as if there were none. Otherwise prefer a connected MCP tool or connector for the service (a GitHub, GitLab, Jira, Linear, Slack, Confluence, Notion, or mail server, for example), then the service's CLI (`gh`, `glab`, and similar), then its documented API with credentials the user has configured for that service. Never borrow a token from another tool's store, such as git's credential helper.
 
 Ask the user how to post only when nothing resolves unambiguously: several tools could apply and it is unclear which reaches the destination, or none can. When no mechanism can reach it, step 5 hands the approved text to the user instead.
 

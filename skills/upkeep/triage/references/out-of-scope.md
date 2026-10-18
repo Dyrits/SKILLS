@@ -1,6 +1,6 @@
 # Out-of-Scope Knowledge Base
 
-The `documentation/out-of-scope/` directory in a repository stores persistent records of rejected feature requests. It serves two purposes:
+The **out-of-scope folder** stores persistent records of rejected feature requests. Find it through `AGENTS.md`. When `AGENTS.md` names none, a step that only reads treats it as absent; a step that writes the first record looks for an existing home of that kind first, following [project-documents.md](project-documents.md), and creates `documentation/out-of-scope/` only when nothing matches. It serves two purposes:
 
 1. **Institutional memory**: why a feature was rejected, so the reasoning isn't lost when the task is closed
 2. **Deduplication**: when a new task matches a prior rejection, surface the previous decision
@@ -9,11 +9,13 @@ The `documentation/out-of-scope/` directory in a repository stores persistent re
 
 - Directory structure
 - File format
-- When to check `documentation/out-of-scope/`
-- When to write to `documentation/out-of-scope/`
+- When to check the out-of-scope folder
+- When to write to the out-of-scope folder
 - Updating or removing out-of-scope files
 
 ## Directory structure
+
+With the default location:
 
 ```
 documentation/out-of-scope/
@@ -77,13 +79,13 @@ The reason should be durable. Avoid referencing temporary circumstances ("we're 
 
 Candidate priorities and temporary deferrals follow the backlog authority in [project-documents.md](project-documents.md). Local tracking stores them in the backlog; remote tracking keeps only the verified backlog name/link there and requires publication approval for remote changes. Pending publication and active paused work stay in local working state. The rejection knowledge base remains separate from both. Read [project-documents.md](project-documents.md) before updating those records.
 
-## When to check `documentation/out-of-scope/`
+## When to check the out-of-scope folder
 
-During triage's Gather context step, read files in `documentation/out-of-scope/` when present. When evaluating a new task:
+During triage's Gather context step, read the files in the out-of-scope folder when present. When evaluating a new task:
 
 - Check if the request matches an existing out-of-scope concept
 - Matching is by concept similarity, not keyword: "night theme" matches `dark-mode.md`
-- If there's a match, surface it to the maintainer: "This is similar to `documentation/out-of-scope/dark-mode.md`. We rejected this before because [reason]. Do you still feel the same way?"
+- If there's a match, surface it to the maintainer: "This is similar to `<out-of-scope folder>/dark-mode.md`. We rejected this before because [reason]. Do you still feel the same way?"
 
 The maintainer may:
 
@@ -91,7 +93,7 @@ The maintainer may:
 - **Reconsider**: update or remove the out-of-scope record, and continue normal triage
 - **Disagree**: the tasks are related but distinct, so continue normal triage
 
-## When to write to `documentation/out-of-scope/`
+## When to write to the out-of-scope folder
 
 Only when an enhancement, not a bug, is rejected as `not-planned`. This applies to enhancement PRs as it does to tasks: record the rejected request so it does not return as fresh code.
 
@@ -100,16 +102,16 @@ Do **not** write here when something is closed as `not-planned` because it's **a
 The flow:
 
 1. Maintainer decides a feature request is out of scope
-2. Check if a matching `documentation/out-of-scope/` file already exists
+2. Check if a matching out-of-scope file already exists
 3. If yes: append the new task to the "Prior requests" list
-4. If no: create a new file with the concept name, decision, reason, and first prior request. When this creates the `documentation/out-of-scope/` folder, add one line to the nearest `AGENTS.md` saying it holds rejected enhancement requests and is read during triage
-5. Post a comment on the task explaining the decision and linking the `documentation/out-of-scope/` file
+4. If no: create a new file with the concept name, decision, reason, and first prior request. When this creates the out-of-scope folder, add one line to the nearest `AGENTS.md` saying it holds rejected enhancement requests and is read during triage
+5. Post a comment on the task explaining the decision and linking the out-of-scope file
 6. Close the task with the `not-planned` role
 
 ## Updating or removing out-of-scope files
 
 If the maintainer changes their mind about a previously rejected concept:
 
-- Delete the `documentation/out-of-scope/` file
+- Delete the out-of-scope file
 - Historical tasks remain closed unless reopening is explicitly requested
 - The new task that triggered reconsideration proceeds through normal triage

@@ -1,6 +1,6 @@
 ---
 name: publish-message
-description: "Publish an established conclusion or review summary to a connected service (code host, tracker, chat, documentation, email) in its conventions. Use when the user asks to post, publish, or send findings to one."
+description: "Publish an established conclusion or review summary to a connected service (code host, tracker, chat, documentation, email) in its conventions. Use when the user asks to post, publish, or send settled findings to one."
 argument-hint: "Optional: where to post, and what to say"
 ---
 
@@ -21,7 +21,7 @@ Done when the service, the exact destination, its surrounding context, and its a
 
 ### 2. Resolve how to post
 
-If the task tracker configuration covers the destination, use the mechanism it records. A configuration that names a different tool than the destination's service (a GitHub tracker for a Slack channel) does not cover it; resolve this destination as if there were none. Otherwise prefer a connected MCP tool or connector for the service (a GitHub, GitLab, Jira, Linear, Slack, Confluence, Notion, or mail server, for example), then the service's CLI (`gh`, `glab`, and similar), then its documented API with credentials already configured.
+If the task tracker configuration covers the destination, use the mechanism it records. A configuration that names a different tool than the destination's service (a GitHub tracker for a Slack channel) does not cover it; resolve this destination as if there were none. Otherwise prefer a connected MCP tool or connector for the service (a GitHub, GitLab, Jira, Linear, Slack, Confluence, Notion, or mail server, for example), then the service's CLI (`gh`, `glab`, and similar), then its documented API with credentials the user has configured for that service. Never borrow a token from another tool's store, such as git's credential helper.
 
 Ask the user how to post only when nothing resolves unambiguously: several tools could apply and it is unclear which reaches the destination, or none can. When no mechanism can reach it, step 5 hands the approved text to the user instead.
 
@@ -49,7 +49,7 @@ Write in the language already used at the destination, not necessarily the langu
 
 - Write plain sentences in the user's voice, with one paragraph per point.
 - Use commas, periods, or conjunctions to connect thoughts.
-- Full words over contracted ones ("repository" not "repo", "configuration" not "config", "documentation" not "docs"), and the plain term over an acronym on first mention ("the null check" not "NPE", "the identifier" not "UUID") unless it is what the codebase itself calls it. The reader may not share the writer's technical background, and a shortened form is one more thing they might not parse.
+- Follow the project's steering file or style guide on abbreviations when it sets a rule. Otherwise use the plain term over an acronym on first mention ("the null check" not "NPE") unless it is what the codebase itself calls it: the reader may not share the writer's technical background.
 - Keep only the context and reasoning the reader needs to understand or act on each point.
 
 Remove AI language patterns from the message and any inline comments following [unslop.md](references/unslop.md), without changing their meaning or tone.

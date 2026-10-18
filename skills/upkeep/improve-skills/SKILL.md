@@ -6,7 +6,7 @@ metadata:
 argument-hint: "Optional: the session to review, and what you expected from it"
 ---
 
-The user has asked for a **retrospective** on a session. Together you establish what went right, what went wrong, whether the skills were used correctly or used at all, and whether the outcome is the one expected. The findings about skills become an issue on the skills repository, [Dyrits/SKILLS](https://github.com/Dyrits/SKILLS), where they are fixed in a separate session.
+The user has asked for a **retrospective** on a session. Together you establish what went right, what went wrong, whether the skills were used correctly or used at all, and whether the outcome is the one expected. The findings about skills become an issue on the **skills repository**, where they are fixed in a separate session. Find it from where the skills came from: the `origin` remote of the skills checkout this skill was loaded from, or the repository the installed plugin's manifest names. When neither names one, it is [Dyrits/SKILLS](https://github.com/Dyrits/SKILLS), the collection this skill ships in.
 
 ## Steps
 
@@ -66,9 +66,9 @@ Completion: every skill finding from step 3 appears in the draft, and nothing in
 
 Show the repository, the title, the labels if any, and the exact body. Wait for explicit approval; after any revision, show the changed draft and ask again.
 
-Open the issue through any route that can write issues on `Dyrits/SKILLS`, trying every available one before giving up; credentials already configured include the one git's credential helper stores for `https://github.com`, used without printing it. Read the issue back and report its URL.
+Open the issue on the skills repository through a route the user has set up for it, such as an authenticated `gh` command-line tool or a GitHub connector in the harness. Use only credentials the user has designated for creating issues, never a token pulled from git's credential helper or another tool's store. Read the issue back and report its URL.
 
-When no option reaches GitHub, save the approved issue as a feedback record in `.agents/feedbacks/YYYY-MM-DD-<slug>.md`: the title as its heading, then the body. Put it in the skills checkout this skill was loaded from when it is one, otherwise in the current workspace. When you create `.agents/feedbacks/`, add one line to that workspace's `AGENTS.md` saying unposted skill feedback waits there. Tell the user where it is and which options failed.
+When no such route reaches GitHub, save the approved issue as a feedback record in `.agents/feedbacks/YYYY-MM-DD-<slug>.md`: the title as its heading, then the body. Put it in the skills checkout this skill was loaded from when it is one, otherwise in the current workspace. When you create `.agents/feedbacks/`, add one line to that workspace's `AGENTS.md` saying unposted skill feedback waits there. Tell the user where it is and which routes failed.
 
 On every run where GitHub is reachable, also check both locations for pending feedback records, offer to open each as an issue under the same approval, and delete each record once its issue is live.
 

@@ -19,13 +19,13 @@ Infer the repository from `git remote -v`; `gh` does this automatically when run
 
 ## Ticket writing convention
 
-- **Source:** Built-in `taskify`
+- **Source:** Default task format
 - **Applies to:** Local task bodies and published tasks
 - **Rules:** Use the built-in task template unless the user selects another configured convention for the run.
 
 ## Pull requests as a triage surface
 
-**PRs as a request surface: no.** _(Set to `yes` if this repository treats external PRs as feature requests; `/triage` reads this flag.)_
+**PRs as a request surface: no.** _(Set to `yes` if this repository treats external PRs as feature requests; intake triage reads this flag.)_
 
 When set to `yes`, PRs run through the same labels and states as issues, using the `gh pr` equivalents:
 
@@ -45,7 +45,7 @@ Run `gh issue view <number> --comments`.
 
 ## Wayfinding operations
 
-Used by `/graphify`. The map is a single GitHub issue with child issues as decision tasks.
+For a decision graph (a map of open decisions worked through over several sessions). The map is a single GitHub issue with child issues as decision tasks.
 
 - **Map**: a single issue labelled `graphify:map`, holding the Notes / Decisions-so-far / Fog body. `gh issue create --label graphify:map`.
 - **Child task**: an issue linked to the map as a GitHub sub-issue (`gh api` on the sub-issues endpoint). Where sub-issues aren't enabled, add the child to a task list in the map body and put `Part of #<map>` at the top of the child body. Labels: `graphify:<type>` (`research`/`prototype`/`interview`/`task`). Once claimed, the task is assigned to the driving developer.

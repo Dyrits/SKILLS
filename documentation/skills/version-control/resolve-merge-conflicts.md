@@ -2,7 +2,7 @@ Upstream source: `resolving-merge-conflicts`, verified in history before its rem
 
 ## What it does
 
-`resolve-merge-conflicts` works through an in-progress git merge or rebase, hunk by hunk, then runs the project's own checks and finishes the operation: a commit for a merge, `git rebase --continue` for a rebase.
+`resolve-merge-conflicts` works through an in-progress git merge, rebase, or cherry-pick, hunk by hunk, then runs the project's own checks and finishes the operation: a commit for a merge, `git rebase --continue` for a rebase, `git cherry-pick --continue` for a cherry-pick.
 
 It refuses to treat a conflict as a text problem. Before touching a hunk it traces each side back to its **primary source** (the commit message, the PR, the original issue), so it is choosing between two intents rather than between two blocks of text, and it preserves both wherever they are compatible. Where they genuinely are not, it picks the side matching the merge's stated goal and names the trade-off. It invents no new behaviour to paper over a clash. When intent stays uncertain after the primary sources, or the choice is a product decision, it stops, asks you one precise question, and leaves the operation in progress. It never runs `--abort` on its own.
 

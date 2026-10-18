@@ -22,11 +22,11 @@ Record the access method as automated only after a read-only access check succee
 
 ## Ticket writing convention
 
-- **Source:** `<Built-in taskify, repository document, or skill name and template reference>`
+- **Source:** `<Default task format, repository document, or skill name and template reference>`
 - **Applies to:** `<local task bodies, published tasks, or both>`
 - **Rules:** `<language or required Jira metadata needed to interpret the source>`
 
-An optional Jira ticket skill may supply the description template and quality rules. `taskify` still owns the tracer-bullet breakdown, blocking edges, and publication approval.
+An optional Jira ticket skill may supply the description template and quality rules. The workflow that writes the tasks still owns the tracer-bullet breakdown, blocking edges, and publication approval.
 
 ## When a skill says "fetch the relevant task"
 

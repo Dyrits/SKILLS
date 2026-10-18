@@ -15,7 +15,7 @@ Collection stays deterministic; this skill does not install tools or start recur
 Read the project's AI tooling record when `AGENTS.md` points to one, the requested project and period, and the available local measurement sources.
 Use configured tool analytics, saved verification results, or an export from the user's existing monitor.
 Inspect source schemas and installed help before choosing read-only export commands; preserve source files and redact credentials or unrelated session content from the report.
-For RTK, inspect `gain` and supported history/export options without changing counters or configuration.
+For an output-filtering tool (RTK's `rtk gain`, for example), inspect its savings and history or export options without changing counters or configuration.
 Prefer local collection without network requests or additional model calls.
 If setup or data is missing, produce a gaps report: name the gaps a future measurement period fills, and the setup each missing source needs.
 Treat no observations as unknown usage, not proof a tool was unused.
@@ -29,7 +29,7 @@ Account for resets, tool upgrades, missing periods, and overlapping clients befo
 Report global measurements as global when project attribution is unavailable.
 For a task comparison, check equivalent task scope and correctness criteria before drawing a quality or savings conclusion.
 Inspect measured tool calls, duration, output bytes, adapter failures, raw-output recalls, and correctness checks where available.
-For CodeGraph and ast-grep, keep personal token savings unknown when only successful lookup checks exist.
+For code-retrieval tools (a code graph or a structural search, for example), keep personal token savings unknown when only successful lookup checks exist.
 Done when every calculated result can be traced to compatible observations and every unmeasured quantity remains unknown.
 
 ### 3. Write the report
@@ -37,7 +37,7 @@ Done when every calculated result can be traced to compatible observations and e
 Write a dated report under `.agents/tooling/reports/`, or the user's requested local destination, following [report.md](references/report.md). When you create the reports folder, add one line to the nearest `AGENTS.md` saying what it holds and when to read it.
 Include source references and machine-readable supporting observations when the source provides them.
 Separate actual provider usage, command-output reduction, estimated tokens, task comparisons, and published benchmarks.
-Keep Token Monitor independent; an integration change is a separate setup task.
+Leave an existing usage monitor as it is; integrating it with other tools is a separate setup task.
 Rank recommendations by evidence, with a specific next measurement where evidence is thin.
 An unverified protected-command bypass is a quality finding even when output reduction looks good.
 Done when the report accounts for every configured tool, source gaps, quality findings, and next actions without fabricating a total savings figure.

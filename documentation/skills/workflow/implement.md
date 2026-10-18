@@ -26,8 +26,13 @@ No. An explicit approved batch in working state can supply the agreement. Global
 
 Only for the behavior those tests establish. Appearance and interaction may need human judgment. Missing validation remains visible instead of becoming a delivery claim.
 
-**What if `webapp-testing` is not installed?**
-It ships outside this repository, so the skill cannot assume it. When browser interaction needs verifying and the skill is missing, the agent tells you, verifies the interaction another way (a scripted browser run, for example), and reports the check as could not run if no way is available.
+**Where do the test seams come from?**
+
+From the capability's blueprint when your `AGENTS.md` names one: its seams and acceptance table are the agreed design. Without one, the agent confirms the seams with you first, or, in a subagent with no one to ask, records the seams it assumed in its report.
+
+**How does it check browser interaction?**
+
+With whatever the harness offers: a browser tool, or a scripted run with a browser automation library the project already uses. When no way is available, the check is reported as could not run.
 
 ## It's working if
 

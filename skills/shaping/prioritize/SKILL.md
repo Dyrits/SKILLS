@@ -1,6 +1,6 @@
 ---
 name: prioritize
-description: Decompose a large or tangled idea into outcomes, recommend one focus to build next, and keep the rest in the backlog. Use when competing capabilities, unclear scope, or dependencies block choosing the next increment, or when asked to break down an idea or revisit a backlog.
+description: Decompose a large or tangled idea into outcomes, recommend one focus to build next, and keep the rest in the backlog. Use when competing capabilities, unclear scope, or dependencies block choosing the next increment, or when the user asks which outcome to build first or to revisit a backlog.
 ---
 
 # Prioritize

@@ -2,7 +2,7 @@ Upstream source: `retro`, verified in the `d81f3a1` tree. This fork first rename
 
 ## What it does
 
-`improve-skills` holds a retrospective on a session with you, then opens an issue on [Dyrits/SKILLS](https://github.com/Dyrits/SKILLS) describing how the skills behaved. Together you establish four things: what went right, what went wrong, whether the skills were used correctly or used at all, and whether the outcome is the one you expected.
+`improve-skills` holds a retrospective on a session with you, then opens an issue on the skills repository (the remote of the checkout the skills came from, [Dyrits/SKILLS](https://github.com/Dyrits/SKILLS) by default) describing how the skills behaved. Together you establish four things: what went right, what went wrong, whether the skills were used correctly or used at all, and whether the outcome is the one you expected.
 
 Its defining constraint is that the agent's reading of the session is only a starting point. Every finding is put to you, confirmed or corrected, and kept apart from suspected causes before anything is written. Nothing is published until you approve the exact issue text.
 
@@ -47,7 +47,7 @@ The agent checks open issues first and drafts a comment on the matching one inst
 
 **What if GitHub is not reachable from the session?**
 
-It tries a connected GitHub server, then the `gh` command, then the GitHub API with a token already configured in the environment or stored by git's credential helper. Git alone cannot open an issue. When none of them works, the approved issue is saved in `.agents/feedbacks/`, in the skills checkout when the skill was loaded from one, and the next run that reaches GitHub offers to post it.
+It uses a route you have set up for opening issues, such as a connected GitHub server or a signed-in `gh` command. It never borrows the token git's credential helper stores, because approving the issue text is not approving that credential. When none of them works, the approved issue is saved in `.agents/feedbacks/`, in the skills checkout when the skill was loaded from one, and the next run that reaches GitHub offers to post it.
 
 **What happened to `/improve-agent-environment`?**
 

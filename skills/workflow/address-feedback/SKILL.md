@@ -1,6 +1,6 @@
 ---
 name: address-feedback
-description: "Assess review feedback from any source (pull or merge request, issue, ticket, document comments, pasted notes), propose dispositions, then implement and reply. Use when the user shares feedback to address or asks to handle review comments."
+description: "Assess review feedback from any source (pull or merge request, issue, ticket, document comments, pasted notes), propose dispositions, then implement and reply. Use when the user shares review feedback to work through, or asks to handle and answer review comments."
 argument-hint: "Feedback source: PR, MR, issue, or ticket reference, a file path, or pasted text"
 ---
 
@@ -59,7 +59,7 @@ Done when the user has approved a concrete disposition and action for every subs
 
 ### 4. Implement and validate
 
-Implement only the approved changes, preserving unrelated work. For changes to repository code, follow [implement.md](references/implement.md), with the approved plan as the user-approved batch. For other subjects, validate in proportion to the change. If implementation shows an approved disposition is wrong or needs materially broader work, stop that item, explain the evidence, and return it to the plan gate.
+Implement only the approved changes, preserving unrelated work. For changes to repository code, follow [implement-changes.md](references/implement-changes.md), with the approved plan as the user-approved batch. For other subjects, validate in proportion to the change. If implementation shows an approved disposition is wrong or needs materially broader work, stop that item, explain the evidence, and return it to the plan gate.
 
 Review the result against every approved disposition. A passing test suite does not account for a unit by itself; connect each one to the changed subject, existing evidence, or a stated decision.
 

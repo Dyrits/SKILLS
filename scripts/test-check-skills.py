@@ -300,6 +300,18 @@ class LayoutChecks(unittest.TestCase):
         self.write_skill_map(skills=("helper",))
         self.assertIn("no entry for skill example", self.result()[1])
 
+    def test_matching_bundled_copies_pass(self):
+        self.write("skills/reference/example/references/shared.md", "One rule.\n")
+        self.write("skills/productivity/helper/references/shared.md", "One rule.\n")
+        self.assertNotIn("bundled copies differ", self.result()[1])
+
+    def test_drifted_bundled_copy(self):
+        self.write("skills/reference/example/references/shared.md", "One rule.\n")
+        self.write("skills/productivity/helper/references/shared.md", "One rule, edited.\n")
+        failed, output = self.result()
+        self.assertTrue(failed)
+        self.assertIn("references/shared.md: bundled copies differ", output)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -5,14 +5,14 @@
 | Evidence | What it establishes | Required qualification |
 | --- | --- | --- |
 | Provider or existing monitor export | Reported token usage or remaining allowance | Preserve provider, model, time window, cache categories, and account scope. |
-| RTK analytics | Raw versus filtered command output, expressed as byte reduction or estimated tokens | RTK's token estimates use bytes divided by four; they are not provider token counts or subscription savings. |
+| Output-filter analytics | Raw versus filtered command output, expressed as byte reduction or estimated tokens | Estimated tokens derived from bytes (RTK divides by four) are not provider token counts or subscription savings. |
 | Local command observations | Duration, output bytes, exit status, and invocation count | Command output is only part of an agent's context; attribute the observation to the measured command. |
 | Comparable agent task runs | Observed task token counts, runtime, and correctness outcomes | Both runs need the same task, scope, relevant client/model settings, and acceptance criteria. |
 | External benchmark | A published result under the publisher's conditions | Label it external and keep it out of personal savings totals. |
 
-If RTK reports estimated raw and filtered tokens, identify their byte-based estimator and avoid relabeling them as independently observed bytes.
-Its quota estimate is a model of a plan budget, not a live allowance reading.
-Follow [RTK's methodology](https://github.com/rtk-ai/rtk/blob/develop/docs/guide/resources/savings-explained.md) and the installed version's analytics schema.
+When a filter reports estimated raw and filtered tokens, identify its estimator and avoid relabeling the estimates as independently observed bytes.
+A filter's quota estimate is a model of a plan budget, not a live allowance reading.
+Follow the tool's published methodology (for RTK, [savings explained](https://github.com/rtk-ai/rtk/blob/develop/docs/guide/resources/savings-explained.md)) and the installed version's analytics schema.
 
 ## Calculations
 
@@ -21,7 +21,7 @@ Report zero-denominator ratios as unavailable and increases as increases.
 For cumulative counters, use `current - baseline` only when both observations have the same scope and counter lifetime.
 Negative deltas require a reset or source-change investigation; they are not negative usage.
 Overlapping observations must be deduplicated or presented separately.
-Do not add RTK estimates to provider token totals, sum percentages across tools, or apply a vendor's reduction rate to the user's allowance.
+Do not add filter estimates to provider token totals, sum percentages across tools, or apply a vendor's reduction rate to the user's allowance.
 Retain enough precision to reproduce the calculation; round only the presentation.
 
 ## Quality and recovery

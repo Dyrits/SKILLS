@@ -7,7 +7,7 @@ The project documents and their rules are in [project-documents.md](project-docu
 Four decisions belong to this area:
 
 - The task tracker, local Markdown or a remote service.
-- The ticket-writing convention, the built-in `taskify` format or an established project template or skill.
+- The ticket-writing convention, the default task format (a vertical slice with acceptance criteria and blocking edges) or an established project template or skill.
 - The strings used for the two category and four intake-state roles.
 - Whether the domain needs several contexts.
 
@@ -19,7 +19,7 @@ The inspection already gave the remotes, the `AGENTS.md` pointers, and the setup
 - The project documents `AGENTS.md` names, as [project-documents.md](project-documents.md) describes: the requirements, backlog, working state, changelog, outline, glossary, conventions, relevant decision records, and relevant capability documents.
 - Task templates, contribution documentation, and available ticket-writing skills.
 - Monorepo signals such as workspace configuration or independent packages.
-- Whether `triage` is installed, which determines whether role configuration is needed.
+- Whether the project triages incoming requests (an intake process, intake labels, or request templates), which determines whether role configuration is needed. Ask when the evidence is unclear.
 
 ## 2. Ask
 
@@ -42,24 +42,24 @@ Resolve the backlog URL from verified project information where possible; ask fo
 
 ### B. Ticket-writing convention
 
-Ask whether to use the discovered convention. If none exists, recommend the built-in `taskify` format and ask whether the project has another template, installed skill, or short description.
+Ask whether to use the discovered convention. If none exists, recommend the default task format and ask whether the project has another template, installed skill, or short description.
 
 Record:
 
-- **Source:** Built-in `taskify`, a repository-relative document path, or a skill name and its durable template reference.
+- **Source:** `Default task format`, a repository-relative document path, or a skill name and its durable template reference.
 - **Applies to:** Local task bodies, published tasks, or both.
 - **Rules:** Language and required metadata needed to interpret the source.
 
-Keep the full template at its source. An external ticket-writing skill contributes structure and quality rules, not its creation workflow or publication authority. `taskify` still owns tracer-bullet decomposition, blocking edges, acceptance criteria, and publication approval.
+Keep the full template at its source. An external ticket-writing skill contributes structure and quality rules, not its creation workflow or publication authority. The workflow that writes the tasks still owns tracer-bullet decomposition, blocking edges, acceptance criteria, and publication approval.
 
 ### C. Triage roles
 
-Skip this section when `triage` is not installed. Otherwise ask whether to retain the default role strings:
+Skip this section when the project does not triage incoming requests. Otherwise ask whether to retain the default role strings:
 
 - Category roles: `bug`, `enhancement`.
 - State roles: `to-evaluate`, `on-hold`, `ready`, `not-planned`.
 
-Only collect overrides if the user declines. The strings are configurable; the role set stays fixed because downstream skills consume it.
+Only collect overrides if the user declines. The strings are configurable; the role set stays fixed because the workflows that read the roles depend on it.
 
 ### D. Domain documentation
 
@@ -85,7 +85,7 @@ Edit `AGENTS.md`, creating it when it does not exist. Update an existing `## Age
 <one-line role-vocabulary summary>. See `.agents/triage-roles.md`.
 ```
 
-Omit the triage block and file when triage is not installed.
+Omit the triage block and file when the project does not triage incoming requests.
 
 Write the block following [agent-instructions.md](agent-instructions.md), and show the user every line added to `AGENTS.md`. Lines for the project documents are added by whichever skill creates each one, not here.
 

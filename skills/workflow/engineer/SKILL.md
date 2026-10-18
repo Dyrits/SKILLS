@@ -1,6 +1,6 @@
 ---
 name: engineer
-description: Design one capability's technical solution before implementation (modules and their interfaces, data model, seams, and where each acceptance test attaches) inside the system's architecture, and write it down without writing production code. Use when the user asks how a specified capability should be built, to design a feature's modules, interfaces, or data model, or to make a capability's code more testable before building it.
+description: Design one capability's technical solution before implementation (modules and their interfaces, data model, seams, and where each acceptance test attaches) inside the system's architecture, and write it down without writing production code. Use when the user asks how a specified capability should be built, or to design a feature's modules, interfaces, data model, or test seams before it is built.
 ---
 
 # Engineer

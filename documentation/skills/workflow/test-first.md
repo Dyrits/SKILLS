@@ -8,7 +8,7 @@ Expected results come from an independent originating agreement, not from restat
 
 ## When to reach for it
 
-Type `/test-first`, or the agent reaches for it when a task fits. Use it for concrete behavior with an observable public boundary and an independent expected result. Agree the seams before writing tests.
+Type `/test-first`, or the agent reaches for it when a task fits. Use it for concrete behavior with an observable public boundary and an independent expected result. Agree the seams before writing tests: the capability's blueprint supplies them when your `AGENTS.md` names one, and in a run with no one to ask the agent records the seams it assumed.
 
 ## Common questions
 

@@ -36,7 +36,7 @@ Whatever is installed: the project's test runner, browser automation, `curl`, th
 
 **Does it change my code?**
 
-Only temporarily: mutations are restored and checked against `git status` and `git diff`. Tests or scripts written for the proof are left uncommitted and listed, and production code is never edited.
+No. Mutations happen in a separate worktree the skill adds and removes, and your checkout is checked against `git status` and `git diff` afterwards. Tests or scripts written for the proof are left uncommitted and listed for you to commit with the work, and production code is never edited.
 
 **Where does the proof go?**
 
