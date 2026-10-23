@@ -24,7 +24,7 @@ To resume the autonomy migration, read the [current handoff](./.agents/handoffs/
 
 To resume the swarm skill, read the [current handoff](./.agents/handoffs/2026-10-08-1116-swarm-skill.md). Handoffs are shared and committed.
 
-To resume the skill collection upkeep (the first evaluation suites, the upstream detachment record, the remaining trims, and the setup follow-ups), read the [current handoff](./.agents/handoffs/2026-10-23-1128-skill-upkeep.md). Handoffs are shared and committed.
+To resume the skill collection upkeep (the first evaluation suites, the upstream detachment record, the remaining trims, and the setup follow-ups), read the [current handoff](./.agents/handoffs/2026-10-23-1135-skill-upkeep.md). Handoffs are shared and committed.
 
 Install commands are copied verbatim from [standard installation wording](./documentation/maintenance/standard-installation-wording.md). `.claude-plugin/marketplace.json` makes the repository its own single-plugin marketplace (a fallback the installation wording guide explains, not the documented route). Run `claude plugin validate . --strict` after touching either manifest. This repository's decisions live in `documentation/architecture-decision-record/`.
 
