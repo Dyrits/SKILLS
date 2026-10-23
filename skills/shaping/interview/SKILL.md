@@ -21,6 +21,8 @@ Work the tree in **rounds**. The **frontier** contains every unresolved decision
 ➡️ <recommended answer>
 ```
 
+Copy this template as written for every question: the `❓` and `➡️` markers, the bold `**Qn**` number and title, and the `---` between questions. Never swap `➡️` for a label such as "Recommended:", so the user can scan the recommendations and answer by number. Context or reasoning goes in the question text or after the recommended answer, on the same line.
+
 Word each question so "yes" accepts your recommended answer.
 
 Recompute the frontier after each round. A question that depends on an unresolved answer belongs to a later round. Reuse settled decisions instead of interviewing again. Bound the tree to the selected question or scope, not the entire future product.
