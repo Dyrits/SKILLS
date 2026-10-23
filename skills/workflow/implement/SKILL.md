@@ -9,7 +9,7 @@ metadata:
 
 The project documents and their rules are in [project-documents.md](references/project-documents.md); its terms (authorized, obligation, lazy, pointer) apply throughout.
 
-Identify the authorized behavior and its originating agreement: a task, specifications with their requirements, or a user-approved batch in working state. Read the applicable requirements. Record the starting commit and work scope for review.
+Identify the authorized behavior and its originating agreement: a task, specifications with their requirements, or a user-approved batch in working state. When the user passes a task reference, fetch it through the task tracker configuration `AGENTS.md` points to and state its title before starting; when the reference is ambiguous, ask. Read the applicable requirements. Record the starting commit and work scope for review.
 
 Preserve accepted behavior, and prefer targeted edits over regenerating unchanged code or documents. Put mechanical conventions in formatter, compiler, and lint configuration; keep the conventions file for judgment those tools cannot enforce. Comments capture reasons and constraints the code cannot show.
 

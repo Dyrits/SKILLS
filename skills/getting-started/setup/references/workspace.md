@@ -98,7 +98,7 @@ Seed `.agents/issue-tracker.md` from the selected template:
 
 For another tracker, use the same sections with the user's verified access and conventions. Append [refinement.md](../assets/refinement.md), which says where the project documents live and when remote writes need authorization.
 
-Write [triage-roles.md](../assets/triage-roles.md) when applicable. Create only configuration needed now, not empty capability trees or speculative documents.
+Write [triage-roles.md](../assets/triage-roles.md) when applicable. On GitHub or GitLab, list the role strings the tracker lacks as labels and, once the user approves, create them (`gh label create` / `glab label create`). Create only configuration needed now, not empty capability trees or speculative documents.
 
 ## 4. Done
 

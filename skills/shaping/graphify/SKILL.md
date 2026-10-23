@@ -71,7 +71,7 @@ Each child holds a question sized for one 100K-token agent session:
 <the decision or investigation this task resolves>
 ```
 
-Record the type using a native `graphify:<type>` label or the configured local `Type:` line. Types are `research`, `prototype`, `interview`, and `task`.
+Record the type using a native `graphify:<type>` label or the configured local `Type:` line. Types are `research`, `prototype`, `interview`, and `task`. `graphify:` labels are the only labels a map and its children carry, never a triage role such as `ready`: they are decisions, not implementation work.
 
 Claim the task before work, using the tracker assignee or local `Progress: claimed`. An open, unassigned remote task or unresolved, unclaimed local task is unclaimed.
 
@@ -116,8 +116,8 @@ The user supplies a loose idea.
 1. **Name the destination.** Settle the destination and its scope following the [interview method](references/interview.md).
 2. **Map the frontier.** Refine breadth-first across the space instead of going deep on one question. If there is no fog and the journey fits one session, stop and ask how the user wants to proceed.
 3. **Create the map.** Fill Destination and Notes, leave Decisions-so-far empty, and sketch fog under Not yet specified. Use the configured local or remote operation.
-4. **Create sharp decision tasks.** Create children first, then wire blocking in a second pass once identities exist. Keep everything still vague in the fog.
-5. **Start research subagents.** For each research task, start a subagent that follows [research.md](references/research.md). Capture findings on a throwaway `research/<name>` branch with a context pointer from the task.
+4. **Create sharp decision tasks.** Create children first, then wire blocking in a second pass once identities exist. Write cross-references in that pass too, with real identifiers: a placeholder `#<n>` auto-links to an unrelated issue. Keep everything still vague in the fog.
+5. **Start research subagents.** For each research task, start a subagent that follows [research.md](references/research.md). Capture findings on a throwaway `research/<name>` branch with a context pointer from the task. Push the branch but open no pull or merge request: it is never merged.
 6. **Finish.** Charting fills one session; resolving decisions starts in the next. Update the backlog pointer and working state where useful. Offer the optional visual delivery below, then stop.
 
 ### Work through the map
@@ -126,7 +126,7 @@ The user supplies a map URL, identifier, or local path. Naming a decision task i
 
 1. Load the map, relevant requirements, and canonical specification without loading every task body.
 2. Use the named task, or choose the first frontier task in map order. Claim it before work.
-3. Resolve it. Fetch related task bodies only as needed. Use the skills or tools the Notes name. If unsure, follow the [interview method](references/interview.md).
+3. Resolve it as the type its `graphify:<type>` label or local `Type:` line names. Read the type, not just the body: the body never states it. Fetch related task bodies only as needed. Use the skills or tools the Notes name. If unsure, follow the [interview method](references/interview.md).
 4. Record the answer, rationale, and evidence as a resolution comment or the configured local answer. Close or resolve the task, then append a titled context pointer to Decisions-so-far. Update agreed living specifications and remove settled proposals from the draft without copying whole task bodies.
 5. Create newly sharp tasks and wire their blockers. Clear graduated fog. Close tasks beyond the destination and record them under Out of scope. Update invalidated tasks; ask before deleting historical remote records.
 6. Update working state and the changelog. Offer the optional visual delivery below, then stop after this decision, leaving the next frontier visible.

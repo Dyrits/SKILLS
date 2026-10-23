@@ -27,4 +27,4 @@ Unresolved proposals in a capability's draft hold no triage role. Roles start wh
 
 When a skill names a role ("apply the ready triage role"), use the corresponding string from these tables.
 
-Edit the right-hand columns to match the vocabulary you actually use. The role set itself stays fixed because the workflows that write tasks and specifications read `ready`. These four states cover intake only, whether a task is actionable. Execution progress belongs to the tracker's own progress field, the local task body, a branch, or a pull request.
+Edit the "String in our tracker" columns to match the vocabulary you actually use. The role set itself stays fixed because the workflows that write tasks and specifications read `ready`. These four states cover intake only, whether a task is actionable. Execution progress belongs to the tracker's own progress field, the local task body, a branch, or a pull request.

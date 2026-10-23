@@ -43,7 +43,7 @@ An explicit request to chart authorizes the relevant map, child tasks, and block
 
 **Which tracker labels does it use?**
 
-`graphify:map` for the map and `graphify:<type>` (`research`, `prototype`, `interview`, `task`) for its decision tasks. Maps created by the upstream `wayfinder` skill carry `wayfinder:` labels; graphify does not read those.
+`graphify:map` for the map and `graphify:<type>` (`research`, `prototype`, `interview`, `task`) for its decision tasks, and nothing else: never a triage role such as `ready`, because these tasks are decisions, not implementation work. Research branches are pushed without a pull or merge request, since they are never merged. Maps created by the upstream `wayfinder` skill carry `wayfinder:` labels; graphify does not read those.
 
 **When should I use prioritize or taskify instead?**
 

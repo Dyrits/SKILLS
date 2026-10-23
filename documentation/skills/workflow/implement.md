@@ -30,6 +30,10 @@ Only for the behavior those tests establish. Appearance and interaction may need
 
 From the capability's blueprint when your `AGENTS.md` names one: its seams and acceptance table are the agreed design. Without one, the agent confirms the seams with you first, or, in a subagent with no one to ask, records the seams it assumed in its report.
 
+**I passed `#2` and it started on the wrong task.**
+
+An agent can resolve a bare number against another numbered list in context, such as a todo file or checklist. When you pass a task reference, `implement` fetches it from the configured tracker and states its title before starting, and asks when the reference is ambiguous. Check that the title is the task you meant; the issue URL or `owner/repo#2` removes the ambiguity.
+
 **How does it check browser interaction?**
 
 With whatever the harness offers: a browser tool, or a scripted run with a browser automation library the project already uses. When no way is available, the check is reported as could not run.

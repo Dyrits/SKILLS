@@ -53,7 +53,7 @@ Only if you agree. Otherwise it adds the checks to your existing hook manager.
 
 **Do I have to use GitHub?**
 
-No. GitHub, GitLab, Jira, and local Markdown are supported, and another tracker works through a verified connector, command-line tool, or an explicitly manual workflow. The role file maps names and does not create remote labels.
+No. GitHub, GitLab, Jira, and local Markdown are supported, and another tracker works through a verified connector, command-line tool, or an explicitly manual workflow. The role file maps names. On GitHub or GitLab, setup lists the role labels the tracker lacks and creates them once you approve.
 
 **Is the guard a sandbox?**
 

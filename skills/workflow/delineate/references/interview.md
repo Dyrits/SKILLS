@@ -16,6 +16,8 @@ Work the tree in **rounds**. The **frontier** contains every unresolved decision
 ➡️ <recommended answer>
 ```
 
+Word each question so "yes" accepts your recommended answer.
+
 Recompute the frontier after each round. A question that depends on an unresolved answer belongs to a later round. Reuse settled decisions instead of interviewing again. Bound the tree to the selected question or scope, not the entire future product.
 
 Find facts from the environment yourself, delegating exploration when available. An exploration in progress is an unsettled prerequisite: only downstream questions wait, while independent questions proceed. Decisions belong to the user; present them and wait rather than supplying unapproved answers.
