@@ -1,7 +1,7 @@
 {
   "name": "dyrits-skills",
   "version": "0.2.0",
-  "description": "Agent skills for real engineering: refinement, specification and task flows, TDD, code review, domain modelling and more.",
+  "description": "Skills for agentic engineering: refinement, specification and task flows, TDD, code review, domain modelling and more.",
   "author": {
     "name": "Dylan J. Gerrits"
   },

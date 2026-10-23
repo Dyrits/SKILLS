@@ -44,7 +44,7 @@ def tagline(skill_file):
 
 
 def root_manifest(root, folders, version):
-    lines = ["name: dyrits", f"version: {version}", 'description: "Agent skills for real engineering"', "license: MIT",
+    lines = ["name: dyrits", f"version: {version}", 'description: "Skills for agentic engineering"', "license: MIT",
              "marketplace:", "  owner:", '    name: "Dylan J. Gerrits"', "    url: https://github.com/Dyrits",
              "  outputs:", "    claude: {}", "  claude:", "    output: marketplace.json", "  packages:"]
     dependencies = ["dependencies:", "  apm:"]

@@ -2,7 +2,7 @@
   "name": "dyrits-skills",
   "version": "0.2.0",
   "private": true,
-  "description": "Agent skills for real engineering",
+  "description": "Skills for agentic engineering",
   "repository": {
     "type": "git",
     "url": "https://github.com/Dyrits/SKILLS"

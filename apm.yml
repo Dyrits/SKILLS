@@ -1,6 +1,6 @@
 name: dyrits
 version: 0.2.0
-description: "Agent skills for real engineering"
+description: "Skills for agentic engineering"
 license: MIT
 dependencies:
   apm:

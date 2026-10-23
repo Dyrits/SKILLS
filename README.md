@@ -1,8 +1,6 @@
-# Skills For Real Engineers
+# Skills for agentic engineering
 
 [![skills.sh](https://skills.sh/b/Dyrits/SKILLS)](https://skills.sh/Dyrits/SKILLS)
-
-Agent skills for real engineering.
 
 These skills are small, editable, and composable. Use explicit planning phases or develop a living application in just-in-time increments. Both workflows maintain the same project documents.
 
