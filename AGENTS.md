@@ -1,9 +1,8 @@
 Skills are organized into bucket folders under `skills/`:
 
-- `getting-started/`: set up once per repository or machine
 - `workflow/`: the idea-to-ship spine, in order
 - `shaping/`: explore an open question and produce a decision or answer that feeds the flow
-- `upkeep/`: keep the codebase and issue list healthy; generates work for the flow
+- `upkeep/`: set up a repository, then keep the codebase and issue list healthy; generates work for the flow
 - `version-control/`: branches, merge requests, and their history
 - `productivity/`: human-facing workflows and procedures you run, not part of the delivery flow
 

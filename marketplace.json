@@ -9,7 +9,7 @@
       "name": "setup",
       "description": "Set up a repository, or an empty project, for AI-assisted work: task tracking and triage roles, commit-time formatting, linting and typechecking, guards that make agents ask before destructive Git commands, and AI development tools.",
       "version": "0.2.0",
-      "source": "./skills/getting-started/setup"
+      "source": "./skills/upkeep/setup"
     },
     {
       "name": "design-workflow",

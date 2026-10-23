@@ -17,7 +17,7 @@ Run `/graphify`, or let an agent or another skill reach for it when a large unce
 | The route is clear and implementation needs decomposition | Use [taskify](../workflow/taskify.md) |
 | One conversation can settle the question | Use [interview](../shaping/interview.md) |
 
-It uses the tracker configuration that [setup](../getting-started/setup.md) writes when your `AGENTS.md` points to one. Without it, Graphify keeps the graph local in Markdown files and tells you so.
+It uses the tracker configuration that [setup](../upkeep/setup.md) writes when your `AGENTS.md` points to one. Without it, Graphify keeps the graph local in Markdown files and tells you so.
 
 ## The frontier and the fog
 

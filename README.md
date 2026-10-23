@@ -110,10 +110,6 @@ Proofs that changes to this repository work, with the commands to rerun them, ar
 
 The manifest is the source of truth for this list; it holds every skill in the repository. Every skill can be run by you or reached by an agent, and a skill can call any other skill.
 
-### Getting started
-
-- [setup](./skills/getting-started/setup/SKILL.md): Configure a repository or an empty project: task tracking, triage roles, commit-time checks, Git guardrails, and AI tooling.
-
 ### Workflow
 
 - [delineate](./skills/workflow/delineate/SKILL.md): Outline the system functionally: purpose, actors, contexts, capabilities, system-wide requirements, and glossary.
@@ -139,6 +135,7 @@ The manifest is the source of truth for this list; it holds every skill in the r
 
 ### Upkeep
 
+- [setup](./skills/upkeep/setup/SKILL.md): Configure a repository or an empty project: task tracking, triage roles, commit-time checks, Git guardrails, and AI tooling.
 - [triage](./skills/upkeep/triage/SKILL.md): Verify and classify requests, recording actionable briefs or decisions.
 - [improve-codebase-architecture](./skills/upkeep/improve-codebase-architecture/SKILL.md): Present deepening opportunities in a visual audit.
 - [improve-skills](./skills/upkeep/improve-skills/SKILL.md): Review a session's skill use and report it as an issue on this repository.

@@ -17,7 +17,7 @@ Run `/triage`, or let an agent or another skill reach for it when requests need 
 | You have decided its next state | Request the state change |
 | You need actionable work to assign | Ask what is ready |
 
-Triage reads the tracker and role mappings that [setup](../getting-started/setup.md) writes. When they are absent, it asks you where the tasks live for this run, uses the default role names, and says in its report what it assumed.
+Triage reads the tracker and role mappings that [setup](./setup.md) writes. When they are absent, it asks you where the tasks live for this run, uses the default role names, and says in its report what it assumed.
 
 ## The intake machine
 

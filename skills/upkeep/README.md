@@ -1,7 +1,8 @@
 # Upkeep
 
-Keep the codebase and request list healthy.
+Set up a repository, then keep the codebase and request list healthy.
 
+- [setup](./setup/SKILL.md): Configure a repository or an empty project: task tracking, triage roles, commit-time checks, Git guardrails, and AI tooling.
 - [triage](./triage/SKILL.md): Verify and classify requests, recording briefs, holds, or rejection decisions.
 - [improve-codebase-architecture](./improve-codebase-architecture/SKILL.md): Present deepening opportunities and explore the selected candidate.
 - [improve-skills](./improve-skills/SKILL.md): Review a session's skill use with your agent and report it as an issue on the skills repository.
