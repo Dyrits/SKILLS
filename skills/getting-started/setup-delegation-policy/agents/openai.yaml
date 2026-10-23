@@ -1,3 +1,0 @@
-interface:
-  display_name: "Setup Delegation Policy"
-  short_description: "Install, reconfigure, or remove the delegation and model routing rule and tier agents for each agent harness you use"

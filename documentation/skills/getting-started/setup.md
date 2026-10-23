@@ -22,7 +22,7 @@ Type `/setup`, or an agent can reach for it when you ask to set up or reconfigur
 | A new or unconfigured repository | This skill, all areas |
 | An empty folder with no stack chosen yet | This skill; code checks wait until code exists |
 | You want code conventions written down or audited | [codify](../upkeep/codify.md) |
-| You want the delegation rule on every repository on this machine | [setup-delegation-policy](./setup-delegation-policy.md) |
+| You want the delegation rule on every repository on this machine | Copy [the delegation policy](../../delegation/policy.md) into your global steering file |
 | You want to choose the stack itself | [architect](../workflow/architect.md) |
 
 ## Code checks without extra dependencies

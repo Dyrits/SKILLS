@@ -47,7 +47,6 @@
     "./skills/upkeep/improve-codebase-architecture",
     "./skills/version-control/resolve-merge-conflicts",
     "./skills/upkeep/triage",
-    "./skills/getting-started/setup-delegation-policy",
     "./skills/productivity/publish-message",
     "./skills/productivity/memorize",
     "./skills/productivity/swarm",
@@ -59,5 +58,8 @@
     "./skills/workflow/address-feedback",
     "./skills/workflow/iterate",
     "./skills/workflow/verify"
-  ]
+  ],
+  "experimental": {
+    "evals": "evaluations"
+  }
 }

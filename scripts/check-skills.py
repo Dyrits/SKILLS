@@ -17,7 +17,7 @@ from urllib.parse import unquote
 # Skills called by name that ship outside this repository.
 EXTERNAL_SKILLS = {"skill-creator", "webapp-testing"}
 
-SKILL_ENTRIES = {"SKILL.md", "apm.yml", "agents", "scripts", "references", "assets", "evals"}
+SKILL_ENTRIES = {"SKILL.md", "apm.yml", "agents", "scripts", "references", "assets"}
 SUPPORT_NAME = re.compile(r"^[a-z0-9]+(?:[-.][a-z0-9]+)*$")
 VERIFIED_PATTERN = re.compile(r"^Verified: (\d{4}-\d{2}-\d{2})", re.MULTILINE)
 STALE_AFTER_DAYS = 183
@@ -159,7 +159,7 @@ def check(repository):
             errors.append(f"{page.relative_to(root)}: missing top provenance note.")
 
     # references/routing.md carries a fallback copy of the policy's tiers; keep the two identical.
-    policy = root / "skills/getting-started/setup-delegation-policy/assets/policy.md"
+    policy = root / "documentation/delegation/policy.md"
     routing = root / "skills/workflow/divide-and-conquer/references/routing.md"
     if policy.exists() and routing.exists():
         tier_line = re.compile(r"^(?:- \*\*(?:Light|Balanced|Heavy|Frontier)\*\*|\| (?:Tier|Light|Balanced|Heavy|Frontier) ).*$",

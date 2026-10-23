@@ -2,7 +2,7 @@
 
 This folder holds the evaluation reports worth versioning. Raw responses, snapshots, detailed grades, and viewers stay in local workspaces.
 
-Per-skill evaluations are paused, and the repository-owned test cases have been removed. These reports preserve historical findings; their fixture paths and reproduction commands describe the repository at the time of each run.
+Evaluation suites live in `evaluations/` at the repository root ([architecture decision record 0008](../architecture-decision-record/0008-resume-skill-evaluations.md)). Reports from before that record preserve historical findings; their fixture paths and reproduction commands describe the repository at the time of each run.
 
 ## Report format
 

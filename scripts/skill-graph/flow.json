@@ -37,7 +37,7 @@
     "tooling-report": {"label": "Tooling report", "description": "Usage, output reduction, quality signals, and gaps from existing measurements."},
     "git-hooks": {"label": "Git hooks", "path": ".githooks/", "description": "Versioned pre-commit checks through core.hooksPath."},
     "git-guardrails": {"label": "Git guardrails", "description": "Confirmation prompts before git commands that can lose work."},
-    "delegation-policy": {"label": "Delegation policy", "description": "A machine-wide rule for routing work to the least expensive capable model."},
+    "delegation-policy": {"label": "Delegation policy", "description": "A machine-wide rule for routing work to the least expensive capable model, copied by hand into the global steering file."},
     "agent-instructions": {"label": "Agent instructions", "path": "SKILL.md, AGENTS.md", "description": "Documents an agent reads: skills, steering files, prompts."},
     "draft-prose": {"label": "Draft prose", "description": "Writing meant for other people."},
     "polished-prose": {"label": "Polished prose", "description": "The same writing without filler and AI tells."},
@@ -52,7 +52,6 @@
   },
   "skills": {
     "setup": {"inputs": ["conventions", "code"], "outputs": ["workspace-config", "domain-records", "git-hooks", "git-guardrails", "tooling-config"], "next": []},
-    "setup-delegation-policy": {"inputs": [], "outputs": ["delegation-policy"], "next": ["divide-and-conquer"]},
     "graphify": {"inputs": ["idea"], "outputs": ["decision-graph", "decisions"], "next": ["specify", "taskify"]},
     "prioritize": {"inputs": ["idea", "backlog"], "outputs": ["backlog", "work-in-progress"], "next": ["iterate", "taskify"]},
     "research": {"inputs": ["idea"], "outputs": ["research-note"], "next": ["interview", "specify", "graphify"]},

@@ -1,3 +1,0 @@
-name: setup-delegation-policy
-version: 0.2.0
-description: "Install, reconfigure, or remove the delegation and model routing rule, and the tier agents it needs, for each agent harness on this machine."

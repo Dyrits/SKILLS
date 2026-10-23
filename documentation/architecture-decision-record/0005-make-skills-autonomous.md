@@ -1,6 +1,6 @@
 # Make skills autonomous and connect workflows through project artifacts
 
-Status: accepted; implementation is incomplete.
+Status: accepted; implementation is incomplete. The evaluation pause is superseded by [0008: Resume skill evaluations](./0008-resume-skill-evaluations.md).
 
 This supersedes [0004: Skills know each other only by contract](./0004-skills-know-each-other-only-by-contract.md). It supersedes the central documentation-skill ownership in [0002](./0002-share-project-documents-across-workflows.md) and [0003](./0003-group-specifications-by-capability.md), not their shared project-document model or capability-based organization. Earlier records remain as history.
 

@@ -198,7 +198,7 @@ class LayoutChecks(unittest.TestCase):
         self.assertEqual(self.result()[0], False)
 
     def test_routing_tiers_follow_policy(self):
-        self.write("skills/getting-started/setup-delegation-policy/assets/policy.md", "| Light | Haiku | Luna |\n")
+        self.write("documentation/delegation/policy.md", "| Light | Haiku | Luna |\n")
         self.write("skills/workflow/divide-and-conquer/references/routing.md", "| Light | Haiku | Luna |\n")
         self.assertNotIn("tiers differ", self.result()[1])
         self.write("skills/workflow/divide-and-conquer/references/routing.md", "| Light | Sonnet | Luna |\n")

@@ -25,7 +25,7 @@ To resume the autonomy migration, read the [current handoff](./.agents/handoffs/
 
 To resume the swarm skill, read the [current handoff](./.agents/handoffs/2026-10-08-1116-swarm-skill.md). Handoffs are shared and committed.
 
-To resume the skill collection upkeep (the upstream detachment record, the remaining trims, and the setup follow-ups), read the [current handoff](./.agents/handoffs/2026-10-23-1120-skill-upkeep.md). Handoffs are shared and committed.
+To resume the skill collection upkeep (the first evaluation suites, the upstream detachment record, the remaining trims, and the setup follow-ups), read the [current handoff](./.agents/handoffs/2026-10-23-1128-skill-upkeep.md). Handoffs are shared and committed.
 
 Install commands are copied verbatim from [standard installation wording](./documentation/maintenance/standard-installation-wording.md). `.claude-plugin/marketplace.json` makes the repository its own single-plugin marketplace (a fallback the installation wording guide explains, not the documented route). Run `claude plugin validate . --strict` after touching either manifest. This repository's decisions live in `documentation/architecture-decision-record/`.
 
@@ -39,7 +39,9 @@ Every skill has a human-facing documentation page at `documentation/skills/<buck
 
 A `WARNING` from `scripts/check-skills.py` about a `Verified:` date means that catalogue's commands are due for rechecking: verify them against the official documentation, then update the date.
 
-Per-skill evaluations are paused. Do not create or require `evals/` directories for repository-owned skills. Installed third-party evaluation tooling and historical reports are retained.
+Skill evaluations are allowed, not required ([architecture decision record 0008](./documentation/architecture-decision-record/0008-resume-skill-evaluations.md)). Suites live in `evaluations/<bucket>/<skill>/` at the repository root, never inside a skill folder; reports go to `documentation/evaluations/`.
+
+The delegation and model routing rule is a file to copy by hand into a global steering file: [documentation/delegation](./documentation/delegation/).
 
 Every `SKILL.md` is reachable by both the human and the model: no `disable-model-invocation`, no `policy.allow_implicit_invocation: false`, and a model-facing description. Each skill must complete its advertised task when installed alone, with its own required references and artifact-writing instructions. Bundle local reference copies where necessary. Do not require another skill or suggest another skill as a next step. Connect workflows through discoverable project artifacts instead: a skill that creates a document adds a line for it to the project's `AGENTS.md`, and a skill that reads documents names the kind it needs (requirements, glossary, decision records) and finds it through `AGENTS.md`, never by a path another skill chose. A skill creating a kind `AGENTS.md` does not name looks for an existing home in the project first, falls back to its default location, and never overwrites an existing file, and matches the naming and style of the documents it finds.
 

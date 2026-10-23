@@ -98,8 +98,11 @@ The decisions behind the skills are recorded in [architecture decision records](
 - Both workflows use one set of project-owned documents ([0002](./documentation/architecture-decision-record/0002-share-project-documents-across-workflows.md)), with specifications grouped by capability ([0003](./documentation/architecture-decision-record/0003-group-specifications-by-capability.md)).
 - Every skill completes its task when installed alone, and skills connect through project artifacts rather than calls ([0005](./documentation/architecture-decision-record/0005-make-skills-autonomous.md)); the migration is not yet complete.
 - The system and each capability are described functionally and technically, by `delineate`, `architect`, `specify`, and `engineer` ([0006](./documentation/architecture-decision-record/0006-describe-systems-and-capabilities-functionally-and-technically.md)).
+- Skill evaluations are allowed, not required, and live in `evaluations/` at the repository root ([0008](./documentation/architecture-decision-record/0008-resume-skill-evaluations.md)).
 - One `setup` skill configures a repository, installing tools through their own command-line installers from a dated catalogue ([0007](./documentation/architecture-decision-record/0007-merge-project-setup-into-one-skill.md)).
 - Tasks can be local Markdown or native remote issues, and skills are grouped by purpose. Every skill ships in the plugin.
+
+The delegation and model routing rule, to copy into your global steering file, is in [documentation/delegation](./documentation/delegation/).
 
 Proofs that changes to this repository work, with the commands to rerun them, are in [documentation/verification](./documentation/verification/).
 
@@ -110,7 +113,6 @@ The manifest is the source of truth for this list; it holds every skill in the r
 ### Getting started
 
 - [setup](./skills/getting-started/setup/SKILL.md): Configure a repository or an empty project: task tracking, triage roles, commit-time checks, Git guardrails, and AI tooling.
-- [setup-delegation-policy](./skills/getting-started/setup-delegation-policy/SKILL.md): Install, reconfigure, or remove the delegation and model-tier rule for each agent harness you use.
 
 ### Workflow
 

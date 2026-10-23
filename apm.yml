@@ -7,8 +7,6 @@ dependencies:
     - git: parent
       path: skills/getting-started/setup
     - git: parent
-      path: skills/getting-started/setup-delegation-policy
-    - git: parent
       path: skills/productivity/design-workflow
     - git: parent
       path: skills/productivity/hand-off
@@ -100,9 +98,6 @@ marketplace:
     - name: setup
       source: ./skills/getting-started/setup
       description: "Set up a repository, or an empty project, for AI-assisted work: task tracking and triage roles, commit-time formatting, linting and typechecking, guards that make agents ask before destructive Git commands, and AI development tools."
-    - name: setup-delegation-policy
-      source: ./skills/getting-started/setup-delegation-policy
-      description: "Install, reconfigure, or remove the delegation and model routing rule, and the tier agents it needs, for each agent harness on this machine."
     - name: design-workflow
       source: ./skills/productivity/design-workflow
       description: "Interview the user into implementable workflow specifications for recurring loops in their work, using the current directory as a stateful workspace."

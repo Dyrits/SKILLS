@@ -81,7 +81,7 @@ Where a tier file exists, rewrite its model line and leave the body.
 - Every model value resolves: a raw id appears verbatim in the harness's model list, an alias in the settings defining it.
 - Every binding satisfies `assets/policy.md`'s model-version rule against the live catalogue.
 - The tiers ascend in capability, and in price wherever the models are metered.
-- Any tier left on a free-listed model is named as such in the report, since running this skill again is what re-checks it.
+- Any tier left on a free-listed model is named as such in the report, since rebinding the tiers by hand is what re-checks it.
 
 ## Bodies
 
