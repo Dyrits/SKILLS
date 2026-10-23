@@ -43,7 +43,7 @@ Completion: every ready branch has its pins, lease, backup ref, and record; ever
 
 For a single branch, rebase it yourself by following [branch.md](references/branch.md).
 
-For several, rebase the ones located in a user checkout yourself and dispatch one subagent per worktree-located branch at the same time, bounded only by resource limits. Give each subagent its worktree path, its record path, the repository instructions, and [branch.md](references/branch.md) with [resolve.md](references/resolve.md), which it reads before acting. Dispatch plain subagents that work in the assigned worktree: a harness-managed isolated worktree would rebase a copy on another branch instead of the branch itself. Subagents report evidence and leave pushing to you. Without a tool that dispatches subagents, rebase every branch yourself, one at a time, following the same two references.
+For several, rebase the ones located in a user checkout yourself and dispatch one subagent per worktree-located branch at the same time, bounded only by resource limits. Give each subagent its worktree path, its record path, the repository instructions, and [branch.md](references/branch.md) with [resolve-conflicts.md](references/resolve-conflicts.md), which it reads before acting. Dispatch plain subagents that work in the assigned worktree: a harness-managed isolated worktree would rebase a copy on another branch instead of the branch itself. Subagents report evidence and leave pushing to you. Without a tool that dispatches subagents, rebase every branch yourself, one at a time, following the same two references.
 
 Wait for completion notifications. A quiet subagent is unconfirmed, not running; report its last recorded phase.
 

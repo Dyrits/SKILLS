@@ -13,8 +13,10 @@ Updated 2026-10-18. Priorities 1 to 6 and the smaller defects were fixed in comm
 - `optimize-process` stays, trimmed to its impact-estimating rules; `re-explain` stays as it is.
 - `improve-skills` and `improve-environment` stay separate: different audiences and triggers, and the drift check now guards their shared files.
 - `work-in-tree` and `sync-tree` stay separate; `work-in-tree` now records the return destination in the worktree's Git directory, and `sync-tree` reads it.
+- `iterate` stays a self-contained workflow of its own, not a thin router: its bundled copies are the price of running it alone, and the drift check guards them.
+- The conflict procedure now lives once as `references/resolve-conflicts.md`, byte-identical in `resolve-merge-conflicts`, `rebase`, and `sync-tree`, so the drift check guards it. Each skill states its own goal and when its checks run.
 
-Still open: trimming `illustrate` and `unslop`, the `iterate` router question, `research`, the generic "Trim" verdicts, and the three differently named copies of the conflict procedure.
+Still open: trimming `illustrate` and `unslop`, `research`, and the generic "Trim" verdicts.
 
 ## Verdicts
 

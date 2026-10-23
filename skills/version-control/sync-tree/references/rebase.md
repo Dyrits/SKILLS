@@ -6,11 +6,7 @@ Adapted from the `rebase` skill, for one source branch in its own worktree. The 
 
 1. Verify that the source checkout is on its branch at the captured source commit, with a clean index and working tree and no Git operation in progress, and that the target pin exists as a commit.
 2. Run `GIT_EDITOR=true git -c rebase.updateRefs=false rebase --no-autostash "$target_pin"`. The override keeps user configuration from moving other local branches.
-3. When Git stops on conflicts, resolve them by intent:
-   1. See the commit being applied, the history on both sides, and the conflicting files.
-   2. Find the primary sources for each conflict: commit messages, and the pull or merge requests and issues or tickets when reachable. Missing tracker access is not a Git failure; use commit messages, diffs, and local specifications where they establish intent.
-   3. Resolve each hunk. Preserve both intents where possible. Where they are incompatible, pick the one that keeps the target's commits and replays the source's intent on top of them, and note the trade-off. Do **not** invent new behaviour. When intent stays uncertain, or the choice needs a product decision, stop, ask the user one precise question, and leave the rebase in progress. Never `--abort` on your own.
-   4. Stage only the conflict paths you reviewed and run `GIT_EDITOR=true git rebase --continue`, repeating until every commit is rebased.
+3. When Git stops on conflicts, resolve them following [resolve-conflicts.md](resolve-conflicts.md). The goal is to keep the target's commits and replay the source's intent on top of them. Checks run once on the new tip, in the validation below.
 
 Completion: every commit is accounted for and Git reports no unfinished rebase and no unmerged entries. Otherwise the rebase is blocked on a question, and no update is made.
 
