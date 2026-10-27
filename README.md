@@ -2,9 +2,25 @@
 
 [![skills.sh](https://skills.sh/b/Dyrits/SKILLS)](https://skills.sh/Dyrits/SKILLS)
 
+Updated and customized skills from the original forked repository.
+
+## Table of contents
+
+- [About The Project](#about-the-project)
+- [Getting Started](#getting-started)
+- [Usage](#usage)
+- [Design decisions](#design-decisions)
+- [Plugin skills](#plugin-skills)
+- [License](#license)
+- [Contact](#contact)
+
+## About The Project
+
 These skills are small, editable, and composable. Use explicit planning phases or develop a living application in just-in-time increments. Both workflows maintain the same project documents.
 
-## Installation
+## Getting Started
+
+### Installation
 
 [skills.sh](https://skills.sh/Dyrits/SKILLS) copies editable skill files into your project across supported agent clients.
 
@@ -53,7 +69,10 @@ apm update --global
 
 Review the update plan and confirm it. For project installations, run `apm update` from that project instead. Without `--global`, APM checks the project's dependencies, not your user-wide installation.
 
-## Two workflows, shared documents
+
+## Usage
+
+### Two workflows, shared documents
 
 | Approach | Route |
 | --- | --- |
@@ -90,6 +109,7 @@ With local tracking, `documentation/backlog.md` contains the candidate backlog. 
 `iterate` primarily uses the backlog, working state, and changelog. It respects existing requirements and specifications without requiring new capability documents or tasks for every batch.
 
 During specification work, a [prototype](./skills/shaping/prototype/SKILL.md) is a scoped experiment you request or approve. Its validated result can feed implementation, including useful code after production checks. Iteration develops the living application directly.
+
 
 ## Design decisions
 
@@ -165,3 +185,10 @@ The manifest is the source of truth for this list; it holds every skill in the r
 - [unslop](./skills/productivity/unslop/SKILL.md): Remove filler and recurring AI writing patterns.
 - [memorize](./skills/productivity/memorize/SKILL.md): File lessons where the next agent will look, and reuse saved scripts before writing new ones.
 - [swarm](./skills/productivity/swarm/SKILL.md): Fan independent pieces of a task out to fast, low-cost agents you select, then merge and spot-check their reports.
+## License
+
+Components are under MIT and Apache-2.0 licenses from the original projects. See [LICENSE](./LICENSE).
+
+## Contact
+
+Dyrits - https://github.com/Dyrits
