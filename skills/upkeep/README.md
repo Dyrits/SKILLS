@@ -10,3 +10,4 @@ Set up a repository, then keep the codebase and request list healthy.
 - [monitor-ai-tooling](./monitor-ai-tooling/SKILL.md): Produce a dated report separating observed tool benefits, estimates, and quality gaps.
 - [debug](./debug/SKILL.md): Diagnose bugs through a tight reproduction loop and regression evidence.
 - [codify](./codify/SKILL.md): Draft the project's code conventions from how its code is written, confirm each rule and its reason, or audit existing conventions.
+- [security-audit](./security-audit/SKILL.md): Audit a codebase for vulnerabilities in isolated, coverage-led passes and report only findings an independent verifier confirmed.

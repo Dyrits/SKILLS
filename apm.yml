@@ -51,6 +51,8 @@ dependencies:
     - git: parent
       path: skills/upkeep/monitor-ai-tooling
     - git: parent
+      path: skills/upkeep/security-audit
+    - git: parent
       path: skills/upkeep/setup
     - git: parent
       path: skills/upkeep/triage
@@ -164,6 +166,9 @@ marketplace:
     - name: monitor-ai-tooling
       source: ./skills/upkeep/monitor-ai-tooling
       description: "Report AI tooling usage, measured output reduction, quality signals, and gaps from existing local measurements."
+    - name: security-audit
+      source: ./skills/upkeep/security-audit
+      description: "Security guidance and vulnerability review for codebases, APIs, services, CLI tools, libraries, and daemons."
     - name: setup
       source: ./skills/upkeep/setup
       description: "Set up a repository, or an empty project, for AI-assisted work: task tracking and triage roles, commit-time formatting, linting and typechecking, guards that make agents ask before destructive Git commands, and AI development tools."

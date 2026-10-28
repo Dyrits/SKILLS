@@ -365,6 +365,11 @@ const DATA = {
    "description": "Standards and Specifications findings with cited evidence.",
    "label": "Review findings"
   },
+  "security-audit-report": {
+   "description": "Verified findings, open validation leads, and the coverage ledger, ignored by Git by default.",
+   "label": "Security audit report",
+   "path": "documentation/security-audit/run-<N>/"
+  },
   "session": {
    "description": "The conversation and its log: what was tried, what failed, what was learned.",
    "label": "Session"
@@ -478,7 +483,8 @@ const DATA = {
     "improve-environment",
     "monitor-ai-tooling",
     "debug",
-    "codify"
+    "codify",
+    "security-audit"
    ],
    "title": "Upkeep"
   },
@@ -1331,6 +1337,32 @@ const DATA = {
     "The Specifications track checks the originating behavior agreement. That can be a task, shared specifications and requirements, or an explicit user-approved living batch in working state. It does not require a standalone specification."
    ],
    "tagline": "Review Standards and Specifications independently, apply supported refactors, and verify them."
+  },
+  "security-audit": {
+   "argumentHint": "",
+   "bucket": "upkeep",
+   "calls": [],
+   "description": "Security guidance and vulnerability review for codebases, APIs, services, CLI tools, libraries, and daemons. Use for security questions, focused reviews, vulnerability research, security audits, or pen tests. Run the complete workflow only for explicit codebase audit or pen-test requests, full/comprehensive/end-to-end reviews, or requested report artifacts.",
+   "fits": [
+    "Periodic maintenance, run on demand or before a release. Its confirmed findings become work for the delivery flow, and triage can turn them into tracked tasks."
+   ],
+   "handovers": [],
+   "inputs": [
+    "code"
+   ],
+   "next": [],
+   "outputs": [
+    "security-audit-report"
+   ],
+   "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/upkeep/security-audit.md",
+   "requires": [],
+   "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/upkeep/security-audit/SKILL.md",
+   "summary": [
+    "security-audit looks for vulnerabilities that cross a real trust boundary and gives owners the source evidence, a safe reproduction, a priority, and the smallest effective fix. It reports a vulnerability only when an agent other than the one that found it has checked it against the source.",
+    "It runs in two modes:",
+    "A full audit maps the architecture and a coverage ledger, sends isolated hunters over the ledger units, gives every candidate to a fresh verifier who tries to disprove it, writes findings.json, has fresh agents verify the final records, and derives REPORT.md, FINDINGS-DETAIL.md, and NEEDS-VALIDATION.md from them."
+   ],
+   "tagline": "Audit a codebase for vulnerabilities in isolated, coverage-led passes and report only findings an independent verifier confirmed."
   },
   "setup": {
    "argumentHint": "",

@@ -28,6 +28,7 @@
     "./skills/workflow/taskify",
     "./skills/workflow/test-first",
     "./skills/upkeep/setup",
+    "./skills/upkeep/security-audit",
     "./skills/productivity/hand-off",
     "./skills/productivity/optimize-process",
     "./skills/productivity/illustrate",

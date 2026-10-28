@@ -150,6 +150,12 @@
       "source": "./skills/upkeep/monitor-ai-tooling"
     },
     {
+      "name": "security-audit",
+      "description": "Security guidance and vulnerability review for codebases, APIs, services, CLI tools, libraries, and daemons.",
+      "version": "0.2.0",
+      "source": "./skills/upkeep/security-audit"
+    },
+    {
       "name": "triage",
       "description": "Move tasks and external PRs through triage roles: categorize, verify, refine, and write agent-ready briefs.",
       "version": "0.2.0",

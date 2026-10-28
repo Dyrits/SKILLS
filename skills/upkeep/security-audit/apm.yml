@@ -1,0 +1,3 @@
+name: security-audit
+version: 0.2.0
+description: "Security guidance and vulnerability review for codebases, APIs, services, CLI tools, libraries, and daemons."
