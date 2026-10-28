@@ -26,6 +26,8 @@ To resume the swarm skill, read the [current handoff](./.agents/handoffs/2026-10
 
 To resume the skill collection upkeep (the evaluation findings, the upstream detachment record, the remaining trims, and the setup follow-ups), read the [current handoff](./.agents/handoffs/2026-10-23-1405-skill-upkeep.md). Handoffs are shared and committed.
 
+To resume the security-audit skill import (merging the branch, optional evaluations, upstream sync), read the [current handoff](./.agents/handoffs/2026-10-28-1534-security-audit-skill.md). Handoffs are shared and committed.
+
 Install commands are copied verbatim from [standard installation wording](./documentation/maintenance/standard-installation-wording.md). `.claude-plugin/marketplace.json` makes the repository its own single-plugin marketplace (a fallback the installation wording guide explains, not the documented route). Run `claude plugin validate . --strict` after touching either manifest. This repository's decisions live in `documentation/architecture-decision-record/`.
 
 A skill folder holds `SKILL.md`, `apm.yml`, and `agents/`; its support files follow the [Agent Skills specification](https://agentskills.io/specification) layout: `scripts/` for code the agent runs, `references/` for documents it reads, and `assets/` for templates and payloads copied elsewhere. Support file names are lowercase kebab-case (`references/project-documents.md`, `assets/issue-tracker-github.md`). `scripts/check-skills.py` enforces it.
