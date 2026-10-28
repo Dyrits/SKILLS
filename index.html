@@ -270,6 +270,10 @@ const DATA = {
    "description": "A map of blocking questions toward a named destination, one decision per session.",
    "label": "Decision graph"
   },
+  "decision-review": {
+   "description": "A choice, its rationale, concern statuses, understood consequences, and reasons to reconsider, retained in the conversation or a saved record.",
+   "label": "Decision review"
+  },
   "decisions": {
    "description": "Choices settled in an interview, recorded wherever the caller keeps them.",
    "label": "Agreed decisions"
@@ -503,6 +507,7 @@ const DATA = {
   {
    "blurb": "Human-facing workflows you run, not about code. Skills sit flat in this folder; the groupings below are reading order, not directories.",
    "groups": {
+    "challenge": "Sharpening",
     "design-workflow": "Procedures",
     "hand-off": "Transport",
     "illustrate": "Sharpening",
@@ -518,6 +523,7 @@ const DATA = {
    },
    "id": "productivity",
    "skills": [
+    "challenge",
     "re-explain",
     "illustrate",
     "hand-off",
@@ -600,6 +606,33 @@ const DATA = {
     "It works in two branches. Design decides the shape of a system that is not built yet. Assess describes an existing system as the code shows it, tests it against the requirements, and recommends changes only where a requirement or a stated problem calls for one. Concluding that the architecture should stay as it is counts as a result."
    ],
    "tagline": "Decide or assess the system's technical shape: stack, parts, data ownership, integrations, and deployment."
+  },
+  "challenge": {
+   "argumentHint": "",
+   "bucket": "productivity",
+   "calls": [],
+   "description": "Challenges a chosen or preferred option on any topic through focused questions, candid feedback, and a resumable decision review. Use when the user asks to challenge a choice, play devil's advocate, or check whether they have thought through its consequences.",
+   "fits": [
+    "challenge is a standalone productivity skill. Its decision review can inform personal action, a project decision record, or a later conversation. optimize-process focuses specifically on estimating the impact of a recurring process change."
+   ],
+   "handovers": [],
+   "inputs": [
+    "decisions",
+    "session",
+    "decision-review"
+   ],
+   "next": [],
+   "outputs": [
+    "decision-review"
+   ],
+   "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/productivity/challenge.md",
+   "requires": [],
+   "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/productivity/challenge/SKILL.md",
+   "summary": [
+    "challenge tests a choice against your goals, assumptions, alternatives, and consequences. It gives candid feedback, asks focused questions, and updates its assessment as you answer. You retain the decision, including the option to accept a tradeoff the agent would avoid.",
+    "The review tracks concerns as open, resolved by evidence, mitigated, or accepted by you. This record lets a later round or session continue without repeating settled objections. The outcome can be to keep, change, or defer the choice."
+   ],
+   "tagline": "Test a choice on any topic, work through consequences, and retain a decision review."
   },
   "codify": {
    "argumentHint": "",

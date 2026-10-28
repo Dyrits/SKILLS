@@ -174,6 +174,7 @@ The manifest is the source of truth for this list; it holds every skill in the r
 
 ### Productivity
 
+- [challenge](./skills/productivity/challenge/SKILL.md): Test a choice on any topic, work through consequences, and retain a decision review ([documentation](./documentation/skills/productivity/challenge.md)).
 - [re-explain](./skills/productivity/re-explain/SKILL.md): Re-explain a message with the missing context.
 - [teach](./skills/productivity/teach/SKILL.md): Maintain a stateful teaching workspace.
 - [design-workflow](./skills/productivity/design-workflow/SKILL.md): Turn recurring work loops into implementable workflow specifications.

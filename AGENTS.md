@@ -14,6 +14,10 @@ Verification proofs (claims, the checks that prove them, and how to rerun them) 
 
 Repository-maintenance guidance lives in `documentation/maintenance/`; `.agents/` holds agent tools, installed skills, and session state.
 
+For generic decision reviews and their resumable records, read the [challenge documentation](./documentation/skills/productivity/challenge.md).
+
+To resume the challenge skill (publication status and optional behavioral evaluation), read the [current handoff](./.agents/handoffs/2026-10-28-1553-challenge-skill.md). Handoffs are shared and committed.
+
 `documentation/` serves humans and agents. `.agents/` and `AGENTS.md` serve agents only; `README.md` serves primarily humans. When creating shared documentation, add a concise discovery line to both `AGENTS.md` and the appropriate `README.md`. Keep agent-only records discoverable from `AGENTS.md` without adding their internal details to the human README.
 
 For deferred installer and model-routing work, read [.agents/deferred-tooling.md](./.agents/deferred-tooling.md).

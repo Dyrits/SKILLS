@@ -6,6 +6,7 @@ Human-facing workflows you run, not about code. Skills sit flat in this folder; 
 
 Understanding built or repaired in conversation.
 
+- [challenge](./challenge/SKILL.md): Test a choice on any topic, work through consequences, and retain a decision review.
 - **[re-explain](./re-explain/SKILL.md)**: Fire this the moment a message does not land. The agent explains it again with missing context, in your language, using your glossary's vocabulary.
 - **[illustrate](./illustrate/SKILL.md)**: Explain the current topic with the smallest useful diagram, code sketch, or focused HTML artifact.
 

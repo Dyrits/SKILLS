@@ -6,10 +6,10 @@
   },
   "plugins": [
     {
-      "name": "setup",
-      "description": "Set up a repository, or an empty project, for AI-assisted work: task tracking and triage roles, commit-time formatting, linting and typechecking, guards that make agents ask before destructive Git commands, and AI development tools.",
+      "name": "challenge",
+      "description": "Challenges a chosen or preferred option on any topic through focused questions, candid feedback, and a resumable decision review.",
       "version": "0.2.0",
-      "source": "./skills/upkeep/setup"
+      "source": "./skills/productivity/challenge"
     },
     {
       "name": "design-workflow",
@@ -37,7 +37,7 @@
     },
     {
       "name": "optimize-process",
-      "description": "Analyze and improve a recurring work process when the user reports delays, excessive steps, rework, or handoff friction.",
+      "description": "Estimate what a change to a recurring work process would save, counting agent runtime, human attention, and waiting separately, without invented figures.",
       "version": "0.2.0",
       "source": "./skills/productivity/optimize-process"
     },
@@ -156,6 +156,12 @@
       "source": "./skills/upkeep/security-audit"
     },
     {
+      "name": "setup",
+      "description": "Set up a repository, or an empty project, for AI-assisted work: task tracking and triage roles, commit-time formatting, linting and typechecking, guards that make agents ask before destructive Git commands, and AI development tools.",
+      "version": "0.2.0",
+      "source": "./skills/upkeep/setup"
+    },
+    {
       "name": "triage",
       "description": "Move tasks and external PRs through triage roles: categorize, verify, refine, and write agent-ready briefs.",
       "version": "0.2.0",
@@ -253,7 +259,7 @@
     },
     {
       "name": "verify",
-      "description": "Prove that implemented work behaves as intended, by any means available, and record a reproducible proof in the repository.",
+      "description": "Prove that implemented work behaves as intended, by any means available (the running application, tests, browser, API, or command-line checks), and record a reproducible proof in the repository.",
       "version": "0.2.0",
       "source": "./skills/workflow/verify"
     }

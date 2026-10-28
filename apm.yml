@@ -5,6 +5,8 @@ license: MIT
 dependencies:
   apm:
     - git: parent
+      path: skills/productivity/challenge
+    - git: parent
       path: skills/productivity/design-workflow
     - git: parent
       path: skills/productivity/hand-off
@@ -97,6 +99,9 @@ marketplace:
   claude:
     output: marketplace.json
   packages:
+    - name: challenge
+      source: ./skills/productivity/challenge
+      description: "Challenges a chosen or preferred option on any topic through focused questions, candid feedback, and a resumable decision review."
     - name: design-workflow
       source: ./skills/productivity/design-workflow
       description: "Interview the user into implementable workflow specifications for recurring loops in their work, using the current directory as a stateful workspace."

@@ -1,5 +1,6 @@
 {
   "artifacts": {
+    "decision-review": {"label": "Decision review", "description": "A choice, its rationale, concern statuses, understood consequences, and reasons to reconsider, retained in the conversation or a saved record."},
     "idea": {"label": "Idea or open question", "description": "Something to build or decide that is not settled yet."},
     "decisions": {"label": "Agreed decisions", "description": "Choices settled in an interview, recorded wherever the caller keeps them."},
     "domain-outline": {"label": "Domain outline", "path": "documentation/outline.md", "description": "The system's purpose, actors, domain contexts, and capability map."},
@@ -52,6 +53,7 @@
     "conflict": {"label": "Merge conflict", "description": "An in-progress merge or rebase stopped on conflicting hunks."}
   },
   "skills": {
+    "challenge": {"inputs": ["decisions", "session", "decision-review"], "outputs": ["decision-review"], "next": []},
     "setup": {"inputs": ["conventions", "code"], "outputs": ["workspace-config", "domain-records", "git-hooks", "git-guardrails", "tooling-config"], "next": []},
     "graphify": {"inputs": ["idea"], "outputs": ["decision-graph", "decisions"], "next": ["specify", "taskify"]},
     "prioritize": {"inputs": ["idea", "backlog"], "outputs": ["backlog", "work-in-progress"], "next": ["iterate", "taskify"]},
