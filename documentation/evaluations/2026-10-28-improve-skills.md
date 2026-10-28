@@ -1,0 +1,46 @@
+# 2026-10-28 improve-skills
+
+Written 2026-10-28 (UTC). Runs took place on 2026-10-23, in one combined run of the `upkeep` and `version-control` suites that nobody reported at the time.
+
+## Result
+
+The skill separates from the baseline (Δ +0.33). With the plugin, 3 of 3 runs fired `improve-skills`, 2 of 3 passed the rubric, and none filed an issue. Without the plugin, 0 of 3 passed the rubric and none filed an issue. The near-miss negative passed 6 of 6.
+
+## What was evaluated
+
+| Item | Value |
+| --- | --- |
+| Skill | [`skills/upkeep/improve-skills/SKILL.md`](../../skills/upkeep/improve-skills/SKILL.md) |
+| Repository state | `04c5b33` (`main`), plugin `dyrits-skills` 0.2.0 loaded in place; the suites were uncommitted at run time |
+| Cases | [`evaluations/upkeep/improve-skills/`](../../evaluations/upkeep/improve-skills/) |
+| Runner | `claude plugin eval` from Claude Code 2.1.304; agent model Opus 5.5 (`claude-opus-5-5`, from the result file) |
+| Judge | Claude Code's default model for `llm` graders; the run does not record which |
+| Runs | 3 with the plugin and 3 without, per case |
+
+## Method
+
+Real runs, not simulations: each run is a `claude -p` child in an empty temporary workspace, with the case's `fixture.sh` as scaffold where the case has one, and only this plugin loaded (or no plugin, for the baseline arm). Graders are the case's `graders/*.md`: `tool_used` and `regex` checks computed from the trace and files, and `llm` rubrics voted three times by the judge. A `tool_used: Skill` grader is an indicator only and is not scored in a two-arm run. Raw results (`aggregate-result.json`, `report.html`, `vc-upkeep.json`) stayed local in the ignored `evaluations/results/`; the run traces were in temporary directories and are gone, so this report rests on the grader verdicts and the final replies the result file keeps.
+
+The run covered the `upkeep` and `version-control` tags together (24 cases, 492 seconds, USD 14.63). Its version-control half failed on an account session limit and is reported separately.
+
+## Results
+
+| Case | With plugin | Without plugin | Δ |
+| --- | --- | --- | --- |
+| `opens-the-retrospective` (positive) | 0.83 (2 of 3) | 0.50 (0 of 3) | +0.33 |
+| `ignores-a-writing-question` (negative) | 1.00 (3 of 3) | 1.00 (3 of 3) | 0.00 |
+
+## Limits and open points
+
+- The `no-issue-filed` grader checks that `Bash` was never called. It passes in both arms, so it guards against filing without separating them.
+- One run with the plugin failed the rubric; the judge records votes, not reasons, so why is unknown.
+- Filing the issue itself (the external action) is not exercised, by design: every run is one turn and nothing is published.
+
+## Reproduce
+
+```bash
+claude plugin eval evaluations/upkeep/improve-skills/opens-the-retrospective/prompt.md --scaffold --allow-tools Bash Write Edit --max-cost-usd 5
+claude plugin eval evaluations/upkeep/improve-skills/ignores-a-writing-question/prompt.md --max-cost-usd 2
+```
+
+The flags the original run used were not recorded; these are reconstructed from the cases (`--scaffold` runs `fixture.sh`, and `--allow-tools` restores the writing tools the positive cases need).

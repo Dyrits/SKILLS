@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: works-in-a-new-worktree
+context:
+  scaffold_script: fixture.sh

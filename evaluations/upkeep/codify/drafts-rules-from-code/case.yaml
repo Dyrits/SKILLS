@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: drafts-rules-from-code
+context:
+  scaffold_script: fixture.sh
