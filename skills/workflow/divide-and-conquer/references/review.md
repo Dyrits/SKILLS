@@ -80,7 +80,7 @@ Wait for both reports before editing, and retain their agent identifiers for ver
 
 Both briefs require stable finding identifiers, file and hunk references, supporting evidence, a concrete proposed change, and the expected effect on behavior.
 Tell each reviewer: "Perform your assigned axis directly, without editing files, running this review procedure, or spawning further agents."
-Keep each report under 400 words without omitting findings; split a longer report into continuations when necessary.
+Keep each report to the findings and their evidence, without preamble or restated context; never drop a finding to save space.
 
 The **Standards** brief includes the standards-source paths and the smell baseline from step 3 in full.
 Ask for every documented violation, citing its source file and rule, and each plausible baseline smell, naming it and quoting the relevant hunk.
