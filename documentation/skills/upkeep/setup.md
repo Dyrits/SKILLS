@@ -55,6 +55,8 @@ Only if you agree. Otherwise it adds the checks to your existing hook manager.
 
 No. GitHub, GitLab, Jira, and local Markdown are supported, and another tracker works through a verified connector, command-line tool, or an explicitly manual workflow. The role file maps names. On GitHub or GitLab, setup lists the role labels the tracker lacks and creates them once you approve.
 
+For GitHub or GitLab, setup checks that the selected repository is reachable before continuing. The tracker instructions check the GitHub destination before creating issues, post closing explanations separately so they survive an already-closed issue, and distinguish open blockers from closed dependencies. GitLab decision tasks are linked to their map so the frontier query can find them.
+
 **Is the guard a sandbox?**
 
 No. It reads command text, so Git aliases, scripts that run Git, and `eval` get past it. It catches mistakes; branch protection on the remote is the only hard stop. Where nobody can answer a prompt, expect the guarded command to be refused.

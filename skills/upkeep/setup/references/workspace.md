@@ -29,6 +29,8 @@ Summarize what already exists. Take the following sections in order, one questio
 
 Ask where tasks live. Recommend GitHub for a GitHub remote, GitLab for a GitLab remote, or local Markdown without a remote. A different tracker is an ordinary override.
 
+A GitHub or GitLab tracker needs a reachable repository. When the user picks one and no remote points at that host, get the repository URL from them and wire it up (`git init` if needed, `git remote add origin <url>`) before going further. Done when `gh repo view` or `glab repo view` prints the project from inside this directory; when it cannot, stop and tell the user what is missing.
+
 - Local Markdown keeps task bodies in the capability task files.
 - A remote tracker uses its native task records. Local task files, when useful, contain a title and link to the authoritative published task rather than a copied body.
 

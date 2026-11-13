@@ -1,4 +1,4 @@
-Fork-specific skill with no upstream equivalent, accepted in [architecture decision record 0005](../../architecture-decision-record/0005-make-skills-autonomous.md) and placed in the system-and-capability model by [architecture decision record 0006](../../architecture-decision-record/0006-describe-systems-and-capabilities-functionally-and-technically.md).
+Fork-specific skill with no upstream equivalent, apart from two references adapted from the `software-factory` skill in `mattpocock/skills` at `5863806` (MIT). It was accepted in [architecture decision record 0005](../../architecture-decision-record/0005-make-skills-autonomous.md) and placed in the system-and-capability model by [architecture decision record 0006](../../architecture-decision-record/0006-describe-systems-and-capabilities-functionally-and-technically.md).
 
 ## What it does
 
@@ -15,6 +15,7 @@ Type `/architect`, or an agent can reach for it when a task fits:
 | Choosing a stack or high-level structure for a new system | `architect`, design branch |
 | "Is our architecture still right for this?" | `architect`, assess branch |
 | A new requirement (a partner's latency budget, data residency) puts the structure in question | `architect`, assess branch |
+| Designing agents that run unattended on tickets, pull requests, or a schedule | `architect`, design branch, which reads its unattended-agents reference |
 | What the system is for, or its requirements, are unclear | [delineate](./delineate.md) |
 | One capability's modules and interfaces | [engineer](./engineer.md) |
 | How code is written and checked | [codify](../upkeep/codify.md) |
@@ -40,6 +41,9 @@ It starts from the simplest shape that meets the requirements, one deployable pa
 
 **What if I prefer an option that breaks a requirement?**
 It names the requirement and asks you to choose: relax the requirement, or pick differently. Requirements outrank preferences, and only you relax one.
+
+**What does it add for systems that run agents on their own?**
+When the system runs coding agents unattended, it decides the tasks (trigger, reads and writes, what each run triggers next, where a person re-enters, what prevents duplicate runs) and fills the service slots (ticket tracker, git host, orchestrator, runner, observability platform). It recommends starting with one throttled trigger and human review on every pull request. The product comparisons are dated orientation, and the skill researches current options before recommending one.
 
 **How is this different from `improve-codebase-architecture`?**
 That skill looks for shallow modules inside the code and proposes deepening them. `architect` works a level up: the system's parts, stack, and data ownership.

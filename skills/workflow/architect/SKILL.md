@@ -24,6 +24,8 @@ In Assess, write the current shape down before judging it, from the code rather 
 
 List the open decisions as a tree: the stack and the parts come first; data ownership, flows, integrations, and deployment depend on them. For each decision, present two or three real alternatives, compare them against the requirements, the team's constraints, and the cost of reversing later, and recommend one. Prefer the simplest shape that meets the requirements: one deployable part and one store until a requirement or a context boundary justifies more.
 
+When the system runs coding agents unattended, started by tickets, pull requests, or a clock, read [unattended-agents.md](references/unattended-agents.md) and decide its tasks and services as part of the tree.
+
 Settle the tree with the user through the [interview method](references/interview.md). Requirements outrank preferences: when an alternative the user prefers breaks a requirement, say which, and ask whether to relax the requirement or choose differently.
 
 ## Write it down
