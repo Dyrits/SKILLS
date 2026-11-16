@@ -348,6 +348,11 @@ const DATA = {
    "description": "Approved text posted to a code host, tracker, chat, documentation, or email.",
    "label": "Published message"
   },
+  "readme": {
+   "description": "The project's entry document: what it is, how to run it, and where things live.",
+   "label": "README",
+   "path": "README.md"
+  },
   "ready-brief": {
    "description": "The agent-ready execution contract triage writes for a verified request.",
    "label": "Ready brief"
@@ -478,7 +483,8 @@ const DATA = {
     "improve-environment",
     "monitor-ai-tooling",
     "debug",
-    "codify"
+    "codify",
+    "re-document"
    ],
    "title": "Upkeep"
   },
@@ -1192,6 +1198,40 @@ const DATA = {
     "Nothing is posted without that approval, and any revision brings the changed set back for approval again."
    ],
    "tagline": "Publish established conclusions to any connected service, adapted to its conventions, after approval of exact text and destination."
+  },
+  "re-document": {
+   "argumentHint": "",
+   "bucket": "upkeep",
+   "calls": [],
+   "description": "Check a project's documentation against its code, correct what is stale, and ask the user when unsure; offer to write documentation when the project has none. Use when the user asks whether the documentation is current, accurate, or needs bringing up to date, or when a project has no documentation.",
+   "fits": [
+    "re-document is periodic maintenance: run it after a stretch of changes, before a release, or when a project is handed over. It reads and writes the same project documents as the workflow skills, found through AGENTS.md, and carries its own copies of the interview method and of the formats it writes. delineate and architect write the glossary and architecture document from decisions with you; re-document keeps them true to the code afterwards."
+   ],
+   "handovers": [],
+   "inputs": [
+    "code",
+    "readme",
+    "architecture",
+    "domain-records",
+    "requirements",
+    "agent-instructions"
+   ],
+   "next": [],
+   "outputs": [
+    "readme",
+    "architecture",
+    "domain-records",
+    "agent-instructions"
+   ],
+   "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/upkeep/re-document.md",
+   "requires": [],
+   "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/upkeep/re-document/SKILL.md",
+   "summary": [
+    "re-document reads a project's documentation next to its code, finds what has gone stale, and corrects it. It splits each document into claims (a path, a command, a default, a flow, a list), checks each against the code, and cites the file and line behind every correction. Where the evidence is not in the repository, or the code itself may be the mistake, it asks you instead of guessing.",
+    "Its defining constraint is the split between two kinds of document:",
+    "When the project has no documentation, it offers to write it. The code can supply a README, an architecture document, and a glossary. It cannot supply requirements, specifications, or the reasons behind decisions, so it does not infer them and lists them in its report as not recorded."
+   ],
+   "tagline": "Check the project's documentation against its code, correct what is stale, ask when unsure, and offer to write documentation when there is none."
   },
   "re-explain": {
    "argumentHint": "",

@@ -57,7 +57,8 @@
     "./skills/version-control/work-in-tree",
     "./skills/workflow/address-feedback",
     "./skills/workflow/iterate",
-    "./skills/workflow/verify"
+    "./skills/workflow/verify",
+    "./skills/upkeep/re-document"
   ],
   "experimental": {
     "evals": "evaluations"

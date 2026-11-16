@@ -1,0 +1,3 @@
+interface:
+  display_name: "Re-document"
+  short_description: "Check documentation against the code and correct it"

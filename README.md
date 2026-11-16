@@ -163,6 +163,7 @@ The manifest is the source of truth for this list; it holds every skill in the r
 - [monitor-ai-tooling](./skills/upkeep/monitor-ai-tooling/SKILL.md): Report observed tool benefits, estimates, and quality gaps.
 - [debug](./skills/upkeep/debug/SKILL.md): Build a tight reproduction loop, diagnose the cause, and verify the fix.
 - [codify](./skills/upkeep/codify/SKILL.md): Draft the project's code conventions from how its code is written, confirm each rule and its reason, or audit existing conventions.
+- [re-document](./skills/upkeep/re-document/SKILL.md): Check the documentation against the code, correct what is stale, and offer to write documentation when there is none.
 
 ### Version control
 
