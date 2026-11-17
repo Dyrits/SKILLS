@@ -1,0 +1,3 @@
+interface:
+  display_name: "Keep digging"
+  short_description: "Ask why layer by layer until bedrock"

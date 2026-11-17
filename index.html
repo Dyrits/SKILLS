@@ -506,6 +506,7 @@ const DATA = {
     "design-workflow": "Procedures",
     "hand-off": "Transport",
     "illustrate": "Sharpening",
+    "keep-digging": "Sharpening",
     "memorize": "Other",
     "optimize-process": "Procedures",
     "publish-message": "Outbound",
@@ -519,6 +520,7 @@ const DATA = {
    "id": "productivity",
    "skills": [
     "re-explain",
+    "keep-digging",
     "illustrate",
     "hand-off",
     "design-workflow",
@@ -1033,6 +1035,30 @@ const DATA = {
     "It carries its own copies of the disciplines it needs, so it runs with no other skill installed: the interview method rooted in the current batch, prioritize for picking a focus when scope is tangled, research for external facts, implement for each settled batch (with the test-first rules and the debug loop), divide-and-conquer for a batch that splits into independent tasks, after you approve its routing table, and review-and-refactor at milestones."
    ],
    "tagline": "Develop the living application just in time, maintaining backlog, working state, and root changelog."
+  },
+  "keep-digging": {
+   "argumentHint": "",
+   "bucket": "productivity",
+   "calls": [],
+   "description": "Ask why, layer by layer, until bedrock. Use when the user wants to understand how or why unfamiliar code, a system, or a concept works, or asks to dig deeper, not stop at the surface, or run the five whys.",
+   "fits": [
+    "keep-digging is a reach-for-it-anytime standalone inside any conversation. illustrate shows the same subject visually; re-explain repairs an explanation after it failed."
+   ],
+   "handovers": [],
+   "inputs": [
+    "code",
+    "session"
+   ],
+   "next": [],
+   "outputs": [],
+   "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/productivity/keep-digging.md",
+   "requires": [],
+   "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/productivity/keep-digging/SKILL.md",
+   "summary": [
+    "keep-digging explains how or why something works by asking why of its own answer, one layer at a time, until the next why would only repeat a definition. The agent shows every layer, grounds each in a file, a document, or a configuration, and ends with one sentence naming the root.",
+    "The aim is understanding, not diagnosis. It is the five whys aimed at \"how does this work\", not at \"what broke\"."
+   ],
+   "tagline": "Understand how or why something works by asking why of each sourced answer until bedrock, showing every layer."
   },
   "memorize": {
    "argumentHint": "",
