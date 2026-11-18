@@ -28,7 +28,7 @@ To resume the skill collection upkeep (the evaluation findings, the prompt audit
 
 To resume selective upstream adoption and its unverified behavior checks, read the [current handoff](./.agents/handoffs/2026-11-13-2039-upstream-adoption.md). Handoffs are shared and committed.
 
-To resume the keep-digging skill, read the [current handoff](./.agents/handoffs/2026-11-17-1548-keep-digging-skill.md). Handoffs are shared and committed.
+To resume work on the dig-deeper skill, read the [current handoff](./.agents/handoffs/2026-11-18-0921-dig-deeper-skill.md). Handoffs are shared and committed.
 
 Install commands are copied verbatim from [standard installation wording](./documentation/maintenance/standard-installation-wording.md). `.claude-plugin/marketplace.json` makes the repository its own single-plugin marketplace (a fallback the installation wording guide explains, not the documented route). Run `claude plugin validate . --strict` after touching either manifest. This repository's decisions live in `documentation/architecture-decision-record/`.
 

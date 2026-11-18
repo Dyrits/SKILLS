@@ -1,5 +1,5 @@
 ---
-name: keep-digging
+name: dig-deeper
 description: "Ask why, layer by layer, until bedrock. Use when the user wants to understand how or why unfamiliar code, a system, or a concept works, or asks to dig deeper, not stop at the surface, or run the five whys."
 metadata:
   forks: "Tarektouati/skills/keep-digging"

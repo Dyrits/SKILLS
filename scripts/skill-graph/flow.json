@@ -81,7 +81,7 @@
     "monitor-ai-tooling": {"inputs": ["tooling-config"], "outputs": ["tooling-report"], "next": []},
     "hand-off": {"inputs": ["session"], "outputs": ["handoff", "agent-instructions"], "next": []},
     "illustrate": {"inputs": ["idea"], "outputs": ["visual"], "next": []},
-    "keep-digging": {"inputs": ["code", "session"], "outputs": [], "next": []},
+    "dig-deeper": {"inputs": ["code", "session"], "outputs": [], "next": []},
     "re-explain": {"inputs": ["session", "domain-records"], "outputs": [], "next": ["illustrate"]},
     "publish-message": {"inputs": ["review-findings", "draft-prose"], "outputs": ["published-message"], "next": []},
     "design-workflow": {"inputs": ["idea"], "outputs": ["workflow-specification"], "next": []},

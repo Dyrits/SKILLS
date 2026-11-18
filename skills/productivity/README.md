@@ -7,7 +7,7 @@ Human-facing workflows you run, not about code. Skills sit flat in this folder; 
 Understanding built or repaired in conversation.
 
 - **[re-explain](./re-explain/SKILL.md)**: Fire this the moment a message does not land. The agent explains it again with missing context, in your language, using your glossary's vocabulary.
-- **[keep-digging](./keep-digging/SKILL.md)**: Understand how or why something works by asking why of each sourced answer until bedrock, showing every layer.
+- **[dig-deeper](./dig-deeper/SKILL.md)**: Understand how or why something works by asking why of each sourced answer until bedrock, showing every layer.
 - **[illustrate](./illustrate/SKILL.md)**: Explain the current topic with the smallest useful diagram, code sketch, or focused HTML artifact.
 
 ## Transport

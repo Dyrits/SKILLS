@@ -175,7 +175,7 @@ The manifest is the source of truth for this list; it holds every skill in the r
 ### Productivity
 
 - [re-explain](./skills/productivity/re-explain/SKILL.md): Re-explain a message with the missing context.
-- [keep-digging](./skills/productivity/keep-digging/SKILL.md): Ask why layer by layer, with sources, until bedrock.
+- [dig-deeper](./skills/productivity/dig-deeper/SKILL.md): Ask why layer by layer, with sources, until bedrock.
 - [teach](./skills/productivity/teach/SKILL.md): Maintain a stateful teaching workspace.
 - [design-workflow](./skills/productivity/design-workflow/SKILL.md): Turn recurring work loops into implementable workflow specifications.
 - [publish-message](./skills/productivity/publish-message/SKILL.md): Publish established conclusions to any connected service after approval of exact text and destination.
