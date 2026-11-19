@@ -90,6 +90,7 @@
     "walk-through": {"inputs": [], "outputs": ["wizard"], "next": []},
     "interview": {"inputs": ["idea"], "outputs": ["decisions"], "next": ["specify"]},
     "codify": {"inputs": ["code"], "outputs": ["conventions"], "next": []},
+    "prune": {"inputs": ["code", "agent-instructions"], "outputs": ["code"], "next": []},
     "re-document": {"inputs": ["code", "readme", "architecture", "domain-records", "requirements", "agent-instructions"], "outputs": ["readme", "architecture", "domain-records", "agent-instructions"], "next": []},
     "memorize": {"inputs": ["session"], "outputs": ["memory", "domain-records", "conventions", "agent-instructions"], "next": []},
     "write-for-agents": {"inputs": ["agent-instructions"], "outputs": ["agent-instructions"], "next": []},

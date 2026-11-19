@@ -11,3 +11,4 @@ Set up a repository, then keep the codebase and request list healthy.
 - [debug](./debug/SKILL.md): Diagnose bugs through a tight reproduction loop and regression evidence.
 - [codify](./codify/SKILL.md): Draft the project's code conventions from how its code is written, confirm each rule and its reason, or audit existing conventions.
 - [re-document](./re-document/SKILL.md): Check the project's documentation against its code, correct what is stale, ask when unsure, and offer to write documentation when there is none.
+- [prune](./prune/SKILL.md): Find and remove what the project no longer uses (code, files, dependencies, assets, configuration), with evidence for each removal and the checks passing after it.

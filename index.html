@@ -484,7 +484,8 @@ const DATA = {
     "monitor-ai-tooling",
     "debug",
     "codify",
-    "re-document"
+    "re-document",
+    "prune"
    ],
    "title": "Upkeep"
   },
@@ -1198,6 +1199,33 @@ const DATA = {
     "The verdict and its evidence enter the relevant draft, agreed specifications, or working state under the shared document model. Experimental code stays clearly labeled and isolated from production."
    ],
    "tagline": "Build a scoped experiment and validate its answer before production integration."
+  },
+  "prune": {
+   "argumentHint": "",
+   "bucket": "upkeep",
+   "calls": [],
+   "description": "Find and remove what a project no longer uses: dead code, unused files, exports, dependencies, assets, styles, scripts, and configuration, each removal backed by evidence and passing checks. Use when the user asks to clean up, find dead or unused code, or remove unused assets or dependencies.",
+   "fits": [
+    "prune is periodic maintenance: run it after a feature is retired, before a release, or when a codebase has grown for a while without cleanup. It reads the check commands and entry points from the project itself and from AGENTS.md, and writes nothing but the removals and the documentation lines they make stale."
+   ],
+   "handovers": [],
+   "inputs": [
+    "code",
+    "agent-instructions"
+   ],
+   "next": [],
+   "outputs": [
+    "code"
+   ],
+   "pageUrl": "https://github.com/Dyrits/SKILLS/blob/main/documentation/skills/upkeep/prune.md",
+   "requires": [],
+   "skillUrl": "https://github.com/Dyrits/SKILLS/blob/main/skills/upkeep/prune/SKILL.md",
+   "summary": [
+    "prune finds what a project no longer uses and removes it: source files, functions, classes, exports, dependencies, assets such as images and fonts, styles, fixtures, scripts, configuration keys, and blocks of commented-out code. It runs the ecosystem's own detector where one exists (knip, vulture, deptry, deadcode, cargo machete) and a bundled script that lists every tracked file whose name no other file mentions, which is the only check for assets.",
+    "Its defining constraint is that a missing reference is not enough to delete something. Code reaches files and symbols in ways a search cannot see, so every candidate gets one of three verdicts before anything is removed:",
+    "Every removal must leave the project's build, tests, lint, and typecheck where they were before the run."
+   ],
+   "tagline": "Find and remove what the project no longer uses (code, files, dependencies, assets, configuration), with evidence for each removal and the checks passing after it."
   },
   "publish-message": {
    "argumentHint": "Optional: where to post, and what to say",

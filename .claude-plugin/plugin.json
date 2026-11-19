@@ -59,7 +59,8 @@
     "./skills/workflow/address-feedback",
     "./skills/workflow/iterate",
     "./skills/workflow/verify",
-    "./skills/upkeep/re-document"
+    "./skills/upkeep/re-document",
+    "./skills/upkeep/prune"
   ],
   "experimental": {
     "evals": "evaluations"

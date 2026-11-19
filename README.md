@@ -164,6 +164,7 @@ The manifest is the source of truth for this list; it holds every skill in the r
 - [debug](./skills/upkeep/debug/SKILL.md): Build a tight reproduction loop, diagnose the cause, and verify the fix.
 - [codify](./skills/upkeep/codify/SKILL.md): Draft the project's code conventions from how its code is written, confirm each rule and its reason, or audit existing conventions.
 - [re-document](./skills/upkeep/re-document/SKILL.md): Check the documentation against the code, correct what is stale, and offer to write documentation when there is none.
+- [prune](./skills/upkeep/prune/SKILL.md): Find and remove unused code, files, dependencies, and assets, each removal backed by evidence and passing checks.
 
 ### Version control
 
